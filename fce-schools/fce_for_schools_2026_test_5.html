@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FCE for Schools 2026 Test 5 - Oxfam Preparation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,500..800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f7fb;--paper:#fff;--ink:#14213d;--muted:#4b5266;--line:#d5d9e6;--mark:#2b59ff;--hi:#ffe45e;--ok:#1a7f52;--bad:#b3261e;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme="dark"]{--bg:#0f1526;--paper:#182038;--ink:#eef1fb;--muted:#a9b1c9;--line:#2c3656;--mark:#7d9bff;--hi:#e9d24a;--ok:#57c58f;--bad:#ff8a80}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 "Atkinson Hyperlegible",system-ui,sans-serif}
+h1,h2,h3{font-family:Archivo,"Helvetica Neue",Arial,sans-serif;line-height:1.05;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--mark);outline-offset:3px}
+.wrap{max-width:74rem;margin:0 auto;padding:0 1.25rem}
+
+header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;padding:1.25rem 0;position:sticky;top:0;background:var(--bg);z-index:100;border-bottom:1px solid transparent;transition:border-color 0.2s}
+.head-left{display:flex;align-items:center;gap:.75rem}
+#menuToggle{background:transparent;border:none;cursor:pointer;color:var(--ink);display:flex;padding:.25rem;border-radius:.25rem}
+#menuToggle:hover{background:var(--line)}
+#menuToggle svg{width:1.6rem;height:1.6rem}
+.logo{font:800 1.6rem Archivo,sans-serif;text-decoration:none}
+.btn{display:inline-block;background:var(--ink);color:var(--bg);padding:.8rem 1.4rem;border-radius:.5rem;font-weight:700;text-decoration:none;border:0;cursor:pointer;font-size:1rem;font-family:inherit}
+.btn.alt{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+
+h1{font-size:clamp(2rem,3.4vw,3rem);font-weight:800;font-stretch:90%;letter-spacing:-.02em}
+h1 span{background:linear-gradient(transparent 62%,var(--hi) 62%)}
+.row{display:flex;gap:.75rem;flex-wrap:wrap}
+.sheet{background:var(--paper);border:2px solid var(--ink);border-radius:.75rem;padding:1.5rem;box-shadow:.5rem .5rem 0 var(--ink)}
+.q{padding:.7rem 0;border-top:1px solid var(--line)}
+.q b{display:block;font-weight:400;margin-bottom:.45rem}
+.opts{display:flex;gap:.5rem;flex-wrap:wrap}
+
+.opt{display:flex;align-items:center;gap:.4rem;padding:.3rem .7rem .3rem .35rem;border:1.5px solid var(--line);border-radius:2rem;background:transparent;color:inherit;font:inherit;font-size:.95rem;cursor:pointer}
+.opt i{width:1.4rem;height:1.4rem;border-radius:50%;border:2px solid var(--muted);display:grid;place-items:center;font:700 .7rem Archivo,sans-serif;font-style:normal}
+.opt[aria-pressed="true"]{border-color:var(--mark)}
+.opt[aria-pressed="true"] i{background:var(--mark);border-color:var(--mark);color:var(--bg)}
+.opt.right{border-color:var(--ok)}.opt.right i{background:var(--ok);border-color:var(--ok);color:var(--bg)}
+.opt.wrong{border-color:var(--bad)}.opt.wrong i{background:var(--bad);border-color:var(--bad);color:var(--bg)}
+.result{margin-top:1rem;font-weight:700;min-height:1.6rem}
+section{padding:3.5rem 0;border-top:1px solid var(--line)}
+h2.t{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:.75rem;letter-spacing:-.01em}
+.sub{color:var(--muted);max-width:38rem;margin:0 0 2rem}
+
+.layout{display:grid;grid-template-columns:12.5rem minmax(0,1fr);gap:2.5rem;align-items:start}
+.side{position:sticky;top:5rem;max-height:calc(100vh - 6rem);max-height:calc(100dvh - 6rem);overflow-y:auto;display:flex;flex-direction:column;gap:.15rem}
+.side nav{display:flex;flex-direction:column;gap:.15rem;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--line)}
+.side a{text-decoration:none;padding:.5rem .75rem;border-radius:.5rem;font:700 1rem Archivo,sans-serif;border-left:3px solid transparent}
+.side a:hover{background:var(--paper);border-left-color:var(--mark)}
+.gatebox{max-width:26rem;margin:2rem auto;background:var(--paper);border:2px solid var(--ink);border-radius:.75rem;padding:1.5rem;box-shadow:.5rem .5rem 0 var(--ink)}
+.gatebox label,.wr label{display:block;font-weight:700;margin:.75rem 0 .25rem}
+
+input[type=text],input[type=password],textarea{width:100%;padding:.6rem .75rem;border:1.5px solid var(--line);border-radius:.4rem;background:var(--bg);color:var(--ink);font:inherit}
+.q input[type=text]{width:14rem;max-width:100%}
+.part{background:var(--paper);border:1px solid var(--line);border-radius:.75rem;padding:1.5rem;margin-bottom:1.25rem}
+.txt{white-space:pre-line}.q.ok{border-left:4px solid var(--ok);padding-left:.75rem}.q.no{border-left:4px solid var(--bad);padding-left:.75rem}.fb{font-weight:700;margin-top:.25rem}
+.tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0}
+nav.tabs a {margin:0;padding:.4rem 1rem;border:1.5px solid var(--line);border-radius:2rem;text-decoration:none;font-weight:700}
+nav.tabs a[aria-current=page]{background:var(--ink);color:var(--bg)}
+.bar{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;margin:1rem 0}.time{font:800 1.6rem Archivo,sans-serif}
+
+.pics{display:flex;gap:1rem;flex-wrap:wrap}.pics svg, .pics img{flex:1 1 14rem;max-width:22rem;border:2px solid var(--ink);border-radius:.5rem;background:var(--paper);object-fit:cover;aspect-ratio:3/2}
+textarea{min-height:15rem}.tr{display:none}.note{padding:.75rem 1rem;border-left:4px solid var(--mark);background:var(--paper);margin:1rem 0}
+.sec{padding-top:2rem;margin-top:2rem;border-top:1px solid var(--line)}.jump{margin-top:0}.ex{color:var(--muted);margin-top:.15rem;font-size:.95rem}.q b{display:inline;font-weight:800;margin:0 .4rem 0 0}
+
+.support-strip{position:fixed;bottom:0;left:0;right:0;background:var(--ink);color:var(--bg);padding:1rem 1.25rem;z-index:999;box-shadow:0 -4px 12px rgba(0,0,0,0.15)}
+.support-strip-inner{max-width:74rem;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.5rem;width:100%;font-weight:700}
+footer{border-top:1px solid var(--line);padding:2rem 0 5rem;color:var(--muted);font-size:.95rem}
+
+@media (max-width:52rem){
+  .layout{grid-template-columns:1fr;gap:0}.side{display:none}
+  .tabs a{padding:.4rem .75rem}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header id="siteHeader">
+  <div class="head-left">
+    <a class="logo" href="../index.html">Oxfam Preparation</a>
+  </div>
+  <div class="hr">
+    <button class="btn alt" style="padding:.45rem .6rem;" id="themeBtn" aria-label="Toggle theme">🌙</button>
+  </div>
+</header>
+
+<div class="layout" style="display:block;">
+<main id="top">
+
+<div id="gate">
+  <div class="gatebox">
+    <h1><span>FCE for Schools</span></h1>
+    <p>Enter the password to open this test.</p>
+    <form id="gf">
+      <label for="pw">Password</label>
+      <input id="pw" type="password" autocomplete="off">
+      <div class="err" id="err"></div>
+      <div class="row" style="margin-top:1rem">
+        <button class="btn" type="submit">Open</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="main" hidden>
+  <nav class="tabs" aria-label="Tests">
+    <a href="../fce.html">All tests</a>
+  </nav>
+
+  <h1 style="margin-top: 1rem">FCE for Schools 2026 - Test 5</h1>
+  <nav class="tabs jump" aria-label="Papers" style="margin-top: 2.5rem; margin-bottom: 2rem">
+    <a href="#rd">Reading and Use of English</a>
+    <a href="#li">Listening</a>
+    <a href="#wt">Writing</a>
+    <a href="#sk">Speaking</a>
+  </nav>
+
+  <section class="sec" id="rd">
+    <h2 class="t">Reading and Use of English (75 minutes)</h2>
+    <div class="bar"><span class="time" id="t1"></span><button class="btn alt" type="button">Start</button></div>
+    <div id="rbox"></div>
+    <div class="bar"><button class="btn" id="ck1" type="button">Check answers</button><b id="sc1"></b></div>
+  </section>
+
+  <section class="sec" id="li">
+    <h2 class="t">Listening (about 40 minutes)</h2>
+    <div class="bar"><span class="time" id="t2"></span><button class="btn alt" type="button">Start</button></div>
+    <p class="note">The recordings are read aloud by your browser. Each recording can be played twice, as in the real exam. Use headphones.</p>
+    <div id="lbox"></div>
+    <div class="bar"><button class="btn" id="ck2" type="button">Check answers</button><b id="sc2"></b></div>
+  </section>
+
+  <section class="sec" id="wt">
+    <h2 class="t">Writing (80 minutes)</h2>
+    <div class="bar"><span class="time" id="t3"></span><button class="btn alt" type="button">Start</button></div>
+    <div class="wr">
+      <label for="nm">Your name</label>
+      <input type="text" id="nm">
+      
+      <div class="part">
+        <h2>Part 1 - Essay (compulsory)</h2>
+        <div class="bar"><span class="time" id="w1"></span><button class="btn alt" type="button">Start</button></div>
+        <p>In your English class you have been talking about school rules and technology. Now, your English teacher has asked you to write an essay for homework.</p>
+        <p><strong>Write an essay using all the notes and giving reasons for your point of view.</strong></p>
+        <div class="note">
+          <strong>Topic:</strong> Should mobile phones be completely banned for students during the school day?<br><br>
+          <strong>Notes:</strong><br>
+          Write about:<br>
+          1. concentration in lessons<br>
+          2. socializing during break times<br>
+          3. ___________ (your own idea)
+        </div>
+        <p>Write your essay in <strong>140 - 190</strong> words.</p>
+        <textarea id="e1" aria-label="Answer"></textarea>
+        <div class="bar">
+          <b id="e1c">0 words</b>
+          <button class="btn alt" type="button" data-c="e1">Copy</button>
+          <button class="btn" type="button" data-s="e1" data-t="Part 1 essay">Send to assessor</button>
+        </div>
+      </div>
+      
+      <div class="part">
+        <h2>Part 2 - Choose ONE task</h2>
+        <div class="bar"><span class="time" id="w2"></span><button class="btn alt" type="button">Start</button></div>
+        <p>Write an answer to one of the questions (a - c) in this part. Write your answer in <strong>140 - 190</strong> words in an appropriate style.</p>
+        <p>
+          <strong>(a) Article:</strong> You see this announcement in your school's English magazine: <em>Articles wanted: Summer Holidays! What is the best way for teenagers to spend their long summer holiday? Is it better to get a job, travel, or just relax? The most interesting articles will be published next month.</em><br><br>
+          <strong>(b) Story:</strong> Your English teacher has asked you to write a story for the school website. Your story must begin with this sentence: <em>When Sarah opened the mysterious wooden box she had found in the school attic, she couldn't believe her eyes.</em><br><br>
+          <strong>(c) Review:</strong> You recently went on a school trip to a science museum or art gallery. Write a review for an English-language student blog. Describe the exhibits, explain what you found most interesting or boring, and say whether you would recommend it to other schools.
+        </p>
+        <textarea id="e2" aria-label="Answer"></textarea>
+        <div class="bar">
+          <b id="e2c">0 words</b>
+          <button class="btn alt" type="button" data-c="e2">Copy</button>
+          <button class="btn" type="button" data-s="e2" data-t="Part 2 task">Send to assessor</button>
+        </div>
+      </div>
+    </div>
+    <p class="note">Sending opens your email app with your text. Very long texts are copied to the clipboard so you can paste them.</p>
+  </section>
+
+  <section class="sec" id="sk">
+    <h2 class="t">Speaking (14 minutes)</h2>
+    <div class="bar"><span class="time" id="t4"></span><button class="btn alt" type="button">Start</button></div>
+    <p class="note">Practise with a partner or teacher. The real test lasts about 14 minutes.</p>
+    
+    <div class="part">
+      <h2>Part 1 - Interview (2 minutes)</h2>
+      <div class="bar"><span class="time" id="sp1"></span><button class="btn alt" type="button">Start</button></div>
+      <ul>
+        <li>What do you enjoy doing with your friends at the weekend?</li>
+        <li>Tell us about a hobby you'd like to try in the future.</li>
+        <li>Do you plan to go to university or get a job when you leave school?</li>
+        <li>How important is sport or exercise in your daily life?</li>
+      </ul>
+    </div>
+    
+    <div class="part">
+      <h2>Part 2 - Long turn (1 minute each)</h2>
+      <div class="bar"><span class="time" id="sp2"></span><button class="btn alt" type="button">Start</button></div>
+      <p><strong>Candidate A:</strong> Compare the two pictures and say what you think the teenagers are enjoying about doing these different sports.</p>
+      <p><strong>Candidate B:</strong> Compare the two pictures and say why you think the teenagers have chosen to learn in these different environments.</p>
+      
+      <p style="margin-top:1.5rem"><b>Candidate A's pictures: Doing sports</b></p>
+      <div class="pics">
+        <img src="https://images.unsplash.com/photo-1574629810360-7efbb1925536?w=600&h=400&fit=crop" alt="A teenager swimming in an indoor pool">
+        <img src="https://images.unsplash.com/photo-1595435742656-5272d0b3fa82?w=600&h=400&fit=crop" alt="Teenagers playing tennis outdoors on a sunny day">
+      </div>
+
+      <p style="margin-top:1.5rem"><b>Candidate B's pictures: Learning environments</b></p>
+      <div class="pics">
+        <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&h=400&fit=crop" alt="Students sitting at desks in a traditional classroom looking at a teacher">
+        <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=600&h=400&fit=crop" alt="A group of students looking at plants outdoors on a field trip">
+      </div>
+    </div>
+    
+    <div class="part">
+      <h2>Part 3 - Collaborative task (3 minutes)</h2>
+      <div class="bar"><span class="time" id="sp3"></span><button class="btn alt" type="button">Start</button></div>
+      <p><b>How could your school become more environmentally friendly?</b> Discuss the ideas below, then decide which TWO would be the most effective.</p>
+      <ul>
+        <li>putting recycling bins in every classroom</li>
+        <li>starting a school vegetable garden</li>
+        <li>turning off all lights and computers at the end of the day</li>
+        <li>banning single-use plastic bottles in the canteen</li>
+        <li>encouraging students to walk or cycle to school</li>
+      </ul>
+    </div>
+    
+    <div class="part">
+      <h2>Part 4 - Discussion (4 minutes)</h2>
+      <div class="bar"><span class="time" id="sp4"></span><button class="btn alt" type="button">Start</button></div>
+      <ul>
+        <li>Do you think young people today care more about the environment than older generations? Why/Why not?</li>
+        <li>Some people say that individual actions (like recycling) don't make a big enough difference to climate change. Do you agree?</li>
+        <li>How do you think schools will change in the future to help protect the planet?</li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+</main>
+</div>
+
+<div class="support-strip">
+  <div class="support-strip-inner">
+    <div><span _k="Customer support every day from 9:00 to 16:30">Customer support every day from 9:00 to 16:30</span></div>
+    <div class="support-info">
+      <a href="mailto:oxfampreparation@email.cz">oxfampreparation@email.cz</a>
+      <a href="tel:+420723200988">+420 723 200 988</a>
+    </div>
+  </div>
+</div>
+
+<footer>© 2020-2026 Oxfam - Oxford family. All rights reserved. Not affiliated with Cambridge University Press &amp; Assessment. Exam names belong to their owners.</footer>
+</div>
+
+<script>
+var PW="X2mq";
+function unlocked(){try{return sessionStorage.getItem("cae26")==="1"}catch(e){return false}}
+
+function norm(s){return s.toLowerCase().replace(/\u2019/g,"'").replace(/\s+/g," ").trim()}
+
+function build(parts,box,pre){
+  var n=0;pre=pre||"";
+  parts.forEach(function(p,pi){
+    var d=document.createElement("section");d.className="part";
+    d.innerHTML="<h2>"+p.t+"</h2>"+(p.m?"<div class='bar'><span class='time' id='pt"+pre+pi+"'></span><button class='btn alt' type='button'>Start</button> <small>suggested time</small></div>":"")+"<p class='sub'>"+p.i+"</p>"+(p.x?"<p class='txt'>"+p.x+"</p>":"")+(p.im||"")+"<div class='items'></div>";
+    var it=d.querySelector(".items");
+    p.q.forEach(function(q){
+      n++;var r=document.createElement("div");r.className="q";
+      var h="<b>"+n+"</b> "+(q.q||"")+(q.h?" <strong>"+q.h+"</strong>":"");
+      if(q.o){
+        var optsHtml = q.o.map(function(o,i){
+          var letter = "ABCDEFGH"[i];
+          var text = o === letter ? "" : o;
+          return "<label><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> "+text+"</label>";
+        }).join("");
+        h+="<div class='opts'>"+optsHtml+"</div>";
+      } else {
+        h+=" <input type='text' autocomplete='off' aria-label='Answer "+n+"'>";
+      }
+      r.innerHTML=h;r._q=q;it.appendChild(r);
+    });
+    box.appendChild(d);
+    if(p.m)timer("pt"+pre+pi,p.m);
+  });
+}
+
+function check(box,out){
+  var tot=0,ok=0;
+  box.querySelectorAll(".part").forEach(function(part){
+    var pTot=0,pOk=0;
+    part.querySelectorAll(".q").forEach(function(r){
+      pTot++;var q=r._q,good,ans;
+      if(q.o){
+        var c=r.querySelector("input:checked");
+        good=c&&+c.value===q.a;
+        var letter = "ABCDEFGH"[q.a];
+        ans = q.o[q.a] === letter ? letter : letter + " " + q.o[q.a];
+      } else {
+        var v=norm(r.querySelector("input").value);
+        good=q.a.some(function(a){return norm(a)===v});
+        ans=q.a[0];
+      }
+      r.classList.toggle("ok",!!good);
+      r.classList.toggle("no",!good);
+      var f=r.querySelector(".fb");
+      if(!f){f=document.createElement("div");f.className="fb";r.appendChild(f)}
+      f.textContent=good?"Correct":"Answer: "+ans;
+      var x=r.querySelector(".ex");
+      if(!x){x=document.createElement("div");x.className="ex";r.appendChild(x)}
+      x.textContent=q.e||"";
+      if(good)pOk++;
+    });
+    if(pTot>0){
+      var ps=part.querySelector(".pscore");
+      if(!ps){ps=document.createElement("div");ps.className="pscore note";ps.style.marginTop="1.5rem";part.appendChild(ps)}
+      ps.innerHTML="<b>Part score:</b> "+pOk+" / "+pTot;
+    }
+    tot+=pTot;ok+=pOk;
+  });
+  out.textContent="Total score: "+ok+" / "+tot;
+  box.querySelectorAll(".tr").forEach(function(e){e.style.display="block"});
+}
+
+function timer(id,min){
+  var e=document.getElementById(id),l=min*60,t=null;
+  if(!e)return;
+  function s(){e.textContent=("0"+Math.floor(l/60)).slice(-2)+":"+("0"+l%60).slice(-2)}s();
+  e.nextElementSibling.onclick=function(){
+    if(t){clearInterval(t);t=null;this.textContent="Start";return}
+    this.textContent="Pause";
+    t=setInterval(function(){l--;s();if(l<=0)clearInterval(t)},1000);
+  }
+}
+
+var R = [
+  {"t": "Part 1 - Multiple-choice cloze", "i": "Choose the word that best fits each gap.", "x": "The School Cooking Competition\n\nWhen our headteacher announced the first annual 'Master Chef' cooking competition for Year 10 students, my friends and I were quite excited. We all thought we were excellent cooks because we often made pasta at home. However, creating a three-course meal in under two hours was a different challenge entirely.\n\nWe decided to enter as a team and immediately started planning our menu. We had to (1) ___ up with something that was both delicious and original. We spent hours researching recipes online before finally settling on a spicy chicken dish. \n\nOn the day of the competition, the school kitchen was completely chaotic. There were twenty teams, and everyone was rushing around trying to (2) ___ sure their ingredients were prepped. We quickly realized we had to pay close (3) ___ to our timings. If the chicken stayed in the oven for even five minutes too long, it would be dry and ruined.\n\nDespite the pressure, we managed to (4) ___ part in the cooking without any major disasters. Working together as a team definitely had a positive (5) ___ on us, as we learned how to communicate effectively. When the judges finally tasted our food, we were incredibly nervous. \n\nWe didn't win the main prize, but the judges did highly (6) ___ our dessert, a chocolate and raspberry tart. They even told us we had a natural talent for baking! Participating in the event was a brilliant experience, and I would strongly (7) ___ other students to get involved next year. It is a fantastic way to learn outside the classroom and (8) ___ new culinary skills.", "q": [
+    {"o": ["make", "come", "bring", "think"], "a": 1, "e": "The phrasal verb 'come up with' means to invent or think of an idea."},
+    {"o": ["get", "keep", "make", "take"], "a": 2, "e": "'Make sure' is a standard collocation meaning to ensure something happens."},
+    {"o": ["focus", "notice", "care", "attention"], "a": 3, "e": "'Pay attention to' is the correct fixed phrase."},
+    {"o": ["take", "have", "make", "get"], "a": 0, "e": "'Take part in' means to participate in an activity or event."},
+    {"o": ["result", "impact", "change", "outcome"], "a": 1, "e": "Something has a positive 'impact' (or effect) on someone."},
+    {"o": ["advise", "recommend", "praise", "suggest"], "a": 2, "e": "The judges 'praise' the dessert (express warm approval)."},
+    {"o": ["advise", "recommend", "encourage", "suggest"], "a": 2, "e": "You 'encourage' someone to do something. (Recommend takes -ing or that-clause, advise takes object+to inf but encourage fits inspiring them)."},
+    {"o": ["gain", "catch", "win", "find"], "a": 0, "e": "You 'gain' (or acquire) new skills."}
+  ], "m": 8},
+  
+  {"t": "Part 2 - Open cloze", "i": "Think of one word only for each gap.", "x": "A Trip to a Roman Villa\n\nLast week, my history class went on a trip to visit the ruins of a Roman villa in the countryside. Our teacher, Mr. Davies, had been talking about the Romans for weeks, so he thought it would be a great idea for us to see some history 'in real life'. \n\nWhen we arrived, I was surprised by how large the site was. The villa, (9) ___ was built over nearly two thousand years ago, originally belonged to a wealthy Roman family. The guide explained how they lived, and pointed out the hypocaust, which functioned (10) ___ a kind of ancient central heating system under the floors. \n\nThe most amazing part of the tour was the main dining room. The floor was completely covered in a beautiful mosaic made of tiny, colourful stones. It must have (11) ___ incredibly difficult to make. The guide told us that it took a (12) ___ of time and patience to restore it when it was first discovered by archaeologists.\n\nAfter the tour, we had a chance to look at some of the artifacts that had been dug (13) ___ from the ground, including old coins and pieces of pottery. Before getting back on the bus, we all went to the gift shop. I bought a small replica Roman coin in (14) ___ to remember the trip. \n\nI usually find history quite boring, but actually seeing where people lived made it much more interesting. However, (15) ___ to the heavy rain on the way home, our bus was delayed, so we didn't get back to school until after 5 PM. Despite that, it was definitely one of the best trips I have ever (16) ___ on.", "q": [
+    {"a": ["which"], "e": "Relative pronoun referring back to 'The villa'."},
+    {"a": ["as"], "e": "It functioned 'as' a kind of central heating system."},
+    {"a": ["been"], "e": "Perfect infinitive structure: 'must have been'."},
+    {"a": ["lot"], "e": "The phrase is 'a lot of'."},
+    {"a": ["up", "out"], "e": "Artifacts are dug 'up' or dug 'out' from the ground."},
+    {"a": ["order"], "e": "The fixed phrase 'in order to' express purpose."},
+    {"a": ["due", "owing"], "e": "'Due to' or 'owing to' meaning because of."},
+    {"a": ["been", "gone"], "e": "Present perfect: 'trips I have ever been on'."}
+  ], "m": 8},
+
+  {"t": "Part 3 - Word formation", "i": "Use the word in capitals to form a word that fits the gap.", "x": "Why Every Teenager Should Learn to Code\n\nWhen people think about learning a new language, they usually think of French or Spanish. However, many experts argue that the most important language teenagers can learn today is computer code. Understanding how software works is becoming increasingly essential in our highly technological world.\n\nFirstly, coding teaches excellent problem-solving skills. When you write a computer program, it rarely works perfectly the first time. You have to use your (17) ___ to figure out where the errors are and how to fix them. This teaches teenagers that finding a (18) ___ often requires trying several different approaches. Furthermore, fixing bugs in code requires a great deal of (19) ___; you cannot simply give up when things get difficult.\n\nLearning to code also develops (20) ___ thinking. A computer needs very precise, step-by-step instructions. Breaking a big problem down into smaller, manageable parts is a skill that is useful in almost every academic subject.\n\nMoreover, the ability to code can lead to excellent career opportunities. Because we rely so heavily on apps and websites for (21) ___ and entertainment, companies are constantly looking for skilled programmers. The (22) ___ of knowing even basic code cannot be overstated when applying for jobs.\n\nFinally, coding is (23) ___ creative. You can build your own video games, design websites, or even create apps to help people. Knowing how to protect your own digital (24) ___ is an added bonus. Ultimately, coding empowers teenagers to be creators of technology, rather than just consumers.", "q": [
+    {"q": "", "a": ["creativity", "intelligence"], "e": "Noun meaning ability to think of new ideas. Root CREATE.", "h": "CREATE"},
+    {"q": "", "a": ["solution"], "e": "Noun meaning the answer to a problem. Root SOLVE.", "h": "SOLVE"},
+    {"q": "", "a": ["patience"], "e": "Noun meaning ability to accept delay/trouble. Root PATIENT.", "h": "PATIENT"},
+    {"q": "", "a": ["logical"], "e": "Adjective modifying thinking. Root LOGIC.", "h": "LOGIC"},
+    {"q": "", "a": ["communication"], "e": "Noun meaning exchanging information. Root COMMUNICATE.", "h": "COMMUNICATE"},
+    {"q": "", "a": ["importance"], "e": "Noun meaning significance. Root IMPORTANT.", "h": "IMPORTANT"},
+    {"q": "", "a": ["surprisingly"], "e": "Adverb modifying creative. Root SURPRISE.", "h": "SURPRISE"},
+    {"q": "", "a": ["security"], "e": "Noun meaning safety. Root SECURE.", "h": "SECURE"}
+  ], "m": 8},
+  
+  {"t": "Part 4 - Key word transformations", "i": "Complete the second sentence using the word given. Use between two and five words including the word.", "q": [
+    {"q": "It's a pity I didn't bring my jacket to school today. I ___ my jacket to school today.", "a": ["wish i had brought", "wish i'd brought"], "e": "Expressing regret about the past using 'wish + past perfect'.", "h": "WISH"},
+    {"q": "They will complete the science project next week. The science project ___ next week.", "a": ["will be completed"], "e": "Passive voice of the future simple tense.", "h": "BE"},
+    {"q": "'Are you going to the party, Tom?' asked Sarah. Sarah asked Tom ___ to the party.", "a": ["if he was going", "whether he was going"], "e": "Reported yes/no question shifting present continuous to past continuous.", "h": "WHETHER"},
+    {"q": "The math exam was so difficult that nobody finished early. It was ___ that nobody finished early.", "a": ["such a difficult exam", "such a hard exam"], "e": "Changing 'so + adjective' to 'such a + adjective + noun'.", "h": "SUCH"},
+    {"q": "I am sure Jane didn't forget your birthday because she bought a card. Jane ___ your birthday because she bought a card.", "a": ["cannot have forgotten", "can't have forgotten"], "e": "Negative logical deduction in the past using 'cannot have + past participle'.", "h": "HAVE"},
+    {"q": "A professional mechanic is repairing my bicycle today. I ___ by a professional mechanic today.", "a": ["am having my bicycle repaired", "am getting my bicycle repaired", "'m having my bicycle repaired", "'m getting my bicycle repaired"], "e": "Causative structure: have/get something done.", "h": "HAVING"}
+  ], "m": 12},
+
+  {"t": "Part 5 - Multiple choice", "i": "Read the text and choose the best answer.", "x": "The Wilderness Expedition\n\nSam zipped up his heavy waterproof jacket and stared out at the torrential rain hammering against the minibus window. He was fifteen, and he was currently halfway up a mountain in Scotland on a wilderness expedition with his local youth group. The plan had been to hike ten kilometres, set up camp near a beautiful lake, and learn how to cook over an open fire. However, the weather had completely ignored the forecast. For the last two hours, they had been stuck inside the damp, cramped minibus, listening to the relentless drumming of the rain on the roof.\n\nHis youth leader, a rugged man named Mark, stood up at the front of the bus. 'Right, listen up everyone!' Mark shouted over the noise of the storm. 'The river ahead has flooded the road. We can't drive any further, and it's too dangerous to hike to our original campsite.' A collective groan went up from the teenagers. 'I know it's frustrating,' Mark continued, 'but safety comes first. We're going to hike to an emergency shelter cabin about two kilometres from here. Grab your backpacks, make sure your waterproofs are fastened tightly, and stick together.'\n\nSam grabbed his heavy rucksack, his stomach tying itself into knots. He hated the cold, and he wasn't particularly fit. As he stepped out of the minibus, the wind nearly knocked him off his feet. The rain felt like icy needles against his cheeks. The group set off in a single file, following Mark up a steep, muddy path. Within ten minutes, Sam's boots were soaked through, and his legs ached from slipping in the thick mud. He seriously considered turning around and walking back to the bus, but he knew the driver had already left to return to the village.\n\nFor the next hour, they trudged upwards in miserable silence. The only sounds were the howling wind and the squelching of boots. Sam focused entirely on the bright yellow backpack of the girl walking in front of him, trying to ignore the biting cold seeping into his bones. Just as he felt he couldn't take another step, Mark pointed ahead. Emerging from the fog was a small, solid-looking stone cabin with a sloping slate roof. \n\nThey crowded into the cabin, stripping off their soaking wet outer layers. It was basic—just bare stone walls and wooden benches—but it was dry and incredibly sheltered from the wind. Mark immediately started organizing them. 'Sam, help me get this wood-burning stove lit. Sarah, get the emergency rations out of the bags.' Giving them tasks stopped the teenagers from complaining about the cold.\n\nOnce the fire was roaring, throwing a warm orange glow around the small room, the atmosphere completely changed. They sat in a circle, eating hot baked beans from tin mugs, steam rising from their damp clothes. Someone started telling a joke, and soon the whole group was laughing, the misery of the hike entirely forgotten. Sam leaned back against the warm stone wall, sipping his hot food. He was exhausted and his feet were frozen, but looking around at his friends laughing in the firelight, he realised he felt a strange sense of pride. They had faced a brutal challenge and survived it together. It wasn't the trip they had planned, but it was definitely an adventure he would never forget.", "q": [
+    {"q": "How did Sam feel at the beginning of the text?", "o": ["He was angry with the youth leader for poor planning.", "He was annoyed because the trip was not going as expected.", "He was excited to finally learn how to cook over a fire.", "He was scared that the minibus was going to crash."], "a": 1, "e": "The weather ignored the forecast and they were stuck inside the damp, cramped minibus, feeling frustrated."},
+    {"q": "Why did the group have to abandon their original plan?", "o": ["The minibus driver wanted to return to the village.", "The weather forecast had warned them of a storm.", "A flooded road made it impossible to continue safely.", "The original campsite had been destroyed by the rain."], "a": 2, "e": "Mark said 'The river ahead has flooded the road. We can't drive any further, and it's too dangerous...'."},
+    {"q": "What stopped Sam from turning back to the minibus?", "o": ["He didn't want to look foolish in front of the others.", "He knew the vehicle was no longer there.", "He wanted to prove to Mark that he was fit enough.", "He was afraid of getting lost in the fog."], "a": 1, "e": "He seriously considered turning around, 'but he knew the driver had already left to return to the village'."},
+    {"q": "How did Sam cope with the difficult hike to the cabin?", "o": ["He complained loudly to the girl walking in front of him.", "He focused all his attention on a specific visual target.", "He tried to walk as fast as possible to stay warm.", "He imagined he was somewhere else."], "a": 1, "e": "He 'focused entirely on the bright yellow backpack of the girl walking in front of him'."},
+    {"q": "Why did Mark give the teenagers tasks to do inside the cabin?", "o": ["Because he was too tired to do everything himself.", "To distract them from feeling miserable and cold.", "To teach them essential wilderness survival skills.", "Because the cabin was too messy to sit down in."], "a": 1, "e": "The text says 'Giving them tasks stopped the teenagers from complaining about the cold'."},
+    {"q": "What did Sam realise while sitting by the fire?", "o": ["That he definitely wanted to go camping again next week.", "That baked beans were his new favourite food.", "That overcoming the hardship as a group was very rewarding.", "That he was much stronger than the other teenagers."], "a": 2, "e": "He felt a strange sense of pride because they had faced a brutal challenge and survived it together."}
+  ], "m": 12},
+
+  {"t": "Part 6 - Gapped text", "i": "Six sentences have been removed from the article. Choose from the sentences A-G the one which fits each gap. There is one extra sentence.", "x": "The Drone Racing Club\n\nWhen our physics teacher, Mr. Harrison, announced he was starting an after-school drone racing club, I was immediately intrigued. I had always been interested in technology and flying, but I had never actually owned a drone. (37) ___ It turned out that fifteen other students felt exactly the same way, and the club was instantly oversubscribed.\n\nIn our first session, Mr. Harrison didn't just hand us ready-made drones to fly. He told us we had to build them ourselves from kits. (38) ___ We had to learn how to solder tiny wires together, attach the delicate propellers, and program the flight controllers using laptops. It was highly technical, and a single mistake could mean the drone wouldn't even turn on.\n\nThe real challenge, however, came when we finally tried to fly them. Drone racing doesn't just involve watching the drone in the air. You have to wear a special headset that receives a live video feed from a camera on the front of the drone. (39) ___ It was incredibly disorientating at first, and my drone spent most of the first week crashing into the walls of the school gym.\n\nOnce we mastered the basic controls, Mr. Harrison started setting up obstacle courses. We had to fly our drones through suspended hula hoops, under tables, and around tightly placed cones. (40) ___ The adrenaline rush of trying to beat the other students' times while avoiding spectacular crashes was addictive.\n\nAs the term progressed, the club became quite competitive. We started upgrading our drones, buying better batteries for more power and lighter frames for more speed. (41) ___ This meant we had to use our math skills to figure out the best combinations to optimize performance without burning out the motors.\n\nAt the end of the year, we held a grand final race in the school sports hall, and even the headteacher came to watch. I didn't win—my drone clipped a hoop and crashed spectacularly in the semi-final. (42) ___ The club didn't just teach us about electronics and aerodynamics; it taught us how to persevere when things go wrong and how to fix our own mistakes.\n\nOptions:\nA. It makes you feel as if you are actually sitting inside the tiny aircraft as it zooms around.\nB. Therefore, I decided to go along to the first meeting just to see what it was all about.\nC. Because of the high speeds, the propellers broke constantly and had to be replaced.\nD. However, every modification changed how the drone handled in the air.\nE. He believed that understanding how the machines worked was just as important as racing them.\nF. But standing there with my friends, I realised the competition wasn't really the point.\nG. This required intense concentration and incredibly fast reaction times.", "q": [
+    {"o": ["A", "B", "C", "D", "E", "F", "G"], "a": 1, "e": "B connects the writer not owning a drone but being interested in technology to the decision to attend the first meeting."},
+    {"o": ["A", "B", "C", "D", "E", "F", "G"], "a": 4, "e": "E explains Mr. Harrison's reasoning for making them build the drones from kits (understanding how they worked)."},
+    {"o": ["A", "B", "C", "D", "E", "F", "G"], "a": 0, "e": "A describes the effect of wearing the 'special headset' mentioned in the previous sentence (feeling like you are inside)."},
+    {"o": ["A", "B", "C", "D", "E", "F", "G"], "a": 6, "e": "G explains what is required to fly through the complex obstacle courses (intense concentration and fast reaction times)."},
+    {"o": ["A", "B", "C", "D", "E", "F", "G"], "a": 3, "e": "D contrasts the upgrades (better batteries/frames) with the fact that modifications changed handling, requiring math skills to optimize."},
+    {"o": ["A", "B", "C", "D", "E", "F", "G"], "a": 5, "e": "F provides a concluding thought after crashing in the semi-final, realizing the competition wasn't the point, linking to what the club taught them."}
+  ], "m": 12},
+
+  {"t": "Part 7 - Multiple matching", "i": "You are going to read an article about four teenagers talking about their favourite school subjects. For questions 43-52, choose from the teenagers (A-D).", "x": "My Favourite Subject\n\nA - Thomas (History)\nI know a lot of people find history boring because they think it's just about memorising dates and names of dead kings. But for me, it's like reading the most incredible, dramatic story ever written, except it actually happened. My teacher, Mrs. Evans, brings the subject to life. We don't just read textbooks; we look at primary sources like old letters and political cartoons to try and figure out what people were really thinking at the time. The most important thing I've learned is that nothing happens in a vacuum. Everything happening in politics today has a root in the past. It makes you realise that humans haven't actually changed that much. I'm definitely planning to study history at university, and maybe I'll become a documentary filmmaker one day.\n\nB - Sarah (Art)\nArt is the only subject where I feel completely free. In maths or science, there is always a strict right or wrong answer, and I find that pressure quite stressful. But in the art studio, if I make a mistake, I can just paint over it or turn it into something else. It's totally subjective. I'm currently working with clay, making a series of sculptures based on marine life. It's incredibly messy, and I always go home with clay in my hair, but it's very therapeutic. The act of physically shaping something with your hands completely clears your mind of exam worries. I don't want to be a professional artist because I think having to sell my work would ruin the joy of it, but I'll always keep it as a hobby.\n\nC - David (Physics)\nPhysics is my absolute favourite because it explains how literally everything in the universe works, from the gravity keeping us on the ground to the stars in the sky. I love the logic of it. We recently did an experiment dropping different objects to calculate the acceleration of gravity, and seeing the maths perfectly predict the real-world result was incredibly satisfying. Sometimes the theories get very complicated, especially when we talk about quantum mechanics, and it makes my brain hurt! But I enjoy that intellectual challenge. I'm hoping to get an apprenticeship in engineering when I finish school. I want to use the principles of physics to design renewable energy systems and actually help solve climate change.\n\nD - Maya (Physical Education - PE)\nMost people treat PE as just an hour to run around and have a break from sitting at a desk, but I take it very seriously. I love the physical exertion and pushing my body to see how fast or strong I can be. We do a lot of team sports like netball and hockey. Being part of a team has taught me invaluable communication and leadership skills. You have to learn how to encourage people when you are losing and how to work together strategically. Our coach is very strict about discipline and fair play, which I respect. I'm currently the captain of the school athletics team. I really want to become a sports physiotherapist, helping professional athletes recover from injuries.", "q": [
+    {"q": "Which teenager states that their subject provides relief from academic anxiety?", "o": ["Thomas", "Sarah", "David", "Maya"], "a": 1, "e": "Sarah says art clears her mind of exam worries and is very therapeutic."},
+    {"q": "Which teenager plans to use their knowledge to tackle a global environmental issue?", "o": ["Thomas", "Sarah", "David", "Maya"], "a": 2, "e": "David wants to design renewable energy systems and actually help solve climate change."},
+    {"q": "Which teenager appreciates the lack of strict rules or absolute facts in their subject?", "o": ["Thomas", "Sarah", "David", "Maya"], "a": 1, "e": "Sarah likes that art is totally subjective and there is no strict right or wrong answer."},
+    {"q": "Which teenager intends to pursue a medical or health-related career?", "o": ["Thomas", "Sarah", "David", "Maya"], "a": 3, "e": "Maya wants to become a sports physiotherapist helping athletes recover from injuries."},
+    {"q": "Which teenager says their subject helps them understand modern events?", "o": ["Thomas", "Sarah", "David", "Maya"], "a": 0, "e": "Thomas says 'Everything happening in politics today has a root in the past'."},
+    {"q": "Which teenager enjoys the fact that their subject occasionally causes mental strain?", "o": ["Thomas", "Sarah", "David", "Maya"], "a": 2, "e": "David says quantum mechanics 'makes my brain hurt! But I enjoy that intellectual challenge'."},
+    {"q": "Which teenager values the interpersonal skills they have acquired?", "o": ["Thomas", "Sarah", "David", "Maya"], "a": 3, "e": "Maya says being part of a team has taught her 'invaluable communication and leadership skills'."},
+    {"q": "Which teenager mentions analyzing original historical documents?", "o": ["Thomas", "Sarah", "David", "Maya"], "a": 0, "e": "Thomas says they 'look at primary sources like old letters and political cartoons'."},
+    {"q": "Which teenager explicitly states they do not want to turn their passion into a career?", "o": ["Thomas", "Sarah", "David", "Maya"], "a": 1, "e": "Sarah says 'I don't want to be a professional artist because I think having to sell my work would ruin the joy'."},
+    {"q": "Which teenager appreciates the strictness of the person teaching them?", "o": ["Thomas", "Sarah", "David", "Maya"], "a": 3, "e": "Maya says her coach is very strict about discipline and fair play, which she respects."}
+  ], "m": 10}
+];
+
+var L = [
+  {"t": "Part 1 - Eight short extracts", "i": "You will hear people talking in eight different situations. For questions 1-8, choose the best answer (A, B or C). The whole recording is played twice.", "im": "<p><button class='btn alt say' data-i='0' type='button'>Play Part 1 recording</button></p><details class='tr'><summary>Transcript</summary><p><strong>Extract one.</strong> Boy: How was your math test yesterday? Girl: Terrible! I completely blanked on the last three algebra questions. Boy: Did you study the chapter Mr. Davies told us to? Girl: I did, but I spent all my time memorizing the formulas and didn't actually practice solving the equations. I'll just have to hope I got enough right in the first section to pass.</p><p><strong>Extract two.</strong> Teacher: Right, everyone, listen up. Regarding tomorrow's sports day, there has been a slight change of schedule. The long jump event, which was supposed to happen at 10 AM, has been moved to 2 PM because the sandpit is currently flooded. The 100-metre sprint will take place at 10 AM instead. Please make sure you tell your parents if they are coming to watch.</p><p><strong>Extract three.</strong> Boy: I started playing that new fantasy video game last night. Girl: Oh, is it good? The graphics in the trailer looked amazing. Boy: The graphics are awesome, but the controls are incredibly frustrating. I spent two hours just trying to figure out how to ride a horse, and I kept falling off. Girl: So you regret buying it? Boy: No, I actually like a challenge. It'll be satisfying when I finally master it.</p><p><strong>Extract four.</strong> Woman: How was the school trip to the science museum? Boy: It was okay, but a bit disappointing to be honest. Woman: Why? Weren't the interactive exhibits working? Boy: They were fine. But we spent so much time in the gift shop and eating lunch that we only had 45 minutes to actually look at the space exhibition. We were just rushed through it.</p><p><strong>Extract five.</strong> Girl: I'm really nervous about the debate club competition tomorrow. Boy: You'll be fine! You've prepared all your arguments perfectly. Girl: I know what I want to say, but when I stand up in front of the judges, my hands start shaking and I forget my words. Boy: Just take a deep breath, pick a spot on the back wall to look at, and pretend you're just arguing with me in the classroom.</p><p><strong>Extract six.</strong> Radio presenter: If you're a teenager looking for something to do this weekend, the new indoor climbing centre is offering half-price entry on Saturday. It's a fantastic facility with walls for all abilities, from total beginners to experts. The only catch is that you must book your time slot online in advance, as they strictly limit numbers for safety reasons. You can't just turn up at the door.</p><p><strong>Extract seven.</strong> Boy: I've decided I'm going to start revising for the summer exams this weekend. Girl: This weekend? But the exams aren't for another three months! Boy: I know, but last year I left it all until the final two weeks and I was so stressed I couldn't sleep. I want to do an hour a day so I can actually relax during the holidays.</p><p><strong>Extract eight.</strong> Teacher: Just a quick reminder about the history assignment due next Friday. Remember, I don't just want a list of facts copied from a textbook. You must include your own opinion on why the event was significant, and you need to use at least three different sources to back up your argument. If you just copy and paste from the internet, you will fail.</p></details>", "q": [
+    {"q": "1. You hear two friends talking about a math test. Why did the girl do badly?", "o": ["She studied the wrong chapter.", "She didn't practice the practical application.", "She ran out of time at the end."], "a": 1, "e": "She says she memorized formulas but 'didn't actually practice solving the equations'."},
+    {"q": "2. You hear a teacher making an announcement about sports day. What has changed?", "o": ["The location of the long jump.", "The time of the 100-metre sprint.", "The day parents are allowed to watch."], "a": 1, "e": "The 100-metre sprint will take place at 10 AM instead."},
+    {"q": "3. You hear a boy talking about a new video game. What is his opinion of it?", "o": ["The graphics are disappointing.", "The controls are difficult but rewarding.", "He regrets spending money on it."], "a": 1, "e": "He says the controls are incredibly frustrating, but 'I actually like a challenge. It'll be satisfying when I finally master it'."},
+    {"q": "4. You hear a boy talking about a school trip. Why was he disappointed?", "o": ["The interactive exhibits were broken.", "They didn't have enough time for the exhibitions.", "The gift shop was closed."], "a": 1, "e": "He complains they only had 45 minutes to look at the exhibition and were rushed through it."},
+    {"q": "5. You hear a boy giving advice to a nervous friend. What does he suggest she do?", "o": ["Memorise her arguments better.", "Focus her eyes on the back wall.", "Pretend the judges are not there."], "a": 1, "e": "He suggests 'pick a spot on the back wall to look at'."},
+    {"q": "6. You hear a radio announcement about a climbing centre. What must visitors do?", "o": ["Have previous climbing experience.", "Reserve their entry time on the internet.", "Bring their own safety equipment."], "a": 1, "e": "The catch is that you must 'book your time slot online in advance'."},
+    {"q": "7. You hear a boy talking about exam revision. Why is he starting early?", "o": ["To avoid the severe stress he felt last year.", "Because the exams are harder this year.", "Because his teacher told him to."], "a": 0, "e": "He left it late last year and was so stressed he couldn't sleep, so he wants to avoid that."},
+    {"q": "8. You hear a teacher talking about a history assignment. What must students include?", "o": ["A list of facts from the textbook.", "Information copied from internet sites.", "Their own personal views on the topic."], "a": 2, "e": "The teacher says 'You must include your own opinion on why the event was significant'."}
+  ], "m": 8},
+  
+  {"t": "Part 2 - Sentence completion", "i": "You will hear a teenager called Liam talking about a marine biology camp he attended. Complete the sentences. The recording is played twice.", "im": "<button class='btn alt say' data-i='1' type='button'>Play recording</button><details class='tr'><summary>Transcript</summary><p>Hi everyone. My name is Liam, and last month I spent two weeks at a marine biology summer camp in Cornwall. I've always loved the ocean, and I'm hoping to study oceanography at university, so I thought this would be great experience. \n\nBefore I went, I was actually quite nervous because I thought we'd be spending all our time studying sharks, and I'm a bit scared of them! But luckily, the focus of the camp was mostly on local rock pools and smaller fish. \n\nThe camp organizers told us to bring lots of warm clothes and waterproofs. But the one thing I forgot, which I really regretted, was a waterproof camera. My phone got ruined on the very first day when a wave hit me. \n\nThe daily routine was intense. The most important skill we had to learn wasn't scientific knowledge, but patience. Sometimes we had to sit completely still by a rock pool for an hour just to spot a rare crab. We also had to work in pairs, which taught me a lot about teamwork, especially when carrying heavy equipment across slippery rocks.\n\nThe highlight of the trip was definitely when we went out on a boat. We didn't see any dolphins, but we did get to use a special underwater microphone to listen to the sounds the fish were making. \n\nThe only thing I really hated about the camp was the early morning wake-up calls. We had to be out on the beach by 5 AM to catch the low tide. I'm definitely not a morning person! \n\nAt the end of the two weeks, we didn't have to take an exam. Instead, we had to analyze all our data and put together a presentation for the parents. It was stressful, but I felt really proud of what we'd achieved. The whole experience has definitely confirmed my dream to go to university to study the ocean.</p></details>", "q": [
+    {"q": "Liam hopes to study ___ when he goes to university.", "a": ["oceanography"], "e": "He says 'I'm hoping to study oceanography at university'."},
+    {"q": "Before the camp, Liam was nervous because he is frightened of ___.", "a": ["sharks"], "e": "I thought we'd be spending all our time studying sharks, and I'm a bit scared of them!"},
+    {"q": "Liam strongly regretted not bringing a ___ with him.", "a": ["waterproof camera", "camera"], "e": "The one thing I forgot, which I really regretted, was a waterproof camera."},
+    {"q": "Liam says that learning ___ was the most crucial skill at the camp.", "a": ["patience"], "e": "The most important skill we had to learn wasn't scientific knowledge, but patience."},
+    {"q": "Working in pairs taught Liam the importance of ___.", "a": ["teamwork"], "e": "We also had to work in pairs, which taught me a lot about teamwork."},
+    {"q": "The best part of the camp for Liam was the trip on a ___.", "a": ["boat"], "e": "The highlight of the trip was definitely when we went out on a boat."},
+    {"q": "Liam disliked the ___ schedule because he doesn't like waking up early.", "a": ["early morning", "morning"], "e": "The only thing I really hated about the camp was the early morning wake-up calls."},
+    {"q": "At the end of the camp, students had to analyze their ___ instead of taking an exam.", "a": ["data"], "e": "We had to analyze all our data."},
+    {"q": "The students shared their findings by giving a ___ to their parents.", "a": ["presentation"], "e": "Put together a presentation for the parents."},
+    {"q": "The camp confirmed Liam's ambition to attend ___ in the future.", "a": ["university"], "e": "Confirmed my dream to go to university to study the ocean."}
+  ], "m": 10},
+  
+  {"t": "Part 3 - Multiple matching", "i": "You will hear five teenagers talking about moving to a new school. Choose from the list (A-H) what each speaker says about their experience. There are three extra letters.", "im": "<button class='btn alt say' data-i='2' type='button'>Play recording</button><details class='tr'><summary>Transcript</summary><p><strong>Speaker 1:</strong> When my family moved to a different city, I had to start a new school in Year 10. I was terrified I wouldn't make any friends. On my first day, I got completely lost trying to find the science block. A girl in my class saw I was lost and offered to show me the way. We started chatting, and we've been best friends ever since. It completely changed my experience.</p><p><strong>Speaker 2:</strong> Moving schools was tough for me, mostly because the academic standard at my new school was so much higher. In my old school, I always got top marks in maths without trying. But here, the lessons were much faster, and I actually failed my first test. I had to ask the teacher for extra help after school just to catch up with everyone else.</p><p><strong>Speaker 3:</strong> The hardest thing about changing schools was leaving my old football team behind. I was the captain, and I really missed the guys. I decided to join the team at the new school, but I had to start from the bottom again. I trained incredibly hard to prove myself to the new coach, and eventually, I earned my spot on the first team.</p><p><strong>Speaker 4:</strong> I didn't want to move schools at all. The new building was massive and felt very intimidating. However, I soon discovered they had a dedicated music room with recording equipment, which my old school didn't have. I started spending all my lunch breaks there, learning how to use the software. It totally made up for having to move.</p><p><strong>Speaker 5:</strong> I moved from a very small rural school to a huge one in the city. The noise in the corridors between classes was overwhelming! What helped me settle in was joining the school debating society. It forced me to speak up and interact with people I wouldn't normally talk to. It gave me a lot of confidence to handle the busy environment.</p></details>", "q": [
+    {"q": "Speaker 1", "o": ["I had to work much harder to keep up academically.", "I found comfort in an impressive new facility.", "An act of kindness led to a strong relationship.", "I struggled with the noise in the new environment.", "I had to rebuild my reputation in a sport.", "I joined a club to improve my confidence.", "I suffered from terrible homesickness.", "I regretted leaving my favourite teacher."], "a": 2, "e": "A girl showed her the way, they chatted, and became best friends (act of kindness led to strong relationship)."},
+    {"q": "Speaker 2", "o": ["I had to work much harder to keep up academically.", "I found comfort in an impressive new facility.", "An act of kindness led to a strong relationship.", "I struggled with the noise in the new environment.", "I had to rebuild my reputation in a sport.", "I joined a club to improve my confidence.", "I suffered from terrible homesickness.", "I regretted leaving my favourite teacher."], "a": 0, "e": "Academic standard was higher, failed first test, had to ask for extra help to catch up."},
+    {"q": "Speaker 3", "o": ["I had to work much harder to keep up academically.", "I found comfort in an impressive new facility.", "An act of kindness led to a strong relationship.", "I struggled with the noise in the new environment.", "I had to rebuild my reputation in a sport.", "I joined a club to improve my confidence.", "I suffered from terrible homesickness.", "I regretted leaving my favourite teacher."], "a": 4, "e": "Missed old football team, had to start from the bottom and prove himself to the new coach."},
+    {"q": "Speaker 4", "o": ["I had to work much harder to keep up academically.", "I found comfort in an impressive new facility.", "An act of kindness led to a strong relationship.", "I struggled with the noise in the new environment.", "I had to rebuild my reputation in a sport.", "I joined a club to improve my confidence.", "I suffered from terrible homesickness.", "I regretted leaving my favourite teacher."], "a": 1, "e": "Discovered a dedicated music room with recording equipment which made up for moving."},
+    {"q": "Speaker 5", "o": ["I had to work much harder to keep up academically.", "I found comfort in an impressive new facility.", "An act of kindness led to a strong relationship.", "I struggled with the noise in the new environment.", "I had to rebuild my reputation in a sport.", "I joined a club to improve my confidence.", "I suffered from terrible homesickness.", "I regretted leaving my favourite teacher."], "a": 5, "e": "Joined the school debating society, which forced him to speak up and gave him confidence."}
+  ], "m": 5},
+  
+  {"t": "Part 4 - Interview", "i": "You will hear an interview with a 17-year-old girl called Anna, who runs a successful 'BookTube' channel reviewing books. For questions 24-30, choose the best answer (A, B or C). The recording is played twice.", "im": "<button class='btn alt say' data-i='3' type='button'>Play recording</button><details class='tr'><summary>Transcript</summary><p><strong>Interviewer:</strong> Anna, you have over a hundred thousand subscribers on your book review channel. Why did you start making videos? <strong>Anna:</strong> Well, none of my friends at school read for pleasure. They just play video games. I read constantly, and I was desperate to talk to someone about the characters and plot twists. I started the channel simply as a way to find a community of people who were just as obsessed with young adult fiction as I was. <strong>Interviewer:</strong> Were you nervous when you uploaded your first video? <strong>Anna:</strong> Terrified! I recorded it on my phone in my bedroom, and the lighting was terrible. I almost deleted it because I thought people would laugh at me. But surprisingly, a few people commented saying they loved the book too, and that encouraged me to make another one. <strong>Interviewer:</strong> How do you manage to read enough books to review while keeping up with schoolwork? <strong>Anna:</strong> It requires strict discipline. I don't watch TV at all. I use an audiobook app so I can 'read' while I'm walking to school or doing my chores. I probably get through about three books a week that way. <strong>Interviewer:</strong> What is the hardest part of running a successful channel? <strong>Anna:</strong> Dealing with publishers sending me free books. It sounds like a dream, but it's actually really stressful! They expect a positive review in return, but if I think a book is bad, I have to be honest with my viewers. I've had some angry emails from authors when I've given a negative review. <strong>Interviewer:</strong> Do you make much money from the channel? <strong>Anna:</strong> I make a little bit from the adverts that play before the videos. But honestly, any money I make just goes straight back into buying better camera equipment or new bookshelves. I certainly couldn't live off it. <strong>Interviewer:</strong> What advice would you give to someone wanting to start their own channel? <strong>Anna:</strong> Don't try to copy the really big YouTubers. When I started, I tried to have a perfect, aesthetic background and talk really fast like they do. It just felt fake. Viewers want authenticity. Just be yourself and talk passionately about what you love. <strong>Interviewer:</strong> Are you planning to write a book yourself? <strong>Anna:</strong> Everyone asks me that! I love analyzing stories, but I don't think I have the imagination to invent a whole new world from scratch. I'm hoping to study English Literature at university and perhaps become a professional editor, helping other people fix their stories.</p></details>", "q": [
+    {"q": "24. Why did Anna originally start her YouTube channel?", "o": ["To become famous on the internet.", "To connect with people who shared her interests.", "To encourage her school friends to read more."], "a": 1, "e": "She says she was desperate to talk to someone and wanted to find a community of people obsessed with fiction."},
+    {"q": "25. How did Anna feel about her very first video?", "o": ["She was proud of the professional lighting.", "She was worried that viewers would mock her.", "She was angry about the negative comments."], "a": 1, "e": "She was terrified and almost deleted it because she thought people would laugh at her."},
+    {"q": "26. How does Anna find the time to consume so many books?", "o": ["She reads quickly during her school breaks.", "She listens to audiobooks while doing other tasks.", "She stays up very late reading every night."], "a": 1, "e": "She uses an audiobook app to 'read' while walking to school or doing chores."},
+    {"q": "27. What does Anna find most stressful about her hobby?", "o": ["Maintaining her honesty when reviewing free books.", "Dealing with technical problems with her camera.", "Replying to thousands of comments from viewers."], "a": 0, "e": "Dealing with publishers sending free books; she has to be honest with her viewers even if it means a negative review."},
+    {"q": "28. What does Anna do with the money she earns from the channel?", "o": ["She saves it to pay for her university fees.", "She uses it to improve the quality of her videos.", "She spends it on travelling to book events."], "a": 1, "e": "She says 'any money I make just goes straight back into buying better camera equipment or new bookshelves'."},
+    {"q": "29. What is Anna's main advice for new content creators?", "o": ["Make sure your videos look highly professional.", "Be genuine and don't imitate others.", "Speak quickly to keep the audience's attention."], "a": 1, "e": "She says 'Don't try to copy... Viewers want authenticity. Just be yourself'."},
+    {"q": "30. What does Anna hope to do for her future career?", "o": ["Write her own young adult fantasy novel.", "Work as an editor in the publishing industry.", "Become a full-time professional YouTuber."], "a": 1, "e": "She hopes to study English Literature and 'perhaps become a professional editor'."}
+  ], "m": 7}
+];
+
+var T=["Extract one. Boy: How was your math test yesterday? Girl: Terrible! I completely blanked on the last three algebra questions. Boy: Did you study the chapter Mr. Davies told us to? Girl: I did, but I spent all my time memorizing the formulas and didn't actually practice solving the equations. I'll just have to hope I got enough right in the first section to pass. {pause} Extract two. Teacher: Right, everyone, listen up. Regarding tomorrow's sports day, there has been a slight change of schedule. The long jump event, which was supposed to happen at 10 AM, has been moved to 2 PM because the sandpit is currently flooded. The 100-metre sprint will take place at 10 AM instead. Please make sure you tell your parents if they are coming to watch. {pause} Extract three. Boy: I started playing that new fantasy video game last night. Girl: Oh, is it good? The graphics in the trailer looked amazing. Boy: The graphics are awesome, but the controls are incredibly frustrating. I spent two hours just trying to figure out how to ride a horse, and I kept falling off. Girl: So you regret buying it? Boy: No, I actually like a challenge. It'll be satisfying when I finally master it. {pause} Extract four. Woman: How was the school trip to the science museum? Boy: It was okay, but a bit disappointing to be honest. Woman: Why? Weren't the interactive exhibits working? Boy: They were fine. But we spent so much time in the gift shop and eating lunch that we only had 45 minutes to actually look at the space exhibition. We were just rushed through it. {pause} Extract five. Girl: I'm really nervous about the debate club competition tomorrow. Boy: You'll be fine! You've prepared all your arguments perfectly. Girl: I know what I want to say, but when I stand up in front of the judges, my hands start shaking and I forget my words. Boy: Just take a deep breath, pick a spot on the back wall to look at, and pretend you're just arguing with me in the classroom. {pause} Extract six. Radio presenter: If you're a teenager looking for something to do this weekend, the new indoor climbing centre is offering half-price entry on Saturday. It's a fantastic facility with walls for all abilities, from total beginners to experts. The only catch is that you must book your time slot online in advance, as they strictly limit numbers for safety reasons. You can't just turn up at the door. {pause} Extract seven. Boy: I've decided I'm going to start revising for the summer exams this weekend. Girl: This weekend? But the exams aren't for another three months! Boy: I know, but last year I left it all until the final two weeks and I was so stressed I couldn't sleep. I want to do an hour a day so I can actually relax during the holidays. {pause} Extract eight. Teacher: Just a quick reminder about the history assignment due next Friday. Remember, I don't just want a list of facts copied from a textbook. You must include your own opinion on why the event was significant, and you need to use at least three different sources to back up your argument. If you just copy and paste from the internet, you will fail.", "Hi everyone. My name is Liam, and last month I spent two weeks at a marine biology summer camp in Cornwall. I've always loved the ocean, and I'm hoping to study oceanography at university, so I thought this would be great experience. Before I went, I was actually quite nervous because I thought we'd be spending all our time studying sharks, and I'm a bit scared of them! But luckily, the focus of the camp was mostly on local rock pools and smaller fish. The camp organizers told us to bring lots of warm clothes and waterproofs. But the one thing I forgot, which I really regretted, was a waterproof camera. My phone got ruined on the very first day when a wave hit me. The daily routine was intense. The most important skill we had to learn wasn't scientific knowledge, but patience. Sometimes we had to sit completely still by a rock pool for an hour just to spot a rare crab. We also had to work in pairs, which taught me a lot about teamwork, especially when carrying heavy equipment across slippery rocks. The highlight of the trip was definitely when we went out on a boat. We didn't see any dolphins, but we did get to use a special underwater microphone to listen to the sounds the fish were making. The only thing I really hated about the camp was the early morning wake-up calls. We had to be out on the beach by 5 AM to catch the low tide. I'm definitely not a morning person! At the end of the two weeks, we didn't have to take an exam. Instead, we had to analyze all our data and put together a presentation for the parents. It was stressful, but I felt really proud of what we'd achieved. The whole experience has definitely confirmed my dream to go to university to study the ocean.", "Speaker 1: When my family moved to a different city, I had to start a new school in Year 10. I was terrified I wouldn't make any friends. On my first day, I got completely lost trying to find the science block. A girl in my class saw I was lost and offered to show me the way. We started chatting, and we've been best friends ever since. It completely changed my experience. {short} Speaker 2: Moving schools was tough for me, mostly because the academic standard at my new school was so much higher. In my old school, I always got top marks in maths without trying. But here, the lessons were much faster, and I actually failed my first test. I had to ask the teacher for extra help after school just to catch up with everyone else. {short} Speaker 3: The hardest thing about changing schools was leaving my old football team behind. I was the captain, and I really missed the guys. I decided to join the team at the new school, but I had to start from the bottom again. I trained incredibly hard to prove myself to the new coach, and eventually, I earned my spot on the first team. {short} Speaker 4: I didn't want to move schools at all. The new building was massive and felt very intimidating. However, I soon discovered they had a dedicated music room with recording equipment, which my old school didn't have. I started spending all my lunch breaks there, learning how to use the software. It totally made up for having to move. {short} Speaker 5: I moved from a very small rural school to a huge one in the city. The noise in the corridors between classes was overwhelming! What helped me settle in was joining the school debating society. It forced me to speak up and interact with people I wouldn't normally talk to. It gave me a lot of confidence to handle the busy environment.", "Interviewer: Anna, you have over a hundred thousand subscribers on your book review channel. Why did you start making videos? Anna: Well, none of my friends at school read for pleasure. They just play video games. I read constantly, and I was desperate to talk to someone about the characters and plot twists. I started the channel simply as a way to find a community of people who were just as obsessed with young adult fiction as I was. Interviewer: Were you nervous when you uploaded your first video? Anna: Terrified! I recorded it on my phone in my bedroom, and the lighting was terrible. I almost deleted it because I thought people would laugh at me. But surprisingly, a few people commented saying they loved the book too, and that encouraged me to make another one. Interviewer: How do you manage to read enough books to review while keeping up with schoolwork? Anna: It requires strict discipline. I don't watch TV at all. I use an audiobook app so I can 'read' while I'm walking to school or doing my chores. I probably get through about three books a week that way. Interviewer: What is the hardest part of running a successful channel? Anna: Dealing with publishers sending me free books. It sounds like a dream, but it's actually really stressful! They expect a positive review in return, but if I think a book is bad, I have to be honest with my viewers. I've had some angry emails from authors when I've given a negative review. Interviewer: Do you make much money from the channel? Anna: I make a little bit from the adverts that play before the videos. But honestly, any money I make just goes straight back into buying better camera equipment or new bookshelves. I certainly couldn't live off it. Interviewer: What advice would you give to someone wanting to start their own channel? Anna: Don't try to copy the really big YouTubers. When I started, I tried to have a perfect, aesthetic background and talk really fast like they do. It just felt fake. Viewers want authenticity. Just be yourself and talk passionately about what you love. Interviewer: Are you planning to write a book yourself? Anna: Everyone asks me that! I love analyzing stories, but I don't think I have the imagination to invent a whole new world from scratch. I'm hoping to study English Literature at university and perhaps become a professional editor, helping other people fix their stories."], FULL=true, AUDIO=["","","",""];
+
+var ASSESSOR_EMAIL="oxfampreparation@email.cz";
+
+function winit(){
+  document.querySelectorAll("textarea").forEach(function(t){
+    t.oninput=function(){document.getElementById(t.id+"c").textContent=wc(t.value)+" words"}
+  });
+  document.querySelectorAll("[data-c]").forEach(function(b){
+    b.onclick=function(){var t=document.getElementById(b.dataset.c).value;if(navigator.clipboard)navigator.clipboard.writeText(t)}
+  });
+  document.querySelectorAll("[data-s]").forEach(function(b){
+    b.onclick=function(){
+      var t=document.getElementById(b.dataset.s).value,nm=document.getElementById("nm").value;
+      if(!wc(t)){
+        b.textContent="Write something first!";
+        setTimeout(function(){b.textContent="Send to assessor"},2000);
+        return;
+      }
+      var body=encodeURIComponent("Student: "+nm+"\n\n"+t),big=body.length>1500;
+      if(big&&navigator.clipboard)navigator.clipboard.writeText(t);
+      location.href="mailto:"+ASSESSOR_EMAIL+"?subject="+encodeURIComponent("FCE for Schools 2026 Test 5 "+b.dataset.t+" - "+nm)+"&body="+(big?encodeURIComponent("Student: "+nm+"\n\n(My text is copied. Please paste it here.)"):body)
+    }
+  })
+}
+
+var playId=0;
+
+function say(i,done){
+  var id=++playId;speechSynthesis.cancel();
+  var parts=T[i].split(/(\{pause\}|\{short\}|\bSpeaker \d:|\b(?:Anna|Boy|Girl|Woman|Man|Interviewer|Liam|Teacher|Tour guide|Radio presenter):)/),q=[],pitch=1,flip=0,names={};
+  parts.forEach(function(x){
+    x=x.trim();if(!x)return;
+    if(x==="{pause}"||x==="{short}"){q.push({w:x==="{pause}"?2500:1200});pitch=1;return}
+    var sp=x.match(/^Speaker (\d):$/);if(sp){q.push({t:"Speaker "+sp[1],p:1,w:700});return}
+    if(/^[A-Za-z ]+:$/.test(x)){var n=x.slice(0,-1);if(!(n in names))names[n]=(flip++%2)?1.25:.85;pitch=names[n];return}
+    (x.match(/[^.?!]+[.?!]*/g)||[x]).forEach(function(z){q.push({t:z.trim(),p:pitch,w:300})})
+  });
+  var k=0;(function next(){
+    if(id!==playId)return;
+    if(k>=q.length){done();return}
+    var s=q[k++];
+    if(!s.t){setTimeout(next,s.w);return}
+    var u=new SpeechSynthesisUtterance(s.t);u.lang="en-GB";u.rate=0.95;u.pitch=s.p;
+    u.onend=function(){setTimeout(next,s.w)};u.onerror=function(){setTimeout(next,s.w)};
+    speechSynthesis.speak(u);
+  })()
+}
+
+function play(b){
+  if(b._busy)return;
+  var i=+b.dataset.i;
+  function fin(){b._busy=false;if(b._n>=2){b.disabled=true;b.textContent="Played twice"}else b.textContent="Play again (last time)"}
+  if(!AUDIO[i]&&!window.speechSynthesis){b.textContent="TTS not supported.";return}
+  b._n=(b._n||0)+1;b._busy=true;b.textContent="Playing...";
+  if(AUDIO[i]){var a=new Audio(AUDIO[i]);a.onended=fin;a.onerror=fin;a.play()}else say(i,fin)
+}
+
+function init(){
+  [["t1",75],["t2",40],["t3",80],["t4",14],["sp1",2],["sp2",1],["sp3",3],["sp4",4],["w1",40],["w2",40]].forEach(function(a){if(document.getElementById(a[0]))timer(a[0],a[1])});
+  if(!FULL)return;
+  build(R,document.getElementById("rbox"),"r");
+  build(L,document.getElementById("lbox"),"l");
+  document.getElementById("ck1").onclick=function(){check(document.getElementById("rbox"),document.getElementById("sc1"))};
+  document.getElementById("ck2").onclick=function(){check(document.getElementById("lbox"),document.getElementById("sc2"))};
+  document.querySelectorAll(".say").forEach(function(b){b.onclick=function(){play(b)}});
+  winit();
+}
+
+(function(){
+  var g=document.getElementById("gate"),m=document.getElementById("main");
+  function show(){g.hidden=true;m.hidden=false;if(window.init)init()}
+  if(unlocked()){show();return}
+  document.getElementById("gf").onsubmit=function(e){
+    e.preventDefault();
+    if(document.getElementById("pw").value===PW){
+      try{sessionStorage.setItem("cae26","1")}catch(x){}
+      show();
+    } else {
+      document.getElementById("err").textContent="Wrong password.";
+    }
+  }
+  
+  // Theme toggle
+  var themeBtn = document.getElementById('themeBtn');
+  if(themeBtn) {
+    themeBtn.onclick = function() {
+      var currentTheme = document.documentElement.getAttribute('data-theme');
+      if(currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        themeBtn.textContent = '🌙';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeBtn.textContent = '☀️';
+      }
+    };
+  }
+})();
+</script>
+</body>
+</html>
