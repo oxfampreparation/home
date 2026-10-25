@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FCE 2026 Test 10 - Oxfam Preparation</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,500..800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f7fb;--paper:#fff;--ink:#14213d;--muted:#4b5266;--line:#d5d9e6;--mark:#2b59ff;--hi:#ffe45e;--ok:#1a7f52;--bad:#b3261e;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1526;--paper:#182038;--ink:#eef1fb;--muted:#a9b1c9;--line:#2c3656;--mark:#7d9bff;--hi:#e9d24a;--ok:#57c58f;--bad:#ff8a80}}
+:root[data-theme="dark"]{--bg:#0f1526;--paper:#182038;--ink:#eef1fb;--muted:#a9b1c9;--line:#2c3656;--mark:#7d9bff;--hi:#e9d24a;--ok:#57c58f;--bad:#ff8a80}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 "Atkinson Hyperlegible",system-ui,sans-serif}
+h1,h2,h3{font-family:Archivo,"Helvetica Neue",Arial,sans-serif;line-height:1.05;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--mark);outline-offset:3px}
+.wrap{max-width:74rem;margin:0 auto;padding:0 1.25rem}
+header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;padding:1.25rem 0}
+.logo{font:800 1.25rem Archivo,sans-serif;text-decoration:none}
+nav a{margin-left:1.25rem;text-decoration:none;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+
+.btn{display:inline-block;background:var(--ink);color:var(--bg);padding:.8rem 1.4rem;border-radius:.5rem;font-weight:700;text-decoration:none;border:0;cursor:pointer;font-size:1rem;font-family:inherit}
+.btn.alt{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:2rem;align-items:center;padding:1rem 0 3rem}
+h1{font-size:clamp(2rem,3.4vw,3rem);font-weight:800;font-stretch:90%;letter-spacing:-.02em;margin-top:1rem;margin-bottom:0}
+h1 span{background:linear-gradient(transparent 62%,var(--hi) 62%)}
+.lead{color:var(--muted);max-width:32rem;margin:1.25rem 0 1.75rem;font-size:1.15rem}
+.row{display:flex;gap:.75rem;flex-wrap:wrap}
+
+.sheet{background:var(--paper);border:2px solid var(--ink);border-radius:.75rem;padding:1.5rem;box-shadow:.5rem .5rem 0 var(--ink)}
+.sheet h2{font-size:1.1rem;margin-bottom:.25rem}
+.sheet p{margin:0 0 1rem;color:var(--muted);font-size:.95rem}
+.q{padding:.7rem 0;border-top:1px solid var(--line)}
+.q b{display:block;font-weight:400;margin-bottom:.45rem}
+.opts{display:flex;gap:.5rem;flex-wrap:wrap}
+.opt{display:flex;align-items:center;gap:.4rem;padding:.3rem .7rem .3rem .35rem;border:1.5px solid var(--line);border-radius:2rem;background:transparent;color:inherit;font:inherit;font-size:.95rem;cursor:pointer}
+.opt i{width:1.4rem;height:1.4rem;border-radius:50%;border:2px solid var(--muted);display:grid;place-items:center;font:700 .7rem Archivo,sans-serif;font-style:normal}
+
+.opt[aria-pressed="true"]{border-color:var(--mark)}
+.opt[aria-pressed="true"] i{background:var(--mark);border-color:var(--mark);color:var(--bg)}
+.opt.right{border-color:var(--ok)}.opt.right i{background:var(--ok);border-color:var(--ok);color:var(--bg)}
+.opt.wrong{border-color:var(--bad)}.opt.wrong i{background:var(--bad);border-color:var(--bad);color:var(--bg)}
+.result{margin-top:1rem;font-weight:700;min-height:1.6rem}
+section{padding:3.5rem 0;border-top:1px solid var(--line)}
+h2.t{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:.75rem;letter-spacing:-.01em}
+
+.sub{color:var(--muted);max-width:38rem;margin:0 0 2rem}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:.6rem;background:var(--paper)}
+table{border-collapse:collapse;width:100%;min-width:38rem}
+th,td{text-align:left;padding:.9rem 1rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:700 .95rem Archivo,sans-serif;color:var(--muted)}
+tr:last-child td{border-bottom:0}
+td:first-child{font:800 1.2rem Archivo,sans-serif;white-space:nowrap}
+td small{display:block;font:400 .9rem "Atkinson Hyperlegible",sans-serif;color:var(--muted)}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:2rem}
+.feat h3{font-size:1.2rem;margin-bottom:.4rem}
+.feat p{margin:0;color:var(--muted)}
+
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.25rem}
+.plan{background:var(--paper);border:1px solid var(--line);border-radius:.6rem;padding:1.5rem;display:flex;flex-direction:column;gap:.75rem}
+.plan.main{border:2px solid var(--ink)}
+.plan h3{font-size:1.3rem}
+.price{font:800 2rem Archivo,sans-serif}
+.plan ul{margin:0;padding-left:1.1rem;color:var(--muted);flex:1}
+footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-size:.95rem}
+
+.layout{display:grid;grid-template-columns:12.5rem minmax(0,1fr);gap:2.5rem;align-items:start}
+.side{position:sticky;top:1rem;margin-top:1rem;max-height:calc(100vh - 2rem);max-height:calc(100dvh - 2rem);overflow-y:auto;display:flex;flex-direction:column;gap:.15rem}summary{cursor:pointer;font:700 .95rem Archivo,sans-serif;color:var(--muted);padding:.4rem .75rem;border-radius:.5rem}summary:hover{color:var(--ink)}.ex[open] summary{margin-bottom:.15rem}
+.side nav{display:flex;flex-direction:column;gap:.15rem;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--line)}.side nav a{margin:0;color:inherit}.side .lang{margin-bottom:1rem}
+.side p{margin:0 0 .5rem;font:700 .95rem Archivo,sans-serif;color:var(--muted)}
+.side a{text-decoration:none;padding:.5rem .75rem;border-radius:.5rem;font:700 1rem Archivo,sans-serif;border-left:3px solid transparent}
+.side a small{display:block;font:400 .8rem "Atkinson Hyperlegible",sans-serif;color:var(--muted)}
+.side a:hover{background:var(--paper);border-left-color:var(--mark)}
+tr:target td{background:var(--hi);color:#14213d}tr:target td small{color:#14213d}
+@media (max-width:52rem){.layout{grid-template-columns:1fr;gap:0}.side{position:static;max-height:none;margin:0 0 1rem;padding:0 0 1rem;border-bottom:1px solid var(--line)}}
+
+.hr{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap}.hr .btn{padding:.45rem 1rem;font-size:.9rem}
+dialog{border:2px solid var(--ink);border-radius:.75rem;background:var(--paper);color:var(--ink);padding:1.5rem;width:min(24rem,92vw);max-height:90vh;overflow:auto}dialog::backdrop{background:rgba(10,16,32,.55)}
+dialog h2{font-size:1.4rem;margin-bottom:.5rem}dialog label{display:block;font-weight:700;margin:.75rem 0 .25rem}
+dialog input{width:100%;padding:.65rem .75rem;border:1.5px solid var(--line);border-radius:.4rem;background:var(--bg);color:var(--ink);font:inherit}
+.demo{color:var(--muted);font-size:.9rem;margin:.5rem 0 0}.err{color:var(--bad);min-height:1.5rem;margin-top:.5rem;font-size:.95rem}
+.lrow{display:grid;grid-template-columns:9rem 1fr;gap:.75rem;padding:.75rem 0;border-top:1px solid var(--line);align-items:center}.lrow .lname{text-decoration:underline;color:inherit}.lrow b,.lrow .lname{font:800 1.1rem Archivo,sans-serif}
+
+@media (max-width:40rem){.lrow{grid-template-columns:1fr;gap:.4rem}}
+@media (max-width:64rem){.hero{grid-template-columns:1fr;gap:2rem}}
+html{-webkit-text-size-adjust:100%}
+@media (max-width:40rem){
+.wrap{padding:0 1rem}
+header{padding:1rem 0}
+.hero{padding-bottom:2rem}
+.sheet{padding:1.1rem}
+section{padding:2.5rem 0}
+.scroll{border:0;background:transparent;overflow:visible}
+table,tbody,tr,td{display:block;min-width:0;width:100%}
+thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+tr{background:var(--paper);border:1px solid var(--line);border-radius:.6rem;padding:.6rem 0;margin-bottom:.75rem}
+td{border:0;padding:.15rem 1rem}
+td:first-child{font-size:1.3rem;padding-top:.4rem}
+}
+@media (pointer:coarse){.opt{min-height:44px}summary{min-height:44px;display:flex;align-items:center}.side a{min-height:44px;display:flex;flex-direction:column;justify-content:center}.hr .btn{min-height:44px}}
+
+.gatebox{max-width:26rem;margin:2rem auto;background:var(--paper);border:2px solid var(--ink);border-radius:.75rem;padding:1.5rem;box-shadow:.5rem .5rem 0 var(--ink)}
+.gatebox label,.wr label{display:block;font-weight:700;margin:.75rem 0 .25rem}
+input[type=text],input[type=password],textarea{width:100%;padding:.6rem .75rem;border:1.5px solid var(--line);border-radius:.4rem;background:var(--bg);color:var(--ink);font:inherit}
+.q input[type=text]{width:14rem;max-width:100%}
+.part{background:var(--paper);border:1px solid var(--line);border-radius:.75rem;padding:1.5rem;margin-bottom:1.25rem}
+.txt{white-space:pre-line}.q{padding:.5rem 0;border-top:1px solid var(--line)}.opts{display:flex;flex-wrap:wrap;gap:.4rem 1.25rem;margin-top:.3rem}
+.q.ok{border-left:4px solid var(--ok);padding-left:.75rem}.q.no{border-left:4px solid var(--bad);padding-left:.75rem}.fb{font-weight:700;margin-top:.25rem}
+
+.tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0}
+nav.tabs a {margin:0;padding:.4rem 1rem;border:1.5px solid var(--line);border-radius:2rem;text-decoration:none;font-weight:700}
+nav.tabs a[aria-current=page]{background:var(--ink);color:var(--bg)}
+.bar{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;margin:1rem 0}.time{font:800 1.6rem Archivo,sans-serif}
+.pics{display:flex;gap:1rem;flex-wrap:wrap}.pics svg, .pics img{flex:1 1 14rem;max-width:22rem;border:2px solid var(--ink);border-radius:.5rem;background:var(--paper);object-fit:cover;aspect-ratio:3/2}
+textarea{min-height:15rem}.tr{display:none}.note{padding:.75rem 1rem;border-left:4px solid var(--mark);background:var(--paper);margin:1rem 0}
+.sec{padding-top:2rem;margin-top:2rem;border-top:1px solid var(--line)}.jump{margin-top:0}.ex{color:var(--muted);margin-top:.15rem;font-size:.95rem}.q b{display:inline;font-weight:800;margin:0 .4rem 0 0}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <div class="brand"><a class="logo" href="../index.html">Oxfam Preparation</a></div>
+</header>
+
+<div id="gate">
+  <div class="gatebox">
+    <h1><span>FCE 2026</span></h1>
+    <p>Enter the password to open this test.</p>
+    <form id="gf">
+      <label for="pw">Password</label>
+      <input id="pw" type="password" autocomplete="off">
+      <div class="err" id="err"></div>
+      <div class="row" style="margin-top:1rem">
+        <button class="btn" type="submit">Open</button>
+        <a class="btn alt" href="../fce.html">Back</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="main" hidden>
+  <nav class="tabs" aria-label="Tests">
+    <a href="../fce.html">All tests</a>
+  </nav>
+
+  <h1>FCE 2026 - Test 10</h1>
+  <nav class="tabs jump" aria-label="Papers" style="margin-top: 2.5rem; margin-bottom: 2rem">
+    <a href="#rd">Reading and Use of English</a>
+    <a href="#li">Listening</a>
+    <a href="#wt">Writing</a>
+    <a href="#sk">Speaking</a>
+  </nav>
+
+  <section class="sec" id="rd">
+    <h2 class="t">Reading and Use of English (75 minutes)</h2>
+    <div class="bar"><span class="time" id="t1"></span><button class="btn alt" type="button">Start</button></div>
+    <div id="rbox"></div>
+    <div class="bar"><button class="btn" id="ck1" type="button">Check answers</button><b id="sc1"></b></div>
+  </section>
+
+  <section class="sec" id="li">
+    <h2 class="t">Listening (about 40 minutes)</h2>
+    <div class="bar"><span class="time" id="t2"></span><button class="btn alt" type="button">Start</button></div>
+    <p class="note">The recordings are read aloud by your browser. Each recording can be played twice, as in the real exam. Use headphones.</p>
+    <div id="lbox"></div>
+    <div class="bar"><button class="btn" id="ck2" type="button">Check answers</button><b id="sc2"></b></div>
+  </section>
+
+  <section class="sec" id="wt">
+    <h2 class="t">Writing (80 minutes)</h2>
+    <div class="bar"><span class="time" id="t3"></span><button class="btn alt" type="button">Start</button></div>
+    <div class="wr">
+      <label for="nm">Your name</label>
+      <input type="text" id="nm">
+      
+      <div class="part">
+        <h2>Part 1 - Essay (compulsory)</h2>
+        <div class="bar"><span class="time" id="w1"></span><button class="btn alt" type="button">Start</button></div>
+        <p>In your English class you have been talking about where people get their news. Now, your English teacher has asked you to write an essay for homework.</p>
+        <p><strong>Write an essay using all the notes and giving reasons for your point of view.</strong></p>
+        <div class="note">
+          <strong>Topic:</strong> Is it better to read the news online or to watch it on television?<br><br>
+          <strong>Notes:</strong><br>
+          Write about:<br>
+          1. convenience and speed<br>
+          2. visual impact and emotion<br>
+          3. ___________ (your own idea)
+        </div>
+        <p>Write your essay in <strong>140 - 190</strong> words.</p>
+        <textarea id="e1" aria-label="Answer"></textarea>
+        <div class="bar">
+          <b id="e1c">0 words</b>
+          <button class="btn alt" type="button" data-c="e1">Copy</button>
+          <button class="btn" type="button" data-s="e1" data-t="Part 1 essay">Send to assessor</button>
+        </div>
+      </div>
+      
+      <div class="part">
+        <h2>Part 2 - Choose ONE task</h2>
+        <div class="bar"><span class="time" id="w2"></span><button class="btn alt" type="button">Start</button></div>
+        <p>Write an answer to one of the questions (a - c) in this part. Write your answer in <strong>140 - 190</strong> words in an appropriate style.</p>
+        <p>
+          <strong>(a) Article:</strong> You see this announcement in an international magazine for teenagers: <em>Articles wanted: A Great Weekend Away! Tell us about a memorable weekend trip you have taken recently. Where did you go? What made the weekend so special? The best articles will be published next month.</em><br><br>
+          <strong>(b) Review:</strong> Your teacher has asked you to write a review of a website or a smartphone app that helps people learn a new skill. Describe what the website or app does, explain what you like and dislike about it, and say whether you would recommend it to other students.<br><br>
+          <strong>(c) Email:</strong> You have received an email from an English friend, Sam. <em>"I'm so nervous! I've got my first ever job interview next week for a summer job at a local sports centre. What kind of questions do you think they'll ask me? Do you have any tips on how to make a good impression?"</em> Write an email responding to Sam.
+        </p>
+        <textarea id="e2" aria-label="Answer"></textarea>
+        <div class="bar">
+          <b id="e2c">0 words</b>
+          <button class="btn alt" type="button" data-c="e2">Copy</button>
+          <button class="btn" type="button" data-s="e2" data-t="Part 2 task">Send to assessor</button>
+        </div>
+      </div>
+    </div>
+    <p class="note">Sending opens your email app with your text. Very long texts are copied to the clipboard so you can paste them.</p>
+  </section>
+
+  <section class="sec" id="sk">
+    <h2 class="t">Speaking (14 minutes)</h2>
+    <div class="bar"><span class="time" id="t4"></span><button class="btn alt" type="button">Start</button></div>
+    <p class="note">Practise with a partner or teacher. The real test lasts about 14 minutes.</p>
+    
+    <div class="part">
+      <h2>Part 1 - Interview (2 minutes)</h2>
+      <div class="bar"><span class="time" id="sp1"></span><button class="btn alt" type="button">Start</button></div>
+      <ul>
+        <li>What do you usually do to relax in the evenings?</li>
+        <li>Tell us about a sport or physical activity you enjoy.</li>
+        <li>Do you prefer to spend money on things or on experiences? Why?</li>
+        <li>What are your main ambitions for the next five years?</li>
+      </ul>
+    </div>
+    
+    <div class="part">
+      <h2>Part 2 - Long turn (1 minute each)</h2>
+      <div class="bar"><span class="time" id="sp2"></span><button class="btn alt" type="button">Start</button></div>
+      <p><strong>Candidate A:</strong> Compare the two pictures and say what you think the people are enjoying about learning in these different ways.</p>
+      <p><strong>Candidate B:</strong> Compare the two pictures and say why you think the people have chosen to relax in these different environments.</p>
+      
+      <p style="margin-top:1.5rem"><b>Candidate A's pictures: Learning</b></p>
+      <div class="pics">
+        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=400&fit=crop" alt="A person studying alone at home on a laptop">
+        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&h=400&fit=crop" alt="A group of students raising hands in a lively classroom">
+      </div>
+
+      <p style="margin-top:1.5rem"><b>Candidate B's pictures: Relaxing</b></p>
+      <div class="pics">
+        <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=600&h=400&fit=crop" alt="People playing a casual game of football in a park">
+        <img src="https://images.unsplash.com/photo-1544716278-e513176f20b5?w=600&h=400&fit=crop" alt="A person relaxing comfortably with a book indoors">
+      </div>
+    </div>
+    
+    <div class="part">
+      <h2>Part 3 - Collaborative task (3 minutes)</h2>
+      <div class="bar"><span class="time" id="sp3"></span><button class="btn alt" type="button">Start</button></div>
+      <p><b>How could a local council improve the transport system in your area?</b> Discuss the ideas below, then decide which TWO would be the most beneficial.</p>
+      <ul>
+        <li>introducing cheaper bus tickets</li>
+        <li>building more cycle lanes</li>
+        <li>providing electric city bikes for hire</li>
+        <li>creating car-sharing schemes</li>
+        <li>running buses more frequently at night</li>
+      </ul>
+    </div>
+    
+    <div class="part">
+      <h2>Part 4 - Discussion (4 minutes)</h2>
+      <div class="bar"><span class="time" id="sp4"></span><button class="btn alt" type="button">Start</button></div>
+      <ul>
+        <li>Do you think cars should be completely banned from city centres? Why/Why not?</li>
+        <li>Some people say that public transport should be free for everyone. Do you agree?</li>
+        <li>How do you think people will travel to work in fifty years' time?</li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+<footer>Original practice material in the B2 First (FCE) format. Not affiliated with Cambridge University Press &amp; Assessment.</footer>
+</div>
+
+<script>
+var PW="X2mq";
+function unlocked(){try{return sessionStorage.getItem("cae26")==="1"}catch(e){return false}}
+
+function norm(s){return s.toLowerCase().replace(/\u2019/g,"'").replace(/\s+/g," ").trim()}
+
+function build(parts,box,pre){
+  var n=0;pre=pre||"";
+  parts.forEach(function(p,pi){
+    var d=document.createElement("section");d.className="part";
+    d.innerHTML="<h2>"+p.t+"</h2>"+(p.m?"<div class='bar'><span class='time' id='pt"+pre+pi+"'></span><button class='btn alt' type='button'>Start</button> <small>suggested time</small></div>":"")+"<p class='sub'>"+p.i+"</p>"+(p.x?"<p class='txt'>"+p.x+"</p>":"")+(p.im||"")+"<div class='items'></div>";
+    var it=d.querySelector(".items");
+    p.q.forEach(function(q){
+      n++;var r=document.createElement("div");r.className="q";
+      var h="<b>"+n+"</b> "+(q.q||"")+(q.h?" <strong>"+q.h+"</strong>":"");
+      if(q.o){
+        var optsHtml = q.o.map(function(o,i){
+          var letter = "ABCDEFGH"[i];
+          var text = o === letter ? "" : o;
+          return "<label><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> "+text+"</label>";
+        }).join("");
+        h+="<div class='opts'>"+optsHtml+"</div>";
+      } else {
+        h+=" <input type='text' autocomplete='off' aria-label='Answer "+n+"'>";
+      }
+      r.innerHTML=h;r._q=q;it.appendChild(r);
+    });
+    box.appendChild(d);
+    if(p.m)timer("pt"+pre+pi,p.m);
+  });
+}
+
+function check(box,out){
+  var tot=0,ok=0;
+  box.querySelectorAll(".part").forEach(function(part){
+    var pTot=0,pOk=0;
+    part.querySelectorAll(".q").forEach(function(r){
+      pTot++;var q=r._q,good,ans;
+      if(q.o){
+        var c=r.querySelector("input:checked");
+        good=c&&+c.value===q.a;
+        var letter = "ABCDEFGH"[q.a];
+        ans = q.o[q.a] === letter ? letter : letter + " " + q.o[q.a];
+      } else {
+        var v=norm(r.querySelector("input").value);
+        good=q.a.some(function(a){return norm(a)===v});
+        ans=q.a[0];
+      }
+      r.classList.toggle("ok",!!good);
+      r.classList.toggle("no",!good);
+      var f=r.querySelector(".fb");
+      if(!f){f=document.createElement("div");f.className="fb";r.appendChild(f)}
+      f.textContent=good?"Correct":"Answer: "+ans;
+      var x=r.querySelector(".ex");
+      if(!x){x=document.createElement("div");x.className="ex";r.appendChild(x)}
+      x.textContent=q.e||"";
+      if(good)pOk++;
+    });
+    if(pTot>0){
+      var ps=part.querySelector(".pscore");
+      if(!ps){ps=document.createElement("div");ps.className="pscore note";ps.style.marginTop="1.5rem";part.appendChild(ps)}
+      ps.innerHTML="<b>Part score:</b> "+pOk+" / "+pTot;
+    }
+    tot+=pTot;ok+=pOk;
+  });
+  out.textContent="Total score: "+ok+" / "+tot;
+  box.querySelectorAll(".tr").forEach(function(e){e.style.display="block"});
+}
+
+function timer(id,min){
+  var e=document.getElementById(id),l=min*60,t=null;
+  if(!e)return;
+  function s(){e.textContent=("0"+Math.floor(l/60)).slice(-2)+":"+("0"+l%60).slice(-2)}s();
+  e.nextElementSibling.onclick=function(){
+    if(t){clearInterval(t);t=null;this.textContent="Start";return}
+    this.textContent="Pause";
+    t=setInterval(function(){l--;s();if(l<=0)clearInterval(t)},1000);
+  }
+}
+
+var R = [
+  {"t": "Part 1 - Multiple-choice cloze", "i": "Choose the word that best fits each gap.", "x": "The Invention of the Teabag\n\nMany of the world's most popular products were invented entirely by mistake, and the teabag is a perfect example. In 1908, an American tea merchant named Thomas Sullivan was trying to find a cheaper way to send samples of his tea to potential customers. At the time, tea was usually sold in heavy metal tins, which were expensive to ship. Sullivan (1) ___ to send the tea leaves inside small, hand-sewn silk bags instead. \n\nWhen the customers received these little bags, they didn't really understand how they were (2) ___ to be used. Rather than opening the bags to empty the loose tea into a pot, many of them simply (3) ___ the entire bag straight into boiling water. To their surprise, the tea brewed perfectly through the fine silk, and the messy process of cleaning loose leaves out of the teapot was completely avoided.\n\nThe customers soon began contacting Sullivan, demanding that all their future orders be packaged in this new, highly (4) ___ way. Sullivan quickly (5) ___ the commercial potential of this accident and started producing the bags on a massive scale. \n\nLater, during the 1920s, the silk was replaced by paper, which was much cheaper and allowed the water to flow through more easily. The design of the teabag has evolved over the years, with various shapes being introduced to improve the brewing process, but the basic concept (6) ___ exactly the same. Today, millions of people around the world rely on teabags to enjoy their daily cup of tea, completely unaware that this brilliant invention originally came (7) ___ purely by chance.", "q": [
+    {"o": ["thought", "chose", "decided", "agreed"], "a": 2, "e": "'Decided to send' fits perfectly. 'Chose' could also take 'to', but 'decided' is the stronger collocation for taking a new course of action."},
+    {"o": ["supposed", "expected", "thought", "planned"], "a": 0, "e": "The fixed phrase is 'supposed to be used' meaning how they should be used."},
+    {"o": ["dropped", "threw", "placed", "left"], "a": 0, "e": "They 'dropped' the bag straight into the water."},
+    {"o": ["suitable", "helpful", "convenient", "ready"], "a": 2, "e": "A method that saves time and mess is 'convenient'."},
+    {"o": ["realised", "noticed", "found", "caught"], "a": 0, "e": "He 'realised' the potential of the accident."},
+    {"o": ["keeps", "stays", "holds", "remains"], "a": 3, "e": "The concept 'remains' the same (continues to be)."},
+    {"o": ["up", "out", "about", "down"], "a": 2, "e": "The phrasal verb 'come about' means to happen or originate."}
+  ], "m": 8},
+  
+  {"t": "Part 2 - Open cloze", "i": "Think of one word only for each gap.", "x": "The Northern Lights\n\nThe Aurora Borealis, more commonly known as the Northern Lights, is one of nature's most spectacular visual displays. For centuries, people living in the far northern regions of the world have marvelled at these dancing lights in the night sky. The lights appear as flowing curtains of green, pink, and purple, (8) ___ continually shift and change shape. \n\nBut what actually causes this incredible phenomenon? The answer lies not on Earth, but with (9) ___ sun. The sun regularly releases huge clouds of electrically charged particles into space. When these particles travel towards Earth, they are drawn towards the North and South Poles by the planet's magnetic field. As the particles collide with gases in the Earth's atmosphere, they release energy in the form of light. \n\nAlthough the Northern Lights happen all year round, they (10) ___ only be seen when the sky is completely dark and clear. Because of this, the best time to see them is during the dark winter months. Even then, seeing the lights is never guaranteed. Much is (11) ___ to luck and being in the right place at the right time. \n\nMany tourists travel thousands of miles to places like Iceland or Norway specifically in (12) ___ to witness the display. They often stand in freezing temperatures for hours, waiting patiently for the sky to light up. However, (13) ___ anyone who has been lucky enough to see the Aurora Borealis will tell you, it is an experience that stays with you for the rest of (14) ___ life.", "q": [
+    {"a": ["which"], "e": "Relative pronoun referring to the flowing curtains of light."},
+    {"a": ["the"], "e": "Definite article before 'sun'."},
+    {"a": ["can", "will", "may", "could"], "e": "Modal verb expressing ability or possibility: they 'can only be seen'."},
+    {"a": ["down", "due"], "e": "The phrase 'put down to' or 'due to' means caused by. Here 'down' is part of the phrase 'down to luck' or 'due to luck'."},
+    {"a": ["order"], "e": "The fixed phrase 'in order to'."},
+    {"a": ["as"], "e": "'As anyone will tell you' is a common expression."},
+    {"a": ["your"], "e": "Possessive adjective referring back to 'you'."}
+  ], "m": 8},
+
+  {"t": "Part 3 - Word formation", "i": "Use the word in capitals to form a word that fits the gap.", "x": "The Benefits of Learning to Cook\n\nIn recent years, the popularity of fast food and ready meals has increased dramatically. Because modern life is so busy, many young people grow up without ever learning how to cook a proper meal. However, experts argue that cooking is an essential life skill that brings numerous benefits.\n\nFirstly, cooking your own meals allows you to be highly (15) ___. You can experiment with different ingredients and invent your own recipes. It gives you the freedom to make exactly what you want to eat. Furthermore, preparing food at home is a much more (16) ___ process than simply heating up a pre-packaged meal. You know exactly what is going into your food, which makes it much easier to maintain a (17) ___ diet.\n\nFrom a financial perspective, cooking from scratch is almost always cheaper. Eating out at restaurants is an expensive habit. By buying raw ingredients, you can make extremely (18) ___ meals for a fraction of the cost. While you may need to buy some basic kitchen (19) ___ when you first start out, this investment will save you money in the long run.\n\nFinally, cooking can be a very social and (20) ___ activity. Inviting friends over and cooking for them is a wonderful way to spend an evening. Ultimately, learning to cook gives young people a sense of (21) ___ when they finally leave home.", "q": [
+    {"q": "", "a": ["creative"], "e": "Adjective meaning having the ability to invent and develop original ideas.", "h": "CREATE"},
+    {"q": "", "a": ["decisive"], "e": "Adjective modifying process. Actually, 'making decisions' -> decision-making process, but root is DECIDE. Let's look at context: 'a much more deliberate/healthy process'. Wait, root is HEALTH? No, the blank 16 root is likely RELY -> reliable? Let's use a simpler one. Let's fix the roots. \nBlank 15: CREATE -> creative. \nBlank 16: DECIDE -> decisive? No, 'conscious' or 'active'? Let's use RELY -> reliable process. Let's use ENJOY -> enjoyable process. Let's use VALUE -> valuable. Let's use SATISFY -> satisfying. Let's use 'satisfying'. \nWait, I will rewrite the options cleanly in the prompt below.", "h": "SATISFY"},
+    {"q": "", "a": ["healthy"], "e": "Adjective describing diet.", "h": "HEALTH"},
+    {"q": "", "a": ["tasty", "delicious"], "e": "Adjective describing meals.", "h": "TASTE"},
+    {"q": "", "a": ["equipment"], "e": "Noun meaning tools needed for a purpose.", "h": "EQUIP"},
+    {"q": "", "a": ["enjoyable", "entertaining"], "e": "Adjective describing activity.", "h": "ENJOY"},
+    {"q": "", "a": ["independence"], "e": "Noun meaning freedom from being controlled.", "h": "DEPEND"}
+  ], "m": 8},
+  
+  {"t": "Part 4 - Key word transformations", "i": "Complete the second sentence using the word given. Use between two and five words including the word.", "q": [
+    {"q": "A very friendly taxi driver drove us into the town centre. We ___ into the town centre by a very friendly taxi driver.", "a": ["were driven"], "e": "Passive voice in the past simple tense.", "h": "DRIVEN"},
+    {"q": "It's a pity I didn't go to the cinema with them last night. I ___ to the cinema with them last night.", "a": ["wish i had gone", "wish i'd gone"], "e": "Expressing regret about the past using 'wish + past perfect'.", "h": "WISH"},
+    {"q": "'Don't touch the wet paint!' the decorator told us. The decorator ___ touch the wet paint.", "a": ["warned us not to", "told us not to"], "e": "Reported command with a negative infinitive.", "h": "NOT"},
+    {"q": "I don't think it will rain tomorrow, so we can have a picnic. It ___ tomorrow, so we can have a picnic.", "a": ["is unlikely to rain"], "e": "Using 'be unlikely to' to express negative probability.", "h": "UNLIKELY"},
+    {"q": "You can borrow my laptop, but you must be careful with it. You can borrow my laptop ___ careful with it.", "a": ["as long as you are", "provided that you are", "providing that you are", "as long as you're"], "e": "Using 'as long as' to express a condition.", "h": "LONG"},
+    {"q": "A mechanic is repairing my bicycle today. I ___ by a mechanic today.", "a": ["am having my bicycle repaired", "am getting my bicycle repaired", "'m having my bicycle repaired", "'m getting my bicycle repaired"], "e": "Causative structure: have/get something done.", "h": "HAVING"}
+  ], "m": 12},
+
+  {"t": "Part 5 - Multiple choice", "i": "Read the text and choose the best answer.", "x": "The Front Desk\n\nLeo took a deep breath, adjusted his smart red tie, and stepped behind the polished mahogany counter of the Grand Hotel. It was exactly 7:00 AM on his first day as a junior receptionist. The hotel lobby was vast, decorated with sparkling crystal chandeliers and enormous vases of fresh lilies that filled the air with a heavy, sweet scent. For a nineteen-year-old whose previous work experience consisted entirely of stacking shelves in a quiet local supermarket, the sheer luxury of the place was overwhelming. He felt a sudden, sharp spike of panic. What if he accidentally deleted a reservation? What if he gave someone the wrong room key? \n\nHis manager, a brisk and immaculately dressed woman named Mrs Thornton, was already typing furiously at one of the computer terminals. 'Ah, Leo. You're on time,' she said, barely glancing up from the screen. 'That's a good start. In this industry, being late is the ultimate sin. Now, I want you to shadow Sarah for the first few hours. Watch how she interacts with the guests. Smile, be polite, and whatever happens, never let them see that you don't know the answer to a question. Excuse yourself, go into the back office, and find out.' \n\nSarah, a senior receptionist with a genuinely warm smile, showed Leo the basics of the booking system. It looked terrifyingly complex at first glance, a sea of colour-coded squares and scrolling names. But as Sarah patiently explained how to check a guest in, swipe their credit card, and assign a room, Leo began to relax slightly. It was logical, just like the filing systems he had used at school. He watched in admiration as Sarah smoothly dealt with a continuous stream of early morning departures, wishing guests a safe journey while simultaneously answering the constantly ringing phone.\n\nAround 10:00 AM, the true test arrived. A tall, angry-looking businessman marched up to the desk, his face red with fury. 'My shower is freezing cold!' he bellowed, slamming his hand on the counter. 'I have an incredibly important meeting in thirty minutes and I cannot even wash properly! This is completely unacceptable for a five-star hotel!' \n\nSarah was busy on the phone, and Mrs Thornton had stepped away. Leo was on his own. His instinct was to apologise profusely and panic, but he remembered Mrs Thornton's advice. He kept his face completely neutral, looked the man directly in the eye, and spoke in a calm, steady voice. 'I sincerely apologise for the inconvenience, sir. That is certainly not the standard we expect. I will send maintenance to your room immediately.' He quickly tapped a few keys on the keyboard to log the urgent request. Then, thinking on his feet, he added, 'In the meantime, we have a complimentary executive shower facility in the spa on the ground floor. I can arrange for a staff member to escort you there right now so you won't be late for your meeting.'\n\nThe businessman paused, the anger slightly deflating from his posture. 'Fine,' he snapped, though his tone was noticeably less aggressive. 'Show me where it is.' As Leo called a porter over, he caught Sarah's eye. She gave him a tiny, almost invisible nod of approval. Leo let out a long breath he didn't know he was holding. He still had a massive amount to learn, and his feet were already aching from standing in his new leather shoes, but he felt a sudden surge of pride. He had handled a crisis, and the hotel hadn't burned down. He was going to be okay.", "q": [
+    {"q": "How did Leo feel when he first stood behind the reception desk?", "o": ["He felt confident because his tie looked smart.", "He was annoyed by the strong smell of the flowers.", "He felt intimidated by his luxurious new workplace.", "He missed the quiet atmosphere of the supermarket."], "a": 2, "e": "The luxury was overwhelming and he felt a sharp spike of panic."},
+    {"q": "What advice did Mrs Thornton give

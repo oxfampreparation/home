@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FCE 2026 Test 11 - Oxfam Preparation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,500..800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f7fb;--paper:#fff;--ink:#14213d;--muted:#4b5266;--line:#d5d9e6;--mark:#2b59ff;--hi:#ffe45e;--ok:#1a7f52;--bad:#b3261e;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme="dark"]{--bg:#0f1526;--paper:#182038;--ink:#eef1fb;--muted:#a9b1c9;--line:#2c3656;--mark:#7d9bff;--hi:#e9d24a;--ok:#57c58f;--bad:#ff8a80}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 "Atkinson Hyperlegible",system-ui,sans-serif}
+h1,h2,h3{font-family:Archivo,"Helvetica Neue",Arial,sans-serif;line-height:1.05;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--mark);outline-offset:3px}
+.wrap{max-width:74rem;margin:0 auto;padding:0 1.25rem}
+header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;padding:1.25rem 0;position:sticky;top:0;background:var(--bg);z-index:100;border-bottom:1px solid transparent;transition:border-color 0.2s}
+.head-left{display:flex;align-items:center;gap:.75rem}
+#menuToggle{background:transparent;border:none;cursor:pointer;color:var(--ink);display:flex;padding:.25rem;border-radius:.25rem}
+#menuToggle:hover{background:var(--line)}
+#menuToggle svg{width:1.6rem;height:1.6rem}
+.logo{font:800 1.6rem Archivo,sans-serif;text-decoration:none}
+nav a{margin-left:1.25rem;text-decoration:none;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+.btn{display:inline-block;background:var(--ink);color:var(--bg);padding:.8rem 1.4rem;border-radius:.5rem;font-weight:700;text-decoration:none;border:0;cursor:pointer;font-size:1rem;font-family:inherit}
+.btn.alt{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:2rem;align-items:start;padding:1rem 0 3rem}
+.hero-text{margin-top:2.5rem}
+h1{font-size:clamp(2rem,3.4vw,3rem);font-weight:800;font-stretch:90%;letter-spacing:-.02em}
+h1 span{background:linear-gradient(transparent 62%,var(--hi) 62%)}
+.lead{color:var(--muted);max-width:32rem;margin:1.25rem 0 1.75rem;font-size:1.15rem}
+.row{display:flex;gap:.75rem;flex-wrap:wrap}
+.sheet{background:var(--paper);border:2px solid var(--ink);border-radius:.75rem;padding:1.5rem;box-shadow:.5rem .5rem 0 var(--ink)}
+.sheet h2{font-size:1.1rem;margin-bottom:.25rem}
+.sheet p{margin:0 0 1rem;color:var(--muted);font-size:.95rem}
+.q{padding:.7rem 0;border-top:1px solid var(--line)}
+.q b{display:block;font-weight:400;margin-bottom:.45rem}
+.opts{display:flex;gap:.5rem;flex-wrap:wrap}
+.opt{display:flex;align-items:center;gap:.4rem;padding:.3rem .7rem .3rem .35rem;border:1.5px solid var(--line);border-radius:2rem;background:transparent;color:inherit;font-size:.95rem;cursor:pointer}
+.opt i{width:1.4rem;height:1.4rem;border-radius:50%;border:2px solid var(--muted);display:grid;place-items:center;font:700 .7rem Archivo,sans-serif;font-style:normal}
+.opt[aria-pressed="true"]{border-color:var(--mark)}
+.opt[aria-pressed="true"] i{background:var(--mark);border-color:var(--mark);color:var(--bg)}
+.opt.right{border-color:var(--ok)}.opt.right i{background:var(--ok);border-color:var(--ok);color:var(--bg)}
+.opt.wrong{border-color:var(--bad)}.opt.wrong i{background:var(--bad);border-color:var(--bad);color:var(--bg)}
+.result{margin-top:1rem;font-weight:700;min-height:1.6rem}
+section{padding:3.5rem 0;border-top:1px solid var(--line)}
+h2.t{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:.75rem;letter-spacing:-.01em}
+.sub{color:var(--muted);max-width:38rem;margin:0 0 2rem}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:.6rem;background:var(--paper)}
+table{border-collapse:collapse;width:100%;min-width:38rem}
+th,td{text-align:left;padding:.9rem 1rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:700 .95rem Archivo,sans-serif;color:var(--muted)}
+tr:last-child td{border-bottom:0}
+td:first-child{font:800 1.2rem Archivo,sans-serif;white-space:nowrap}
+td small{display:block;font:400 .9rem "Atkinson Hyperlegible",sans-serif;color:var(--muted)}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:2rem}
+.feat h3{font-size:1.2rem;margin-bottom:.4rem}
+.feat p{margin:0;color:var(--muted)}
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.25rem}
+.plan{background:var(--paper);border:1px solid var(--line);border-radius:.6rem;padding:1.5rem;display:flex;flex-direction:column;gap:.75rem}
+.plan.main{border:2px solid var(--ink)}
+.plan h3{font-size:1.3rem}
+.price{font:800 2rem Archivo,sans-serif}
+.plan ul{margin:0;padding-left:1.1rem;color:var(--muted);flex:1}
+.news-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1.5rem}
+.news-card{background:var(--paper);border:1px solid var(--line);border-radius:.6rem;overflow:hidden;display:flex;flex-direction:column}
+.news-img{background:var(--line);height:140px;display:grid;place-items:center;color:var(--muted);font-weight:700;font-family:Archivo,sans-serif}
+.news-content{padding:1.25rem;display:flex;flex-direction:column;flex:1}
+.news-date{color:var(--mark);font-weight:700;font-size:.85rem;margin-bottom:.4rem;display:block}
+.news-content h3{font-size:1.15rem;margin:0 0 .5rem}
+.news-content p{margin:0;color:var(--muted);font-size:.95rem}
+
+/* Pevná dolní lišta s fontem pro kontakty */
+.support-strip{position:fixed;bottom:0;left:0;right:0;background:var(--ink);color:var(--bg);padding:1rem 1.25rem;z-index:999;box-shadow:0 -4px 12px rgba(0,0,0,0.15)}
+.support-strip-inner{max-width:74rem;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.5rem;width:100%;font-weight:700}
+.support-strip a{color:var(--hi);text-decoration:none;font-family:system-ui,-apple-system,sans-serif;font-weight:500;letter-spacing:.04em;font-size:1.05rem}
+.support-strip a:hover{text-decoration:underline}
+.support-info{display:flex;gap:1.5rem;flex-wrap:wrap}
+
+/* Patička s větším spodním odsazením kvůli liště */
+footer{border-top:1px solid var(--line);padding:2rem 0 5rem;color:var(--muted);font-size:.95rem}
+
+.lang{display:flex;gap:.25rem;flex-wrap:wrap}.lang button{font:700 .8rem Archivo,sans-serif;padding:.35rem .6rem;border:1.5px solid var(--line);border-radius:.4rem;background:transparent;color:var(--muted);cursor:pointer}.lang button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.layout{display:grid;grid-template-columns:12.5rem minmax(0,1fr);gap:2.5rem;align-items:start}
+.layout.collapsed{grid-template-columns:1fr;gap:0}
+.layout.collapsed .side{display:none}
+.side{position:sticky;top:5rem;max-height:calc(100vh - 6rem);max-height:calc(100dvh - 6rem);overflow-y:auto;display:flex;flex-direction:column;gap:.15rem}
+summary{cursor:pointer;font:700 .95rem Archivo,sans-serif;color:var(--muted);padding:.4rem .75rem;border-radius:.5rem}summary:hover{color:var(--ink)}.ex[open] summary{margin-bottom:.15rem}
+.side nav{display:flex;flex-direction:column;gap:.15rem;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--line)}.side nav a{margin:0;color:inherit}.side .lang{margin-bottom:1rem}
+.side p{margin:0 0 .5rem;font:700 .95rem Archivo,sans-serif;color:var(--muted)}
+.side a{text-decoration:none;padding:.5rem .75rem;border-radius:.5rem;font:700 1rem Archivo,sans-serif;border-left:3px solid transparent}
+.side a small{display:block;font:400 .8rem "Atkinson Hyperlegible",sans-serif;color:var(--muted)}
+.side a:hover{background:var(--paper);border-left-color:var(--mark)}
+tr:target td{background:var(--hi);color:#14213d}tr:target td small{color:#14213d}
+@media (max-width:52rem){.layout{grid-template-columns:1fr;gap:0}.side{position:static;max-height:none;margin:0 0 1rem;padding:0 0 1rem;border-bottom:1px solid var(--line)}}
+.hr{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap}.hr .btn{padding:.45rem 1rem;font-size:.9rem}
+dialog{border:2px solid var(--ink);border-radius:.75rem;background:var(--paper);color:var(--ink);padding:1.5rem;width:min(26rem,92vw);max-height:90vh;overflow:auto}dialog::backdrop{background:rgba(10,16,32,.55)}
+dialog h2{font-size:1.4rem;margin-bottom:.5rem}dialog label{display:block;font-weight:700;margin:.75rem 0 .25rem}
+dialog input{width:100%;padding:.65rem .75rem;border:1.5px solid var(--line);border-radius:.4rem;background:var(--bg);color:var(--ink);font:inherit}
+.demo{color:var(--muted);font-size:.9rem;margin:.5rem 0 0}.err{color:var(--bad);min-height:1.5rem;margin-top:.5rem;font-size:.95rem}
+.lrow{display:grid;grid-template-columns:9rem 1fr;gap:.75rem;padding:.75rem 0;border-top:1px solid var(--line);align-items:center}.lrow .lname{text-decoration:underline;color:inherit}.lrow b,.lrow .lname{font:800 1.1rem Archivo,sans-serif}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem}.chip{padding:.35rem .85rem;border:1.5px solid var(--ink);border-radius:2rem;text-decoration:none;font-weight:700}.chip:hover{background:var(--ink);color:var(--bg)}
+@media (max-width:40rem){.lrow{grid-template-columns:1fr;gap:.4rem}}
+@media (max-width:64rem){.hero{grid-template-columns:1fr;gap:2rem}.hero-text{margin-top:0}}
+html{-webkit-text-size-adjust:100%}
+@media (max-width:52rem){.side nav{flex-direction:row;flex-wrap:wrap;gap:.25rem;margin-top:.5rem;padding-top:.5rem}.side nav a{padding:.4rem .75rem}}
+@media (max-width:40rem){
+.wrap{padding:0 1rem}
+header{padding:1rem 0}
+.hero{padding-bottom:2rem}
+.sheet{padding:1.1rem}
+section{padding:2.5rem 0}
+.scroll{border:0;background:transparent;overflow:visible}
+table,tbody,tr,td{display:block;min-width:0;width:100%}
+thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+tr{background:var(--paper);border:1px solid var(--line);border-radius:.6rem;padding:.6rem 0;margin-bottom:.75rem}
+td{border:0;padding:.15rem 1rem}
+td:first-child{font-size:1.3rem;padding-top:.4rem}
+tr:target{border-color:var(--ink)}
+.plans,.feat{grid-template-columns:1fr}
+}
+@media (pointer:coarse){.lang button{min-height:44px;min-width:44px}.opt{min-height:44px}.chip{min-height:44px;display:inline-flex;align-items:center}summary{min-height:44px;display:flex;align-items:center}.side a{min-height:44px;display:flex;flex-direction:column;justify-content:center}.hr .btn{min-height:44px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+html{scroll-padding-top:calc(5rem + env(safe-area-inset-top,0px))}
+body header{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--bg);padding:.6rem 0;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:.75rem}
+body .logo{font-size:1.85rem;letter-spacing:-.02em}
+.mbtn{display:inline-flex;flex-direction:column;justify-content:center;gap:5px;width:2.75rem;height:2.75rem;padding:0 .7rem;border:2px solid var(--ink);border-radius:.5rem;background:transparent;cursor:pointer;flex:none}
+.mbtn span{display:block;height:2px;background:var(--ink);border-radius:2px}
+.mbtn:hover{background:var(--paper)}
+body .side{top:5.5rem;max-height:calc(100vh - 6.5rem);max-height:calc(100dvh - 6.5rem)}
+body.nomenu .layout{grid-template-columns:minmax(0,1fr)}
+body.nomenu .side{display:none}
+body:has(#app[hidden]) .mbtn{display:none}
+.side>.hr{margin-bottom:1rem}
+.scrim{display:none}
+.lockico{display:block;color:var(--ink);margin-bottom:.5rem}
+.gatemsg{font-weight:700;margin:0 0 .5rem}
+@media (max-width:52rem){
+body .side{position:fixed;top:0;left:0;bottom:0;width:min(19rem,86vw);max-height:none;margin:0;padding:calc(1rem + env(safe-area-inset-top,0px)) 1rem calc(1rem + env(safe-area-inset-bottom,0px));background:var(--paper);border:0;border-right:2px solid var(--ink);z-index:50;overflow-y:auto;transform:translateX(-105%);visibility:hidden;transition:transform .25s ease,visibility 0s .25s}
+body.menuopen .side{transform:none;visibility:visible;transition:transform .25s ease}
+body .side nav{flex-direction:column;flex-wrap:nowrap;gap:.15rem;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--line)}
+body .side nav a{padding:.5rem .75rem}
+.scrim{display:block;position:fixed;top:0;right:0;bottom:0;left:0;background:rgba(10,16,32,.5);z-index:40;opacity:0;pointer-events:none;transition:opacity .25s}
+body.menuopen .scrim{opacity:1;pointer-events:auto}
+body .logo{font-size:1.6rem}
+}
+@media (max-width:26rem){body .logo{font-size:1.4rem}}
+@media (prefers-reduced-motion:reduce){body .side,.scrim{transition:none}}
+.gatebox{max-width:26rem;margin:2rem auto;background:var(--paper);border:2px solid var(--ink);border-radius:.75rem;padding:1.5rem;box-shadow:.5rem .5rem 0 var(--ink)}
+.gatebox label,.wr label{display:block;font-weight:700;margin:.75rem 0 .25rem}
+input[type=text],input[type=password],textarea{width:100%;padding:.6rem .75rem;border:1.5px solid var(--line);border-radius:.4rem;background:var(--bg);color:var(--ink);font:inherit}
+.q input[type=text]{width:14rem;max-width:100%}
+.part{background:var(--paper);border:1px solid var(--line);border-radius:.75rem;padding:1.5rem;margin-bottom:1.25rem}
+.txt{white-space:pre-line}.q{padding:.5rem 0;border-top:1px solid var(--line)}.opts{display:flex;flex-wrap:wrap;gap:.4rem 1.25rem;margin-top:.3rem}
+.q.ok{border-left:4px solid var(--ok);padding-left:.75rem}.q.no{border-left:4px solid var(--bad);padding-left:.75rem}.fb{font-weight:700;margin-top:.25rem}
+nav.tabs a {margin:0;padding:.4rem 1rem;border:1.5px solid var(--line);border-radius:2rem;text-decoration:none;font-weight:700}
+nav.tabs a[aria-current=page]{background:var(--ink);color:var(--bg)}
+.bar{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;margin:1rem 0}.time{font:800 1.6rem Archivo,sans-serif}
+.pics{display:flex;gap:1rem;flex-wrap:wrap}.pics svg, .pics img{flex:1 1 14rem;max-width:22rem;border:2px solid var(--ink);border-radius:.5rem;background:var(--paper);object-fit:cover;aspect-ratio:3/2}
+textarea{min-height:15rem}.tr{display:none}.note{padding:.75rem 1rem;border-left:4px solid var(--mark);background:var(--paper);margin:1rem 0}
+.sec{padding-top:2rem;margin-top:2rem;border-top:1px solid var(--line)}.jump{margin-top:0}.ex{color:var(--muted);margin-top:.15rem;font-size:.95rem}.q b{display:inline;font-weight:800;margin:0 .4rem 0 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header id="siteHeader">
+  <div class="head-left">
+    <button id="menuToggle" aria-label="Toggle menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+    <a class="logo" href="../index.html">Oxfam Preparation</a>
+  </div>
+  <div class="hr">
+    <div class="lang" id="lang" role="group" aria-label="Language"></div>
+    <button class="btn alt" style="padding:.45rem .6rem; min-width:0; font-size:1.1rem" id="themeBtn" aria-label="Toggle theme">🌙</button>
+    <button class="btn alt" style="padding:.45rem .6rem;" id="cartBtn" aria-label="Cart">
+      🛒 <span id="cartCount" style="background:var(--mark);color:var(--bg);border-radius:1rem;padding:0.1rem 0.4rem;font-size:0.75rem;vertical-align:top;margin-left:0.2rem;display:none;">0</span>
+    </button>
+    <button class="btn" type="button" id="loginBtn">Log in</button>
+  </div>
+</header>
+
+<div class="layout">
+<aside class="side" aria-label="Menu">
+  <nav>
+    <a href="../fce.html">All tests</a>
+  </nav>
+</aside>
+<main id="top">
+
+<div id="gate">
+  <div class="gatebox">
+    <h1><span>FCE 2026</span></h1>
+    <p>Enter the password to open this test.</p>
+    <form id="gf">
+      <label for="pw">Password</label>
+      <input id="pw" type="password" autocomplete="off">
+      <div class="err" id="err"></div>
+      <div class="row" style="margin-top:1rem">
+        <button class="btn" type="submit">Open</button>
+        <a class="btn alt" href="../fce.html">Back</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="main" hidden>
+  <h1>FCE 2026 - Test 11</h1>
+  <nav class="tabs jump" aria-label="Papers" style="margin-top: 2.5rem; margin-bottom: 2rem">
+    <a href="#rd">Reading and Use of English</a>
+    <a href="#li">Listening</a>
+    <a href="#wt">Writing</a>
+    <a href="#sk">Speaking</a>
+  </nav>
+
+  <section class="sec" id="rd">
+    <h2 class="t">Reading and Use of English (75 minutes)</h2>
+    <div class="bar"><span class="time" id="t1"></span><button class="btn alt" type="button">Start</button></div>
+    <div id="rbox"></div>
+    <div class="bar"><button class="btn" id="ck1" type="button">Check answers</button><b id="sc1"></b></div>
+  </section>
+
+  <section class="sec" id="li">
+    <h2 class="t">Listening (about 40 minutes)</h2>
+    <div class="bar"><span class="time" id="t2"></span><button class="btn alt" type="button">Start</button></div>
+    <p class="note">The recordings are read aloud by your browser. Each recording can be played twice, as in the real exam. Use headphones.</p>
+    <div id="lbox"></div>
+    <div class="bar"><button class="btn" id="ck2" type="button">Check answers</button><b id="sc2"></b></div>
+  </section>
+
+  <section class="sec" id="wt">
+    <h2 class="t">Writing (80 minutes)</h2>
+    <div class="bar"><span class="time" id="t3"></span><button class="btn alt" type="button">Start</button></div>
+    <div class="wr">
+      <label for="nm">Your name</label>
+      <input type="text" id="nm">
+      
+      <div class="part">
+        <h2>Part 1 - Essay (compulsory)</h2>
+        <div class="bar"><span class="time" id="w1"></span><button class="btn alt" type="button">Start</button></div>
+        <p>In your English class you have been talking about health and fitness. Now, your English teacher has asked you to write an essay for homework.</p>
+        <p><strong>Write an essay using all the notes and giving reasons for your point of view.</strong></p>
+        <div class="note">
+          <strong>Topic:</strong> What is the best way for young people to stay fit and healthy?<br><br>
+          <strong>Notes:</strong><br>
+          Write about:<br>
+          1. eating a balanced diet<br>
+          2. playing regular sports<br>
+          3. ___________ (your own idea)
+        </div>
+        <p>Write your essay in <strong>140 - 190</strong> words.</p>
+        <textarea id="e1" aria-label="Answer"></textarea>
+        <div class="bar">
+          <b id="e1c">0 words</b>
+          <button class="btn alt" type="button" data-c="e1">Copy</button>
+          <button class="btn" type="button" data-s="e1" data-t="Part 1 essay">Send to assessor</button>
+        </div>
+      </div>
+      
+      <div class="part">
+        <h2>Part 2 - Choose ONE task</h2>
+        <div class="bar"><span class="time" id="w2"></span><button class="btn alt" type="button">Start</button></div>
+        <p>Write an answer to one of the questions (a - c) in this part. Write your answer in <strong>140 - 190</strong> words in an appropriate style.</p>
+        <p>
+          <strong>(a) Article:</strong> You see this announcement on an English-language website: <em>Articles wanted: A Great Weekend! Tell us about an enjoyable weekend you spent recently. Where did you go and who were you with? Why was it so special? The best articles will be published next week.</em><br><br>
+          <strong>(b) Review:</strong> You recently bought a new gadget or downloaded a new app that you find very useful. Write a review for an English-language technology blog. Describe what it does, what you like or dislike about it, and say whether you would recommend it to others.<br><br>
+          <strong>(c) Email:</strong> You have received an email from an English friend, Charlie. <em>"I'm going to start at a completely new school next month, and I'm quite nervous because I won't know anyone there. Have you got any advice on how to make a good impression and make new friends quickly?"</em> Write an email giving Charlie some advice.
+        </p>
+        <textarea id="e2" aria-label="Answer"></textarea>
+        <div class="bar">
+          <b id="e2c">0 words</b>
+          <button class="btn alt" type="button" data-c="e2">Copy</button>
+          <button class="btn" type="button" data-s="e2" data-t="Part 2 task">Send to assessor</button>
+        </div>
+      </div>
+    </div>
+    <p class="note">Sending opens your email app with your text. Very long texts are copied to the clipboard so you can paste them.</p>
+  </section>
+
+  <section class="sec" id="sk">
+    <h2 class="t">Speaking (14 minutes)</h2>
+    <div class="bar"><span class="time" id="t4"></span><button class="btn alt" type="button">Start</button></div>
+    <p class="note">Practise with a partner or teacher. The real test lasts about 14 minutes.</p>
+    
+    <div class="part">
+      <h2>Part 1 - Interview (2 minutes)</h2>
+      <div class="bar"><span class="time" id="sp1"></span><button class="btn alt" type="button">Start</button></div>
+      <ul>
+        <li>What is your favourite subject to study, and why?</li>
+        <li>Tell us about a sport or physical activity you enjoy.</li>
+        <li>Do you prefer to spend your holidays in a city or by the sea?</li>
+        <li>What is the most interesting book you have ever read?</li>
+      </ul>
+    </div>
+    
+    <div class="part">
+      <h2>Part 2 - Long turn (1 minute each)</h2>
+      <div class="bar"><span class="time" id="sp2"></span><button class="btn alt" type="button">Start</button></div>
+      <p><strong>Candidate A:</strong> Compare the two pictures and say what you think the people are enjoying about relaxing in these different ways.</p>
+      <p><strong>Candidate B:</strong> Compare the two pictures and say why you think the people have chosen to eat in these different situations.</p>
+      
+      <p style="margin-top:1.5rem"><b>Candidate A's pictures: Relaxing</b></p>
+      <div class="pics">
+        <img src="https://images.unsplash.com/photo-1544716278-e513176f20b5?w=600&h=400&fit=crop" alt="A person sitting comfortably at home reading a physical book">
+        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&h=400&fit=crop" alt="Two young people enthusiastically playing video games together on a sofa">
+      </div>
+
+      <p style="margin-top:1.5rem"><b>Candidate B's pictures: Eating</b></p>
+      <div class="pics">
+        <img src="https://images.unsplash.com/photo-1533519808386-b4895fa7216a?w=600&h=400&fit=crop" alt="A family having a relaxed picnic on the grass in a sunny park">
+        <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?w=600&h=400&fit=crop" alt="A couple dressed up, enjoying a formal dinner at an elegant restaurant">
+      </div>
+    </div>
+    
+    <div class="part">
+      <h2>Part 3 - Collaborative task (3 minutes)</h2>
+      <div class="bar"><span class="time" id="sp3"></span><button class="btn alt" type="button">Start</button></div>
+      <p><b>How can a school improve its facilities to make learning more enjoyable for students?</b> Discuss the ideas below, then decide which TWO would be the most effective.</p>
+      <ul>
+        <li>modernising the school library</li>
+        <li>providing new computers and tablets</li>
+        <li>building better sports facilities</li>
+        <li>improving the food in the school canteen</li>
+        <li>creating outdoor seating and social areas</li>
+      </ul>
+    </div>
+    
+    <div class="part">
+      <h2>Part 4 - Discussion (4 minutes)</h2>
+      <div class="bar"><span class="time" id="sp4"></span><button class="btn alt" type="button">Start</button></div>
+      <ul>
+        <li>Do you think technology is becoming too important in education? Why/Why not?</li>
+        <li>Some people say that having a good teacher is more important than having modern school facilities. Do you agree?</li>
+        <li>How can parents help their children to enjoy learning outside of school?</li>
+      </ul>
+    </div>
+  </section>
+</div>
+</main>
+</div>
+
+<div class="support-strip">
+  <div class="support-strip-inner">
+    <div><span _k="Customer support every day from 9:00 to 16:30">Customer support every day from 9:00 to 16:30</span></div>
+    <div class="support-info">
+      <a href="mailto:oxfampreparation@email.cz">oxfampreparation@email.cz</a>
+      <a href="tel:+420723200988">+420 723 200 988</a>
+    </div>
+  </div>
+</div>
+
+<footer>© 2020-2026 Oxfam - Oxford family. All rights reserved. Not affiliated with Cambridge University Press &amp; Assessment. Exam names belong to their owners.</footer>
+</div>
+
+<dialog id="dlg" aria-labelledby="dt">
+<h2 id="dt">Sign in to open your tests</h2>
+<form id="lf" novalidate>
+<label for="em">Email</label><input id="em" type="email" autocomplete="username">
+<label for="pw">Password</label><input id="pw" type="password" autocomplete="current-password">
+<p class="demo" id="demo" hidden>Demo mode: any email and password is accepted.</p>
+<div class="err" id="err" aria-live="polite"></div>
+<div class="row" style="margin-top:1rem"><button class="btn" type="submit">Log in</button><button class="btn alt" type="button" id="cancel">Cancel</button></div>
+</form>
+</dialog>
+
+<!-- Cart Dialog -->
+<dialog id="cartDlg" aria-labelledby="ct">
+<h2 id="ct">Your Cart</h2>
+<div id="cartItems" style="margin-top: 1rem;"></div>
+<div style="font-weight:bold;margin-top:1.5rem;font-size:1.2rem;border-top:2px solid var(--ink);padding-top:1rem;">
+  <span _k="Total">Total</span>: €<span id="cartTotal">0</span>
+</div>
+<div class="row" style="margin-top:1.5rem">
+  <button class="btn" id="checkoutBtn">Checkout</button>
+  <button class="btn alt" type="button" id="closeCart">Close</button>
+</div>
+</dialog>
+
+<script>
+var PW="X2mq";
+function unlocked(){try{return sessionStorage.getItem("cae26")==="1"}catch(e){return false}}
+
+function norm(s){return s.toLowerCase().replace(/\u2019/g,"'").replace(/\s+/g," ").trim()}
+
+function build(parts,box,pre){
+  var n=0;pre=pre||"";
+  parts.forEach(function(p,pi){
+    var d=document.createElement("section");d.className="part";
+    d.innerHTML="<h2>"+p.t+"</h2>"+(p.m?"<div class='bar'><span class='time' id='pt"+pre+pi+"'></span><button class='btn alt' type='button'>Start</button> <small>suggested time</small></div>":"")+"<p class='sub'>"+p.i+"</p>"+(p.x?"<p class='txt'>"+p.x+"</p>":"")+(p.im||"")+"<div class='items'></div>";
+    var it=d.querySelector(".items");
+    p.q.forEach(function(q){
+      n++;var r=document.createElement("div");r.className="q";
+      var h="<b>"+n+"</b> "+(q.q||"")+(q.h?" <strong>"+q.h+"</strong>":"");
+      if(q.o){
+        var optsHtml = q.o.map(function(o,i){
+          var letter = "ABCDEFGH"[i];
+          var text = o === letter ? "" : o;
+          return "<label><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> "+text+"</label>";
+        }).join("");
+        h+="<div class='opts'>"+optsHtml+"</div>";
+      } else {
+        h+=" <input type='text' autocomplete='off' aria-label='Answer "+n+"'>";
+      }
+      r.innerHTML=h;r._q=q;it.appendChild(r);
+    });
+    box.appendChild(d);
+    if(p.m)timer("pt"+pre+pi,p.m);
+  });
+}
+
+function check(box,out){
+  var tot=0,ok=0;
+  box.querySelectorAll(".part").forEach(function(part){
+    var pTot=0,pOk=0;
+    part.querySelectorAll(".q").forEach(function(r){
+      pTot++;var q=r._q,good,ans;
+      if(q.o){
+        var c=r.querySelector("input:checked");
+        good=c&&+c.value===q.a;
+        var letter = "ABCDEFGH"[q.a];
+        ans = q.o[q.a] === letter ? letter : letter + " " + q.o[q.a];
+      } else {
+        var v=norm(r.querySelector("input").value);
+        good=q.a.some(function(a){return norm(a)===v});
+        ans=q.a[0];
+      }
+      r.classList.toggle("ok",!!good);
+      r.classList.toggle("no",!good);
+      var f=r.querySelector(".fb");
+      if(!f){f=document.createElement("div");f.className="fb";r.appendChild(f)}
+      f.textContent=good?"Correct":"Answer: "+ans;
+      var x=r.querySelector(".ex");
+      if(!x){x=document.createElement("div");x.className="ex";r.appendChild(x)}
+      x.textContent=q.e||"";
+      if(good)pOk++;
+    });
+    if(pTot>0){
+      var ps=part.querySelector(".pscore");
+      if(!ps){ps=document.createElement("div");ps.className="pscore note";ps.style.marginTop="1.5rem";part.appendChild(ps)}
+      ps.innerHTML="<b>Part score:</b> "+pOk+" / "+pTot;
+    }
+    tot+=pTot;ok+=pOk;
+  });
+  out.textContent="Total score: "+ok+" / "+tot;
+  box.querySelectorAll(".tr").forEach(function(e){e.style.display="block"});
+}
+
+function timer(id,min){
+  var e=document.getElementById(id),l=min*60,t=null;
+  if(!e)return;
+  function s(){e.textContent=("0"+Math.floor(l/60)).slice(-2)+":"+("0"+l%60).slice(-2)}s();
+  e.nextElementSibling.onclick=function(){
+    if(t){clearInterval(t);t=null;this.textContent="Start";return}
+    this.textContent="Pause";
+    t=setInterval(function(){l--;s();if(l<=0)clearInterval(t)},1000);
+  }
+}
+
+var R = [
+  {"t": "Part 1 - Multiple-choice cloze", "i": "Choose the word that best fits each gap.", "x": "The Invention of the Vending Machine\n\nVending machines are an incredibly common sight today, found in offices, train stations, and schools all over the world. However, the basic concept is actually much older than most people (1) ___. The very first vending machine is believed to have been invented by Hero of Alexandria, an engineer in ancient Greece, around 2,000 years ago. \n\nHis invention was designed to dispense holy water in Egyptian temples. When a person dropped a heavy coin into a slot, it fell onto a metal pan attached to a lever. The weight of the coin (2) ___ the lever to tilt, which opened a valve and allowed a specific (3) ___ of holy water to flow out. Once the coin slid off the pan, the lever snapped back into place and stopped the flow. \n\nModern vending machines, which dispense snacks and drinks, only became popular in the late 19th century. The first commercial machines in London sold postcards, and they were quickly followed by machines selling chewing gum in New York. Over the decades, engineers have (4) ___ significantly to the technology, making the machines more reliable and secure. \n\nToday, you can find vending machines that sell almost anything, from fresh fruit and hot meals to expensive electronics. In countries like Japan, they are highly (5) ___ as an extremely efficient and convenient way to shop. Despite their ancient origins, it seems that our (6) ___ for automated convenience will only continue to grow. Manufacturers are now experimenting with facial recognition to (7) ___ products based on the customer's age and gender. Clearly, the vending machine has come a very long (8) ___ since ancient Greece.", "q": [
+    {"o": ["realise", "understand", "notice", "detect"], "a": 0, "e": "'Realise' is the most natural word here for being aware of a fact from the past."},
+    {"o": ["resulted", "led", "caused", "made"], "a": 2, "e": "'Caused the lever to tilt'. 'Resulted' and 'led' take different prepositions or structures, and 'made' takes a bare infinitive."},
+    {"o": ["number", "amount", "level", "figure"], "a": 1, "e": "'Amount' is used with uncountable nouns like water."},
+    {"o": ["contributed", "added", "improved", "developed"], "a": 1, "e": "Engineers have 'added to' the technology."},
+    {"o": ["seen", "believed", "thought", "regarded"], "a": 3, "e": "'Regarded as' means considered to be."},
+    {"o": ["wish", "demand", "request", "hope"], "a": 1, "e": "In a commercial context, we have a 'demand for' something."},
+    {"o": ["propose", "recommend", "advise", "guide"], "a": 1, "e": "Machines 'recommend' products to buyers."},
+    {"o": ["time", "distance", "way", "route"], "a": 2, "e": "'Come a long way' is a fixed idiom meaning to develop significantly."}
+  ], "m": 8},
+  
+  {"t": "Part 2 - Open cloze", "i": "Think of one word only for each gap.", "x": "The Great Barrier Reef\n\nStretching for over 2,300 kilometres along the coast of Australia, the Great Barrier Reef is the largest living structure on the planet. It is so massive that it can actually be seen (9) ___ outer space. The reef is composed of billions of tiny living organisms known as coral polyps. \n\nFor many years, the reef has (10) ___ a huge attraction for tourists and divers from all over the world. It provides a habitat for a staggering variety of marine life, (11) ___ includes over 1,500 species of fish, as well as turtles, sharks, and dolphins. \n\nHowever, this beautiful natural wonder is currently facing several serious threats. The most significant of (12) ___ is climate change. As the temperature of the ocean rises, the coral becomes stressed and loses its bright colours, a process known (13) ___ 'coral bleaching'. If the water stays too warm for too long, the coral will eventually die. \n\nIn addition to rising temperatures, the reef is also suffering from pollution and overfishing. Environmentalists are working hard to raise awareness of the problem. They argue that (14) ___ urgent action is taken to reduce global carbon emissions, the reef may not survive for future generations to enjoy. It is vital that we do everything in (15) ___ power to protect this unique environment before it is (16) ___ late.", "q": [
+    {"a": ["from"], "e": "It can be seen 'from' outer space."},
+    {"a": ["been"], "e": "Present perfect tense: 'has been'."},
+    {"a": ["which"], "e": "Relative pronoun referring back to the marine life / variety."},
+    {"a": ["these", "them"], "e": "Referring back to 'serious threats'."},
+    {"a": ["as"], "e": "A process known 'as' coral bleaching."},
+    {"a": ["unless"], "e": "'Unless' means 'if not'."},
+    {"a": ["our"], "e": "The fixed phrase 'do everything in our power'."},
+    {"a": ["too"], "e": "Before it is 'too late'."}
+  ], "m": 8},
+
+  {"t": "Part 3 - Word formation", "i": "Use the word in capitals to form a word that fits the gap.", "x": "The Benefits of Walking in Nature\n\nIn today's fast-paced, technology-driven world, many people spend the majority of their time indoors. However, doctors are increasingly emphasizing the (17) ___ of getting outside and going for a walk in a natural environment. \n\nFirstly, walking is an excellent form of physical (18) ___. It strengthens the heart, improves circulation, and helps to maintain a healthy weight. Unlike running, which can sometimes cause joint injuries, walking is a low-impact exercise that is suitable for people of all ages and fitness levels. \n\nThe mental health benefits are equally impressive. Studies have consistently shown that spending time in a forest or park can significantly reduce feelings of stress and (19) ___. Being surrounded by the sights and sounds of nature provides a welcome distraction from our daily worries, leading to a profound sense of (20) ___ and calm. \n\nFurthermore, researchers have noticed an (21) ___ in the creativity of individuals who take regular nature walks. Stepping away from a computer screen allows the brain to rest and reset. This mental break often leads to unexpected and (22) ___ solutions to complex problems. \n\nFinally, walking with a friend or family member is a highly (23) ___ way to spend an afternoon. It encourages meaningful conversation without the usual digital distractions. Therefore, incorporating a daily walk into your routine is highly (24) ___ for both body and mind.", "q": [
+    {"q": "", "a": ["importance"], "e": "Noun meaning significance.", "h": "IMPORTANT"},
+    {"q": "", "a": ["activity"], "e": "Noun meaning movement.", "h": "ACTIVE"},
+    {"q": "", "a": ["anxiety"], "e": "Noun meaning feelings of worry or nervousness.", "h": "ANXIOUS"},
+    {"q": "", "a": ["relaxation"], "e": "Noun meaning the state of being free from tension.", "h": "RELAX"},
+    {"q": "", "a": ["improvement"], "e": "Noun meaning getting better.", "h": "IMPROVE"},
+    {"q": "", "a": ["imaginative", "creative"], "e": "Adjective describing solutions. Root is IMAGINE.", "h": "IMAGINE"},
+    {"q": "", "a": ["enjoyable", "sociable"], "e": "Adjective describing the way to spend time. Root is ENJOY.", "h": "ENJOY"},
+    {"q": "", "a": ["beneficial"], "e": "Adjective meaning advantageous.", "h": "BENEFIT"}
+  ], "m": 8},
+  
+  {"t": "Part 4 - Key word transformations", "i": "Complete the second sentence using the word given. Use between two and five words including the word.", "q": [
+    {"q": "They will announce the results of the competition tomorrow. The results of the competition ___ tomorrow.", "a": ["will be announced"], "e": "Passive voice of the future simple.", "h": "BE"},
+    {"q": "'Why don't we go to the cinema tonight?' said Mark. Mark ___ to the cinema that night.", "a": ["suggested going"], "e": "Reported speech using 'suggest' + -ing.", "h": "GOING"},
+    {"q": "I'm sure she didn't leave her bag on the train. She ___ her bag on the train.", "a": ["can't have left", "cannot have left"], "e": "Negative logical deduction in the past.", "h": "HAVE"},
+    {"q": "The book was so interesting that I couldn't put it down. It was ___ that I couldn't put it down.", "a": ["such an interesting book"], "e": "Changing 'so + adjective' to 'such an + adjective + noun'.", "h": "SUCH"},
+    {"q": "I regret not inviting him to my birthday party. I ___ to my birthday party.", "a": ["wish i had invited him", "wish i'd invited him"], "e": "Expressing regret about the past using 'wish + past perfect'.", "h": "WISH"},
+    {"q": "Someone is repairing my computer at the moment. I ___ at the moment.", "a": ["am having my computer repaired", "am getting my computer repaired", "'m having my computer repaired", "'m getting my computer repaired"], "e": "Causative structure in present continuous.", "h": "HAVING"}
+  ], "m": 12},
+
+  {"t": "Part 5 - Multiple choice", "i": "Read the text and choose the best answer.", "x": "The First Live Broadcast\n\nTom took a deep breath and adjusted the heavy headset over his ears. He was twenty-one, and this was his first day as a junior sound assistant at the national television network. He was standing in Studio 4, a vast, windowless room filled with an intimidating forest of lights, cameras, and thick black cables snaking across the floor. The air conditioning was turned up so high that he was shivering, but he suspected his trembling had more to do with pure nerves. In exactly ten minutes, the popular evening news programme would go out live to three million viewers, and it was his job to make sure the main presenter's microphone was working perfectly.\n\nHis manager, a brisk woman named Sarah, marched past him with a clipboard. 'Tom! Is the mic clipped on correctly? We can't have any static noise today. The network boss is watching from the gallery.' She didn't wait for an answer, disappearing into the control room. Tom swallowed hard. He had checked the small microphone attached to the presenter's tie three times already, but Sarah's comment sent a fresh wave of panic through him. He looked over at the presenter, a famous veteran journalist named David Sterling, who was calmly sipping water and reading through his notes as if he were sitting in his own living room.\n\nWith two minutes to go, the studio floor manager shouted, 'Quiet please! Stand by!' The low hum of conversation abruptly ceased. The silence in the huge room was heavy and terrifying. Tom retreated into the shadows behind Camera 2, his eyes fixed on the small red light above the studio door. When it turned on, they would be live. He tightly gripped the small radio transmitter in his hand, praying that the batteries wouldn't fail. \n\n'Five, four, three, two...' The red light flashed on. The familiar opening music played through the studio speakers, and David Sterling looked directly into the camera lens. 'Good evening, and welcome to the News at Six.' His voice was deep, resonant, and perfectly clear. Tom let out a breath he didn't realise he had been holding. The audio feed was flawless. \n\nFor the next thirty minutes, Tom watched in fascination as the broadcast unfolded. He was amazed by the seamless coordination of the camera operators, the floor manager, and the director speaking through their headsets. It looked chaotic, but everyone knew exactly what they were doing. Towards the end of the broadcast, David Sterling had to walk across the studio to a different desk for an interview segment. As he moved, the cable of his microphone caught slightly on the edge of a chair.\n\nTom's heart leaped into his throat. Without thinking, he darted forward from the shadows, crouching low to avoid the camera shot, and swiftly unhooked the cable just before it pulled tight. He scrambled back into the darkness just as the camera swung around to follow David. The presenter hadn't even noticed, continuing his interview smoothly. \n\nAs the broadcast finished and the red light clicked off, the tension in the room instantly evaporated. People began chatting and packing away gear. Sarah emerged from the control room and walked straight up to Tom. For a terrifying second, he thought he was going to be fired. Instead, she gave him a rare, genuine smile. 'Good catch with that cable, Tom. Quick thinking. You'll do well here.' Tom smiled back, his hands finally stopping their trembling. The television industry was terrifying, but he knew he was going to love it.", "q": [
+    {"q": "How did Tom feel as he waited in the studio?", "o": ["He was annoyed by the low temperature in the room.", "He was extremely anxious about his responsibilities.", "He felt confident because he had checked his equipment.", "He was intimidated by the famous presenter."], "a": 1, "e": "He was shivering, mostly due to pure nerves, knowing it was his job to ensure the microphone worked for a live broadcast."},
+    {"q": "What effect did Sarah's comment have on Tom?", "o": ["It made him realise he had forgotten something important.", "It made him angry because she didn't wait for his answer.", "It increased his existing feelings of stress.", "It reassured him that someone else was in charge."], "a": 2, "e": "Her comment that the boss was watching sent a 'fresh wave of panic through him'."},
+    {"q": "Right before the broadcast started, Tom was hoping that", "o": ["the presenter would read his notes correctly.", "the studio floor manager would stay quiet.", "the equipment he was holding would function properly.", "he wouldn't be seen by the cameras."], "a": 2, "e": "He tightly gripped the radio transmitter, praying the batteries wouldn't fail."},
+    {"q": "During the broadcast, what surprised Tom about the studio team?", "o": ["They were much noisier than he expected.", "They managed to work together effectively despite seeming disorganised.", "The director gave very few instructions.", "They ignored the presenter's movements."], "a": 1, "e": "He was amazed by the seamless coordination; it looked chaotic, but everyone knew exactly what they were doing."},
+    {"q": "Why did Tom run forward during the interview segment?", "o": ["To prevent the microphone from being pulled off.", "Because the director told him to move a chair.", "To fix a problem with the camera.", "Because David Sterling asked for his help."], "a": 0, "e": "He unhooked the cable just before it pulled tight after it caught on a chair."},
+    {"q": "What did Sarah's reaction at the end of the text show?", "o": ["She thought Tom should have acted faster.", "She didn't realise what Tom had actually done.", "She appreciated Tom's fast reaction to a problem.", "She wanted to give Tom a more important job tomorrow."], "a": 2, "e": "She smiled and said, 'Good catch with that cable, Tom. Quick thinking.'"}
+  ], "m": 12},
+
+  {"t": "Part 6 - Gapped text", "i": "Six sentences have been removed from the article. Choose from the sentences A-G the one which fits each gap. There is one extra sentence.", "x": "Rebuilding a Medieval Castle\n\nIn the heart of a dense forest in Burgundy, France, a remarkable project is underway. A team of fifty workers is building a medieval castle from scratch. The project, known as Guédelon, is not using modern machinery or 21st-century technology. (37) ___ It is a fascinating experiment in experimental archaeology.\n\nThe idea for Guédelon was conceived by Michel Guyot, a local landowner who had previously restored a real 13th-century castle. During that restoration, experts discovered the remains of an older, original castle hidden beneath the newer walls. (38) ___ Realising that simply drawing plans was not enough to understand how it was made, Guyot decided to actually build it.\n\nThe site in the forest was chosen very carefully. A medieval castle required massive amounts of raw materials. (39) ___ By locating the building site in the forest, the team ensured that everything they needed was right on their doorstep.\n\nThe workers at Guédelon dress in traditional medieval clothing and use only tools that would have been available in the year 1228. (40) ___ Even the mortar used to hold the stones together is made by mixing sand, water, and lime in wooden troughs, exactly as it was done centuries ago.\n\nThe project is moving slowly, as everything is done by hand. It takes a stonecutter an entire day to shape just one or two blocks of stone for the castle walls. (41) ___ They are discovering practical solutions to building problems that historians had previously only guessed at. For example, they have learned precisely how much weight a wooden lifting crane can handle before it breaks.\n\nGuédelon has also become a major tourist attraction. Over 300,000 people visit the site every year to watch the castle slowly rise from the ground. (42) ___ The money raised from these ticket sales pays the wages of the workers and completely funds the entire project, proving that history can be both educational and financially self-sufficient.\n\nOptions:\nA. Instead, they are relying entirely on the tools and methods of the 13th century.\nB. This gave him the inspiration to recreate this older structure.\nC. Visitors are not allowed to talk to the workers while they are cutting stone.\nD. Therefore, the area had to provide easy access to stone, wood, water, and sand.\nE. However, this slow pace is exactly what allows the researchers to learn so much.\nF. They gladly pay an entrance fee to step back in time and witness this historical process.\nG. Blacksmiths forge nails in hot fires, and carpenters cut massive wooden beams with hand saws.", "q": [
+    {"o": ["A", "B", "C", "D", "E", "F", "G"], "a": 0, "e": "A directly follows the statement that they aren't using modern machinery."},
+    {"o": ["A", "B", "C", "D", "E", "F", "G"], "a": 1, "e": "B follows the discovery of the older castle, explaining his inspiration to recreate it."},
+    {"o": ["A", "B", "C", "D", "E", "F", "G"], "a": 3, "e": "D explains what raw materials were needed, leading into the statement that everything was on their doorstep."},
+    {"o": ["A", "B", "C", "D", "E", "F", "G"], "a": 6, "e": "G gives examples of the workers using 13th-century tools (blacksmiths, carpenters)."},
+    {"o": ["A", "B", "C", "D", "E", "F", "G"], "a": 4, "e": "E contrasts the 'slow pace' mentioned in the previous sentence with the benefit of learning so much."},
+    {"o": ["A", "B", "C", "D", "E", "F", "G"], "a": 5, "e": "F explains that the 300,000 visitors pay an entrance fee, which links to the next sentence about ticket sales funding the project."}
+  ], "m": 12},
+
+  {"t": "Part 7 - Multiple matching", "i": "You are going to read an article about four young people who had unusual summer jobs. For questions 43-52, choose from the people (A-D).", "x": "Unusual Summer Jobs\n\nA - Mark (Archaeological Dig Assistant)\nI spent my summer covered in dirt on an archaeological dig in the north of England. I’m studying history at university, so my professor suggested I volunteer. I honestly thought we’d be digging up gold coins or ancient weapons, but most of the time we were just finding pieces of broken pottery and animal bones. It was incredibly repetitive work, scraping away tiny layers of soil with a small trowel. My knees ached constantly. However, on the final week, I actually uncovered a small Roman ring. Holding something in my hand that hadn't been touched by a human for two thousand years was a profoundly moving experience. It totally changed my perspective on the past. I’m definitely going to do it again next year.\n\nB - Sarah (Theme Park Mascot)\nMy job was to dress up as a giant fluffy dinosaur at a major theme park. The costume was incredibly heavy, and during the hot summer afternoons, the heat inside it was almost unbearable. I had to take breaks every twenty minutes to drink water so I wouldn’t faint. You aren't allowed to speak while in costume, which is frustrating when kids ask you questions. You have to communicate entirely through exaggerated gestures. Despite the physical discomfort, I loved the way the children reacted. Their faces would light up with pure joy when they saw me, and they would run over for huge hugs. It was exhausting, but bringing that much happiness to kids made the difficult conditions completely worth it.\n\nC - David (Night Security Guard)\nI needed to earn as much money as possible to pay for my college accommodation, so I took a job as a night security guard at a large, empty warehouse. The pay was significantly better than working in a shop, mostly because the hours were so unsociable. My shift started at 10 PM and finished at 6 AM. The biggest challenge was simply fighting the urge to fall asleep. I drank terrifying amounts of coffee. It was incredibly lonely; I didn't have anyone to talk to for eight hours. However, it was also very peaceful, and I actually managed to read several massive textbooks for my course while sitting at the front desk. It wasn't exciting, but it was highly practical.\n\nD - Maya (Tour Guide on a Boat)\nI spent July and August working on a tourist boat that takes people to see dolphins off the coast. I had to memorize a long script about local marine biology and deliver it over a microphone to fifty people at a time. I was terrified of public speaking before I took the job, so the first few days were a nightmare. I stumbled over my words and forgot facts. But by the end of the summer, I was completely confident and was even adding my own jokes to the commentary. The main downside was dealing with tourists who got angry when the dolphins didn't appear. I had to learn how to politely explain that we couldn't control wild animals.", "q": [
+    {"q": "Which person faced criticism from customers over something they couldn't control?", "o": ["Mark", "Sarah", "David", "Maya"], "a": 3, "e": "Maya mentions dealing with tourists who got angry when the dolphins didn't appear."},
+    {"q": "Which person took the job primarily for financial reasons?", "o": ["Mark", "Sarah", "David", "Maya"], "a": 2, "e": "David needed to earn as much money as possible to pay for college accommodation."},
+    {"q": "Which person says their initial expectations of the job were wrong?", "o": ["Mark", "Sarah", "David", "Maya"], "a": 0, "e": "Mark thought they'd dig up gold coins but mostly found broken pottery."},
+    {"q": "Which person overcame a personal fear during the summer?", "o": ["Mark", "Sarah", "David", "Maya"], "a": 3, "e": "Maya was terrified of public speaking but became completely confident."},
+    {"q": "Which person mentions struggling with the physical temperature?", "o": ["Mark", "Sarah", "David", "Maya"], "a": 1, "e": "Sarah says the heat inside the dinosaur costume was almost unbearable."},
+    {"q": "Which person was able to use their working hours to help with their studies?", "o": ["Mark", "Sarah", "David", "Maya"], "a": 2, "e": "David managed to read several massive textbooks while sitting at the front desk."},
+    {"q": "Which person was restricted in how they were allowed to communicate?", "o": ["Mark", "Sarah", "David", "Maya"], "a": 1, "e": "Sarah wasn't allowed to speak and had to communicate entirely through gestures."},
+    {"q": "Which person felt a deep emotional connection to history?", "o": ["Mark", "Sarah", "David", "Maya"], "a": 0, "e": "Mark says holding the Roman ring was a profoundly moving experience."},
+    {"q": "Which person suffered from a lack of social interaction?", "o": ["Mark", "Sarah", "David", "Maya"], "a": 2, "e": "David says it was incredibly lonely with no one to talk to for eight hours."},
+    {"q": "Which person felt rewarded by the positive emotional response of others?", "o": ["Mark", "Sarah", "David", "Maya"], "a": 1, "e": "Sarah loved the way the children reacted with pure joy and huge hugs."}
+  ], "m": 10}
+];
+
+var L = [
+  {"t": "Part 1 - Eight short extracts", "i": "You will hear people talking in eight different situations. For questions 1-8, choose the best answer (A, B or C). The whole recording is played twice.", "im": "<p><button class='btn alt say' data-i='0' type='button'>Play Part 1 recording</button></p><details class='tr'><summary>Transcript</summary><p><strong>Extract one.</strong> Woman: Have you finished reading that crime novel I lent you? Man: Yes, I finished it last night. The main character was really interesting. Woman: I know, he's so unpredictable. Did you guess who committed the crime? Man: Actually, no! Usually, I figure it out halfway through, but the twist at the end of this one completely caught me by surprise. It was brilliantly written.</p><p><strong>Extract two.</strong> Radio presenter: If you are travelling into the city this weekend, please be aware that the central train station will be closed for engineering works. All services will terminate at Parkway station. A replacement bus service will be running to take passengers into the city centre, but please allow an extra forty minutes for your journey. Normal train services will resume on Monday morning.</p><p><strong>Extract three.</strong> Boy: Are you still going to football practice this evening? Girl: I don't think so. I hurt my ankle yesterday during the match, and it's still quite swollen. Boy: Oh no, that's a shame. Should I tell the coach you won't be there? Girl: Yes, please. Tell him I'm going to rest it for a few days, but I hope to be back for the game on Sunday.</p><p><strong>Extract four.</strong> Man: Excuse me, I bought this coffee machine here last month, and it's stopped working. It just won't turn on. Woman: I'm sorry to hear that. Do you have your receipt? Man: Yes, here it is. Woman: Okay, because it's under guarantee, I can offer you a full refund, or you can exchange it for a new one of the same model. Man: I really liked the coffee it made, so I'll take a replacement, please.</p><p><strong>Extract five.</strong> Tour guide: Welcome to the ancient ruins of the Roman baths. As we walk through, please keep to the marked wooden pathways. The stone floors are over two thousand years old and are very fragile, so we ask that you do not step on them. You can take as many photos as you like, and the tour will end at the museum gift shop.</p><p><strong>Extract six.</strong> Woman: How did your job interview go? Man: I think it went quite well. I was nervous at first, but the panel was very friendly. Woman: Did they ask any difficult questions? Man: A few, mostly about my previous experience. But I had prepared some good examples, so I felt confident answering them. They said they'd let me know by Friday.</p><p><strong>Extract seven.</strong> Chef: When you're making this sauce, the most crucial thing is not to rush it. Many people turn the heat up high to make it cook faster, but that just burns the onions and ruins the flavour. You have to keep the heat low and stir it constantly for at least twenty minutes. That's the only way to get a rich, sweet taste.</p><p><strong>Extract eight.</strong> Girl: I'm really struggling with this physics assignment. I just don't understand the formulas. Boy: Have you looked at the online tutorial the teacher recommended? Girl: No, I forgot about that. Boy: You should definitely watch it. It breaks down the math step-by-step. If you're still stuck after that, I can come over and help you with it this evening.</p></details>", "q": [
+    {"q": "1. You hear a man talking about a novel he read. What did he like about it?", "o": ["The setting was realistic.", "The ending was unexpected.", "The chapters were short."], "a": 1, "e": "He says the twist at the end completely caught him by surprise."},
+    {"q": "2. You hear a travel announcement on the radio. What are passengers told to do?", "o": ["Expect delays due to a bus replacement.", "Buy a special ticket for the weekend.", "Travel on Monday instead."], "a": 0, "e": "A replacement bus service will run, so allow an extra forty minutes."},
+    {"q": "3. You hear a girl talking to a friend about football. Why isn't she going to practice?", "o": ["She has to study.", "She is injured.", "She is angry with the coach."], "a": 1, "e": "She says she hurt her ankle and it is still swollen."},
+    {"q": "4. You hear a man returning an item to a shop. What does he choose to do?", "o": ["Get his money back.", "Have the item repaired.", "Exchange it for a new one."], "a": 2, "e": "He says 'I'll take a replacement, please'."},
+    {"q": "5. You hear a tour guide talking. What does she ask visitors to do?", "o": ["Turn off their cameras.", "Stay on the wooden paths.", "Buy a ticket at the gift shop."], "a": 1, "e": "She asks them to keep to the marked wooden pathways to protect the fragile stone."},
+    {"q": "6. You hear a man talking about a job interview. How does he feel about his performance?", "o": ["He is worried he couldn't answer the questions.", "He thinks he prepared well for it.", "He regrets being so nervous."], "a": 1, "e": "He says he had prepared good examples and felt confident answering."},
+    {"q": "7. You hear a chef giving advice. What does he warn people against doing?", "o": ["Using too many onions.", "Cooking the sauce too quickly.", "Forgetting to stir the sauce."], "a": 1, "e": "He warns against turning the heat high to cook it faster, which ruins it."},
+    {"q": "8. You hear a boy talking to a friend. What does he suggest she does first?", "o": ["Watch an instructional video.", "Ask the teacher for more time.", "Wait for him to come and help her."], "a": 0, "e": "He suggests she watch the online tutorial the teacher recommended first."}
+  ], "m": 8},
+  
+  {"t": "Part 2 - Sentence completion", "i": "You will hear a man called David talking about his work as an underwater photographer. Complete the sentences. The recording is played twice.", "im": "<button class='btn alt say' data-i='1' type='button'>Play recording</button><details class='tr'><summary>Transcript</summary><p>Hello everyone. My name is David, and I've been working as an underwater photographer for about ten years now. Most people assume I started out as a scuba diving instructor, but my original profession was actually architecture. I just did diving on my holidays. \n\nMy first big photographic assignment was in the Caribbean. It was an amazing trip. The biggest challenge wasn't the sharks, as you might think, but the strong currents in the water. They make it incredibly difficult to hold the camera steady. \n\nWhen I'm taking pictures, my favourite subjects are definitely the coral reefs. The colours are just unbelievable. Of course, the equipment is very expensive. To protect my camera, it goes inside a special housing made of thick plastic. Even with that, you have to be very careful with saltwater. \n\nI travel a lot for my job. Last year I spent two months in the Maldives. Next spring, I'm really excited because I'm going to an island in Indonesia to photograph sea turtles. \n\nIf you want to try underwater photography, my best advice is to practice your buoyancy first. If you can't float perfectly still, you'll never get a sharp picture. And remember, patience is essential. Sometimes you have to wait an hour for a fish to swim into the perfect light.</p></details>", "q": [
+    {"q": "Before becoming a photographer, David worked in the field of ___.", "a": ["architecture"], "e": "He says his original profession was architecture."},
+    {"q": "During his first assignment, David found the ___ to be the biggest problem.", "a": ["currents", "strong currents"], "e": "The biggest challenge was the strong currents."},
+    {"q": "David says that he most enjoys taking photos of ___.", "a": ["coral reefs", "reefs"], "e": "My favourite subjects are definitely the coral reefs."},
+    {"q": "David protects his camera by putting it inside a housing made of ___.", "a": ["plastic", "thick plastic"], "e": "It goes inside a special housing made of thick plastic."},
+    {"q": "Next spring, David is travelling to Indonesia to take pictures of ___.", "a": ["sea turtles", "turtles"], "e": "I'm going to an island in Indonesia to photograph sea turtles."},
+    {"q": "David advises beginners to master their ___ before trying to take photos.", "a": ["buoyancy"], "e": "My best advice is to practice your buoyancy first."},
+    {"q": "David explains that photographers need a lot of ___ to get a good shot.", "a": ["patience"], "e": "And remember, patience is essential."},
+    {"q": "Sometimes, David has to wait a long time for a fish to move into the right ___.", "a": ["light"], "e": "You have to wait an hour for a fish to swim into the perfect light."}
+  ], "m": 8},
+  
+  {"t": "Part 3 - Multiple matching", "i": "You will hear five people talking about a local sports competition they entered. Choose from the list (A-H) what each speaker says about their experience. There are three extra letters.", "im": "<button class='btn alt say' data-i='2' type='button'>Play recording</button><details class='tr'><summary>Transcript</summary><p><strong>Speaker 1:</strong> I entered the 10k town run because my friends were doing it. I didn't train enough and my legs ached for days afterwards. However, seeing the huge crowds lining the streets cheering us on was incredible. That community spirit really kept me going when I wanted to stop.</p><p><strong>Speaker 2:</strong> I took part in the amateur tennis tournament. I was knocked out in the first round, which was a bit disappointing. But honestly, I was amazed by how professional the event was. The referees, the courts, and the scheduling were all organized perfectly. It felt like a major professional tournament.</p><p><strong>Speaker 3:</strong> I joined a team for the charity swimming relay. We didn't win, but we managed to collect over five hundred pounds for the local hospital, which was the main goal. It felt great to do something physical that actually benefited the community in a practical way.</p><p><strong>Speaker 4:</strong> I entered the local cycling race. I was leading for the first half, but then I got a flat tyre and had to retire from the race. It was incredibly frustrating because I knew I was fit enough to win it. I'll definitely be back next year to prove myself.</p><p><strong>Speaker 5:</strong> I competed in the martial arts championship. I was very nervous because I was much older than most of the other competitors. Surprisingly, I actually ended up winning a silver medal! I really didn't expect to do so well, so it was a massive confidence boost for me.</p></details>", "q": [
+    {"q": "Speaker 1", "o": ["I was disappointed by the poor organization.", "I was highly motivated by the support from the spectators.", "I achieved a much better result than I anticipated.", "I raised a significant amount of money for a good cause.", "I suffered an equipment failure that ruined my chances.", "I found the entry fee was too expensive.", "I was impressed by how well the event was run.", "I felt intimidated by the skill of the professionals."], "a": 1, "e": "Seeing the huge crowds cheering them on kept them going."},
+    {"q": "Speaker 2", "o": ["I was disappointed by the poor organization.", "I was highly motivated by the support from the spectators.", "I achieved a much better result than I anticipated.", "I raised a significant amount of money for a good cause.", "I suffered an equipment failure that ruined my chances.", "I found the entry fee was too expensive.", "I was impressed by how well the event was run.", "I felt intimidated by the skill of the professionals."], "a": 6, "e": "Amazed by how professional the event was, organized perfectly."},
+    {"q": "Speaker 3", "o": ["I was disappointed by the poor organization.", "I was highly motivated by the support from the spectators.", "I achieved a much better result than I anticipated.", "I raised a significant amount of money for a good cause.", "I suffered an equipment failure that ruined my chances.", "I found the entry fee was too expensive.", "I was impressed by how well the event was run.", "I felt intimidated by the skill of the professionals."], "a": 3, "e": "Collected over five hundred pounds for the local hospital."},
+    {"q": "Speaker 4", "o": ["I was disappointed by the poor organization.", "I was highly motivated by the support from the spectators.", "I achieved a much better result than I anticipated.", "I raised a significant amount of money for a good cause.", "I suffered an equipment failure that ruined my chances.", "I found the entry fee was too expensive.", "I was impressed by how well the event was run.", "I felt intimidated by the skill of the professionals."], "a": 4, "e": "Got a flat tyre and had to retire from the race."},
+    {"q": "Speaker 5", "o": ["I was disappointed by the poor organization.", "I was highly motivated by the support from the spectators.", "I achieved a much better result than I anticipated.", "I raised a significant amount of money for a good cause.", "I suffered an equipment failure that ruined my chances.", "I found the entry fee was too expensive.", "I was impressed by how well the event was run.", "I felt intimidated by the skill of the professionals."], "a": 2, "e": "Didn't expect to do so well but won a silver medal."}
+  ], "m": 5},
+  
+  {"t": "Part 4 - Interview", "i": "You will hear an interview with a young fashion designer called Maya. For questions 24-30, choose the best answer (A, B or C). The recording is played twice.", "im": "<button class='btn alt say' data-i='3' type='button'>Play recording</button><details class='tr'><summary>Transcript</summary><p><strong>Interviewer:</strong> Maya, you are twenty-four and you recently launched your own clothing brand. Have you always wanted to be a fashion designer? <strong>Maya:</strong> Actually, no. At school I was entirely focused on science. I only started making clothes when I couldn't find a dress I liked for a party, so I bought some fabric and made one myself using a sewing machine my grandmother gave me. <strong>Interviewer:</strong> Your brand is known for being environmentally friendly. Why is that important to you? <strong>Maya:</strong> The fashion industry produces a terrifying amount of waste. I decided early on that I only wanted to use organic cotton and recycled materials. It's more expensive to produce, but my customers appreciate that they are buying something sustainable. <strong>Interviewer:</strong> What is the hardest part of running your own business? <strong>Maya:</strong> Everyone assumes it's the creative side, coming up with new designs. But I find that easy. The real struggle is the paperwork. Dealing with taxes, invoices, and shipping regulations takes up a huge amount of my time, and it's quite boring. <strong>Interviewer:</strong> You use social media a lot to promote your brand. <strong>Maya:</strong> Yes, it's vital. But I don't just post polished, professional photos of models. I post videos of myself making mistakes in the studio, or struggling to cut a pattern. People like authenticity. They connect with a person, not just a product. <strong>Interviewer:</strong> Have you received any bad advice along the way? <strong>Maya:</strong> A business advisor told me I needed to release fifty new items every season to stay relevant. I ignored that. I prefer to release a small collection of ten high-quality pieces. It's less stressful and fits my sustainable ethos better. <strong>Interviewer:</strong> What are your goals for next year? <strong>Maya:</strong> I want to open a physical shop. Selling online is great, but clothes are tactile. I want people to be able to walk in and feel the quality of the fabrics before they buy them. <strong>Interviewer:</strong> Thanks, Maya.</p></details>", "q": [
+    {"q": "24. How did Maya first get involved in making clothes?", "o": ["She studied textiles at school.", "She wanted a specific outfit for a social event.", "She inherited a sewing business from her grandmother."], "a": 1, "e": "She made clothes when she couldn't find a dress she liked for a party."},
+    {"q": "25. Why does Maya choose to use organic and recycled materials?", "o": ["To reduce the environmental impact of her brand.", "Because they are cheaper to buy in bulk.", "To copy a popular trend in the fashion industry."], "a": 0, "e": "The industry produces a terrifying amount of waste, so she wants her brand to be sustainable."},
+    {"q": "26. What does Maya find most difficult about her job?", "o": ["Creating original designs.", "Managing the administrative tasks.", "Finding reliable suppliers."], "a": 1, "e": "She says the real struggle is the paperwork (taxes, invoices, shipping regulations)."},
+    {"q": "27. Maya believes her social media strategy is successful because she", "o": ["hires famous models.", "posts high-quality professional photographs.", "shows the reality of her working process."], "a": 2, "e": "She posts videos of herself making mistakes; 'People like authenticity'."},
+    {"q": "28. Maya ignored advice to", "o": ["charge more money for her clothes.", "produce a large number of new designs.", "stop selling her clothes online."], "a": 1, "e": "She ignored advice to release fifty new items every season."},
+    {"q": "29. What is Maya's main goal for the next year?", "o": ["To start selling her clothes internationally.", "To open a real store on a street.", "To expand her team of designers."], "a": 1, "e": "She wants to open a physical shop so people can feel the fabrics."},
+    {"q": "30. What does Maya imply about the fashion industry in general?", "o": ["It relies too much on social media.", "It produces too many cheap products.", "It is a highly wasteful business."], "a": 2, "e": "She says 'The fashion industry produces a terrifying amount of waste'."}
+  ], "m": 7}
+];
+
+var T=["Extract one. Woman: Have you finished reading that crime novel I lent you? Man: Yes, I finished it last night. The main character was really interesting. Woman: I know, he's so unpredictable. Did you guess who committed the crime? Man: Actually, no! Usually, I figure it out halfway through, but the twist at the end of this one completely caught me by surprise. It was brilliantly written. {pause} Extract two. Radio presenter: If you are travelling into the city this weekend, please be aware that the central train station will be closed for engineering works. All services will terminate at Parkway station. A replacement bus service will be running to take passengers into the city centre, but please allow an extra forty minutes for your journey. Normal train services will resume on Monday morning. {pause} Extract three. Boy: Are you still going to football practice this evening? Girl: I don't think so. I hurt my ankle yesterday during the match, and it's still quite swollen. Boy: Oh no, that's a shame. Should I tell the coach you won't be there? Girl: Yes, please. Tell him I'm going to rest it for a few days, but I hope to be back for the game on Sunday. {pause} Extract four. Man: Excuse me, I bought this coffee machine here last month, and it's stopped working. It just won't turn on. Woman: I'm sorry to hear that. Do you have your receipt? Man: Yes, here it is. Woman: Okay, because it's under guarantee, I can offer you a full refund, or you can exchange it for a new one of the same model. Man: I really liked the coffee it made, so I'll take a replacement, please. {pause} Extract five. Tour guide: Welcome to the ancient ruins of the Roman baths. As we walk through, please keep to the marked wooden pathways. The stone floors are over two thousand years old and are very fragile, so we ask that you do not step on them. You can take as many photos as you like, and the tour will end at the museum gift shop. {pause} Extract six. Woman: How did your job interview go? Man: I think it went quite well. I was nervous at first, but the panel was very friendly. Woman: Did they ask any difficult questions? Man: A few, mostly about my previous experience. But I had prepared some good examples, so I felt confident answering them. They said they'd let me know by Friday. {pause} Extract seven. Chef: When you're making this sauce, the most crucial thing is not to rush it. Many people turn the heat up high to make it cook faster, but that just burns the onions and ruins the flavour. You have to keep the heat low and stir it constantly for at least twenty minutes. That's the only way to get a rich, sweet taste. {pause} Extract eight. Girl: I'm really struggling with this physics assignment. I just don't understand the formulas. Boy: Have you looked at the online tutorial the teacher recommended? Girl: No, I forgot about that. Boy: You should definitely watch it. It breaks down the math step-by-step. If you're still stuck after that, I can come over and help you with it this evening.", "Hello everyone. My name is David, and I've been working as an underwater photographer for about ten years now. Most people assume I started out as a scuba diving instructor, but my original profession was actually architecture. I just did diving on my holidays. My first big photographic assignment was in the Caribbean. It was an amazing trip. The biggest challenge wasn't the sharks, as you might think, but the strong currents in the water. They make it incredibly difficult to hold the camera steady. When I'm taking pictures, my favourite subjects are definitely the coral reefs. The colours are just unbelievable. Of course, the equipment is very expensive. To protect my camera, it goes inside a special housing made of thick plastic. Even with that, you have to be very careful with saltwater. I travel a lot for my job. Last year I spent two months in the Maldives. Next spring, I'm really excited because I'm going to an island in Indonesia to photograph sea turtles. If you want to try underwater photography, my best advice is to practice your buoyancy first. If you can't float perfectly still, you'll never get a sharp picture. And remember, patience is essential. Sometimes you have to wait an hour for a fish to swim into the perfect light.", "Speaker 1: I entered the 10k town run because my friends were doing it. I didn't train enough and my legs ached for days afterwards. However, seeing the huge crowds lining the streets cheering us on was incredible. That community spirit really kept me going when I wanted to stop. {short} Speaker 2: I took part in the amateur tennis tournament. I was knocked out in the first round, which was a bit disappointing. But honestly, I was amazed by how professional the event was. The referees, the courts, and the scheduling were all organized perfectly. It felt like a major professional tournament. {short} Speaker 3: I joined a team for the charity swimming relay. We didn't win, but we managed to collect over five hundred pounds for the local hospital, which was the main goal. It felt great to do something physical that actually benefited the community in a practical way. {short} Speaker 4: I entered the local cycling race. I was leading for the first half, but then I got a flat tyre and had to retire from the race. It was incredibly frustrating because I knew I was fit enough to win it. I'll definitely be back next year to prove myself. {short} Speaker 5: I competed in the martial arts championship. I was very nervous because I was much older than most of the other competitors. Surprisingly, I actually ended up winning a silver medal! I really didn't expect to do so well, so it was a massive confidence boost for me.", "Interviewer: Maya, you are twenty-four and you recently launched your own clothing brand. Have you always wanted to be a fashion designer? Maya: Actually, no. At school I was entirely focused on science. I only started making clothes when I couldn't find a dress I liked for a party, so I bought some fabric and made one myself using a sewing machine my grandmother gave me. Interviewer: Your brand is known for being environmentally friendly. Why is that important to you? Maya: The fashion industry produces a terrifying amount of waste. I decided early on that I only wanted to use organic cotton and recycled materials. It's more expensive to produce, but my customers appreciate that they are buying something sustainable. Interviewer: What is the hardest part of running your own business? Maya: Everyone assumes it's the creative side, coming up with new designs. But I find that easy. The real struggle is the paperwork. Dealing with taxes, invoices, and shipping regulations takes up a huge amount of my time, and it's quite boring. Interviewer: You use social media a lot to promote your brand. Maya: Yes, it's vital. But I don't just post polished, professional photos of models. I post videos of myself making mistakes in the studio, or struggling to cut a pattern. People like authenticity. They connect with a person, not just a product. Interviewer: Have you received any bad advice along the way? Maya: A business advisor told me I needed to release fifty new items every season to stay relevant. I ignored that. I prefer to release a small collection of ten high-quality pieces. It's less stressful and fits my sustainable ethos better. Interviewer: What are your goals for next year? Maya: I want to open a physical shop. Selling online is great, but clothes are tactile. I want people to be able to walk in and feel the quality of the fabrics before they buy them. Interviewer: Thanks, Maya."], FULL=true, AUDIO=["","","",""];
+
+var ASSESSOR_EMAIL="oxfampreparation@email.cz";
+
+function wc(t){var m=t.trim().match(/\S+/g);return m?m.length:0}
+function winit(){
+  document.querySelectorAll("textarea").forEach(function(t){
+    t.oninput=function(){document.getElementById(t.id+"c").textContent=wc(t.value)+" words"}
+  });
+  document.querySelectorAll("[data-c]").forEach(function(b){
+    b.onclick=function(){var t=document.getElementById(b.dataset.c).value;if(navigator.clipboard)navigator.clipboard.writeText(t)}
+  });
+  document.querySelectorAll("[data-s]").forEach(function(b){
+    b.onclick=function(){
+      var t=document.getElementById(b.dataset.s).value,nm=document.getElementById("nm").value;
+      if(!wc(t)){
+        b.textContent="Write something first!";
+        setTimeout(function(){b.textContent="Send to assessor"},2000);
+        return;
+      }
+      var body=encodeURIComponent("Student: "+nm+"\n\n"+t),big=body.length>1500;
+      if(big&&navigator.clipboard)navigator.clipboard.writeText(t);
+      location.href="mailto:"+ASSESSOR_EMAIL+"?subject="+encodeURIComponent("FCE 2026 Test 11 "+b.dataset.t+" - "+nm)+"&body="+(big?encodeURIComponent("Student: "+nm+"\n\n(My text is copied. Please paste it here.)"):body)
+    }
+  })
+}
+
+var playId=0;
+
+function say(i,done){
+  var id=++playId;speechSynthesis.cancel();
+  var parts=T[i].split(/(\{pause\}|\{short\}|\bSpeaker \d:|\b(?:Maya|Boy|Girl|Woman|Man|Interviewer|David|Chef|Tour guide|Radio presenter):)/),q=[],pitch=1,flip=0,names={};
+  parts.forEach(function(x){
+    x=x.trim();if(!x)return;
+    if(x==="{pause}"||x==="{short}"){q.push({w:x==="{pause}"?2500:1200});pitch=1;return}
+    var sp=x.match(/^Speaker (\d):$/);if(sp){q.push({t:"Speaker "+sp[1],p:1,w:700});return}
+    if(/^[A-Za-z ]+:$/.test(x)){var n=x.slice(0,-1);if(!(n in names))names[n]=(flip++%2)?1.25:.85;pitch=names[n];return}
+    (x.match(/[^.?!]+[.?!]*/g)||[x]).forEach(function(z){q.push({t:z.trim(),p:pitch,w:300})})
+  });
+  var k=0;(function next(){
+    if(id!==playId)return;
+    if(k>=q.length){done();return}
+    var s=q[k++];
+    if(!s.t){setTimeout(next,s.w);return}
+    var u=new SpeechSynthesisUtterance(s.t);u.lang="en-GB";u.rate=0.95;u.pitch=s.p;
+    u.onend=function(){setTimeout(next,s.w)};u.onerror=function(){setTimeout(next,s.w)};
+    speechSynthesis.speak(u);
+  })()
+}
+
+function play(b){
+  if(b._busy)return;
+  var i=+b.dataset.i;
+  function fin(){b._busy=false;if(b._n>=2){b.disabled=true;b.textContent="Played twice"}else b.textContent="Play again (last time)"}
+  if(!AUDIO[i]&&!window.speechSynthesis){b.textContent="TTS not supported.";return}
+  b._n=(b._n||0)+1;b._busy=true;b.textContent="Playing...";
+  if(AUDIO[i]){var a=new Audio(AUDIO[i]);a.onended=fin;a.onerror=fin;a.play()}else say(i,fin)
+}
+
+function init(){
+  [["t1",75],["t2",40],["t3",80],["t4",14],["sp1",2],["sp2",1],["sp3",3],["sp4",4],["w1",40],["w2",40]].forEach(function(a){if(document.getElementById(a[0]))timer(a[0],a[1])});
+  if(!FULL)return;
+  build(R,document.getElementById("rbox"),"r");
+  build(L,document.getElementById("lbox"),"l");
+  document.getElementById("ck1").onclick=function(){check(document.getElementById("rbox"),document.getElementById("sc1"))};
+  document.getElementById("ck2").onclick=function(){check(document.getElementById("lbox"),document.getElementById("sc2"))};
+  document.querySelectorAll(".say").forEach(function(b){b.onclick=function(){play(b)}});
+  winit();
+}
+
+(function(){
+  var g=document.getElementById("gate"),m=document.getElementById("main");
+  function show(){g.hidden=true;m.hidden=false;if(window.init)init()}
+  if(unlocked()){show();return}
+  document.getElementById("gf").onsubmit=function(e){
+    e.preventDefault();
+    if(document.getElementById("pw").value===PW){
+      try{sessionStorage.setItem("cae26","1")}catch(x){}
+      show();
+    } else {
+      document.getElementById("err").textContent="Wrong password.";
+    }
+  }
+})();
+</script>
+</body>
+</html>
