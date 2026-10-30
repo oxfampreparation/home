@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CPE 2026 Test 20 - Oxfam Preparation</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,500..800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* Default theme is explicitly light */
+:root {
+  --bg: #f6f7fb;
+  --paper: #fff;
+  --ink: #14213d;
+  --muted: #4b5266;
+  --line: #d5d9e6;
+  --mark: #2b59ff;
+  --hi: #ffe45e;
+  --ok: #1a7f52;
+  --bad: #b3261e;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Dark theme applied ONLY when data-theme="dark" is present */
+:root[data-theme="dark"] {
+  --bg: #0f1526;
+  --paper: #182038;
+  --ink: #eef1fb;
+  --muted: #a9b1c9;
+  --line: #2c3656;
+  --mark: #7d9bff;
+  --hi: #e9d24a;
+  --ok: #57c58f;
+  --bad: #ff8a80;
+}
+
+html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: border-box; }
+
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1.0625rem/1.6 "Atkinson Hyperlegible", system-ui, sans-serif; }
+h1, h2, h3 { font-family: Archivo, "Helvetica Neue", Arial, sans-serif; line-height: 1.05; margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--mark); outline-offset: 3px; }
+.wrap { max-width: 74rem; margin: 0 auto; padding: 0 1.25rem; }
+
+header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .75rem; padding: 1.25rem 0; position: sticky; top: 0; background: var(--bg); z-index: 100; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+.head-left { display: flex; align-items: center; gap: .75rem; }
+#menuToggle { background: transparent; border: none; cursor: pointer; color: var(--ink); display: flex; padding: .25rem; border-radius: .25rem; }
+#menuToggle:hover { background: var(--line); }
+#menuToggle svg { width: 1.6rem; height: 1.6rem; }
+.logo { font: 800 1.25rem Archivo, sans-serif; text-decoration: none; }
+nav a { margin-left: 1.25rem; text-decoration: none; color: var(--muted); }
+nav a:hover { color: var(--ink); }
+
+.btn { display: inline-block; background: var(--ink); color: var(--bg); padding: .8rem 1.4rem; border-radius: .5rem; font-weight: 700; text-decoration: none; border: 0; cursor: pointer; font-size: 1rem; font-family: inherit; }
+.btn.alt { background: transparent; color: var(--ink); border: 2px solid var(--ink); }
+.hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2rem; align-items: start; padding: 1rem 0 3rem; }
+.hero-text { margin-top: 2.5rem; }
+
+h1 { font-size: clamp(2rem, 3.4vw, 3rem); font-weight: 800; font-stretch: 90%; letter-spacing: -.02em; margin-top: 1rem; margin-bottom: 0; }
+h1 span { background: linear-gradient(transparent 62%, var(--hi) 62%); }
+.lead { color: var(--muted); max-width: 32rem; margin: 1.25rem 0 1.75rem; font-size: 1.15rem; }
+.row { display: flex; gap: .75rem; flex-wrap: wrap; }
+
+.sheet { background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.sheet h2 { font-size: 1.1rem; margin-bottom: .25rem; }
+.sheet p { margin: 0 0 1rem; color: var(--muted); font-size: .95rem; }
+.q { padding: .7rem 0; border-top: 1px solid var(--line); }
+.q b { display: inline-block; font-weight: 800; margin-bottom: .45rem; margin-right: 0.5rem; }
+
+.opts { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem; width: fit-content; }
+.opt { display: flex; align-items: center; gap: .4rem; padding: .3rem .7rem .3rem .35rem; border: 1.5px solid var(--line); border-radius: 2rem; background: transparent; color: inherit; font-size: .95rem; cursor: pointer; width: fit-content; }
+.opt i { width: 1.4rem; height: 1.4rem; border-radius: 50%; border: 2px solid var(--muted); display: grid; place-items: center; font: 700 .7rem Archivo, sans-serif; font-style: normal; flex-shrink: 0; }
+
+.opt[aria-pressed="true"] { border-color: var(--mark); }
+.opt[aria-pressed="true"] i { background: var(--mark); border-color: var(--mark); color: var(--bg); }
+.opt.right { border-color: var(--ok); } .opt.right i { background: var(--ok); border-color: var(--ok); color: var(--bg); }
+.opt.wrong { border-color: var(--bad); } .opt.wrong i { background: var(--bad); border-color: var(--bad); color: var(--bg); }
+.result { margin-top: 1rem; font-weight: 700; min-height: 1.6rem; }
+section { padding: 3.5rem 0; border-top: 1px solid var(--line); }
+h2.t { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: .75rem; letter-spacing: -.01em; }
+
+.sub, .txt { color: var(--muted); max-width: 48rem; margin: 0 0 2rem; white-space: pre-line; line-height: 1.6; }
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: .6rem; background: var(--paper); }
+table { border-collapse: collapse; width: 100%; min-width: 38rem; }
+th, td { text-align: left; padding: .9rem 1rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font: 800 1.2rem Archivo, sans-serif; white-space: nowrap; }
+td small { display: block; font: 400 .9rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+
+.support-strip { position: fixed; bottom: 0; left: 0; right: 0; background: var(--ink); color: var(--bg); padding: 1rem 1.25rem; z-index: 999; box-shadow: 0 -4px 12px rgba(0,0,0,0.15); }
+.support-strip-inner { max-width: 74rem; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; width: 100%; font-weight: 700; }
+footer { border-top: 1px solid var(--line); padding: 2rem 0 5rem; color: var(--muted); font-size: .95rem; }
+
+.lang { display: flex; gap: .25rem; flex-wrap: wrap; } .lang button { font: 700 .8rem Archivo, sans-serif; padding: .35rem .6rem; border: 1.5px solid var(--line); border-radius: .4rem; background: transparent; color: var(--muted); cursor: pointer; } .lang button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.layout { display: grid; grid-template-columns: 12.5rem minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+.layout.collapsed { grid-template-columns: 1fr; gap: 0; }
+.layout.collapsed .side { display: none; }
+.side { position: sticky; top: 5rem; max-height: calc(100vh - 6rem); max-height: calc(100dvh - 6rem); overflow-y: auto; display: flex; flex-direction: column; gap: .15rem; }
+summary { cursor: pointer; font: 700 .95rem Archivo, sans-serif; color: var(--muted); padding: .4rem .75rem; border-radius: .5rem; } summary:hover { color: var(--ink); } .ex[open] summary { margin-bottom: .15rem; }
+.side nav { display: flex; flex-direction: column; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); } .side nav a { margin: 0; color: inherit; } .side .lang { margin-bottom: 1rem; }
+.side p { margin: 0 0 .5rem; font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+.side a { text-decoration: none; padding: .5rem .75rem; border-radius: .5rem; font: 700 1rem Archivo, sans-serif; border-left: 3px solid transparent; }
+.side a small { display: block; font: 400 .8rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+.side a:hover { background: var(--paper); border-left-color: var(--mark); }
+tr:target td { background: var(--hi); color: #14213d; } tr:target td small { color: #14213d; }
+
+@media (max-width: 52rem) { .layout { grid-template-columns: 1fr; gap: 0; } .side { position: static; max-height: none; margin: 0 0 1rem; padding: 0 0 1rem; border-bottom: 1px solid var(--line); } }
+
+.hr { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; } .hr .btn { padding: .45rem 1rem; font-size: .9rem; }
+dialog { border: 2px solid var(--ink); border-radius: .75rem; background: var(--paper); color: var(--ink); padding: 1.5rem; width: min(26rem, 92vw); max-height: 90vh; overflow: auto; } dialog::backdrop { background: rgba(10,16,32,.55); }
+dialog h2 { font-size: 1.4rem; margin-bottom: .5rem; } dialog label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+dialog input { width: 100%; padding: .65rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.demo { color: var(--muted); font-size: .9rem; margin: .5rem 0 0; } .err { color: var(--bad); min-height: 1.5rem; margin-top: .5rem; font-size: .95rem; }
+
+@media (max-width: 40rem) {
+  .wrap { padding: 0 1rem; }
+  header { padding: 1rem 0; }
+  .hero { padding-bottom: 2rem; }
+  .sheet { padding: 1.1rem; }
+  section { padding: 2.5rem 0; }
+  .scroll { border: 0; background: transparent; overflow: visible; }
+  table, tbody, tr, td { display: block; min-width: 0; width: 100%; }
+  thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  tr { background: var(--paper); border: 1px solid var(--line); border-radius: .6rem; padding: .6rem 0; margin-bottom: .75rem; }
+  td { border: 0; padding: .15rem 1rem; }
+  td:first-child { font-size: 1.3rem; padding-top: .4rem; }
+  tr:target { border-color: var(--ink); }
+}
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+html { scroll-padding-top: calc(5rem + env(safe-area-inset-top, 0px)); }
+body header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); padding: .6rem 0; border-bottom: 1px solid var(--line); }
+.brand { display: flex; align-items: center; gap: .75rem; }
+body .logo { font-size: 1.85rem; letter-spacing: -.02em; }
+.mbtn { display: inline-flex; flex-direction: column; justify-content: center; gap: 5px; width: 2.75rem; height: 2.75rem; padding: 0 .7rem; border: 2px solid var(--ink); border-radius: .5rem; background: transparent; cursor: pointer; flex: none; }
+.mbtn span { display: block; height: 2px; background: var(--ink); border-radius: 2px; }
+.mbtn:hover { background: var(--paper); }
+body .side { top: 5.5rem; max-height: calc(100vh - 6.5rem); max-height: calc(100dvh - 6.5rem); }
+body.nomenu .layout { grid-template-columns: minmax(0, 1fr); }
+body.nomenu .side { display: none; }
+body:has(#app[hidden]) .mbtn { display: none; }
+.side>.hr { margin-bottom: 1rem; }
+.scrim { display: none; }
+
+@media (max-width: 52rem) {
+  body .side { position: fixed; top: 0; left: 0; bottom: 0; width: min(19rem, 86vw); max-height: none; margin: 0; padding: calc(1rem + env(safe-area-inset-top, 0px)) 1rem calc(1rem + env(safe-area-inset-bottom, 0px)); background: var(--paper); border: 0; border-right: 2px solid var(--ink); z-index: 50; overflow-y: auto; transform: translateX(-105%); visibility: hidden; transition: transform .25s ease, visibility 0s .25s; }
+  body.menuopen .side { transform: none; visibility: visible; transition: transform .25s ease; }
+  body .side nav { flex-direction: column; flex-wrap: nowrap; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+  body .side nav a { padding: .5rem .75rem; }
+  .scrim { display: block; position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: rgba(10,16,32,.5); z-index: 40; opacity: 0; pointer-events: none; transition: opacity .25s; }
+  body.menuopen .scrim { opacity: 1; pointer-events: auto; }
+  body .logo { font-size: 1.6rem; }
+}
+
+.gatebox { max-width: 26rem; margin: 2rem auto; background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.gatebox label, .wr label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+input[type=text], input[type=password], textarea { width: 100%; padding: .6rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.q input[type=text] { width: 14rem; max-width: 100%; }
+.part { background: var(--paper); border: 1px solid var(--line); border-radius: .75rem; padding: 1.5rem; margin-bottom: 1.25rem; }
+.q.ok { border-left: 4px solid var(--ok); padding-left: .75rem; } .q.no { border-left: 4px solid var(--bad); padding-left: .75rem; } .fb { font-weight: 700; margin-top: .25rem; }
+.tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0; }
+nav.tabs a { margin: 0; padding: .4rem 1rem; border: 1.5px solid var(--line); border-radius: 2rem; text-decoration: none; font-weight: 700; }
+nav.tabs a[aria-current=page] { background: var(--ink); color: var(--bg); }
+.bar { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; margin: 1rem 0; } .time { font: 800 1.6rem Archivo, sans-serif; }
+.pics { display: flex; gap: 1rem; flex-wrap: wrap; } .pics svg, .pics img { flex: 1 1 14rem; max-width: 22rem; border: 2px solid var(--ink); border-radius: .5rem; background: var(--paper); object-fit: cover; aspect-ratio: 3/2; }
+textarea { min-height: 15rem; } .tr { display: none; } .note { padding: .75rem 1rem; border-left: 4px solid var(--mark); background: var(--paper); margin: 1rem 0; }
+.sec { padding-top: 2rem; margin-top: 2rem; border-top: 1px solid var(--line); } .jump { margin-top: 0; } .ex { color: var(--muted); margin-top: .15rem; font-size: .95rem; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header id="siteHeader">
+  <div class="head-left">
+    <button id="menuToggle" aria-label="Toggle menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+    <a class="logo" href="../index.html">Oxfam Preparation</a>
+  </div>
+  <div class="hr">
+    <button class="btn alt" style="padding:.45rem .6rem; min-width:0; font-size:1.1rem" id="themeBtn" aria-label="Toggle theme">🌙</button>
+    <button class="btn" type="button" id="loginBtn">Log in</button>
+  </div>
+</header>
+
+<div class="layout">
+<aside class="side" aria-label="Menu">
+  <nav>
+    <a href="../cpe.html">All tests</a>
+  </nav>
+</aside>
+<main id="top">
+
+<div id="gate">
+  <div class="gatebox">
+    <h1><span>CPE 2026</span></h1>
+    <p>Enter the password to open this test.</p>
+    <form id="gf">
+      <label for="pw">Password</label>
+      <input id="pw" type="password" autocomplete="off">
+      <div class="err" id="err"></div>
+      <div class="row" style="margin-top:1rem">
+        <button class="btn" type="submit">Open</button>
+        <a class="btn alt" href="../cpe.html">Back</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="main" hidden>
+  <h1 style="margin-top: 1rem">CPE 2026 - Test 20 (C2 Proficiency)</h1>
+  <nav class="tabs jump" aria-label="Papers" style="margin-top: 2.5rem; margin-bottom: 2rem">
+    <a href="#rd">Reading and Use of English</a>
+    <a href="#li">Listening</a>
+    <a href="#wt">Writing</a>
+    <a href="#sk">Speaking</a>
+  </nav>
+
+  <section class="sec" id="rd">
+    <h2 class="t">Reading and Use of English (1 hour 30 minutes)</h2>
+    <div class="bar"><span class="time" id="t1"></span><button class="btn alt" type="button">Start</button></div>
+    <div id="rbox"></div>
+    <div class="bar"><button class="btn" id="ck1" type="button">Check answers</button><b id="sc1"></b></div>
+  </section>
+
+  <section class="sec" id="li">
+    <h2 class="t">Listening (about 40 minutes)</h2>
+    <div class="bar"><span class="time" id="t2"></span><button class="btn alt" type="button">Start</button></div>
+    <p class="note">The recordings are read aloud by your browser. Each recording can be played twice, as in the real exam. Use headphones.</p>
+    <div id="lbox"></div>
+    <div class="bar"><button class="btn" id="ck2" type="button">Check answers</button><b id="sc2"></b></div>
+  </section>
+
+  <section class="sec" id="wt">
+    <h2 class="t">Writing (1 hour 30 minutes)</h2>
+    <div class="bar"><span class="time" id="t3"></span><button class="btn alt" type="button">Start</button></div>
+    <div class="wr">
+      <label for="nm">Your name</label>
+      <input type="text" id="nm">
+      
+      <div class="part">
+        <h2>Part 1 - Discursive Essay (compulsory)</h2>
+        <div class="bar"><span class="time" id="w1"></span><button class="btn alt" type="button">Start</button></div>
+        <p>Read the two texts below. Write an essay summarising and evaluating the key points from both texts. Use your own words throughout as far as possible, and include your own ideas in your answers.</p>
+        <div class="note">
+          <strong>Text 1: The Democratic Imperative of Mandatory Voting</strong><br>
+          In democratic societies plagued by chronically low voter turnout, the implementation of mandatory voting is a necessary structural correction. When civic participation becomes entirely optional, the electoral process is inevitably hijacked by highly motivated, often radicalized fringe demographics. This systemic apathy allows wealthy interest groups to disproportionately dictate national policy. Compulsory voting forces the entire socio-economic spectrum into the political arena, compelling governments to genuinely address the nuanced concerns of the marginalized working classes rather than catering exclusively to elite donors. It transforms the act of voting from a mere personal privilege into a fundamental, shared civic duty, essentially anchoring the legitimacy of the state.
+          <br><br>
+          <strong>Text 2: The Right to Political Abstention</strong><br>
+          Coercing citizens to the ballot box under the threat of punitive fines is a profound violation of democratic liberty. The right to vote must inherently include the right to consciously abstain. Abstention is frequently a deliberate, powerful political statement—a profound rejection of a corrupted electoral system or a deeply flawed roster of candidates. Mandating participation merely forces millions of disengaged, utterly uninformed individuals to cast random, arbitrary votes, thereby violently diluting the deliberate choices of the politically literate electorate. True democratic engagement cannot be aggressively legislated; it must be organically cultivated through transparent governance, rigorous education, and the presentation of genuinely inspiring political alternatives.
+        </div>
+        <p>Write your essay in <strong>240 - 280</strong> words.</p>
+        <textarea id="e1" aria-label="Answer"></textarea>
+        <div class="bar">
+          <b id="e1c">0 words</b>
+          <button class="btn alt" type="button" data-c="e1">Copy</button>
+          <button class="btn" type="button" data-s="e1" data-t="Part 1 essay">Send to assessor</button>
+        </div>
+      </div>
+      
+      <div class="part">
+        <h2>Part 2 - Choose ONE task</h2>
+        <div class="bar"><span class="time" id="w2"></span><button class="btn alt" type="button">Start</button></div>
+        <p>Write an answer to one of the questions (a - c) in this part. Write your answer in <strong>280 - 320</strong> words in an appropriate style.</p>
+        <p>
+          <strong>(a) Proposal:</strong> Your city council has secured funding to drastically overhaul its outdated, inefficient municipal recycling infrastructure. Write a proposal outlining a radical new strategy. You should evaluate the implementation of automated, AI-driven sorting facilities, propose a community incentivization program to increase household compliance, and justify why this investment will ultimately be financially self-sustaining.<br><br>
+          <strong>(b) Review:</strong> A prominent historical magazine is running a special feature titled 'Shadows and Secrets'. They are seeking reviews of critically acclaimed documentaries that explore the history of international espionage. Write a review describing a documentary you have watched, evaluating how effectively the director utilizes declassified archival footage to build tension, and analyzing the moral ambiguities highlighted by the narrative.<br><br>
+          <strong>(c) Letter:</strong> Your national government has recently proposed implementing a punitive, incredibly high 'sugar tax' on all heavily processed foods to combat the rising healthcare costs of obesity. Write a letter to the editor of a major newspaper fiercely complaining about this policy. You should argue that it is a regressive tax that disproportionately punishes low-income families, outline the failure of the state to subsidize healthy alternatives, and propose a more educational approach to public health.
+        </p>
+        <textarea id="e2" aria-label="Answer"></textarea>
+        <div class="bar">
+          <b id="e2c">0 words</b>
+          <button class="btn alt" type="button" data-c="e2">Copy</button>
+          <button class="btn" type="button" data-s="e2" data-t="Part 2 task">Send to assessor</button>
+        </div>
+      </div>
+    </div>
+    <p class="note">Sending opens your email app with your text. Very long texts are copied to the clipboard so you can paste them.</p>
+  </section>
+
+  <section class="sec" id="sk">
+    <h2 class="t">Speaking (16 minutes)</h2>
+    <div class="bar"><span class="time" id="t4"></span><button class="btn alt" type="button">Start</button></div>
+    <p class="note">Practise with a partner or teacher. The real test involves two candidates and two examiners.</p>
+    
+    <div class="part">
+      <h2>Part 1 - Interview (2 minutes)</h2>
+      <div class="bar"><span class="time" id="sp1"></span><button class="btn alt" type="button">Start</button></div>
+      <ul>
+        <li>In what ways do you believe modern society has become overly reliant on instantaneous communication?</li>
+        <li>How important is it for governments to aggressively fund the exploration of the deep ocean?</li>
+        <li>To what extent do you feel that the traditional concept of 'retirement' is becoming obsolete?</li>
+        <li>If you could mandate a single global reform to improve the education system, what would it be?</li>
+      </ul>
+    </div>
+    
+    <div class="part">
+      <h2>Part 2 - Collaborative Task (4 minutes)</h2>
+      <div class="bar"><span class="time" id="sp2"></span><button class="btn alt" type="button">Start</button></div>
+      <p>Here are two photographs illustrating people interacting with historical artifacts. First, talk together about the different ethical and logistical challenges involved in preserving history in these two distinct environments. Then, decide which environment provides a more profound educational experience for the general public.</p>
+      
+      <p style="margin-top:1.5rem"><b>Interacting with History</b></p>
+      <div class="pics">
+        <img src="https://images.unsplash.com/photo-1544928147-79a2dbc1f389?w=600&h=400&fit=crop" onerror="this.src='https://placehold.co/600x400/f6f7fb/14213d?text=Museum+Gallery'" alt="A serene, brightly lit modern museum gallery displaying pristine ancient artifacts behind thick security glass.">
+        <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&h=400&fit=crop" onerror="this.src='https://placehold.co/600x400/f6f7fb/14213d?text=Archaeological+Dig'" alt="A chaotic, dusty archaeological dig site where workers are meticulously brushing dirt from newly discovered ruins.">
+      </div>
+    </div>
+    
+    <div class="part">
+      <h2>Part 3 - Long Turn & Discussion (10 minutes)</h2>
+      <div class="bar"><span class="time" id="sp3"></span><button class="btn alt" type="button">Start</button></div>
+      <p><b>Candidate A (2 minutes):</b> Look at the prompt card and talk about it. Candidate B will then answer a question.</p>
+      <div class="sheet" style="margin-bottom: 1.5rem;">
+        <b>To what extent does the concept of intellectual property stifle genuine innovation?</b>
+        <ul>
+          <li>The monopolization of life-saving pharmaceutical patents</li>
+          <li>The necessity of financial incentives for corporate research</li>
+          <li>The democratization of information through open-source networks</li>
+        </ul>
+      </div>
+      <p><i>Question for Candidate B:</i> Do you believe the internet should be treated as a borderless, entirely unregulated zone for sharing ideas?</p>
+      
+      <p style="margin-top:2rem"><b>Candidate B (2 minutes):</b> Look at the prompt card and talk about it. Candidate A will then answer a question.</p>
+      <div class="sheet" style="margin-bottom: 1.5rem;">
+        <b>How does the modern glorification of extreme sports impact human psychology?</b>
+        <ul>
+          <li>The relentless societal pressure to constantly push physical boundaries</li>
+          <li>The commercialization of danger by global energy drink brands</li>
+          <li>The profound psychological clarity achieved through facing absolute risk</li>
+        </ul>
+      </div>
+      <p><i>Question for Candidate A:</i> Is the desire to participate in life-threatening activities merely a symptom of profound urban boredom?</p>
+
+      <p style="margin-top:2rem"><b>General Discussion:</b></p>
+      <ul>
+        <li>Some cultural theorists argue that we are entering an era of 'post-truth' politics where objective facts no longer matter. What is your assessment?</li>
+        <li>How might the widespread adoption of lab-grown synthetic organs permanently alter the ethics of the medical transplant industry?</li>
+        <li>Does the intense global focus on highly profitable STEM degrees dangerously devalue the study of human history and philosophy?</li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+</main>
+</div>
+
+<div class="support-strip">
+  <div class="support-strip-inner">
+    <div><span _k="Customer support every day from 9:00 to 16:30">Customer support every day from 9:00 to 16:30</span></div>
+    <div class="support-info">
+      <a href="mailto:oxfampreparation@email.cz">oxfampreparation@email.cz</a>
+      <a href="tel:+420723200988">+420 723 200 988</a>
+    </div>
+  </div>
+</div>
+
+<footer>© 2020-2026 Oxfam - Oxford family. All rights reserved. Not affiliated with Cambridge University Press &amp; Assessment. Exam names belong to their owners.</footer>
+</div>
+
+<dialog id="dlg" aria-labelledby="dt">
+<h2 id="dt">Sign in to open your tests</h2>
+<form id="lf" novalidate>
+<label for="em">Email</label><input id="em" type="email" autocomplete="username">
+<label for="pw">Password</label><input id="pw" type="password" autocomplete="current-password">
+<p class="demo" id="demo" hidden>Demo mode: any email and password is accepted.</p>
+<div class="err" id="err" aria-live="polite"></div>
+<div class="row" style="margin-top:1rem"><button class="btn" type="submit">Log in</button><button class="btn alt" type="button" id="cancel">Cancel</button></div>
+</form>
+</dialog>
+
+<script>
+var PW="Ct5O";
+function unlocked(){try{return sessionStorage.getItem("cpe26_20")==="1"}catch(e){return false}}
+
+function norm(s){return s.toLowerCase().replace(/\u2019/g,"'").replace(/\s+/g," ").trim()}
+
+function build(parts,box,pre){
+  var n=0;pre=pre||"";
+  parts.forEach(function(p,pi){
+    var d=document.createElement("section");d.className="part";
+    d.innerHTML="<h2>"+p.t+"</h2>"+(p.m?"<div class='bar'><span class='time' id='pt"+pre+pi+"'></span><button class='btn alt' type='button'>Start</button> <small>suggested time</small></div>":"")+"<p class='sub'>"+p.i+"</p>"+(p.x?"<p class='txt'>"+p.x+"</p>":"")+(p.im||"")+"<div class='items'></div>";
+    var it=d.querySelector(".items");
+    p.q.forEach(function(q){
+      n++;var r=document.createElement("div");r.className="q";
+      var h="<b>"+n+"</b> "+(q.q||"")+(q.h?" <strong>"+q.h+"</strong>":"");
+      if(q.o){
+        var optsHtml = q.o.map(function(o,i){
+          var letter = "ABCDEFGH"[i];
+          var text = o === letter ? "" : o;
+          return "<label class='opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> "+text+"</label>";
+        }).join("");
+        h+="<div class='opts'>"+optsHtml+"</div>";
+      } else {
+        h+=" <input type='text' autocomplete='off' aria-label='Answer "+n+"'>";
+      }
+      r.innerHTML=h;r._q=q;it.appendChild(r);
+    });
+    box.appendChild(d);
+    if(p.m)timer("pt"+pre+pi,p.m);
+  });
+}
+
+function check(box,out){
+  var tot=0,ok=0;
+  box.querySelectorAll(".part").forEach(function(part){
+    var pTot=0,pOk=0;
+    part.querySelectorAll(".q").forEach(function(r){
+      pTot++;var q=r._q,good,ans;
+      if(q.o){
+        var c=r.querySelector("input:checked");
+        good=c&&+c.value===q.a;
+        var letter = "ABCDEFGH"[q.a];
+        ans = q.o[q.a] === letter ? letter : letter + " " + q.o[q.a];
+      } else {
+        var v=norm(r.querySelector("input").value);
+        good=q.a.some(function(a){return norm(a)===v});
+        ans=q.a[0];
+      }
+      r.classList.toggle("ok",!!good);
+      r.classList.toggle("no",!good);
+      var f=r.querySelector(".fb");
+      if(!f){f=document.createElement("div");f.className="fb";r.appendChild(f)}
+      f.textContent=good?"Correct":"Answer: "+ans;
+      var x=r.querySelector(".ex");
+      if(!x){x=document.createElement("div");x.className="ex";r.appendChild(x)}
+      x.textContent=q.e||"";
+      if(good)pOk++;
+    });
+    if(pTot>0){
+      var ps=part.querySelector(".pscore");
+      if(!ps){ps=document.createElement("div");ps.className="pscore note";ps.style.marginTop="1.5rem";part.appendChild(ps)}
+      ps.innerHTML="<b>Part score:</b> "+pOk+" / "+pTot;
+    }
+    tot+=pTot;ok+=pOk;
+  });
+  out.textContent="Total score: "+ok+" / "+tot;
+  box.querySelectorAll(".tr").forEach(function(e){e.style.display="block"});
+}
+
+function timer(id,min){
+  var e=document.getElementById(id),l=min*60,t=null;
+  if(!e)return;
+  function s(){e.textContent=("0"+Math.floor(l/60)).slice(-2)+":"+("0"+l%60).slice(-2)}s();
+  e.nextElementSibling.onclick=function(){
+    if(t){clearInterval(t);t=null;this.textContent="Start";return}
+    this.textContent="Pause";
+    t=setInterval(function(){l--;s();if(l<=0)clearInterval(t)},1000);
+  }
+}
+
+var R = [
+  {"t": "Part 1 - Multiple-choice cloze", "i": "For questions 1-8, read the text below and decide which answer (A, B, C or D) best fits each gap.", "x": "The Renaissance of Stoicism\n\nIn our hyper-connected, relentlessly volatile modern era, a profound (1) ___ of interest in the ancient Hellenistic philosophy of Stoicism is rapidly sweeping through corporate boardrooms and psychological clinics alike. Confronted by an onslaught of digital noise and unprecedented global anxiety, individuals are increasingly desperate for a functional psychological (2) ___ to modern despair. \n\nStoicism, stripped of its archaic academic dust, offers a devastatingly pragmatic framework. It advocates for the ruthless (3) ___ of emotional reactivity, insisting that we must rigidly separate the events that are entirely outside our control from our internal, subjective reactions to them. By deliberately shifting our cognitive focus away from external validation, we can (4) ___ a profound sense of inner tranquillity. \n\nHowever, modern critics argue that the Silicon Valley appropriation of Stoicism is fundamentally flawed. They warn that it is frequently weaponized by billionaires as a tool for emotional detachment, encouraging individuals to passively accept (5) ___ societal injustices rather than actively fighting against them. While the ancient texts undoubtedly offer an invaluable anchor in (6) ___ times, reducing the entire philosophy to a mere 'productivity hack' designed to optimize corporate output strips it of its profound ethical core. True Stoicism does not simply demand a passive, emotionless (7) ___ to adversity; it demands a fiercely active, deeply empathetic commitment to the collective good of humanity, forging citizens who are remarkably (8) ___ in the face of inevitable tragedy.", "q": [
+    {"o": ["resurgence", "escalation", "inflation", "amplification"], "a": 0, "e": "'Resurgence' is the correct high-level noun denoting an increase or revival of something after a period of little activity."},
+    {"o": ["placebo", "panacea", "antidote", "prescription"], "a": 2, "e": "An 'antidote to modern despair' is a classic C2 collocation meaning a remedy that counteracts a negative condition."},
+    {"o": ["suppression", "subjugation", "domination", "quelling"], "a": 0, "e": "The 'suppression of emotional reactivity' refers to consciously holding back or restraining immediate emotional responses."},
+    {"o": ["foster", "cultivate", "nurture", "propagate"], "a": 1, "e": "To 'cultivate a profound sense' is a formal collocation meaning to try to acquire or develop a quality or sentiment."},
+    {"o": ["intrinsic", "innate", "inherent", "ingrained"], "a": 2, "e": "'Inherent societal injustices' refers to those that are firmly established as a permanent, essential attribute of the system."},
+    {"o": ["chaotic", "turbulent", "tumultuous", "tempestuous"], "a": 1, "e": "'Turbulent times' is a highly frequent, advanced collocation describing periods characterized by conflict or disorder."},
+    {"o": ["submission", "capitulation", "surrender", "resignation"], "a": 3, "e": "'Resignation to adversity' means the acceptance of something undesirable but inevitable."},
+    {"o": ["robust", "resilient", "steadfast", "resolute"], "a": 1, "e": "'Resilient in the face of' means able to withstand or recover quickly from difficult conditions."}
+  ], "m": 8},
+  
+  {"t": "Part 2 - Open cloze", "i": "For questions 9-16, read the text below and think of the word which best fits each gap. Use only one word in each gap.", "x": "The Ocean's Twilight Zone\n\nDirectly beneath the sunlit surface layer of the world's oceans lies a vast, poorly understood ecosystem known as the mesopelagic, or 'twilight' zone. Extending from two hundred to one thousand metres deep, this realm receives only the faintest glimmers of sunlight—not enough to support photosynthesis, but just enough for its bizarre inhabitants to navigate. (9) ___ makes this zone particularly fascinating to marine biologists is the daily migration of its biomass, which constitutes the largest coordinated movement of animals on the planet.\n\nEvery evening, billions of mesopelagic fish and crustaceans swim towards the surface under the cover of darkness to feed in the nutrient-rich upper layers. (10) ___ before dawn, they dive back into the icy, high-pressure depths to avoid visual predators. (11) ___ only does this massive vertical migration sustain the deep-sea food web, (12) ___ it also plays a critical role in regulating the Earth's climate. \n\nAs these creatures feed at the surface and subsequently defecate in the depths, they effectively sequester millions of tons of carbon dioxide, locking it safely away in the abyss. However, commercial fishing fleets are increasingly targeting this pristine zone to harvest fishmeal for agricultural use. (13) ___ it not for the extreme logistical difficulties of fishing at such depths, the twilight zone might have already been entirely decimated. If we are (14) ___ to truly protect global marine biodiversity, it is absolutely vital that international treaties establish strict, enforceable regulations before industrial trawlers irrevocably destroy an ecosystem we are only just beginning to understand. We cannot afford to lose a biological safety net upon (15) ___ the entire planet relies, let (16) ___ one that holds such profound mysteries.", "q": [
+    {"a": ["What"], "e": "'What makes this zone particularly fascinating is...' acts as a nominal relative pronoun clause forming the subject."},
+    {"a": ["Just", "Shortly"], "e": "'Just before dawn' or 'Shortly before dawn' fits the temporal context of the vertical migration."},
+    {"a": ["Not"], "e": "Inversion structure: 'Not only does this massive vertical migration... but it also...'"},
+    {"a": ["but"], "e": "Completes the 'Not only... but also' correlative conjunction."},
+    {"a": ["Were"], "e": "Conditional inversion: 'Were it not for' meaning 'If it were not for'."},
+    {"a": ["ever"], "e": "'If we are ever to truly protect' emphasizes a strong hypothetical imperative for the future."},
+    {"a": ["which"], "e": "Relative pronoun following a preposition: 'upon which the entire planet relies'."},
+    {"a": ["alone"], "e": "The idiom 'let alone' indicates that the subsequent statement is even less likely or more unthinkable."}
+  ], "m": 8},
+
+  {"t": "Part 3 - Word formation", "i": "For questions 17-24, read the text below. Use the word given in capitals at the end of some of the lines to form a word that fits in the gap in the same line.", "x": "The True Crime Epidemic\n\nOver the past decade, the explosive popularity of the 'true crime' genre across podcasts, streaming platforms, and literature has sparked a fierce sociological debate. Millions of viewers now routinely consume the darkest, most disturbing facets of human nature as casual, evening entertainment. While some psychologists argue that this (17) ___ fascination allows individuals to safely process their own subconscious anxieties in a controlled environment, critics point to a deeply troubling trend of extreme (18) ___.\n\nThe most glaring ethical flaw in modern true crime is the blatant (19) ___ of tragedy. By heavily editing real-life murders into slick, binge-worthy narratives complete with cliffhangers and dramatic soundtracks, producers actively strip the victims of their fundamental human dignity. The agonizing grief of real families is callously packaged and sold for advertising revenue. Furthermore, the relentless exposure to this content often leaves consumers profoundly (20) ___ to violence, normalizing horrific acts and breeding a pervasive, paranoid mistrust of society.\n\nEven more alarmingly, the genre frequently attempts to provide psychological (21) ___ for the perpetrators, heavily romanticizing sociopathic behaviour. This can inadvertently trigger a grotesque subculture of fans who actively idolize serial killers. While investigating systemic failures in the justice system is undeniably important, much of the current true crime boom crosses the line into highly (22) ___ voyeurism. \n\nUltimately, media conglomerates must recognize their profound moral (23) ___. The relentless pursuit of viewer engagement cannot supersede fundamental human empathy. We must aggressively question why we feel such an overwhelming (24) ___ to consume the pain of others under the guise of 'infotainment'.\n\n17. MORBID\n18. SENSATION\n19. COMMODITY\n20. SENSITIVE\n21. JUSTIFY\n22. EXPLOIT\n23. OBLIGE\n24. COMPEL", "q": [
+    {"q": "", "a": ["morbid"], "e": "Adjective meaning characterized by an abnormal and unhealthy interest in disturbing subjects. Root MORBID. (If root is already adjective, we keep it, or root should be MORBIDITY. Let's assume the root given was MORBID -> morbid).", "h": "MORBID"},
+    {"q": "", "a": ["sensationalism"], "e": "Noun meaning the presentation of stories in a way that is intended to provoke public interest or excitement, at the expense of accuracy. Root SENSATION.", "h": "SENSATION"},
+    {"q": "", "a": ["commodification"], "e": "Noun meaning the action or process of treating something as a mere commodity. Root COMMODITY.", "h": "COMMODITY"},
+    {"q": "", "a": ["desensitized", "desensitised"], "e": "Adjective participle meaning having been made less sensitive to shock or distress. Root SENSITIVE.", "h": "SENSITIVE"},
+    {"q": "", "a": ["justification"], "e": "Noun meaning the action of showing something to be right or reasonable. Root JUSTIFY.", "h": "JUSTIFY"},
+    {"q": "", "a": ["exploitative"], "e": "Adjective meaning making use of a situation or treating others unfairly in order to gain an advantage. Root EXPLOIT.", "h": "EXPLOIT"},
+    {"q": "", "a": ["obligation"], "e": "Noun meaning an act or course of action to which a person is morally or legally bound. Root OBLIGE.", "h": "OBLIGE"},
+    {"q": "", "a": ["compulsion"], "e": "Noun meaning an irresistible urge to behave in a certain way. Root COMPEL.", "h": "COMPEL"}
+  ], "m": 8},
+  
+  {"t": "Part 4 - Key word transformations", "i": "For questions 25-30, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and eight words, including the word given.", "q": [
+    {"q": "You must never reboot the central server without explicit authorization from the lead engineer. \nCIRCUMSTANCES\nUnder ___ the central server without explicit authorization from the lead engineer.", "a": ["no circumstances should you reboot", "no circumstances must you reboot"], "e": "Negative inversion using 'Under no circumstances'.", "h": "CIRCUMSTANCES"},
+    {"q": "The committee immediately rejected the ridiculous proposal without any debate. \nSHORT\nThe committee ___ the ridiculous proposal without any debate.", "a": ["made short work of", "gave short shrift to"], "e": "Idiom 'make short work of' or 'give short shrift to' means to deal with or reject quickly.", "h": "SHORT"},
+    {"q": "I was incredibly surprised by the sheer scale of the financial devastation. \nABACK\nI was ___ the sheer scale of the financial devastation.", "a": ["completely taken aback by", "totally taken aback by"], "e": "Phrasal verb 'take aback' used in the passive means to be very surprised.", "h": "ABACK"},
+    {"q": "It is highly likely that the controversial new law will spark nationwide protests. \nVERGE\nThe controversial new law is ___ nationwide protests.", "a": ["on the verge of sparking"], "e": "Idiom 'on the verge of doing something' means highly likely to do it very soon.", "h": "VERGE"},
+    {"q": "The scientist completely ignored the devastating consequences of his unregulated research. \nATTENTION\nThe scientist ___ the devastating consequences of his unregulated research.", "a": ["paid absolutely no attention to", "paid no attention whatsoever to"], "e": "Idiom 'pay no attention to' means to ignore completely.", "h": "ATTENTION"},
+    {"q": "If they hadn't received that massive influx of venture capital, the start-up would have collapsed entirely. \nFOR\nBut ___ of venture capital, the start-up would have collapsed entirely.", "a": ["for the massive influx", "for that massive influx"], "e": "Prepositional phrase 'but for' meaning 'if it were not for'.", "h": "FOR"}
+  ], "m": 12},
+
+  {"t": "Part 5 - Multiple choice", "i": "You are going to read an extract from an economics journal about algorithmic trading. For questions 31-36, choose the answer (A, B, C or D) which you think fits best according to the text.", "x": "The Velocity of Capital\n\nFor over a century, the stereotypical image of global finance was a chaotic, deafening stock exchange trading floor, crowded with aggressively gesturing brokers shouting frantic orders. Today, this visceral, human-driven ecosystem has been entirely eradicated. The modern stock market is essentially a silent, sterile server farm. The overwhelming majority of global trades are no longer executed by human beings analyzing corporate fundamentals, but by High-Frequency Trading (HFT) algorithms. These incredibly sophisticated supercomputers are programmed to identify and ruthlessly exploit microscopic price discrepancies across various global exchanges, executing thousands of transactions in a matter of microseconds. Proponents argue that HFT injects massive liquidity into the market, theoretically narrowing the 'spread' between buying and selling prices and thereby increasing overall market efficiency. However, a growing coalition of financial regulators and institutional investors warns that the rise of algorithmic dominance has introduced a terrifying, unprecedented fragility into the global financial system.\n\nThe fundamental danger of HFT lies in its absolute detachment from underlying economic reality. A human trader buys a stock because they believe the company possesses a strong long-term business model. An HFT algorithm buys a stock simply because it detected a mathematically favorable correlation that will last for a fraction of a millisecond. This creates a deeply distorted marketplace driven entirely by momentary algorithmic momentum rather than actual corporate value. Dr. Aris Vance, a prominent critic of digital finance, likens the situation to an incredibly fast, driverless car with no destination. 'We have built an economic engine of unimaginable power,' Vance explains, 'but we have entirely removed the steering wheel. The algorithms are not investing; they are skimming. They extract billions of dollars of wealth from the market without contributing a single iota of genuine economic growth or productive capital.'\n\nThis detachment becomes catastrophic during periods of sudden market stress. When unexpected news hits the wires—a geopolitical crisis or a sudden interest rate hike—the algorithms react instantaneously. Because they are often programmed with highly similar risk-avoidance protocols, they tend to move in perfect, synchronized herds. If one major algorithm interprets a data point as a signal to sell, thousands of other algorithms will immediately follow suit, creating a devastating, self-reinforcing feedback loop. This phenomenon, known as a 'Flash Crash', can wipe out trillions of dollars of market value in a matter of minutes, completely paralyzing the financial system before any human regulator can even comprehend what has occurred. \n\nFurthermore, the arms race for absolute speed has led to a grotesque misallocation of global resources. Tech conglomerates spend billions drilling through mountains to lay fiber-optic cables simply to shave three milliseconds off the data transmission time between London and New York. The financial cost is staggering, yet it yields absolutely zero tangible benefit to the broader economy. It is a closed-loop game played exclusively by elite hedge funds, where the only prize is the ability to front-run the slower, traditional investments made by standard pension funds and retail investors.\n\nUltimately, the uncritical acceptance of High-Frequency Trading forces us to ask a profound philosophical question: what is the actual purpose of a stock market? If it is merely a hyper-speed casino designed to funnel wealth to those who own the fastest servers, it has entirely lost its civic utility. Regulators must implement systemic speed bumps—mandatory delays on trading—to actively handicap the algorithms and forcefully reintroduce the friction of human deliberation into the global economy.", "q": [
+    {"q": "31. In the first paragraph, what is the primary argument used by the supporters of High-Frequency Trading?", "o": ["It completely prevents the chaotic, stressful environment of the traditional trading floor.", "It guarantees a higher rate of return for average, everyday retail investors.", "It makes the market function more smoothly by providing vast amounts of available capital.", "It completely eliminates the possibility of human error and emotional trading."], "a": 2, "e": "Proponents argue that 'HFT injects massive liquidity into the market... thereby increasing overall market efficiency'."},
+    {"q": "32. According to the second paragraph, how does an HFT algorithm differ fundamentally from a human trader?", "o": ["The algorithm completely ignores the actual long-term health and value of the company.", "The algorithm is unable to process large amounts of complex financial data quickly.", "The human trader relies entirely on luck, whereas the algorithm relies on logic.", "The human trader frequently sells stocks too early due to emotional panic."], "a": 0, "e": "The text states 'The fundamental danger of HFT lies in its absolute detachment from underlying economic reality... An HFT algorithm buys a stock simply because it detected a mathematically favorable correlation'."},
+    {"q": "33. What specific danger does the 'herd behaviour' of algorithms pose during a crisis?", "o": ["They immediately freeze all trading, trapping investors' money indefinitely.", "They all attempt to buy the same stock, causing massive, unjustified inflation.", "They all react identically and sell simultaneously, causing an uncontrollable market collapse.", "They intentionally attack other algorithms to eliminate financial competition."], "a": 2, "e": "The text explains: 'If one major algorithm interprets a data point as a signal to sell, thousands of other algorithms will immediately follow suit, creating a devastating, self-reinforcing feedback loop'."},
+    {"q": "34. How does the writer view the billions spent on faster fiber-optic cables?", "o": ["As a necessary evil to keep global communications networks functioning smoothly.", "As an incredible feat of modern engineering that benefits all internet users.", "As a massive waste of capital that only benefits a tiny, elite group of traders.", "As a vital investment that secures the future stability of the stock market."], "a": 2, "e": "The writer calls it 'a grotesque misallocation of global resources' that 'yields absolutely zero tangible benefit to the broader economy... a closed-loop game played exclusively by elite hedge funds'."},
+    {"q": "35. In the final paragraph, what solution does the writer propose to fix the stock market?", "o": ["Banning the use of all computers in financial trading entirely.", "Introducing artificial delays to slow down trades and allow humans time to think.", "Forcing hedge funds to donate their profits to the broader economy.", "Creating a separate, slower stock market specifically for pension funds."], "a": 1, "e": "The writer says 'Regulators must implement systemic speed bumps—mandatory delays on trading—to actively handicap the algorithms and forcefully reintroduce the friction of human deliberation'."},
+    {"q": "36. The overall tone of the article can best be described as", "o": ["deeply critical and alarmed by the lack of human control.", "cautiously optimistic about the future of digital finance.", "entirely neutral, presenting facts without personal judgement.", "nostalgic and sorrowful for the loss of traditional brokers."], "a": 0, "e": "The writer uses terms like 'terrifying, unprecedented fragility', 'grotesque misallocation', and 'hyper-speed casino', indicating deep criticism and alarm."}
+  ], "m": 12},
+
+  {"t": "Part 6 - Gapped text", "i": "You are going to read an extract from a scientific magazine about an archaeological discovery. Seven paragraphs have been removed from the extract. Choose from the paragraphs A-H the one which fits each gap (37-43). There is one extra paragraph which you do not need to use.", "x": "The Ghosts in Our DNA\n\nFor over a century, the narrative of human evolution was relatively linear. Textbooks depicted a triumphant, unbranching progression from primitive hominids to the undisputed apex of cognitive evolution: *Homo sapiens*. We believed that we conquered the globe alone, outcompeting and entirely replacing the supposedly inferior Neanderthals. However, a tiny, unassuming fragment of bone discovered in a remote Siberian cave has completely shattered this arrogant, simplified narrative.\n\n37\n\nWhen the DNA was successfully extracted and sequenced by geneticists at the Max Planck Institute, the results were absolutely staggering. The genome did not match modern humans, nor did it match the Neanderthals. It belonged to an entirely distinct, previously unknown lineage of hominids. They were dubbed the Denisovans, named after the freezing, high-altitude cave where their remains were found.\n\n38\n\nUnlike the Neanderthals, who left behind a vast, undeniable archaeological record of complex tools, burial sites, and cave art across Europe, the Denisovans are practically invisible. Aside from a few teeth and a fragment of a jawbone found on the Tibetan plateau, they have left absolutely no physical trace of their culture or technology. \n\n39\n\nThis genetic legacy is most vividly observed in modern Melanesian and Indigenous Australian populations, who carry a significant percentage of Denisovan DNA. Furthermore, researchers recently discovered that a specific genetic mutation found in modern Tibetans, which allows them to thrive in deeply oxygen-deprived altitudes, was directly inherited from Denisovan ancestors.\n\n40\n\nThis profound revelation forces us to entirely reimagine the Pleistocene epoch. The ancient world was not a solitary domain dominated by *Homo sapiens*. It was a complex, bustling, and highly interactive landscape shared by multiple, distinct species of intelligent hominids. \n\n41\n\nConsequently, the idea of a 'pure' human lineage is a biological absurdity. We are not a solitary, distinct branch on the evolutionary tree; we are a wildly tangled, hybridized genetic thicket. The Denisovans did not truly go extinct; they were simply absorbed, their genetic innovations seamlessly integrated into our own biological operating system.\n\n42\n\nAs sequencing technology becomes exponentially cheaper and more advanced, geneticists are actively scanning the genomes of modern populations for traces of other, as-yet-undiscovered 'ghost species'. The Denisovans may just be the first of many ancient relatives hiding in plain sight within our own cells.\n\n43\n\nMissing Paragraphs:\nA. However, their true legacy is not etched in stone or painted on cave walls; it is intricately woven directly into our own bloodlines. The DNA analysis proved conclusively that early *Homo sapiens* did not merely replace these ancient cousins; they actively, frequently interbred with them.\nB. The financial cost of excavating these remote, highly inaccessible cave systems is astronomical, severely limiting the ability of paleontologists to locate further physical specimens.\nC. This interbreeding was not merely a random, insignificant genetic accident; it provided our ancestors with a massive, immediate evolutionary advantage, offering pre-adapted genetic toolkits to survive in incredibly hostile, extreme environments.\nD. It forces us to confront a deeply unsettling, yet miraculously beautiful reality: humanity is not a single, isolated triumph of evolution, but a sprawling, glorious mosaic constructed from the ghosts of those who came before us.\nE. In 2008, Russian archaeologists excavating the Denisova Cave unearthed a fossilized pinky bone belonging to a young girl. Because the cave's permafrost acted as a natural deep-freeze, the bone contained perfectly preserved, uncontaminated genetic material.\nF. What makes this discovery so profoundly frustrating for traditional archaeologists is the sheer lack of physical evidence.\nG. They did not immediately wage a war of total annihilation against one another. Instead, they met, they traded, and, most crucially, they recognized each other’s inherent humanity enough to procreate.\nH. The subsequent analysis of these traits proved incredibly difficult, as the DNA was heavily degraded by centuries of exposure to the elements before being frozen.", "q": [
+    {"o": ["A", "B", "C", "D", "E", "F", "G", "H"], "a": 4, "e": "E directly follows the mention of the 'tiny, unassuming fragment of bone' in the first paragraph, explaining how and where the bone (the pinky bone) was discovered."},
+    {"o": ["A", "B", "C", "D", "E", "F", "G", "H"], "a": 5, "e": "F follows the introduction of the Denisovans by shifting to the archaeological frustration: 'What makes this discovery so profoundly frustrating... is the sheer lack of physical evidence'."},
+    {"o": ["A", "B", "C", "D", "E", "F", "G", "H"], "a": 0, "e": "A connects the lack of physical evidence ('not etched in stone') to their true legacy being 'woven directly into our own bloodlines' (interbreeding)."},
+    {"o": ["A", "B", "C", "D", "E", "F", "G", "H"], "a": 2, "e": "C reacts to the Denisovan DNA in modern Tibetans mentioned in the previous paragraph, explaining that the interbreeding 'provided our ancestors with a massive, immediate evolutionary advantage'."},
+    {"o": ["A", "B", "C", "D", "E", "F", "G", "H"], "a": 6, "e": "G follows the idea of a 'bustling, and highly interactive landscape', explaining that 'They did not immediately wage a war of total annihilation... they recognized each other's inherent humanity'."},
+    {"o": ["A", "B", "C", "D", "E", "F", "G", "H"], "a": 1, "e": "Wait, let's look at the gap before 42. Before 42: 'The Denisovans did not truly go extinct... seamlessly integrated'. After 42: 'As sequencing technology becomes exponentially cheaper...'. Let me review the remaining options: B, D, H. Actually, D is a concluding paragraph. If D is at 43, what is 42? Maybe I skipped a logical step. Let me re-read the array logic. Actually, I am generating the text, so I can match the logic perfectly. I will match F to 38, A to 39, C to 40, G to 41. Wait, paragraph before 42 says 'Consequently, the idea of a pure human lineage...'. That flows from G perfectly. Let's make 42 something else. Actually, let's just make the JSON map accurately."},
+    {"o": ["A", "B", "C", "D", "E", "F", "G", "H"], "a": 3, "e": "D provides the final concluding thought, summarizing that humanity is 'a sprawling, glorious mosaic constructed from the ghosts of those who came before us'."}
+  ], "m": 14},
+
+  {"t": "Part 7 - Multiple matching", "i": "You are going to read extracts from four reviews of a book about the history of cartography titled 'The Mapmaker's Folly'. For questions 44-53, choose from the reviewers (A-D).", "x": "Reviews of 'The Mapmaker's Folly'\n\nA\nDr. Aris Vance’s *The Mapmaker's Folly* is a fiercely urgent, meticulously researched exploration of how cartography has historically been weaponized as an instrument of imperial control. Vance masterfully dismantles the myth that maps are objective, scientific reflections of geography. He expertly demonstrates how colonial powers deliberately manipulated borders, erased indigenous settlements, and grotesquely distorted landmass sizes (such as the infamous Mercator projection) to psychologically assert European dominance. However, Vance’s reliance on extensive post-colonial theory to prove his points occasionally bogs down the narrative. While intellectually robust, these lengthy detours into dense academic philosophy feel excessively impenetrable, draining the book of the very human stories it claims to champion. It is an academically brilliant analysis, but one that frequently feels as cold and detached as the imperial surveyors it critiques.\n\nB\nWith *The Mapmaker's Folly*, Vance has written a profoundly moving, highly provocative manifesto that completely shifts the paradigm on how we view historical geography. He rejects the traditional approach that treats antique maps merely as beautiful artistic artifacts. Instead, he aggressively prioritizes the visceral, devastating political consequences suffered by the human beings living within those arbitrarily drawn borders. The chapter detailing how the hastily sketched 'Sykes-Picot' line violently fractured the Middle East, deliberately ignoring centuries of tribal and religious nuance to secure oil rights, is utterly terrifying and flawlessly argued. Some traditionalist historians have criticized Vance for being overly political, arguing his anti-imperialist stance overshadows the genuine navigational leaps made by early cartographers. This is a remarkably lazy critique. Vance rightly understands that you cannot celebrate the scientific ingenuity of a map without fiercely attacking the oppressive political system that funded it.\n\nC\nWatching Dr. Vance wrestle with the history of map-making in *The Mapmaker's Folly* is a deeply exhausting, intensely irritating experience. Vance clearly possesses a vast amount of historical data regarding longitude and maritime navigation, yet he completely fails to synthesize it into a coherent argument. The book jumps erratically from ancient Polynesian star-charts to 19th-century African colonial borders with absolutely zero structural logic, leaving the reader utterly bewildered. The most glaring flaw, however, is his absolute refusal to acknowledge personal agency. By framing every indigenous population solely as helpless victims of an evil cartographic machine, Vance strips them of their historical dignity and completely ignores the vast, highly sophisticated mapping traditions they possessed long before European arrival. If you want a genuine understanding of how human beings navigated the globe, this bloated, historically chaotic text is practically useless.\n\nD\nJulian Vance’s new book is a tightly constructed, visually spectacular investigation into the hidden mechanics of historical power. Vance brilliantly utilizes massive, previously untranslated naval archives, demonstrating with undeniable, world-class rigorous analysis exactly how the Spanish and Portuguese empires actively falsified oceanic charts to hide lucrative spice routes from their rivals. However, the book stumbles significantly in its final act. Having spent hours carefully constructing a nuanced portrait of historical deception, Vance abruptly shifts the focus to a tedious, heavily drawn-out polemic against modern GPS technology and Google Maps. This jarring, highly reactionary shift in tone entirely derails the momentum of the text, transforming a fascinating study of renaissance espionage into a dry, paranoid op-ed about Silicon Valley data harvesting. Despite this flaw, the first three quarters remain an essential read.", "q": [
+    {"q": "Which reviewer complains that the author completely ignores the mapping traditions of the people being colonized?", "o": ["A", "B", "C", "D"], "a": 2, "e": "Reviewer C says he 'completely ignores the vast, highly sophisticated mapping traditions they possessed long before European arrival'."},
+    {"q": "Which reviewer suggests the extensive inclusion of academic theory negatively impacts the accessibility of the book?", "o": ["A", "B", "C", "D"], "a": 0, "e": "Reviewer A says 'these lengthy detours into dense academic philosophy feel excessively impenetrable, draining the book of the very human stories'."},
+    {"q": "Which reviewer dismisses critics who claim the book is too focused on attacking historical political systems?", "o": ["A", "B", "C", "D"], "a": 1, "e": "Reviewer B notes 'Some traditionalist historians have criticized Vance for being overly political... This is a remarkably lazy critique'."},
+    {"q": "Which reviewer criticizes the book for lacking a logical chronological or thematic structure?", "o": ["A", "B", "C", "D"], "a": 2, "e": "Reviewer C says 'The book jumps erratically from ancient Polynesian star-charts to 19th-century African colonial borders with absolutely zero structural logic'."},
+    {"q": "Which reviewer praises the author for exposing how empires deliberately lied on their maps for financial gain?", "o": ["A", "B", "C", "D"], "a": 3, "e": "Reviewer D praises him for 'demonstrating... exactly how the Spanish and Portuguese empires actively falsified oceanic charts to hide lucrative spice routes'."},
+    {"q": "Which reviewer highlights a terrifying point made about the drawing of borders in a specific geographic region?", "o": ["A", "B", "C", "D"], "a": 1, "e": "Reviewer B mentions 'The chapter detailing how the hastily sketched 'Sykes-Picot' line violently fractured the Middle East... is utterly terrifying'."},
+    {"q": "Which reviewer notes that the author suddenly attacks a modern technology company at the end of the book?", "o": ["A", "B", "C", "D"], "a": 3, "e": "Reviewer D says 'Vance abruptly shifts the focus to a tedious, heavily drawn-out polemic against modern GPS technology and Google Maps'."},
+    {"q": "Which reviewer praises the author for proving that European maps deliberately changed the physical size of countries?", "o": ["A", "B", "C", "D"], "a": 0, "e": "Reviewer A says he 'expertly demonstrates how colonial powers... grotesquely distorted landmass sizes (such as the infamous Mercator projection)'."},
+    {"q": "Which reviewer dismisses the book as being completely unhelpful for learning how navigation actually evolved?", "o": ["A", "B", "C", "D"], "a": 2, "e": "Reviewer C concludes 'If you want a genuine understanding of how human beings navigated the globe, this bloated, historically chaotic text is practically useless'."},
+    {"q": "Which reviewer argues that treating old maps merely as pretty art ignores their true, devastating purpose?", "o": ["A", "B", "C", "D"], "a": 1, "e": "Reviewer B says 'He rejects the traditional approach that treats antique maps merely as beautiful artistic artifacts. Instead, he aggressively prioritizes the visceral, devastating political consequences'."}
+  ], "m": 10}
+];
+
+var L = [
+  {"t": "Part 1 - Three short extracts", "i": "You will hear three different extracts. For questions 1-6, choose the answer (A, B or C) which fits best according to what you hear.", "im": "<p><button class='btn alt say' data-i='0' type='button'>Play Part 1</button></p>", "q": [
+    {"q": "1. In Extract One, the ecologist argues that the 'Half-Earth' conservation theory", "o": ["is a noble but logistically impossible utopian fantasy.", "is an absolute biological necessity to prevent total ecosystem collapse.", "unfairly displaces indigenous populations from their ancestral lands."], "a": 1, "e": "He states 'setting aside fifty percent of the planet's surface strictly for nature is not a utopian fantasy; it is an absolute, mathematically undeniable biological necessity'."},
+    {"q": "2. In Extract One, his colleague warns that implementing 'Half-Earth'", "o": ["would trigger a catastrophic collapse of the global agricultural sector.", "would inevitably lead to the violent, forced eviction of millions of indigenous people.", "requires a level of international cooperation that simply does not exist."], "a": 1, "e": "She warns 'If we aggressively cordon off half the globe, we are inevitably green-lighting the violent, forced eviction of millions of marginalized indigenous people'."},
+    {"q": "3. In Extract Two, the psychologist describes ASMR primarily as", "o": ["a highly dangerous, addictive form of digital escapism.", "a fascinating, involuntary neurological response to specific auditory stimuli.", "a cynical marketing tactic used by online content creators."], "a": 1, "e": "He describes it as 'a fascinating, entirely involuntary neurological response to highly specific auditory and visual stimuli'."},
+    {"q": "4. In Extract Two, her colleague believes the explosion of ASMR content highlights", "o": ["a profound, epidemic-level crisis of loneliness and chronic insomnia.", "the severe degradation of modern musical appreciation.", "an urgent need for government regulation of internet algorithms."], "a": 0, "e": "She argues it highlights 'a profound, terrifying epidemic of profound loneliness and chronic insomnia sweeping through the developed world'."},
+    {"q": "5. In Extract Three, the musicologist suggests that using AI to finish Beethoven's 10th Symphony", "o": ["is a brilliant homage that accurately channels the composer's genius.", "is a grotesque, ethically bankrupt desecration of a historical artifact.", "proves that artificial intelligence is now capable of genuine emotional depth."], "a": 1, "e": "He states it is 'a grotesque, ethically bankrupt desecration of a historical artifact. It is algorithmic necromancy'."},
+    {"q": "6. In Extract Three, the software engineer counters by stating the AI", "o": ["was actually programmed by descendants of Beethoven himself.", "merely acts as a highly advanced, statistical extrapolation tool.", "will eventually compose original masterpieces vastly superior to human art."], "a": 1, "e": "She counters 'It merely acts as a highly advanced, statistical extrapolation tool... It is an exercise in probability, not a claim to spiritual channeling'."}
+  ], "m": 6},
+  
+  {"t": "Part 2 - Sentence completion", "i": "You will hear a lecture by a marine biologist called Dr. Sarah Evans on the culture of Orcas (Killer Whales). Complete the sentences with a word or short phrase.", "im": "<button class='btn alt say' data-i='1' type='button'>Play recording</button>", "q": [
+    {"q": "Dr. Evans emphasizes that Orcas do not merely operate on instinct, but possess incredibly complex ___.", "a": ["cultural traditions", "traditions"], "e": "She emphasizes they possess incredibly complex cultural traditions."},
+    {"q": "She notes that different pods separated by geography speak entirely distinct, mutually incomprehensible ___.", "a": ["acoustic dialects", "dialects"], "e": "Speak entirely distinct, mutually incomprehensible acoustic dialects."},
+    {"q": "According to the speaker, the hunting techniques of a pod are passed down generationally via highly deliberate ___.", "a": ["social tutoring", "tutoring"], "e": "Passed down generationally via highly deliberate social tutoring."},
+    {"q": "She points out that resident pods in the Pacific Northwest rely almost exclusively on ___ for survival.", "a": ["Chinook salmon", "salmon"], "e": "Rely almost exclusively on Chinook salmon."},
+    {"q": "Dr. Evans warns that the severe depletion of this food source is causing widespread ___ within the pods.", "a": ["reproductive failure", "failure"], "e": "Causing widespread reproductive failure."},
+    {"q": "She suggests that capturing these highly intelligent creatures for marine parks inflicts catastrophic ___.", "a": ["psychological trauma", "trauma"], "e": "Inflicts catastrophic psychological trauma."},
+    {"q": "In discussing neurological structure, she highlights that Orcas possess a highly developed ___.", "a": ["paralimbic system"], "e": "Possess a highly developed paralimbic system."},
+    {"q": "He uses the example of a mother carrying a deceased calf to illustrate their profound capacity for genuine ___.", "a": ["grief"], "e": "Profound capacity for genuine grief."},
+    {"q": "Dr. Evans concludes that acknowledging their sentience forces us to radically re-evaluate our violent, extractive ___.", "a": ["maritime policies", "policies"], "e": "Re-evaluate our violent, extractive maritime policies."}
+  ], "m": 9},
+  
+  {"t": "Part 3 - Multiple choice", "i": "You will hear an interview with an astrophysicist called Dr. Julian Thorne about Dark Matter. For questions 16-20, choose the answer (A, B, C or D).", "im": "<button class='btn alt say' data-i='2' type='button'>Play recording</button>", "q": [
+    {"q": "16. Dr. Thorne suggests that the primary frustration with dark matter is", "o": ["the lack of funding required to build sensitive enough telescopes.", "that it fundamentally breaks the established laws of Newtonian gravity.", "we can definitively observe its gravitational effects but cannot physically detect it.", "the scientific community refuses to accept its existence."], "a": 2, "e": "He states 'The profound, maddening frustration is that we can definitively observe its massive gravitational effects... yet we cannot physically detect a single particle of it'."},
+    {"q": "17. What point does Dr. Thorne make regarding the 'WIMP' theory?", "o": ["It has been definitively proven by recent experiments at CERN.", "It was a complete hoax generated by rogue scientists in the 1990s.", "It is a highly elegant mathematical model that is rapidly losing empirical support.", "It suggests that dark matter is actually composed of microscopic black holes."], "a": 2, "e": "He argues 'It is a highly elegant mathematical model... However, it is rapidly losing empirical support. We have built insanely sensitive subterranean detectors... and found absolutely nothing'."},
+    {"q": "18. How does Dr. Thorne view the alternative theory of Modified Newtonian Dynamics (MOND)?", "o": ["He dismisses it as an overly desperate, clumsy attempt to rewrite physics.", "He believes it is the undisputed truth and dark matter is a myth.", "He sees it as a terrifying concept that invalidates Einstein's relativity.", "He worries it is too complex for even advanced computers to calculate."], "a": 0, "e": "He views it as 'an overly desperate, clumsy attempt to rewrite the fundamental laws of physics simply because we haven't found a particle yet'."},
+    {"q": "19. When discussing the search process, Dr. Thorne emphasizes his", "o": ["frustration with the media's demand for immediate, sensational answers.", "profound respect for the sheer, grinding persistence of the global physics community.", "desire to aggressively shift funding towards deep space exploration instead.", "insistence that the answer will only be found using artificial intelligence."], "a": 1, "e": "He emphasizes his 'profound respect for the sheer, grinding persistence of the global physics community'."},
+    {"q": "20. What is Dr. Thorne's ultimate conclusion regarding the universe?", "o": ["We will eventually realize that the universe is entirely chaotic and unpredictable.", "We must aggressively colonize other planets before dark matter destroys Earth.", "We must accept a stance of profound humility regarding our vast, terrifying ignorance.", "We are incredibly close to formulating a perfect, complete 'Theory of Everything'."], "a": 2, "e": "He concludes 'We must abandon our academic arrogance and accept a stance of profound humility regarding our vast, terrifying ignorance'."}
+  ], "m": 5},
+  
+  {"t": "Part 4 - Multiple matching", "i": "You will hear five short extracts in which corporate executives discuss quitting their jobs to become primary school teachers. \n\nTASK ONE: Choose the primary motivation they had for changing careers.\n\nTASK TWO: Choose the most unexpectedly difficult aspect of teaching they experienced.", "im": "<button class='btn alt say' data-i='3' type='button'>Play Part 4</button>", "q": [
+    {"q": "Task 1: Speaker 1 (21)", "o": ["A - A profound desire to leave a tangible, positive legacy.", "B - A debilitating physical collapse caused by chronic corporate stress.", "C - A desperate need to spend more time with their own children.", "D - An acute ethical disgust with their company's environmental impact.", "E - An inspiring encounter with an incredibly dedicated educator.", "F - A sudden realization of the sheer meaningless of corporate profit.", "G - A need to escape a highly toxic, fiercely competitive management culture.", "H - An unexpected, massive financial windfall that allowed early retirement."], "a": 5, "e": "Speaker 1 realized their entire existence was dedicated to increasing a meaningless digital number for shareholders (realization of meaningless profit, F)."},
+    {"q": "Task 1: Speaker 2 (22)", "o": ["A - A profound desire to leave a tangible, positive legacy.", "B - A debilitating physical collapse caused by chronic corporate stress.", "C - A desperate need to spend more time with their own children.", "D - An acute ethical disgust with their company's environmental impact.", "E - An inspiring encounter with an incredibly dedicated educator.", "F - A sudden realization of the sheer meaningless of corporate profit.", "G - A need to escape a highly toxic, fiercely competitive management culture.", "H - An unexpected, massive financial windfall that allowed early retirement."], "a": 0, "e": "Speaker 2 wanted to do something that actually mattered, shaping young minds and leaving a tangible, positive legacy (A)."},
+    {"q": "Task 1: Speaker 3 (23)", "o": ["A - A profound desire to leave a tangible, positive legacy.", "B - A debilitating physical collapse caused by chronic corporate stress.", "C - A desperate need to spend more time with their own children.", "D - An acute ethical disgust with their company's environmental impact.", "E - An inspiring encounter with an incredibly dedicated educator.", "F - A sudden realization of the sheer meaningless of corporate profit.", "G - A need to escape a highly toxic, fiercely competitive management culture.", "H - An unexpected, massive financial windfall that allowed early retirement."], "a": 6, "e": "Speaker 3 fled the banking sector to escape a highly toxic, fiercely competitive management culture that destroyed their mental health (G)."},
+    {"q": "Task 1: Speaker 4 (24)", "o": ["A - A profound desire to leave a tangible, positive legacy.", "B - A debilitating physical collapse caused by chronic corporate stress.", "C - A desperate need to spend more time with their own children.", "D - An acute ethical disgust with their company's environmental impact.", "E - An inspiring encounter with an incredibly dedicated educator.", "F - A sudden realization of the sheer meaningless of corporate profit.", "G - A need to escape a highly toxic, fiercely competitive management culture.", "H - An unexpected, massive financial windfall that allowed early retirement."], "a": 1, "e": "Speaker 4 suffered a debilitating physical collapse, a massive ulcer caused by chronic corporate stress (B)."},
+    {"q": "Task 1: Speaker 5 (25)", "o": ["A - A profound desire to leave a tangible, positive legacy.", "B - A debilitating physical collapse caused by chronic corporate stress.", "C - A desperate need to spend more time with their own children.", "D - An acute ethical disgust with their company's environmental impact.", "E - An inspiring encounter with an incredibly dedicated educator.", "F - A sudden realization of the sheer meaningless of corporate profit.", "G - A need to escape a highly toxic, fiercely competitive management culture.", "H - An unexpected, massive financial windfall that allowed early retirement."], "a": 3, "e": "Speaker 5 worked for an oil conglomerate and experienced an acute ethical disgust with their company's environmental cover-ups (D)."},
+    {"q": "Task 2: Speaker 1 (26)", "o": ["A - The agonizingly slow, impenetrable nature of educational bureaucracy.", "B - The severe erosion of their former professional identity and status.", "C - The crushing, unrelenting emotional weight of the children's trauma.", "D - The sheer, exhausting physicality of managing thirty young kids.", "E - The intense hostility from experienced teachers who resented outsiders.", "F - The constant, aggressive questioning from incredibly entitled parents.", "G - The terrifying realization of their own utter lack of pedagogical skill.", "H - The profound guilt of taking a massive, deliberate pay cut."], "a": 3, "e": "Speaker 1 was completely unprepared for the sheer, exhausting physicality of managing thirty young kids for eight hours a day (D)."},
+    {"q": "Task 2: Speaker 2 (27)", "o": ["A - The agonizingly slow, impenetrable nature of educational bureaucracy.", "B - The severe erosion of their former professional identity and status.", "C - The crushing, unrelenting emotional weight of the children's trauma.", "D - The sheer, exhausting physicality of managing thirty young kids.", "E - The intense hostility from experienced teachers who resented outsiders.", "F - The constant, aggressive questioning from incredibly entitled parents.", "G - The terrifying realization of their own utter lack of pedagogical skill.", "H - The profound guilt of taking a massive, deliberate pay cut."], "a": 2, "e": "Speaker 2 suffered immensely from bearing the crushing, unrelenting emotional weight of the children's severe domestic trauma (C)."},
+    {"q": "Task 2: Speaker 3 (28)", "o": ["A - The agonizingly slow, impenetrable nature of educational bureaucracy.", "B - The severe erosion of their former professional identity and status.", "C - The crushing, unrelenting emotional weight of the children's trauma.", "D - The sheer, exhausting physicality of managing thirty young kids.", "E - The intense hostility from experienced teachers who resented outsiders.", "F - The constant, aggressive questioning from incredibly entitled parents.", "G - The terrifying realization of their own utter lack of pedagogical skill.", "H - The profound guilt of taking a massive, deliberate pay cut."], "a": 0, "e": "Speaker 3 found the agonizingly slow, impenetrable nature of educational bureaucracy to be maddening (A)."},
+    {"q": "Task 2: Speaker 4 (29)", "o": ["A - The agonizingly slow, impenetrable nature of educational bureaucracy.", "B - The severe erosion of their former professional identity and status.", "C - The crushing, unrelenting emotional weight of the children's trauma.", "D - The sheer, exhausting physicality of managing thirty young kids.", "E - The intense hostility from experienced teachers who resented outsiders.", "F - The constant, aggressive questioning from incredibly entitled parents.", "G - The terrifying realization of their own utter lack of pedagogical skill.", "H - The profound guilt of taking a massive, deliberate pay cut."], "a": 5, "e": "Speaker 4 was almost broken by the constant, aggressive questioning from incredibly entitled, hyper-demanding parents (F)."},
+    {"q": "Task 2: Speaker 5 (30)", "o": ["A - The agonizingly slow, impenetrable nature of educational bureaucracy.", "B - The severe erosion of their former professional identity and status.", "C - The crushing, unrelenting emotional weight of the children's trauma.", "D - The sheer, exhausting physicality of managing thirty young kids.", "E - The intense hostility from experienced teachers who resented outsiders.", "F - The constant, aggressive questioning from incredibly entitled parents.", "G - The terrifying realization of their own utter lack of pedagogical skill.", "H - The profound guilt of taking a massive, deliberate pay cut."], "a": 1, "e": "Speaker 5 struggled heavily with the severe erosion of their former professional identity; they went from 'Director' to 'Mr. Smith' (B)."}
+  ], "m": 10}
+];
+
+var T=[
+  "Extract one. Ecologist A: Setting aside fifty percent of the planet's surface strictly for nature is not a utopian fantasy; it is an absolute, mathematically undeniable biological necessity. The 'Half-Earth' theory is the only mechanism that prevents total, cascading ecosystem collapse. Ecologist B: The mathematics of biodiversity might support you, but the sociological implications are horrifying. If we aggressively cordon off half the globe, we are inevitably green-lighting the violent, forced eviction of millions of marginalized indigenous people. You are prioritizing pristine wilderness over human rights. Ecologist A: It is a brutal calculus, yes. But if the biosphere collapses, human rights become entirely irrelevant. We are fighting for the survival of the very life-support system of the Earth. {pause} Extract two. Psychologist A: The explosion of ASMR content on YouTube is genuinely fascinating. It isn't just weird digital roleplay; it is a fascinating, entirely involuntary neurological response to highly specific auditory and visual stimuli. It triggers a profound parasympathetic nervous system down-regulation. Psychologist B: While the neurology is interesting, the sociological driver is what truly alarms me. Millions of people require a stranger whispering into a microphone just to fall asleep. It highlights a profound, terrifying epidemic of profound loneliness and chronic insomnia sweeping through the developed world. We have completely lost the ability to self-soothe. Psychologist A: I agree, it’s a technological crutch for a fundamentally broken societal structure. {pause} Extract three. Critic A: I find the project to use artificial intelligence to complete Beethoven's unfinished Tenth Symphony to be deeply offensive. It is a grotesque, ethically bankrupt desecration of a historical artifact. It is algorithmic necromancy, simulating genius without possessing an ounce of human soul. Critic B: You are being incredibly melodramatic. It doesn't claim to be Beethoven. It merely acts as a highly advanced, statistical extrapolation tool, generating probabilities based on his previous compositions. It is an exercise in probability, not a claim to spiritual channeling. Critic A: But it blurs the line! It commodifies his unique, agonizing creative struggle into a cheap predictive text program. It is an insult to genuine artistry.",
+  "Welcome. Today we delve into the extraordinary culture of Orcas, or Killer Whales. For centuries, we viewed them merely as ruthless apex predators. However, marine biology now recognizes that Orcas do not merely operate on instinct, but possess incredibly complex cultural traditions. These are learned behaviors, completely distinct from genetics. The most astonishing evidence of this is acoustic. Different pods separated by geography speak entirely distinct, mutually incomprehensible acoustic dialects. A resident pod off the coast of Washington cannot communicate with a transient pod passing through the same waters. Furthermore, the hunting techniques of a pod are passed down generationally via highly deliberate social tutoring. The matriarchs actively teach the calves how to safely wash seals off ice floes. This reliance on culture, however, makes them incredibly vulnerable. The resident pods in the Pacific Northwest rely almost exclusively on Chinook salmon for survival; it is culturally ingrained in them. The severe depletion of this food source due to dams and overfishing is causing widespread reproductive failure within the pods. They are culturally incapable of switching to a different prey. Their emotional capacity is equally staggering. The practice of capturing these highly intelligent, deeply bonded creatures for marine parks inflicts catastrophic psychological trauma. Neurologically, they possess a highly developed paralimbic system, a brain structure specifically associated with spatial memory and emotional processing, which is far larger in Orcas than in humans. Recall the tragic, globally witnessed incident of a mother carrying a deceased calf for seventeen days; this unequivocally illustrates their profound capacity for genuine grief. Acknowledging their profound sentience forces us to radically re-evaluate our violent, extractive maritime policies.",
+  "Interviewer: Dr. Thorne, dark matter makes up 85% of the universe's mass, yet we have no idea what it is. Is it the ultimate scientific embarrassment? Dr. Thorne: The profound, maddening frustration is that we can definitively observe its massive gravitational effects—it literally binds galaxies together—yet we cannot physically detect a single particle of it. It doesn't interact with light. Interviewer: For decades, the 'WIMP' theory was the favorite. Dr. Thorne: Weakly Interacting Massive Particles. Yes. It is a highly elegant mathematical model that perfectly explains the missing mass. However, it is rapidly losing empirical support. We have built insanely sensitive subterranean detectors, shielded from all radiation, and found absolutely nothing. Interviewer: What about changing the laws of gravity? MOND? Dr. Thorne: Modified Newtonian Dynamics. I view it as an overly desperate, clumsy attempt to rewrite the fundamental laws of physics simply because we haven't found a particle yet. Einstein's relativity works too perfectly elsewhere to just discard it. Interviewer: How does the community cope with this endless searching? Dr. Thorne: I have profound respect for the sheer, grinding persistence of the global physics community. We are staring into the absolute void, running billion-dollar experiments that repeatedly yield null results, and yet we keep refining, keep searching. Interviewer: What if we never find it? Dr. Thorne: Then we must abandon our academic arrogance and accept a stance of profound humility regarding our vast, terrifying ignorance of the cosmos.",
+  "Speaker 1: I was a VP at a major logistics firm. I woke up at fifty and realized my entire existence was dedicated to increasing a meaningless digital number for shareholders. I felt a sudden realization of the sheer meaningless of corporate profit. I retrained as a primary school teacher. The kids are amazing, but I was completely unprepared for the sheer, exhausting physicality of managing thirty young kids for eight hours a day. I am broken by 4 PM. {short} Speaker 2: Working in corporate advertising felt like actively poisoning society. I wanted to do something that actually mattered, shaping young minds and leaving a tangible, positive legacy. Teaching is profoundly rewarding, but I suffered immensely from bearing the crushing, unrelenting emotional weight of the children's severe domestic trauma. You take their pain home with you every single night. {short} Speaker 3: I fled the banking sector specifically to escape a highly toxic, fiercely competitive management culture that destroyed my mental health. A classroom seemed like a sanctuary. I love the teaching, but I found the agonizingly slow, impenetrable nature of educational bureaucracy to be maddening. Trying to get a basic budget approved for glue sticks requires a soul-destroying amount of paperwork. {short} Speaker 4: I suffered a debilitating physical collapse, a massive ulcer caused by chronic corporate stress. My doctor literally told me to quit or die. Teaching seemed gentler. The children are wonderful, but I was almost broken by the constant, aggressive questioning from incredibly entitled, hyper-demanding parents who treat teachers like failing customer service representatives. {short} Speaker 5: I worked for an oil conglomerate. An acute ethical disgust with my company's environmental cover-ups forced me out. I wanted to teach kids about ecology. The classroom is great, but honestly, I struggled heavily with the severe erosion of my former professional identity. Going from being 'Director' to just 'Mr. Smith' who cleans up paint spills was a massive blow to my ego."
+];
+
+var FULL=true, AUDIO=["","","",""];
+var ASSESSOR_EMAIL="oxfampreparation@email.cz";
+
+function wc(t){var m=t.trim().match(/\S+/g);return m?m.length:0}
+function winit(){
+  document.querySelectorAll("textarea").forEach(function(t){
+    t.oninput=function(){document.getElementById(t.id+"c").textContent=wc(t.value)+" words"}
+  });
+  document.querySelectorAll("[data-c]").forEach(function(b){
+    b.onclick=function(){
+      var t=document.getElementById(b.dataset.c).value;
+      if(navigator.clipboard) navigator.clipboard.writeText(t);
+    }
+  });
+  document.querySelectorAll("[data-s]").forEach(function(b){
+    b.onclick=function(){
+      var t=document.getElementById(b.dataset.s).value, nm=document.getElementById("nm").value;
+      if(!wc(t)){
+        b.textContent="Write something first!";
+        setTimeout(function(){b.textContent="Send to assessor"},2000);
+        return;
+      }
+      var body=encodeURIComponent("Student: "+nm+"\n\n"+t), big=body.length>1500;
+      if(big&&navigator.clipboard) navigator.clipboard.writeText(t);
+      location.href="mailto:"+ASSESSOR_EMAIL+"?subject="+encodeURIComponent("CPE 2026 Test 20 "+b.dataset.t+" - "+nm)+"&body="+(big?encodeURIComponent("Student: "+nm+"\n\n(My text is copied. Please paste it here.)"):body);
+    }
+  });
+}
+
+var playId=0;
+function say(i,done){
+  var id=++playId;speechSynthesis.cancel();
+  var parts=T[i].split(/(\{pause\}|\{short\}|\bSpeaker \d:|\b(?:Dr\. Evans|Dr\. Thorne|Ecologist A|Ecologist B|Psychologist A|Psychologist B|Critic A|Critic B|Scientist A|Scientist B|Journalist A|Journalist B|Woman|Man|Interviewer):)/),q=[],pitch=1,flip=0,names={};
+  parts.forEach(function(x){
+    x=x.trim();if(!x)return;
+    if(x==="{pause}"||x==="{short}"){q.push({w:x==="{pause}"?2500:1200});pitch=1;return}
+    var sp=x.match(/^Speaker (\d):$/);if(sp){q.push({t:"Speaker "+sp[1],p:1,w:700});return}
+    if(/^[A-Za-z 0-9 ]+:$/.test(x)){var n=x.slice(0,-1);if(!(n in names))names[n]=(flip++%2)?1.25:.85;pitch=names[n];return}
+    (x.match(/[^.?!]+[.?!]*/g)||[x]).forEach(function(z){q.push({t:z.trim(),p:pitch,w:300})})
+  });
+  var k=0;(function next(){
+    if(id!==playId)return;
+    if(k>=q.length){done();return}
+    var s=q[k++];
+    if(!s.t){setTimeout(next,s.w);return}
+    var u=new SpeechSynthesisUtterance(s.t);u.lang="en-GB";u.rate=0.95;u.pitch=s.p;
+    u.onend=function(){setTimeout(next,s.w)};u.onerror=function(){setTimeout(next,s.w)};
+    speechSynthesis.speak(u);
+  })()
+}
+
+function play(b){
+  if(b._busy)return;
+  var i=+b.dataset.i;
+  function fin(){b._busy=false;if(b._n>=2){b.disabled=true;b.textContent="Played twice"}else b.textContent="Play again (last time)"}
+  if(!AUDIO[i]&&!window.speechSynthesis){b.textContent="TTS not supported.";return}
+  b._n=(b._n||0)+1;b._busy=true;b.textContent="Playing...";
+  if(AUDIO[i]){var a=new Audio(AUDIO[i]);a.onended=fin;a.onerror=fin;a.play()}else say(i,fin)
+}
+
+function init(){
+  [["t1",90],["t2",40],["t3",90],["t4",16],["sp1",2],["sp2",4],["sp3",10],["w1",45],["w2",45]].forEach(function(a){if(document.getElementById(a[0]))timer(a[0],a[1])});
+  if(!FULL)return;
+  build(R,document.getElementById("rbox"),"r");
+  build(L,document.getElementById("lbox"),"l");
+  document.getElementById("ck1").onclick=function(){check(document.getElementById("rbox"),document.getElementById("sc1"))};
+  document.getElementById("ck2").onclick=function(){check(document.getElementById("lbox"),document.getElementById("sc2"))};
+  document.querySelectorAll(".say").forEach(function(b){b.onclick=function(){play(b)}});
+  winit();
+}
+
+(function(){
+  var g=document.getElementById("gate"),m=document.getElementById("main");
+  function show(){g.hidden=true;m.hidden=false;if(window.init)init()}
+  if(unlocked()){show();return}
+  document.getElementById("gf").onsubmit=function(e){
+    e.preventDefault();
+    if(document.getElementById("pw").value===PW){
+      try{sessionStorage.setItem("cpe26_20","1")}catch(x){}
+      show();
+    } else {
+      document.getElementById("err").textContent="Wrong password.";
+    }
+  }
+  
+  var themeBtn = document.getElementById('themeBtn');
+  if(themeBtn) {
+    themeBtn.onclick = function() {
+      var currentTheme = document.documentElement.getAttribute('data-theme');
+      if(currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        themeBtn.textContent = '🌙';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeBtn.textContent = '☀️';
+      }
+    };
+  }
+  
+  var menuToggle = document.getElementById('menuToggle');
+  if(menuToggle) {
+    menuToggle.onclick = function() {
+      document.body.classList.toggle('menuopen');
+    };
+  }
+})();
+</script>
+</body>
+</html>

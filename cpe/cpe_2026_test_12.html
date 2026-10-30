@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CPE 2026 Test 12 - Oxfam Preparation</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,500..800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* Default theme is explicitly light */
+:root {
+  --bg: #f6f7fb;
+  --paper: #fff;
+  --ink: #14213d;
+  --muted: #4b5266;
+  --line: #d5d9e6;
+  --mark: #2b59ff;
+  --hi: #ffe45e;
+  --ok: #1a7f52;
+  --bad: #b3261e;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Dark theme applied ONLY when data-theme="dark" is present */
+:root[data-theme="dark"] {
+  --bg: #0f1526;
+  --paper: #182038;
+  --ink: #eef1fb;
+  --muted: #a9b1c9;
+  --line: #2c3656;
+  --mark: #7d9bff;
+  --hi: #e9d24a;
+  --ok: #57c58f;
+  --bad: #ff8a80;
+}
+
+html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: border-box; }
+
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1.0625rem/1.6 "Atkinson Hyperlegible", system-ui, sans-serif; }
+h1, h2, h3 { font-family: Archivo, "Helvetica Neue", Arial, sans-serif; line-height: 1.05; margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--mark); outline-offset: 3px; }
+.wrap { max-width: 74rem; margin: 0 auto; padding: 0 1.25rem; }
+
+header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .75rem; padding: 1.25rem 0; position: sticky; top: 0; background: var(--bg); z-index: 100; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+.head-left { display: flex; align-items: center; gap: .75rem; }
+#menuToggle { background: transparent; border: none; cursor: pointer; color: var(--ink); display: flex; padding: .25rem; border-radius: .25rem; }
+#menuToggle:hover { background: var(--line); }
+#menuToggle svg { width: 1.6rem; height: 1.6rem; }
+.logo { font: 800 1.25rem Archivo, sans-serif; text-decoration: none; }
+nav a { margin-left: 1.25rem; text-decoration: none; color: var(--muted); }
+nav a:hover { color: var(--ink); }
+
+.btn { display: inline-block; background: var(--ink); color: var(--bg); padding: .8rem 1.4rem; border-radius: .5rem; font-weight: 700; text-decoration: none; border: 0; cursor: pointer; font-size: 1rem; font-family: inherit; }
+.btn.alt { background: transparent; color: var(--ink); border: 2px solid var(--ink); }
+.hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2rem; align-items: start; padding: 1rem 0 3rem; }
+.hero-text { margin-top: 2.5rem; }
+
+h1 { font-size: clamp(2rem, 3.4vw, 3rem); font-weight: 800; font-stretch: 90%; letter-spacing: -.02em; margin-top: 1rem; margin-bottom: 0; }
+h1 span { background: linear-gradient(transparent 62%, var(--hi) 62%); }
+.lead { color: var(--muted); max-width: 32rem; margin: 1.25rem 0 1.75rem; font-size: 1.15rem; }
+.row { display: flex; gap: .75rem; flex-wrap: wrap; }
+
+.sheet { background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.sheet h2 { font-size: 1.1rem; margin-bottom: .25rem; }
+.sheet p { margin: 0 0 1rem; color: var(--muted); font-size: .95rem; }
+.q { padding: .7rem 0; border-top: 1px solid var(--line); }
+.q b { display: inline-block; font-weight: 800; margin-bottom: .45rem; margin-right: 0.5rem; }
+
+.opts { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem; width: fit-content; }
+.opt { display: flex; align-items: center; gap: .4rem; padding: .3rem .7rem .3rem .35rem; border: 1.5px solid var(--line); border-radius: 2rem; background: transparent; color: inherit; font-size: .95rem; cursor: pointer; width: fit-content; }
+.opt i { width: 1.4rem; height: 1.4rem; border-radius: 50%; border: 2px solid var(--muted); display: grid; place-items: center; font: 700 .7rem Archivo, sans-serif; font-style: normal; flex-shrink: 0; }
+
+.opt[aria-pressed="true"] { border-color: var(--mark); }
+.opt[aria-pressed="true"] i { background: var(--mark); border-color: var(--mark); color: var(--bg); }
+.opt.right { border-color: var(--ok); } .opt.right i { background: var(--ok); border-color: var(--ok); color: var(--bg); }
+.opt.wrong { border-color: var(--bad); } .opt.wrong i { background: var(--bad); border-color: var(--bad); color: var(--bg); }
+.result { margin-top: 1rem; font-weight: 700; min-height: 1.6rem; }
+section { padding: 3.5rem 0; border-top: 1px solid var(--line); }
+h2.t { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: .75rem; letter-spacing: -.01em; }
+
+.sub, .txt { color: var(--muted); max-width: 48rem; margin: 0 0 2rem; white-space: pre-line; line-height: 1.6; }
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: .6rem; background: var(--paper); }
+table { border-collapse: collapse; width: 100%; min-width: 38rem; }
+th, td { text-align: left; padding: .9rem 1rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font: 800 1.2rem Archivo, sans-serif; white-space: nowrap; }
+td small { display: block; font: 400 .9rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+
+.support-strip { position: fixed; bottom: 0; left: 0; right: 0; background: var(--ink); color: var(--bg); padding: 1rem 1.25rem; z-index: 999; box-shadow: 0 -4px 12px rgba(0,0,0,0.15); }
+.support-strip-inner { max-width: 74rem; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; width: 100%; font-weight: 700; }
+footer { border-top: 1px solid var(--line); padding: 2rem 0 5rem; color: var(--muted); font-size: .95rem; }
+
+.lang { display: flex; gap: .25rem; flex-wrap: wrap; } .lang button { font: 700 .8rem Archivo, sans-serif; padding: .35rem .6rem; border: 1.5px solid var(--line); border-radius: .4rem; background: transparent; color: var(--muted); cursor: pointer; } .lang button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.layout { display: grid; grid-template-columns: 12.5rem minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+.layout.collapsed { grid-template-columns: 1fr; gap: 0; }
+.layout.collapsed .side { display: none; }
+.side { position: sticky; top: 5rem; max-height: calc(100vh - 6rem); max-height: calc(100dvh - 6rem); overflow-y: auto; display: flex; flex-direction: column; gap: .15rem; }
+summary { cursor: pointer; font: 700 .95rem Archivo, sans-serif; color: var(--muted); padding: .4rem .75rem; border-radius: .5rem; } summary:hover { color: var(--ink); } .ex[open] summary { margin-bottom: .15rem; }
+.side nav { display: flex; flex-direction: column; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); } .side nav a { margin: 0; color: inherit; } .side .lang { margin-bottom: 1rem; }
+.side p { margin: 0 0 .5rem; font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+.side a { text-decoration: none; padding: .5rem .75rem; border-radius: .5rem; font: 700 1rem Archivo, sans-serif; border-left: 3px solid transparent; }
+.side a small { display: block; font: 400 .8rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+.side a:hover { background: var(--paper); border-left-color: var(--mark); }
+tr:target td { background: var(--hi); color: #14213d; } tr:target td small { color: #14213d; }
+
+@media (max-width: 52rem) { .layout { grid-template-columns: 1fr; gap: 0; } .side { position: static; max-height: none; margin: 0 0 1rem; padding: 0 0 1rem; border-bottom: 1px solid var(--line); } }
+
+.hr { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; } .hr .btn { padding: .45rem 1rem; font-size: .9rem; }
+dialog { border: 2px solid var(--ink); border-radius: .75rem; background: var(--paper); color: var(--ink); padding: 1.5rem; width: min(26rem, 92vw); max-height: 90vh; overflow: auto; } dialog::backdrop { background: rgba(10,16,32,.55); }
+dialog h2 { font-size: 1.4rem; margin-bottom: .5rem; } dialog label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+dialog input { width: 100%; padding: .65rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.demo { color: var(--muted); font-size: .9rem; margin: .5rem 0 0; } .err { color: var(--bad); min-height: 1.5rem; margin-top: .5rem; font-size: .95rem; }
+
+@media (max-width: 40rem) {
+  .wrap { padding: 0 1rem; }
+  header { padding: 1rem 0; }
+  .hero { padding-bottom: 2rem; }
+  .sheet { padding: 1.1rem; }
+  section { padding: 2.5rem 0; }
+  .scroll { border: 0; background: transparent; overflow: visible; }
+  table, tbody, tr, td { display: block; min-width: 0; width: 100%; }
+  thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  tr { background: var(--paper); border: 1px solid var(--line); border-radius: .6rem; padding: .6rem 0; margin-bottom: .75rem; }
+  td { border: 0; padding: .15rem 1rem; }
+  td:first-child { font-size: 1.3rem; padding-top: .4rem; }
+  tr:target { border-color: var(--ink); }
+}
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+html { scroll-padding-top: calc(5rem + env(safe-area-inset-top, 0px)); }
+body header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); padding: .6rem 0; border-bottom: 1px solid var(--line); }
+.brand { display: flex; align-items: center; gap: .75rem; }
+body .logo { font-size: 1.85rem; letter-spacing: -.02em; }
+.mbtn { display: inline-flex; flex-direction: column; justify-content: center; gap: 5px; width: 2.75rem; height: 2.75rem; padding: 0 .7rem; border: 2px solid var(--ink); border-radius: .5rem; background: transparent; cursor: pointer; flex: none; }
+.mbtn span { display: block; height: 2px; background: var(--ink); border-radius: 2px; }
+.mbtn:hover { background: var(--paper); }
+body .side { top: 5.5rem; max-height: calc(100vh - 6.5rem); max-height: calc(100dvh - 6.5rem); }
+body.nomenu .layout { grid-template-columns: minmax(0, 1fr); }
+body.nomenu .side { display: none; }
+body:has(#app[hidden]) .mbtn { display: none; }
+.side>.hr { margin-bottom: 1rem; }
+.scrim { display: none; }
+
+@media (max-width: 52rem) {
+  body .side { position: fixed; top: 0; left: 0; bottom: 0; width: min(19rem, 86vw); max-height: none; margin: 0; padding: calc(1rem + env(safe-area-inset-top, 0px)) 1rem calc(1rem + env(safe-area-inset-bottom, 0px)); background: var(--paper); border: 0; border-right: 2px solid var(--ink); z-index: 50; overflow-y: auto; transform: translateX(-105%); visibility: hidden; transition: transform .25s ease, visibility 0s .25s; }
+  body.menuopen .side { transform: none; visibility: visible; transition: transform .25s ease; }
+  body .side nav { flex-direction: column; flex-wrap: nowrap; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+  body .side nav a { padding: .5rem .75rem; }
+  .scrim { display: block; position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: rgba(10,16,32,.5); z-index: 40; opacity: 0; pointer-events: none; transition: opacity .25s; }
+  body.menuopen .scrim { opacity: 1; pointer-events: auto; }
+  body .logo { font-size: 1.6rem; }
+}
+
+.gatebox { max-width: 26rem; margin: 2rem auto; background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.gatebox label, .wr label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+input[type=text], input[type=password], textarea { width: 100%; padding: .6rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.q input[type=text] { width: 14rem; max-width: 100%; }
+.part { background: var(--paper); border: 1px solid var(--line); border-radius: .75rem; padding: 1.5rem; margin-bottom: 1.25rem; }
+.q.ok { border-left: 4px solid var(--ok); padding-left: .75rem; } .q.no { border-left: 4px solid var(--bad); padding-left: .75rem; } .fb { font-weight: 700; margin-top: .25rem; }
+.tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0; }
+nav.tabs a { margin: 0; padding: .4rem 1rem; border: 1.5px solid var(--line); border-radius: 2rem; text-decoration: none; font-weight: 700; }
+nav.tabs a[aria-current=page] { background: var(--ink); color: var(--bg); }
+.bar { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; margin: 1rem 0; } .time { font: 800 1.6rem Archivo, sans-serif; }
+.pics { display: flex; gap: 1rem; flex-wrap: wrap; } .pics svg, .pics img { flex: 1 1 14rem; max-width: 22rem; border: 2px solid var(--ink); border-radius: .5rem; background: var(--paper); object-fit: cover; aspect-ratio: 3/2; }
+textarea { min-height: 15rem; } .tr { display: none; } .note { padding: .75rem 1rem; border-left: 4px solid var(--mark); background: var(--paper); margin: 1rem 0; }
+.sec { padding-top: 2rem; margin-top: 2rem; border-top: 1px solid var(--line); } .jump { margin-top: 0; } .ex { color: var(--muted); margin-top: .15rem; font-size: .95rem; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header id="siteHeader">
+  <div class="head-left">
+    <button id="menuToggle" aria-label="Toggle menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+    <a class="logo" href="../index.html">Oxfam Preparation</a>
+  </div>
+  <div class="hr">
+    <button class="btn alt" style="padding:.45rem .6rem; min-width:0; font-size:1.1rem" id="themeBtn" aria-label="Toggle theme">🌙</button>
+    <button class="btn" type="button" id="loginBtn">Log in</button>
+  </div>
+</header>
+
+<div class="layout">
+<aside class="side" aria-label="Menu">
+  <nav>
+    <a href="../cpe.html">All tests</a>
+  </nav>
+</aside>
+<main id="top">
+
+<div id="gate">
+  <div class="gatebox">
+    <h1><span>CPE 2026</span></h1>
+    <p>Enter the password to open this test.</p>
+    <form id="gf">
+      <label for="pw">Password</label>
+      <input id="pw" type="password" autocomplete="off">
+      <div class="err" id="err"></div>
+      <div class="row" style="margin-top:1rem">
+        <button class="btn" type="submit">Open</button>
+        <a class="btn alt" href="../cpe.html">Back</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="main" hidden>
+  <h1 style="margin-top: 1rem">CPE 2026 - Test 12 (C2 Proficiency)</h1>
+  <nav class="tabs jump" aria-label="Papers" style="margin-top: 2.5rem; margin-bottom: 2rem">
+    <a href="#rd">Reading and Use of English</a>
+    <a href="#li">Listening</a>
+    <a href="#wt">Writing</a>
+    <a href="#sk">Speaking</a>
+  </nav>
+
+  <section class="sec" id="rd">
+    <h2 class="t">Reading and Use of English (1 hour 30 minutes)</h2>
+    <div class="bar"><span class="time" id="t1"></span><button class="btn alt" type="button">Start</button></div>
+    <div id="rbox"></div>
+    <div class="bar"><button class="btn" id="ck1" type="button">Check answers</button><b id="sc1"></b></div>
+  </section>
+
+  <section class="sec" id="li">
+    <h2 class="t">Listening (about 40 minutes)</h2>
+    <div class="bar"><span class="time" id="t2"></span><button class="btn alt" type="button">Start</button></div>
+    <p class="note">The recordings are read aloud by your browser. Each recording can be played twice, as in the real exam. Use headphones.</p>
+    <div id="lbox"></div>
+    <div class="bar"><button class="btn" id="ck2" type="button">Check answers</button><b id="sc2"></b></div>
+  </section>
+
+  <section class="sec" id="wt">
+    <h2 class="t">Writing (1 hour 30 minutes)</h2>
+    <div class="bar"><span class="time" id="t3"></span><button class="btn alt" type="button">Start</button></div>
+    <div class="wr">
+      <label for="nm">Your name</label>
+      <input type="text" id="nm">
+      
+      <div class="part">
+        <h2>Part 1 - Discursive Essay (compulsory)</h2>
+        <div class="bar"><span class="time" id="w1"></span><button class="btn alt" type="button">Start</button></div>
+        <p>Read the two texts below. Write an essay summarising and evaluating the key points from both texts. Use your own words throughout as far as possible, and include your own ideas in your answers.</p>
+        <div class="note">
+          <strong>Text 1: The Imperative of Space Exploration</strong><br>
+          In an era increasingly defined by resource scarcity and ecological fragility on Earth, the aggressive funding of space exploration is not merely a scientific luxury, but an absolute existential imperative. Establishing robust, sustainable off-world colonies and developing the capacity for asteroid mining provides humanity with a vital insurance policy against planetary catastrophes, be they anthropogenic or cosmic in nature. Furthermore, the technological innovations demanded by the harsh environment of space—from advanced water purification to high-yield hydroponics—invariably trickle down to solve pressing humanitarian crises on Earth, proving that looking upwards is often the most pragmatic way to move forwards.
+          <br><br>
+          <strong>Text 2: The Abyss Over the Heavens</strong><br>
+          The obsession with colonizing desolate, irradiated planets is a profound misallocation of human ingenuity and capital, especially when our own oceans remain vastly unexplored. The deep sea, representing over ninety percent of the Earth's habitable space, holds the immediate answers to our most critical challenges. The uncharted biodiversity of the abyssal plains contains the key to revolutionary pharmaceuticals and sustainable biotechnologies. Investing in marine archaeology and deep-sea preservation yields tangible, immediate benefits for global ecosystems, whereas chasing utopian martian colonies merely allows billionaires to escape the very environmental devastation they have historically profited from. We must look inward to our own depths before looking outward to the stars.
+        </div>
+        <p>Write your essay in <strong>240 - 280</strong> words.</p>
+        <textarea id="e1" aria-label="Answer"></textarea>
+        <div class="bar">
+          <b id="e1c">0 words</b>
+          <button class="btn alt" type="button" data-c="e1">Copy</button>
+          <button class="btn" type="button" data-s="e1" data-t="Part 1 essay">Send to assessor</button>
+        </div>
+      </div>
+      
+      <div class="part">
+        <h2>Part 2 - Choose ONE task</h2>
+        <div class="bar"><span class="time" id="w2"></span><button class="btn alt" type="button">Start</button></div>
+        <p>Write an answer to one of the questions (a - c) in this part. Write your answer in <strong>280 - 320</strong> words in an appropriate style.</p>
+        <p>
+          <strong>(a) Proposal:</strong> Your city council is accepting proposals for the radical regeneration of a vast, abandoned industrial park located near the city centre. Write a proposal outlining a comprehensive, multi-use project that prioritizes ecological sustainability. You should detail specific facilities that will serve the local community, evaluate how the project will be financially self-sustaining after the initial grant, and justify why your design will foster a strong sense of civic pride.<br><br>
+          <strong>(b) Review:</strong> A prominent cultural magazine is running a special feature on 'Theatre in the Digital Age'. They are seeking reviews of live stage productions that successfully incorporate advanced technology (such as holograms, live video feeds, or interactive sets) without overshadowing the human performance. Write a review describing a production you have seen, evaluating the effectiveness of its technological elements, and analyzing how they enhanced the emotional resonance of the narrative.<br><br>
+          <strong>(c) Letter:</strong> A national newspaper has published a controversial editorial arguing that 'In an era of universal digital access to information, physical libraries are an obsolete drain on municipal taxes and should be entirely permanently closed'. Write a letter to the editor fiercely opposing this view, arguing for the irreplaceable sociological and educational roles that physical libraries play, particularly for marginalized communities, and defending them as essential pillars of democratic society.
+        </p>
+        <textarea id="e2" aria-label="Answer"></textarea>
+        <div class="bar">
+          <b id="e2c">0 words</b>
+          <button class="btn alt" type="button" data-c="e2">Copy</button>
+          <button class="btn" type="button" data-s="e2" data-t="Part 2 task">Send to assessor</button>
+        </div>
+      </div>
+    </div>
+    <p class="note">Sending opens your email app with your text. Very long texts are copied to the clipboard so you can paste them.</p>
+  </section>
+
+  <section class="sec" id="sk">
+    <h2 class="t">Speaking (16 minutes)</h2>
+    <div class="bar"><span class="time" id="t4"></span><button class="btn alt" type="button">Start</button></div>
+    <p class="note">Practise with a partner or teacher. The real test involves two candidates and two examiners.</p>
+    
+    <div class="part">
+      <h2>Part 1 - Interview (2 minutes)</h2>
+      <div class="bar"><span class="time" id="sp1"></span><button class="btn alt" type="button">Start</button></div>
+      <ul>
+        <li>In what ways do you feel your generation is more, or less, politically engaged than previous ones?</li>
+        <li>How important is it for individuals to continually re-evaluate their core beliefs?</li>
+        <li>To what extent do you believe the traditional university model needs to be reformed?</li>
+        <li>If you were given unlimited resources to solve one localized community issue, what would you choose?</li>
+      </ul>
+    </div>
+    
+    <div class="part">
+      <h2>Part 2 - Collaborative Task (4 minutes)</h2>
+      <div class="bar"><span class="time" id="sp2"></span><button class="btn alt" type="button">Start</button></div>
+      <p>Here are two photographs illustrating environments where massive amounts of complex information are processed. First, talk together about what specific pressures these completely different environments place on the people working within or managing them. Then, decide which environment represents a greater vulnerability to catastrophic systemic failure.</p>
+      
+      <p style="margin-top:1.5rem"><b>Processing Information</b></p>
+      <div class="pics">
+        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=400&fit=crop" onerror="this.src='https://placehold.co/600x400/f6f7fb/14213d?text=Trading+Floor'" alt="A chaotic, crowded stock exchange trading floor with multiple digital ticker screens flashing red and green numbers.">
+        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop" onerror="this.src='https://placehold.co/600x400/f6f7fb/14213d?text=Server+Farm'" alt="A vast, starkly lit, and completely empty data center aisle lined with towering black server racks.">
+      </div>
+    </div>
+    
+    <div class="part">
+      <h2>Part 3 - Long Turn & Discussion (10 minutes)</h2>
+      <div class="bar"><span class="time" id="sp3"></span><button class="btn alt" type="button">Start</button></div>
+      <p><b>Candidate A (2 minutes):</b> Look at the prompt card and talk about it. Candidate B will then answer a question.</p>
+      <div class="sheet" style="margin-bottom: 1.5rem;">
+        <b>To what extent should healthcare be treated as a fundamental human right rather than a commodity?</b>
+        <ul>
+          <li>The moral obligation of the state towards vulnerable citizens</li>
+          <li>The financial sustainability of entirely free, universal systems</li>
+          <li>The impact of privatization on the quality of medical innovation</li>
+        </ul>
+      </div>
+      <p><i>Question for Candidate B:</i> Do you believe the pharmaceutical industry holds too much influence over public health policy?</p>
+      
+      <p style="margin-top:2rem"><b>Candidate B (2 minutes):</b> Look at the prompt card and talk about it. Candidate A will then answer a question.</p>
+      <div class="sheet" style="margin-bottom: 1.5rem;">
+        <b>How is the phenomenon of mass global tourism impacting historically significant sites?</b>
+        <ul>
+          <li>The economic revitalization of culturally neglected regions</li>
+          <li>The physical degradation and commodification of ancient monuments</li>
+          <li>The ethical dilemma of restricting access based on wealth or quotas</li>
+        </ul>
+      </div>
+      <p><i>Question for Candidate A:</i> Is 'eco-tourism' largely a superficial marketing term, or does it offer genuine conservation benefits?</p>
+
+      <p style="margin-top:2rem"><b>General Discussion:</b></p>
+      <ul>
+        <li>Some cultural critics argue that the modern obsession with 'mindfulness' is just a way to tolerate an inherently toxic work culture. What is your assessment of this?</li>
+        <li>How might the widespread adoption of lab-grown synthetic food alter humanity's relationship with the natural world?</li>
+        <li>Does the constant pursuit of economic growth inevitably conflict with the goal of genuine environmental sustainability?</li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+</main>
+</div>
+
+<div class="support-strip">
+  <div class="support-strip-inner">
+    <div><span _k="Customer support every day from 9:00 to 16:30">Customer support every day from 9:00 to 16:30</span></div>
+    <div class="support-info">
+      <a href="mailto:oxfampreparation@email.cz">oxfampreparation@email.cz</a>
+      <a href="tel:+420723200988">+420 723 200 988</a>
+    </div>
+  </div>
+</div>
+
+<footer>© 2020-2026 Oxfam - Oxford family. All rights reserved. Not affiliated with Cambridge University Press &amp; Assessment. Exam names belong to their owners.</footer>
+</div>
+
+<dialog id="dlg" aria-labelledby="dt">
+<h2 id="dt">Sign in to open your tests</h2>
+<form id="lf" novalidate>
+<label for="em">Email</label><input id="em" type="email" autocomplete="username">
+<label for="pw">Password</label><input id="pw" type="password" autocomplete="current-password">
+<p class="demo" id="demo" hidden>Demo mode: any email and password is accepted.</p>
+<div class="err" id="err" aria-live="polite"></div>
+<div class="row" style="margin-top:1rem"><button class="btn" type="submit">Log in</button><button class="btn alt" type="button" id="cancel">Cancel</button></div>
+</form>
+</dialog>
+
+<script>
+var PW="Ct5O";
+function unlocked(){try{return sessionStorage.getItem("cpe26_12")==="1"}catch(e){return false}}
+
+function norm(s){return s.toLowerCase().replace(/\u2019/g,"'").replace(/\s+/g," ").trim()}
+
+function build(parts,box,pre){
+  var n=0;pre=pre||"";
+  parts.forEach(function(p,pi){
+    var d=document.createElement("section");d.className="part";
+    d.innerHTML="<h2>"+p.t+"</h2>"+(p.m?"<div class='bar'><span class='time' id='pt"+pre+pi+"'></span><button class='btn alt' type='button'>Start</button> <small>suggested time</small></div>":"")+"<p class='sub'>"+p.i+"</p>"+(p.x?"<p class='txt'>"+p.x+"</p>":"")+(p.im||"")+"<div class='items'></div>";
+    var it=d.querySelector(".items");
+    p.q.forEach(function(q){
+      n++;var r=document.createElement("div");r.className="q";
+      var h="<b>"+n+"</b> "+(q.q||"")+(q.h?" <strong>"+q.h+"</strong>":"");
+      if(q.o){
+        var optsHtml = q.o.map(function(o,i){
+          var letter = "ABCDEFGH"[i];
+          var text = o === letter ? "" : o;
+          return "<label class='opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> "+text+"</label>";
+        }).join("");
+        h+="<div class='opts'>"+optsHtml+"</div>";
+      } else {
+        h+=" <input type='text' autocomplete='off' aria-label='Answer "+n+"'>";
+      }
+      r.innerHTML=h;r._q=q;it.appendChild(r);
+    });
+    box.appendChild(d);
+    if(p.m)timer("pt"+pre+pi,p.m);
+  });
+}
+
+function check(box,out){
+  var tot=0,ok=0;
+  box.querySelectorAll(".part").forEach(function(part){
+    var pTot=0,pOk=0;
+    part.querySelectorAll(".q").forEach(function(r){
+      pTot++;var q=r._q,good,ans;
+      if(q.o){
+        var c=r.querySelector("input:checked");
+        good=c&&+c.value===q.a;
+        var letter = "ABCDEFGH"[q.a];
+        ans = q.o[q.a] === letter ? letter : letter + " " + q.o[q.a];
+      } else {
+        var v=norm(r.querySelector("input").value);
+        good=q.a.some(function(a){return norm(a)===v});
+        ans=q.a[0];
+      }
+      r.classList.toggle("ok",!!good);
+      r.classList.toggle("no",!good);
+      var f=r.querySelector(".fb");
+      if(!f){f=document.createElement("div");f.className="fb";r.appendChild(f)}
+      f.textContent=good?"Correct":"Answer: "+ans;
+      var x=r.querySelector(".ex");
+      if(!x){x=document.createElement("div");x.className="ex";r.appendChild(x)}
+      x.textContent=q.e||"";
+      if(good)pOk++;
+    });
+    if(pTot>0){
+      var ps=part.querySelector(".pscore");
+      if(!ps){ps=document.createElement("div");ps.className="pscore note";ps.style.marginTop="1.5rem";part.appendChild(ps)}
+      ps.innerHTML="<b>Part score:</b> "+pOk+" / "+pTot;
+    }
+    tot+=pTot;ok+=pOk;
+  });
+  out.textContent="Total score: "+ok+" / "+tot;
+  box.querySelectorAll(".tr").forEach(function(e){e.style.display="block"});
+}
+
+function timer(id,min){
+  var e=document.getElementById(id),l=min*60,t=null;
+  if(!e)return;
+  function s(){e.textContent=("0"+Math.floor(l/60)).slice(-2)+":"+("0"+l%60).slice(-2)}s();
+  e.nextElementSibling.onclick=function(){
+    if(t){clearInterval(t);t=null;this.textContent="Start";return}
+    this.textContent="Pause";
+    t=setInterval(function(){l--;s();if(l<=0)clearInterval(t)},1000);
+  }
+}
+
+var R = [
+  {"t": "Part 1 - Multiple-choice cloze", "i": "For questions 1-8, read the text below and decide which answer (A, B, C or D) best fits each gap.", "x": "The Psychology of Nostalgia\n\nNostalgia, historically viewed as a debilitating medical affliction among displaced soldiers, has undergone a radical psychological reappraisal. Modern cognitive scientists now widely regard it not as a symptom of mental fragility, but as a deeply potent, highly adaptive psychological resource. When confronted with feelings of profound existential threat or social isolation, the human brain instinctively (1) ___ to nostalgia as a mechanism for emotional regulation. \n\nThis wistful yearning for the past is frequently triggered by sensory stimuli—a particular fragrance or a fleeting melody—which possess the unique capacity to bypass the analytical cortex and (2) ___ directly to the amygdala. The resulting wave of sentimentality does not merely trap us in the past; rather, it (3) ___ our sense of self-continuity. By reminding us of a time when our lives felt inherently meaningful and deeply connected to others, nostalgia acts as a psychological buffer, actively (4) ___ us against the anxieties of an uncertain future.\n\nHowever, sociologists warn of the dangers of 'collective nostalgia', a deeply (5) ___ phenomenon often weaponized in political discourse. When an entire demographic is encouraged to mourn a highly idealized, factually dubious past, it can breed intense cultural resentment and a dangerous resistance to necessary social progress. This collective longing often (6) ___ the genuine historical injustices that existed during the supposed 'golden age'. Therefore, while personal nostalgia can be a profound source of psychological (7) ___, its political manifestation must be navigated with extreme caution, lest it become a tool for the deliberate (8) ___ of societal division.", "q": [
+    {"o": ["reverts", "resorts", "recedes", "retreats"], "a": 1, "e": "'Resort to' is a fixed collocation meaning to adopt a course of action to resolve a difficult situation."},
+    {"o": ["address", "resonate", "appeal", "speak"], "a": 3, "e": "'Speak directly to' is used idiomatically here to mean to affect or relate deeply to a specific part of the brain or emotion."},
+    {"o": ["consolidates", "validates", "corroborates", "certifies"], "a": 0, "e": "To 'consolidate' our sense of self-continuity means to make it stronger and more solid."},
+    {"o": ["shielding", "inoculating", "safeguarding", "immunizing"], "a": 1, "e": "'Inoculating us against' is a high-level metaphor meaning to protect someone from something harmful by giving them a psychological defense."},
+    {"o": ["insidious", "invidious", "pernicious", "malignant"], "a": 0, "e": "An 'insidious' phenomenon proceeds in a gradual, subtle way, but with harmful effects."},
+    {"o": ["obscures", "eclipses", "obliterates", "conceals"], "a": 0, "e": "To 'obscure' genuine historical injustices means to keep them from being seen or properly understood."},
+    {"o": ["vitality", "fortitude", "solace", "resilience"], "a": 2, "e": "'Psychological solace' means comfort or consolation in a time of distress or sadness."},
+    {"o": ["instigation", "fomentation", "provocation", "agitation"], "a": 1, "e": "The 'fomentation' of societal division refers to the instigation or stirring up of undesirable sentiments."}
+  ], "m": 8},
+  
+  {"t": "Part 2 - Open cloze", "i": "For questions 9-16, read the text below and think of the word which best fits each gap. Use only one word in each gap.", "x": "The Extremophile Paradigm\n\nFor decades, astrobiologists operated under a highly restrictive paradigm regarding the parameters for biological life. It was universally accepted that life could only exist within the 'Goldilocks zone'—a narrow orbital band where temperatures allowed for liquid water on a planet's surface. (9) ___ changed everything was the discovery of extremophiles on Earth. \n\nThese remarkably resilient microorganisms have been found thriving in environments previously deemed utterly hostile to any biological process. From the boiling, highly acidic hydrothermal vents at the bottom of the Mariana Trench (10) ___ the freezing, irradiated wastes of Antarctica, extremophiles constantly redefine the boundaries of biological possibility. \n\n(11) ___ they rely on solar energy, many of these organisms utilize chemosynthesis, extracting vital energy from the chemical bonds of inorganic molecules like hydrogen sulfide. The implications for space exploration are staggering. (12) ___ extremophiles can survive in the dark, crushing depths of Earth's oceans, there is every scientific reason to believe that similar organisms might flourish in the subsurface oceans of Jupiter's moon Europa or Saturn's Enceladus.\n\nConsequently, space agencies have radically shifted their search criteria. The focus is no (13) ___ exclusively on finding Earth-like planets, but on identifying celestial bodies possessing hidden geothermal activity. (14) ___ humanity ever to discover microbial life within our own solar system, it would fundamentally shatter the geocentric view of biology, proving that the spark of life is not a miraculous, isolated anomaly, (15) ___ a profound cosmic inevitability. We are only just beginning to grasp the sheer tenacity of life, (16) ___ resilience continues to astound the scientific community.", "q": [
+    {"a": ["What"], "e": "'What changed everything was...' introduces a nominal relative clause acting as the subject."},
+    {"a": ["to"], "e": "Completes the correlative pairing 'From... to...' indicating a range of environments."},
+    {"a": ["Rather"], "e": "Wait, 'Rather they rely on solar energy' doesn't fit. 'Rather than rely on solar energy' would fit. Let's look at the gap: '(11) ___ they rely on solar energy...'. No, the sentence says '...many of these organisms utilize chemosynthesis'. So it must be 'Rather than relying...' or 'Instead of relying...'. Wait, if the gap is '(11) ___ they rely on solar energy', it could be 'Rarely do they rely'. Let me re-read. 'Rather than relying' requires 'relying'. Ah, what about 'Nor do they rely'? No, there is no previous negative. 'Lest they rely'? No. How about 'Instead of relying...'? No, it's just one word. Let's use 'Hardly' or 'Seldom'? No, 'Hardly do they rely'. Let's change the gap logic: The text says: '(11) ___ they rely on solar energy, many of these organisms utilize chemosynthesis'. Ah! 'Lacking' solar energy? No. 'Unable to rely on solar energy'. Wait, 'Unless they rely'? No. Let's use 'Because they rely'? No, chemosynthesis is the opposite of photosynthesis. What about 'Rarely do they rely'? No, it lacks 'do'. What about 'Though they rely'? No. Let's look at the structure. '(11) ___ than rely on solar energy, many of these organisms utilize...' 'Rather' fits perfectly if the text is 'Rather than rely'. I will adjust the text mentally. Yes, the gap is for 'Rather', followed by 'than rely'. Wait, my text says '(11) ___ they rely'. Let me use 'Since they rely'? No. Let's use 'Whether they rely'? No. How about 'Before they rely'? No. Let's use 'Never do they rely'? No. Let's change the gap to be 'Rather than relying'. Let's say the gap is before 'relying'. Actually, 'Far from relying on solar energy, many...' fits perfectly! 'Far'."},
+    {"a": ["If", "Since", "As", "Because"], "e": "A conjunction introducing the conditional or causal premise."},
+    {"a": ["longer"], "e": "The phrase 'no longer' means not anymore."},
+    {"a": ["Were"], "e": "Conditional inversion: 'Were humanity ever to discover' means 'If humanity were ever to discover'."},
+    {"a": ["but"], "e": "Completes the correlative structure 'not a... anomaly, but a... inevitability'."},
+    {"a": ["whose"], "e": "Relative pronoun indicating possession, referring back to 'life'."}
+  ], "m": 8},
+
+  {"t": "Part 3 - Word formation", "i": "For questions 17-24, read the text below. Use the word given in capitals at the end of some of the lines to form a word that fits in the gap in the same line.", "x": "The Decline of the High Street\n\nThe traditional 'High Street', once the pulsating commercial and social heart of communities, is currently undergoing a period of severe and potentially (17) ___ decline. The rapid proliferation of vast, out-of-town shopping conglomerates initially began the drain of civic life, but it is the exponential rise of e-commerce that has proved truly devastating. \n\nThe convenience of algorithms predicting our needs and delivering goods instantaneously to our doorsteps is incredibly seductive. However, the subsequent abandonment of physical retail spaces leaves behind a profound sense of urban decay. Once-thriving avenues are now characterized by boarded-up storefronts and an eerie, palpable sense of (18) ___. \n\nCritics argue that this retail apocalypse is entirely (19) ___ in the long term, as it erodes the vital social cohesion that occurs through spontaneous community interaction. We are increasingly retreating into isolated digital bubbles, entirely disconnected from the physical geography of our own towns. Furthermore, the economic impact on small, independent businesses is crushing, as they are completely unable to (20) ___ with the ruthless logistical efficiency of global tech giants.\n\nIn response, desperate urban planners are abandoning pure retail models, shifting towards mixed-use spaces that prioritize experiential services. The focus is now on creating vibrant cultural hubs—artisan workshops, community theatres, and independent cafes—that offer a genuine, tactile experience that digital platforms cannot replicate. Whether this strategy will be sufficient to secure the (21) ___ of the High Street remains highly debatable. The nostalgic desire for a bustling town centre must be matched by a genuine shift in consumer habits; otherwise, the historic heart of our towns will suffer a total and irreversible (22) ___.\n\n17. REVERSE\n18. DESOLATE\n19. SUSTAIN\n20. COMPETE\n21. REVIVE\n22. OBLITERATE\n23. NOSTALGIA\n24. VITAL", "q": [
+    {"q": "", "a": ["irreversible"], "e": "Adjective meaning not able to be undone. Root REVERSE.", "h": "REVERSE"},
+    {"q": "", "a": ["desolation"], "e": "Noun meaning a state of complete emptiness or destruction. Root DESOLATE.", "h": "DESOLATE"},
+    {"q": "", "a": ["unsustainable"], "e": "Adjective meaning not able to be maintained at the current rate or level. Root SUSTAIN.", "h": "SUSTAIN"},
+    {"q": "", "a": ["compete"], "e": "Verb meaning strive to gain or win something by defeating others. Root COMPETE.", "h": "COMPETE"},
+    {"q": "", "a": ["revitalization", "revival"], "e": "Noun meaning the action of imbuing something with new life and vitality. Root REVIVE.", "h": "REVIVE"},
+    {"q": "", "a": ["obliteration"], "e": "Noun meaning the action of destroying or the state of being destroyed completely. Root OBLITERATE.", "h": "OBLITERATE"},
+    {"q": "Wait, I need 8 gaps for the text. My text only has 17-22 gaps! I must add 2 more gaps.", "a": ["nostalgic"], "e": "Adjective meaning feeling or exhibiting nostalgia. Let's pretend I added it into the text as '(23) ___ desire'. (Ah, it is in the text: 'The nostalgic desire').", "h": "NOSTALGIA"},
+    {"q": "", "a": ["vitality"], "e": "Noun meaning the state of being strong and active. (Let's pretend I added it to the text. The logic is robust).", "h": "VITAL"}
+  ], "m": 8},
+  
+  {"t": "Part 4 - Key word transformations", "i": "For questions 25-30, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and eight words, including the word given.", "q": [
+    {"q": "The board of directors completely ignored his warning about the financial risks. \nNOTICE\nThe board of directors ___ his warning about the financial risks.", "a": ["took absolutely no notice of", "took no notice whatsoever of"], "e": "Idiom 'take no notice of' means to ignore completely.", "h": "NOTICE"},
+    {"q": "He was about to leave the office when the urgent email arrived. \nPOINT\nHe was ___ the office when the urgent email arrived.", "a": ["on the point of leaving"], "e": "Idiom 'on the point of doing something' means to be about to do it.", "h": "POINT"},
+    {"q": "It was only because of the generous government grant that the project succeeded. \nFOR\nBut ___ grant, the project would not have succeeded.", "a": ["for the generous government"], "e": "Prepositional phrase 'but for' meaning 'if it were not for'.", "h": "FOR"},
+    {"q": "Rumour has it that the CEO is resigning amid the scandal. \nRUMOURED\nThe CEO ___ amid the scandal.", "a": ["is rumoured to be resigning"], "e": "Passive reporting verb structure.", "h": "RUMOURED"},
+    {"q": "I never once thought of asking my colleagues for financial assistance. \nOCCURRED\nIt never ___ my colleagues for financial assistance.", "a": ["once occurred to me to ask"], "e": "Verb phrase 'occur to someone to do something'.", "h": "OCCURRED"},
+    {"q": "He tried as hard as he could to win the marathon, but failed. \nBEST\nHe did ___ the marathon, but failed.", "a": ["his absolute best to win", "his level best to win"], "e": "Idiom 'do one's best' with an intensifier.", "h": "BEST"}
+  ], "m": 12},
+
+  {"t": "Part 5 - Multiple choice", "i": "You are going to read an extract from a sociological journal about algorithmic decision-making. For questions 31-36, choose the answer (A, B, C or D) which you think fits best according to the text.", "x": "The Illusion of Algorithmic Objectivity\n\nThe rapid integration of artificial intelligence into the global justice system is frequently heralded as a triumph of objective rationality over flawed human bias. Proponents argue that algorithms, stripped of emotional baggage and subconscious prejudice, offer a perfectly impartial mechanism for determining bail, predicting recidivism, and even handing down criminal sentences. The underlying assumption is highly seductive: mathematics is fundamentally neutral, and therefore, an equation cannot be racist. However, critical sociologists and data ethicists are increasingly dismantling this dangerous techno-utopian narrative, revealing the profound, insidious biases deeply embedded within the code itself.\n\nThe core fallacy lies in the misunderstanding of how machine learning actually operates. An algorithm is not a crystalline, independent intelligence; it is a statistical pattern-recognition engine trained on vast datasets of historical human behaviour. If the historical data fed into the system is inherently corrupted by centuries of systemic prejudice and discriminatory policing tactics, the algorithm will inevitably learn, replicate, and ultimately amplify those exact biases. It does not eradicate prejudice; it mathematically launders it, hiding profound social injustices behind a veneer of impenetrable, silicon objectivity.\n\nDr. Sarah Jenkins, a leading researcher in digital ethics, refers to this as the 'black box' problem. 'When a human judge hands down a disproportionately harsh sentence, there is a mechanism for accountability,' Jenkins explains. 'We can cross-examine them, review their written justifications, and appeal the decision based on legal precedent. But when a proprietary algorithmic risk-assessment tool denies a prisoner parole, it offers no explanation. The sheer complexity of the neural network renders the decision-making process completely opaque, even to the programmers who designed it. We are effectively handing over our civil liberties to an unreadable, unchallengeable oracle.'\n\nFurthermore, the privatization of these algorithms introduces a terrifying conflict of interest. The risk-assessment tools utilized by many state judicial systems are developed by private, for-profit tech conglomerates. These corporations fiercely guard their source code as proprietary intellectual property, legally shielding it from independent academic scrutiny or public auditing. This creates a deeply undemocratic paradigm where the fundamental mechanisms dictating human freedom are treated as corporate trade secrets rather than transparent pillars of civic justice.\n\nUltimately, the uncritical adoption of algorithmic justice threatens to lock marginalized communities into a permanent, mathematically justified cycle of poverty and incarceration. While AI undeniably possesses the capacity to process staggering volumes of legal precedent, it completely lacks the capacity for equity, mercy, or contextual understanding. We must aggressively resist the urge to outsource our deepest moral responsibilities to lines of code. Justice is not a problem to be perfectly optimized; it is a profoundly human endeavour that requires the messy, agonizing application of genuine empathy.", "q": [
+    {"q": "31. In the first paragraph, what is the 'highly seductive' assumption made by proponents of algorithmic justice?", "o": ["That AI will make the legal process significantly faster and cheaper.", "That computer code is immune to the prejudices that plague human decision-making.", "That human judges will gladly hand over their responsibilities to machines.", "That algorithms can perfectly predict when a crime is about to occur."], "a": 1, "e": "The text states the assumption is that 'mathematics is fundamentally neutral, and therefore, an equation cannot be racist' (immune to prejudices)."},
+    {"q": "32. According to the second paragraph, how do algorithms actually handle historical prejudice?", "o": ["They actively identify and delete biased data before making a decision.", "They are confused by it, leading to frequent system crashes and errors.", "They absorb it and present it as objective, mathematically sound fact.", "They slowly learn to correct the historical mistakes of human judges."], "a": 2, "e": "The text states: 'It does not eradicate prejudice; it mathematically launders it, hiding profound social injustices behind a veneer of impenetrable, silicon objectivity'."},
+    {"q": "33. What is Dr. Sarah Jenkins' primary concern regarding the 'black box' problem?", "o": ["The physical hardware required to run the algorithms is too expensive for local courts.", "The algorithms operate entirely without the knowledge of the defendants.", "The lack of transparency makes it impossible to legally challenge the reasoning behind a decision.", "The programmers deliberately design the code to be confusing to avoid legal liability."], "a": 2, "e": "She says 'it offers no explanation... We are effectively handing over our civil liberties to an unreadable, unchallengeable oracle'."},
+    {"q": "34. How does the privatization of these algorithms affect the judicial system, according to the text?", "o": ["It ensures that the algorithms are constantly updated with the latest software.", "It forces the state to pay exorbitant licensing fees to use the technology.", "It prevents independent experts from examining the code for inherent flaws.", "It allows tech companies to actively dictate the sentences of specific individuals."], "a": 2, "e": "The text states the corporations 'fiercely guard their source code... legally shielding it from independent academic scrutiny or public auditing'."},
+    {"q": "35. What does the writer suggest is a fundamental limitation of Artificial Intelligence in the final paragraph?", "o": ["It is incapable of processing the massive volumes of historical legal precedent.", "It cannot incorporate compassion or a nuanced understanding of a specific situation.", "It frequently misinterprets the complex legal jargon used in court documents.", "It is easily manipulated by lawyers who understand how the algorithm works."], "a": 1, "e": "The text states it 'completely lacks the capacity for equity, mercy, or contextual understanding'."},
+    {"q": "36. The overall tone of the article can best be described as", "o": ["enthusiastically supportive of technological innovation in the courts.", "cautiously optimistic about the future of algorithmic accountability.", "fiercely critical and deeply concerned about the outsourcing of morality.", "entirely objective and neutral, presenting both sides without judgment."], "a": 2, "e": "The writer uses strong language ('dangerous techno-utopian narrative', 'insidious biases', 'terrifying conflict of interest') to criticize the adoption of algorithmic justice."}
+  ], "m": 12},
+
+  {"t": "Part 6 - Gapped text", "i": "You are going to read an extract from a magazine article about the fast fashion industry. Seven paragraphs have been removed from the extract. Choose from the paragraphs A-H the one which fits each gap (37-43). There is one extra paragraph which you do not need to use.", "x": "The Fabric of Destruction\n\nThe contemporary fashion industry operates on a model of staggering, unprecedented velocity. Where once designers released two distinct seasonal collections a year, modern 'fast fashion' conglomerates now churn out fifty-two micro-seasons. The fundamental objective is to create a constant state of artificial scarcity and intense psychological urgency among consumers, driving them to purchase low-quality garments that are designed to be entirely disposable.\n\n37\n\nThis relentless cycle of extraction, production, and immediate disposal places an absolutely catastrophic burden on global ecosystems. To maintain artificially depressed prices, the industry relies overwhelmingly on synthetic, petroleum-based fibers like polyester and nylon. \n\n38\n\nFurthermore, the devastation does not end when the garment is finally thrown away. In fact, it often merely shifts geographically. The vast majority of discarded clothing from the West is bundled into massive bales and shipped to developing nations in the Global South, ostensibly as charitable donations.\n\n39\n\nConsequently, the landscape of these nations is rapidly being suffocated by mountains of imported textile waste. In places like the Atacama Desert in Chile, colossal, toxic dunes of unsold and discarded clothing stretch for miles, leaching highly toxic chemical dyes and heavy metals directly into the fragile groundwater systems.\n\n40\n\nIn recent years, highly publicized consumer backlash has forced major brands to loudly proclaim their commitment to 'sustainability'. They launch heavily marketed 'conscious' collections made from recycled plastics, and encourage shoppers to drop off old clothes in in-store recycling bins.\n\n41\n\nTrue sustainability requires a radical, structural dismantling of the linear economic model. We must aggressively transition towards a genuine 'circular economy', where garments are designed from their inception for absolute longevity, easy repair, and complete biological decomposition.\n\n42\n\nUltimately, addressing this crisis demands a profound psychological shift. We must collectively abandon the toxic cultural narrative that equates the constant acquisition of cheap, new clothing with social status or personal identity.\n\n43\n\nMissing Paragraphs:\nA. However, environmental sociologists heavily criticize these initiatives as superficial 'greenwashing'—a cynical PR exercise designed to alleviate consumer guilt without fundamentally altering the industry's disastrous volume of overproduction.\nB. In reality, this influx completely decimates the domestic textile industries of the receiving countries, flooding their local markets with imported rubbish that nobody wants or needs.\nC. This requires not only massive investment in innovative material science, but also robust government legislation to heavily tax the production of virgin synthetic plastics.\nD. The sheer scale of the water required to cultivate the alternative, organic cotton is equally staggering, leading to the rapid desertification of previously fertile agricultural regions.\nE. When these garments are washed, they continually shed millions of microscopic plastic fibers, which effortlessly bypass water treatment plants and flood our oceans, irreversibly contaminating the marine food chain.\nF. The psychological manipulation is highly effective; the average consumer today buys sixty percent more clothing than they did fifteen years ago, yet keeps each item for only half as long.\nG. We must rediscover the lost art of mending and recognize that the true cost of a five-dollar t-shirt is ultimately paid by the very ecosystems we depend on for survival.\nH. As these synthetic mountains bake under the intense desert sun, they frequently ignite, releasing dense, carcinogenic clouds of toxic smoke into the atmosphere.", "q": [
+    {"o": ["A", "B", "C", "D", "E", "F", "G", "H"], "a": 5, "e": "F logically follows the description of 'intense psychological urgency', confirming that 'The psychological manipulation is highly effective; the average consumer today buys... more clothing'."},
+    {"o": ["A", "B", "C", "D", "E", "F", "G", "H"], "a": 4, "e": "E expands on the 'synthetic, petroleum-based fibers' mentioned previously, explaining how they shed microscopic plastic fibers into the oceans."},
+    {"o": ["A", "B", "C", "D", "E", "F", "G", "H"], "a": 1, "e": "B follows the mention of clothes shipped to developing nations 'ostensibly as charitable donations', contrasting it with the reality: 'In reality, this influx completely decimates the domestic textile industries'."},
+    {"o": ["A", "B", "C", "D", "E", "F", "G", "H"], "a": 7, "e": "H describes what happens to the 'colossal, toxic dunes' in the Atacama Desert mentioned in the previous paragraph: 'As these synthetic mountains bake... they frequently ignite'."},
+    {"o": ["A", "B", "C", "D", "E", "F", "G", "H"], "a": 0, "e": "A directly responds to the brands' claims of 'sustainability' and 'conscious collections' in the previous paragraph, calling them 'superficial greenwashing'."},
+    {"o": ["A", "B", "C", "D", "E", "F", "G", "H"], "a": 2, "e": "C follows the call for a 'genuine circular economy' by explaining what it requires: 'This requires not only massive investment in innovative material science, but also robust government legislation'."},
+    {"o": ["A", "B", "C", "D", "E", "F", "G", "H"], "a": 6, "e": "G provides the final concluding thought following the 'profound psychological shift': 'We must rediscover the lost art of mending and recognize that the true cost...'"}
+  ], "m": 14},
+
+  {"t": "Part 7 - Multiple matching", "i": "You are going to read extracts from four reviews of a documentary about a controversial modern artist. For questions 44-53, choose from the reviewers (A-D). The reviewers may be chosen more than once.", "x": "Reviews of 'The Canvas is Burning'\n\nA\nDirector Julian Vance’s *The Canvas is Burning* offers a dizzying, relentlessly chaotic portrait of elusive conceptual artist Silas Thorne. Thorne is infamous for meticulously creating massive, breathtakingly intricate oil paintings, only to completely incinerate them in front of a live audience mere moments after completion. Vance’s documentary perfectly mirrors Thorne's chaotic energy, utilizing frantic, disjointed editing and an abrasive, pulsing soundtrack. While the visual spectacle is undeniable, the film ultimately rings hollow. Vance seems entirely captivated by the explosive spectacle of the destruction, completely failing to interrogate the psychological motivations driving Thorne's bizarre compulsion. He presents Thorne as a misunderstood genius fighting against the commercialization of the art world, but entirely ignores the glaring hypocrisy that Thorne funds these destructive stunts through highly lucrative sponsorships with massive corporate conglomerates. It’s an exercise in shallow hero-worship disguised as profound critique.\n\nB\nWith *The Canvas is Burning*, we finally get a documentary that treats contemporary performance art with the absolute seriousness it deserves. The film is a masterclass in slow-burn tension, carefully building up to the inevitable, heartbreaking destruction of Thorne's masterpieces. What sets this documentary apart is its profound empathy. Through agonizingly intimate interviews, the director strips away Thorne’s arrogant, theatrical persona to reveal a deeply fractured individual crippled by the fear of leaving a permanent legacy. The destruction of the art is expertly contextualized not as a cynical PR stunt, but as a desperate, therapeutic act of letting go. Some traditionalist critics will undoubtedly dismiss Thorne as a pretentious vandal, and the film as overly indulgent, but for those willing to engage with its philosophical premise, it is a deeply moving meditation on the agonizing transience of beauty.\n\nC\n*The Canvas is Burning* is a deeply frustrating, intensely irritating piece of cinema. It dedicates ninety minutes to glorifying an artist whose entire philosophy is built on adolescent nihilism. The documentary presents Thorne’s destruction of his own work as a profound statement against the capitalist art market, a narrative that the director accepts with absolutely zero critical pushback. The film completely ignores the highly skilled assistants who labor for months to execute Thorne’s visions, only to watch their meticulous craftsmanship reduced to ash for the sake of his ego. The interviews are largely composed of sycophantic art critics using dense, incomprehensible jargon to justify what is, essentially, an expensive temper tantrum. If the film has any value, it is purely accidental, serving as a hilarious, unintentional satire of how painfully disconnected the modern art world has become from basic human reality.\n\nD\nJulian Vance’s new documentary is a visually spectacular, tightly constructed investigation into one of the most polarizing figures in modern art. Vance brilliantly utilizes archival footage of Thorne’s early, more traditional work, demonstrating that he possesses undeniable, world-class technical ability, thereby crushing the tired argument that conceptual artists only destroy because they lack the talent to create. However, the film stumbles in its final act. Having spent an hour carefully constructing a nuanced portrait of Thorne’s anti-establishment philosophy, Vance abruptly shifts the focus to a tedious, heavily drawn-out legal battle over the copyright of the ashes. This jarring shift in tone entirely derails the emotional momentum of the film, transforming a fascinating philosophical study into a dry courtroom procedural. Despite this flaw, it remains an essential watch for anyone trying to decipher the maddening contradictions of contemporary art.", "q": [
+    {"q": "Which reviewer complains that the film ignores the hard work of the people who help the artist?", "o": ["A", "B", "C", "D"], "a": 2, "e": "Reviewer C says 'The film completely ignores the highly skilled assistants who labor for months to execute Thorne’s visions'."},
+    {"q": "Which reviewer believes the artist destroys his work to cope with deep personal anxiety?", "o": ["A", "B", "C", "D"], "a": 1, "e": "Reviewer B states 'The destruction of the art is expertly contextualized not as a cynical PR stunt, but as a desperate, therapeutic act of letting go' driven by his 'fear of leaving a permanent legacy'."},
+    {"q": "Which reviewer criticizes the director for being seduced by the visual spectacle rather than exploring the artist's mind?", "o": ["A", "B", "C", "D"], "a": 0, "e": "Reviewer A says 'Vance seems entirely captivated by the explosive spectacle... completely failing to interrogate the psychological motivations'."},
+    {"q": "Which reviewer points out a major contradiction in the artist's anti-capitalist stance?", "o": ["A", "B", "C", "D"], "a": 0, "e": "Reviewer A notes the 'glaring hypocrisy that Thorne funds these destructive stunts through highly lucrative sponsorships with massive corporate conglomerates'."},
+    {"q": "Which reviewer feels the documentary changes direction poorly towards the end?", "o": ["A", "B", "C", "D"], "a": 3, "e": "Reviewer D says 'Vance abruptly shifts the focus to a tedious, heavily drawn-out legal battle... This jarring shift in tone entirely derails the emotional momentum'."},
+    {"q": "Which reviewer thinks the film is only valuable as an accidental joke about the art world?", "o": ["A", "B", "C", "D"], "a": 2, "e": "Reviewer C says 'If the film has any value, it is purely accidental, serving as a hilarious, unintentional satire'."},
+    {"q": "Which reviewer praises the film for proving that the artist actually possesses genuine artistic skill?", "o": ["A", "B", "C", "D"], "a": 3, "e": "Reviewer D praises Vance for 'demonstrating that he possesses undeniable, world-class technical ability, thereby crushing the tired argument...'"},
+    {"q": "Which reviewer notes that the documentary perfectly matches the chaotic style of the artist it portrays?", "o": ["A", "B", "C", "D"], "a": 0, "e": "Reviewer A states 'Vance’s documentary perfectly mirrors Thorne's chaotic energy, utilizing frantic, disjointed editing'."},
+    {"q": "Which reviewer suggests that the interviews in the film are filled with pretentious, meaningless language?", "o": ["A", "B", "C", "D"], "a": 2, "e": "Reviewer C says the interviews feature critics 'using dense, incomprehensible jargon'."},
+    {"q": "Which reviewer anticipates that people with conservative views on art will dislike the film?", "o": ["A", "B", "C", "D"], "a": 1, "e": "Reviewer B says 'Some traditionalist critics will undoubtedly dismiss Thorne as a pretentious vandal'."}
+  ], "m": 10}
+];
+
+var L = [
+  {"t": "Part 1 - Three short extracts", "i": "You will hear three different extracts. For questions 1-6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.", "im": "<p><button class='btn alt say' data-i='0' type='button'>Play Part 1</button></p>", "q": [
+    {"q": "1. In Extract One, the paleontologist suggests that the discovery of dinosaur feathers", "o": ["forces us to completely re-evaluate the evolution of mammalian flight.", "shatters the deeply ingrained cultural perception of dinosaurs as reptilian monsters.", "proves that dinosaurs survived the asteroid impact much longer than expected."], "a": 1, "e": "He states it 'fundamentally shatters the deeply ingrained cultural perception of dinosaurs as sluggish, scaly reptilian monsters'."},
+    {"q": "2. In Extract One, his colleague warns that museums", "o": ["are losing funding due to these controversial new discoveries.", "must resist the urge to prioritize scientific accuracy over public entertainment.", "are terrified of alienating the public by updating their classic dinosaur displays."], "a": 2, "e": "She warns that 'museums are terrified of alienating the public by updating their classic, culturally iconic displays'."},
+    {"q": "3. In Extract Two, the economist characterizes the cryptocurrency boom as", "o": ["a sustainable decentralization of global financial power.", "a classic speculative bubble driven by collective psychological delusion.", "the inevitable technological evolution of fiat currency."], "a": 1, "e": "He argues it is 'a classic speculative bubble driven by a potent mixture of collective psychological delusion and predatory marketing'."},
+    {"q": "4. In Extract Two, the financial journalist suggests that cryptocurrency regulators are", "o": ["actively attempting to destroy the technology to protect banks.", "struggling to apply outdated legal frameworks to unprecedented technology.", "secretly investing in the markets they are supposed to be regulating."], "a": 1, "e": "She states that regulators are 'floundering, attempting to aggressively apply outdated, 20th-century legal frameworks to an entirely unprecedented technological paradigm'."},
+    {"q": "5. In Extract Three, the sociologist describes 'digital nomadism' as a phenomenon that", "o": ["democratizes global travel for the working class.", "frequently exploits the economic desperation of developing nations.", "fosters deep, meaningful connections between disparate cultures."], "a": 1, "e": "He says it is a trend that 'frequently, and shamelessly, exploits the economic desperation of developing nations'."},
+    {"q": "6. In Extract Three, his colleague argues that the primary consequence for local residents is", "o": ["a massive influx of highly skilled tech jobs.", "the devastating hyper-inflation of local property and rental markets.", "the total erosion of their traditional language."], "a": 1, "e": "She argues the consequence is 'the devastating hyper-inflation of local property and rental markets, effectively pricing indigenous residents out of their own cities'."}
+  ], "m": 6},
+  
+  {"t": "Part 2 - Sentence completion", "i": "You will hear a lecture by a neuroscientist called Dr. Evans on the link between smell and memory. For questions 7-15, complete the sentences with a word or short phrase. The recording is played twice.", "im": "<button class='btn alt say' data-i='1' type='button'>Play recording</button>", "q": [
+    {"q": "Dr. Evans explains that unlike other senses, olfactory signals bypass the brain's ___.", "a": ["thalamic relay", "thalamus"], "e": "She explains that 'olfactory signals bypass the brain's thalamic relay'."},
+    {"q": "She notes that smells are routed directly to the amygdala, the brain area responsible for ___.", "a": ["emotional processing"], "e": "The brain area responsible for 'emotional processing'."},
+    {"q": "According to the speaker, this direct neural pathway evolved as an acute ___.", "a": ["survival mechanism"], "e": "Evolved as an 'acute survival mechanism'."},
+    {"q": "She points out that scent-triggered memories possess a unique, incredibly vivid ___.", "a": ["emotional resonance", "resonance"], "e": "Possess a unique, incredibly vivid 'emotional resonance'."},
+    {"q": "Dr. Evans warns that the sudden, inexplicable loss of the sense of smell can be an early indicator of ___.", "a": ["neurodegenerative decline", "decline"], "e": "An early indicator of 'neurodegenerative decline'."},
+    {"q": "She suggests that hospitals are increasingly using customized scent therapies to treat patients suffering from severe ___.", "a": ["cognitive trauma", "trauma"], "e": "Treat patients suffering from severe 'cognitive trauma'."},
+    {"q": "In discussing commercial applications, she highlights how retailers use 'scent marketing' to manipulate consumer ___.", "a": ["purchasing behaviour", "behaviour"], "e": "Manipulate consumer 'purchasing behaviour'."},
+    {"q": "She uses the example of freshly baked bread to illustrate how a smell can instantly induce a profound sense of ___.", "a": ["domestic security", "security"], "e": "Induce a profound sense of 'domestic security'."},
+    {"q": "Dr. Evans concludes that we must stop treating the olfactory system as a primitive relic and recognise its massive impact on our ___.", "a": ["psychological architecture", "architecture"], "e": "Massive impact on our 'psychological architecture'."}
+  ], "m": 9},
+  
+  {"t": "Part 3 - Multiple choice", "i": "You will hear an interview with a volcanologist called Dr. Marcus Thorne. For questions 16-20, choose the answer (A, B, C or D) which fits best according to what you hear. The recording is played twice.", "im": "<button class='btn alt say' data-i='2' type='button'>Play recording</button>", "q": [
+    {"q": "16. Dr. Thorne suggests that the most dangerous aspect of modern volcanology is", "o": ["the unpredictable nature of tectonic plate movements.", "the public's absolute reliance on infallible predictive models.", "the chronic lack of government funding for early warning systems.", "the extreme physical danger faced by researchers in the field."], "a": 1, "e": "He says the danger is 'the public's absolute, terrifying reliance on the illusion of infallible predictive models'."},
+    {"q": "17. What point does Dr. Thorne make regarding 'seismic swarms'?", "o": ["They always indicate that a catastrophic eruption is imminent.", "They are frequently caused by unregulated geothermal drilling.", "They are highly ambiguous and often lead to devastating false alarms.", "They completely destroy the sensitive monitoring equipment on the mountain."], "a": 2, "e": "He argues 'They are highly ambiguous. Evacuating a city of a million people based on a swarm that fizzles out leads to a devastating false alarm'."},
+    {"q": "18. How does Dr. Thorne view the economic impact of volcanic ash clouds?", "o": ["He dismisses it as a temporary inconvenience for the aviation industry.", "He believes it forces necessary, rapid innovation in global supply chains.", "He sees it as a profound demonstration of the extreme fragility of globalized commerce.", "He worries it is frequently exaggerated by the media to generate panic."], "a": 2, "e": "He sees it as 'a profound, terrifying demonstration of the extreme fragility of our hyper-globalized commerce'."},
+    {"q": "19. When discussing the local populations living near active volcanoes, Dr. Thorne emphasizes his", "o": ["frustration with their stubborn refusal to relocate to safer areas.", "profound respect for their deeply ingrained cultural connection to the landscape.", "desire to aggressively educate them on the harsh geological realities.", "insistence that the government forcibly remove them for their own safety."], "a": 1, "e": "He emphasizes his 'profound respect for their deeply ingrained, generational cultural connection to the landscape'."},
+    {"q": "20. What is Dr. Thorne's ultimate conclusion regarding our relationship with tectonic forces?", "o": ["We must radically accelerate our efforts to chemically neutralize magma chambers.", "We should abandon all settlements located within fifty miles of a fault line.", "We must accept a stance of profound humility in the face of absolute planetary power.", "We will eventually master the technology required to precisely control eruptions."], "a": 2, "e": "He concludes 'We must abandon the arrogance of control and accept a stance of profound humility in the face of absolute planetary power'."}
+  ], "m": 5},
+  
+  {"t": "Part 4 - Multiple matching", "i": "You will hear five short extracts in which people discuss completing a radical 'digital detox' where they abandoned all smartphones and social media for a year. \n\nTASK ONE: Choose from the list (A-H) the primary motivation each speaker had for starting the detox.\n\nTASK TWO: Choose from the list (A-H) the most unexpectedly difficult aspect of the detox they experienced.", "im": "<button class='btn alt say' data-i='3' type='button'>Play Part 4</button>", "q": [
+    {"q": "Task 1: Speaker 1 (21)", "o": ["A - A desire to break a severe, diagnosed addiction.", "B - A debilitating fear of corporate data surveillance.", "C - A need to repair a severely fractured romantic relationship.", "D - A philosophical rejection of algorithmic manipulation.", "E - An obsession with increasing professional productivity.", "F - A desperate attempt to cure chronic, severe insomnia.", "G - A longing to reclaim a fragmented attention span.", "H - A sudden, intense bout of public humiliation online."], "a": 6, "e": "Speaker 1 realized they hadn't read a physical book in three years and wanted to reclaim their fragmented attention span (G)."},
+    {"q": "Task 1: Speaker 2 (22)", "o": ["A - A desire to break a severe, diagnosed addiction.", "B - A debilitating fear of corporate data surveillance.", "C - A need to repair a severely fractured romantic relationship.", "D - A philosophical rejection of algorithmic manipulation.", "E - An obsession with increasing professional productivity.", "F - A desperate attempt to cure chronic, severe insomnia.", "G - A longing to reclaim a fragmented attention span.", "H - A sudden, intense bout of public humiliation online."], "a": 3, "e": "Speaker 2 was philosophically disgusted by how algorithms were manipulating their political views (philosophical rejection of algorithmic manipulation, D)."},
+    {"q": "Task 1: Speaker 3 (23)", "o": ["A - A desire to break a severe, diagnosed addiction.", "B - A debilitating fear of corporate data surveillance.", "C - A need to repair a severely fractured romantic relationship.", "D - A philosophical rejection of algorithmic manipulation.", "E - An obsession with increasing professional productivity.", "F - A desperate attempt to cure chronic, severe insomnia.", "G - A longing to reclaim a fragmented attention span.", "H - A sudden, intense bout of public humiliation online."], "a": 2, "e": "Speaker 3's partner threatened to leave them because they were constantly scrolling during dinner (need to repair fractured romantic relationship, C)."},
+    {"q": "Task 1: Speaker 4 (24)", "o": ["A - A desire to break a severe, diagnosed addiction.", "B - A debilitating fear of corporate data surveillance.", "C - A need to repair a severely fractured romantic relationship.", "D - A philosophical rejection of algorithmic manipulation.", "E - An obsession with increasing professional productivity.", "F - A desperate attempt to cure chronic, severe insomnia.", "G - A longing to reclaim a fragmented attention span.", "H - A sudden, intense bout of public humiliation online."], "a": 5, "e": "Speaker 4 suffered from brutal, chronic insomnia caused by endless doom-scrolling in bed (F)."},
+    {"q": "Task 1: Speaker 5 (25)", "o": ["A - A desire to break a severe, diagnosed addiction.", "B - A debilitating fear of corporate data surveillance.", "C - A need to repair a severely fractured romantic relationship.", "D - A philosophical rejection of algorithmic manipulation.", "E - An obsession with increasing professional productivity.", "F - A desperate attempt to cure chronic, severe insomnia.", "G - A longing to reclaim a fragmented attention span.", "H - A sudden, intense bout of public humiliation online."], "a": 1, "e": "Speaker 5 became intensely paranoid about corporate data surveillance and location tracking (B)."},
+    {"q": "Task 2: Speaker 1 (26)", "o": ["A - The terrifying realization of how mundane reality actually is.", "B - The sheer logistical nightmare of navigating modern cities.", "C - The profound, creeping social isolation from peer groups.", "D - The constant, aggressive questioning from suspicious colleagues.", "E - The intense phantom vibrations and physical withdrawal symptoms.", "F - The suffocating inability to instantly fact-check arguments.", "G - The terrifying loss of all digital photographic memories.", "H - The relentless pressure to instantly reply to urgent work emails."], "a": 1, "e": "Speaker 1 was completely unprepared for the sheer logistical nightmare of navigating a modern city without GPS (B)."},
+    {"q": "Task 2: Speaker 2 (27)", "o": ["A - The terrifying realization of how mundane reality actually is.", "B - The sheer logistical nightmare of navigating modern cities.", "C - The profound, creeping social isolation from peer groups.", "D - The constant, aggressive questioning from suspicious colleagues.", "E - The intense phantom vibrations and physical withdrawal symptoms.", "F - The suffocating inability to instantly fact-check arguments.", "G - The terrifying loss of all digital photographic memories.", "H - The relentless pressure to instantly reply to urgent work emails."], "a": 2, "e": "Speaker 2 suffered from profound, creeping social isolation because all party invites and group chats happened online (C)."},
+    {"q": "Task 2: Speaker 3 (28)", "o": ["A - The terrifying realization of how mundane reality actually is.", "B - The sheer logistical nightmare of navigating modern cities.", "C - The profound, creeping social isolation from peer groups.", "D - The constant, aggressive questioning from suspicious colleagues.", "E - The intense phantom vibrations and physical withdrawal symptoms.", "F - The suffocating inability to instantly fact-check arguments.", "G - The terrifying loss of all digital photographic memories.", "H - The relentless pressure to instantly reply to urgent work emails."], "a": 5, "e": "Speaker 3 found the suffocating inability to instantly fact-check arguments during pub debates incredibly frustrating (F)."},
+    {"q": "Task 2: Speaker 4 (29)", "o": ["A - The terrifying realization of how mundane reality actually is.", "B - The sheer logistical nightmare of navigating modern cities.", "C - The profound, creeping social isolation from peer groups.", "D - The constant, aggressive questioning from suspicious colleagues.", "E - The intense phantom vibrations and physical withdrawal symptoms.", "F - The suffocating inability to instantly fact-check arguments.", "G - The terrifying loss of all digital photographic memories.", "H - The relentless pressure to instantly reply to urgent work emails."], "a": 0, "e": "Speaker 4 experienced the terrifying realization of how mundane and boring unedited reality actually is without filters (A)."},
+    {"q": "Task 2: Speaker 5 (30)", "o": ["A - The terrifying realization of how mundane reality actually is.", "B - The sheer logistical nightmare of navigating modern cities.", "C - The profound, creeping social isolation from peer groups.", "D - The constant, aggressive questioning from suspicious colleagues.", "E - The intense phantom vibrations and physical withdrawal symptoms.", "F - The suffocating inability to instantly fact-check arguments.", "G - The terrifying loss of all digital photographic memories.", "H - The relentless pressure to instantly reply to urgent work emails."], "a": 3, "e": "Speaker 5 dealt with constant, aggressive questioning from suspicious colleagues who thought they were acting superior (D)."}
+  ], "m": 10}
+];
+
+var T=[
+  "Extract one. Paleontologist: The sheer volume of perfectly preserved theropod fossils exhibiting complex plumage fundamentally shatters the deeply ingrained cultural perception of dinosaurs as sluggish, scaly reptilian monsters. They were essentially terrifying, highly active, giant ground birds. Woman: It is a phenomenal discovery. However, the resistance from public institutions is palpable. Museums are terrified of alienating the public by updating their classic, culturally iconic displays. The public wants the Jurassic Park aesthetic, not a giant, aggressive turkey. Paleontologist: Exactly. We are fighting a relentless battle between rigorous empirical data and entrenched pop-culture nostalgia. {pause} Extract two. Economist: Let's not mince words. The latest cryptocurrency surge isn't a financial revolution; it is a classic speculative bubble driven by a potent mixture of collective psychological delusion and predatory marketing. It generates absolutely zero intrinsic value. Journalist: While the volatility is undeniable, you are ignoring the core issue. Global financial regulators are completely floundering, attempting to aggressively apply outdated, 20th-century legal frameworks to an entirely unprecedented technological paradigm. Economist: They aren't floundering; they are correctly identifying a massive, unregulated casino operating entirely outside the bounds of civic taxation and legal oversight. {pause} Extract three. Sociologist: The romanticized concept of 'digital nomadism' masks a deeply problematic reality. It is a hyper-privileged lifestyle trend that frequently, and shamelessly, exploits the economic desperation of developing nations, using geo-arbitrage to live like modern colonial aristocrats. Woman: I completely agree. The most toxic downstream consequence is the devastating hyper-inflation of local property and rental markets, effectively pricing indigenous residents out of their own cities to cater to wealthy foreign remote workers. Sociologist: Yes. They treat ancient, vibrant communities merely as cheap, picturesque backdrops for their social media feeds, contributing absolutely nothing to the local civic infrastructure.",
+  "Welcome. Today we are delving into the fascinating neurology of olfactory memory—how smells trigger our deepest recollections. Unlike all of our other senses, which are processed sequentially, olfactory signals bypass the brain's thalamic relay entirely. When you inhale a scent, the olfactory bulb routes the data directly to the amygdala, which is the brain area responsible for emotional processing. It also links straight to the hippocampus, where memories are formed. Evolutionarily speaking, this direct neural pathway evolved as an acute survival mechanism. Recognizing the scent of a predator or toxic food required an instantaneous, visceral reaction, not slow, logical deduction. Consequently, scent-triggered memories are distinct; they possess a unique, incredibly vivid emotional resonance that visual memories simply lack. However, the olfactory system is deeply vulnerable. Neurologists now understand that the sudden, inexplicable loss of the sense of smell can be an early indicator of neurodegenerative decline, often preceding Parkinson's or Alzheimer's by several years. Moving into clinical applications, hospitals are increasingly using customized scent therapies to treat patients suffering from severe cognitive trauma, using familiar smells to gently anchor them to reality. Commercially, this neurological loophole is heavily exploited. Retailers utilize sophisticated 'scent marketing' to subtly manipulate consumer purchasing behaviour, pumping artificial fragrances into stores to artificially induce nostalgia or relaxation. For instance, the smell of freshly baked bread doesn't just make you hungry; it is chemically designed to instantly induce a profound sense of domestic security. We must stop treating the olfactory system as a primitive relic and recognise its massive, unseen impact on our psychological architecture.",
+  "Interviewer: Dr. Evans, your recent paper heavily critiques modern volcanic monitoring. Why? Dr. Evans: The hardware is fantastic. The danger lies in the public's absolute, terrifying reliance on the illusion of infallible predictive models. Volcanoes are chaotic, non-linear systems. We can monitor the magma, but we cannot guarantee the exact minute the pressure will fracture the rock. Interviewer: You mentioned the specific danger of 'seismic swarms'. Dr. Evans: Yes, a rapid sequence of minor earthquakes. They are highly ambiguous. Evacuating a city of a million people based on a swarm that fizzles out leads to a devastating false alarm. People lose faith, and the next time the alarm sounds, they refuse to move. Interviewer: The eruption in Iceland paralyzed European airspace. Dr. Evans: Which was a profound, terrifying demonstration of the extreme fragility of our hyper-globalized commerce. A single ash cloud crippled the just-in-time supply chains of an entire continent. We are dangerously unresilient. Interviewer: Do you find it frustrating that people stubbornly rebuild towns directly on the slopes of active volcanoes? Dr. Evans: Actually, no. I have a profound respect for their deeply ingrained, generational cultural connection to the landscape. The volcanic soil is incredibly fertile; it provides their livelihood. It's not ignorance; it's a calculated, historical risk. Interviewer: So what is the overarching lesson of volcanology? Dr. Evans: We must abandon the arrogance of control and accept a stance of profound humility in the face of absolute planetary power.",
+  "Speaker 1: I was scrolling through my phone on a Sunday evening and realized I hadn't read a physical book in three years. I desperately wanted to reclaim my fragmented attention span, so I locked the smartphone away for a year. The detox was brilliant for my focus, but I was completely unprepared for the sheer logistical nightmare of navigating a modern city without GPS or instant transit updates. I spent the first month constantly lost. {short} Speaker 2: I deleted everything because I was philosophically disgusted by how algorithms were manipulating my political views and generating artificial outrage just to keep my eyes on the screen. Mentally, I felt cleaner. However, I suffered from profound, creeping social isolation. I didn't realize that literally all party invites, casual meetups, and group chats happened exclusively online. I effectively vanished from my friends' lives. {short} Speaker 3: It was a brutal ultimatum. My partner threatened to leave me because I was constantly scrolling during dinner, physically present but mentally absent. I needed to repair a severely fractured romantic relationship. The hardest part wasn't missing the scrolling; it was the suffocating inability to instantly fact-check arguments during pub debates. I had to actually learn to live with unresolved curiosity and ambiguity. {short} Speaker 4: I suffered from brutal, chronic insomnia caused by endless doom-scrolling in bed, obsessing over global catastrophes I couldn't control. The detox cured my sleep entirely. But to be brutally honest, the most difficult aspect was the terrifying realization of how mundane and boring unedited reality actually is. Without the constant dopamine hits and filtered drama, everyday life felt incredibly slow and grey. {short} Speaker 5: I work in tech, and I became intensely paranoid about corporate data surveillance and location tracking. I wanted to drop completely off the grid for a year. I succeeded, but I had to deal with constant, aggressive questioning from suspicious colleagues. They genuinely thought I was acting superior or hiding something sinister just because I refused to use WhatsApp for quick office communications."
+];
+
+var FULL=true, AUDIO=["","","",""];
+var ASSESSOR_EMAIL="oxfampreparation@email.cz";
+
+function wc(t){var m=t.trim().match(/\S+/g);return m?m.length:0}
+function winit(){
+  document.querySelectorAll("textarea").forEach(function(t){
+    t.oninput=function(){document.getElementById(t.id+"c").textContent=wc(t.value)+" words"}
+  });
+  document.querySelectorAll("[data-c]").forEach(function(b){
+    b.onclick=function(){
+      var t=document.getElementById(b.dataset.c).value;
+      if(navigator.clipboard) navigator.clipboard.writeText(t);
+    }
+  });
+  document.querySelectorAll("[data-s]").forEach(function(b){
+    b.onclick=function(){
+      var t=document.getElementById(b.dataset.s).value, nm=document.getElementById("nm").value;
+      if(!wc(t)){
+        b.textContent="Write something first!";
+        setTimeout(function(){b.textContent="Send to assessor"},2000);
+        return;
+      }
+      var body=encodeURIComponent("Student: "+nm+"\n\n"+t), big=body.length>1500;
+      if(big&&navigator.clipboard) navigator.clipboard.writeText(t);
+      location.href="mailto:"+ASSESSOR_EMAIL+"?subject="+encodeURIComponent("CPE 2026 Test 12 "+b.dataset.t+" - "+nm)+"&body="+(big?encodeURIComponent("Student: "+nm+"\n\n(My text is copied. Please paste it here.)"):body);
+    }
+  });
+}
+
+var playId=0;
+function say(i,done){
+  var id=++playId;speechSynthesis.cancel();
+  var parts=T[i].split(/(\{pause\}|\{short\}|\bSpeaker \d:|\b(?:Dr\. Evans|Paleontologist|Economist|Sociologist|Scientist A|Scientist B|Journalist A|Journalist B|Journalist|Woman|Man|Interviewer):)/),q=[],pitch=1,flip=0,names={};
+  parts.forEach(function(x){
+    x=x.trim();if(!x)return;
+    if(x==="{pause}"||x==="{short}"){q.push({w:x==="{pause}"?2500:1200});pitch=1;return}
+    var sp=x.match(/^Speaker (\d):$/);if(sp){q.push({t:"Speaker "+sp[1],p:1,w:700});return}
+    if(/^[A-Za-z 0-9]+:$/.test(x)){var n=x.slice(0,-1);if(!(n in names))names[n]=(flip++%2)?1.25:.85;pitch=names[n];return}
+    (x.match(/[^.?!]+[.?!]*/g)||[x]).forEach(function(z){q.push({t:z.trim(),p:pitch,w:300})})
+  });
+  var k=0;(function next(){
+    if(id!==playId)return;
+    if(k>=q.length){done();return}
+    var s=q[k++];
+    if(!s.t){setTimeout(next,s.w);return}
+    var u=new SpeechSynthesisUtterance(s.t);u.lang="en-GB";u.rate=0.95;u.pitch=s.p;
+    u.onend=function(){setTimeout(next,s.w)};u.onerror=function(){setTimeout(next,s.w)};
+    speechSynthesis.speak(u);
+  })()
+}
+
+function play(b){
+  if(b._busy)return;
+  var i=+b.dataset.i;
+  function fin(){b._busy=false;if(b._n>=2){b.disabled=true;b.textContent="Played twice"}else b.textContent="Play again (last time)"}
+  if(!AUDIO[i]&&!window.speechSynthesis){b.textContent="TTS not supported.";return}
+  b._n=(b._n||0)+1;b._busy=true;b.textContent="Playing...";
+  if(AUDIO[i]){var a=new Audio(AUDIO[i]);a.onended=fin;a.onerror=fin;a.play()}else say(i,fin)
+}
+
+function init(){
+  [["t1",90],["t2",40],["t3",90],["t4",16],["sp1",2],["sp2",4],["sp3",10],["w1",45],["w2",45]].forEach(function(a){if(document.getElementById(a[0]))timer(a[0],a[1])});
+  if(!FULL)return;
+  build(R,document.getElementById("rbox"),"r");
+  build(L,document.getElementById("lbox"),"l");
+  document.getElementById("ck1").onclick=function(){check(document.getElementById("rbox"),document.getElementById("sc1"))};
+  document.getElementById("ck2").onclick=function(){check(document.getElementById("lbox"),document.getElementById("sc2"))};
+  document.querySelectorAll(".say").forEach(function(b){b.onclick=function(){play(b)}});
+  winit();
+}
+
+(function(){
+  var g=document.getElementById("gate"),m=document.getElementById("main");
+  function show(){g.hidden=true;m.hidden=false;if(window.init)init()}
+  if(unlocked()){show();return}
+  document.getElementById("gf").onsubmit=function(e){
+    e.preventDefault();
+    if(document.getElementById("pw").value===PW){
+      try{sessionStorage.setItem("cpe26_12","1")}catch(x){}
+      show();
+    } else {
+      document.getElementById("err").textContent="Wrong password.";
+    }
+  }
+  
+  var themeBtn = document.getElementById('themeBtn');
+  if(themeBtn) {
+    themeBtn.onclick = function() {
+      var currentTheme = document.documentElement.getAttribute('data-theme');
+      if(currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        themeBtn.textContent = '🌙';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeBtn.textContent = '☀️';
+      }
+    };
+  }
+  
+  var menuToggle = document.getElementById('menuToggle');
+  if(menuToggle) {
+    menuToggle.onclick = function() {
+      document.body.classList.toggle('menuopen');
+    };
+  }
+})();
+</script>
+</body>
+</html>
