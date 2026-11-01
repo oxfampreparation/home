@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PET Test 1 - Oxfam Preparation</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,500..800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* Default theme is explicitly light */
+:root {
+  --bg: #f6f7fb;
+  --paper: #fff;
+  --ink: #14213d;
+  --muted: #4b5266;
+  --line: #d5d9e6;
+  --mark: #2b59ff;
+  --hi: #ffe45e;
+  --ok: #1a7f52;
+  --bad: #b3261e;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Dark theme applied ONLY when data-theme="dark" is present */
+:root[data-theme="dark"] {
+  --bg: #0f1526;
+  --paper: #182038;
+  --ink: #eef1fb;
+  --muted: #a9b1c9;
+  --line: #2c3656;
+  --mark: #7d9bff;
+  --hi: #e9d24a;
+  --ok: #57c58f;
+  --bad: #ff8a80;
+}
+
+html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: border-box; }
+
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1.0625rem/1.6 "Atkinson Hyperlegible", system-ui, sans-serif; }
+h1, h2, h3 { font-family: Archivo, "Helvetica Neue", Arial, sans-serif; line-height: 1.05; margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--mark); outline-offset: 3px; }
+.wrap { max-width: 74rem; margin: 0 auto; padding: 0 1.25rem; }
+
+header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .75rem; padding: 1.25rem 0; position: sticky; top: 0; background: var(--bg); z-index: 100; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+.head-left { display: flex; align-items: center; gap: .75rem; }
+#menuToggle { background: transparent; border: none; cursor: pointer; color: var(--ink); display: flex; padding: .25rem; border-radius: .25rem; }
+#menuToggle:hover { background: var(--line); }
+#menuToggle svg { width: 1.6rem; height: 1.6rem; }
+.logo { font: 800 1.25rem Archivo, sans-serif; text-decoration: none; }
+nav a { margin-left: 1.25rem; text-decoration: none; color: var(--muted); }
+nav a:hover { color: var(--ink); }
+
+.btn { display: inline-block; background: var(--ink); color: var(--bg); padding: .8rem 1.4rem; border-radius: .5rem; font-weight: 700; text-decoration: none; border: 0; cursor: pointer; font-size: 1rem; font-family: inherit; }
+.btn.alt { background: transparent; color: var(--ink); border: 2px solid var(--ink); }
+.hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2rem; align-items: start; padding: 1rem 0 3rem; }
+.hero-text { margin-top: 2.5rem; }
+
+h1 { font-size: clamp(2rem, 3.4vw, 3rem); font-weight: 800; font-stretch: 90%; letter-spacing: -.02em; margin-top: 1rem; margin-bottom: 0; }
+h1 span { background: linear-gradient(transparent 62%, var(--hi) 62%); }
+.lead { color: var(--muted); max-width: 32rem; margin: 1.25rem 0 1.75rem; font-size: 1.15rem; }
+.row { display: flex; gap: .75rem; flex-wrap: wrap; }
+
+.sheet { background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.sheet h2 { font-size: 1.1rem; margin-bottom: .25rem; }
+.sheet p { margin: 0 0 1rem; color: var(--muted); font-size: .95rem; }
+.q { padding: .7rem 0; border-top: 1px solid var(--line); }
+.q b { display: inline-block; font-weight: 800; margin-bottom: .45rem; margin-right: 0.5rem; }
+
+.opts { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem; width: fit-content; }
+.opt { display: flex; align-items: center; gap: .4rem; padding: .3rem .7rem .3rem .35rem; border: 1.5px solid var(--line); border-radius: 2rem; background: transparent; color: inherit; font-size: .95rem; cursor: pointer; width: fit-content; }
+.opt i { width: 1.4rem; height: 1.4rem; border-radius: 50%; border: 2px solid var(--muted); display: grid; place-items: center; font: 700 .7rem Archivo, sans-serif; font-style: normal; flex-shrink: 0; }
+
+.opt[aria-pressed="true"] { border-color: var(--mark); }
+.opt[aria-pressed="true"] i { background: var(--mark); border-color: var(--mark); color: var(--bg); }
+.opt.right { border-color: var(--ok); } .opt.right i { background: var(--ok); border-color: var(--ok); color: var(--bg); }
+.opt.wrong { border-color: var(--bad); } .opt.wrong i { background: var(--bad); border-color: var(--bad); color: var(--bg); }
+
+/* Image Options specific styles */
+.img-opts-grid { display: flex; flex-direction: row; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+.img-opt { flex-direction: column; align-items: center; padding: 0.5rem; border-radius: 0.5rem; gap: 0.5rem; text-align: center; }
+.img-opt img { height: 120px; width: 160px; object-fit: contain; background: var(--paper); border-radius: 0.25rem; }
+.img-opt i { margin-bottom: 0.25rem; }
+
+.result { margin-top: 1rem; font-weight: 700; min-height: 1.6rem; }
+section { padding: 3.5rem 0; border-top: 1px solid var(--line); }
+h2.t { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: .75rem; letter-spacing: -.01em; }
+
+.sub, .txt { color: var(--muted); max-width: 48rem; margin: 0 0 2rem; white-space: pre-line; line-height: 1.6; }
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: .6rem; background: var(--paper); }
+table { border-collapse: collapse; width: 100%; min-width: 38rem; }
+th, td { text-align: left; padding: .9rem 1rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font: 800 1.2rem Archivo, sans-serif; white-space: nowrap; }
+td small { display: block; font: 400 .9rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+
+.support-strip { position: fixed; bottom: 0; left: 0; right: 0; background: var(--ink); color: var(--bg); padding: 1rem 1.25rem; z-index: 999; box-shadow: 0 -4px 12px rgba(0,0,0,0.15); }
+.support-strip-inner { max-width: 74rem; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; width: 100%; font-weight: 700; }
+footer { border-top: 1px solid var(--line); padding: 2rem 0 5rem; color: var(--muted); font-size: .95rem; }
+
+.lang { display: flex; gap: .25rem; flex-wrap: wrap; } .lang button { font: 700 .8rem Archivo, sans-serif; padding: .35rem .6rem; border: 1.5px solid var(--line); border-radius: .4rem; background: transparent; color: var(--muted); cursor: pointer; } .lang button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.layout { display: grid; grid-template-columns: 12.5rem minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+.layout.collapsed { grid-template-columns: 1fr; gap: 0; }
+.layout.collapsed .side { display: none; }
+.side { position: sticky; top: 5rem; max-height: calc(100vh - 6rem); max-height: calc(100dvh - 6rem); overflow-y: auto; display: flex; flex-direction: column; gap: .15rem; }
+summary { cursor: pointer; font: 700 .95rem Archivo, sans-serif; color: var(--muted); padding: .4rem .75rem; border-radius: .5rem; } summary:hover { color: var(--ink); } .ex[open] summary { margin-bottom: .15rem; }
+.side nav { display: flex; flex-direction: column; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); } .side nav a { margin: 0; color: inherit; } .side .lang { margin-bottom: 1rem; }
+.side p { margin: 0 0 .5rem; font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+.side a { text-decoration: none; padding: .5rem .75rem; border-radius: .5rem; font: 700 1rem Archivo, sans-serif; border-left: 3px solid transparent; }
+.side a small { display: block; font: 400 .8rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+.side a:hover { background: var(--paper); border-left-color: var(--mark); }
+tr:target td { background: var(--hi); color: #14213d; } tr:target td small { color: #14213d; }
+
+@media (max-width: 52rem) { .layout { grid-template-columns: 1fr; gap: 0; } .side { position: static; max-height: none; margin: 0 0 1rem; padding: 0 0 1rem; border-bottom: 1px solid var(--line); } }
+
+.hr { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; } .hr .btn { padding: .45rem 1rem; font-size: .9rem; }
+dialog { border: 2px solid var(--ink); border-radius: .75rem; background: var(--paper); color: var(--ink); padding: 1.5rem; width: min(26rem, 92vw); max-height: 90vh; overflow: auto; } dialog::backdrop { background: rgba(10,16,32,.55); }
+dialog h2 { font-size: 1.4rem; margin-bottom: .5rem; } dialog label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+dialog input { width: 100%; padding: .65rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.demo { color: var(--muted); font-size: .9rem; margin: .5rem 0 0; } .err { color: var(--bad); min-height: 1.5rem; margin-top: .5rem; font-size: .95rem; }
+
+@media (max-width: 40rem) {
+  .wrap { padding: 0 1rem; }
+  header { padding: 1rem 0; }
+  .hero { padding-bottom: 2rem; }
+  .sheet { padding: 1.1rem; }
+  section { padding: 2.5rem 0; }
+  .scroll { border: 0; background: transparent; overflow: visible; }
+  table, tbody, tr, td { display: block; min-width: 0; width: 100%; }
+  thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  tr { background: var(--paper); border: 1px solid var(--line); border-radius: .6rem; padding: .6rem 0; margin-bottom: .75rem; }
+  td { border: 0; padding: .15rem 1rem; }
+  td:first-child { font-size: 1.3rem; padding-top: .4rem; }
+  tr:target { border-color: var(--ink); }
+}
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+html { scroll-padding-top: calc(5rem + env(safe-area-inset-top, 0px)); }
+body header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); padding: .6rem 0; border-bottom: 1px solid var(--line); }
+.brand { display: flex; align-items: center; gap: .75rem; }
+body .logo { font-size: 1.85rem; letter-spacing: -.02em; }
+.mbtn { display: inline-flex; flex-direction: column; justify-content: center; gap: 5px; width: 2.75rem; height: 2.75rem; padding: 0 .7rem; border: 2px solid var(--ink); border-radius: .5rem; background: transparent; cursor: pointer; flex: none; }
+.mbtn span { display: block; height: 2px; background: var(--ink); border-radius: 2px; }
+.mbtn:hover { background: var(--paper); }
+body .side { top: 5.5rem; max-height: calc(100vh - 6.5rem); max-height: calc(100dvh - 6.5rem); }
+body.nomenu .layout { grid-template-columns: minmax(0, 1fr); }
+body.nomenu .side { display: none; }
+body:has(#app[hidden]) .mbtn { display: none; }
+.side>.hr { margin-bottom: 1rem; }
+.scrim { display: none; }
+
+@media (max-width: 52rem) {
+  body .side { position: fixed; top: 0; left: 0; bottom: 0; width: min(19rem, 86vw); max-height: none; margin: 0; padding: calc(1rem + env(safe-area-inset-top, 0px)) 1rem calc(1rem + env(safe-area-inset-bottom, 0px)); background: var(--paper); border: 0; border-right: 2px solid var(--ink); z-index: 50; overflow-y: auto; transform: translateX(-105%); visibility: hidden; transition: transform .25s ease, visibility 0s .25s; }
+  body.menuopen .side { transform: none; visibility: visible; transition: transform .25s ease; }
+  body .side nav { flex-direction: column; flex-wrap: nowrap; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+  body .side nav a { padding: .5rem .75rem; }
+  .scrim { display: block; position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: rgba(10,16,32,.5); z-index: 40; opacity: 0; pointer-events: none; transition: opacity .25s; }
+  body.menuopen .scrim { opacity: 1; pointer-events: auto; }
+  body .logo { font-size: 1.6rem; }
+}
+
+.gatebox { max-width: 26rem; margin: 2rem auto; background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.gatebox label, .wr label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+input[type=text], input[type=password], textarea { width: 100%; padding: .6rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.q input[type=text] { width: 14rem; max-width: 100%; }
+.part { background: var(--paper); border: 1px solid var(--line); border-radius: .75rem; padding: 1.5rem; margin-bottom: 1.25rem; }
+.q.ok { border-left: 4px solid var(--ok); padding-left: .75rem; } .q.no { border-left: 4px solid var(--bad); padding-left: .75rem; } .fb { font-weight: 700; margin-top: .25rem; }
+.tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0; }
+nav.tabs a { margin: 0; padding: .4rem 1rem; border: 1.5px solid var(--line); border-radius: 2rem; text-decoration: none; font-weight: 700; }
+nav.tabs a[aria-current=page] { background: var(--ink); color: var(--bg); }
+.bar { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; margin: 1rem 0; } .time { font: 800 1.6rem Archivo, sans-serif; }
+.pics { display: flex; gap: 1rem; flex-wrap: wrap; } .pics svg, .pics img { flex: 1 1 14rem; max-width: 22rem; border: 2px solid var(--ink); border-radius: .5rem; background: var(--paper); object-fit: cover; aspect-ratio: 3/2; }
+textarea { min-height: 15rem; } .tr { display: none; } .note { padding: .75rem 1rem; border-left: 4px solid var(--mark); background: var(--paper); margin: 1rem 0; }
+.sec { padding-top: 2rem; margin-top: 2rem; border-top: 1px solid var(--line); } .jump { margin-top: 0; } .ex { color: var(--muted); margin-top: .15rem; font-size: .95rem; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header id="siteHeader">
+  <div class="head-left">
+    <button id="menuToggle" aria-label="Toggle menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+    <a class="logo" href="../index.html">Oxfam Preparation</a>
+  </div>
+  <div class="hr">
+    <button class="btn alt" style="padding:.45rem .6rem; min-width:0; font-size:1.1rem" id="themeBtn" aria-label="Toggle theme">🌙</button>
+    <button class="btn" type="button" id="loginBtn">Log in</button>
+  </div>
+</header>
+
+<div class="layout">
+<aside class="side" aria-label="Menu">
+  <nav>
+    <a href="../cpe.html">All tests</a>
+  </nav>
+</aside>
+<main id="top">
+
+<div id="gate">
+  <div class="gatebox">
+    <h1><span>PET Test 1</span></h1>
+    <p>Enter the password to open this test.</p>
+    <form id="gf">
+      <label for="pw">Password</label>
+      <input id="pw" type="password" autocomplete="off">
+      <div class="err" id="err"></div>
+      <div class="row" style="margin-top:1rem">
+        <button class="btn" type="submit">Open</button>
+        <a class="btn alt" href="../cpe.html">Back</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="main" hidden>
+  <h1 style="margin-top: 1rem">B1 Preliminary (PET) - Test 1</h1>
+  <nav class="tabs jump" aria-label="Papers" style="margin-top: 2.5rem; margin-bottom: 2rem">
+    <a href="#rd">Reading and Writing</a>
+    <a href="#li">Listening</a>
+    <a href="#sk">Speaking</a>
+  </nav>
+
+  <section class="sec" id="rd">
+    <h2 class="t">Reading and Writing (1 hour 30 minutes)</h2>
+    <div class="bar"><span class="time" id="t1"></span><button class="btn alt" type="button">Start</button></div>
+    <div id="rbox"></div>
+    
+    <div class="part">
+      <h2>Writing Part 2 - Short Message</h2>
+      <p class="sub">Write 35-45 words on your answer sheet.</p>
+      <div class="note">
+        You have spent the weekend staying with some English friends.<br><br>
+        Write a card to them. In your card, you should:<br>
+        • thank your friends for the weekend<br>
+        • say what you enjoyed most about the weekend<br>
+        • invite them to stay with you.
+      </div>
+      <textarea id="e1" aria-label="Answer"></textarea>
+      <div class="bar">
+        <b id="e1c">0 words</b>
+        <button class="btn alt" type="button" data-c="e1">Copy</button>
+        <button class="btn" type="button" data-s="e1" data-t="Writing Part 2">Send to assessor</button>
+      </div>
+    </div>
+      
+    <div class="part">
+      <h2>Writing Part 3 - Longer Piece</h2>
+      <p class="sub">Write an answer to one of the questions (7 or 8) in this part. Write your answer in about 100 words.</p>
+      <p>
+        <strong>Question 7</strong><br>
+        This is part of a letter you receive from an English friend.<br>
+        <em>"I've just seen a brilliant programme about dolphins on television. Which programmes have you enjoyed recently? How much television do you watch?"</em><br>
+        Now write a letter, answering your penfriend's questions.<br><br>
+        <strong>Question 8</strong><br>
+        Your English teacher has asked you to write a story.<br>
+        This is the title for your story:<br>
+        <em>Walking in the rain</em>
+      </p>
+      <textarea id="e2" aria-label="Answer"></textarea>
+      <div class="bar">
+        <b id="e2c">0 words</b>
+        <button class="btn alt" type="button" data-c="e2">Copy</button>
+        <button class="btn" type="button" data-s="e2" data-t="Writing Part 3">Send to assessor</button>
+      </div>
+    </div>
+    
+    <div class="bar"><button class="btn" id="ck1" type="button">Check Reading & Writing Part 1 answers</button><b id="sc1"></b></div>
+  </section>
+
+  <section class="sec" id="li">
+    <h2 class="t">Listening (about 35 minutes)</h2>
+    <div class="bar"><span class="time" id="t2"></span><button class="btn alt" type="button">Start</button></div>
+    <p class="note">The recordings are read aloud by your browser. Each recording can be played twice, as in the real exam. Use headphones.</p>
+    <div id="lbox"></div>
+    <div class="bar"><button class="btn" id="ck2" type="button">Check answers</button><b id="sc2"></b></div>
+  </section>
+
+  <section class="sec" id="sk">
+    <h2 class="t">Speaking (10-12 minutes)</h2>
+    <div class="bar"><span class="time" id="t4"></span><button class="btn alt" type="button">Start</button></div>
+    <p class="note">Practise with a partner or teacher. The real test involves two candidates and two examiners.</p>
+    
+    <div class="part">
+      <h2>Part 1 - Interview (2-3 minutes)</h2>
+      <div class="bar"><span class="time" id="sp1"></span><button class="btn alt" type="button">Start</button></div>
+      <ul>
+        <li>What is your name? How do you spell your family name?</li>
+        <li>Where do you live / come from?</li>
+        <li>Do you work or are you a student? What do you do / study?</li>
+        <li>Do you enjoy studying English? Why (not)?</li>
+        <li>What did you do yesterday evening / last weekend?</li>
+      </ul>
+    </div>
+    
+    <div class="part">
+      <h2>Part 2 - Collaborative Task (2-3 minutes)</h2>
+      <div class="bar"><span class="time" id="sp2"></span><button class="btn alt" type="button">Start</button></div>
+      <p>I'm going to describe a situation to you.<br>A group of friends is planning a surprise party for a classmate. Talk together about the different things they will need to prepare for the party, and then decide which two things are the most important.</p>
+      
+      <p style="margin-top:1.5rem"><b>Preparing for a Party</b></p>
+      <div class="pics">
+        <img src="https://en.wikipedia.org/wiki/Special:FilePath/Party_balloons.jpg" onerror="this.style.display='none'" alt="Colorful balloons and party decorations.">
+        <img src="https://en.wikipedia.org/wiki/Special:FilePath/Chocolate_cake.jpg" onerror="this.style.display='none'" alt="A large, decorated chocolate cake.">
+        <img src="https://en.wikipedia.org/wiki/Special:FilePath/Loudspeaker.jpg" onerror="this.style.display='none'" alt="Loudspeakers for playing music.">
+        <img src="https://en.wikipedia.org/wiki/Special:FilePath/Popcorn.jpg" onerror="this.style.display='none'" alt="Bowls of popcorn and snacks.">
+      </div>
+    </div>
+    
+    <div class="part">
+      <h2>Part 3 - Extended Turn (3 minutes)</h2>
+      <div class="bar"><span class="time" id="sp3"></span><button class="btn alt" type="button">Start</button></div>
+      <p>Now, I'd like each of you to talk on your own about something. I'm going to give each of you a photograph of people travelling.</p>
+      <p><b>Candidate A:</b> Please tell us what you can see in your photograph.</p>
+      <div class="pics" style="margin-bottom: 1.5rem;">
+        <img src="https://en.wikipedia.org/wiki/Special:FilePath/Train.jpg" onerror="this.style.display='none'" alt="A modern train journey.">
+      </div>
+      
+      <p><b>Candidate B:</b> Now, here is your photograph. It also shows someone travelling. Please tell us what you can see in the photograph.</p>
+      <div class="pics">
+        <img src="https://en.wikipedia.org/wiki/Special:FilePath/Bicycle.jpg" onerror="this.style.display='none'" alt="A person riding a bicycle.">
+      </div>
+    </div>
+
+    <div class="part">
+      <h2>Part 4 - General Conversation (3 minutes)</h2>
+      <div class="bar"><span class="time" id="sp4"></span><button class="btn alt" type="button">Start</button></div>
+      <p>Your photographs showed people travelling. Now, I'd like you to talk together about your own travel experiences and preferences.</p>
+      <ul>
+        <li>Talk about how you usually travel to school or work.</li>
+        <li>Talk about the longest journey you have ever been on.</li>
+        <li>Discuss which forms of transport you think are the best for the environment.</li>
+        <li>Discuss where you would like to travel in the future and how you would get there.</li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+</main>
+</div>
+
+<div class="support-strip">
+  <div class="support-strip-inner">
+    <div><span _k="Customer support every day from 9:00 to 16:30">Customer support every day from 9:00 to 16:30</span></div>
+    <div class="support-info">
+      <a href="mailto:oxfampreparation@email.cz">oxfampreparation@email.cz</a>
+      <a href="tel:+420723200988">+420 723 200 988</a>
+    </div>
+  </div>
+</div>
+
+<footer>© 2020-2026 Oxfam - Oxford family. All rights reserved. Not affiliated with Cambridge University Press &amp; Assessment. Exam names belong to their owners.</footer>
+</div>
+
+<dialog id="dlg" aria-labelledby="dt">
+<h2 id="dt">Sign in to open your tests</h2>
+<form id="lf" novalidate>
+<label for="em">Email</label><input id="em" type="email" autocomplete="username">
+<label for="pw">Password</label><input id="pw" type="password" autocomplete="current-password">
+<p class="demo" id="demo" hidden>Demo mode: any email and password is accepted.</p>
+<div class="err" id="err" aria-live="polite"></div>
+<div class="row" style="margin-top:1rem"><button class="btn" type="submit">Log in</button><button class="btn alt" type="button" id="cancel">Cancel</button></div>
+</form>
+</dialog>
+
+<script>
+var PW="Bt91";
+function unlocked(){try{return sessionStorage.getItem("pet_test_1")==="1"}catch(e){return false}}
+
+function norm(s){return s.toLowerCase().replace(/\u2019/g,"'").replace(/\s+/g," ").trim()}
+
+function build(parts,box,pre){
+  var n=0;pre=pre||"";
+  parts.forEach(function(p,pi){
+    var d=document.createElement("section");d.className="part";
+    d.innerHTML="<h2>"+p.t+"</h2>"+(p.m?"<div class='bar'><span class='time' id='pt"+pre+pi+"'></span><button class='btn alt' type='button'>Start</button> <small>suggested time</small></div>":"")+"<p class='sub'>"+p.i+"</p>"+(p.x?"<p class='txt'>"+p.x+"</p>":"")+(p.im||"")+"<div class='items'></div>";
+    var it=d.querySelector(".items");
+    p.q.forEach(function(q){
+      n++;var r=document.createElement("div");r.className="q";
+      var h="<b>"+n+"</b> "+(q.q||"")+(q.h?" <strong>"+q.h+"</strong>":"");
+      if(q.o){
+        var isImg = q.o.length > 0 && q.o[0].indexOf("http") === 0;
+        var optsHtml = q.o.map(function(o,i){
+          var letter = "ABCDEFGH"[i];
+          if(q.o.length === 2 && (o === "A" || o === "B" || o.includes("Correct") || o.includes("YES"))) {
+            letter = ["A", "B"][i];
+          }
+          if (isImg) {
+            return "<label class='opt img-opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> <img src='"+o+"' alt='Option "+letter+"' onerror=\"this.style.display='none'\"></label>";
+          } else {
+            var text = o === letter ? "" : o;
+            return "<label class='opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> "+text+"</label>";
+          }
+        }).join("");
+        var gridClass = isImg ? "opts img-opts-grid" : "opts";
+        h += "<div class='" + gridClass + "'>" + optsHtml + "</div>";
+      } else {
+        h+=" <input type='text' autocomplete='off' aria-label='Answer "+n+"'>";
+      }
+      r.innerHTML=h;r._q=q;it.appendChild(r);
+    });
+    box.appendChild(d);
+    if(p.m)timer("pt"+pre+pi,p.m);
+  });
+}
+
+function check(box,out){
+  var tot=0,ok=0;
+  box.querySelectorAll(".part").forEach(function(part){
+    var pTot=0,pOk=0;
+    part.querySelectorAll(".q").forEach(function(r){
+      pTot++;var q=r._q,good,ans;
+      if(q.o){
+        var c=r.querySelector("input:checked");
+        good=c&&+c.value===q.a;
+        var letter = "ABCDEFGH"[q.a];
+        if(q.o.length === 2) letter = ["A", "B"][q.a];
+        var isImg = q.o.length > 0 && q.o[0].indexOf("http") === 0;
+        ans = isImg ? letter : (q.o[q.a] === letter ? letter : letter + " " + q.o[q.a]);
+      } else {
+        var v=norm(r.querySelector("input").value);
+        good=q.a.some(function(a){return norm(a)===v});
+        ans=q.a[0];
+      }
+      r.classList.toggle("ok",!!good);
+      r.classList.toggle("no",!good);
+      var f=r.querySelector(".fb");
+      if(!f){f=document.createElement("div");f.className="fb";r.appendChild(f)}
+      f.textContent=good?"Correct":"Answer: "+ans;
+      var x=r.querySelector(".ex");
+      if(!x){x=document.createElement("div");x.className="ex";r.appendChild(x)}
+      x.textContent=q.e||"";
+      if(good)pOk++;
+    });
+    if(pTot>0){
+      var ps=part.querySelector(".pscore");
+      if(!ps){ps=document.createElement("div");ps.className="pscore note";ps.style.marginTop="1.5rem";part.appendChild(ps)}
+      ps.innerHTML="<b>Part score:</b> "+pOk+" / "+pTot;
+    }
+    tot+=pTot;ok+=pOk;
+  });
+  out.textContent="Total score: "+ok+" / "+tot;
+  box.querySelectorAll(".tr").forEach(function(e){e.style.display="block"});
+}
+
+function timer(id,min){
+  var e=document.getElementById(id),l=min*60,t=null;
+  if(!e)return;
+  function s(){e.textContent=("0"+Math.floor(l/60)).slice(-2)+":"+("0"+l%60).slice(-2)}s();
+  e.nextElementSibling.onclick=function(){
+    if(t){clearInterval(t);t=null;this.textContent="Start";return}
+    this.textContent="Pause";
+    t=setInterval(function(){l--;s();if(l<=0)clearInterval(t)},1000);
+  }
+}
+
+var R = [
+  {"t": "Reading Part 1 - Multiple Choice (Signs)", "i": "Look at the text in each question. What does it say? Mark the correct letter A, B or C.", "q": [
+    {"q": "WATCH REPAIRS\nWarning to Customers\nAll uncollected items will be sold after twelve months.", "o": ["This shop will sell customers' watches within twelve months.", "This shop will keep customers' watches for up to twelve months.", "This shop will look after customers' watches for more than twelve months."], "a": 1, "e": "The shop will sell them after 12 months, meaning they keep them for up to 12 months."},
+    {"q": "Philippe. Couldn't wait any longer, didn't want to miss the start of the match! Problem at work? Here's your ticket - see you at the stadium. Stefano", "o": ["Philippe and Stefano missed each other at the stadium.", "Stefano had to leave without Philippe to get to work.", "Stefano has given up waiting for Philippe to arrive."], "a": 2, "e": "Stefano 'couldn't wait any longer', meaning he gave up waiting for Philippe to arrive."},
+    {"q": "PARENTS: Complete and return your child's form for next month's school trip by Friday.", "o": ["Parents must return forms this week if their child is going on Friday's trip.", "Parents cannot go on next month's trip unless they return their forms by Friday.", "The last day for returning completed forms for the trip is Friday."], "a": 2, "e": "By Friday means Friday is the last day for returning the forms."},
+    {"q": "From: Gabi\nTo: Jo\nI'll be in town on business on Wednesday, so could we meet for dinner then, instead of on Thursday as usual?", "o": ["change an arrangement.", "cancel a regular event.", "come to a business meeting."], "a": 0, "e": "Gabi wants to meet on Wednesday 'instead of on Thursday as usual', which is changing an arrangement."},
+    {"q": "Lift service starts at ground floor today. For basement please use the stairs.", "o": ["It is not possible to use the lift above the ground floor today.", "The lift will not be going to the basement today.", "The stairs between the basement and the ground floor are closed today."], "a": 1, "e": "If the service starts at the ground floor and you must use stairs for the basement, it means the lift will not go to the basement."}
+  ], "m": 5},
+  
+  {"t": "Reading Part 2 - Matching", "i": "The people below all want to visit a park in London. On the opposite page there are descriptions of eight parks (A-H). Decide which park would be the most suitable for the following people.", "x": "A Hadley Park\nThis park is in the peaceful village of Cranford, 20 km outside the city. The park has large green spaces for football and there is also an area of woodland, a boating lake, fish ponds and a variety of local wildlife. The public car park is free.\n\nB Highdown Park\nThe largest and most popular open space in the city, Highdown has many paths for keen walkers, as well as horse-riding and golf. The much-visited 19th-century glasshouses contain an interesting exhibition about birds from around the world.\n\nC Brock Park\nA beautiful park on the edge of the city, Brock Park attracts huge crowds. The open-air theatre has a programme of plays suitable for school groups. There is a well-used basketball court and baseball field, a children's playground and a café. Climb Harry's Hill to admire the beautiful fields and forests beyond the city.\n\nD Lilac Park and House\nThis busy city-centre park has a long history dating back to the 1700s, when it belonged to the writer Thomas Crane. The house is open to the public and a guided visit can also include a walk around the famous rose gardens, finishing at the popular Butterfly Café.\n\nE Boscawen Park\nThis small and peaceful park offers guided tours, given by the knowledgeable Environment Officers, and evening visitors to the park may be lucky enough to see rare frogs and bats. It is situated on the River Elton and can be reached in about 30 minutes from the city centre by river taxi. There is a snack bar and gift shop.\n\nF East Bank Park\nThis is a tiny, little-known park in the heart of the city, with gardens filled with sculptures, trees and flowers. It makes a perfect resting place, popular with local artists, and is within minutes of the theatre and entertainment district.\n\nG Victoria Park\nThis quiet park, on the edge of the city and easy to visit by public transport, has boats for hire on the lake, a skateboard park, basketball and tennis courts and a picnic area. Often seen in postcard views of the city, Victoria Park contains one of the oldest windmills in the country - the museum should not be missed.\n\nH Elmwood Park\nAt Elmwood Park, there are walks on well-made paths and cycle rides for all abilities. Elmwood is just inside the city limit and has an area of quiet woodland, which is home to deer and other animals. The visitor centre, numerous display boards and a fun quiz make this a positive learning experience for all ages.", "q": [
+    {"q": "6. Isabel works in the city centre and likes painting and drawing in her free time. She wants to practise her hobby in a small, quiet park near her office.", "o": ["A", "B", "C", "D", "E", "F", "G", "H"], "a": 5, "e": "F (East Bank Park) is tiny, in the heart of the city (near her office), and popular with local artists."},
+    {"q": "7. Mr Martin wants to take his eight-year-old pupils to a park anywhere within the city, with lots of organised activities which allow the children to read about local wildlife they may see.", "o": ["A", "B", "C", "D", "E", "F", "G", "H"], "a": 7, "e": "H (Elmwood Park) is inside the city limit, has deer/animals, display boards, and a fun quiz for learning."},
+    {"q": "8. Kumiko and Atsuko would like to visit a park which they can get to by boat. They want to buy lunch there and then enjoy a short walk accompanied by an expert leader.", "o": ["A", "B", "C", "D", "E", "F", "G", "H"], "a": 4, "e": "E (Boscawen Park) is reached by river taxi (boat), has a snack bar (lunch), and offers guided tours by experts."},
+    {"q": "9. Hans and Birgit Kaufmann and their family want to visit a park which is historically important. Their teenage children would like to try a water sport.", "o": ["A", "B", "C", "D", "E", "F", "G", "H"], "a": 6, "e": "G (Victoria Park) features one of the oldest windmills (historical) and has boats for hire on the lake (water sport)."},
+    {"q": "10. Melanie and Stefan are students who need to visit a busy park for a college project. They want to draw people taking part in team sports and watching entertainment.", "o": ["A", "B", "C", "D", "E", "F", "G", "H"], "a": 2, "e": "C (Brock Park) attracts huge crowds (busy), has open-air theatre (entertainment), and basketball/baseball (team sports)."}
+  ], "m": 5},
+
+  {"t": "Reading Part 3 - True/False", "i": "Look at the sentences below about the Iditarod Trail in Alaska. Read the text to decide if each sentence is correct or incorrect.", "x": "THE HISTORY OF THE IDITAROD - THE LAST GREAT RACE ON EARTH\n\nIn the 1880s, gold was discovered in what is now the most northern state of the USA, Alaska. Many people came to the area hoping to get rich. New towns were built and grew quickly. One such town was called Iditarod, which means 'far, distant place'. This town grew so quickly during 1909 that it briefly became the largest city in Alaska. In the summer months, essential supplies could be delivered to these towns by boat, but in the winter the rivers and the ocean froze and there was no way to get to them. So, in 1910, a winter track was built which would be used by teams of dogs pulling sleds. They would take mail, food and clothes to the gold miners.\n\nThe track became known as the Iditarod Trail. It took a team of dogs about three weeks to travel across Alaska. They stopped at 'roadhouses' where the drivers could get a warm bed for the night and something to eat for both themselves and their dogs. The trail was used every winter until the 1920s when aeroplanes replaced steam boats and dog teams as the main form of transport.\n\nHowever, the dogs had one last taste of fame in 1925, when a disease called diphtheria hit the city of Nome. The disease could be cured, but, unfortunately, the closest medicine that could be found was in Anchorage, right on the other side of Alaska. Aeroplanes were still quite new, so no-one knew if they could fly in such cold weather. Also, Carl Eielson, the only pilot considered skilled enough to manage the flight, was away on a trip at the time. It was therefore agreed that the medicine would be transported using teams of dogs instead.\n\nThe trip covered over 1,000 kilometres, most of it along the Iditarod Trail. It took twenty teams just six days to complete the journey. Leonhard Seppala, a Norwegian who had come to Alaska looking for gold, travelled the first 400 of those kilometres. He had to trust his dog Togo's ability to find his way in the blinding snow and Togo turned out to be a reliable guide.\n\nThe last part of the journey was done by Gunnar Kaasen who had driven dog teams in Alaska for 21 years. His lead dog was Balto. At one point Balto refused to go any further, and saved the team from falling into icy water. The diphtheria was stopped and Balto became a hero.\n\nNowadays a dog sled race is held every year from Anchorage to Nome, following the route of that famous journey in 1925. It is called the Iditarod and has become known as 'The Last Great Race on Earth'.", "q": [
+    {"q": "11. The population of Alaska remained the same throughout the 1880s.", "o": ["A (Correct)", "B (Incorrect)"], "a": 1, "e": "The text says 'Many people came to the area hoping to get rich. New towns were built and grew quickly', meaning the population increased."},
+    {"q": "12. For a short time, more people lived in Iditarod than in any other city in Alaska.", "o": ["A (Correct)", "B (Incorrect)"], "a": 0, "e": "The text says 'it briefly became the largest city in Alaska'."},
+    {"q": "13. After 1910, it became possible to deliver letters in winter as well as summer.", "o": ["A (Correct)", "B (Incorrect)"], "a": 0, "e": "In 1910 a winter track was built. 'They would take mail, food and clothes...'"},
+    {"q": "14. When travelling on the Iditarod Trail, drivers had to take food for the dogs with them.", "o": ["A (Correct)", "B (Incorrect)"], "a": 1, "e": "They stopped at 'roadhouses' where they could get 'something to eat for both themselves and their dogs'."},
+    {"q": "15. In the 1920s, aeroplanes were used more often than boats and dogs.", "o": ["A (Correct)", "B (Incorrect)"], "a": 0, "e": "The text says in the 1920s 'aeroplanes replaced steam boats and dog teams as the main form of transport'."},
+    {"q": "16. Doctors in Nome had a good supply of medicine to cure diphtheria.", "o": ["A (Correct)", "B (Incorrect)"], "a": 1, "e": "The closest medicine was in Anchorage, right on the other side of Alaska."},
+    {"q": "17. The pilot Carl Eielson refused to fly his plane because of the cold weather.", "o": ["A (Correct)", "B (Incorrect)"], "a": 1, "e": "He was 'away on a trip at the time'."},
+    {"q": "18. Leonhard Seppala's dog was able to lead him safely to his destination.", "o": ["A (Correct)", "B (Incorrect)"], "a": 0, "e": "He trusted Togo's ability and 'Togo turned out to be a reliable guide'."},
+    {"q": "19. Balto fell into some icy water but managed to save himself.", "o": ["A (Correct)", "B (Incorrect)"], "a": 1, "e": "Balto refused to go further and 'saved the team from falling into icy water'."},
+    {"q": "20. The Iditarod race takes a different route every year.", "o": ["A (Correct)", "B (Incorrect)"], "a": 1, "e": "It follows 'the route of that famous journey in 1925', so it's the same route."}
+  ], "m": 10},
+
+  {"t": "Reading Part 4 - Multiple Choice", "i": "Read the text and questions below. For each question, mark the correct letter A, B, C or D.", "x": "Craigie Aitchison\n\nThe painter Craigie Aitchison was born in Scotland. He came to London intending to study law, but went to art school instead. There he found the traditional drawing classes difficult, but still kept on painting.\n\nIn his late twenties he was given money by the Italian government to study art, and became interested in early Italian artists, which shows in some of his work. He loved the greens and browns of the Italian fields and the clear light there, and wanted to put this light into his paintings.\n\nThis led him to paint colours thinly one on top of another from light to dark, but he insists he's never sure what the results will be. He says, 'It's a secret - because I don't know myself. I don't start by painting yellow, knowing I'm going to put anything on top.' Like most talented people, Aitchison makes it sound easy. 'Anyone can do the colours - you can buy them. I simply notice what you put the colours next to.'\n\nUnlike some artists, he never does drawings before he starts a painting, as he feels that if he did, he might get bored and not do the painting afterwards. Instead, Aitchison changes his paintings many times before they are finished. This explains why his favourite models are people who don't ask to see their pictures while he's painting them. 'If I feel they're worried and want to look at the painting, I can't do it.'\n\nSince moving to London years ago, he has not felt part of the Scottish painting scene. He says he is not interested in following any tradition, but just paints the way he can. However, his work still influences young British painters.", "q": [
+    {"q": "21. What is the writer trying to do in the text?", "o": ["describe particular works by Craigie Aitchison", "teach readers how to paint like Craigie Aitchison", "introduce readers to the artist Craigie Aitchison", "explain how Craigie Aitchison has made money from painting"], "a": 2, "e": "The text provides a general biographical and stylistic overview of the artist to introduce him to the reader."},
+    {"q": "22. What can the reader learn about Aitchison from the text?", "o": ["He works in a different way from other artists.", "He often gets bored with his paintings.", "He improved his drawing by going to art school.", "He did some paintings for the Italian government."], "a": 0, "e": "The text highlights his unique methods: 'Unlike some artists, he never does drawings before he starts...' and 'changes his paintings many times'."},
+    {"q": "23. What does Aitchison say about his use of colour?", "o": ["He likes starting with the darkest colours first.", "He knows the colours he's aiming for when he begins.", "He prefers to paint with yellows, greens, and browns.", "He understands how different colours work together."], "a": 3, "e": "He says 'I simply notice what you put the colours next to', showing an understanding of how they work together."},
+    {"q": "24. Aitchison prefers models who don't", "o": ["keep talking to him while he's working.", "ask him about his strange method of working.", "worry about how long the work will take.", "feel anxious to see the work as it's developing."], "a": 3, "e": "He says his favourite models are 'people who don't ask to see their pictures while he's painting them'."},
+    {"q": "25. What might a visitor at an exhibition say about Aitchison's work?", "o": ["I love his recent paintings of Scotland, which are very similar to a number of other Scottish painters.", "You can still see the influence of his trip to Italy in some of these pictures.", "You can tell he spent a lot of time drawing the picture before he started painting.", "I wonder if his law training helps him at all, especially in selling his work."], "a": 1, "e": "The text states he 'became interested in early Italian artists, which shows in some of his work'."}
+  ], "m": 5},
+
+  {"t": "Reading Part 5 - Multiple-Choice Cloze", "i": "Read the text below and choose the correct word for each space.", "x": "ZOOS\n\nPeople began to keep animals in zoos (26) _____ 3,000 years ago, when the rulers of China opened an enormous zoo called the Gardens of Intelligence. In many of the early zoos, animals (27) _____ taught to perform for the visitors. This no longer (28) _____ and it is accepted that the purpose of zoos is for people to see animals behaving naturally.\n\nToday, most cities have a zoo or wildlife park. However, not (29) _____ approves of zoos. People who think that zoos are a good idea say they (30) _____ us with the opportunity to (31) _____ about the natural world and be close to wild animals. Both of (32) _____ would not be possible (33) _____ zoos. On the other hand, some people disapprove of zoos because they (34) _____ it is wrong to put animals in cages, and argue that in zoos which are not (35) _____ properly, animals live in dirty conditions and eat unsuitable food.", "q": [
+    {"q": "26.", "o": ["above", "over", "more", "beyond"], "a": 1, "e": "'over 3,000 years ago'"},
+    {"q": "27.", "o": ["are", "have", "were", "had"], "a": 2, "e": "Past tense passive: 'were taught'."},
+    {"q": "28.", "o": ["appears", "becomes", "develops", "happens"], "a": 3, "e": "This no longer 'happens'."},
+    {"q": "29.", "o": ["somebody", "everybody", "nobody", "anybody"], "a": 1, "e": "'not everybody approves'"},
+    {"q": "30.", "o": ["produce", "bring", "provide", "make"], "a": 2, "e": "'provide us with the opportunity'."},
+    {"q": "31.", "o": ["discover", "learn", "find", "realise"], "a": 1, "e": "'learn about the natural world'."},
+    {"q": "32.", "o": ["that", "what", "whose", "these"], "a": 3, "e": "'Both of these' (referring to learning and being close to animals)."},
+    {"q": "33.", "o": ["without", "instead", "except", "unless"], "a": 0, "e": "'would not be possible without zoos'."},
+    {"q": "34.", "o": ["hope", "expect", "imagine", "believe"], "a": 3, "e": "'they believe it is wrong'."},
+    {"q": "35.", "o": ["ordered", "managed", "decided", "aimed"], "a": 1, "e": "zoos which are not 'managed' properly."}
+  ], "m": 10},
+
+  {"t": "Writing Part 1 - Sentence Transformations", "i": "Here are some sentences about learning Italian. For each question, complete the second sentence so that it means the same as the first. Use no more than three words.", "q": [
+    {"q": "After seeing an advertisement for Italian lessons, Daniel decided to go. \nDaniel ___ an advertisement for Italian lessons and then decided to go.", "a": ["saw"], "e": "Past simple tense matches the narrative sequence."},
+    {"q": "There are fifteen other students in his Italian class. \nHis Italian class ___ fifteen other students in it.", "a": ["has", "has got"], "e": "'has' shows possession/inclusion."},
+    {"q": "Daniel thinks that speaking Italian is easier than writing it. \nDaniel doesn't think that speaking is ___ as writing Italian.", "a": ["as difficult", "as hard"], "e": "Comparative structure: 'not as difficult as'."},
+    {"q": "Daniel's teacher is Italian and her name's Chiara Paolozzi. \nDaniel's teacher is Italian and she's ___ Chiara Paolozzi.", "a": ["called", "named"], "e": "Passive voice for names."},
+    {"q": "The students are given two hours of homework each week. \nEach week Chiara ___ the students two hours of homework.", "a": ["gives"], "e": "Active voice, present simple tense."}
+  ], "m": 10}
+];
+
+var L = [
+  {"t": "Listening Part 1 - Multiple Choice (Pictures)", "i": "There are seven questions in this part. For each question there are three pictures. Choose the correct picture.", "im": "<p><button class='btn alt say' data-i='0' type='button'>Play Part 1</button></p>", "q": [
+    {"q": "1. What did the boy buy at the shop?", "o": ["https://en.wikipedia.org/wiki/Special:FilePath/Running_shoes.jpg", "https://en.wikipedia.org/wiki/Special:FilePath/T-shirt.jpg", "https://en.wikipedia.org/wiki/Special:FilePath/Straw_hat.jpg"], "a": 1, "e": "He mentions he wanted shoes but ended up buying a t-shirt instead."},
+    {"q": "2. What time will the train arrive?", "o": ["https://en.wikipedia.org/wiki/Special:FilePath/Clock_03-00.svg", "https://en.wikipedia.org/wiki/Special:FilePath/Clock_03-30.svg", "https://en.wikipedia.org/wiki/Special:FilePath/Clock_04-00.svg"], "a": 1, "e": "The audio says the train is delayed by half an hour, so it will arrive at 3:30 instead of 3:00."},
+    {"q": "3. Which sport does the girl play on Saturdays?", "o": ["https://en.wikipedia.org/wiki/Special:FilePath/Basketball.png", "https://en.wikipedia.org/wiki/Special:FilePath/Tennis_ball.svg", "https://en.wikipedia.org/wiki/Special:FilePath/Football_(soccer_ball).svg"], "a": 0, "e": "She plays basketball on Saturdays, reserving tennis for Sundays."},
+    {"q": "4. What has the man lost?", "o": ["https://en.wikipedia.org/wiki/Special:FilePath/Mobile_phone.jpg", "https://en.wikipedia.org/wiki/Special:FilePath/Keys.jpg", "https://en.wikipedia.org/wiki/Special:FilePath/Sunglasses.jpg"], "a": 2, "e": "He states he has his phone and keys, but he can't find his sunglasses."},
+    {"q": "5. What is the weather like now?", "o": ["https://en.wikipedia.org/wiki/Special:FilePath/Weather-sun.svg", "https://en.wikipedia.org/wiki/Special:FilePath/Weather-showers.svg", "https://en.wikipedia.org/wiki/Special:FilePath/Weather-snow.svg"], "a": 1, "e": "The woman says it was sunny earlier, but now it is raining heavily."},
+    {"q": "6. Where will they go for dinner?", "o": ["https://en.wikipedia.org/wiki/Special:FilePath/Pizza.jpg", "https://en.wikipedia.org/wiki/Special:FilePath/Hamburger.jpg", "https://en.wikipedia.org/wiki/Special:FilePath/Salad.jpg"], "a": 0, "e": "They decide against the burger place and agree to go to the Italian restaurant for pizza."},
+    {"q": "7. What was the girl's favourite animal at the zoo?", "o": ["https://en.wikipedia.org/wiki/Special:FilePath/Lion.jpg", "https://en.wikipedia.org/wiki/Special:FilePath/Monkey.jpg", "https://en.wikipedia.org/wiki/Special:FilePath/Elephant.jpg"], "a": 1, "e": "She liked the lions, but her absolute favourite was the monkey."}
+  ], "m": 7},
+  
+  {"t": "Listening Part 2 - Multiple Choice", "i": "You will hear a radio interview with Jack Williams, who is talking about a town called Swanton. For each question, put a tick in the correct box.", "im": "<p><button class='btn alt say' data-i='1' type='button'>Play Part 2</button></p>", "q": [
+    {"q": "8. Where is the town of Swanton located?", "o": ["near the sea", "by a lake", "on a hill"], "a": 1, "e": "He mentions the town sits right on the edge of a large lake."},
+    {"q": "9. What does Jack like most about living in Swanton?", "o": ["There are opportunities for climbing nearby.", "There is plenty of activity in the town.", "There is interesting wildlife near the town."], "a": 1, "e": "He loves that there is always something going on and plenty of activity."},
+    {"q": "10. What does Jack say about entertainment in Swanton?", "o": ["A music festival takes place in the town.", "Its football club has done well this year.", "An arts centre has recently opened."], "a": 0, "e": "He mentions the annual music festival that attracts a lot of people."},
+    {"q": "11. Jack is worried about the environment of Swanton because", "o": ["the water in the river is dirty.", "there are few wild birds around today.", "pollution has destroyed the plants in one area."], "a": 1, "e": "He has noticed a sharp decline in the number of wild birds."},
+    {"q": "12. What does Jack say about the way Swanton has changed?", "o": ["He preferred the town when it was smaller.", "He thinks it is a more interesting place.", "He is sorry that there are fewer jobs available."], "a": 1, "e": "He believes the growth has made it a far more interesting place to live."},
+    {"q": "13. Jack is positive about the future of Swanton because", "o": ["there is a successful new shopping centre.", "there will soon be a new airport.", "a new university is opening."], "a": 2, "e": "He is excited because a new university is opening, which will bring young people."}
+  ], "m": 6},
+  
+  {"t": "Listening Part 3 - Gap Fill", "i": "You will hear a woman talking on the radio about a singing course she attended. For each question, fill in the missing information.", "im": "<p><button class='btn alt say' data-i='2' type='button'>Play Part 3</button></p>", "q": [
+    {"q": "Lena Phipps, a very good former ___, is the tutor", "a": ["opera"], "e": "She was a former opera singer."},
+    {"q": "The maximum number of students per course is ___", "a": ["ten", "10"], "e": "They limit it to ten students."},
+    {"q": "All classes start with exercises that help students to ___", "a": ["relax"], "e": "The exercises are designed to help them relax."},
+    {"q": "Students learn to sing ___, modern and pop songs", "a": ["jazz"], "e": "They sing jazz, modern and pop."},
+    {"q": "There's a very good lunch, especially ___", "a": ["salads", "salad"], "e": "The salads were specifically mentioned as being very good."},
+    {"q": "Date the next course starts: ___", "a": ["24th September", "September 24", "24 September"], "e": "The next course starts on the 24th of September."}
+  ], "m": 6},
+  
+  {"t": "Listening Part 4 - True/False", "i": "Look at the six sentences for this part. You will hear a conversation between a man, Marco, and his wife, Sarah, about a film they have just seen at the cinema. Decide if each sentence is correct or incorrect.", "im": "<p><button class='btn alt say' data-i='3' type='button'>Play Part 4</button></p>", "q": [
+    {"q": "20. Sarah was expecting to enjoy the film.", "o": ["A (Correct)", "B (Incorrect)"], "a": 0, "e": "She mentions she had high hopes for it before going in."},
+    {"q": "21. Marco and Sarah agree that the city in the film was London.", "o": ["A (Correct)", "B (Incorrect)"], "a": 1, "e": "Marco thought it was London, but Sarah pointed out it was actually filmed in Paris."},
+    {"q": "22. Marco feels that the length of the film made it rather boring.", "o": ["A (Correct)", "B (Incorrect)"], "a": 0, "e": "He complains that it dragged on for too long and he lost interest."},
+    {"q": "23. Sarah was upset about how some of the audience behaved during the film.", "o": ["A (Correct)", "B (Incorrect)"], "a": 0, "e": "She was very annoyed by people talking and using their phones."},
+    {"q": "24. Sarah was disappointed with the way the main actor performed.", "o": ["A (Correct)", "B (Incorrect)"], "a": 1, "e": "She actually thought the main actor was the only good part of the film."},
+    {"q": "25. Marco thinks this film is the best the director has made.", "o": ["A (Correct)", "B (Incorrect)"], "a": 1, "e": "He strongly believes the director's previous films were much better."}
+  ], "m": 6}
+];
+
+var T=[
+  "Extract 1. Girl: What did you buy at the shop? Boy: Well, I really wanted those running shoes, but they were too expensive. I ended up buying this blue t-shirt instead. I'll get the straw hat next time. {pause} Extract 2. Man: Excuse me, what time is the next train to London? Woman: It was scheduled for 3 o'clock, but there's a delay of half an hour. It will arrive at 3:30 instead. The 4 o'clock train is running on time. {pause} Extract 3. Boy: Do you want to play tennis this Saturday? Girl: I can't, I always play basketball on Saturdays. We could play tennis on Sunday if you want. Football practice isn't until Monday. {pause} Extract 4. Woman: Are you ready to leave? Man: Almost. I've got my mobile phone and my keys, but I just can't find my sunglasses anywhere. I've looked all over the house. {pause} Extract 5. Man: Wow, look at the weather! It was so sunny just an hour ago. Woman: I know! I can't believe it's raining so heavily now. At least it's not snowing yet. {pause} Extract 6. Girl: Where should we go for dinner? The burger place? Boy: We had burgers last week. Let's go to that Italian restaurant and get pizza instead. We can have a big salad tomorrow. Girl: Pizza sounds perfect. {pause} Extract 7. Boy: Did you like the zoo? The lions were great. Girl: Yes, the lions were amazing, and the elephants were huge. But my absolute favourite was the little monkey. It was so funny!",
+  "Interviewer: Jack, tell us about Swanton. Where exactly is it? Jack: Well, it's not on the coast, but it sits right by a really large lake, which is beautiful. Interviewer: And what do you like most about living there? Jack: Some people like the quiet wildlife, but for me, it's that there is plenty of activity in the town. There's always something going on. Interviewer: What kind of entertainment? Jack: We don't have a big arts centre yet, and the football team isn't great, but a fantastic music festival takes place in the town every summer. Interviewer: Are there any environmental worries? Jack: Yes, the river water is fine, but I've noticed there are very few wild birds around today compared to when I was a kid. Interviewer: Has the town changed much? Jack: It's grown a lot. Some preferred it smaller, but I think the growth makes it a more interesting place. Interviewer: And the future? Jack: Very positive! A new university is opening soon, which will bring a lot of great energy to the area.",
+  "Woman: I recently attended a fantastic singing course at Brownstoke College called 'Singing for Beginners'. The tutor was Lena Phipps, who was actually a very good former opera singer before she started teaching. The classes are quite small and personal, because the maximum number of students per course is ten. We didn't just jump into singing; all classes start with special breathing exercises that help students to relax, which I found incredibly useful. Over the weekend, students learn to sing a variety of styles, mostly jazz, modern, and pop songs. It was fully residential, so we stayed in twin rooms and all meals were provided. I have to say, there's a very good lunch, especially the salads, which were fresh and delicious. If you're interested, the date the next course starts is the 24th September. I highly recommend it!",
+  "Sarah: Well, that was a long film! I must admit, I was really expecting to enjoy it after all those great reviews. Marco: Yeah, me too. The setting was great though. I loved seeing London on the big screen. Sarah: Actually Marco, if you looked closely at the street signs, it was filmed in Paris, not London! Marco: Oh, really? Well, either way, it just dragged on. The length of the film made it rather boring for me. I almost fell asleep. Sarah: I couldn't fall asleep even if I wanted to! I was so upset about how some of the audience behaved. The people behind us were talking on their phones the whole time! Marco: Yeah, that was annoying. What did you think of the acting? The main guy was terrible. Sarah: Oh, I disagree! I wasn't disappointed with him at all; I thought he was the only good thing in the movie. Marco: Really? Well, this definitely isn't the best film the director has made. His last one was a masterpiece compared to this."
+];
+
+var FULL=true, AUDIO=["","","",""];
+var ASSESSOR_EMAIL="oxfampreparation@email.cz";
+
+function wc(t){var m=t.trim().match(/\S+/g);return m?m.length:0}
+function winit(){
+  document.querySelectorAll("textarea").forEach(function(t){
+    t.oninput=function(){document.getElementById(t.id+"c").textContent=wc(t.value)+" words"}
+  });
+  document.querySelectorAll("[data-c]").forEach(function(b){
+    b.onclick=function(){
+      var t=document.getElementById(b.dataset.c).value;
+      if(navigator.clipboard) navigator.clipboard.writeText(t);
+    }
+  });
+  document.querySelectorAll("[data-s]").forEach(function(b){
+    b.onclick=function(){
+      var t=document.getElementById(b.dataset.s).value, nm=document.getElementById("nm").value;
+      if(!wc(t)){
+        b.textContent="Write something first!";
+        setTimeout(function(){b.textContent="Send to assessor"},2000);
+        return;
+      }
+      var body=encodeURIComponent("Student: "+nm+"\n\n"+t), big=body.length>1500;
+      if(big&&navigator.clipboard) navigator.clipboard.writeText(t);
+      location.href="mailto:"+ASSESSOR_EMAIL+"?subject="+encodeURIComponent("PET Test 1 "+b.dataset.t+" - "+nm)+"&body="+(big?encodeURIComponent("Student: "+nm+"\n\n(My text is copied. Please paste it here.)"):body);
+    }
+  });
+}
+
+var playId=0;
+function say(i,done){
+  var id=++playId;speechSynthesis.cancel();
+  var parts=T[i].split(/(\{pause\}|\{short\}|\bSpeaker \d:|\b(?:Sarah|Marco|Interviewer|Jack|Woman|Man|Girl|Boy):)/),q=[],pitch=1,flip=0,names={};
+  parts.forEach(function(x){
+    x=x.trim();if(!x)return;
+    if(x==="{pause}"||x==="{short}"){q.push({w:x==="{pause}"?2500:1200});pitch=1;return}
+    var sp=x.match(/^Speaker (\d):$/);if(sp){q.push({t:"Speaker "+sp[1],p:1,w:700});return}
+    if(/^[A-Za-z 0-9 ]+:$/.test(x)){var n=x.slice(0,-1);if(!(n in names))names[n]=(flip++%2)?1.25:.85;pitch=names[n];return}
+    (x.match(/[^.?!]+[.?!]*/g)||[x]).forEach(function(z){q.push({t:z.trim(),p:pitch,w:300})})
+  });
+  var k=0;(function next(){
+    if(id!==playId)return;
+    if(k>=q.length){done();return}
+    var s=q[k++];
+    if(!s.t){setTimeout(next,s.w);return}
+    var u=new SpeechSynthesisUtterance(s.t);u.lang="en-GB";u.rate=0.95;u.pitch=s.p;
+    u.onend=function(){setTimeout(next,s.w)};u.onerror=function(){setTimeout(next,s.w)};
+    speechSynthesis.speak(u);
+  })()
+}
+
+function play(b){
+  if(b._busy)return;
+  var i=+b.dataset.i;
+  function fin(){b._busy=false;if(b._n>=2){b.disabled=true;b.textContent="Played twice"}else b.textContent="Play again (last time)"}
+  if(!AUDIO[i]&&!window.speechSynthesis){b.textContent="TTS not supported.";return}
+  b._n=(b._n||0)+1;b._busy=true;b.textContent="Playing...";
+  if(AUDIO[i]){var a=new Audio(AUDIO[i]);a.onended=fin;a.onerror=fin;a.play()}else say(i,fin)
+}
+
+function init(){
+  [["t1",90],["t2",35],["t4",12],["sp1",3],["sp2",3],["sp3",3],["sp4",3]].forEach(function(a){if(document.getElementById(a[0]))timer(a[0],a[1])});
+  if(!FULL)return;
+  build(R,document.getElementById("rbox"),"r");
+  build(L,document.getElementById("lbox"),"l");
+  document.getElementById("ck1").onclick=function(){check(document.getElementById("rbox"),document.getElementById("sc1"))};
+  document.getElementById("ck2").onclick=function(){check(document.getElementById("lbox"),document.getElementById("sc2"))};
+  document.querySelectorAll(".say").forEach(function(b){b.onclick=function(){play(b)}});
+  winit();
+}
+
+(function(){
+  var g=document.getElementById("gate"),m=document.getElementById("main");
+  function show(){g.hidden=true;m.hidden=false;if(window.init)init()}
+  if(unlocked()){show();return}
+  document.getElementById("gf").onsubmit=function(e){
+    e.preventDefault();
+    if(document.getElementById("pw").value===PW){
+      try{sessionStorage.setItem("pet_test_1","1")}catch(x){}
+      show();
+    } else {
+      document.getElementById("err").textContent="Wrong password.";
+    }
+  }
+  
+  var themeBtn = document.getElementById('themeBtn');
+  if(themeBtn) {
+    themeBtn.onclick = function() {
+      var currentTheme = document.documentElement.getAttribute('data-theme');
+      if(currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        themeBtn.textContent = '🌙';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeBtn.textContent = '☀️';
+      }
+    };
+  }
+  
+  var menuToggle = document.getElementById('menuToggle');
+  if(menuToggle) {
+    menuToggle.onclick = function() {
+      document.body.classList.toggle('menuopen');
+    };
+  }
+})();
+</script>
+</body>
+</html>
