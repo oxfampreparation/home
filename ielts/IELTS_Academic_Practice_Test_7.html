@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>IELTS Academic Practice Test 7</title>
+
+<style>
+/* Default theme is explicitly light */
+:root {
+  --bg: #f6f7fb;
+  --paper: #fff;
+  --ink: #14213d;
+  --muted: #4b5266;
+  --line: #d5d9e6;
+  --mark: #2b59ff;
+  --hi: #ffe45e;
+  --ok: #1a7f52;
+  --bad: #b3261e;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Dark theme applied ONLY when data-theme="dark" is present */
+:root[data-theme="dark"] {
+  --bg: #0f1526;
+  --paper: #182038;
+  --ink: #eef1fb;
+  --muted: #a9b1c9;
+  --line: #2c3656;
+  --mark: #7d9bff;
+  --hi: #e9d24a;
+  --ok: #57c58f;
+  --bad: #ff8a80;
+}
+
+html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: border-box; }
+
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1.0625rem/1.6 "Atkinson Hyperlegible", system-ui, sans-serif; }
+h1, h2, h3 { font-family: Archivo, "Helvetica Neue", Arial, sans-serif; line-height: 1.05; margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--mark); outline-offset: 3px; }
+.wrap { max-width: 74rem; margin: 0 auto; padding: 0 1.25rem; }
+
+header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .75rem; padding: 1.25rem 0; position: sticky; top: 0; background: var(--bg); z-index: 100; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+.head-left { display: flex; align-items: center; gap: .75rem; }
+#menuToggle { background: transparent; border: none; cursor: pointer; color: var(--ink); display: flex; padding: .25rem; border-radius: .25rem; }
+#menuToggle:hover { background: var(--line); }
+#menuToggle svg { width: 1.6rem; height: 1.6rem; }
+.logo { font: 800 1.25rem Archivo, sans-serif; text-decoration: none; }
+nav a { margin-left: 1.25rem; text-decoration: none; color: var(--muted); }
+nav a:hover { color: var(--ink); }
+
+.btn { display: inline-block; background: var(--ink); color: var(--bg); padding: .8rem 1.4rem; border-radius: .5rem; font-weight: 700; text-decoration: none; border: 0; cursor: pointer; font-size: 1rem; font-family: inherit; }
+.btn.alt { background: transparent; color: var(--ink); border: 2px solid var(--ink); }
+.hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2rem; align-items: start; padding: 1rem 0 3rem; }
+.hero-text { margin-top: 2.5rem; }
+
+h1 { font-size: clamp(2rem, 3.4vw, 3rem); font-weight: 800; font-stretch: 90%; letter-spacing: -.02em; margin-top: 1rem; margin-bottom: 0; }
+h1 span { background: linear-gradient(transparent 62%, var(--hi) 62%); }
+.lead { color: var(--muted); max-width: 32rem; margin: 1.25rem 0 1.75rem; font-size: 1.15rem; }
+.row { display: flex; gap: .75rem; flex-wrap: wrap; }
+
+.sheet { background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.sheet h2 { font-size: 1.1rem; margin-bottom: .25rem; }
+.sheet p { margin: 0 0 1rem; color: var(--muted); font-size: .95rem; }
+.q { padding: .7rem 0; border-top: 1px solid var(--line); }
+.q b { display: inline-block; font-weight: 800; margin-bottom: .45rem; margin-right: 0.5rem; }
+
+.opts { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem; width: fit-content; }
+.opt { display: flex; align-items: center; gap: .4rem; padding: .3rem .7rem .3rem .35rem; border: 1.5px solid var(--line); border-radius: 2rem; background: transparent; color: inherit; font-size: .95rem; cursor: pointer; width: fit-content; }
+.opt i { width: 1.4rem; height: 1.4rem; border-radius: 50%; border: 2px solid var(--muted); display: grid; place-items: center; font: 700 .7rem Archivo, sans-serif; font-style: normal; flex-shrink: 0; }
+
+.opt[aria-pressed="true"] { border-color: var(--mark); }
+.opt[aria-pressed="true"] i { background: var(--mark); border-color: var(--mark); color: var(--bg); }
+.opt.right { border-color: var(--ok); } .opt.right i { background: var(--ok); border-color: var(--ok); color: var(--bg); }
+.opt.wrong { border-color: var(--bad); } .opt.wrong i { background: var(--bad); border-color: var(--bad); color: var(--bg); }
+
+/* Image Options specific styles */
+.img-opts-grid { display: flex; flex-direction: row; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+.img-opt { flex-direction: column; align-items: center; padding: 0.5rem; border-radius: 0.5rem; gap: 0.5rem; text-align: center; }
+.img-opt img { height: 120px; width: 160px; object-fit: cover; background: var(--paper); border-radius: 0.25rem; }
+.img-opt i { margin-bottom: 0.25rem; }
+
+.result { margin-top: 1rem; font-weight: 700; min-height: 1.6rem; }
+section { padding: 3.5rem 0; border-top: 1px solid var(--line); }
+h2.t { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: .75rem; letter-spacing: -.01em; }
+
+.sub, .txt { color: var(--muted); max-width: 48rem; margin: 0 0 2rem; white-space: pre-line; line-height: 1.6; }
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: .6rem; background: var(--paper); }
+table { border-collapse: collapse; width: 100%; min-width: 38rem; }
+th, td { text-align: left; padding: .9rem 1rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font: 800 1.2rem Archivo, sans-serif; white-space: nowrap; }
+td small { display: block; font: 400 .9rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+
+.support-strip { position: fixed; bottom: 0; left: 0; right: 0; background: var(--ink); color: var(--bg); padding: 1rem 1.25rem; z-index: 999; box-shadow: 0 -4px 12px rgba(0,0,0,0.15); }
+.support-strip-inner { max-width: 74rem; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; width: 100%; font-weight: 700; }
+footer { border-top: 1px solid var(--line); padding: 2rem 0 5rem; color: var(--muted); font-size: .95rem; }
+
+.lang { display: flex; gap: .25rem; flex-wrap: wrap; } .lang button { font: 700 .8rem Archivo, sans-serif; padding: .35rem .6rem; border: 1.5px solid var(--line); border-radius: .4rem; background: transparent; color: var(--muted); cursor: pointer; } .lang button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.layout { display: grid; grid-template-columns: 12.5rem minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+.layout.collapsed { grid-template-columns: 1fr; gap: 0; }
+.layout.collapsed .side { display: none; }
+.side { position: sticky; top: 5rem; max-height: calc(100vh - 6rem); max-height: calc(100dvh - 6rem); overflow-y: auto; display: flex; flex-direction: column; gap: .15rem; }
+summary { cursor: pointer; font: 700 .95rem Archivo, sans-serif; color: var(--muted); padding: .4rem .75rem; border-radius: .5rem; } summary:hover { color: var(--ink); } .ex[open] summary { margin-bottom: .15rem; }
+.side nav { display: flex; flex-direction: column; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); } .side nav a { margin: 0; color: inherit; } .side .lang { margin-bottom: 1rem; }
+.side p { margin: 0 0 .5rem; font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+.side a { text-decoration: none; padding: .5rem .75rem; border-radius: .5rem; font: 700 1rem Archivo, sans-serif; border-left: 3px solid transparent; }
+.side a small { display: block; font: 400 .8rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+.side a:hover { background: var(--paper); border-left-color: var(--mark); }
+tr:target td { background: var(--hi); color: #14213d; } tr:target td small { color: #14213d; }
+
+@media (max-width: 52rem) { .layout { grid-template-columns: 1fr; gap: 0; } .side { position: static; max-height: none; margin: 0 0 1rem; padding: 0 0 1rem; border-bottom: 1px solid var(--line); } }
+
+.hr { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; } .hr .btn { padding: .45rem 1rem; font-size: .9rem; }
+dialog { border: 2px solid var(--ink); border-radius: .75rem; background: var(--paper); color: var(--ink); padding: 1.5rem; width: min(26rem, 92vw); max-height: 90vh; overflow: auto; } dialog::backdrop { background: rgba(10,16,32,.55); }
+dialog h2 { font-size: 1.4rem; margin-bottom: .5rem; } dialog label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+dialog input { width: 100%; padding: .65rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.demo { color: var(--muted); font-size: .9rem; margin: .5rem 0 0; } .err { color: var(--bad); min-height: 1.5rem; margin-top: .5rem; font-size: .95rem; }
+
+@media (max-width: 40rem) {
+  .wrap { padding: 0 1rem; }
+  header { padding: 1rem 0; }
+  .hero { padding-bottom: 2rem; }
+  .sheet { padding: 1.1rem; }
+  section { padding: 2.5rem 0; }
+  .scroll { border: 0; background: transparent; overflow: visible; }
+  table, tbody, tr, td { display: block; min-width: 0; width: 100%; }
+  thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  tr { background: var(--paper); border: 1px solid var(--line); border-radius: .6rem; padding: .6rem 0; margin-bottom: .75rem; }
+  td { border: 0; padding: .15rem 1rem; }
+  td:first-child { font-size: 1.3rem; padding-top: .4rem; }
+  tr:target { border-color: var(--ink); }
+}
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+html { scroll-padding-top: calc(5rem + env(safe-area-inset-top, 0px)); }
+body header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); padding: .6rem 0; border-bottom: 1px solid var(--line); }
+.brand { display: flex; align-items: center; gap: .75rem; }
+body .logo { font-size: 1.85rem; letter-spacing: -.02em; }
+.mbtn { display: inline-flex; flex-direction: column; justify-content: center; gap: 5px; width: 2.75rem; height: 2.75rem; padding: 0 .7rem; border: 2px solid var(--ink); border-radius: .5rem; background: transparent; cursor: pointer; flex: none; }
+.mbtn span { display: block; height: 2px; background: var(--ink); border-radius: 2px; }
+.mbtn:hover { background: var(--paper); }
+body .side { top: 5.5rem; max-height: calc(100vh - 6.5rem); max-height: calc(100dvh - 6.5rem); }
+body.nomenu .layout { grid-template-columns: minmax(0, 1fr); }
+body.nomenu .side { display: none; }
+body:has(#app[hidden]) .mbtn { display: none; }
+.side>.hr { margin-bottom: 1rem; }
+.scrim { display: none; }
+
+@media (max-width: 52rem) {
+  body .side { position: fixed; top: 0; left: 0; bottom: 0; width: min(19rem, 86vw); max-height: none; margin: 0; padding: calc(1rem + env(safe-area-inset-top, 0px)) 1rem calc(1rem + env(safe-area-inset-bottom, 0px)); background: var(--paper); border: 0; border-right: 2px solid var(--ink); z-index: 50; overflow-y: auto; transform: translateX(-105%); visibility: hidden; transition: transform .25s ease, visibility 0s .25s; }
+  body.menuopen .side { transform: none; visibility: visible; transition: transform .25s ease; }
+  body .side nav { flex-direction: column; flex-wrap: nowrap; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+  body .side nav a { padding: .5rem .75rem; }
+  .scrim { display: block; position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: rgba(10,16,32,.5); z-index: 40; opacity: 0; pointer-events: none; transition: opacity .25s; }
+  body.menuopen .scrim { opacity: 1; pointer-events: auto; }
+  body .logo { font-size: 1.6rem; }
+}
+
+.gatebox { max-width: 26rem; margin: 2rem auto; background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.gatebox label, .wr label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+input[type=text], input[type=password], textarea { width: 100%; padding: .6rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.q input[type=text] { width: 14rem; max-width: 100%; }
+.part { background: var(--paper); border: 1px solid var(--line); border-radius: .75rem; padding: 1.5rem; margin-bottom: 1.25rem; }
+.q.ok { border-left: 4px solid var(--ok); padding-left: .75rem; } .q.no { border-left: 4px solid var(--bad); padding-left: .75rem; } .fb { font-weight: 700; margin-top: .25rem; }
+.tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0; }
+nav.tabs a { margin: 0; padding: .4rem 1rem; border: 1.5px solid var(--line); border-radius: 2rem; text-decoration: none; font-weight: 700; }
+nav.tabs a[aria-current=page] { background: var(--ink); color: var(--bg); }
+.bar { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; margin: 1rem 0; } .time { font: 800 1.6rem Archivo, sans-serif; }
+.pics { display: flex; gap: 1rem; flex-wrap: wrap; } .pics svg, .pics img { flex: 1 1 14rem; max-width: 22rem; border: 2px solid var(--ink); border-radius: .5rem; background: var(--paper); object-fit: cover; aspect-ratio: 3/2; }
+.audio-player{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;padding:.75rem 1rem;margin:1rem 0;background:var(--paper);border:1px solid var(--line);border-radius:.75rem}.audio-player .listen-status{font-weight:600;color:var(--muted)}
+textarea { min-height: 15rem; } .tr { display: none; } .note { padding: .75rem 1rem; border-left: 4px solid var(--mark); background: var(--paper); margin: 1rem 0; }
+.sec { padding-top: 2rem; margin-top: 2rem; border-top: 1px solid var(--line); } .jump { margin-top: 0; } .ex { color: var(--muted); margin-top: .15rem; font-size: .95rem; }
+ .chart{display:block;width:min(100%,760px);height:auto;margin:1rem auto;border:1px solid var(--line);border-radius:12px;background:#fff}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header id="siteHeader">
+<div class="head-left">
+<button aria-label="Toggle menu" id="menuToggle">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
+</button>
+<a class="logo" href="../index.html">Oxfam Preparation</a>
+</div>
+<div class="hr">
+<button aria-label="Toggle theme" class="btn alt" id="themeBtn" style="padding:.45rem .6rem; min-width:0; font-size:1.1rem">🌙</button>
+<button class="btn" id="loginBtn" type="button">Log in</button>
+</div>
+</header>
+<div class="layout">
+<aside aria-label="Menu" class="side">
+<nav>
+<a href="../cpe.html">All tests</a>
+</nav>
+</aside>
+<main id="top">
+<div id="gate">
+<div class="gatebox">
+<h1><span>IELTS Academic Practice Test 7</span></h1>
+<p>Enter the password to open this IELTS Academic practice test.</p>
+<form id="gf">
+<label for="pw">Password</label>
+<input autocomplete="off" id="pw" type="password"/>
+<div class="err" id="err"></div>
+<div class="row" style="margin-top:1rem">
+<button class="btn" type="submit">Open</button>
+<a class="btn alt" href="../cpe.html">Back</a>
+</div>
+</form>
+</div>
+</div>
+<div hidden id="main"><h1>IELTS Academic Practice Test 7</h1><p class="sub">Original IELTS Academic practice paper. Browser TTS is used for the listening audio.</p><div class="part"><label for="nm"><strong>Student name (optional)</strong></label><input id="nm" type="text" placeholder="Enter your name"></div><nav class="tabs jump"><a href="#read">Reading</a><a href="#listen">Listening</a><a href="#write">Writing</a><a href="#speak">Speaking</a></nav><section class="sec" id="read"><h2 class="t">Academic Reading (60 minutes)</h2><div class="bar"><span class="time" id="t1"></span><button class="btn alt">Start</button></div><p class="note">Three original passages; 40 questions.</p><div id="rbox"></div><button class="btn" id="ck1">Check Reading answers</button><b id="sc1"></b></section><section class="sec" id="listen"><h2 class="t">Listening (about 30 minutes)</h2><div class="bar"><span class="time" id="t2"></span><button class="btn alt">Start</button></div><p class="note">Four parts, 40 questions. Browser TTS reads these original practice scripts. IELTS recordings in the exam are played once.</p><div id="lbox"></div><button class="btn" id="ck2">Check Listening answers</button><b id="sc2"></b></section><section class="sec" id="write"><h2 class="t">Academic Writing (60 minutes)</h2><div class="bar"><span class="time" id="t3"></span><button class="btn alt">Start</button></div><div class="part"><h2>Task 1</h2><p>Spend about 20 minutes. Write at least 150 words.</p><div class="note">The line graph shows average crack width in three concrete samples over the 24 weeks after damage. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</div><img class="chart" alt="Average crack width in three concrete samples over 24 weeks, in millimetres" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3NjAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgNzYwIDQyMCI+PHJlY3Qgd2lkdGg9Ijc2MCIgaGVpZ2h0PSI0MjAiIGZpbGw9IiNmZmYiLz48dGV4dCB4PSIzODAiIHk9IjI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTkiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMxODI5NGQiPkNyYWNrIHdpZHRoIGluIGNvbmNyZXRlIHNhbXBsZXMgYWZ0ZXIgZGFtYWdlPC90ZXh0Pjx0ZXh0IHg9IjM4MCIgeT0iNTEiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMyIgZmlsbD0iIzM5NDY1ZSI+QXZlcmFnZSB3aWR0aCAobWlsbGltZXRyZXMpPC90ZXh0PjxnIHN0cm9rZT0iI2RiZTFlYiIgc3Ryb2tlLXdpZHRoPSIxIj48cGF0aCBkPSJNOTAgMzMwSDcwME05MCAyNTBINzAwTTkwIDE3MEg3MDBNOTAgOTBINzAwIi8+PC9nPjxnIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzM5NDY1ZSIgdGV4dC1hbmNob3I9ImVuZCI+PHRleHQgeD0iNzgiIHk9IjMzNCI+MC4wPC90ZXh0Pjx0ZXh0IHg9Ijc4IiB5PSIyNTQiPjAuMjwvdGV4dD48dGV4dCB4PSI3OCIgeT0iMTc0Ij4wLjQ8L3RleHQ+PHRleHQgeD0iNzgiIHk9Ijk0Ij4wLjY8L3RleHQ+PC9nPjxwYXRoIGQ9Ik05MCA5MFYzMzBINzAwIiBmaWxsPSJub25lIiBzdHJva2U9IiMyOTNkNWEiIHN0cm9rZS13aWR0aD0iMiIvPjxnIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMyIgZmlsbD0iIzM5NDY1ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+PHRleHQgeD0iMTMwIiB5PSIzNTQiPjA8L3RleHQ+PHRleHQgeD0iMjM4IiB5PSIzNTQiPjQ8L3RleHQ+PHRleHQgeD0iMzQ2IiB5PSIzNTQiPjg8L3RleHQ+PHRleHQgeD0iNDU0IiB5PSIzNTQiPjEyPC90ZXh0Pjx0ZXh0IHg9IjU2MiIgeT0iMzU0Ij4xNjwvdGV4dD48dGV4dCB4PSI2NzAiIHk9IjM1NCI+MjQ8L3RleHQ+PC9nPjx0ZXh0IHg9IjM5NSIgeT0iMzc5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTMiIGZpbGw9IiMzOTQ2NWUiPldlZWtzIGFmdGVyIGRhbWFnZTwvdGV4dD48cG9seWxpbmUgcG9pbnRzPSIxMzAsMTMwIDIzOCwxNjIgMzQ2LDIwNiA0NTQsMjQyIDU2MiwyNzggNjcwLDI5OCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzE4MmE4IiBzdHJva2Utd2lkdGg9IjQiLz48cG9seWxpbmUgcG9pbnRzPSIxMzAsMTMwIDIzOCwxNTAgMzQ2LDE3NCA0NTQsMjEwIDU2MiwyMzggNjcwLDI1OCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZDc4MzQ0IiBzdHJva2Utd2lkdGg9IjQiLz48cG9seWxpbmUgcG9pbnRzPSIxMzAsMTMwIDIzOCwxMzQgMzQ2LDE0MiA0NTQsMTUwIDU2MiwxNTggNjcwLDE2NiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNGE5Yjc2IiBzdHJva2Utd2lkdGg9IjQiLz48ZyBmaWxsPSIjMzE4MmE4Ij48Y2lyY2xlIGN4PSIxMzAiIGN5PSIxMzAiIHI9IjUiLz48Y2lyY2xlIGN4PSIyMzgiIGN5PSIxNjIiIHI9IjUiLz48Y2lyY2xlIGN4PSIzNDYiIGN5PSIyMDYiIHI9IjUiLz48Y2lyY2xlIGN4PSI0NTQiIGN5PSIyNDIiIHI9IjUiLz48Y2lyY2xlIGN4PSI1NjIiIGN5PSIyNzgiIHI9IjUiLz48Y2lyY2xlIGN4PSI2NzAiIGN5PSIyOTgiIHI9IjUiLz48L2c+PGcgZmlsbD0iI2Q3ODM0NCI+PGNpcmNsZSBjeD0iMTMwIiBjeT0iMTMwIiByPSI1Ii8+PGNpcmNsZSBjeD0iMjM4IiBjeT0iMTUwIiByPSI1Ii8+PGNpcmNsZSBjeD0iMzQ2IiBjeT0iMTc0IiByPSI1Ii8+PGNpcmNsZSBjeD0iNDU0IiBjeT0iMjEwIiByPSI1Ii8+PGNpcmNsZSBjeD0iNTYyIiBjeT0iMjM4IiByPSI1Ii8+PGNpcmNsZSBjeD0iNjcwIiBjeT0iMjU4IiByPSI1Ii8+PC9nPjxnIGZpbGw9IiM0YTliNzYiPjxjaXJjbGUgY3g9IjEzMCIgY3k9IjEzMCIgcj0iNSIvPjxjaXJjbGUgY3g9IjIzOCIgY3k9IjEzNCIgcj0iNSIvPjxjaXJjbGUgY3g9IjM0NiIgY3k9IjE0MiIgcj0iNSIvPjxjaXJjbGUgY3g9IjQ1NCIgY3k9IjE1MCIgcj0iNSIvPjxjaXJjbGUgY3g9IjU2MiIgY3k9IjE1OCIgcj0iNSIvPjxjaXJjbGUgY3g9IjY3MCIgY3k9IjE2NiIgcj0iNSIvPjwvZz48ZyBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiMxODI5NGQiPjxsaW5lIHgxPSIyMTAiIHkxPSI0MDUiIHgyPSIyMzUiIHkyPSI0MDUiIHN0cm9rZT0iIzMxODJhOCIgc3Ryb2tlLXdpZHRoPSI0Ii8+PHRleHQgeD0iMjQyIiB5PSI0MDkiPkJhY3RlcmlhIG1peDwvdGV4dD48bGluZSB4MT0iMzY1IiB5MT0iNDA1IiB4Mj0iMzkwIiB5Mj0iNDA1IiBzdHJva2U9IiNkNzgzNDQiIHN0cm9rZS13aWR0aD0iNCIvPjx0ZXh0IHg9IjM5NyIgeT0iNDA5Ij5SZXNpbiBjYXBzdWxlczwvdGV4dD48bGluZSB4MT0iNTM1IiB5MT0iNDA1IiB4Mj0iNTYwIiB5Mj0iNDA1IiBzdHJva2U9IiM0YTliNzYiIHN0cm9rZS13aWR0aD0iNCIvPjx0ZXh0IHg9IjU2NyIgeT0iNDA5Ij5Db250cm9sPC90ZXh0PjwvZz48L3N2Zz4="><textarea id="w1"></textarea><div class="bar"><b id="w1c">0 words</b><button class="btn alt" data-c="w1">Copy</button><button class="btn" data-s="w1" data-t="Writing Task 1">Send writing to assessor</button></div></div><div class="part"><h2>Task 2</h2><p>Spend about 40 minutes. Write at least 250 words.</p><div class="note">Some people believe that schools should give more time to practical experiments, while others think students should spend more time learning theory. Discuss both views and give your own opinion.</div><textarea id="w2"></textarea><div class="bar"><b id="w2c">0 words</b><button class="btn alt" data-c="w2">Copy</button><button class="btn" data-s="w2" data-t="Writing Task 2">Send writing to assessor</button></div></div></section><section class="sec" id="speak"><h2 class="t">Speaking (11–14 minutes)</h2><div class="part"><h2>Part 1 — Interview</h2><p>What small change has improved your daily routine? Do you prefer to plan ahead or act spontaneously? What do you do to relax after a busy day? Do you enjoy learning how things work? How often do you try a new activity?</p></div><div class="part"><h2>Part 2 — Long turn</h2><div class="note"><b>Describe a small change that improved your daily life.</b><br>Say what the change was, when you made it, why you made it, and explain how it affected your routine.</div><div class="bar"><span class="time" id="sp2prep"></span><button class="btn alt">Start 1-minute preparation</button><span class="time" id="sp2talk"></span><button class="btn alt">Start 2-minute talk</button></div></div><div class="part"><h2>Part 3 — Discussion</h2><p>Why can small habits be difficult to change? Should schools teach students how to make practical changes? How do people decide whether a new technology is useful? Is it better to improve an existing product or invent a new one? How can communities encourage people to try new ideas?</p></div></section></div></div>
+</main>
+</div>
+<div class="support-strip">
+<div class="support-strip-inner">
+<div><span _k="Customer support every day from 9:00 to 16:30">Customer support every day from 9:00 to 16:30</span></div>
+<div class="support-info">
+<a href="mailto:oxfampreparation@email.cz">oxfampreparation@email.cz</a>
+<a href="tel:+420723200988">+420 723 200 988</a>
+</div>
+</div>
+</div>
+<footer>© 2020-2026 Oxfam - Oxford family. All rights reserved. Not affiliated with Cambridge University Press &amp; Assessment. Exam names belong to their owners.</footer>
+</div>
+<dialog aria-labelledby="dt" id="dlg">
+<h2 id="dt">Sign in to open your tests</h2>
+<form id="lf" novalidate="">
+<label for="em">Email</label><input autocomplete="username" id="em" type="email"/>
+<label for="pw">Password</label><input autocomplete="current-password" id="pw" type="password"/>
+<p class="demo" hidden="" id="demo"></p>
+<div aria-live="polite" class="err" id="err"></div>
+<div class="row" style="margin-top:1rem"><button class="btn" type="submit">Log in</button><button class="btn alt" id="cancel" type="button">Cancel</button></div>
+</form>
+</dialog>
+<script>
+var PW="COPT";
+function unlocked(){try{return sessionStorage.getItem("ielts_academic_practice_7")==="1"}catch(e){return false}}
+
+function norm(s){return s.toLowerCase().replace(/\u2019/g,"'").replace(/\s+/g," ").trim()}
+
+function build(parts,box,pre){
+  var n=0;pre=pre||"";
+  parts.forEach(function(p,pi){
+    var d=document.createElement("section");d.className="part";
+    d.innerHTML="<h2>"+p.t+"</h2>"+(pre==="l"?"<div class='audio-player'><button class='btn listen-play' type='button' data-i='"+pi+"'>Play listening audio</button><button class='btn alt listen-stop' type='button' disabled>Stop</button><span class='listen-status' role='status'>Browser voice · Part "+(pi+1)+"</span></div>":"")+(p.m?"<div class='bar'><span class='time' id='pt"+pre+pi+"'></span><button class='btn alt' type='button'>Start</button> <small>suggested time</small></div>":"")+"<p class='sub'>"+p.i+"</p>"+(p.x?"<p class='txt'>"+p.x+"</p>":"")+(p.im||"")+"<div class='items'></div>";
+    var it=d.querySelector(".items");
+    p.q.forEach(function(q){
+      n++;var r=document.createElement("div");r.className="q";
+      var label = q.q && /^(\d+)\.\s*/.test(q.q) ? q.q.match(/^(\d+)\.\s*/)[1] : n; var qtext = (q.q||"").replace(/^\d+\.\s*/,"").replace(/\n/g,"<br>"); var h="<b>"+label+"</b> "+qtext+(q.h?" <strong>"+q.h+"</strong>":"");
+      if(q.o){
+        var isImg = q.o.length > 0 && /^(https?:\/\/|data:image\/)/i.test(q.o[0]);
+        var optsHtml = q.o.map(function(o,i){
+          var letter = "ABCDEFGH"[i];
+          if(q.o.length === 2 && (o === "A" || o === "B" || o.includes("Correct") || o.includes("YES"))) {
+            letter = ["A", "B"][i];
+          }
+          if (isImg) {
+            return "<label class='opt img-opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> <img src='"+o+"' alt='Option "+letter+"' onerror=\"this.style.display='none'\"></label>";
+          } else {
+            var text = o === letter ? "" : o;
+            return "<label class='opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> "+text+"</label>";
+          }
+        }).join("");
+        var gridClass = isImg ? "opts img-opts-grid" : "opts";
+        h += "<div class='" + gridClass + "'>" + optsHtml + "</div>";
+      } else {
+        h+=" <input type='text' autocomplete='off' aria-label='Answer "+n+"'>";
+      }
+      r.innerHTML=h;r._q=q;it.appendChild(r);
+    });
+    box.appendChild(d);
+    if(p.m)timer("pt"+pre+pi,p.m);
+  });
+}
+
+function check(box,out){
+  var tot=0,ok=0;
+  box.querySelectorAll(".part").forEach(function(part){
+    var pTot=0,pOk=0;
+    part.querySelectorAll(".q").forEach(function(r){
+      pTot++;var q=r._q,good,ans;
+      if(q.o){
+        var c=r.querySelector("input:checked");
+        good=c&&+c.value===q.a;
+        var letter = "ABCDEFGH"[q.a];
+        if(q.o.length === 2) letter = ["A", "B"][q.a];
+        var isImg = q.o.length > 0 && /^(https?:\/\/|data:image\/)/i.test(q.o[0]);
+        ans = isImg ? letter : (q.o[q.a] === letter ? letter : letter + " " + q.o[q.a]);
+      } else {
+        var v=norm(r.querySelector("input").value);
+        good=q.a.some(function(a){return norm(a)===v});
+        ans=q.a[0];
+      }
+      r.classList.toggle("ok",!!good);
+      r.classList.toggle("no",!good);
+      var f=r.querySelector(".fb");
+      if(!f){f=document.createElement("div");f.className="fb";r.appendChild(f)}
+      f.textContent=good?"Correct":"Answer: "+ans;
+      var x=r.querySelector(".ex");
+      if(!x){x=document.createElement("div");x.className="ex";r.appendChild(x)}
+      x.textContent=q.e||"";
+      if(good)pOk++;
+    });
+    if(pTot>0){
+      var ps=part.querySelector(".pscore");
+      if(!ps){ps=document.createElement("div");ps.className="pscore note";ps.style.marginTop="1.5rem";part.appendChild(ps)}
+      ps.innerHTML="<b>Part score:</b> "+pOk+" / "+pTot;
+    }
+    tot+=pTot;ok+=pOk;
+  });
+  out.textContent="Total score: "+ok+" / "+tot;
+  box.querySelectorAll(".tr").forEach(function(e){e.style.display="block"});
+}
+
+function timer(id,min){
+  var e=document.getElementById(id),l=min*60,t=null;
+  if(!e)return;
+  function s(){e.textContent=("0"+Math.floor(l/60)).slice(-2)+":"+("0"+l%60).slice(-2)}s();
+  e.nextElementSibling.onclick=function(){
+    if(t){clearInterval(t);t=null;this.textContent="Start";return}
+    this.textContent="Pause";
+    t=setInterval(function(){l--;s();if(l<=0)clearInterval(t)},1000);
+  }
+}
+
+var R = [{"t":"Reading Passage 1 — Materials that repair their own cracks","i":"Questions 1–5: choose the correct heading A–G for paragraphs A–E. Questions 6–10: TRUE, FALSE or NOT GIVEN. Questions 11–13: answer in NO MORE THAN TWO WORDS.","x":"<b>Headings</b>: A. Moving from a promising test to a practical structure &nbsp; B. Repair without a repair crew &nbsp; C. The need to detect damage early &nbsp; D. Different routes to the same result &nbsp; E. A benefit that comes with limits &nbsp; F. Testing under everyday conditions &nbsp; G. Why older materials are stronger<br><br><b>CAN A BUILDING MATERIAL HEAL ITSELF?</b><br><br><b>A</b> Concrete is strong under compression but can develop small cracks when it stretches or is exposed to changing conditions. Water may enter these openings and eventually reach steel reinforcement inside the structure. Engineers normally inspect the concrete and arrange repairs when damage becomes significant. A newer field of materials research asks whether some small cracks could close without a worker applying a repair product. The goal is not to make a bridge or building indestructible. It is to slow deterioration, reduce maintenance needs and give inspectors more time to respond before a minor defect becomes a larger problem.<br><br><b>B</b> One approach uses bacteria that remain inactive inside the concrete until water reaches a crack. The bacteria are stored in tiny capsules or porous particles along with nutrients. When a crack opens and water enters, the cells become active and produce a mineral that gradually fills the gap. Researchers have demonstrated this process in laboratory samples, where a narrow crack can become partly sealed. The result depends on the width of the crack, the availability of water and whether the bacteria remain alive during mixing and curing. The method is not intended to restore all of the concrete’s original strength. It may instead reduce water movement and help protect the steel inside.<br><br><b>C</b> A second strategy relies on polymers. Small capsules containing a liquid resin are mixed into the material. If a crack crosses a capsule, the resin escapes and hardens, bonding the surfaces. Another design uses a network of hollow channels through which a repair liquid can flow. These systems can act more quickly than mineral growth, but they bring design challenges. Capsules may break during manufacture, and a channel can weaken the material if it is too large. A repair agent may also have a limited supply: once it has been released, the same location may not heal a second time. Different designs therefore solve different problems rather than offering one universal material.<br><br><b>D</b> Laboratory results are only an early step. A wall sample kept at a stable temperature does not experience the vibration, freeze-thaw cycles or chemical exposure of a real structure. Researchers test samples under repeated loading and measure how much water passes through a crack. Some teams also build small sections outdoors and monitor them over several seasons. These tests are slower, but they reveal whether a healing mechanism still works after years of exposure. The research has also moved towards combining materials with sensors. A sensor can report a change in strain, while a healing agent responds to a crack. The two systems perform different tasks: one helps identify a problem, and the other may limit its spread.<br><br><b>E</b> Cost and maintenance will determine where self-healing concrete is useful. Adding capsules or bacteria can increase the price of a mix, and construction companies need clear instructions for storing and placing it. A material that works in a laboratory but requires specialist handling may not be suitable for a routine project. The greatest value may be in locations that are difficult or expensive to inspect, such as an underwater structure or a tunnel. Even there, self-healing should support regular inspection rather than replace it. Engineers need long-term evidence about durability, repair rates and total cost before deciding whether the material is preferable to conventional concrete.<br><br>Researchers also consider how a healing material would fit into a construction schedule. Concrete is mixed, poured and allowed to cure under specific conditions, so a biological or chemical agent must survive those stages. A treatment that works only when moisture and temperature are controlled may be unreliable in a cold region or a dry climate. Teams compare performance under different conditions and record where the method is effective. This evidence can help engineers decide whether self-healing concrete belongs in a particular component, such as a hard-to-reach foundation, rather than throughout an entire building. Another issue is whether a healed crack can be detected during inspection. If the surface looks closed but water can still move through the material, a visual check may give an overly optimistic picture. Researchers therefore use water-flow tests alongside photographs. They also compare results across samples, since a small number of unusually successful specimens may not represent typical performance.","q":[{"q":"1. Choose a heading for paragraph A.","o":["A","B","C","D","E","F","G"],"a":1,"e":"The paragraph introduces material that may repair cracks without direct intervention."},{"q":"2. Choose a heading for paragraph B.","o":["A","B","C","D","E","F","G"],"a":3,"e":"Bacteria and polymers are different approaches to sealing cracks."},{"q":"3. Choose a heading for paragraph C.","o":["A","B","C","D","E","F","G"],"a":4,"e":"The paragraph describes limitations of the approaches."},{"q":"4. Choose a heading for paragraph D.","o":["A","B","C","D","E","F","G"],"a":5,"e":"It explains how researchers test materials outside the laboratory."},{"q":"5. Choose a heading for paragraph E.","o":["A","B","C","D","E","F","G"],"a":0,"e":"Practical use depends on evidence and construction conditions."},{"q":"6. Concrete cracks can allow water to reach steel reinforcement.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"The opening paragraph describes this risk."},{"q":"7. Bacteria restore all the concrete to its original strength.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"The passage says the method is not intended to restore all original strength."},{"q":"8. Polymer capsules may break during manufacture.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"This is one of the design challenges listed."},{"q":"9. Self-healing materials are already used in every new bridge.","o":["TRUE","FALSE","NOT GIVEN"],"a":2,"e":"The passage does not say they are used in every new bridge."},{"q":"10. Self-healing materials should replace regular inspection.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"The text says they should support, not replace, inspection."},{"q":"11. What do active bacteria produce to fill a crack?","a":["a mineral","mineral"],"e":"The bacteria produce a mineral."},{"q":"12. What can a liquid resin bond together?","a":["the surfaces","crack surfaces"],"e":"The resin hardens and bonds the crack surfaces."},{"q":"13. Name one condition researchers reproduce in outdoor tests.","a":["freeze-thaw cycles","vibration","chemical exposure"],"e":"Outdoor tests consider vibration, freeze-thaw cycles and chemical exposure."}]},{"t":"Reading Passage 2 — Lending instruments through public libraries","i":"Questions 14–18: choose A, B, C or D. Questions 19–23: match each statement with group A–E. Questions 24–27: answer in NO MORE THAN TWO WORDS.","x":"<b>Groups</b>: A. library managers &nbsp; B. music teachers &nbsp; C. instrument borrowers &nbsp; D. instrument makers &nbsp; E. programme researchers<br><br><b>A LIBRARY CARD FOR A MUSICAL INSTRUMENT</b><br><br>Public libraries have long lent books, recordings and films. Some now lend musical instruments as well. A borrower might take home a keyboard, guitar or small percussion set for several weeks, then return it for another person to use. The scheme responds to a simple barrier: buying an instrument can be expensive, especially when a learner is not yet sure whether they will continue. A loan programme does not replace formal lessons, but it can make the first step more accessible and allow people to experiment before making a purchase.<br><br>Library managers have to consider more than the price of an instrument. They choose models that are durable, easy to clean and simple to maintain. A full-sized instrument may be unsuitable for a child, while a very small one may be difficult for an adult beginner. Staff consult music teachers and local groups before placing an order. They also decide how long an item can be borrowed and whether someone can renew the loan. A waiting list may form for popular instruments, so libraries sometimes buy several of the same model or introduce a booking limit that gives each borrower a fair chance.<br><br>Music teachers support the scheme in different ways. Some libraries provide a short online guide that explains basic care and tuning. Teachers may record a beginner lesson or hold a monthly workshop where borrowers can ask questions. These activities help people use the instrument safely, but they are not a substitute for individual instruction. A learner who practises with an incorrect posture may find it difficult to change later. Teachers therefore encourage borrowers to seek lessons if they want to make steady progress. The library’s role is to remove a cost barrier and provide a starting point, not to promise that every borrower will become a musician.<br><br>Borrowers often value the chance to try something without making a long-term commitment. A teenager may borrow a keyboard before deciding whether to join a school band. An adult may take a ukulele on loan to see whether short daily practice fits around work. Some people borrow an instrument for a specific event and return it afterwards. Others keep renewing until the waiting list grows. Libraries ask borrowers to report damage promptly and to return the instrument in its case. A small deposit may be required, though some programmes waive it for people who receive other forms of library support. Feedback from borrowers can show whether the range of instruments matches local interest.<br><br>Instrument makers can help reduce maintenance costs. Several manufacturers offer repair advice or provide spare parts at a discount, particularly when a library orders multiple instruments. A maker may also donate a small number of items in exchange for a public demonstration, though libraries need to avoid giving one brand exclusive promotion. Staff record the condition of each instrument when it is lent and returned. This makes it easier to distinguish ordinary wear from damage and to decide whether an item should be repaired or replaced. Instruments that are difficult to service may cost less initially but prove more expensive over time.<br><br>Researchers evaluating these programmes look beyond the number of loans. A high loan count may indicate demand, but it does not show whether borrowers learn a new skill or feel more confident. Some studies use short surveys before and after a loan; others interview borrowers several months later. The results suggest that access can encourage people to try music, but continued practice depends on time, support and personal interest. Researchers also examine who uses the scheme. If most loans go to people who already own several instruments, the programme may not be reaching the group it was designed to help. Libraries use the findings to adjust their collection, outreach and eligibility rules.<br><br>Not every branch has space to store instruments safely, and instruments must be checked before they go out again. Some programmes therefore use a central collection point and allow items to be reserved online. This arrangement can make a wider range available to people in smaller neighbourhood libraries, but it adds transport and handling. The service works best when users understand the borrowing rules and staff have time to inspect, clean and maintain each item between loans.<br><br>Access rules can influence who benefits from an instrument library. If borrowers need to pay a deposit or travel to a central branch, the service may be harder to use for some families. Programmes review these obstacles and may partner with schools or community groups to deliver instruments locally. Staff also explain how to report a problem without fear of being charged unfairly for ordinary wear. A welcoming service encourages borrowers to ask for help early, which can protect the instrument and prevent small issues from becoming expensive repairs. Libraries also consider hygiene and storage. Wind instruments need different cleaning from keyboards, and a case must protect an item during transport. Simple instructions can prevent damage, but staff inspect each return because a borrower may not notice a loose part or a tuning problem. These checks help keep the collection safe for the next person.","q":[{"q":"14. What barrier does an instrument-lending scheme address?","o":["The cost of buying an instrument","The lack of public performances","The shortage of music recordings","The need to join a school band"],"a":0,"e":"Borrowing allows people to try an instrument before buying one."},{"q":"15. Why do library managers consult teachers before ordering?","o":["To choose suitable instruments and sizes","To ask teachers to run every loan","To decide which borrowers can renew","To guarantee that lessons are free"],"a":0,"e":"Teachers can advise on appropriate models and sizes."},{"q":"16. What do teachers say about a short online guide?","o":["It can help, but does not replace individual instruction.","It guarantees steady progress for every learner.","It should replace all practice workshops.","It is mainly for professional musicians."],"a":0,"e":"The guide supports beginners but is not a substitute for lessons."},{"q":"17. What can a high number of loans fail to show?","o":["Whether borrowers gained confidence or a skill","How many instruments were purchased","Which instruments are easiest to clean","Whether the library is open each day"],"a":0,"e":"Researchers look beyond loan totals to learning and confidence."},{"q":"18. What is one advantage of a central collection point?","o":["It can offer a wider range to small branches.","It removes all transport costs.","It prevents popular items from having a waiting list.","It eliminates the need for maintenance."],"a":0,"e":"A central collection can provide more choice across branches."},{"q":"19. Which group selects robust models and sets borrowing periods?","o":["A","B","C","D","E"],"a":0,"e":"Library managers choose equipment and rules."},{"q":"20. Which group may record a beginner guide or run a workshop?","o":["A","B","C","D","E"],"a":1,"e":"Music teachers may provide learning support."},{"q":"21. Which group gives feedback about the local range of instruments?","o":["A","B","C","D","E"],"a":2,"e":"Borrowers report their experience and preferences."},{"q":"22. Which group may supply spare parts at a discount?","o":["A","B","C","D","E"],"a":3,"e":"Instrument makers can support repair and parts."},{"q":"23. Which group studies changes in confidence after a loan?","o":["A","B","C","D","E"],"a":4,"e":"Programme researchers evaluate outcomes."},{"q":"24. What may be required from some borrowers when taking an instrument?","a":["a deposit","deposit"],"e":"Some programmes require a small deposit."},{"q":"25. What should each instrument be returned in?","a":["its case","a case"],"e":"Borrowers should return it in its case."},{"q":"26. What can a borrower do if an item is still needed?","a":["renew the loan","renew"],"e":"Libraries may allow a loan to be renewed."},{"q":"27. What do staff check when an instrument is returned?","a":["its condition","condition"],"e":"Staff record the instrument’s condition."}]},{"t":"Reading Passage 3 — How scientific communities handle disagreement","i":"Questions 28–32: match each statement with paragraph A–E. Questions 33–37: TRUE, FALSE or NOT GIVEN. Questions 38–40: choose A, B, C or D.","x":"<b>Paragraphs</b>: A–E<br><br><b>CONSENSUS, DOUBT AND SCIENTIFIC PROGRESS</b><br><br><b>A</b> Scientific consensus is sometimes described as if it were a vote, but it is better understood as a judgement built from evidence. Researchers compare findings, methods and explanations across many studies. Agreement can increase when independent teams obtain similar results using different samples or instruments. This does not make a conclusion permanent. New evidence may require a field to revise its position. Consensus is therefore a working account of what is best supported at a particular time, rather than a guarantee that every detail is settled.<br><br><b>B</b> Disagreement can be productive when it leads to a testable question. A researcher who challenges an accepted explanation may identify an assumption that others have overlooked. The challenge becomes useful when it is specific enough to examine and when the researcher is willing to consider evidence that might count against it. A claim that dismisses every contrary result as part of a plot cannot be tested in the same way. Scientific criticism is not simply a matter of being sceptical; it involves explaining what evidence would change one’s view and allowing other researchers to inspect the method.<br><br><b>C</b> Replication is one way to assess whether a result is robust. A second team may repeat the original procedure closely, or test the same idea using a different method. If the result differs, the difference is informative rather than automatically proof that one team made a mistake. The teams may have used different populations, equipment or definitions. Some effects appear only under particular conditions. Comparing these conditions can reveal the limits of a claim and help researchers develop a more precise explanation. Replication can be expensive, so fields balance direct repetition with studies that extend a question in new directions.<br><br><b>D</b> Public communication can make disagreement look more dramatic than it is. A news report may present two researchers as equal sides even when one position is supported by a large body of evidence and the other by a single study. At the same time, hiding real uncertainty can create false confidence. Communicators need to explain both the strength of evidence and the questions that remain open. It can be helpful to distinguish between uncertainty about a measurement and uncertainty about the broader explanation. A range of estimates does not necessarily mean researchers know nothing; it may show how closely they can currently describe a complex process.<br><br><b>E</b> Decisions often have to be made before evidence is complete. A public agency considering a new safety rule may weigh the likelihood of harm, the cost of action and the consequences of waiting. Scientific advice can describe possible outcomes, but it cannot decide which costs society should accept. Those choices involve values and public priorities as well as measurements. A transparent decision explains what is known, where evidence is uncertain and why one course was selected. If new information appears, the policy can be reviewed. Treating uncertainty openly allows decisions to be adjusted without pretending that earlier choices were based on perfect knowledge.<br><br>Scientific organisations sometimes use plain-language summaries to explain how much agreement exists and what evidence supports it. A summary can note whether several methods point in the same direction and identify questions researchers are still investigating. This is more informative than suggesting either that “experts agree on everything” or that any disagreement means the evidence is evenly balanced. Readers can then understand how a conclusion might be updated as new studies appear. Public trust is more likely to survive revision when uncertainty was described honestly from the beginning. There is no single threshold at which a field must declare consensus. Different disciplines rely on different kinds of evidence, and a new result may be more influential if it can be reproduced independently. The strength of a conclusion is thus tied not only to the number of studies but also to their quality, relevance and consistency.","q":[{"q":"28. A paragraph describing consensus as a provisional judgement based on evidence.","o":["A","B","C","D","E"],"a":0,"e":"Paragraph A explains that consensus can change with new evidence."},{"q":"29. A paragraph explaining how a challenge can be made scientifically useful.","o":["A","B","C","D","E"],"a":1,"e":"Paragraph B says a claim should be specific and testable."},{"q":"30. A paragraph describing how different study conditions can clarify a claim.","o":["A","B","C","D","E"],"a":2,"e":"Paragraph C discusses informative differences between replications."},{"q":"31. A paragraph warning that media can present unequal positions as equivalent.","o":["A","B","C","D","E"],"a":3,"e":"Paragraph D describes this communication problem."},{"q":"32. A paragraph distinguishing scientific evidence from choices about social priorities.","o":["A","B","C","D","E"],"a":4,"e":"Paragraph E separates evidence from value-based decisions."},{"q":"33. Scientific consensus means that every detail of a theory is settled permanently.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"The passage calls consensus a working account that may be revised."},{"q":"34. A useful scientific challenge should allow evidence to count against it.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"Paragraph B says researchers should consider evidence that might change their view."},{"q":"35. If a replication produces a different result, one study must be wrong.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"Different results may reveal differences in conditions."},{"q":"36. The passage says public communicators should hide uncertainty to avoid confusion.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"It says real uncertainty should not be hidden."},{"q":"37. Scientific advice alone determines which public costs should be accepted.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"Those choices also involve values and public priorities."},{"q":"38. What does the author suggest consensus represents?","o":["The explanation best supported by evidence at a particular time","A permanent agreement among every scientist","A decision made by counting researchers’ opinions","A claim that cannot be revised"],"a":0,"e":"Consensus is described as a current, evidence-based working account."},{"q":"39. Why can differences between replications be useful?","o":["They may reveal the conditions that limit a claim.","They prove that the original method was dishonest.","They remove the need for further research.","They show that instruments cannot measure effects."],"a":0,"e":"Comparing conditions can refine the explanation."},{"q":"40. What should a public decision explain when evidence is incomplete?","o":["What is known, what remains uncertain and why a course was chosen","Only the most likely outcome","That scientific evidence determines public values","Why the original decision can never change"],"a":0,"e":"Paragraph E recommends transparent, reviewable decisions."}]}];
+var L = [{"t":"Listening Part 1 — Reserving a photography studio","i":"Questions 1–10. Complete the booking form. Write NO MORE THAN TWO WORDS AND/OR A NUMBER.","x":"LUMEN STUDIO — BOOKING REQUEST<br>Family name: 1 _____<br>Studio use: 2 _____ photography<br>Day: 3 _____<br>Date: 4 _____<br>Start time: 5 _____<br>Booking length: 6 _____ hours<br>Room: 7 _____<br>Hire cost: 8 £_____<br>Bring: 9 memory _____<br>Contact number: 10 _____","q":[{"q":"1. Family name","a":["Chen"],"e":"The booking is under Chen."},{"q":"2. Studio use","a":["portrait"],"e":"The customer wants portrait photography."},{"q":"3. Day","a":["Friday"],"e":"The booking is for Friday."},{"q":"4. Date","a":["14 November","November 14","14th November"],"e":"The date is 14 November."},{"q":"5. Start time","a":["5.30","5:30","5.30 pm","5:30 pm"],"e":"The session begins at half past five."},{"q":"6. Booking length","a":["2","two"],"e":"The customer books for two hours."},{"q":"7. Room","a":["Studio B","B"],"e":"The booking is in Studio B."},{"q":"8. Hire cost","a":["36","£36"],"e":"The total hire cost is thirty-six pounds."},{"q":"9. Bring","a":["card","memory card"],"e":"The customer should bring a memory card."},{"q":"10. Contact number","a":["07721 608 415","07721608415"],"e":"The number given is 07721 608 415."}]},{"t":"Listening Part 2 — First-time visitor at the ice rink","i":"Questions 11–15. Choose A, B or C. Questions 16–20. Match each service with the letter on the SVG rink plan.","x":"Plan labels: A. reception &nbsp; B. skate hire &nbsp; C. beginner rink &nbsp; D. café &nbsp; E. first-aid room","q":[{"q":"11. When does the public skating session begin on Sunday?","o":["9.00 am","9.30 am","10.00 am"],"a":1,"e":"The Sunday session begins at half past nine."},{"q":"12. What is included in the admission price?","o":["Skate hire","A hot drink","A beginner lesson"],"a":0,"e":"Admission includes skate hire."},{"q":"13. What must children wear on the ice?","o":["A helmet","Gloves","A coloured vest"],"a":1,"e":"Children need to wear gloves."},{"q":"14. How early should visitors arrive for the beginner lesson?","o":["10 minutes","20 minutes","30 minutes"],"a":1,"e":"The centre asks them to arrive twenty minutes early."},{"q":"15. What should skaters do when they hear the bell?","o":["Move carefully towards the barrier","Leave their skates on the ice","Wait in the centre of the rink"],"a":0,"e":"The bell signals skaters to move towards the barrier."},{"q":"16. Where can a visitor ask about a lost ticket?","o":["A","B","C","D","E"],"a":0,"e":"Ticket enquiries are handled at reception."},{"q":"17. Where can someone exchange a skate for another size?","o":["A","B","C","D","E"],"a":1,"e":"Skate hire staff can change the size."},{"q":"18. Where is the lesson for new skaters held?","o":["A","B","C","D","E"],"a":2,"e":"Beginners use the smaller rink."},{"q":"19. Where can visitors buy a warm drink?","o":["A","B","C","D","E"],"a":3,"e":"The café serves warm drinks."},{"q":"20. Where should someone go after a minor fall?","o":["A","B","C","D","E"],"a":4,"e":"The first-aid room is beside the staff entrance."}],"im":"<img class=\"chart\" alt=\"Northside Ice Rink plan with reception, skate hire, beginner rink, cafe and first aid labelled A to E\" src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3NjAiIGhlaWdodD0iNDMwIiB2aWV3Qm94PSIwIDAgNzYwIDQzMCI+PHJlY3Qgd2lkdGg9Ijc2MCIgaGVpZ2h0PSI0MzAiIHJ4PSIxNiIgZmlsbD0iI2Y0ZjdmYiIvPjx0ZXh0IHg9IjM4MCIgeT0iMzAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyMCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzE4Mjk0ZCI+Tk9SVEhTSURFIElDRSBSSU5LIOKAlCBWSVNJVE9SIFBMQU48L3RleHQ+PHRleHQgeD0iMzgwIiB5PSI1MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEzIiBmaWxsPSIjNTI2MDc5Ij5NYXRjaCBlYWNoIHNlcnZpY2Ugd2l0aCBpdHMgbGFiZWxsZWQgbG9jYXRpb248L3RleHQ+PGcgZm9udC1mYW1pbHk9IkFyaWFsIiBmaWxsPSIjMTgyOTRkIj48cmVjdCB4PSIzNSIgeT0iNzUiIHdpZHRoPSIyMDUiIGhlaWdodD0iMTEyIiByeD0iMTIiIGZpbGw9IiNlM2YwZjgiIHN0cm9rZT0iIzQ5NmM5MSIgc3Ryb2tlLXdpZHRoPSIzIi8+PGNpcmNsZSBjeD0iNjMiIGN5PSIxMDEiIHI9IjE3IiBmaWxsPSIjZmZmIiBzdHJva2U9IiM0OTZjOTEiIHN0cm9rZS13aWR0aD0iMiIvPjx0ZXh0IHg9IjYzIiB5PSIxMDciIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTYiIGZvbnQtd2VpZ2h0PSI3MDAiPkE8L3RleHQ+PHRleHQgeD0iMTQ1IiB5PSIxMDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTciIGZvbnQtd2VpZ2h0PSI3MDAiPlJFQ0VQVElPTjwvdGV4dD48cmVjdCB4PSI5NCIgeT0iMTI4IiB3aWR0aD0iMTAyIiBoZWlnaHQ9IjI4IiByeD0iNCIgZmlsbD0iIzhlYjVkNSIgc3Ryb2tlPSIjMzU1Nzc3IiBzdHJva2Utd2lkdGg9IjIiLz48cGF0aCBkPSJNMTA4IDEyOHYtOGg3M3Y4IiBmaWxsPSJub25lIiBzdHJva2U9IiMzNTU3NzciIHN0cm9rZS13aWR0aD0iMyIvPjx0ZXh0IHg9IjE0NSIgeT0iMTc4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjEyIj50aWNrZXRzIGFuZCB2aXNpdG9yIGhlbHA8L3RleHQ+PHJlY3QgeD0iMjYwIiB5PSI3NSIgd2lkdGg9IjIwNSIgaGVpZ2h0PSIxMTIiIHJ4PSIxMiIgZmlsbD0iI2ZmZjFkZiIgc3Ryb2tlPSIjYTc3OTQ4IiBzdHJva2Utd2lkdGg9IjMiLz48Y2lyY2xlIGN4PSIyODgiIGN5PSIxMDEiIHI9IjE3IiBmaWxsPSIjZmZmIiBzdHJva2U9IiNhNzc5NDgiIHN0cm9rZS13aWR0aD0iMiIvPjx0ZXh0IHg9IjI4OCIgeT0iMTA3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iNzAwIj5CPC90ZXh0Pjx0ZXh0IHg9IjM3MCIgeT0iMTA1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE3IiBmb250LXdlaWdodD0iNzAwIj5TS0FURSBISVJFPC90ZXh0PjxwYXRoIGQ9Ik0zMzMgMTUwYzE2LTEgMjItMTEgMzEtMTAgNyAwIDExIDYgMjAgOHY5aC01MXoiIGZpbGw9IiNkNzhkNTIiIHN0cm9rZT0iIzhiNWQzNSIgc3Ryb2tlLXdpZHRoPSIzIi8+PHRleHQgeD0iMzcwIiB5PSIxNzgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTIiPnNpemVzIGFuZCBza2F0ZSBleGNoYW5nZTwvdGV4dD48cmVjdCB4PSI0ODUiIHk9Ijc1IiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIzMCIgcng9IjEyIiBmaWxsPSIjZTdmNGVjIiBzdHJva2U9IiM0ZTg4NjkiIHN0cm9rZS13aWR0aD0iMyIvPjxjaXJjbGUgY3g9IjUxMyIgY3k9IjEwMSIgcj0iMTciIGZpbGw9IiNmZmYiIHN0cm9rZT0iIzRlODg2OSIgc3Ryb2tlLXdpZHRoPSIyIi8+PHRleHQgeD0iNTEzIiB5PSIxMDciIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTYiIGZvbnQtd2VpZ2h0PSI3MDAiPkM8L3RleHQ+PHRleHQgeD0iNjE3IiB5PSIxMDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTciIGZvbnQtd2VpZ2h0PSI3MDAiPkJFR0lOTkVSIFJJTks8L3RleHQ+PHJlY3QgeD0iNTE4IiB5PSIxMjgiIHdpZHRoPSIxNzQiIGhlaWdodD0iMTMwIiByeD0iNDIiIGZpbGw9IiNkOWVmZjUiIHN0cm9rZT0iIzVkOWViMCIgc3Ryb2tlLXdpZHRoPSIzIi8+PHBhdGggZD0iTTUzOCAxNjBoMTM0TTUzOCAyMjVoMTM0IiBzdHJva2U9IiNhN2QwZGEiIHN0cm9rZS13aWR0aD0iMiIvPjxjaXJjbGUgY3g9IjYwMSIgY3k9IjE4NSIgcj0iOSIgZmlsbD0iI2Q3ODM0NCIvPjxwYXRoIGQ9Ik02MDEgMTk1djIybTAtMTQtMTQgOG0xNC04IDEzLThtLTEzIDIyLTEwIDE2bTEwLTE2IDEyIDE1IiBmaWxsPSJub25lIiBzdHJva2U9IiMyOTNkNWEiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHRleHQgeD0iNjA1IiB5PSIyODQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTIiPnNtYWxsIHByYWN0aWNlIGFyZWE8L3RleHQ+PHJlY3QgeD0iMzUiIHk9IjIwNSIgd2lkdGg9IjIwNSIgaGVpZ2h0PSIxMTIiIHJ4PSIxMiIgZmlsbD0iI2ZmZjdkYyIgc3Ryb2tlPSIjYTk4YTNmIiBzdHJva2Utd2lkdGg9IjMiLz48Y2lyY2xlIGN4PSI2MyIgY3k9IjIzMSIgcj0iMTciIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2E5OGEzZiIgc3Ryb2tlLXdpZHRoPSIyIi8+PHRleHQgeD0iNjMiIHk9IjIzNyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNiIgZm9udC13ZWlnaHQ9IjcwMCI+RDwvdGV4dD48dGV4dCB4PSIxNDUiIHk9IjIzNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNyIgZm9udC13ZWlnaHQ9IjcwMCI+Q0FGw4k8L3RleHQ+PHBhdGggZD0iTTEwNiAyNTVoNDRsLTQgMjFoLTM0ek0xNTAgMjU5aDEwYTggOCAwIDAgMSAwIDE1aC0xMiIgZmlsbD0iI2M5OWE1NSIgc3Ryb2tlPSIjODA2MDJmIiBzdHJva2Utd2lkdGg9IjMiLz48cGF0aCBkPSJNMTEzIDI1MGMtNy03IDMtOS0yLTE0bTE4IDE0Yy03LTcgMy05LTItMTQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzgwNjAyZiIgc3Ryb2tlLXdpZHRoPSIyIi8+PHRleHQgeD0iMTQ1IiB5PSIzMDMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTIiPndhcm0gZHJpbmtzIGFuZCBzbmFja3M8L3RleHQ+PHJlY3QgeD0iMjYwIiB5PSIyMDUiIHdpZHRoPSIyMDUiIGhlaWdodD0iMTEyIiByeD0iMTIiIGZpbGw9IiNlZWU4ZjciIHN0cm9rZT0iIzc1NjI5YSIgc3Ryb2tlLXdpZHRoPSIzIi8+PGNpcmNsZSBjeD0iMjg4IiBjeT0iMjMxIiByPSIxNyIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjNzU2MjlhIiBzdHJva2Utd2lkdGg9IjIiLz48dGV4dCB4PSIyODgiIHk9IjIzNyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNiIgZm9udC13ZWlnaHQ9IjcwMCI+RTwvdGV4dD48dGV4dCB4PSIzNzAiIHk9IjIzNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNyIgZm9udC13ZWlnaHQ9IjcwMCI+RklSU1QgQUlEPC90ZXh0PjxyZWN0IHg9IjMyNiIgeT0iMjUzIiB3aWR0aD0iODgiIGhlaWdodD0iMjciIHJ4PSI0IiBmaWxsPSIjZmZmIiBzdHJva2U9IiM3NTYyOWEiIHN0cm9rZS13aWR0aD0iMiIvPjxwYXRoIGQ9Ik0zNjQgMjU3aDl2N2g4djhoLTh2OGgtOXYtOGgtOHYtOGg4eiIgZmlsbD0iI2M4NWQ2MyIvPjx0ZXh0IHg9IjM3MCIgeT0iMzAzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjEyIj5oZWxwIGFmdGVyIGEgZmFsbDwvdGV4dD48cGF0aCBkPSJNMzUgMzQ3aDY5MCIgc3Ryb2tlPSIjOWFhOGJiIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1kYXNoYXJyYXk9IjggNiIvPjx0ZXh0IHg9IjM4MCIgeT0iMzc2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjEzIiBmaWxsPSIjNTI2MDc5Ij5NQUlOIEVOVFJBTkNFPC90ZXh0PjwvZz48L3N2Zz4=\">"},{"t":"Listening Part 3 — A project on classroom discussion","i":"Questions 21–25. Choose A, B or C. Questions 26–30. Match each task with student A–F.","x":"Student tasks: A. create prompt cards &nbsp; B. recruit students &nbsp; C. set up the room &nbsp; D. transcribe recordings &nbsp; E. review research &nbsp; F. present results","q":[{"q":"21. What will the students compare?","o":["Discussion in two seating arrangements","Group work and individual exams","Online and face-to-face lectures"],"a":0,"e":"They are comparing two classroom seating arrangements."},{"q":"22. Who will take part?","o":["First-year students","School teachers","Visiting researchers"],"a":0,"e":"The participants will be first-year students."},{"q":"23. What did the pilot show?","o":["One student dominated the discussion.","The prompt cards were missing.","The recording device stopped working."],"a":0,"e":"One person spoke for most of the pilot discussion."},{"q":"24. What will the students change?","o":["Use a rule for taking turns","Remove the discussion task","Invite only experienced speakers"],"a":0,"e":"They plan to introduce a turn-taking rule."},{"q":"25. What does the tutor recommend about the analysis?","o":["Count speaking time as well as turns.","Ignore pauses between speakers.","Use only the students’ opinions."],"a":0,"e":"The tutor recommends measuring both turns and speaking time."},{"q":"26. Who will create the prompt cards?","o":["A","B","C","D","E","F"],"a":0,"e":"Priya will write the prompt cards."},{"q":"27. Who will recruit the first-year students?","o":["A","B","C","D","E","F"],"a":1,"e":"Alex will recruit the participants."},{"q":"28. Who will arrange the seating?","o":["A","B","C","D","E","F"],"a":2,"e":"Priya will set up the room."},{"q":"29. Who will transcribe the recordings?","o":["A","B","C","D","E","F"],"a":3,"e":"Alex will transcribe the recordings."},{"q":"30. Who will present the results?","o":["A","B","C","D","E","F"],"a":5,"e":"Priya will present the results."}]},{"t":"Listening Part 4 — How barcodes carry information","i":"Questions 31–40. Complete the notes. Write NO MORE THAN TWO WORDS for each answer.","x":"BARCODES AND SCANNING<br>The first commercial codes helped identify 31 _____.<br>In a linear code, information is represented by bars and 32 _____.<br>A scanner reads the pattern using reflected 33 _____.<br>A code often contains a product 34 _____.<br>A check digit helps detect a copying 35 _____.<br>Clear margins around a code are called 36 _____.<br>Two-dimensional codes can store more 37 _____.<br>A phone camera can read a 38 _____.<br>Damaged packaging may make a code difficult to 39 _____.<br>Codes help speed up stock 40 _____.","q":[{"q":"31. Gap 31","a":["products","goods"],"e":"Early commercial codes helped identify products."},{"q":"32. Gap 32","a":["spaces"],"e":"Bars and spaces encode the information."},{"q":"33. Gap 33","a":["light"],"e":"A scanner reads reflected light."},{"q":"34. Gap 34","a":["number","product number"],"e":"A barcode often contains a product number."},{"q":"35. Gap 35","a":["error"],"e":"A check digit can detect an error."},{"q":"36. Gap 36","a":["quiet zones","quiet zone"],"e":"The margins around a code are called quiet zones."},{"q":"37. Gap 37","a":["information","data"],"e":"Two-dimensional codes can hold more information."},{"q":"38. Gap 38","a":["QR code"],"e":"A phone camera can read a QR code."},{"q":"39. Gap 39","a":["scan"],"e":"Damage can make a code difficult to scan."},{"q":"40. Gap 40","a":["control","stock control"],"e":"Barcodes help with stock control."}]}];
+var T = ["Lumen Studio, good afternoon. Hi, I would like to reserve one of your rooms for a portrait photography session. Of course. Can I have your family name? Chen, C H E N. Thanks. We have Studio A and Studio B. Studio B has the plain grey background I need. Is Friday the fourteenth of November available? Yes. What time would you like to start? Half past five. The minimum booking is one hour, but you can reserve two hours. I think I will need two hours. The hire cost is eighteen pounds per hour, so the total is thirty-six pounds. Are lights included? Yes, the studio lights are included. Please bring your own memory card, as we cannot lend those. Is there a deposit? We take a ten-pound deposit, which is returned after we check the room. Could I have a contact number? It is 07721 608 415. Thank you. Please arrive ten minutes early so we can show you how the background system works.","Welcome to the Northside Ice Rink. On Sundays the public skating session begins at half past nine. Skate hire is included in the admission price, but please ask staff if you need a different size. Children must wear gloves on the ice. Helmets are available at no extra cost, and we strongly recommend them for beginners. If you have booked a beginner lesson, arrive twenty minutes early to collect your skates and meet the instructor. When you hear the bell, move carefully towards the barrier; it marks the end of the session. For a lost ticket or a question about your booking, go to reception by the main entrance. The skate-hire counter is just inside the changing area. New skaters have lessons on the smaller rink, where there is a separate practice space. The café serves hot chocolate, tea and warm snacks. If someone has a minor fall or needs help, the first-aid room is beside the staff entrance. Please do not return to the ice until a staff member has checked that you are ready.","Priya: Our project compares discussion in two seating arrangements. We will use groups of first-year students and give them the same topic in each room. Alex: In the pilot, one student dominated the discussion. We should introduce a turn-taking rule so everyone has a chance to speak. Priya: I can create the prompt cards and set up the room. Alex: I will recruit the students and transcribe the recordings. We should review the research on group discussion before finalising our method. Priya: I can do that. Our tutor said we should count speaking time as well as the number of turns. Someone might speak only twice but for much longer than everyone else. Alex: We should keep the topic and time limit the same for both arrangements. Priya: Yes, and we need to explain that participants can stop at any point. Who will present the results? I can do it. Alex: Good. We should also include the students’ feedback, but not use it as our only measure.","Barcodes are a familiar part of shopping, but early commercial systems were designed to identify products quickly. A linear barcode uses bars and spaces of different widths to represent a sequence of numbers. A scanner shines light on the pattern and measures how much is reflected. The information is translated into a product number that can be checked against a database. A check digit, usually at the end of the number, helps detect a copying or reading error. The scanner performs a calculation to see whether the digit matches the rest of the code. A clear margin on each side of a barcode is important; these areas are called quiet zones. If printing or packaging crosses into the margin, a scanner may fail to recognise the pattern. Two-dimensional codes, including QR codes, store information across a square grid and can hold more data than a simple line. A phone camera can read a QR code and open a web page or display instructions. Barcodes help shops record sales and manage stock, but they do not tell a shop by themselves how many products should be ordered. That decision depends on demand, delivery time and other information. Codes make the recording step faster and more consistent, while staff or computer systems interpret the results."];
+var FULL=true, AUDIO=["","","",""];
+var ASSESSOR_EMAIL="oxfampreparation@email.cz";
+
+function wc(t){var m=t.trim().match(/\S+/g);return m?m.length:0}
+function winit(){
+  document.querySelectorAll("textarea").forEach(function(t){t.oninput=function(){document.getElementById(t.id+"c").textContent=wc(t.value)+" words"}});
+  document.querySelectorAll("[data-c]").forEach(function(b){b.onclick=function(){var t=document.getElementById(b.dataset.c).value;if(navigator.clipboard)navigator.clipboard.writeText(t)}});
+  document.querySelectorAll("[data-s]").forEach(function(b){b.onclick=function(){
+    var t=document.getElementById(b.dataset.s).value,nameField=document.getElementById("nm"),nm=((nameField&&nameField.value)||"Student").trim()||"Student";
+    if(!wc(t)){b.textContent="Write something first!";setTimeout(function(){b.textContent="Send writing to assessor"},2000);return}
+    var subject="IELTS Academic Practice Test 7 - "+b.dataset.t+" - "+nm;
+    var message="Student: "+nm+"\nTest: IELTS Academic Practice Test 7\nTask: "+b.dataset.t+"\n\n"+t;
+    var status=b.parentNode.parentNode.querySelector(".email-status");if(!status){status=document.createElement("p");status.className="note email-status";status.setAttribute("role","status");b.parentNode.parentNode.appendChild(status)}
+    status.textContent="Your email app should open with the assessor, task and writing filled in. Review the draft and press Send.";
+    var mailto="mailto:"+ASSESSOR_EMAIL+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(message);
+    window.location.href=mailto;b.textContent="Open email draft";setTimeout(function(){b.textContent="Send writing to assessor"},3500);
+  }});
+}
+var playId=0;
+function say(i,done){
+  var id=++playId;speechSynthesis.cancel();
+  var parts=T[i].split(/(\{pause\}|\{short\}|\bSpeaker \d:|\b[A-Z][A-Za-z]+:)/),q=[],pitch=1,flip=0,names={};
+  parts.forEach(function(x){
+    x=x.trim();if(!x)return;
+    if(x==="{pause}"||x==="{short}"){q.push({w:x==="{pause}"?2500:1200});pitch=1;return}
+    var sp=x.match(/^Speaker (\d):$/);if(sp){q.push({t:"Speaker "+sp[1],p:1,w:700});return}
+    if(/^[A-Za-z 0-9 ]+:$/.test(x)){var n=x.slice(0,-1);if(!(n in names))names[n]=(flip++%2)?1.25:.85;pitch=names[n];return}
+    (x.match(/[^.?!]+[.?!]*/g)||[x]).forEach(function(z){q.push({t:z.trim(),p:pitch,w:300})})
+  });
+  var k=0;(function next(){
+    if(id!==playId)return;
+    if(k>=q.length){done();return}
+    var s=q[k++];
+    if(!s.t){setTimeout(next,s.w);return}
+    var u=new SpeechSynthesisUtterance(s.t);u.lang="en-GB";u.rate=0.95;u.pitch=s.p;
+    u.onend=function(){setTimeout(next,s.w)};u.onerror=function(){setTimeout(next,s.w)};
+    speechSynthesis.speak(u);
+  })()
+}
+
+function play(b){if(b._busy)return;var i=+b.dataset.i,wrap=b.parentNode,stop=wrap.querySelector(".listen-stop"),status=wrap.querySelector(".listen-status");if(!window.speechSynthesis||!window.SpeechSynthesisUtterance){if(status)status.textContent="Text-to-speech is not available in this browser.";b.textContent="TTS unavailable";return}b._busy=true;b.textContent="Playing…";stop.disabled=false;if(status)status.textContent="Playing Part "+(i+1)+" using your browser voice…";say(i,function(){b._busy=false;b.disabled=false;b.textContent="Replay listening audio";stop.disabled=true;if(status)status.textContent="Part "+(i+1)+" finished. Replay is available."})}
+
+function init(){[["t1",60],["t2",30],["t3",60],["sp2prep",1],["sp2talk",2]].forEach(function(a){timer(a[0],a[1])});if(!FULL)return;build(R,document.getElementById("rbox"),"r");build(L,document.getElementById("lbox"),"l");document.getElementById("ck1").onclick=function(){check(document.getElementById("rbox"),document.getElementById("sc1"))};document.getElementById("ck2").onclick=function(){check(document.getElementById("lbox"),document.getElementById("sc2"))};document.querySelectorAll(".listen-play").forEach(function(b){b.onclick=function(){play(b)}});document.querySelectorAll(".listen-stop").forEach(function(b){b.onclick=function(){if(window.speechSynthesis)speechSynthesis.cancel();playId++;var wrap=b.parentNode,p=wrap.querySelector(".listen-play"),s=wrap.querySelector(".listen-status");if(p){p._busy=false;p.disabled=false;p.textContent="Play listening audio"}b.disabled=true;if(s)s.textContent="Playback stopped. Press Play to restart."}});winit()}
+
+(function(){
+  var g=document.getElementById("gate"),m=document.getElementById("main");
+  function show(){g.hidden=true;m.hidden=false;if(window.init)init()}
+  if(unlocked()){show();return}
+  document.getElementById("gf").onsubmit=function(e){
+    e.preventDefault();
+    if(document.getElementById("pw").value.trim()===PW){
+      try{sessionStorage.setItem("ielts_academic_practice_7","1")}catch(x){}
+      show();
+    } else {
+      document.getElementById("err").textContent="Wrong password.";
+    }
+  }
+  
+  var themeBtn = document.getElementById('themeBtn');
+  if(themeBtn) {
+    themeBtn.onclick = function() {
+      var currentTheme = document.documentElement.getAttribute('data-theme');
+      if(currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        themeBtn.textContent = '🌙';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeBtn.textContent = '☀️';
+      }
+    };
+  }
+  
+  var menuToggle = document.getElementById('menuToggle');
+  if(menuToggle) {
+    menuToggle.onclick = function() {
+      document.body.classList.toggle('menuopen');
+    };
+  }
+  
+  var loginBtn = document.getElementById('loginBtn');
+  var dlg = document.getElementById('dlg');
+  var cancel = document.getElementById('cancel');
+  if(loginBtn && dlg) {
+    loginBtn.onclick = function() { dlg.showModal(); }
+  }
+  if(cancel && dlg) {
+    cancel.onclick = function() { dlg.close(); }
+  }
+})();
+</script>
+</body>
+</html>

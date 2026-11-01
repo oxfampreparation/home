@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>IELTS Academic Practice Test 4</title>
+
+<style>
+/* Default theme is explicitly light */
+:root {
+  --bg: #f6f7fb;
+  --paper: #fff;
+  --ink: #14213d;
+  --muted: #4b5266;
+  --line: #d5d9e6;
+  --mark: #2b59ff;
+  --hi: #ffe45e;
+  --ok: #1a7f52;
+  --bad: #b3261e;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Dark theme applied ONLY when data-theme="dark" is present */
+:root[data-theme="dark"] {
+  --bg: #0f1526;
+  --paper: #182038;
+  --ink: #eef1fb;
+  --muted: #a9b1c9;
+  --line: #2c3656;
+  --mark: #7d9bff;
+  --hi: #e9d24a;
+  --ok: #57c58f;
+  --bad: #ff8a80;
+}
+
+html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: border-box; }
+
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1.0625rem/1.6 "Atkinson Hyperlegible", system-ui, sans-serif; }
+h1, h2, h3 { font-family: Archivo, "Helvetica Neue", Arial, sans-serif; line-height: 1.05; margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--mark); outline-offset: 3px; }
+.wrap { max-width: 74rem; margin: 0 auto; padding: 0 1.25rem; }
+
+header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .75rem; padding: 1.25rem 0; position: sticky; top: 0; background: var(--bg); z-index: 100; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+.head-left { display: flex; align-items: center; gap: .75rem; }
+#menuToggle { background: transparent; border: none; cursor: pointer; color: var(--ink); display: flex; padding: .25rem; border-radius: .25rem; }
+#menuToggle:hover { background: var(--line); }
+#menuToggle svg { width: 1.6rem; height: 1.6rem; }
+.logo { font: 800 1.25rem Archivo, sans-serif; text-decoration: none; }
+nav a { margin-left: 1.25rem; text-decoration: none; color: var(--muted); }
+nav a:hover { color: var(--ink); }
+
+.btn { display: inline-block; background: var(--ink); color: var(--bg); padding: .8rem 1.4rem; border-radius: .5rem; font-weight: 700; text-decoration: none; border: 0; cursor: pointer; font-size: 1rem; font-family: inherit; }
+.btn.alt { background: transparent; color: var(--ink); border: 2px solid var(--ink); }
+.hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2rem; align-items: start; padding: 1rem 0 3rem; }
+.hero-text { margin-top: 2.5rem; }
+
+h1 { font-size: clamp(2rem, 3.4vw, 3rem); font-weight: 800; font-stretch: 90%; letter-spacing: -.02em; margin-top: 1rem; margin-bottom: 0; }
+h1 span { background: linear-gradient(transparent 62%, var(--hi) 62%); }
+.lead { color: var(--muted); max-width: 32rem; margin: 1.25rem 0 1.75rem; font-size: 1.15rem; }
+.row { display: flex; gap: .75rem; flex-wrap: wrap; }
+
+.sheet { background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.sheet h2 { font-size: 1.1rem; margin-bottom: .25rem; }
+.sheet p { margin: 0 0 1rem; color: var(--muted); font-size: .95rem; }
+.q { padding: .7rem 0; border-top: 1px solid var(--line); }
+.q b { display: inline-block; font-weight: 800; margin-bottom: .45rem; margin-right: 0.5rem; }
+
+.opts { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem; width: fit-content; }
+.opt { display: flex; align-items: center; gap: .4rem; padding: .3rem .7rem .3rem .35rem; border: 1.5px solid var(--line); border-radius: 2rem; background: transparent; color: inherit; font-size: .95rem; cursor: pointer; width: fit-content; }
+.opt i { width: 1.4rem; height: 1.4rem; border-radius: 50%; border: 2px solid var(--muted); display: grid; place-items: center; font: 700 .7rem Archivo, sans-serif; font-style: normal; flex-shrink: 0; }
+
+.opt[aria-pressed="true"] { border-color: var(--mark); }
+.opt[aria-pressed="true"] i { background: var(--mark); border-color: var(--mark); color: var(--bg); }
+.opt.right { border-color: var(--ok); } .opt.right i { background: var(--ok); border-color: var(--ok); color: var(--bg); }
+.opt.wrong { border-color: var(--bad); } .opt.wrong i { background: var(--bad); border-color: var(--bad); color: var(--bg); }
+
+/* Image Options specific styles */
+.img-opts-grid { display: flex; flex-direction: row; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+.img-opt { flex-direction: column; align-items: center; padding: 0.5rem; border-radius: 0.5rem; gap: 0.5rem; text-align: center; }
+.img-opt img { height: 120px; width: 160px; object-fit: cover; background: var(--paper); border-radius: 0.25rem; }
+.img-opt i { margin-bottom: 0.25rem; }
+
+.result { margin-top: 1rem; font-weight: 700; min-height: 1.6rem; }
+section { padding: 3.5rem 0; border-top: 1px solid var(--line); }
+h2.t { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: .75rem; letter-spacing: -.01em; }
+
+.sub, .txt { color: var(--muted); max-width: 48rem; margin: 0 0 2rem; white-space: pre-line; line-height: 1.6; }
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: .6rem; background: var(--paper); }
+table { border-collapse: collapse; width: 100%; min-width: 38rem; }
+th, td { text-align: left; padding: .9rem 1rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font: 800 1.2rem Archivo, sans-serif; white-space: nowrap; }
+td small { display: block; font: 400 .9rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+
+.support-strip { position: fixed; bottom: 0; left: 0; right: 0; background: var(--ink); color: var(--bg); padding: 1rem 1.25rem; z-index: 999; box-shadow: 0 -4px 12px rgba(0,0,0,0.15); }
+.support-strip-inner { max-width: 74rem; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; width: 100%; font-weight: 700; }
+footer { border-top: 1px solid var(--line); padding: 2rem 0 5rem; color: var(--muted); font-size: .95rem; }
+
+.lang { display: flex; gap: .25rem; flex-wrap: wrap; } .lang button { font: 700 .8rem Archivo, sans-serif; padding: .35rem .6rem; border: 1.5px solid var(--line); border-radius: .4rem; background: transparent; color: var(--muted); cursor: pointer; } .lang button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.layout { display: grid; grid-template-columns: 12.5rem minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+.layout.collapsed { grid-template-columns: 1fr; gap: 0; }
+.layout.collapsed .side { display: none; }
+.side { position: sticky; top: 5rem; max-height: calc(100vh - 6rem); max-height: calc(100dvh - 6rem); overflow-y: auto; display: flex; flex-direction: column; gap: .15rem; }
+summary { cursor: pointer; font: 700 .95rem Archivo, sans-serif; color: var(--muted); padding: .4rem .75rem; border-radius: .5rem; } summary:hover { color: var(--ink); } .ex[open] summary { margin-bottom: .15rem; }
+.side nav { display: flex; flex-direction: column; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); } .side nav a { margin: 0; color: inherit; } .side .lang { margin-bottom: 1rem; }
+.side p { margin: 0 0 .5rem; font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+.side a { text-decoration: none; padding: .5rem .75rem; border-radius: .5rem; font: 700 1rem Archivo, sans-serif; border-left: 3px solid transparent; }
+.side a small { display: block; font: 400 .8rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+.side a:hover { background: var(--paper); border-left-color: var(--mark); }
+tr:target td { background: var(--hi); color: #14213d; } tr:target td small { color: #14213d; }
+
+@media (max-width: 52rem) { .layout { grid-template-columns: 1fr; gap: 0; } .side { position: static; max-height: none; margin: 0 0 1rem; padding: 0 0 1rem; border-bottom: 1px solid var(--line); } }
+
+.hr { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; } .hr .btn { padding: .45rem 1rem; font-size: .9rem; }
+dialog { border: 2px solid var(--ink); border-radius: .75rem; background: var(--paper); color: var(--ink); padding: 1.5rem; width: min(26rem, 92vw); max-height: 90vh; overflow: auto; } dialog::backdrop { background: rgba(10,16,32,.55); }
+dialog h2 { font-size: 1.4rem; margin-bottom: .5rem; } dialog label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+dialog input { width: 100%; padding: .65rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.demo { color: var(--muted); font-size: .9rem; margin: .5rem 0 0; } .err { color: var(--bad); min-height: 1.5rem; margin-top: .5rem; font-size: .95rem; }
+
+@media (max-width: 40rem) {
+  .wrap { padding: 0 1rem; }
+  header { padding: 1rem 0; }
+  .hero { padding-bottom: 2rem; }
+  .sheet { padding: 1.1rem; }
+  section { padding: 2.5rem 0; }
+  .scroll { border: 0; background: transparent; overflow: visible; }
+  table, tbody, tr, td { display: block; min-width: 0; width: 100%; }
+  thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  tr { background: var(--paper); border: 1px solid var(--line); border-radius: .6rem; padding: .6rem 0; margin-bottom: .75rem; }
+  td { border: 0; padding: .15rem 1rem; }
+  td:first-child { font-size: 1.3rem; padding-top: .4rem; }
+  tr:target { border-color: var(--ink); }
+}
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+html { scroll-padding-top: calc(5rem + env(safe-area-inset-top, 0px)); }
+body header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); padding: .6rem 0; border-bottom: 1px solid var(--line); }
+.brand { display: flex; align-items: center; gap: .75rem; }
+body .logo { font-size: 1.85rem; letter-spacing: -.02em; }
+.mbtn { display: inline-flex; flex-direction: column; justify-content: center; gap: 5px; width: 2.75rem; height: 2.75rem; padding: 0 .7rem; border: 2px solid var(--ink); border-radius: .5rem; background: transparent; cursor: pointer; flex: none; }
+.mbtn span { display: block; height: 2px; background: var(--ink); border-radius: 2px; }
+.mbtn:hover { background: var(--paper); }
+body .side { top: 5.5rem; max-height: calc(100vh - 6.5rem); max-height: calc(100dvh - 6.5rem); }
+body.nomenu .layout { grid-template-columns: minmax(0, 1fr); }
+body.nomenu .side { display: none; }
+body:has(#app[hidden]) .mbtn { display: none; }
+.side>.hr { margin-bottom: 1rem; }
+.scrim { display: none; }
+
+@media (max-width: 52rem) {
+  body .side { position: fixed; top: 0; left: 0; bottom: 0; width: min(19rem, 86vw); max-height: none; margin: 0; padding: calc(1rem + env(safe-area-inset-top, 0px)) 1rem calc(1rem + env(safe-area-inset-bottom, 0px)); background: var(--paper); border: 0; border-right: 2px solid var(--ink); z-index: 50; overflow-y: auto; transform: translateX(-105%); visibility: hidden; transition: transform .25s ease, visibility 0s .25s; }
+  body.menuopen .side { transform: none; visibility: visible; transition: transform .25s ease; }
+  body .side nav { flex-direction: column; flex-wrap: nowrap; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+  body .side nav a { padding: .5rem .75rem; }
+  .scrim { display: block; position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: rgba(10,16,32,.5); z-index: 40; opacity: 0; pointer-events: none; transition: opacity .25s; }
+  body.menuopen .scrim { opacity: 1; pointer-events: auto; }
+  body .logo { font-size: 1.6rem; }
+}
+
+.gatebox { max-width: 26rem; margin: 2rem auto; background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.gatebox label, .wr label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+input[type=text], input[type=password], textarea { width: 100%; padding: .6rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.q input[type=text] { width: 14rem; max-width: 100%; }
+.part { background: var(--paper); border: 1px solid var(--line); border-radius: .75rem; padding: 1.5rem; margin-bottom: 1.25rem; }
+.q.ok { border-left: 4px solid var(--ok); padding-left: .75rem; } .q.no { border-left: 4px solid var(--bad); padding-left: .75rem; } .fb { font-weight: 700; margin-top: .25rem; }
+.tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0; }
+nav.tabs a { margin: 0; padding: .4rem 1rem; border: 1.5px solid var(--line); border-radius: 2rem; text-decoration: none; font-weight: 700; }
+nav.tabs a[aria-current=page] { background: var(--ink); color: var(--bg); }
+.bar { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; margin: 1rem 0; } .time { font: 800 1.6rem Archivo, sans-serif; }
+.pics { display: flex; gap: 1rem; flex-wrap: wrap; } .pics svg, .pics img { flex: 1 1 14rem; max-width: 22rem; border: 2px solid var(--ink); border-radius: .5rem; background: var(--paper); object-fit: cover; aspect-ratio: 3/2; }
+.audio-player{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;padding:.75rem 1rem;margin:1rem 0;background:var(--paper);border:1px solid var(--line);border-radius:.75rem}.audio-player .listen-status{font-weight:600;color:var(--muted)}
+textarea { min-height: 15rem; } .tr { display: none; } .note { padding: .75rem 1rem; border-left: 4px solid var(--mark); background: var(--paper); margin: 1rem 0; }
+.sec { padding-top: 2rem; margin-top: 2rem; border-top: 1px solid var(--line); } .jump { margin-top: 0; } .ex { color: var(--muted); margin-top: .15rem; font-size: .95rem; }
+ .chart{display:block;width:min(100%,760px);height:auto;margin:1rem auto;border:1px solid var(--line);border-radius:12px;background:#fff}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header id="siteHeader">
+<div class="head-left">
+<button aria-label="Toggle menu" id="menuToggle">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
+</button>
+<a class="logo" href="../index.html">Oxfam Preparation</a>
+</div>
+<div class="hr">
+<button aria-label="Toggle theme" class="btn alt" id="themeBtn" style="padding:.45rem .6rem; min-width:0; font-size:1.1rem">🌙</button>
+<button class="btn" id="loginBtn" type="button">Log in</button>
+</div>
+</header>
+<div class="layout">
+<aside aria-label="Menu" class="side">
+<nav>
+<a href="../cpe.html">All tests</a>
+</nav>
+</aside>
+<main id="top">
+<div id="gate">
+<div class="gatebox">
+<h1><span>IELTS Academic Practice Test 4</span></h1>
+<p>Enter the password to open this IELTS Academic practice test.</p>
+<form id="gf">
+<label for="pw">Password</label>
+<input autocomplete="off" id="pw" type="password"/>
+<div class="err" id="err"></div>
+<div class="row" style="margin-top:1rem">
+<button class="btn" type="submit">Open</button>
+<a class="btn alt" href="../cpe.html">Back</a>
+</div>
+</form>
+</div>
+</div>
+<div hidden id="main"><h1>IELTS Academic Practice Test 4</h1><p class="sub">Original IELTS Academic practice paper. Browser TTS is used for the listening audio.</p><div class="part"><label for="nm"><strong>Student name (optional)</strong></label><input id="nm" type="text" placeholder="Enter your name"></div><nav class="tabs jump"><a href="#read">Reading</a><a href="#listen">Listening</a><a href="#write">Writing</a><a href="#speak">Speaking</a></nav><section class="sec" id="read"><h2 class="t">Academic Reading (60 minutes)</h2><div class="bar"><span class="time" id="t1"></span><button class="btn alt">Start</button></div><p class="note">Three original passages; 40 questions.</p><div id="rbox"></div><button class="btn" id="ck1">Check Reading answers</button><b id="sc1"></b></section><section class="sec" id="listen"><h2 class="t">Listening (about 30 minutes)</h2><div class="bar"><span class="time" id="t2"></span><button class="btn alt">Start</button></div><p class="note">Four parts, 40 questions. Browser TTS reads these original practice scripts. IELTS recordings in the exam are played once.</p><div id="lbox"></div><button class="btn" id="ck2">Check Listening answers</button><b id="sc2"></b></section><section class="sec" id="write"><h2 class="t">Academic Writing (60 minutes)</h2><div class="bar"><span class="time" id="t3"></span><button class="btn alt">Start</button></div><div class="part"><h2>Task 1</h2><p>Spend about 20 minutes. Write at least 150 words.</p><div class="note">The line graph shows annual attendance, in thousands, at three community theatre venues from 2015 to 2024. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</div><img class="chart" alt="Annual attendance at three community theatre venues, 2015 to 2024, in thousands" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3NjAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgNzYwIDQyMCI+PHJlY3Qgd2lkdGg9Ijc2MCIgaGVpZ2h0PSI0MjAiIGZpbGw9IiNmZmYiLz48dGV4dCB4PSIzODAiIHk9IjI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTkiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMxODI5NGQiPkFubnVhbCBhdHRlbmRhbmNlIGF0IGNvbW11bml0eSB0aGVhdHJlIHZlbnVlczwvdGV4dD48dGV4dCB4PSIzODAiIHk9IjUxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTMiIGZpbGw9IiMzOTQ2NWUiPlRob3VzYW5kcyBvZiB2aXNpdHM8L3RleHQ+PGcgc3Ryb2tlPSIjZGJlMWViIiBzdHJva2Utd2lkdGg9IjEiPjxwYXRoIGQ9Ik05MCAzMzBINzAwTTkwIDI4Mkg3MDBNOTAgMjM0SDcwME05MCAxODZINzAwTTkwIDEzOEg3MDBNOTAgOTBINzAwIi8+PC9nPjxnIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzM5NDY1ZSIgdGV4dC1hbmNob3I9ImVuZCI+PHRleHQgeD0iNzgiIHk9IjMzNCI+MDwvdGV4dD48dGV4dCB4PSI3OCIgeT0iMjg2Ij41PC90ZXh0Pjx0ZXh0IHg9Ijc4IiB5PSIyMzgiPjEwPC90ZXh0Pjx0ZXh0IHg9Ijc4IiB5PSIxOTAiPjE1PC90ZXh0Pjx0ZXh0IHg9Ijc4IiB5PSIxNDIiPjIwPC90ZXh0Pjx0ZXh0IHg9Ijc4IiB5PSI5NCI+MjU8L3RleHQ+PC9nPjxwYXRoIGQ9Ik05MCA5MFYzMzBINzAwIiBmaWxsPSJub25lIiBzdHJva2U9IiMyOTNkNWEiIHN0cm9rZS13aWR0aD0iMiIvPjxnIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMyIgZmlsbD0iIzM5NDY1ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+PHRleHQgeD0iMTMwIiB5PSIzNTQiPjIwMTU8L3RleHQ+PHRleHQgeD0iMzEwIiB5PSIzNTQiPjIwMTg8L3RleHQ+PHRleHQgeD0iNDkwIiB5PSIzNTQiPjIwMjE8L3RleHQ+PHRleHQgeD0iNjcwIiB5PSIzNTQiPjIwMjQ8L3RleHQ+PC9nPjxwb2x5bGluZSBwb2ludHM9IjEzMCwyMTUgMzEwLDE5NiA0OTAsMTY3IDY3MCwxNTciIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzMxODJhOCIgc3Ryb2tlLXdpZHRoPSI0Ii8+PHBvbHlsaW5lIHBvaW50cz0iMTMwLDEzOCAzMTAsMTQ4IDQ5MCwxMjggNjcwLDExOSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZDc4MzQ0IiBzdHJva2Utd2lkdGg9IjQiLz48cG9seWxpbmUgcG9pbnRzPSIxMzAsMjUzIDMxMCwyMzQgNDkwLDIxNSA2NzAsMTk2IiBmaWxsPSJub25lIiBzdHJva2U9IiM0YTliNzYiIHN0cm9rZS13aWR0aD0iNCIvPjxnIGZpbGw9IiMzMTgyYTgiPjxjaXJjbGUgY3g9IjEzMCIgY3k9IjIxNSIgcj0iNSIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjE5NiIgcj0iNSIvPjxjaXJjbGUgY3g9IjQ5MCIgY3k9IjE2NyIgcj0iNSIvPjxjaXJjbGUgY3g9IjY3MCIgY3k9IjE1NyIgcj0iNSIvPjwvZz48ZyBmaWxsPSIjZDc4MzQ0Ij48Y2lyY2xlIGN4PSIxMzAiIGN5PSIxMzgiIHI9IjUiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSIxNDgiIHI9IjUiLz48Y2lyY2xlIGN4PSI0OTAiIGN5PSIxMjgiIHI9IjUiLz48Y2lyY2xlIGN4PSI2NzAiIGN5PSIxMTkiIHI9IjUiLz48L2c+PGcgZmlsbD0iIzRhOWI3NiI+PGNpcmNsZSBjeD0iMTMwIiBjeT0iMjUzIiByPSI1Ii8+PGNpcmNsZSBjeD0iMzEwIiBjeT0iMjM0IiByPSI1Ii8+PGNpcmNsZSBjeD0iNDkwIiBjeT0iMjE1IiByPSI1Ii8+PGNpcmNsZSBjeD0iNjcwIiBjeT0iMTk2IiByPSI1Ii8+PC9nPjxnIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMyIgZmlsbD0iIzE4Mjk0ZCI+PGxpbmUgeDE9IjE5MCIgeTE9IjM4OSIgeDI9IjIyMCIgeTI9IjM4OSIgc3Ryb2tlPSIjMzE4MmE4IiBzdHJva2Utd2lkdGg9IjQiLz48dGV4dCB4PSIyMjgiIHk9IjM5NCI+Uml2ZXJzaWRlPC90ZXh0PjxsaW5lIHgxPSIzNDUiIHkxPSIzODkiIHgyPSIzNzUiIHkyPSIzODkiIHN0cm9rZT0iI2Q3ODM0NCIgc3Ryb2tlLXdpZHRoPSI0Ii8+PHRleHQgeD0iMzgzIiB5PSIzOTQiPkNlbnRyYWw8L3RleHQ+PGxpbmUgeDE9IjQ5MCIgeTE9IjM4OSIgeDI9IjUyMCIgeTI9IjM4OSIgc3Ryb2tlPSIjNGE5Yjc2IiBzdHJva2Utd2lkdGg9IjQiLz48dGV4dCB4PSI1MjgiIHk9IjM5NCI+SGlsbHRvcDwvdGV4dD48L2c+PC9zdmc+"><textarea id="w1"></textarea><div class="bar"><b id="w1c">0 words</b><button class="btn alt" data-c="w1">Copy</button><button class="btn" data-s="w1" data-t="Writing Task 1">Send writing to assessor</button></div></div><div class="part"><h2>Task 2</h2><p>Spend about 40 minutes. Write at least 250 words.</p><div class="note">Some people believe that scientific research funded by the public should be freely available to everyone. Others think researchers should be able to restrict access or charge for it. Discuss both views and give your own opinion.</div><textarea id="w2"></textarea><div class="bar"><b id="w2c">0 words</b><button class="btn alt" data-c="w2">Copy</button><button class="btn" data-s="w2" data-t="Writing Task 2">Send writing to assessor</button></div></div></section><section class="sec" id="speak"><h2 class="t">Speaking (11–14 minutes)</h2><div class="part"><h2>Part 1 — Interview</h2><p>What object do you use every day? Do you prefer to buy new things or keep using older ones? How do you usually spend an evening? Are there any performances or events you enjoy watching? Do you like visiting new places?</p></div><div class="part"><h2>Part 2 — Long turn</h2><div class="note"><b>Describe an object that is useful to you.</b><br>Say what it is, how long you have had it, how you use it, and explain why it is important to you.</div><div class="bar"><span class="time" id="sp2prep"></span><button class="btn alt">Start 1-minute preparation</button><span class="time" id="sp2talk"></span><button class="btn alt">Start 2-minute talk</button></div></div><div class="part"><h2>Part 3 — Discussion</h2><p>Why do people become attached to certain objects? How has product design changed in recent years? Should companies make it easier to repair products? Do people buy too many things today? How can governments encourage responsible consumption?</p></div></section></div></div>
+</main>
+</div>
+<div class="support-strip">
+<div class="support-strip-inner">
+<div><span _k="Customer support every day from 9:00 to 16:30">Customer support every day from 9:00 to 16:30</span></div>
+<div class="support-info">
+<a href="mailto:oxfampreparation@email.cz">oxfampreparation@email.cz</a>
+<a href="tel:+420723200988">+420 723 200 988</a>
+</div>
+</div>
+</div>
+<footer>© 2020-2026 Oxfam - Oxford family. All rights reserved. Not affiliated with Cambridge University Press &amp; Assessment. Exam names belong to their owners.</footer>
+</div>
+<dialog aria-labelledby="dt" id="dlg">
+<h2 id="dt">Sign in to open your tests</h2>
+<form id="lf" novalidate="">
+<label for="em">Email</label><input autocomplete="username" id="em" type="email"/>
+<label for="pw">Password</label><input autocomplete="current-password" id="pw" type="password"/>
+<p class="demo" hidden="" id="demo"></p>
+<div aria-live="polite" class="err" id="err"></div>
+<div class="row" style="margin-top:1rem"><button class="btn" type="submit">Log in</button><button class="btn alt" id="cancel" type="button">Cancel</button></div>
+</form>
+</dialog>
+<script>
+var PW="COPT";
+function unlocked(){try{return sessionStorage.getItem("ielts_academic_practice_4")==="1"}catch(e){return false}}
+
+function norm(s){return s.toLowerCase().replace(/\u2019/g,"'").replace(/\s+/g," ").trim()}
+
+function build(parts,box,pre){
+  var n=0;pre=pre||"";
+  parts.forEach(function(p,pi){
+    var d=document.createElement("section");d.className="part";
+    d.innerHTML="<h2>"+p.t+"</h2>"+(pre==="l"?"<div class='audio-player'><button class='btn listen-play' type='button' data-i='"+pi+"'>Play listening audio</button><button class='btn alt listen-stop' type='button' disabled>Stop</button><span class='listen-status' role='status'>Browser voice · Part "+(pi+1)+"</span></div>":"")+(p.m?"<div class='bar'><span class='time' id='pt"+pre+pi+"'></span><button class='btn alt' type='button'>Start</button> <small>suggested time</small></div>":"")+"<p class='sub'>"+p.i+"</p>"+(p.x?"<p class='txt'>"+p.x+"</p>":"")+(p.im||"")+"<div class='items'></div>";
+    var it=d.querySelector(".items");
+    p.q.forEach(function(q){
+      n++;var r=document.createElement("div");r.className="q";
+      var label = q.q && /^(\d+)\.\s*/.test(q.q) ? q.q.match(/^(\d+)\.\s*/)[1] : n; var qtext = (q.q||"").replace(/^\d+\.\s*/,"").replace(/\n/g,"<br>"); var h="<b>"+label+"</b> "+qtext+(q.h?" <strong>"+q.h+"</strong>":"");
+      if(q.o){
+        var isImg = q.o.length > 0 && /^(https?:\/\/|data:image\/)/i.test(q.o[0]);
+        var optsHtml = q.o.map(function(o,i){
+          var letter = "ABCDEFGH"[i];
+          if(q.o.length === 2 && (o === "A" || o === "B" || o.includes("Correct") || o.includes("YES"))) {
+            letter = ["A", "B"][i];
+          }
+          if (isImg) {
+            return "<label class='opt img-opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> <img src='"+o+"' alt='Option "+letter+"' onerror=\"this.style.display='none'\"></label>";
+          } else {
+            var text = o === letter ? "" : o;
+            return "<label class='opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> "+text+"</label>";
+          }
+        }).join("");
+        var gridClass = isImg ? "opts img-opts-grid" : "opts";
+        h += "<div class='" + gridClass + "'>" + optsHtml + "</div>";
+      } else {
+        h+=" <input type='text' autocomplete='off' aria-label='Answer "+n+"'>";
+      }
+      r.innerHTML=h;r._q=q;it.appendChild(r);
+    });
+    box.appendChild(d);
+    if(p.m)timer("pt"+pre+pi,p.m);
+  });
+}
+
+function check(box,out){
+  var tot=0,ok=0;
+  box.querySelectorAll(".part").forEach(function(part){
+    var pTot=0,pOk=0;
+    part.querySelectorAll(".q").forEach(function(r){
+      pTot++;var q=r._q,good,ans;
+      if(q.o){
+        var c=r.querySelector("input:checked");
+        good=c&&+c.value===q.a;
+        var letter = "ABCDEFGH"[q.a];
+        if(q.o.length === 2) letter = ["A", "B"][q.a];
+        var isImg = q.o.length > 0 && /^(https?:\/\/|data:image\/)/i.test(q.o[0]);
+        ans = isImg ? letter : (q.o[q.a] === letter ? letter : letter + " " + q.o[q.a]);
+      } else {
+        var v=norm(r.querySelector("input").value);
+        good=q.a.some(function(a){return norm(a)===v});
+        ans=q.a[0];
+      }
+      r.classList.toggle("ok",!!good);
+      r.classList.toggle("no",!good);
+      var f=r.querySelector(".fb");
+      if(!f){f=document.createElement("div");f.className="fb";r.appendChild(f)}
+      f.textContent=good?"Correct":"Answer: "+ans;
+      var x=r.querySelector(".ex");
+      if(!x){x=document.createElement("div");x.className="ex";r.appendChild(x)}
+      x.textContent=q.e||"";
+      if(good)pOk++;
+    });
+    if(pTot>0){
+      var ps=part.querySelector(".pscore");
+      if(!ps){ps=document.createElement("div");ps.className="pscore note";ps.style.marginTop="1.5rem";part.appendChild(ps)}
+      ps.innerHTML="<b>Part score:</b> "+pOk+" / "+pTot;
+    }
+    tot+=pTot;ok+=pOk;
+  });
+  out.textContent="Total score: "+ok+" / "+tot;
+  box.querySelectorAll(".tr").forEach(function(e){e.style.display="block"});
+}
+
+function timer(id,min){
+  var e=document.getElementById(id),l=min*60,t=null;
+  if(!e)return;
+  function s(){e.textContent=("0"+Math.floor(l/60)).slice(-2)+":"+("0"+l%60).slice(-2)}s();
+  e.nextElementSibling.onclick=function(){
+    if(t){clearInterval(t);t=null;this.textContent="Start";return}
+    this.textContent="Pause";
+    t=setInterval(function(){l--;s();if(l<=0)clearInterval(t)},1000);
+  }
+}
+
+var R = [{"t":"Reading Passage 1 — Mapping a city’s soundscape","i":"Questions 1–5: choose the correct heading A–G for paragraphs A–E. Questions 6–10: TRUE, FALSE or NOT GIVEN. Questions 11–13: answer in NO MORE THAN TWO WORDS.","x":"<b>Headings</b>: A. Moving from complaints to patterns &nbsp; B. A record that changes with the listener &nbsp; C. The limits of a single measurement &nbsp; D. A map used to guide decisions &nbsp; E. The unexpected value of quiet areas &nbsp; F. A new source of information &nbsp; G. Why older streets are noisier<br><br><b>LISTENING TO THE CITY</b><br><br><b>A</b> City noise is often discussed through complaints: a resident reports a late-night delivery, or a school asks for help with traffic outside its gates. Such reports matter, but they do not reveal how sound changes across a whole neighbourhood. A team of urban researchers in Bellford began a study by placing portable sound meters at more than fifty locations. They recorded short samples at different hours and on different days. The aim was not to label every sound as good or bad. Instead, they wanted to identify patterns that could help planners understand how roads, building shapes and public activity influence what people hear.<br><br><b>B</b> A sound meter gives a numerical reading, but the same reading can describe very different experiences. A steady low hum may be less disturbing to one person than a brief sharp bang, even if both have a similar average level. The researchers therefore paired measurements with short listening diaries. Volunteers described what they heard, where they were and whether the sound affected an activity such as conversation or sleep. The diaries did not replace the instruments; they added context. A reading from a busy square during a festival could not be compared fairly with a quiet morning unless the researcher knew what was happening at each location.<br><br><b>C</b> One finding challenged the team’s first assumption. They expected the widest roads to have the loudest readings at every hour. In practice, narrow streets sometimes recorded higher levels because buildings reflected sound back towards the pavement. A delivery vehicle could also create a short peak that was hidden when readings were averaged over a long period. The team decided to report both typical levels and the frequency of sudden peaks. This gave a fuller picture, although it made the resulting map less simple. A single colour for each street could not show every difference in time or sound type.<br><br><b>D</b> Researchers combined the sound records with maps of land use and building height. They found that some school entrances faced streets where morning traffic peaks overlapped with the time children arrived. In response, the city tested a short vehicle-free period on two streets. The trial did not reduce noise everywhere, but it lowered peak readings near the entrances and made it easier for pupils to talk while crossing. The map also showed that benches and small courtyards behind buildings could provide quieter places within a noisy district. Planners used the information to discuss where a barrier, planting or a change in delivery times might make the greatest difference.<br><br><b>E</b> The project gradually expanded beyond its original measurement plan. Community groups asked to borrow sound meters to study locations they considered important, including a riverside path and a market square. Some residents valued the lively sound of the market, while others wanted a calm route nearby. The researchers learned that a soundscape map should not divide every sound into “noise” and “silence”. It could show where sound is intense, where it changes quickly and where people value a particular atmosphere. Follow-up sessions allowed residents to explain what the map missed. Their comments sometimes led the team to collect additional recordings at a different time of day or season.<br><br>Sound measurements can also change as a city changes. A new road, a taller building or a shift in delivery schedules may alter the pattern recorded a few years earlier. The Bellford team recommended repeating a smaller set of measurements each season rather than treating the first map as permanent. This approach costs less than repeating the full survey and can reveal whether an intervention has lasted. It also makes clear that a map is a snapshot, not a final ranking of neighbourhoods. Residents and planners can use it to ask better questions, then return to the instruments when conditions change.<br><br>One follow-up study compared recordings before and after new delivery rules were introduced. The reduction was greatest during early mornings, while evening sound levels remained similar. This suggested that different sources required different responses. A single city-wide target would have hidden that distinction.","q":[{"q":"1. Choose a heading for paragraph A.","o":["A","B","C","D","E","F","G"],"a":0,"e":"The study moved beyond isolated complaints to city-wide patterns."},{"q":"2. Choose a heading for paragraph B.","o":["A","B","C","D","E","F","G"],"a":1,"e":"Measurements were combined with people’s accounts of their experience."},{"q":"3. Choose a heading for paragraph C.","o":["A","B","C","D","E","F","G"],"a":2,"e":"A single average did not represent every sound event."},{"q":"4. Choose a heading for paragraph D.","o":["A","B","C","D","E","F","G"],"a":3,"e":"The map was used for practical planning decisions."},{"q":"5. Choose a heading for paragraph E.","o":["A","B","C","D","E","F","G"],"a":5,"e":"The project gained a new source of information through community participation."},{"q":"6. The Bellford team measured sound at several times and days.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"The researchers took samples at different hours and days."},{"q":"7. Volunteers were asked to replace sound meters with personal opinions.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"Diaries added context but did not replace instruments."},{"q":"8. Wide roads always had higher sound readings than narrow streets.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"Narrow streets sometimes recorded higher levels."},{"q":"9. The trial vehicle-free period reduced sound at every location in the city.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"It did not reduce noise everywhere."},{"q":"10. Residents agreed that market sounds should be removed.","o":["TRUE","FALSE","NOT GIVEN"],"a":2,"e":"Residents had different preferences; no agreement to remove them is reported."},{"q":"11. What device did the researchers place at study locations?","a":["sound meters","sound meter"],"e":"Portable sound meters recorded sound levels."},{"q":"12. What kind of diaries did volunteers keep?","a":["listening diaries","listening diary"],"e":"The volunteers recorded their listening experiences."},{"q":"13. Which group used the information to discuss planning measures?","a":["planners","city planners"],"e":"Planners considered barriers, planting and delivery times."}]},{"t":"Reading Passage 2 — What a local currency can and cannot do","i":"Questions 14–18: choose A, B, C or D. Questions 19–23: match each statement with group A–E. Questions 24–27: answer in NO MORE THAN TWO WORDS.","x":"<b>Groups</b>: A. currency organisers &nbsp; B. shop owners &nbsp; C. residents &nbsp; D. council officers &nbsp; E. economists<br><br><b>KEEPING MONEY IN A LOCAL ECONOMY</b><br><br>A local currency is accepted by a network of businesses within a particular area. It may take the form of printed notes, a phone-based account or both. The intention is often to encourage people to spend with independent shops and services rather than large chains whose profits may be transferred elsewhere. A local currency does not replace national money. Participants usually exchange ordinary currency for local units and use them at participating businesses. The scheme’s success depends less on the design of its notes than on whether enough people and shops find it useful.<br><br>Organisers in the town of Merriton began by asking what they wanted the scheme to achieve. Some supporters hoped it would increase trade between independent businesses. Others wanted residents to learn more about where their spending went. These aims were related but not identical. A rise in the number of local notes in circulation could indicate interest, yet it would not show whether shops had gained new customers or simply accepted a different form of payment from people who already shopped there. Organisers therefore planned to collect several kinds of evidence, including transaction totals, short interviews and business feedback.<br><br>Shop owners had practical questions. Would the currency be easy to accept at a busy counter? Could it be used to pay a supplier outside the area? What happened if a customer returned an item? The Merriton scheme allowed businesses to exchange unused local notes back into national currency, but charged a small fee after a trial period. This encouraged shops to spend the notes with other members before converting them. Some owners said the system helped them discover nearby suppliers. Others found that most customers continued to pay in ordinary cash or by card. The scheme did not make every independent shop more profitable, and organisers were careful not to promise that it would.<br><br>Residents responded differently as well. A market stall holder liked receiving the local notes because she could use them at a nearby printer and café. A student said the scheme helped her notice small businesses she had previously passed without entering. But some residents were concerned that the notes might expire or lose value. Organisers published clear guidance and set up a help desk. They also offered a digital option for people who did not want to carry paper notes. Still, not everyone had a smartphone or a bank account, so a paper version remained available. Participation was a choice; the currency was not made compulsory for local purchases.<br><br>Council officers considered how the scheme related to existing economic programmes. The council could use local units to pay part of a small community grant, but legal and accounting rules required careful review. Public funds had to be recorded in national currency, and suppliers outside Merriton could not accept the local notes. Officers also checked whether public messaging might wrongly suggest that the scheme replaced official money. They concluded that the council could support information sessions and provide a meeting space, while leaving day-to-day management to the independent organisers.<br><br>Economists who studied the results warned against measuring success with a single number. A transaction recorded in local units may represent money that would have been spent in town anyway. To estimate additional activity, researchers compared participating businesses with similar shops that had not joined and interviewed customers about their choices. Even this comparison had limits: businesses that volunteered may already have had stronger community links. The research found some evidence of new interactions between local shops, but the effect varied by sector and over time. The researchers concluded that local currencies can make economic relationships more visible and encourage particular habits, yet they are not a substitute for wider policies on wages, rents or access to finance.<br><br>For residents, the scheme also served as a prompt to discuss what “local” meant. Some participants wanted the network to include only businesses within the town boundary; others argued that farms and nearby villages were part of the same economic area. Organisers published a map of participating members and reviewed applications in open meetings. This did not remove every disagreement, but it made the rules visible. A transparent membership process mattered because the currency depended on trust. If people could not tell which businesses accepted the notes or how exchange fees worked, they were less likely to use them. Clear information was therefore part of the scheme’s practical infrastructure.<br><br>The team also found that the exchange rate had to be easy to understand. Merriton kept one local unit equal to one national unit, which simplified prices at the till. Shops displayed small signs and updated an online directory when they joined or left. These details reduced confusion for visitors who were not regular participants.","q":[{"q":"14. What is the usual relationship between a local currency and national money?","o":["It is used alongside national money.","It replaces national money completely.","It can only be spent online.","It is issued by every local shop."],"a":0,"e":"Participants exchange national currency for local units; it does not replace it."},{"q":"15. Why did organisers collect different kinds of evidence?","o":["The number of notes alone could not show the scheme’s effects.","They wanted to identify residents who used cash.","The council required weekly customer interviews.","They needed to set a national exchange rate."],"a":0,"e":"Circulation totals would not show whether businesses gained new customers."},{"q":"16. What encouraged Merriton businesses to spend local notes with one another?","o":["A fee for converting notes after the trial","A rule that all suppliers accept the notes","A limit on the number of customers","A monthly increase in the note’s value"],"a":0,"e":"A small exchange fee encouraged spending within the network."},{"q":"17. Why did organisers keep a paper version available?","o":["Not all residents had a smartphone or bank account.","The digital system was legally prohibited.","Shop owners refused to use mobile phones.","Paper notes could be exchanged abroad."],"a":0,"e":"The passage notes that not everyone had digital or banking access."},{"q":"18. What is the economists’ main caution?","o":["A transaction total does not automatically prove additional local spending.","Local currencies always raise shop profits.","Only large businesses can join a scheme.","Customer interviews are more accurate than all other evidence."],"a":0,"e":"Some recorded spending might have occurred locally anyway."},{"q":"19. Which group planned to collect transaction totals and conduct interviews?","o":["A","B","C","D","E"],"a":0,"e":"Currency organisers designed the evidence collection."},{"q":"20. Which group asked whether suppliers could be paid with local units?","o":["A","B","C","D","E"],"a":1,"e":"Shop owners raised supplier-payment concerns."},{"q":"21. Which group raised concerns about expiry and access to digital payments?","o":["A","B","C","D","E"],"a":2,"e":"Residents had different concerns about participation."},{"q":"22. Which group checked accounting rules for public grants?","o":["A","B","C","D","E"],"a":3,"e":"Council officers reviewed public-fund requirements."},{"q":"23. Which group compared participating shops with similar non-participants?","o":["A","B","C","D","E"],"a":4,"e":"Economists used comparisons to estimate additional activity."},{"q":"24. What kind of businesses did the scheme aim to support?","a":["independent shops","independent businesses"],"e":"The scheme aimed to support local independent businesses."},{"q":"25. What did the stall holder use local notes to pay?","a":["a printer","printing","a nearby printer"],"e":"She used the notes at a nearby printer and café."},{"q":"26. What kind of grant might the council partly pay in local units?","a":["community grant","a community grant"],"e":"The passage mentions a small community grant."},{"q":"27. Name one wider policy that local currency cannot replace.","a":["wages","rents","finance"],"e":"The conclusion lists wages, rents and access to finance."}]},{"t":"Reading Passage 3 — The information in a failed experiment","i":"Questions 28–32: match each statement with paragraph A–E. Questions 33–37: TRUE, FALSE or NOT GIVEN. Questions 38–40: choose A, B, C or D.","x":"<b>Paragraphs</b>: A–E<br><br><b>WHEN AN EXPERIMENT DOES NOT WORK</b><br><br><b>A</b> In everyday conversation, a failed experiment can sound like wasted effort. In research, however, an unexpected result may reveal a weakness in the original explanation or a problem in the method. A laboratory test that does not support a prediction is not automatically a discovery; the result might reflect a faulty instrument, a small sample or an unnoticed change in conditions. Scientists therefore ask what the experiment can legitimately show before deciding what it means. Careful records of procedures and measurements make this judgement possible. Without them, another team cannot tell whether an apparent failure challenges an idea or simply reflects a technical mistake.<br><br><b>B</b> The way research is rewarded can make negative results less visible. Journals and conference organisers may favour findings that appear novel or clear, while an experiment that finds no effect can be harder to present as a complete story. Researchers may also worry that a result will be interpreted as evidence of poor skill. This creates a distorted record: readers see many studies that report an effect and fewer studies that do not. A published collection of positive findings may therefore give a stronger impression of certainty than the evidence warrants. The issue is not solved by publishing every result without review; readers still need enough information to judge quality and relevance.<br><br><b>C</b> Repeating a study can help distinguish a robust result from one that depended on a particular sample or setting. Replication does not always mean copying every detail. A team may repeat the same procedure with a new group, or vary one feature to see whether the result holds under different conditions. These choices answer different questions. A close repetition tests reliability, while a changed design tests how widely a finding applies. If a result does not reappear, researchers should examine differences in participants, equipment and analysis before deciding that the original was wrong. Replication is most useful when the procedure is transparent enough for other teams to understand what was actually done.<br><br><b>D</b> Some research fields now encourage investigators to register their plans before collecting data. A public record can state the main question, the number of participants and the analysis that will be used. This makes it easier to distinguish a planned test from an explanation developed after seeing the results. It does not prevent researchers from exploring unexpected patterns, but those additional analyses can be labelled as exploratory. Data and methods may also be shared so that other teams can check calculations or conduct a new analysis. There are limits: privacy, commercial agreements or sensitive locations may prevent full release. Even when data cannot be public, researchers can explain what is withheld and why.<br><br><b>E</b> The value of a failed experiment depends on the question it answers and the detail available to others. A well-designed study that finds no meaningful difference can help future researchers avoid repeating an unproductive approach. It may also narrow the conditions under which a theory is expected to work. By contrast, a poorly documented result may be impossible to interpret. Scientists should not treat a negative finding as proof that an effect never occurs; it may be too small for the study to detect. The conclusion should match the strength of the evidence. When results are combined across many studies, uncertainty can become clearer, and a field can revise its ideas without pretending that every earlier attempt was pointless.<br><br>Researchers also distinguish between a study that fails to detect an effect and evidence that the effect is absent. A small experiment may be unable to detect a modest change, even if that change is real. The design should therefore specify what size of difference it can reliably identify. If the result is uncertain, the most responsible conclusion may be that more data are needed. This can sound less decisive than a simple yes-or-no answer, but it gives later teams a more useful starting point. Scientific knowledge grows through the accumulation of results, including ones that narrow a question without resolving it completely.<br><br>Clear reporting can also improve the way the public understands science. A short account of a null result should describe the question, the method and the uncertainty, rather than presenting the work as a success or failure in absolute terms. This helps readers distinguish careful evidence from a confident headline.","q":[{"q":"28. A paragraph describing how journals and conferences can shape which findings are visible.","o":["A","B","C","D","E"],"a":1,"e":"Paragraph B explains incentives that can hide negative findings."},{"q":"29. A paragraph explaining the difference between repeating a method and changing one feature.","o":["A","B","C","D","E"],"a":2,"e":"Paragraph C describes two kinds of replication."},{"q":"30. A paragraph discussing plans recorded before results are collected.","o":["A","B","C","D","E"],"a":3,"e":"Paragraph D describes preregistration."},{"q":"31. A paragraph explaining why a result needs a careful conclusion.","o":["A","B","C","D","E"],"a":4,"e":"Paragraph E warns against treating a negative result as universal proof."},{"q":"32. A paragraph listing possible technical reasons for an unexpected outcome.","o":["A","B","C","D","E"],"a":0,"e":"Paragraph A gives instruments, sample size and conditions as examples."},{"q":"33. Every experiment that fails to support a prediction is a scientific discovery.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"The passage says an unexpected result is not automatically a discovery."},{"q":"34. Research records help other teams judge whether a result challenges an explanation or reflects a mistake.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"Paragraph A says detailed records make this judgement possible."},{"q":"35. The passage says journals should publish all results without reviewing them.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"It explicitly says publishing everything without review is not the solution."},{"q":"36. Replication can involve a different participant group.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"A new group is given as one way to repeat a study."},{"q":"37. Privacy concerns may prevent researchers from releasing some data.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"The passage names privacy as a possible limit."},{"q":"38. What is the main purpose of preregistration?","o":["To show which questions and analyses were planned before results were known","To guarantee that an experiment will find an effect","To prevent researchers from investigating unexpected patterns","To make every dataset freely available"],"a":0,"e":"A public plan helps distinguish planned tests from later exploration."},{"q":"39. What should researchers do if a result does not reappear?","o":["Examine differences in samples, equipment and analysis.","Assume the first team made an error.","Stop reporting the result.","Repeat the study only with the same participants."],"a":0,"e":"The passage recommends examining possible differences."},{"q":"40. Which statement best reflects the author’s view?","o":["A negative result can be useful when the method and limits are clearly reported.","A failed experiment is valuable only if it proves a theory false.","Research should focus only on results that can be replicated exactly.","A small sample always makes a result meaningless."],"a":0,"e":"The conclusion emphasises careful design, documentation and proportionate interpretation."}]}];
+var L = [{"t":"Listening Part 1 — Booking a badminton court","i":"Questions 1–10. Complete the booking form. Write NO MORE THAN TWO WORDS AND/OR A NUMBER.","x":"EASTGATE SPORTS HALL — COURT RESERVATION<br>Family name: 1 _____<br>Activity: 2 _____<br>Day: 3 _____<br>Date: 4 _____<br>Start time: 5 _____<br>Booking length: 6 _____<br>Total cost: 7 £_____<br>Deposit: 8 £_____<br>Bring: 9 _____<br>Court: 10 number _____","q":[{"q":"1. Family name","a":["Morgan"],"e":"The booking is under Morgan."},{"q":"2. Activity","a":["badminton"],"e":"The caller wants to play badminton."},{"q":"3. Day","a":["Wednesday"],"e":"The regular booking is on Wednesday."},{"q":"4. Date","a":["16 October","October 16","16th October"],"e":"The first booking is on 16 October."},{"q":"5. Start time","a":["6.30","6:30","6.30 pm","6:30 pm"],"e":"The booking begins at half past six."},{"q":"6. Booking length","a":["90 minutes","ninety minutes","one and a half hours"],"e":"The caller books for ninety minutes."},{"q":"7. Total cost","a":["27","£27"],"e":"The total is twenty-seven pounds."},{"q":"8. Deposit","a":["20","£20"],"e":"The deposit is twenty pounds."},{"q":"9. Bring","a":["membership card","a membership card"],"e":"Bring a membership card."},{"q":"10. Court number","a":["2","two"],"e":"The booking is for Court 2."}]},{"t":"Listening Part 2 — Welcome to the Saturday food market","i":"Questions 11–15. Choose A, B or C. Questions 16–20. Match each place with letter A–E.","x":"Market places: A. information stall &nbsp; B. bakery table &nbsp; C. cooking tent &nbsp; D. quiet courtyard &nbsp; E. water refill point","q":[{"q":"11. What time does the market open to the public?","o":["7.30 am","8.00 am","8.30 am"],"a":1,"e":"The market opens at eight."},{"q":"12. What should visitors bring for purchases?","o":["Reusable containers","A printed ticket","A shopping trolley"],"a":0,"e":"Visitors are encouraged to bring reusable containers."},{"q":"13. When does the cooking demonstration begin?","o":["10.30 am","11.00 am","11.30 am"],"a":2,"e":"The demonstration starts at half past eleven."},{"q":"14. Which bus stops closest to the market?","o":["Bus 4","Bus 9","Bus 12"],"a":1,"e":"Bus 9 stops outside the entrance."},{"q":"15. What should visitors do with food waste?","o":["Put it in the marked compost bins","Leave it beside the stalls","Take it to the car park"],"a":0,"e":"Compost bins are clearly marked."},{"q":"16. Where can someone report a lost item?","o":["A","B","C","D","E"],"a":0,"e":"Lost property is handled at the information stall."},{"q":"17. Where can visitors buy a loaf of bread?","o":["A","B","C","D","E"],"a":1,"e":"Fresh bread is sold at the bakery table."},{"q":"18. Where will the chef demonstrate a recipe?","o":["A","B","C","D","E"],"a":2,"e":"The cooking tent hosts the demonstration."},{"q":"19. Where can visitors sit away from the busiest area?","o":["A","B","C","D","E"],"a":3,"e":"The quiet courtyard has seating."},{"q":"20. Where can visitors refill a water bottle?","o":["A","B","C","D","E"],"a":4,"e":"There is a water refill point beside the main gate."}]},{"t":"Listening Part 3 — Testing recyclable food packaging","i":"Questions 21–25. Choose A, B or C. Questions 26–30. Match each task with student A–F.","x":"Student tasks: A. book the lab &nbsp; B. prepare package samples &nbsp; C. recruit participants &nbsp; D. analyse responses &nbsp; E. check references &nbsp; F. present the results","q":[{"q":"21. What are the students trying to find out?","o":["Whether shoppers understand recycling labels","Which supermarket sells the most food","How long packaged food stays fresh"],"a":0,"e":"They are studying how shoppers interpret recycling labels."},{"q":"22. What will participants compare?","o":["Three package labels","Two shopping lists","Different food prices"],"a":0,"e":"Participants will compare three labels."},{"q":"23. What was a problem in the first trial?","o":["Some samples were shown in the wrong order.","The labels were printed too small.","Participants had already seen the answer key."],"a":0,"e":"A sample-ordering mistake affected the pilot."},{"q":"24. What will the team change before the main study?","o":["Randomise the order of samples","Use only one label","Ask participants to bring packaging"],"a":0,"e":"They will vary the order to avoid an order effect."},{"q":"25. What does the tutor say about the final report?","o":["Separate observed results from recommendations.","Recommend one national label immediately.","Leave out responses that disagree."],"a":0,"e":"The report should distinguish findings from recommendations."},{"q":"26. Who will book the lab?","o":["A","B","C","D","E","F"],"a":0,"e":"Inez will book the lab."},{"q":"27. Who will prepare the package samples?","o":["A","B","C","D","E","F"],"a":1,"e":"Sam will prepare the samples."},{"q":"28. Who will recruit the participants?","o":["A","B","C","D","E","F"],"a":2,"e":"Inez will recruit participants."},{"q":"29. Who will analyse the responses?","o":["A","B","C","D","E","F"],"a":3,"e":"Sam will analyse the responses."},{"q":"30. Who will present the results?","o":["A","B","C","D","E","F"],"a":5,"e":"Inez will present the results."}]},{"t":"Listening Part 4 — How the sense of smell adapts","i":"Questions 31–40. Complete the notes. Write NO MORE THAN TWO WORDS for each answer.","x":"SMELL AND SENSORY ADAPTATION<br>Odour molecules reach receptors in the 31 _____.<br>Receptors send electrical signals to the 32 _____.<br>With continued exposure, the brain reduces its 33 _____.<br>This process is called sensory 34 _____.<br>A familiar smell may seem less 35 _____ over time.<br>Researchers use measured 36 _____ in controlled tests.<br>Participants can rate the perceived 37 _____.<br>Fresh air between samples helps prevent 38 _____.<br>Age and some illnesses can change smell 39 _____.<br>Smell tests may support, but not replace, a medical 40 _____.","q":[{"q":"31. Gap 31","a":["nose","nasal cavity"],"e":"Odour molecules enter the nose."},{"q":"32. Gap 32","a":["brain"],"e":"Receptors send signals to the brain."},{"q":"33. Gap 33","a":["response","neural response"],"e":"The brain reduces its response with continued exposure."},{"q":"34. Gap 34","a":["adaptation","sensory adaptation"],"e":"The process is called sensory adaptation."},{"q":"35. Gap 35","a":["intense","strong"],"e":"A familiar smell may seem less intense."},{"q":"36. Gap 36","a":["odour samples","odor samples"],"e":"Controlled tests use measured odour samples."},{"q":"37. Gap 37","a":["intensity"],"e":"Participants can rate perceived intensity."},{"q":"38. Gap 38","a":["adaptation"],"e":"Fresh air helps limit adaptation between samples."},{"q":"39. Gap 39","a":["sensitivity"],"e":"Age and illness may change smell sensitivity."},{"q":"40. Gap 40","a":["diagnosis","medical diagnosis"],"e":"A smell test can support a diagnosis but does not replace it."}]}];
+var T = ["Eastgate Sports Hall, hello. Hello, I would like to reserve a badminton court for our group. Certainly. Can I take the family name? Morgan, M O R G A N. Thank you. Which activity are you booking? Badminton, on Wednesday evenings. The first date we need is the sixteenth of October. Let me check. Yes, Court 2 is free at half past six. Would you like an hour? We usually play for ninety minutes. That is fine. The rate is eighteen pounds per hour, so the total will be twenty-seven pounds. We ask for a twenty-pound deposit when you make the first booking. Can I pay that when I arrive? Yes. Please bring your membership card, and show it at reception. We will need to see it before giving you the court key. Is there somewhere to leave our bags? There are lockers near the changing rooms. You can bring your own small lock or borrow one from the desk. The number eleven bus stops outside the sports hall. I will reserve the court now and send you a confirmation by email.","Good morning, and welcome to the Saturday food market. We open to the public at eight o’clock. Stallholders may arrive earlier, but please wait until the entrance signs are uncovered before coming in. We encourage visitors to bring reusable containers for bread, vegetables and other purchases. The cooking demonstration begins at half past eleven in the cooking tent near the centre of the market. If you are travelling by bus, number nine stops right outside the entrance. Please put vegetable peelings and other food waste in the marked compost bins, not in the general rubbish containers. You can report a lost item or ask for a market map at the information stall beside the clock. The bakery table sells loaves and rolls until they are sold out. Our chef will show how to prepare a simple seasonal dish in the cooking tent. If you would like to sit somewhere quieter, follow the signs to the courtyard behind the flower stalls. There are benches there. A water refill point is located beside the main gate. Please bring your own bottle, as disposable cups are not provided.","Inez: We need to finish the plan for our packaging-label study. We want to find out whether shoppers understand the recycling information, not which supermarket they prefer. Sam: We have three versions of a label to compare. Inez: In the pilot, I put the samples in the wrong order for one participant. We should randomise the order for everyone in the main study. That way the first label will not influence their answers to the next one. Sam: I can prepare the package samples and make sure the wording is the same size. Inez: I will book the lab and recruit participants. Sam: Great. I can analyse the responses afterwards. Who will present the results? Inez: I can do that. I will also check the references. Our tutor said the report should separate what we observed from what we recommend. We should not claim that one label will solve recycling problems everywhere. We can say which version participants understood more easily in our test, and suggest what a larger study might investigate.","The sense of smell begins when airborne molecules enter the nose and reach specialised receptors. These receptors send electrical signals to the brain, where patterns are interpreted as particular odours. When a smell remains present for some time, people often stop noticing it as strongly. This process is known as sensory adaptation. It can be useful: the brain reduces attention to a constant background smell and remains ready to respond to a new one. Researchers studying adaptation use measured odour samples in controlled tests. Participants may be asked to rate the intensity of a smell at regular intervals. A flow of fresh air between samples helps prevent one test from affecting the next. The results can vary with concentration, exposure time and individual sensitivity. Age and some illnesses may change a person’s ability to detect particular odours. For this reason, a smell test can provide useful information but cannot by itself confirm a medical condition. Doctors consider symptoms and other examinations before making a diagnosis. Researchers are also interested in how smell influences eating. If an odour becomes familiar, a person may notice it less, but this does not necessarily mean the food’s taste has changed. Smell and taste interact, yet they are distinct senses. Experiments need to separate them carefully. The more precisely researchers control the sample and the timing, the easier it is to compare one person’s response with another’s."];
+var FULL=true, AUDIO=["","","",""];
+var ASSESSOR_EMAIL="oxfampreparation@email.cz";
+
+function wc(t){var m=t.trim().match(/\S+/g);return m?m.length:0}
+function winit(){
+  document.querySelectorAll("textarea").forEach(function(t){t.oninput=function(){document.getElementById(t.id+"c").textContent=wc(t.value)+" words"}});
+  document.querySelectorAll("[data-c]").forEach(function(b){b.onclick=function(){var t=document.getElementById(b.dataset.c).value;if(navigator.clipboard)navigator.clipboard.writeText(t)}});
+  document.querySelectorAll("[data-s]").forEach(function(b){b.onclick=function(){
+    var t=document.getElementById(b.dataset.s).value,nameField=document.getElementById("nm"),nm=((nameField&&nameField.value)||"Student").trim()||"Student";
+    if(!wc(t)){b.textContent="Write something first!";setTimeout(function(){b.textContent="Send writing to assessor"},2000);return}
+    var subject="IELTS Academic Practice Test 4 - "+b.dataset.t+" - "+nm;
+    var message="Student: "+nm+"\nTest: IELTS Academic Practice Test 4\nTask: "+b.dataset.t+"\n\n"+t;
+    var status=b.parentNode.parentNode.querySelector(".email-status");if(!status){status=document.createElement("p");status.className="note email-status";status.setAttribute("role","status");b.parentNode.parentNode.appendChild(status)}
+    status.textContent="Your email app should open with the assessor, task and writing filled in. Review the draft and press Send.";
+    var mailto="mailto:"+ASSESSOR_EMAIL+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(message);
+    window.location.href=mailto;b.textContent="Open email draft";setTimeout(function(){b.textContent="Send writing to assessor"},3500);
+  }});
+}
+var playId=0;
+function say(i,done){
+  var id=++playId;speechSynthesis.cancel();
+  var parts=T[i].split(/(\{pause\}|\{short\}|\bSpeaker \d:|\b[A-Z][A-Za-z]+:)/),q=[],pitch=1,flip=0,names={};
+  parts.forEach(function(x){
+    x=x.trim();if(!x)return;
+    if(x==="{pause}"||x==="{short}"){q.push({w:x==="{pause}"?2500:1200});pitch=1;return}
+    var sp=x.match(/^Speaker (\d):$/);if(sp){q.push({t:"Speaker "+sp[1],p:1,w:700});return}
+    if(/^[A-Za-z 0-9 ]+:$/.test(x)){var n=x.slice(0,-1);if(!(n in names))names[n]=(flip++%2)?1.25:.85;pitch=names[n];return}
+    (x.match(/[^.?!]+[.?!]*/g)||[x]).forEach(function(z){q.push({t:z.trim(),p:pitch,w:300})})
+  });
+  var k=0;(function next(){
+    if(id!==playId)return;
+    if(k>=q.length){done();return}
+    var s=q[k++];
+    if(!s.t){setTimeout(next,s.w);return}
+    var u=new SpeechSynthesisUtterance(s.t);u.lang="en-GB";u.rate=0.95;u.pitch=s.p;
+    u.onend=function(){setTimeout(next,s.w)};u.onerror=function(){setTimeout(next,s.w)};
+    speechSynthesis.speak(u);
+  })()
+}
+
+function play(b){if(b._busy)return;var i=+b.dataset.i,wrap=b.parentNode,stop=wrap.querySelector(".listen-stop"),status=wrap.querySelector(".listen-status");if(!window.speechSynthesis||!window.SpeechSynthesisUtterance){if(status)status.textContent="Text-to-speech is not available in this browser.";b.textContent="TTS unavailable";return}b._busy=true;b.textContent="Playing…";stop.disabled=false;if(status)status.textContent="Playing Part "+(i+1)+" using your browser voice…";say(i,function(){b._busy=false;b.disabled=false;b.textContent="Replay listening audio";stop.disabled=true;if(status)status.textContent="Part "+(i+1)+" finished. Replay is available."})}
+
+function init(){[["t1",60],["t2",30],["t3",60],["sp2prep",1],["sp2talk",2]].forEach(function(a){timer(a[0],a[1])});if(!FULL)return;build(R,document.getElementById("rbox"),"r");build(L,document.getElementById("lbox"),"l");document.getElementById("ck1").onclick=function(){check(document.getElementById("rbox"),document.getElementById("sc1"))};document.getElementById("ck2").onclick=function(){check(document.getElementById("lbox"),document.getElementById("sc2"))};document.querySelectorAll(".listen-play").forEach(function(b){b.onclick=function(){play(b)}});document.querySelectorAll(".listen-stop").forEach(function(b){b.onclick=function(){if(window.speechSynthesis)speechSynthesis.cancel();playId++;var wrap=b.parentNode,p=wrap.querySelector(".listen-play"),s=wrap.querySelector(".listen-status");if(p){p._busy=false;p.disabled=false;p.textContent="Play listening audio"}b.disabled=true;if(s)s.textContent="Playback stopped. Press Play to restart."}});winit()}
+
+(function(){
+  var g=document.getElementById("gate"),m=document.getElementById("main");
+  function show(){g.hidden=true;m.hidden=false;if(window.init)init()}
+  if(unlocked()){show();return}
+  document.getElementById("gf").onsubmit=function(e){
+    e.preventDefault();
+    if(document.getElementById("pw").value.trim()===PW){
+      try{sessionStorage.setItem("ielts_academic_practice_4","1")}catch(x){}
+      show();
+    } else {
+      document.getElementById("err").textContent="Wrong password.";
+    }
+  }
+  
+  var themeBtn = document.getElementById('themeBtn');
+  if(themeBtn) {
+    themeBtn.onclick = function() {
+      var currentTheme = document.documentElement.getAttribute('data-theme');
+      if(currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        themeBtn.textContent = '🌙';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeBtn.textContent = '☀️';
+      }
+    };
+  }
+  
+  var menuToggle = document.getElementById('menuToggle');
+  if(menuToggle) {
+    menuToggle.onclick = function() {
+      document.body.classList.toggle('menuopen');
+    };
+  }
+  
+  var loginBtn = document.getElementById('loginBtn');
+  var dlg = document.getElementById('dlg');
+  var cancel = document.getElementById('cancel');
+  if(loginBtn && dlg) {
+    loginBtn.onclick = function() { dlg.showModal(); }
+  }
+  if(cancel && dlg) {
+    cancel.onclick = function() { dlg.close(); }
+  }
+})();
+</script>
+</body>
+</html>

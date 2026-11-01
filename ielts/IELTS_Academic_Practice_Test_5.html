@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>IELTS Academic Practice Test 5</title>
+
+<style>
+/* Default theme is explicitly light */
+:root {
+  --bg: #f6f7fb;
+  --paper: #fff;
+  --ink: #14213d;
+  --muted: #4b5266;
+  --line: #d5d9e6;
+  --mark: #2b59ff;
+  --hi: #ffe45e;
+  --ok: #1a7f52;
+  --bad: #b3261e;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Dark theme applied ONLY when data-theme="dark" is present */
+:root[data-theme="dark"] {
+  --bg: #0f1526;
+  --paper: #182038;
+  --ink: #eef1fb;
+  --muted: #a9b1c9;
+  --line: #2c3656;
+  --mark: #7d9bff;
+  --hi: #e9d24a;
+  --ok: #57c58f;
+  --bad: #ff8a80;
+}
+
+html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: border-box; }
+
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1.0625rem/1.6 "Atkinson Hyperlegible", system-ui, sans-serif; }
+h1, h2, h3 { font-family: Archivo, "Helvetica Neue", Arial, sans-serif; line-height: 1.05; margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--mark); outline-offset: 3px; }
+.wrap { max-width: 74rem; margin: 0 auto; padding: 0 1.25rem; }
+
+header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .75rem; padding: 1.25rem 0; position: sticky; top: 0; background: var(--bg); z-index: 100; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+.head-left { display: flex; align-items: center; gap: .75rem; }
+#menuToggle { background: transparent; border: none; cursor: pointer; color: var(--ink); display: flex; padding: .25rem; border-radius: .25rem; }
+#menuToggle:hover { background: var(--line); }
+#menuToggle svg { width: 1.6rem; height: 1.6rem; }
+.logo { font: 800 1.25rem Archivo, sans-serif; text-decoration: none; }
+nav a { margin-left: 1.25rem; text-decoration: none; color: var(--muted); }
+nav a:hover { color: var(--ink); }
+
+.btn { display: inline-block; background: var(--ink); color: var(--bg); padding: .8rem 1.4rem; border-radius: .5rem; font-weight: 700; text-decoration: none; border: 0; cursor: pointer; font-size: 1rem; font-family: inherit; }
+.btn.alt { background: transparent; color: var(--ink); border: 2px solid var(--ink); }
+.hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2rem; align-items: start; padding: 1rem 0 3rem; }
+.hero-text { margin-top: 2.5rem; }
+
+h1 { font-size: clamp(2rem, 3.4vw, 3rem); font-weight: 800; font-stretch: 90%; letter-spacing: -.02em; margin-top: 1rem; margin-bottom: 0; }
+h1 span { background: linear-gradient(transparent 62%, var(--hi) 62%); }
+.lead { color: var(--muted); max-width: 32rem; margin: 1.25rem 0 1.75rem; font-size: 1.15rem; }
+.row { display: flex; gap: .75rem; flex-wrap: wrap; }
+
+.sheet { background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.sheet h2 { font-size: 1.1rem; margin-bottom: .25rem; }
+.sheet p { margin: 0 0 1rem; color: var(--muted); font-size: .95rem; }
+.q { padding: .7rem 0; border-top: 1px solid var(--line); }
+.q b { display: inline-block; font-weight: 800; margin-bottom: .45rem; margin-right: 0.5rem; }
+
+.opts { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem; width: fit-content; }
+.opt { display: flex; align-items: center; gap: .4rem; padding: .3rem .7rem .3rem .35rem; border: 1.5px solid var(--line); border-radius: 2rem; background: transparent; color: inherit; font-size: .95rem; cursor: pointer; width: fit-content; }
+.opt i { width: 1.4rem; height: 1.4rem; border-radius: 50%; border: 2px solid var(--muted); display: grid; place-items: center; font: 700 .7rem Archivo, sans-serif; font-style: normal; flex-shrink: 0; }
+
+.opt[aria-pressed="true"] { border-color: var(--mark); }
+.opt[aria-pressed="true"] i { background: var(--mark); border-color: var(--mark); color: var(--bg); }
+.opt.right { border-color: var(--ok); } .opt.right i { background: var(--ok); border-color: var(--ok); color: var(--bg); }
+.opt.wrong { border-color: var(--bad); } .opt.wrong i { background: var(--bad); border-color: var(--bad); color: var(--bg); }
+
+/* Image Options specific styles */
+.img-opts-grid { display: flex; flex-direction: row; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+.img-opt { flex-direction: column; align-items: center; padding: 0.5rem; border-radius: 0.5rem; gap: 0.5rem; text-align: center; }
+.img-opt img { height: 120px; width: 160px; object-fit: cover; background: var(--paper); border-radius: 0.25rem; }
+.img-opt i { margin-bottom: 0.25rem; }
+
+.result { margin-top: 1rem; font-weight: 700; min-height: 1.6rem; }
+section { padding: 3.5rem 0; border-top: 1px solid var(--line); }
+h2.t { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: .75rem; letter-spacing: -.01em; }
+
+.sub, .txt { color: var(--muted); max-width: 48rem; margin: 0 0 2rem; white-space: pre-line; line-height: 1.6; }
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: .6rem; background: var(--paper); }
+table { border-collapse: collapse; width: 100%; min-width: 38rem; }
+th, td { text-align: left; padding: .9rem 1rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font: 800 1.2rem Archivo, sans-serif; white-space: nowrap; }
+td small { display: block; font: 400 .9rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+
+.support-strip { position: fixed; bottom: 0; left: 0; right: 0; background: var(--ink); color: var(--bg); padding: 1rem 1.25rem; z-index: 999; box-shadow: 0 -4px 12px rgba(0,0,0,0.15); }
+.support-strip-inner { max-width: 74rem; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; width: 100%; font-weight: 700; }
+footer { border-top: 1px solid var(--line); padding: 2rem 0 5rem; color: var(--muted); font-size: .95rem; }
+
+.lang { display: flex; gap: .25rem; flex-wrap: wrap; } .lang button { font: 700 .8rem Archivo, sans-serif; padding: .35rem .6rem; border: 1.5px solid var(--line); border-radius: .4rem; background: transparent; color: var(--muted); cursor: pointer; } .lang button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.layout { display: grid; grid-template-columns: 12.5rem minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+.layout.collapsed { grid-template-columns: 1fr; gap: 0; }
+.layout.collapsed .side { display: none; }
+.side { position: sticky; top: 5rem; max-height: calc(100vh - 6rem); max-height: calc(100dvh - 6rem); overflow-y: auto; display: flex; flex-direction: column; gap: .15rem; }
+summary { cursor: pointer; font: 700 .95rem Archivo, sans-serif; color: var(--muted); padding: .4rem .75rem; border-radius: .5rem; } summary:hover { color: var(--ink); } .ex[open] summary { margin-bottom: .15rem; }
+.side nav { display: flex; flex-direction: column; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); } .side nav a { margin: 0; color: inherit; } .side .lang { margin-bottom: 1rem; }
+.side p { margin: 0 0 .5rem; font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+.side a { text-decoration: none; padding: .5rem .75rem; border-radius: .5rem; font: 700 1rem Archivo, sans-serif; border-left: 3px solid transparent; }
+.side a small { display: block; font: 400 .8rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+.side a:hover { background: var(--paper); border-left-color: var(--mark); }
+tr:target td { background: var(--hi); color: #14213d; } tr:target td small { color: #14213d; }
+
+@media (max-width: 52rem) { .layout { grid-template-columns: 1fr; gap: 0; } .side { position: static; max-height: none; margin: 0 0 1rem; padding: 0 0 1rem; border-bottom: 1px solid var(--line); } }
+
+.hr { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; } .hr .btn { padding: .45rem 1rem; font-size: .9rem; }
+dialog { border: 2px solid var(--ink); border-radius: .75rem; background: var(--paper); color: var(--ink); padding: 1.5rem; width: min(26rem, 92vw); max-height: 90vh; overflow: auto; } dialog::backdrop { background: rgba(10,16,32,.55); }
+dialog h2 { font-size: 1.4rem; margin-bottom: .5rem; } dialog label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+dialog input { width: 100%; padding: .65rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.demo { color: var(--muted); font-size: .9rem; margin: .5rem 0 0; } .err { color: var(--bad); min-height: 1.5rem; margin-top: .5rem; font-size: .95rem; }
+
+@media (max-width: 40rem) {
+  .wrap { padding: 0 1rem; }
+  header { padding: 1rem 0; }
+  .hero { padding-bottom: 2rem; }
+  .sheet { padding: 1.1rem; }
+  section { padding: 2.5rem 0; }
+  .scroll { border: 0; background: transparent; overflow: visible; }
+  table, tbody, tr, td { display: block; min-width: 0; width: 100%; }
+  thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  tr { background: var(--paper); border: 1px solid var(--line); border-radius: .6rem; padding: .6rem 0; margin-bottom: .75rem; }
+  td { border: 0; padding: .15rem 1rem; }
+  td:first-child { font-size: 1.3rem; padding-top: .4rem; }
+  tr:target { border-color: var(--ink); }
+}
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+html { scroll-padding-top: calc(5rem + env(safe-area-inset-top, 0px)); }
+body header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); padding: .6rem 0; border-bottom: 1px solid var(--line); }
+.brand { display: flex; align-items: center; gap: .75rem; }
+body .logo { font-size: 1.85rem; letter-spacing: -.02em; }
+.mbtn { display: inline-flex; flex-direction: column; justify-content: center; gap: 5px; width: 2.75rem; height: 2.75rem; padding: 0 .7rem; border: 2px solid var(--ink); border-radius: .5rem; background: transparent; cursor: pointer; flex: none; }
+.mbtn span { display: block; height: 2px; background: var(--ink); border-radius: 2px; }
+.mbtn:hover { background: var(--paper); }
+body .side { top: 5.5rem; max-height: calc(100vh - 6.5rem); max-height: calc(100dvh - 6.5rem); }
+body.nomenu .layout { grid-template-columns: minmax(0, 1fr); }
+body.nomenu .side { display: none; }
+body:has(#app[hidden]) .mbtn { display: none; }
+.side>.hr { margin-bottom: 1rem; }
+.scrim { display: none; }
+
+@media (max-width: 52rem) {
+  body .side { position: fixed; top: 0; left: 0; bottom: 0; width: min(19rem, 86vw); max-height: none; margin: 0; padding: calc(1rem + env(safe-area-inset-top, 0px)) 1rem calc(1rem + env(safe-area-inset-bottom, 0px)); background: var(--paper); border: 0; border-right: 2px solid var(--ink); z-index: 50; overflow-y: auto; transform: translateX(-105%); visibility: hidden; transition: transform .25s ease, visibility 0s .25s; }
+  body.menuopen .side { transform: none; visibility: visible; transition: transform .25s ease; }
+  body .side nav { flex-direction: column; flex-wrap: nowrap; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+  body .side nav a { padding: .5rem .75rem; }
+  .scrim { display: block; position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: rgba(10,16,32,.5); z-index: 40; opacity: 0; pointer-events: none; transition: opacity .25s; }
+  body.menuopen .scrim { opacity: 1; pointer-events: auto; }
+  body .logo { font-size: 1.6rem; }
+}
+
+.gatebox { max-width: 26rem; margin: 2rem auto; background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.gatebox label, .wr label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+input[type=text], input[type=password], textarea { width: 100%; padding: .6rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.q input[type=text] { width: 14rem; max-width: 100%; }
+.part { background: var(--paper); border: 1px solid var(--line); border-radius: .75rem; padding: 1.5rem; margin-bottom: 1.25rem; }
+.q.ok { border-left: 4px solid var(--ok); padding-left: .75rem; } .q.no { border-left: 4px solid var(--bad); padding-left: .75rem; } .fb { font-weight: 700; margin-top: .25rem; }
+.tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0; }
+nav.tabs a { margin: 0; padding: .4rem 1rem; border: 1.5px solid var(--line); border-radius: 2rem; text-decoration: none; font-weight: 700; }
+nav.tabs a[aria-current=page] { background: var(--ink); color: var(--bg); }
+.bar { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; margin: 1rem 0; } .time { font: 800 1.6rem Archivo, sans-serif; }
+.pics { display: flex; gap: 1rem; flex-wrap: wrap; } .pics svg, .pics img { flex: 1 1 14rem; max-width: 22rem; border: 2px solid var(--ink); border-radius: .5rem; background: var(--paper); object-fit: cover; aspect-ratio: 3/2; }
+.audio-player{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;padding:.75rem 1rem;margin:1rem 0;background:var(--paper);border:1px solid var(--line);border-radius:.75rem}.audio-player .listen-status{font-weight:600;color:var(--muted)}
+textarea { min-height: 15rem; } .tr { display: none; } .note { padding: .75rem 1rem; border-left: 4px solid var(--mark); background: var(--paper); margin: 1rem 0; }
+.sec { padding-top: 2rem; margin-top: 2rem; border-top: 1px solid var(--line); } .jump { margin-top: 0; } .ex { color: var(--muted); margin-top: .15rem; font-size: .95rem; }
+ .chart{display:block;width:min(100%,760px);height:auto;margin:1rem auto;border:1px solid var(--line);border-radius:12px;background:#fff}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header id="siteHeader">
+<div class="head-left">
+<button aria-label="Toggle menu" id="menuToggle">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
+</button>
+<a class="logo" href="../index.html">Oxfam Preparation</a>
+</div>
+<div class="hr">
+<button aria-label="Toggle theme" class="btn alt" id="themeBtn" style="padding:.45rem .6rem; min-width:0; font-size:1.1rem">🌙</button>
+<button class="btn" id="loginBtn" type="button">Log in</button>
+</div>
+</header>
+<div class="layout">
+<aside aria-label="Menu" class="side">
+<nav>
+<a href="../cpe.html">All tests</a>
+</nav>
+</aside>
+<main id="top">
+<div id="gate">
+<div class="gatebox">
+<h1><span>IELTS Academic Practice Test 5</span></h1>
+<p>Enter the password to open this IELTS Academic practice test.</p>
+<form id="gf">
+<label for="pw">Password</label>
+<input autocomplete="off" id="pw" type="password"/>
+<div class="err" id="err"></div>
+<div class="row" style="margin-top:1rem">
+<button class="btn" type="submit">Open</button>
+<a class="btn alt" href="../cpe.html">Back</a>
+</div>
+</form>
+</div>
+</div>
+<div hidden id="main"><h1>IELTS Academic Practice Test 5</h1><p class="sub">Original IELTS Academic practice paper. Browser TTS is used for the listening audio.</p><div class="part"><label for="nm"><strong>Student name (optional)</strong></label><input id="nm" type="text" placeholder="Enter your name"></div><nav class="tabs jump"><a href="#read">Reading</a><a href="#listen">Listening</a><a href="#write">Writing</a><a href="#speak">Speaking</a></nav><section class="sec" id="read"><h2 class="t">Academic Reading (60 minutes)</h2><div class="bar"><span class="time" id="t1"></span><button class="btn alt">Start</button></div><p class="note">Three original passages; 40 questions.</p><div id="rbox"></div><button class="btn" id="ck1">Check Reading answers</button><b id="sc1"></b></section><section class="sec" id="listen"><h2 class="t">Listening (about 30 minutes)</h2><div class="bar"><span class="time" id="t2"></span><button class="btn alt">Start</button></div><p class="note">Four parts, 40 questions. Browser TTS reads these original practice scripts. IELTS recordings in the exam are played once.</p><div id="lbox"></div><button class="btn" id="ck2">Check Listening answers</button><b id="sc2"></b></section><section class="sec" id="write"><h2 class="t">Academic Writing (60 minutes)</h2><div class="bar"><span class="time" id="t3"></span><button class="btn alt">Start</button></div><div class="part"><h2>Task 1</h2><p>Spend about 20 minutes. Write at least 150 words.</p><div class="note">The line graph shows the percentage of adults who used online public services in three regions between 2015 and 2024. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</div><img class="chart" alt="Percentage of adults using online public services in three regions, 2015 to 2024" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3NjAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgNzYwIDQyMCI+PHJlY3Qgd2lkdGg9Ijc2MCIgaGVpZ2h0PSI0MjAiIGZpbGw9IiNmZmYiLz48dGV4dCB4PSIzODAiIHk9IjI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTkiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMxODI5NGQiPkFkdWx0cyB1c2luZyBvbmxpbmUgcHVibGljIHNlcnZpY2VzPC90ZXh0Pjx0ZXh0IHg9IjM4MCIgeT0iNTEiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMyIgZmlsbD0iIzM5NDY1ZSI+UGVyY2VudGFnZSBvZiBhZHVsdHM8L3RleHQ+PGcgc3Ryb2tlPSIjZGJlMWViIiBzdHJva2Utd2lkdGg9IjEiPjxwYXRoIGQ9Ik05MCAzMzBINzAwTTkwIDI3MEg3MDBNOTAgMjEwSDcwME05MCAxNTBINzAwTTkwIDkwSDcwMCIvPjwvZz48ZyBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiMzOTQ2NWUiIHRleHQtYW5jaG9yPSJlbmQiPjx0ZXh0IHg9Ijc4IiB5PSIzMzQiPjA8L3RleHQ+PHRleHQgeD0iNzgiIHk9IjI3NCI+MjA8L3RleHQ+PHRleHQgeD0iNzgiIHk9IjIxNCI+NDA8L3RleHQ+PHRleHQgeD0iNzgiIHk9IjE1NCI+NjA8L3RleHQ+PHRleHQgeD0iNzgiIHk9Ijk0Ij44MDwvdGV4dD48L2c+PHBhdGggZD0iTTkwIDkwVjMzMEg3MDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzI5M2Q1YSIgc3Ryb2tlLXdpZHRoPSIyIi8+PGcgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEzIiBmaWxsPSIjMzk0NjVlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj48dGV4dCB4PSIxMzAiIHk9IjM1NCI+MjAxNTwvdGV4dD48dGV4dCB4PSIzMTAiIHk9IjM1NCI+MjAxODwvdGV4dD48dGV4dCB4PSI0OTAiIHk9IjM1NCI+MjAyMTwvdGV4dD48dGV4dCB4PSI2NzAiIHk9IjM1NCI+MjAyNDwvdGV4dD48L2c+PHBvbHlsaW5lIHBvaW50cz0iMTMwLDI1NSAzMTAsMjEzIDQ5MCwxNTAgNjcwLDExNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzE4MmE4IiBzdHJva2Utd2lkdGg9IjQiLz48cG9seWxpbmUgcG9pbnRzPSIxMzAsMjc2IDMxMCwyMjUgNDkwLDE2MiA2NzAsMTI2IiBmaWxsPSJub25lIiBzdHJva2U9IiNkNzgzNDQiIHN0cm9rZS13aWR0aD0iNCIvPjxwb2x5bGluZSBwb2ludHM9IjEzMCwyOTQgMzEwLDI1OCA0OTAsMTk4IDY3MCwxNTMiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRhOWI3NiIgc3Ryb2tlLXdpZHRoPSI0Ii8+PGcgZmlsbD0iIzMxODJhOCI+PGNpcmNsZSBjeD0iMTMwIiBjeT0iMjU1IiByPSI1Ii8+PGNpcmNsZSBjeD0iMzEwIiBjeT0iMjEzIiByPSI1Ii8+PGNpcmNsZSBjeD0iNDkwIiBjeT0iMTUwIiByPSI1Ii8+PGNpcmNsZSBjeD0iNjcwIiBjeT0iMTE0IiByPSI1Ii8+PC9nPjxnIGZpbGw9IiNkNzgzNDQiPjxjaXJjbGUgY3g9IjEzMCIgY3k9IjI3NiIgcj0iNSIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjIyNSIgcj0iNSIvPjxjaXJjbGUgY3g9IjQ5MCIgY3k9IjE2MiIgcj0iNSIvPjxjaXJjbGUgY3g9IjY3MCIgY3k9IjEyNiIgcj0iNSIvPjwvZz48ZyBmaWxsPSIjNGE5Yjc2Ij48Y2lyY2xlIGN4PSIxMzAiIGN5PSIyOTQiIHI9IjUiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSIyNTgiIHI9IjUiLz48Y2lyY2xlIGN4PSI0OTAiIGN5PSIxOTgiIHI9IjUiLz48Y2lyY2xlIGN4PSI2NzAiIGN5PSIxNTMiIHI9IjUiLz48L2c+PGcgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEzIiBmaWxsPSIjMTgyOTRkIj48bGluZSB4MT0iMTkwIiB5MT0iMzg5IiB4Mj0iMjIwIiB5Mj0iMzg5IiBzdHJva2U9IiMzMTgyYTgiIHN0cm9rZS13aWR0aD0iNCIvPjx0ZXh0IHg9IjIyOCIgeT0iMzk0Ij5Ob3J0aDwvdGV4dD48bGluZSB4MT0iMzQ1IiB5MT0iMzg5IiB4Mj0iMzc1IiB5Mj0iMzg5IiBzdHJva2U9IiNkNzgzNDQiIHN0cm9rZS13aWR0aD0iNCIvPjx0ZXh0IHg9IjM4MyIgeT0iMzk0Ij5DZW50cmFsPC90ZXh0PjxsaW5lIHgxPSI0OTAiIHkxPSIzODkiIHgyPSI1MjAiIHkyPSIzODkiIHN0cm9rZT0iIzRhOWI3NiIgc3Ryb2tlLXdpZHRoPSI0Ii8+PHRleHQgeD0iNTI4IiB5PSIzOTQiPkNvYXN0YWw8L3RleHQ+PC9nPjwvc3ZnPg=="><textarea id="w1"></textarea><div class="bar"><b id="w1c">0 words</b><button class="btn alt" data-c="w1">Copy</button><button class="btn" data-s="w1" data-t="Writing Task 1">Send writing to assessor</button></div></div><div class="part"><h2>Task 2</h2><p>Spend about 40 minutes. Write at least 250 words.</p><div class="note">Some people prefer flexible working hours, while others believe employees should follow a fixed schedule. Discuss both views and give your own opinion.</div><textarea id="w2"></textarea><div class="bar"><b id="w2c">0 words</b><button class="btn alt" data-c="w2">Copy</button><button class="btn" data-s="w2" data-t="Writing Task 2">Send writing to assessor</button></div></div></section><section class="sec" id="speak"><h2 class="t">Speaking (11–14 minutes)</h2><div class="part"><h2>Part 1 — Interview</h2><p>What kind of work would you like to do in the future? Do you prefer to work at the same time every day? How do you organise your schedule? What do you do when you need to concentrate? Do you use online services often?</p></div><div class="part"><h2>Part 2 — Long turn</h2><div class="note"><b>Describe a person whose job you find interesting.</b><br>Say who the person is, what their job involves, how you know about it, and explain why you find it interesting.</div><div class="bar"><span class="time" id="sp2prep"></span><button class="btn alt">Start 1-minute preparation</button><span class="time" id="sp2talk"></span><button class="btn alt">Start 2-minute talk</button></div></div><div class="part"><h2>Part 3 — Discussion</h2><p>How do people choose a career? Should schools give students more information about different jobs? How might technology change working hours? Is job satisfaction more important than salary? What responsibilities do employers have towards workers?</p></div></section></div></div>
+</main>
+</div>
+<div class="support-strip">
+<div class="support-strip-inner">
+<div><span _k="Customer support every day from 9:00 to 16:30">Customer support every day from 9:00 to 16:30</span></div>
+<div class="support-info">
+<a href="mailto:oxfampreparation@email.cz">oxfampreparation@email.cz</a>
+<a href="tel:+420723200988">+420 723 200 988</a>
+</div>
+</div>
+</div>
+<footer>© 2020-2026 Oxfam - Oxford family. All rights reserved. Not affiliated with Cambridge University Press &amp; Assessment. Exam names belong to their owners.</footer>
+</div>
+<dialog aria-labelledby="dt" id="dlg">
+<h2 id="dt">Sign in to open your tests</h2>
+<form id="lf" novalidate="">
+<label for="em">Email</label><input autocomplete="username" id="em" type="email"/>
+<label for="pw">Password</label><input autocomplete="current-password" id="pw" type="password"/>
+<p class="demo" hidden="" id="demo"></p>
+<div aria-live="polite" class="err" id="err"></div>
+<div class="row" style="margin-top:1rem"><button class="btn" type="submit">Log in</button><button class="btn alt" id="cancel" type="button">Cancel</button></div>
+</form>
+</dialog>
+<script>
+var PW="COPT";
+function unlocked(){try{return sessionStorage.getItem("ielts_academic_practice_5")==="1"}catch(e){return false}}
+
+function norm(s){return s.toLowerCase().replace(/\u2019/g,"'").replace(/\s+/g," ").trim()}
+
+function build(parts,box,pre){
+  var n=0;pre=pre||"";
+  parts.forEach(function(p,pi){
+    var d=document.createElement("section");d.className="part";
+    d.innerHTML="<h2>"+p.t+"</h2>"+(pre==="l"?"<div class='audio-player'><button class='btn listen-play' type='button' data-i='"+pi+"'>Play listening audio</button><button class='btn alt listen-stop' type='button' disabled>Stop</button><span class='listen-status' role='status'>Browser voice · Part "+(pi+1)+"</span></div>":"")+(p.m?"<div class='bar'><span class='time' id='pt"+pre+pi+"'></span><button class='btn alt' type='button'>Start</button> <small>suggested time</small></div>":"")+"<p class='sub'>"+p.i+"</p>"+(p.x?"<p class='txt'>"+p.x+"</p>":"")+(p.im||"")+"<div class='items'></div>";
+    var it=d.querySelector(".items");
+    p.q.forEach(function(q){
+      n++;var r=document.createElement("div");r.className="q";
+      var label = q.q && /^(\d+)\.\s*/.test(q.q) ? q.q.match(/^(\d+)\.\s*/)[1] : n; var qtext = (q.q||"").replace(/^\d+\.\s*/,"").replace(/\n/g,"<br>"); var h="<b>"+label+"</b> "+qtext+(q.h?" <strong>"+q.h+"</strong>":"");
+      if(q.o){
+        var isImg = q.o.length > 0 && /^(https?:\/\/|data:image\/)/i.test(q.o[0]);
+        var optsHtml = q.o.map(function(o,i){
+          var letter = "ABCDEFGH"[i];
+          if(q.o.length === 2 && (o === "A" || o === "B" || o.includes("Correct") || o.includes("YES"))) {
+            letter = ["A", "B"][i];
+          }
+          if (isImg) {
+            return "<label class='opt img-opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> <img src='"+o+"' alt='Option "+letter+"' onerror=\"this.style.display='none'\"></label>";
+          } else {
+            var text = o === letter ? "" : o;
+            return "<label class='opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> "+text+"</label>";
+          }
+        }).join("");
+        var gridClass = isImg ? "opts img-opts-grid" : "opts";
+        h += "<div class='" + gridClass + "'>" + optsHtml + "</div>";
+      } else {
+        h+=" <input type='text' autocomplete='off' aria-label='Answer "+n+"'>";
+      }
+      r.innerHTML=h;r._q=q;it.appendChild(r);
+    });
+    box.appendChild(d);
+    if(p.m)timer("pt"+pre+pi,p.m);
+  });
+}
+
+function check(box,out){
+  var tot=0,ok=0;
+  box.querySelectorAll(".part").forEach(function(part){
+    var pTot=0,pOk=0;
+    part.querySelectorAll(".q").forEach(function(r){
+      pTot++;var q=r._q,good,ans;
+      if(q.o){
+        var c=r.querySelector("input:checked");
+        good=c&&+c.value===q.a;
+        var letter = "ABCDEFGH"[q.a];
+        if(q.o.length === 2) letter = ["A", "B"][q.a];
+        var isImg = q.o.length > 0 && /^(https?:\/\/|data:image\/)/i.test(q.o[0]);
+        ans = isImg ? letter : (q.o[q.a] === letter ? letter : letter + " " + q.o[q.a]);
+      } else {
+        var v=norm(r.querySelector("input").value);
+        good=q.a.some(function(a){return norm(a)===v});
+        ans=q.a[0];
+      }
+      r.classList.toggle("ok",!!good);
+      r.classList.toggle("no",!good);
+      var f=r.querySelector(".fb");
+      if(!f){f=document.createElement("div");f.className="fb";r.appendChild(f)}
+      f.textContent=good?"Correct":"Answer: "+ans;
+      var x=r.querySelector(".ex");
+      if(!x){x=document.createElement("div");x.className="ex";r.appendChild(x)}
+      x.textContent=q.e||"";
+      if(good)pOk++;
+    });
+    if(pTot>0){
+      var ps=part.querySelector(".pscore");
+      if(!ps){ps=document.createElement("div");ps.className="pscore note";ps.style.marginTop="1.5rem";part.appendChild(ps)}
+      ps.innerHTML="<b>Part score:</b> "+pOk+" / "+pTot;
+    }
+    tot+=pTot;ok+=pOk;
+  });
+  out.textContent="Total score: "+ok+" / "+tot;
+  box.querySelectorAll(".tr").forEach(function(e){e.style.display="block"});
+}
+
+function timer(id,min){
+  var e=document.getElementById(id),l=min*60,t=null;
+  if(!e)return;
+  function s(){e.textContent=("0"+Math.floor(l/60)).slice(-2)+":"+("0"+l%60).slice(-2)}s();
+  e.nextElementSibling.onclick=function(){
+    if(t){clearInterval(t);t=null;this.textContent="Start";return}
+    this.textContent="Pause";
+    t=setInterval(function(){l--;s();if(l<=0)clearInterval(t)},1000);
+  }
+}
+
+var R = [{"t":"Reading Passage 1 — Mapping the sea floor","i":"Questions 1–5: choose the correct heading A–G for paragraphs A–E. Questions 6–10: TRUE, FALSE or NOT GIVEN. Questions 11–13: answer in NO MORE THAN TWO WORDS.","x":"<b>Headings</b>: A. A map that must be interpreted carefully &nbsp; B. Why the deep ocean remained unknown &nbsp; C. Filling in the blank spaces &nbsp; D. A method based on returning echoes &nbsp; E. New uses for old survey records &nbsp; F. The challenge of naming features &nbsp; G. From navigation to scientific discovery<br><br><b>CHARTING THE HIDDEN LANDSCAPE BENEATH THE SEA</b><br><br><b>A</b> For centuries, sailors could describe coastlines and harbour entrances, but the deep sea remained largely unseen. A ship’s lead line could measure depth at one point, yet taking thousands of measurements across an ocean was slow and dangerous. Early charts connected these isolated readings with broad estimates. They were sufficient for some routes, but they could not show the shape of underwater mountains or valleys. The development of echo sounding changed the scale of the task. A vessel sends a sound pulse towards the sea floor and records how long the echo takes to return. Because sound travels through water at a known approximate speed, the travel time can be converted into depth. A moving ship can collect a continuous line of measurements rather than a handful of points.<br><br><b>B</b> Echo sounding does not produce a complete picture by itself. A single beam measures depth beneath the ship, leaving wide areas to either side unsurveyed. Multibeam systems send out many pulses at different angles, creating a broad strip of measurements. The width of that strip depends on water depth and the angle of the beams. Survey teams also correct for the movement of a ship and for small changes in the speed of sound caused by temperature and salinity. Without these adjustments, a chart may place a feature incorrectly or give it the wrong depth. Sound signals can bounce from fish, layers of sediment or the sea floor, so specialists examine the returning data rather than accepting every echo as a direct measurement of the bottom.<br><br><b>C</b> Even with modern equipment, most of the ocean floor has not been mapped at the finest resolution. A survey ship covers a narrow route and operating a vessel far from shore is expensive. Satellites can estimate broad patterns by measuring slight changes in sea-surface height. A large underwater mountain exerts a small gravitational pull on surrounding water, producing a subtle rise at the surface. Satellite measurements can therefore suggest the shape of the sea floor, but they cannot replace direct acoustic surveys for detailed charts. Researchers combine these sources: broad satellite estimates help identify areas for closer study, and ship measurements refine the picture where accuracy matters.<br><br><b>D</b> Bathymetric charts use colours and contour lines to represent underwater depth, much as a land map uses them for elevation. A steeply spaced set of contours indicates a rapid change in depth; wider spacing suggests a gentler slope. Yet the chart is not a photograph. Its appearance depends on the scale, the survey density and the way data have been processed. Two charts of the same region can look different if one uses a finer colour range or includes more recent measurements. Navigators, geologists and marine planners may also need different details. A safe route for a large vessel prioritises hazards and minimum depth, while a geologist may be more interested in the shape of a ridge or the boundary between sediment types.<br><br><b>E</b> Older survey records remain useful when they are carefully described. A paper chart or ship’s log may contain depth readings from a place that has not been revisited, but researchers need to know how the readings were taken and what units were used. Some records lack precise location data, and early instruments could be affected by ship movement. Digital projects are scanning historic charts and linking them to modern databases. A digitised record is not automatically reliable; it needs metadata about its origin, scale and limitations. When combined responsibly with recent surveys, older evidence can show how knowledge of a region developed and can point researchers towards places where new measurements would be valuable.<br><br>Survey coverage matters as much as the quality of a measurement. A detailed route map from a single ship can be very accurate along its track and still leave surrounding areas poorly known. To avoid implying certainty, chart publishers use different markings for directly measured zones and areas based on estimates. They also record the date of a survey, because currents, sediment movement and volcanic activity can alter the sea floor. Most features change slowly, but an underwater landslide or eruption can create a rapid local difference. A chart is therefore most useful when its source and age are easy to find.<br><br>Survey teams plan a route to avoid recording only the easiest places to reach. A steep slope or a shipping lane may make a section difficult to measure, but leaving it out can create a misleading impression of the landscape. Modern projects combine ship tracks with records from other vessels and research programmes. Each source has a different level of detail, so the information is tagged rather than blended without distinction. Scientists can then choose the data that suit a question, while navigators can focus on the most reliable depth readings along a route.","q":[{"q":"1. Choose a heading for paragraph A.","o":["A","B","C","D","E","F","G"],"a":6,"e":"Echo sounding moved mapping beyond its earlier navigation limits."},{"q":"2. Choose a heading for paragraph B.","o":["A","B","C","D","E","F","G"],"a":3,"e":"The paragraph explains how sound pulses measure depth."},{"q":"3. Choose a heading for paragraph C.","o":["A","B","C","D","E","F","G"],"a":2,"e":"It describes how surveys fill broad gaps in knowledge."},{"q":"4. Choose a heading for paragraph D.","o":["A","B","C","D","E","F","G"],"a":0,"e":"Charts represent data and need careful interpretation."},{"q":"5. Choose a heading for paragraph E.","o":["A","B","C","D","E","F","G"],"a":4,"e":"The paragraph explains new uses for earlier records."},{"q":"6. Lead lines allowed sailors to make continuous depth measurements while moving.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"The passage says they measured one point at a time."},{"q":"7. Multibeam systems measure a wider strip than a single-beam system.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"Multibeam systems send pulses at multiple angles."},{"q":"8. Satellite measurements can provide detailed charts at the same resolution as ship surveys.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"The text says they cannot replace direct surveys for detailed charts."},{"q":"9. The same bathymetric chart is equally useful for every user.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"Different users require different information."},{"q":"10. Some historical records lack precise information about where readings were taken.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"Paragraph E mentions records without precise location data."},{"q":"11. What instrument was used to measure depth at one point?","a":["lead line","a lead line"],"e":"Sailors used a lead line."},{"q":"12. Name one water property that can affect sound speed.","a":["temperature","salinity"],"e":"Changes in temperature and salinity affect sound speed."},{"q":"13. What information should describe a digitised historical record?","a":["metadata"],"e":"Metadata should explain the record’s origin, scale and limits."}]},{"t":"Reading Passage 2 — Shared workshops for small manufacturers","i":"Questions 14–18: choose A, B, C or D. Questions 19–23: match each statement with group A–E. Questions 24–27: answer in NO MORE THAN TWO WORDS.","x":"<b>Groups</b>: A. business founders &nbsp; B. workshop technicians &nbsp; C. universities &nbsp; D. city planners &nbsp; E. equipment suppliers<br><br><b>THE RISE OF SHARED FABRICATION WORKSHOPS</b><br><br>A small company with a promising product idea may need expensive machinery long before it can afford to buy its own. Shared fabrication workshops offer access to equipment such as laser cutters, computer-controlled mills and three-dimensional printers. Members pay for time, training or storage, and in some cases they can book advice from technicians. These workshops are sometimes called maker spaces, but many now serve professional designers and small manufacturers as well as hobbyists. Their purpose is not only to provide machines; they can also help an idea move from a drawing to a working prototype.<br><br>The first challenge is deciding what equipment a workshop should buy. A machine that attracts many curious visitors may be used less often than a less impressive tool that local businesses need every week. Organisers in North Quay interviewed product designers, repair businesses and students before choosing their first equipment. They selected a laser cutter and a small milling machine, then added a printer after demand became clear. The staged approach reduced the risk of spending the full budget on equipment that members might not use. It also meant the workshop opened with a narrower range of services than some early visitors expected.<br><br>Safety and training shape how members use a shared space. Some machines require an induction before a member can book them independently. Workshop technicians demonstrate safe operation, maintain equipment and help users choose suitable materials. They do not necessarily design the product for a member; their role is to make sure the process is safe and the machine is used correctly. This support takes time and has to be included in the membership price. A workshop that sells unlimited machine access without enough trained staff may face long queues or unsafe work. Members also need to understand that damaged tools affect everyone’s access.<br><br>Business founders value the chance to test a product before committing to large production costs. A prototype can reveal that a part is difficult to assemble or that a material behaves differently from what the design software predicted. Some founders meet potential collaborators in the workshop, but organisers caution against presenting social contact as a guaranteed business benefit. A shared machine does not replace market research, quality testing or a plan for manufacturing at scale. The workshop’s most direct contribution is often allowing a business to learn cheaply, revise the design and decide what to do next.<br><br>Universities have become partners in some facilities. They may lend technical expertise, offer student placements or let researchers test a design using workshop equipment. In return, a university can learn what local companies need and provide students with experience beyond the classroom. Partnerships require clear rules about intellectual property. A student project, a university research result and a company’s commercial design may involve different rights. Written agreements help prevent disagreements about who can use or publish a design. Not every workshop is connected to a university, and members can still benefit from shared facilities without an academic partner.<br><br>City planners may support a workshop because it can provide affordable workspace and contribute to a district’s economic activity. They often help with a suitable building or a start-up grant, but they cannot guarantee that a facility will remain financially stable. Workshop income may vary with the number of active members, maintenance costs and demand for training. Some cities ask a workshop to report how many businesses use it or how many skills sessions it offers. Those figures are useful, but they do not show whether every business becomes more successful. Evaluations therefore consider the workshop’s goals, the range of users and whether members can still access the service after initial funding ends.<br><br>Equipment suppliers also influence the model. They may provide discounted machines or training in exchange for visibility, but a workshop should consider what happens when a supplier’s software or spare parts are no longer available. Choosing a machine that can use open file formats or locally sourced parts may give members more flexibility. The best equipment is not always the newest. Reliability, repair support and the ability to teach safe skills can matter more than speed. A shared workshop succeeds when its equipment, staff and membership rules fit the needs of the people who use it.<br><br>Workshops also need a membership structure that is fair to people who have different levels of experience. A founder who needs a machine for one afternoon may not use a monthly membership, while a student might need occasional supervised access. Some facilities offer pay-as-you-go sessions as well as regular plans. They may reserve certain hours for training or community projects. Clear booking rules reduce conflict when demand is high. Organisers review them after the first months of operation, using attendance records and comments rather than assuming that the original schedule will suit everyone.<br><br>Some members also use the workshop to teach practical skills. A short course in computer-aided design can help a founder prepare a file before booking a machine, reducing wasted time and material. Other sessions cover measurement, finishing or safe handling. The courses do not guarantee a commercial outcome, but they can make access more meaningful for people who have not used industrial tools before. Organisers track which sessions fill and ask participants what they plan to make next. This feedback can guide future training without turning the facility into a school alone.","q":[{"q":"14. What is one purpose of a shared fabrication workshop?","o":["To help turn a design into a prototype","To guarantee a product will succeed","To replace all company research","To provide only hobby activities"],"a":0,"e":"Workshops offer machines and support for prototyping."},{"q":"15. Why did North Quay add equipment in stages?","o":["To reduce the risk of buying little-used machines","To delay opening until every tool was available","To avoid interviewing local businesses","To give students priority over companies"],"a":0,"e":"Starting with selected equipment reduced financial risk."},{"q":"16. What do workshop technicians mainly do?","o":["Support safe and correct equipment use","Design every member’s product","Set the selling price for prototypes","Arrange commercial loans"],"a":0,"e":"Technicians train members and maintain equipment."},{"q":"17. What does the passage say a prototype can reveal?","o":["A part may be difficult to assemble.","Customers will definitely buy the product.","A company can manufacture at any scale.","A design needs no further testing."],"a":0,"e":"Prototyping can reveal assembly or material problems."},{"q":"18. What is a concern when a university partners with a workshop?","o":["Agreeing who has rights to designs","Making every member a student","Preventing businesses from testing products","Ensuring all equipment is donated"],"a":0,"e":"Partnerships need clear intellectual-property rules."},{"q":"19. Which group values testing a product before investing in production?","o":["A","B","C","D","E"],"a":0,"e":"Business founders use prototypes to reduce uncertainty."},{"q":"20. Which group provides training and maintains the machines?","o":["A","B","C","D","E"],"a":1,"e":"Workshop technicians carry out those tasks."},{"q":"21. Which group may provide placements and research expertise?","o":["A","B","C","D","E"],"a":2,"e":"Universities can supply expertise and student placements."},{"q":"22. Which group may help find a building or provide start-up support?","o":["A","B","C","D","E"],"a":3,"e":"City planners may support premises or grants."},{"q":"23. Which group may discount equipment in exchange for visibility?","o":["A","B","C","D","E"],"a":4,"e":"Equipment suppliers may offer discounts."},{"q":"24. Name one machine North Quay chose at the beginning.","a":["laser cutter","milling machine"],"e":"The first purchases included a laser cutter and small milling machine."},{"q":"25. What must some users complete before booking a machine independently?","a":["an induction","induction"],"e":"Some machines require an induction first."},{"q":"26. What type of rights need to be agreed in university partnerships?","a":["intellectual property","intellectual-property"],"e":"The partners need clear intellectual-property rules."},{"q":"27. What could preserve flexibility if a machine supplier stops supporting its software?","a":["open formats","open file formats"],"e":"It should consider access to open formats or spare parts."}]},{"t":"Reading Passage 3 — How recommendation systems shape choice","i":"Questions 28–32: match each statement with paragraph A–E. Questions 33–37: TRUE, FALSE or NOT GIVEN. Questions 38–40: choose A, B, C or D.","x":"<b>Paragraphs</b>: A–E<br><br><b>THE QUIET INFLUENCE OF RECOMMENDATION SYSTEMS</b><br><br><b>A</b> Online services often help people choose among thousands of books, films, products or news items. A recommendation system ranks a smaller set of options using information such as a user’s previous activity, the behaviour of similar users or details about the items themselves. The system does not know what a person will enjoy; it estimates what may be relevant. That estimate can save time, especially when a catalogue is large. It can also influence what a person sees first and which alternatives remain out of view. The design question is therefore not simply whether recommendations are accurate, but what kind of choice they make easier.<br><br><b>B</b> Many systems learn from feedback. If a user clicks an item, watches it for a long time or buys it, the service may treat that action as evidence of interest. Yet a click can mean several things: curiosity, disagreement, a mistake or a need to check a detail. A system that interprets every interaction as approval may repeatedly show similar material. This can form a feedback loop: the person sees more of one kind of item, interacts with it, and the system becomes increasingly confident that this is what they want. Researchers test ways to use a wider range of signals, but no single action provides a perfect account of preference.<br><br><b>C</b> Personalisation can be helpful when someone has a clear goal. A music listener may want new recordings similar to a favourite style, and a shopper may appreciate reminders of products they regularly buy. The same narrowing can be less useful when the person wants to explore. A student searching for an unfamiliar topic may receive suggestions based on unrelated past activity, or only see material that resembles the first result they opened. Some services provide filters that let users change the ranking, while others make the recommendation process difficult to adjust. Choice is not only about the number of items displayed; it also depends on how easily people can move beyond the system’s first suggestions.<br><br><b>D</b> It is difficult for users to judge a recommendation if they cannot tell why it appeared. A short explanation—such as “because you followed this topic” or “popular with readers of this article”—may help a person decide whether to trust it. Explanations also allow a user to correct an assumption, for example by removing an accidental click from their history. But a simple explanation does not reveal every factor in a complex ranking system, and it cannot by itself guarantee that the result is fair. Researchers distinguish between transparency, which makes some system behaviour visible, and control, which gives users a way to change it. Both can matter, but they solve different problems.<br><br><b>E</b> Responsibility is shared among designers, service providers and regulators. Designers choose which outcomes to optimise: time spent on a site, the likelihood of a useful purchase or the diversity of material shown. A provider decides what information to collect and how long to keep it. Regulators may set rules for privacy or advertising, but it can be difficult to prescribe one ranking method for every service. A recommendation that works well for films may be inappropriate for medical information. The system’s purpose and consequences matter. Independent evaluation can test whether a tool performs differently for distinct groups, though access to data is often limited. A sensible design process makes its goals explicit, checks for unintended effects and gives users a meaningful way to revise or reject suggestions.<br><br>Recommendations are also shaped by the data chosen to represent a user. A system may treat past purchases as a sign of future interest, yet a purchase could have been a gift or a one-time need. Designers can let people remove an item from their history or switch to a setting that prioritises variety. These options do not eliminate every limitation, but they make the service’s assumptions easier to question. Evaluating the result requires more than checking whether users clicked; researchers may also ask whether a suggestion was useful, whether the person found what they needed and whether the service offered reasonable alternatives.<br><br>There is also a question of whose interests are represented in the data. A service may receive more interaction from some groups than others, especially if the interface is difficult to use or the catalogue lacks material relevant to a community. Designers can examine where people stop searching or choose to leave recommendations, though these signals need careful interpretation. A person may leave because they found what they wanted, or because the suggestions were poor. Combining usage data with voluntary feedback offers a fuller, if still incomplete, view.","q":[{"q":"28. A paragraph describing how repeated interactions can reinforce one kind of suggestion.","o":["A","B","C","D","E"],"a":1,"e":"Paragraph B describes a feedback loop."},{"q":"29. A paragraph explaining why personalisation may be unhelpful for exploration.","o":["A","B","C","D","E"],"a":2,"e":"Paragraph C contrasts a clear goal with exploring new material."},{"q":"30. A paragraph distinguishing system explanations from user control.","o":["A","B","C","D","E"],"a":3,"e":"Paragraph D explains transparency and control as separate features."},{"q":"31. A paragraph outlining the different responsibilities of providers and regulators.","o":["A","B","C","D","E"],"a":4,"e":"Paragraph E covers shared responsibility."},{"q":"32. A paragraph defining what a recommendation system estimates.","o":["A","B","C","D","E"],"a":0,"e":"Paragraph A says it estimates what may be relevant."},{"q":"33. Recommendation systems know with certainty what a user will enjoy.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"The passage says they estimate rather than know."},{"q":"34. A user’s click may not always indicate approval.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"A click can reflect curiosity, disagreement or error."},{"q":"35. All online services allow users to change their recommendation rankings.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"Some services provide filters, while others are difficult to adjust."},{"q":"36. A short explanation may let users correct an assumption about their interests.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"The passage gives removing an accidental click as an example."},{"q":"37. The passage states that independent evaluation always has full access to service data.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"It says access to data is often limited."},{"q":"38. What is the main argument of the passage?","o":["Recommendations can help, but their goals and effects should be visible and open to user choice.","Online services should stop ranking information.","Clicks are the most reliable measure of preference.","Users should accept recommendations without changing them."],"a":0,"e":"The passage balances usefulness with influence, transparency and control."},{"q":"39. Why might a feedback loop be misleading?","o":["The system may treat different reasons for a click as the same signal.","Users never click on items they enjoy.","Similar users always have identical preferences.","A service cannot record user interactions."],"a":0,"e":"A click can mean more than genuine interest."},{"q":"40. What does the author suggest about regulation?","o":["Rules need to consider the purpose and consequences of each system.","One ranking method should be used for every service.","Regulation should focus only on advertising.","Service providers should not collect any information."],"a":0,"e":"A film recommendation and a medical recommendation have different stakes."}]}];
+var L = [{"t":"Listening Part 1 — Booking a guided coastal walk","i":"Questions 1–10. Complete the booking form. Write NO MORE THAN TWO WORDS AND/OR A NUMBER.","x":"SEACLIFF VISITOR CENTRE — WALK BOOKING<br>Family name: 1 _____<br>Walk: 2 _____<br>Day: 3 _____<br>Date: 4 _____<br>Meet at: 5 _____<br>Length: 6 _____<br>Fee: 7 £_____<br>Bring: 8 a packed _____<br>Wear: 9 walking _____<br>Meeting place: 10 _____ centre","q":[{"q":"1. Family name","a":["Ortiz"],"e":"The caller’s family name is Ortiz."},{"q":"2. Walk","a":["coastal geology","geology walk"],"e":"The walk focuses on coastal geology."},{"q":"3. Day","a":["Saturday"],"e":"The walk is on Saturday."},{"q":"4. Date","a":["17 August","August 17","17th August"],"e":"It takes place on 17 August."},{"q":"5. Meet at","a":["8.20","8:20","8.20 am","8:20 am"],"e":"Participants meet at twenty past eight."},{"q":"6. Length","a":["4 hours","four hours"],"e":"The walk lasts four hours."},{"q":"7. Fee","a":["26","£26"],"e":"The fee is twenty-six pounds."},{"q":"8. Bring","a":["lunch","packed lunch"],"e":"Bring a packed lunch."},{"q":"9. Wear","a":["walking boots","boots"],"e":"Participants should wear walking boots."},{"q":"10. Meeting place","a":["visitor"],"e":"The group meets at the visitor centre."}]},{"t":"Listening Part 2 — Visitor guide to the City Science Weekend","i":"Questions 11–15. Choose A, B or C. Questions 16–20. Match each activity or service with A–E.","x":"Places: A. welcome desk &nbsp; B. physics hall &nbsp; C. craft lab &nbsp; D. café &nbsp; E. quiet room","q":[{"q":"11. What time does the event open?","o":["9.00 am","9.30 am","10.00 am"],"a":1,"e":"The doors open at half past nine."},{"q":"12. How should visitors book their free entry ticket?","o":["Online in advance","By phone on the day","At the craft lab"],"a":0,"e":"The organiser recommends booking online."},{"q":"13. What will be provided for the building workshop?","o":["Safety glasses","A notebook","A lunch voucher"],"a":0,"e":"Safety glasses are provided in the workshop."},{"q":"14. Until what time does the café serve lunch?","o":["1.00 pm","2.00 pm","3.00 pm"],"a":1,"e":"Lunch is served until two."},{"q":"15. When does the guest lecture begin?","o":["2.00 pm","2.30 pm","3.00 pm"],"a":2,"e":"The guest lecture starts at three."},{"q":"16. Where can visitors get a printed schedule?","o":["A","B","C","D","E"],"a":0,"e":"Schedules are available at the welcome desk."},{"q":"17. Where is the wind-tunnel demonstration?","o":["A","B","C","D","E"],"a":1,"e":"The wind tunnel is in the physics hall."},{"q":"18. Where can visitors build a paper bridge?","o":["A","B","C","D","E"],"a":2,"e":"The paper-bridge activity is in the craft lab."},{"q":"19. Where can visitors buy soup and sandwiches?","o":["A","B","C","D","E"],"a":3,"e":"The café serves lunch."},{"q":"20. Where can someone go if they need a quiet place to rest?","o":["A","B","C","D","E"],"a":4,"e":"The quiet room is open to visitors."}]},{"t":"Listening Part 3 — A student study on evening light and sleep","i":"Questions 21–25. Choose A, B or C. Questions 26–30. Match each task with student A–F.","x":"Student tasks: A. design the diary &nbsp; B. recruit volunteers &nbsp; C. review research &nbsp; D. analyse results &nbsp; E. present the findings &nbsp; F. book a room","q":[{"q":"21. What is the students’ research question?","o":["Whether evening light exposure is related to sleep timing","Whether students prefer studying in groups","Whether morning lectures should start later"],"a":0,"e":"They are studying evening light and sleep timing."},{"q":"22. What information will participants record?","o":["The time they use bright screens","The number of lectures they attend","The food they eat at lunch"],"a":0,"e":"Participants will record evening screen use."},{"q":"23. What problem did the pilot reveal?","o":["Participants forgot to record screen use.","The light meter was too heavy.","The diary had too many pages."],"a":0,"e":"Several participants forgot to record screen use."},{"q":"24. What change will the students make?","o":["Send a reminder each evening","Remove the diary questions","Ask participants to stop using screens"],"a":0,"e":"A daily reminder should improve the records."},{"q":"25. What does the tutor advise them not to do?","o":["Give medical advice based on a small study","Compare weekday and weekend data","Mention study limitations"],"a":0,"e":"The tutor says the project should not make medical recommendations."},{"q":"26. Who will design the diary?","o":["A","B","C","D","E","F"],"a":0,"e":"Luca will design the diary."},{"q":"27. Who will recruit volunteers?","o":["A","B","C","D","E","F"],"a":1,"e":"Nina will recruit participants."},{"q":"28. Who will review previous research?","o":["A","B","C","D","E","F"],"a":2,"e":"Omar will review the literature."},{"q":"29. Who will analyse the data?","o":["A","B","C","D","E","F"],"a":3,"e":"Luca will analyse the results."},{"q":"30. Who will present the findings?","o":["A","B","C","D","E","F"],"a":4,"e":"Nina will give the presentation."}]},{"t":"Listening Part 4 — Flight data recorders","i":"Questions 31–40. Complete the notes. Write NO MORE THAN TWO WORDS for each answer.","x":"AIRCRAFT DATA AFTER AN INCIDENT<br>Most commercial aircraft carry two 31 _____.<br>The cockpit voice recorder captures crew 32 _____.<br>The flight data recorder tracks aircraft 33 _____.<br>Modern units store information in a protected 34 _____.<br>They are designed to withstand high 35 _____.<br>They are also tested against water 36 _____.<br>An underwater beacon sends a locating 37 _____.<br>Investigators may use radar and 38 _____ records for comparison.<br>Data can show whether an instrument 39 _____.<br>Maintenance logs help explain the aircraft’s 40 _____.","q":[{"q":"31. Gap 31","a":["recorders","data recorders"],"e":"Aircraft carry a cockpit voice recorder and a flight data recorder."},{"q":"32. Gap 32","a":["conversations","crew conversations"],"e":"The voice recorder captures crew conversations."},{"q":"33. Gap 33","a":["movement","flight movement"],"e":"The flight data recorder tracks aircraft movement."},{"q":"34. Gap 34","a":["memory unit","memory module"],"e":"Information is stored in a protected memory unit."},{"q":"35. Gap 35","a":["temperatures","heat"],"e":"The units are built to withstand high temperatures."},{"q":"36. Gap 36","a":["pressure","water pressure"],"e":"They are tested against water pressure."},{"q":"37. Gap 37","a":["signal"],"e":"The beacon sends a locating signal."},{"q":"38. Gap 38","a":["weather"],"e":"Investigators may compare the recordings with radar and weather records."},{"q":"39. Gap 39","a":["failed","was faulty"],"e":"Data may show whether an instrument failed."},{"q":"40. Gap 40","a":["service history","history"],"e":"Maintenance logs help explain the aircraft’s service history."}]}];
+L[1].im="<img class=\"chart\" alt=\"Visitor plan for the City Science Weekend: labelled welcome desk, physics hall, cafe, craft lab and quiet room\" src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3NjAiIGhlaWdodD0iNDMwIiB2aWV3Qm94PSIwIDAgNzYwIDQzMCI+PHJlY3Qgd2lkdGg9Ijc2MCIgaGVpZ2h0PSI0MzAiIHJ4PSIxNiIgZmlsbD0iI2Y0ZjdmYiIvPjx0ZXh0IHg9IjM4MCIgeT0iMzIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyMCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzE4Mjk0ZCI+Q0lUWSBTQ0lFTkNFIFdFRUtFTkQg4oCUIFZJU0lUT1IgUExBTjwvdGV4dD48dGV4dCB4PSIzODAiIHk9IjU0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTMiIGZpbGw9IiM1MjYwNzkiPk1hdGNoIGVhY2ggcXVlc3Rpb24gdG8gdGhlIGxhYmVsbGVkIHBsYWNlPC90ZXh0PjxnIGZvbnQtZmFtaWx5PSJBcmlhbCIgZmlsbD0iIzE4Mjk0ZCI+PHJlY3QgeD0iMzgiIHk9Ijc1IiB3aWR0aD0iMjEwIiBoZWlnaHQ9IjExOCIgcng9IjEyIiBmaWxsPSIjZTNmMGY4IiBzdHJva2U9IiM0OTZjOTEiIHN0cm9rZS13aWR0aD0iMyIvPjxjaXJjbGUgY3g9IjY2IiBjeT0iMTAxIiByPSIxNyIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjNDk2YzkxIiBzdHJva2Utd2lkdGg9IjIiLz48dGV4dCB4PSI2NiIgeT0iMTA3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iNzAwIj5BPC90ZXh0Pjx0ZXh0IHg9IjE0NSIgeT0iMTA1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE3IiBmb250LXdlaWdodD0iNzAwIj5XRUxDT01FIERFU0s8L3RleHQ+PHJlY3QgeD0iOTEiIHk9IjEzMCIgd2lkdGg9IjEwOCIgaGVpZ2h0PSIzMCIgcng9IjUiIGZpbGw9IiM4ZWI1ZDUiIHN0cm9rZT0iIzM1NTc3NyIgc3Ryb2tlLXdpZHRoPSIyIi8+PHBhdGggZD0iTTEwNSAxMzB2LThoNzB2OCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzU1Nzc3IiBzdHJva2Utd2lkdGg9IjMiLz48dGV4dCB4PSIxNDUiIHk9IjE3OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxMiI+c2NoZWR1bGUgYW5kIHZpc2l0b3IgaGVscDwvdGV4dD48cmVjdCB4PSIyNzIiIHk9Ijc1IiB3aWR0aD0iNDUwIiBoZWlnaHQ9IjExOCIgcng9IjEyIiBmaWxsPSIjZWVmMmZjIiBzdHJva2U9IiM1OTZiOWQiIHN0cm9rZS13aWR0aD0iMyIvPjxjaXJjbGUgY3g9IjMwMCIgY3k9IjEwMSIgcj0iMTciIGZpbGw9IiNmZmYiIHN0cm9rZT0iIzU5NmI5ZCIgc3Ryb2tlLXdpZHRoPSIyIi8+PHRleHQgeD0iMzAwIiB5PSIxMDciIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTYiIGZvbnQtd2VpZ2h0PSI3MDAiPkI8L3RleHQ+PHRleHQgeD0iNTAzIiB5PSIxMDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTciIGZvbnQtd2VpZ2h0PSI3MDAiPlBIWVNJQ1MgSEFMTDwvdGV4dD48ZWxsaXBzZSBjeD0iNDMwIiBjeT0iMTQzIiByeD0iNDIiIHJ5PSIxMyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjU3NmFlIiBzdHJva2Utd2lkdGg9IjMiLz48ZWxsaXBzZSBjeD0iNDMwIiBjeT0iMTQzIiByeD0iNDIiIHJ5PSIxMyIgdHJhbnNmb3JtPSJyb3RhdGUoNTUgNDMwIDE0MykiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzY1NzZhZSIgc3Ryb2tlLXdpZHRoPSIzIi8+PGVsbGlwc2UgY3g9IjQzMCIgY3k9IjE0MyIgcng9IjQyIiByeT0iMTMiIHRyYW5zZm9ybT0icm90YXRlKC01NSA0MzAgMTQzKSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjU3NmFlIiBzdHJva2Utd2lkdGg9IjMiLz48Y2lyY2xlIGN4PSI0MzAiIGN5PSIxNDMiIHI9IjYiIGZpbGw9IiNlMjhhNGMiLz48dGV4dCB4PSI1NDAiIHk9IjE1MSIgZm9udC1zaXplPSIxMyI+d2luZC10dW5uZWwgZGVtb25zdHJhdGlvbjwvdGV4dD48cmVjdCB4PSIzOCIgeT0iMjExIiB3aWR0aD0iMjEwIiBoZWlnaHQ9IjExOCIgcng9IjEyIiBmaWxsPSIjZmZmMWRmIiBzdHJva2U9IiNhNzc5NDgiIHN0cm9rZS13aWR0aD0iMyIvPjxjaXJjbGUgY3g9IjY2IiBjeT0iMjM3IiByPSIxNyIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjYTc3OTQ4IiBzdHJva2Utd2lkdGg9IjIiLz48dGV4dCB4PSI2NiIgeT0iMjQzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iNzAwIj5EPC90ZXh0Pjx0ZXh0IHg9IjE0NSIgeT0iMjQxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE3IiBmb250LXdlaWdodD0iNzAwIj5DQUbDiTwvdGV4dD48cGF0aCBkPSJNMTEyIDI2M2g0NmwtNSAyMGgtMzR6TTE1OCAyNjdoMTBhOCA4IDAgMCAxIDAgMTVoLTEzIiBmaWxsPSIjZDc4ZDUyIiBzdHJva2U9IiM4YjVkMzUiIHN0cm9rZS13aWR0aD0iMyIvPjxwYXRoIGQ9Ik0xMTkgMjU3Yy04LTcgMy05LTItMTVNMTM3IDI1N2MtOC03IDMtOS0yLTE1IiBmaWxsPSJub25lIiBzdHJva2U9IiM4YjVkMzUiIHN0cm9rZS13aWR0aD0iMiIvPjx0ZXh0IHg9IjE0NSIgeT0iMzE1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjEyIj5zb3VwIGFuZCBzYW5kd2ljaGVzPC90ZXh0PjxyZWN0IHg9IjI3MiIgeT0iMjExIiB3aWR0aD0iNDUwIiBoZWlnaHQ9IjExOCIgcng9IjEyIiBmaWxsPSIjZTdmNGVjIiBzdHJva2U9IiM0ZTg4NjkiIHN0cm9rZS13aWR0aD0iMyIvPjxjaXJjbGUgY3g9IjMwMCIgY3k9IjIzNyIgcj0iMTciIGZpbGw9IiNmZmYiIHN0cm9rZT0iIzRlODg2OSIgc3Ryb2tlLXdpZHRoPSIyIi8+PHRleHQgeD0iMzAwIiB5PSIyNDMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTYiIGZvbnQtd2VpZ2h0PSI3MDAiPkM8L3RleHQ+PHRleHQgeD0iNTAzIiB5PSIyNDEiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTciIGZvbnQtd2VpZ2h0PSI3MDAiPkNSQUZUIExBQjwvdGV4dD48cGF0aCBkPSJNMzkwIDI5NmgxMzBNNDAxIDI5M2wyMi0zMiAyNCAyNSAyNC0zMiAyNSAzNyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNGU4ODY5IiBzdHJva2Utd2lkdGg9IjQiLz48dGV4dCB4PSI1NzkiIHk9IjI4MyIgZm9udC1zaXplPSIxMyI+cGFwZXItYnJpZGdlIGFjdGl2aXR5PC90ZXh0PjxyZWN0IHg9IjM4IiB5PSIzNDciIHdpZHRoPSI2ODQiIGhlaWdodD0iNjMiIHJ4PSIxMiIgZmlsbD0iI2VlZThmNyIgc3Ryb2tlPSIjNzU2MjlhIiBzdHJva2Utd2lkdGg9IjMiLz48Y2lyY2xlIGN4PSI2OCIgY3k9IjM3OCIgcj0iMTciIGZpbGw9IiNmZmYiIHN0cm9rZT0iIzc1NjI5YSIgc3Ryb2tlLXdpZHRoPSIyIi8+PHRleHQgeD0iNjgiIHk9IjM4NCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNiIgZm9udC13ZWlnaHQ9IjcwMCI+RTwvdGV4dD48dGV4dCB4PSIyMjAiIHk9IjM4NCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNyIgZm9udC13ZWlnaHQ9IjcwMCI+UVVJRVQgUk9PTTwvdGV4dD48cGF0aCBkPSJNMzQxIDM4Nmg2MHYtMThoLTYwek0zNTAgMzY4di04TTM5MiAzNjh2LThNMzQ3IDM4OXY4TTM5NiAzODl2OCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNzU2MjlhIiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjx0ZXh0IHg9IjUzNSIgeT0iMzgyIiBmb250LXNpemU9IjEzIj5hIGNhbG0gcGxhY2UgdG8gcmVzdDwvdGV4dD48L2c+PC9zdmc+\">";
+var T = ["Seacliff Visitor Centre, good morning. Hello, I would like to book a place on the guided coastal walk. Certainly. Can I have your family name? Ortiz, O R T I Z. Thanks. The walk is called the coastal geology walk. It is on Saturday the seventeenth of August. What time do we meet? Please be here at twenty past eight in the morning. The walk lasts about four hours, depending on the tide. Is there a fee? It is twenty-six pounds per person. That includes the guide and transport back to the centre. What should we bring? A packed lunch, please. We will stop near the old harbour, where there are no shops. Do we need special clothing? Walking boots are important because the path is uneven. A light waterproof jacket is also sensible, although you do not need to bring a helmet. Where exactly should we meet? At the visitor centre entrance. Please arrive ten minutes early so the guide can check everyone in. The number seven bus stops just across the road.","Welcome to the City Science Weekend. The event opens at half past nine, and your free entry ticket is easiest to book online before you arrive. If you have not booked, staff can check whether space remains at the welcome desk. Our building workshop is in the craft lab; safety glasses are provided there, but children must stay with an adult. The café serves soup and sandwiches until two o’clock. The guest lecture begins at three in the main hall, so please arrive a little early if you want a seat. A printed schedule is available from the welcome desk near the entrance. In the physics hall, visitors can watch a wind-tunnel demonstration. The paper-bridge activity takes place in the craft lab, where you can test how much weight your design holds. The café is on the ground floor beside the stairs. If you need somewhere quiet to rest, the quiet room is at the end of the corridor. Please do not take food into the demonstration areas. Volunteers in blue shirts can answer questions throughout the day.","Luca: Our project is about whether evening light exposure is related to the time students fall asleep. We are not trying to diagnose sleep problems. Nina: Participants can keep a short diary for one week. They should record when they use a bright screen in the evening. Omar: In the pilot, several people forgot to note their screen use. We should send a reminder each evening. Luca: I can design the diary and analyse the results. Nina: I will recruit volunteers and give the presentation. Omar: I will review the previous research so we can explain how our question fits with existing work. The tutor said we should not give medical advice based on a small study. We can describe the pattern we observe, but we need to mention the limits. We should also compare weekdays and weekends, because people may have different routines. Nina: I can make sure the information sheet explains that participation is voluntary. Luca: Good. We should keep the diary brief so that people are more likely to complete it.","Aircraft involved in a serious incident are usually equipped with two data recorders. One is the cockpit voice recorder, which stores conversations and sounds from the flight deck. The other is the flight data recorder, which tracks the aircraft’s movement and the settings of selected systems. Modern recorders store information in a protected memory unit. The unit is designed to survive high temperatures, severe impact and water pressure. A bright outer case helps investigators locate it, while an underwater beacon sends a signal after contact with water. Finding the recorder is only the beginning of an investigation. Specialists check whether the information is complete and compare it with other evidence, including radar and weather records. The data may show that an instrument failed, but investigators also need to understand what the crew could see and how the aircraft responded. Maintenance logs can provide the service history of a component, including earlier repairs or inspections. Investigators are careful not to draw a conclusion from a single reading. They compare different sources, check the timing and consult technical experts. The purpose is to understand what happened and how future risks might be reduced, not simply to identify one person to blame. The final report may lead to changes in training, equipment or maintenance procedures."];
+var FULL=true, AUDIO=["","","",""];
+var ASSESSOR_EMAIL="oxfampreparation@email.cz";
+
+function wc(t){var m=t.trim().match(/\S+/g);return m?m.length:0}
+function winit(){
+  document.querySelectorAll("textarea").forEach(function(t){t.oninput=function(){document.getElementById(t.id+"c").textContent=wc(t.value)+" words"}});
+  document.querySelectorAll("[data-c]").forEach(function(b){b.onclick=function(){var t=document.getElementById(b.dataset.c).value;if(navigator.clipboard)navigator.clipboard.writeText(t)}});
+  document.querySelectorAll("[data-s]").forEach(function(b){b.onclick=function(){
+    var t=document.getElementById(b.dataset.s).value,nameField=document.getElementById("nm"),nm=((nameField&&nameField.value)||"Student").trim()||"Student";
+    if(!wc(t)){b.textContent="Write something first!";setTimeout(function(){b.textContent="Send writing to assessor"},2000);return}
+    var subject="IELTS Academic Practice Test 5 - "+b.dataset.t+" - "+nm;
+    var message="Student: "+nm+"\nTest: IELTS Academic Practice Test 5\nTask: "+b.dataset.t+"\n\n"+t;
+    var status=b.parentNode.parentNode.querySelector(".email-status");if(!status){status=document.createElement("p");status.className="note email-status";status.setAttribute("role","status");b.parentNode.parentNode.appendChild(status)}
+    status.textContent="Your email app should open with the assessor, task and writing filled in. Review the draft and press Send.";
+    var mailto="mailto:"+ASSESSOR_EMAIL+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(message);
+    window.location.href=mailto;b.textContent="Open email draft";setTimeout(function(){b.textContent="Send writing to assessor"},3500);
+  }});
+}
+var playId=0;
+function say(i,done){
+  var id=++playId;speechSynthesis.cancel();
+  var parts=T[i].split(/(\{pause\}|\{short\}|\bSpeaker \d:|\b[A-Z][A-Za-z]+:)/),q=[],pitch=1,flip=0,names={};
+  parts.forEach(function(x){
+    x=x.trim();if(!x)return;
+    if(x==="{pause}"||x==="{short}"){q.push({w:x==="{pause}"?2500:1200});pitch=1;return}
+    var sp=x.match(/^Speaker (\d):$/);if(sp){q.push({t:"Speaker "+sp[1],p:1,w:700});return}
+    if(/^[A-Za-z 0-9 ]+:$/.test(x)){var n=x.slice(0,-1);if(!(n in names))names[n]=(flip++%2)?1.25:.85;pitch=names[n];return}
+    (x.match(/[^.?!]+[.?!]*/g)||[x]).forEach(function(z){q.push({t:z.trim(),p:pitch,w:300})})
+  });
+  var k=0;(function next(){
+    if(id!==playId)return;
+    if(k>=q.length){done();return}
+    var s=q[k++];
+    if(!s.t){setTimeout(next,s.w);return}
+    var u=new SpeechSynthesisUtterance(s.t);u.lang="en-GB";u.rate=0.95;u.pitch=s.p;
+    u.onend=function(){setTimeout(next,s.w)};u.onerror=function(){setTimeout(next,s.w)};
+    speechSynthesis.speak(u);
+  })()
+}
+
+function play(b){if(b._busy)return;var i=+b.dataset.i,wrap=b.parentNode,stop=wrap.querySelector(".listen-stop"),status=wrap.querySelector(".listen-status");if(!window.speechSynthesis||!window.SpeechSynthesisUtterance){if(status)status.textContent="Text-to-speech is not available in this browser.";b.textContent="TTS unavailable";return}b._busy=true;b.textContent="Playing…";stop.disabled=false;if(status)status.textContent="Playing Part "+(i+1)+" using your browser voice…";say(i,function(){b._busy=false;b.disabled=false;b.textContent="Replay listening audio";stop.disabled=true;if(status)status.textContent="Part "+(i+1)+" finished. Replay is available."})}
+
+function init(){[["t1",60],["t2",30],["t3",60],["sp2prep",1],["sp2talk",2]].forEach(function(a){timer(a[0],a[1])});if(!FULL)return;build(R,document.getElementById("rbox"),"r");build(L,document.getElementById("lbox"),"l");document.getElementById("ck1").onclick=function(){check(document.getElementById("rbox"),document.getElementById("sc1"))};document.getElementById("ck2").onclick=function(){check(document.getElementById("lbox"),document.getElementById("sc2"))};document.querySelectorAll(".listen-play").forEach(function(b){b.onclick=function(){play(b)}});document.querySelectorAll(".listen-stop").forEach(function(b){b.onclick=function(){if(window.speechSynthesis)speechSynthesis.cancel();playId++;var wrap=b.parentNode,p=wrap.querySelector(".listen-play"),s=wrap.querySelector(".listen-status");if(p){p._busy=false;p.disabled=false;p.textContent="Play listening audio"}b.disabled=true;if(s)s.textContent="Playback stopped. Press Play to restart."}});winit()}
+
+(function(){
+  var g=document.getElementById("gate"),m=document.getElementById("main");
+  function show(){g.hidden=true;m.hidden=false;if(window.init)init()}
+  if(unlocked()){show();return}
+  document.getElementById("gf").onsubmit=function(e){
+    e.preventDefault();
+    if(document.getElementById("pw").value.trim()===PW){
+      try{sessionStorage.setItem("ielts_academic_practice_5","1")}catch(x){}
+      show();
+    } else {
+      document.getElementById("err").textContent="Wrong password.";
+    }
+  }
+  
+  var themeBtn = document.getElementById('themeBtn');
+  if(themeBtn) {
+    themeBtn.onclick = function() {
+      var currentTheme = document.documentElement.getAttribute('data-theme');
+      if(currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        themeBtn.textContent = '🌙';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeBtn.textContent = '☀️';
+      }
+    };
+  }
+  
+  var menuToggle = document.getElementById('menuToggle');
+  if(menuToggle) {
+    menuToggle.onclick = function() {
+      document.body.classList.toggle('menuopen');
+    };
+  }
+  
+  var loginBtn = document.getElementById('loginBtn');
+  var dlg = document.getElementById('dlg');
+  var cancel = document.getElementById('cancel');
+  if(loginBtn && dlg) {
+    loginBtn.onclick = function() { dlg.showModal(); }
+  }
+  if(cancel && dlg) {
+    cancel.onclick = function() { dlg.close(); }
+  }
+})();
+</script>
+</body>
+</html>

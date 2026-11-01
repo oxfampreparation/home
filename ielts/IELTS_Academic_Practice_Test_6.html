@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>IELTS Academic Practice Test 6</title>
+
+<style>
+/* Default theme is explicitly light */
+:root {
+  --bg: #f6f7fb;
+  --paper: #fff;
+  --ink: #14213d;
+  --muted: #4b5266;
+  --line: #d5d9e6;
+  --mark: #2b59ff;
+  --hi: #ffe45e;
+  --ok: #1a7f52;
+  --bad: #b3261e;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Dark theme applied ONLY when data-theme="dark" is present */
+:root[data-theme="dark"] {
+  --bg: #0f1526;
+  --paper: #182038;
+  --ink: #eef1fb;
+  --muted: #a9b1c9;
+  --line: #2c3656;
+  --mark: #7d9bff;
+  --hi: #e9d24a;
+  --ok: #57c58f;
+  --bad: #ff8a80;
+}
+
+html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: border-box; }
+
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1.0625rem/1.6 "Atkinson Hyperlegible", system-ui, sans-serif; }
+h1, h2, h3 { font-family: Archivo, "Helvetica Neue", Arial, sans-serif; line-height: 1.05; margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--mark); outline-offset: 3px; }
+.wrap { max-width: 74rem; margin: 0 auto; padding: 0 1.25rem; }
+
+header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .75rem; padding: 1.25rem 0; position: sticky; top: 0; background: var(--bg); z-index: 100; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+.head-left { display: flex; align-items: center; gap: .75rem; }
+#menuToggle { background: transparent; border: none; cursor: pointer; color: var(--ink); display: flex; padding: .25rem; border-radius: .25rem; }
+#menuToggle:hover { background: var(--line); }
+#menuToggle svg { width: 1.6rem; height: 1.6rem; }
+.logo { font: 800 1.25rem Archivo, sans-serif; text-decoration: none; }
+nav a { margin-left: 1.25rem; text-decoration: none; color: var(--muted); }
+nav a:hover { color: var(--ink); }
+
+.btn { display: inline-block; background: var(--ink); color: var(--bg); padding: .8rem 1.4rem; border-radius: .5rem; font-weight: 700; text-decoration: none; border: 0; cursor: pointer; font-size: 1rem; font-family: inherit; }
+.btn.alt { background: transparent; color: var(--ink); border: 2px solid var(--ink); }
+.hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2rem; align-items: start; padding: 1rem 0 3rem; }
+.hero-text { margin-top: 2.5rem; }
+
+h1 { font-size: clamp(2rem, 3.4vw, 3rem); font-weight: 800; font-stretch: 90%; letter-spacing: -.02em; margin-top: 1rem; margin-bottom: 0; }
+h1 span { background: linear-gradient(transparent 62%, var(--hi) 62%); }
+.lead { color: var(--muted); max-width: 32rem; margin: 1.25rem 0 1.75rem; font-size: 1.15rem; }
+.row { display: flex; gap: .75rem; flex-wrap: wrap; }
+
+.sheet { background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.sheet h2 { font-size: 1.1rem; margin-bottom: .25rem; }
+.sheet p { margin: 0 0 1rem; color: var(--muted); font-size: .95rem; }
+.q { padding: .7rem 0; border-top: 1px solid var(--line); }
+.q b { display: inline-block; font-weight: 800; margin-bottom: .45rem; margin-right: 0.5rem; }
+
+.opts { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem; width: fit-content; }
+.opt { display: flex; align-items: center; gap: .4rem; padding: .3rem .7rem .3rem .35rem; border: 1.5px solid var(--line); border-radius: 2rem; background: transparent; color: inherit; font-size: .95rem; cursor: pointer; width: fit-content; }
+.opt i { width: 1.4rem; height: 1.4rem; border-radius: 50%; border: 2px solid var(--muted); display: grid; place-items: center; font: 700 .7rem Archivo, sans-serif; font-style: normal; flex-shrink: 0; }
+
+.opt[aria-pressed="true"] { border-color: var(--mark); }
+.opt[aria-pressed="true"] i { background: var(--mark); border-color: var(--mark); color: var(--bg); }
+.opt.right { border-color: var(--ok); } .opt.right i { background: var(--ok); border-color: var(--ok); color: var(--bg); }
+.opt.wrong { border-color: var(--bad); } .opt.wrong i { background: var(--bad); border-color: var(--bad); color: var(--bg); }
+
+/* Image Options specific styles */
+.img-opts-grid { display: flex; flex-direction: row; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+.img-opt { flex-direction: column; align-items: center; padding: 0.5rem; border-radius: 0.5rem; gap: 0.5rem; text-align: center; }
+.img-opt img { height: 120px; width: 160px; object-fit: cover; background: var(--paper); border-radius: 0.25rem; }
+.img-opt i { margin-bottom: 0.25rem; }
+
+.result { margin-top: 1rem; font-weight: 700; min-height: 1.6rem; }
+section { padding: 3.5rem 0; border-top: 1px solid var(--line); }
+h2.t { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: .75rem; letter-spacing: -.01em; }
+
+.sub, .txt { color: var(--muted); max-width: 48rem; margin: 0 0 2rem; white-space: pre-line; line-height: 1.6; }
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: .6rem; background: var(--paper); }
+table { border-collapse: collapse; width: 100%; min-width: 38rem; }
+th, td { text-align: left; padding: .9rem 1rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font: 800 1.2rem Archivo, sans-serif; white-space: nowrap; }
+td small { display: block; font: 400 .9rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+
+.support-strip { position: fixed; bottom: 0; left: 0; right: 0; background: var(--ink); color: var(--bg); padding: 1rem 1.25rem; z-index: 999; box-shadow: 0 -4px 12px rgba(0,0,0,0.15); }
+.support-strip-inner { max-width: 74rem; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; width: 100%; font-weight: 700; }
+footer { border-top: 1px solid var(--line); padding: 2rem 0 5rem; color: var(--muted); font-size: .95rem; }
+
+.lang { display: flex; gap: .25rem; flex-wrap: wrap; } .lang button { font: 700 .8rem Archivo, sans-serif; padding: .35rem .6rem; border: 1.5px solid var(--line); border-radius: .4rem; background: transparent; color: var(--muted); cursor: pointer; } .lang button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.layout { display: grid; grid-template-columns: 12.5rem minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+.layout.collapsed { grid-template-columns: 1fr; gap: 0; }
+.layout.collapsed .side { display: none; }
+.side { position: sticky; top: 5rem; max-height: calc(100vh - 6rem); max-height: calc(100dvh - 6rem); overflow-y: auto; display: flex; flex-direction: column; gap: .15rem; }
+summary { cursor: pointer; font: 700 .95rem Archivo, sans-serif; color: var(--muted); padding: .4rem .75rem; border-radius: .5rem; } summary:hover { color: var(--ink); } .ex[open] summary { margin-bottom: .15rem; }
+.side nav { display: flex; flex-direction: column; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); } .side nav a { margin: 0; color: inherit; } .side .lang { margin-bottom: 1rem; }
+.side p { margin: 0 0 .5rem; font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+.side a { text-decoration: none; padding: .5rem .75rem; border-radius: .5rem; font: 700 1rem Archivo, sans-serif; border-left: 3px solid transparent; }
+.side a small { display: block; font: 400 .8rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+.side a:hover { background: var(--paper); border-left-color: var(--mark); }
+tr:target td { background: var(--hi); color: #14213d; } tr:target td small { color: #14213d; }
+
+@media (max-width: 52rem) { .layout { grid-template-columns: 1fr; gap: 0; } .side { position: static; max-height: none; margin: 0 0 1rem; padding: 0 0 1rem; border-bottom: 1px solid var(--line); } }
+
+.hr { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; } .hr .btn { padding: .45rem 1rem; font-size: .9rem; }
+dialog { border: 2px solid var(--ink); border-radius: .75rem; background: var(--paper); color: var(--ink); padding: 1.5rem; width: min(26rem, 92vw); max-height: 90vh; overflow: auto; } dialog::backdrop { background: rgba(10,16,32,.55); }
+dialog h2 { font-size: 1.4rem; margin-bottom: .5rem; } dialog label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+dialog input { width: 100%; padding: .65rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.demo { color: var(--muted); font-size: .9rem; margin: .5rem 0 0; } .err { color: var(--bad); min-height: 1.5rem; margin-top: .5rem; font-size: .95rem; }
+
+@media (max-width: 40rem) {
+  .wrap { padding: 0 1rem; }
+  header { padding: 1rem 0; }
+  .hero { padding-bottom: 2rem; }
+  .sheet { padding: 1.1rem; }
+  section { padding: 2.5rem 0; }
+  .scroll { border: 0; background: transparent; overflow: visible; }
+  table, tbody, tr, td { display: block; min-width: 0; width: 100%; }
+  thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  tr { background: var(--paper); border: 1px solid var(--line); border-radius: .6rem; padding: .6rem 0; margin-bottom: .75rem; }
+  td { border: 0; padding: .15rem 1rem; }
+  td:first-child { font-size: 1.3rem; padding-top: .4rem; }
+  tr:target { border-color: var(--ink); }
+}
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+html { scroll-padding-top: calc(5rem + env(safe-area-inset-top, 0px)); }
+body header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); padding: .6rem 0; border-bottom: 1px solid var(--line); }
+.brand { display: flex; align-items: center; gap: .75rem; }
+body .logo { font-size: 1.85rem; letter-spacing: -.02em; }
+.mbtn { display: inline-flex; flex-direction: column; justify-content: center; gap: 5px; width: 2.75rem; height: 2.75rem; padding: 0 .7rem; border: 2px solid var(--ink); border-radius: .5rem; background: transparent; cursor: pointer; flex: none; }
+.mbtn span { display: block; height: 2px; background: var(--ink); border-radius: 2px; }
+.mbtn:hover { background: var(--paper); }
+body .side { top: 5.5rem; max-height: calc(100vh - 6.5rem); max-height: calc(100dvh - 6.5rem); }
+body.nomenu .layout { grid-template-columns: minmax(0, 1fr); }
+body.nomenu .side { display: none; }
+body:has(#app[hidden]) .mbtn { display: none; }
+.side>.hr { margin-bottom: 1rem; }
+.scrim { display: none; }
+
+@media (max-width: 52rem) {
+  body .side { position: fixed; top: 0; left: 0; bottom: 0; width: min(19rem, 86vw); max-height: none; margin: 0; padding: calc(1rem + env(safe-area-inset-top, 0px)) 1rem calc(1rem + env(safe-area-inset-bottom, 0px)); background: var(--paper); border: 0; border-right: 2px solid var(--ink); z-index: 50; overflow-y: auto; transform: translateX(-105%); visibility: hidden; transition: transform .25s ease, visibility 0s .25s; }
+  body.menuopen .side { transform: none; visibility: visible; transition: transform .25s ease; }
+  body .side nav { flex-direction: column; flex-wrap: nowrap; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+  body .side nav a { padding: .5rem .75rem; }
+  .scrim { display: block; position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: rgba(10,16,32,.5); z-index: 40; opacity: 0; pointer-events: none; transition: opacity .25s; }
+  body.menuopen .scrim { opacity: 1; pointer-events: auto; }
+  body .logo { font-size: 1.6rem; }
+}
+
+.gatebox { max-width: 26rem; margin: 2rem auto; background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.gatebox label, .wr label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+input[type=text], input[type=password], textarea { width: 100%; padding: .6rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.q input[type=text] { width: 14rem; max-width: 100%; }
+.part { background: var(--paper); border: 1px solid var(--line); border-radius: .75rem; padding: 1.5rem; margin-bottom: 1.25rem; }
+.q.ok { border-left: 4px solid var(--ok); padding-left: .75rem; } .q.no { border-left: 4px solid var(--bad); padding-left: .75rem; } .fb { font-weight: 700; margin-top: .25rem; }
+.tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0; }
+nav.tabs a { margin: 0; padding: .4rem 1rem; border: 1.5px solid var(--line); border-radius: 2rem; text-decoration: none; font-weight: 700; }
+nav.tabs a[aria-current=page] { background: var(--ink); color: var(--bg); }
+.bar { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; margin: 1rem 0; } .time { font: 800 1.6rem Archivo, sans-serif; }
+.pics { display: flex; gap: 1rem; flex-wrap: wrap; } .pics svg, .pics img { flex: 1 1 14rem; max-width: 22rem; border: 2px solid var(--ink); border-radius: .5rem; background: var(--paper); object-fit: cover; aspect-ratio: 3/2; }
+.audio-player{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;padding:.75rem 1rem;margin:1rem 0;background:var(--paper);border:1px solid var(--line);border-radius:.75rem}.audio-player .listen-status{font-weight:600;color:var(--muted)}
+textarea { min-height: 15rem; } .tr { display: none; } .note { padding: .75rem 1rem; border-left: 4px solid var(--mark); background: var(--paper); margin: 1rem 0; }
+.sec { padding-top: 2rem; margin-top: 2rem; border-top: 1px solid var(--line); } .jump { margin-top: 0; } .ex { color: var(--muted); margin-top: .15rem; font-size: .95rem; }
+ .chart{display:block;width:min(100%,760px);height:auto;margin:1rem auto;border:1px solid var(--line);border-radius:12px;background:#fff}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header id="siteHeader">
+<div class="head-left">
+<button aria-label="Toggle menu" id="menuToggle">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
+</button>
+<a class="logo" href="../index.html">Oxfam Preparation</a>
+</div>
+<div class="hr">
+<button aria-label="Toggle theme" class="btn alt" id="themeBtn" style="padding:.45rem .6rem; min-width:0; font-size:1.1rem">🌙</button>
+<button class="btn" id="loginBtn" type="button">Log in</button>
+</div>
+</header>
+<div class="layout">
+<aside aria-label="Menu" class="side">
+<nav>
+<a href="../cpe.html">All tests</a>
+</nav>
+</aside>
+<main id="top">
+<div id="gate">
+<div class="gatebox">
+<h1><span>IELTS Academic Practice Test 6</span></h1>
+<p>Enter the password to open this IELTS Academic practice test.</p>
+<form id="gf">
+<label for="pw">Password</label>
+<input autocomplete="off" id="pw" type="password"/>
+<div class="err" id="err"></div>
+<div class="row" style="margin-top:1rem">
+<button class="btn" type="submit">Open</button>
+<a class="btn alt" href="../cpe.html">Back</a>
+</div>
+</form>
+</div>
+</div>
+<div hidden id="main"><h1>IELTS Academic Practice Test 6</h1><p class="sub">Original IELTS Academic practice paper. Browser TTS is used for the listening audio.</p><div class="part"><label for="nm"><strong>Student name (optional)</strong></label><input id="nm" type="text" placeholder="Enter your name"></div><nav class="tabs jump"><a href="#read">Reading</a><a href="#listen">Listening</a><a href="#write">Writing</a><a href="#speak">Speaking</a></nav><section class="sec" id="read"><h2 class="t">Academic Reading (60 minutes)</h2><div class="bar"><span class="time" id="t1"></span><button class="btn alt">Start</button></div><p class="note">Three original passages; 40 questions.</p><div id="rbox"></div><button class="btn" id="ck1">Check Reading answers</button><b id="sc1"></b></section><section class="sec" id="listen"><h2 class="t">Listening (about 30 minutes)</h2><div class="bar"><span class="time" id="t2"></span><button class="btn alt">Start</button></div><p class="note">Four parts, 40 questions. Browser TTS reads these original practice scripts. IELTS recordings in the exam are played once.</p><div id="lbox"></div><button class="btn" id="ck2">Check Listening answers</button><b id="sc2"></b></section><section class="sec" id="write"><h2 class="t">Academic Writing (60 minutes)</h2><div class="bar"><span class="time" id="t3"></span><button class="btn alt">Start</button></div><div class="part"><h2>Task 1</h2><p>Spend about 20 minutes. Write at least 150 words.</p><div class="note">The line graph shows the percentage of road bridges fitted with monitoring sensors in three regions between 2015 and 2024. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</div><img class="chart" alt="Percentage of road bridges fitted with monitoring sensors in three regions, 2015 to 2024" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3NjAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgNzYwIDQyMCI+PHJlY3Qgd2lkdGg9Ijc2MCIgaGVpZ2h0PSI0MjAiIGZpbGw9IiNmZmYiLz48dGV4dCB4PSIzODAiIHk9IjI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTkiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMxODI5NGQiPkJyaWRnZXMgZml0dGVkIHdpdGggbW9uaXRvcmluZyBzZW5zb3JzPC90ZXh0Pjx0ZXh0IHg9IjM4MCIgeT0iNTEiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMyIgZmlsbD0iIzM5NDY1ZSI+UGVyY2VudGFnZSBvZiBicmlkZ2VzPC90ZXh0PjxnIHN0cm9rZT0iI2RiZTFlYiIgc3Ryb2tlLXdpZHRoPSIxIj48cGF0aCBkPSJNOTAgMzMwSDcwME05MCAyNzBINzAwTTkwIDIxMEg3MDBNOTAgMTUwSDcwME05MCA5MEg3MDAiLz48L2c+PGcgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSIjMzk0NjVlIiB0ZXh0LWFuY2hvcj0iZW5kIj48dGV4dCB4PSI3OCIgeT0iMzM0Ij4wPC90ZXh0Pjx0ZXh0IHg9Ijc4IiB5PSIyNzQiPjIwPC90ZXh0Pjx0ZXh0IHg9Ijc4IiB5PSIyMTQiPjQwPC90ZXh0Pjx0ZXh0IHg9Ijc4IiB5PSIxNTQiPjYwPC90ZXh0Pjx0ZXh0IHg9Ijc4IiB5PSI5NCI+ODA8L3RleHQ+PC9nPjxwYXRoIGQ9Ik05MCA5MFYzMzBINzAwIiBmaWxsPSJub25lIiBzdHJva2U9IiMyOTNkNWEiIHN0cm9rZS13aWR0aD0iMiIvPjxnIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMyIgZmlsbD0iIzM5NDY1ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+PHRleHQgeD0iMTMwIiB5PSIzNTQiPjIwMTU8L3RleHQ+PHRleHQgeD0iMzEwIiB5PSIzNTQiPjIwMTg8L3RleHQ+PHRleHQgeD0iNDkwIiB5PSIzNTQiPjIwMjE8L3RleHQ+PHRleHQgeD0iNjcwIiB5PSIzNTQiPjIwMjQ8L3RleHQ+PC9nPjxwb2x5bGluZSBwb2ludHM9IjEzMCwyOTQgMzEwLDI1OCA0OTAsMTg2IDY3MCwxMzIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzMxODJhOCIgc3Ryb2tlLXdpZHRoPSI0Ii8+PHBvbHlsaW5lIHBvaW50cz0iMTMwLDMwNiAzMTAsMjcwIDQ5MCwyMTMgNjcwLDE1OSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZDc4MzQ0IiBzdHJva2Utd2lkdGg9IjQiLz48cG9seWxpbmUgcG9pbnRzPSIxMzAsMzE1IDMxMCwyODggNDkwLDI0MCA2NzAsMTk1IiBmaWxsPSJub25lIiBzdHJva2U9IiM0YTliNzYiIHN0cm9rZS13aWR0aD0iNCIvPjxnIGZpbGw9IiMzMTgyYTgiPjxjaXJjbGUgY3g9IjEzMCIgY3k9IjI5NCIgcj0iNSIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjI1OCIgcj0iNSIvPjxjaXJjbGUgY3g9IjQ5MCIgY3k9IjE4NiIgcj0iNSIvPjxjaXJjbGUgY3g9IjY3MCIgY3k9IjEzMiIgcj0iNSIvPjwvZz48ZyBmaWxsPSIjZDc4MzQ0Ij48Y2lyY2xlIGN4PSIxMzAiIGN5PSIzMDYiIHI9IjUiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSIyNzAiIHI9IjUiLz48Y2lyY2xlIGN4PSI0OTAiIGN5PSIyMTMiIHI9IjUiLz48Y2lyY2xlIGN4PSI2NzAiIGN5PSIxNTkiIHI9IjUiLz48L2c+PGcgZmlsbD0iIzRhOWI3NiI+PGNpcmNsZSBjeD0iMTMwIiBjeT0iMzE1IiByPSI1Ii8+PGNpcmNsZSBjeD0iMzEwIiBjeT0iMjg4IiByPSI1Ii8+PGNpcmNsZSBjeD0iNDkwIiBjeT0iMjQwIiByPSI1Ii8+PGNpcmNsZSBjeD0iNjcwIiBjeT0iMTk1IiByPSI1Ii8+PC9nPjxnIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMyIgZmlsbD0iIzE4Mjk0ZCI+PGxpbmUgeDE9IjE4NSIgeTE9IjM4OSIgeDI9IjIxNSIgeTI9IjM4OSIgc3Ryb2tlPSIjMzE4MmE4IiBzdHJva2Utd2lkdGg9IjQiLz48dGV4dCB4PSIyMjMiIHk9IjM5NCI+Tm9ydGg8L3RleHQ+PGxpbmUgeDE9IjMyMCIgeTE9IjM4OSIgeDI9IjM1MCIgeTI9IjM4OSIgc3Ryb2tlPSIjZDc4MzQ0IiBzdHJva2Utd2lkdGg9IjQiLz48dGV4dCB4PSIzNTgiIHk9IjM5NCI+Q2VudHJhbDwvdGV4dD48bGluZSB4MT0iNDcwIiB5MT0iMzg5IiB4Mj0iNTAwIiB5Mj0iMzg5IiBzdHJva2U9IiM0YTliNzYiIHN0cm9rZS13aWR0aD0iNCIvPjx0ZXh0IHg9IjUwOCIgeT0iMzk0Ij5Tb3V0aDwvdGV4dD48L2c+PC9zdmc+"><textarea id="w1"></textarea><div class="bar"><b id="w1c">0 words</b><button class="btn alt" data-c="w1">Copy</button><button class="btn" data-s="w1" data-t="Writing Task 1">Send writing to assessor</button></div></div><div class="part"><h2>Task 2</h2><p>Spend about 40 minutes. Write at least 250 words.</p><div class="note">Some people believe that students should be assessed mainly through examinations, while others prefer coursework and projects. Discuss both views and give your own opinion.</div><textarea id="w2"></textarea><div class="bar"><b id="w2c">0 words</b><button class="btn alt" data-c="w2">Copy</button><button class="btn" data-s="w2" data-t="Writing Task 2">Send writing to assessor</button></div></div></section><section class="sec" id="speak"><h2 class="t">Speaking (11–14 minutes)</h2><div class="part"><h2>Part 1 — Interview</h2><p>Do you find it easy to make decisions? Do you usually ask other people for advice? What kinds of decisions do you make every day? Do you like making plans? What do you do when you change your mind?</p></div><div class="part"><h2>Part 2 — Long turn</h2><div class="note"><b>Describe an important decision you made.</b><br>Say what the decision was, when you made it, who helped you, and explain why it was important.</div><div class="bar"><span class="time" id="sp2prep"></span><button class="btn alt">Start 1-minute preparation</button><span class="time" id="sp2talk"></span><button class="btn alt">Start 2-minute talk</button></div></div><div class="part"><h2>Part 3 — Discussion</h2><p>Why do some people find decisions difficult? Should young people make important decisions independently? How can people judge whether advice is reliable? Do people make better decisions with more information? Can a wrong decision sometimes lead to a positive result?</p></div></section></div></div>
+</main>
+</div>
+<div class="support-strip">
+<div class="support-strip-inner">
+<div><span _k="Customer support every day from 9:00 to 16:30">Customer support every day from 9:00 to 16:30</span></div>
+<div class="support-info">
+<a href="mailto:oxfampreparation@email.cz">oxfampreparation@email.cz</a>
+<a href="tel:+420723200988">+420 723 200 988</a>
+</div>
+</div>
+</div>
+<footer>© 2020-2026 Oxfam - Oxford family. All rights reserved. Not affiliated with Cambridge University Press &amp; Assessment. Exam names belong to their owners.</footer>
+</div>
+<dialog aria-labelledby="dt" id="dlg">
+<h2 id="dt">Sign in to open your tests</h2>
+<form id="lf" novalidate="">
+<label for="em">Email</label><input autocomplete="username" id="em" type="email"/>
+<label for="pw">Password</label><input autocomplete="current-password" id="pw" type="password"/>
+<p class="demo" hidden="" id="demo"></p>
+<div aria-live="polite" class="err" id="err"></div>
+<div class="row" style="margin-top:1rem"><button class="btn" type="submit">Log in</button><button class="btn alt" id="cancel" type="button">Cancel</button></div>
+</form>
+</dialog>
+<script>
+var PW="COPT";
+function unlocked(){try{return sessionStorage.getItem("ielts_academic_practice_6")==="1"}catch(e){return false}}
+
+function norm(s){return s.toLowerCase().replace(/\u2019/g,"'").replace(/\s+/g," ").trim()}
+
+function build(parts,box,pre){
+  var n=0;pre=pre||"";
+  parts.forEach(function(p,pi){
+    var d=document.createElement("section");d.className="part";
+    d.innerHTML="<h2>"+p.t+"</h2>"+(pre==="l"?"<div class='audio-player'><button class='btn listen-play' type='button' data-i='"+pi+"'>Play listening audio</button><button class='btn alt listen-stop' type='button' disabled>Stop</button><span class='listen-status' role='status'>Browser voice · Part "+(pi+1)+"</span></div>":"")+(p.m?"<div class='bar'><span class='time' id='pt"+pre+pi+"'></span><button class='btn alt' type='button'>Start</button> <small>suggested time</small></div>":"")+"<p class='sub'>"+p.i+"</p>"+(p.x?"<p class='txt'>"+p.x+"</p>":"")+(p.im||"")+"<div class='items'></div>";
+    var it=d.querySelector(".items");
+    p.q.forEach(function(q){
+      n++;var r=document.createElement("div");r.className="q";
+      var label = q.q && /^(\d+)\.\s*/.test(q.q) ? q.q.match(/^(\d+)\.\s*/)[1] : n; var qtext = (q.q||"").replace(/^\d+\.\s*/,"").replace(/\n/g,"<br>"); var h="<b>"+label+"</b> "+qtext+(q.h?" <strong>"+q.h+"</strong>":"");
+      if(q.o){
+        var isImg = q.o.length > 0 && /^(https?:\/\/|data:image\/)/i.test(q.o[0]);
+        var optsHtml = q.o.map(function(o,i){
+          var letter = "ABCDEFGH"[i];
+          if(q.o.length === 2 && (o === "A" || o === "B" || o.includes("Correct") || o.includes("YES"))) {
+            letter = ["A", "B"][i];
+          }
+          if (isImg) {
+            return "<label class='opt img-opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> <img src='"+o+"' alt='Option "+letter+"' onerror=\"this.style.display='none'\"></label>";
+          } else {
+            var text = o === letter ? "" : o;
+            return "<label class='opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> "+text+"</label>";
+          }
+        }).join("");
+        var gridClass = isImg ? "opts img-opts-grid" : "opts";
+        h += "<div class='" + gridClass + "'>" + optsHtml + "</div>";
+      } else {
+        h+=" <input type='text' autocomplete='off' aria-label='Answer "+n+"'>";
+      }
+      r.innerHTML=h;r._q=q;it.appendChild(r);
+    });
+    box.appendChild(d);
+    if(p.m)timer("pt"+pre+pi,p.m);
+  });
+}
+
+function check(box,out){
+  var tot=0,ok=0;
+  box.querySelectorAll(".part").forEach(function(part){
+    var pTot=0,pOk=0;
+    part.querySelectorAll(".q").forEach(function(r){
+      pTot++;var q=r._q,good,ans;
+      if(q.o){
+        var c=r.querySelector("input:checked");
+        good=c&&+c.value===q.a;
+        var letter = "ABCDEFGH"[q.a];
+        if(q.o.length === 2) letter = ["A", "B"][q.a];
+        var isImg = q.o.length > 0 && /^(https?:\/\/|data:image\/)/i.test(q.o[0]);
+        ans = isImg ? letter : (q.o[q.a] === letter ? letter : letter + " " + q.o[q.a]);
+      } else {
+        var v=norm(r.querySelector("input").value);
+        good=q.a.some(function(a){return norm(a)===v});
+        ans=q.a[0];
+      }
+      r.classList.toggle("ok",!!good);
+      r.classList.toggle("no",!good);
+      var f=r.querySelector(".fb");
+      if(!f){f=document.createElement("div");f.className="fb";r.appendChild(f)}
+      f.textContent=good?"Correct":"Answer: "+ans;
+      var x=r.querySelector(".ex");
+      if(!x){x=document.createElement("div");x.className="ex";r.appendChild(x)}
+      x.textContent=q.e||"";
+      if(good)pOk++;
+    });
+    if(pTot>0){
+      var ps=part.querySelector(".pscore");
+      if(!ps){ps=document.createElement("div");ps.className="pscore note";ps.style.marginTop="1.5rem";part.appendChild(ps)}
+      ps.innerHTML="<b>Part score:</b> "+pOk+" / "+pTot;
+    }
+    tot+=pTot;ok+=pOk;
+  });
+  out.textContent="Total score: "+ok+" / "+tot;
+  box.querySelectorAll(".tr").forEach(function(e){e.style.display="block"});
+}
+
+function timer(id,min){
+  var e=document.getElementById(id),l=min*60,t=null;
+  if(!e)return;
+  function s(){e.textContent=("0"+Math.floor(l/60)).slice(-2)+":"+("0"+l%60).slice(-2)}s();
+  e.nextElementSibling.onclick=function(){
+    if(t){clearInterval(t);t=null;this.textContent="Start";return}
+    this.textContent="Pause";
+    t=setInterval(function(){l--;s();if(l<=0)clearInterval(t)},1000);
+  }
+}
+
+var R = [{"t":"Reading Passage 1 — Watching old bridges age","i":"Questions 1–5: choose the correct heading A–G for paragraphs A–E. Questions 6–10: TRUE, FALSE or NOT GIVEN. Questions 11–13: answer in NO MORE THAN TWO WORDS.","x":"<b>Headings</b>: A. Why a visible crack may not tell the whole story &nbsp; B. A shift from repair to prediction &nbsp; C. A test that listens to the structure &nbsp; D. The value of records over time &nbsp; E. How bridges were first classified &nbsp; F. Balancing access with safety &nbsp; G. A surprising source of stress<br><br><b>HOW ENGINEERS MONITOR HISTORIC BRIDGES</b><br><br><b>A</b> A bridge can appear solid while small changes are developing inside its materials. Engineers distinguish between a defect, which may be harmless, and damage that affects the bridge’s ability to carry weight. A crack in a decorative surface does not necessarily indicate a structural problem, while corrosion inside a joint may be difficult to see. For older bridges, the challenge is greater because original drawings may be incomplete and materials may have been replaced over many decades. Inspectors combine a visual survey with measurements and historical records. The purpose is not to treat every mark as a danger, but to understand how the structure behaves and whether that behaviour is changing.<br><br><b>B</b> Traditional inspections often involved a close visual examination at set intervals. Engineers noted rust, loose masonry or changes in the shape of a support. Today, some bridges are fitted with sensors that record movement, vibration or temperature. The sensors can gather information continuously, allowing a team to notice changes between scheduled visits. This does not remove the need for inspection: a sensor may fail, or a reading may be affected by weather or traffic. Instead, the data help engineers decide where to look more closely and whether a new inspection is needed sooner than planned. The approach moves maintenance towards anticipating problems rather than reacting only after visible damage appears.<br><br><b>C</b> One method analyses how a bridge vibrates after traffic passes over it. Every structure has patterns of vibration, much as a musical instrument produces characteristic notes. If stiffness changes, the pattern may also change. Engineers place small accelerometers at selected points and compare the readings with earlier measurements. The method can reveal a shift that is too subtle for a person to see, but interpreting it is not straightforward. Wind, temperature and the type of vehicle can also alter vibration. A reliable assessment therefore uses repeated readings under different conditions and combines them with other evidence. The instrument can signal that something has changed; it cannot by itself explain the cause.<br><br><b>D</b> Records become more useful when they are kept consistently. An inspection note that says “some movement” is difficult to compare with a reading taken years later. Engineers try to record where a measurement was made, what equipment was used and the conditions at the time. Digital archives can link photographs, maintenance work and sensor data on a single timeline. A pattern may then emerge: a joint could move more in hot weather but return to its usual position when temperatures fall. Without the earlier data, this seasonal behaviour might be mistaken for a new defect. Long-term records also help authorities understand which repairs have lasted and which need further attention.<br><br><b>E</b> Monitoring can affect how a bridge is used. If an inspection identifies a concern, authorities might reduce the weight allowed, close one lane or limit access until a repair is completed. Such restrictions can disrupt people and businesses, so decisions require evidence about both safety and likely consequences. Engineers explain what is known, what remains uncertain and when the bridge will be checked again. A sensor reading is rarely a simple signal to close a route. It contributes to an assessment alongside the bridge’s design, condition, traffic and the possible impact of a failure. Clear communication helps the public understand why a temporary restriction is necessary and what will happen next.<br><br>Inspection schedules are also affected by the consequences of a closure. A bridge that carries only local traffic may have a nearby alternative route, while a structure serving a hospital or connecting two districts may be harder to close. Engineers do not lower a safety standard because a route is important, but they may plan work at a time that reduces disruption. Temporary supports can sometimes keep a bridge open for light vehicles while repairs are made. These decisions require coordination between engineers, transport staff and local businesses, and they are reviewed as the condition of the bridge changes.<br><br>Authorities decide how frequently to revisit a bridge by considering its age, design, condition and importance to the local road network. A structure with a history of movement may be checked more often than one with stable readings. If sensors show no change, an inspection is still scheduled because monitoring equipment can miss a problem outside its range. Engineers may also install temporary sensors during a repair, then remove them once the work has been evaluated. This combination of routine and targeted checks helps direct limited budgets without treating every bridge as if it carried the same risk.","q":[{"q":"1. Choose a heading for paragraph A.","o":["A","B","C","D","E","F","G"],"a":0,"e":"A visible mark may not reveal the bridge’s internal condition."},{"q":"2. Choose a heading for paragraph B.","o":["A","B","C","D","E","F","G"],"a":1,"e":"Sensors help engineers anticipate and plan maintenance."},{"q":"3. Choose a heading for paragraph C.","o":["A","B","C","D","E","F","G"],"a":2,"e":"Accelerometers measure the bridge’s vibration."},{"q":"4. Choose a heading for paragraph D.","o":["A","B","C","D","E","F","G"],"a":3,"e":"Consistent records show changes over time."},{"q":"5. Choose a heading for paragraph E.","o":["A","B","C","D","E","F","G"],"a":5,"e":"The paragraph balances safety decisions with public disruption."},{"q":"6. Any crack on a bridge indicates a structural danger.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"A crack in a decorative surface may be harmless."},{"q":"7. Sensors can remove the need for visual inspections.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"The passage says sensors do not remove the need for inspection."},{"q":"8. Temperature can affect the vibration measured on a bridge.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"Temperature is listed as a factor that can alter vibration."},{"q":"9. Digital archives always contain the original bridge drawings.","o":["TRUE","FALSE","NOT GIVEN"],"a":2,"e":"The text does not say this."},{"q":"10. Authorities may restrict traffic while a repair is completed.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"The final paragraph gives this as one possible response."},{"q":"11. What instrument records movement or vibration?","a":["sensors","a sensor"],"e":"Sensors gather measurements."},{"q":"12. What device can be used to measure a bridge’s vibration?","a":["accelerometer","accelerometers"],"e":"Engineers use accelerometers."},{"q":"13. What type of archive can link photographs and sensor data on a timeline?","a":["digital archive","digital archives"],"e":"Digital archives connect the records."}]},{"t":"Reading Passage 2 — Modular housing and local needs","i":"Questions 14–18: choose A, B, C or D. Questions 19–23: match each statement with group A–E. Questions 24–27: answer in NO MORE THAN TWO WORDS.","x":"<b>Groups</b>: A. architects &nbsp; B. factory teams &nbsp; C. residents &nbsp; D. local authorities &nbsp; E. building researchers<br><br><b>CAN MODULAR CONSTRUCTION MAKE HOUSING MORE ADAPTABLE?</b><br><br>Modular construction moves some building work from a site to a factory. Rooms or structural sections are made indoors, transported by road and joined together on prepared foundations. The method can reduce the time workers spend exposed to bad weather and may allow some tasks to be completed more consistently. It is not a single building style: a modular home can be temporary or permanent, small or large, and finished with different materials. Its success depends on how the modules are designed, how they are transported and whether the finished building suits the people who will live in it.<br><br>Architects face an early decision about how much of a building should be standardised. A repeated module can reduce design and manufacturing costs, but a rigid plan may not fit every site or household. Some projects use a common structural frame while allowing residents to choose where internal walls, storage or windows are placed. The options need to be decided before production begins because moving a wall later may require substantial work. Architects therefore discuss future use as well as current needs. A household may grow, a person may develop limited mobility or a room may need to serve more than one purpose.<br><br>Factory teams can work in a controlled environment, where materials and tools are stored nearby. This makes it easier to repeat a process and inspect sections before they leave the factory. However, modules have to fit within transport limits. A wide section may need a special vehicle and a planned route, raising the cost and restricting where it can travel. The factory’s production schedule must also match the site’s readiness. If foundations are delayed, completed modules may need to be stored. If they arrive before a crane or connection team is available, the modules can remain unused on a lorry. Logistics are part of the design, not a separate afterthought.<br><br>Residents can have a role in deciding how a modular building is arranged. In one housing project, future occupants reviewed full-size room outlines taped onto a floor and moved furniture between them. This helped people judge whether a doorway was wide enough or whether a kitchen could fit a table. A computer model can show dimensions, but walking through a marked space may reveal practical concerns that a drawing does not. Consultation does not mean every preference can be adopted; building regulations, budget and the size of the site set limits. Still, involving residents early can reduce expensive changes after construction and help people feel that the home belongs to them.<br><br>Local authorities consider how modular projects connect with the wider neighbourhood. Roads must support delivery vehicles, and utility connections need to be ready before the modules arrive. Councils also assess whether a project provides public space, access to transport and the services residents need. Some officials initially treated modular construction as suitable only for short-term accommodation. That view has changed as projects demonstrate durable materials and varied designs. The construction method alone, however, does not guarantee good housing. Location, management and long-term maintenance remain important.<br><br>Building researchers compare the whole process rather than only counting days on site. They measure material waste, energy used in factories and transport emissions, as well as the time required for assembly. A factory may use materials more efficiently, but a long delivery journey can offset some of that advantage. Researchers also examine how easily a building can be repaired or extended. A module designed to be replaced may reduce disruption after damage, while a tightly integrated system could be difficult to alter. Evidence from several projects is needed because climate, regulations and local supply networks differ. Modular construction is best understood as one approach among several, with benefits that depend on the project’s conditions.<br><br>Manufacturers often ask whether modules can be combined with conventional construction. A project may use factory-made bathroom pods or stair sections while building other parts on site. This hybrid approach can suit a location where road access is limited or where local trades are available. It also means that design teams have to coordinate tolerances carefully: a factory component must fit the structure built elsewhere. The method should be selected after comparing the site, workforce, transport route and construction schedule, rather than because modular building is assumed to be faster in every case.<br><br>Some modular projects make later extensions easier by planning connection points into the original design. An extra room may be added without rebuilding the entire home, provided the site has enough space and services can be extended. This flexibility must be balanced with the cost of maintaining joints and external finishes. Residents may also need clear information about which changes are permitted. If a building is managed by a housing provider, responsibility for repairs should be set out before anyone moves in. A flexible design is useful only when the people who live there can access and manage that flexibility.","q":[{"q":"14. What does the passage identify as a benefit of factory construction?","o":["Some tasks can be completed in a more controlled environment.","All buildings can be finished without foundations.","The method removes the need for transport.","Every home can use the same plan."],"a":0,"e":"Factory work allows controlled conditions and inspection."},{"q":"15. Why do architects discuss future use?","o":["Household needs may change over time.","Residents always move after a year.","Internal walls cannot be included in modules.","Building regulations change every week."],"a":0,"e":"Needs can change, so adaptability is considered."},{"q":"16. What can happen if a building site is not ready?","o":["Completed modules may need to be stored.","Factory teams stop using tools.","The road network is closed permanently.","Residents must redesign the foundations."],"a":0,"e":"Modules may need storage if foundations are delayed."},{"q":"17. What did full-size room outlines help residents judge?","o":["Whether layouts and doorways worked in practice","How much a crane would cost","Which factory should make the modules","Whether the building met energy rules"],"a":0,"e":"Residents could experience the dimensions and layout."},{"q":"18. What is the researchers’ conclusion about modular construction?","o":["Its benefits depend on project conditions.","It is always cheaper than traditional building.","It creates no transport emissions.","It is suitable only for temporary homes."],"a":0,"e":"Researchers say it is one approach whose benefits depend on conditions."},{"q":"19. Which group decides how much of the design should be standardised?","o":["A","B","C","D","E"],"a":0,"e":"Architects consider standardisation and adaptability."},{"q":"20. Which group inspects building sections before they leave the factory?","o":["A","B","C","D","E"],"a":1,"e":"Factory teams inspect the sections."},{"q":"21. Which group may walk through taped room outlines?","o":["A","B","C","D","E"],"a":2,"e":"Residents reviewed full-size room outlines."},{"q":"22. Which group checks roads and utility connections?","o":["A","B","C","D","E"],"a":3,"e":"Local authorities review neighbourhood connections."},{"q":"23. Which group measures waste and transport emissions?","o":["A","B","C","D","E"],"a":4,"e":"Building researchers compare these impacts."},{"q":"24. What must be ready underneath a modular home before delivery?","a":["foundations","prepared foundations"],"e":"Modules are joined on prepared foundations."},{"q":"25. What kind of vehicle may be required for a wide module?","a":["special vehicle","a special vehicle"],"e":"Wide sections may need a special vehicle."},{"q":"26. What did residents tape onto a floor to test a room layout?","a":["room outlines","full-size outlines"],"e":"Full-size outlines represented the room plan."},{"q":"27. Name one environmental impact researchers compare.","a":["material waste","transport emissions","factory energy"],"e":"They measure transport emissions and factory energy."}]},{"t":"Reading Passage 3 — The influence of scientific metaphors","i":"Questions 28–32: match each statement with paragraph A–E. Questions 33–37: TRUE, FALSE or NOT GIVEN. Questions 38–40: choose A, B, C or D.","x":"<b>Paragraphs</b>: A–E<br><br><b>WHEN SCIENCE BORROWS A PICTURE FROM EVERYDAY LIFE</b><br><br><b>A</b> Scientists often describe complex processes with familiar words: a cell has “machinery”, a gene carries a “code”, or an electrical current “flows”. These metaphors help people imagine something they cannot observe directly. They can also help specialists develop an initial explanation. Yet a metaphor is a guide, not a literal description. A cell does not contain miniature tools, and a genetic sequence is not a message written for a human reader. The useful question is what features of the comparison help explain the process and where the comparison stops being accurate.<br><br><b>B</b> Metaphors can influence which questions researchers ask. If a scientific process is described as a “battle”, studies may focus on attack, defence and victory. Other relationships—cooperation, repair or gradual adjustment—may receive less attention. This does not mean that a metaphor determines the results of an experiment. Measurements and observations can challenge an appealing analogy. But the words used in a research proposal can shape what is considered worth measuring and how a result is explained. Historians of science have traced how a metaphor enters textbooks and public discussion, sometimes long after the original researchers used it cautiously.<br><br><b>C</b> A familiar metaphor may become a problem when it is repeated without its limitations. Describing the brain as a computer can suggest that memory is stored like a file and retrieved unchanged. In reality, remembering is influenced by context and can alter the memory itself. The comparison is useful for some questions about information processing, but it cannot explain every aspect of thought. Researchers may keep using the term because it is convenient, even when it encourages the public to imagine a more mechanical process than evidence supports. Replacing every metaphor is neither possible nor necessary. The aim is to state what the comparison clarifies and what it leaves out.<br><br><b>D</b> Different audiences may interpret the same metaphor in different ways. A specialist might use “feedback” as a precise term for a system in which an output affects later input. A general reader might understand it as a comment from another person. Both meanings are familiar, but they are not identical. Scientific writers can reduce confusion by defining a term when it first appears and using a diagram or example. However, too many definitions can make an article difficult to read. Editors therefore consider the likely audience and the level of detail needed. The best explanation may combine a plain-language comparison with a short technical definition.<br><br><b>E</b> Metaphors also travel between languages and cultures. A comparison that is common in one language may sound strange or carry an unintended meaning in another. Translators must decide whether to keep the original image, explain it or choose a different comparison. In medical communication, this choice can affect how patients understand risk or treatment. A metaphor that suggests a disease is an enemy may encourage some people but make others feel responsible if they do not “fight” successfully. Researchers and translators increasingly test explanations with the intended audience. They do not assume that simple words are automatically clear. Good scientific communication makes the evidence understandable while leaving room for uncertainty and for more than one way of describing a complex idea.<br><br>Metaphors may also shape a person’s sense of agency. Describing the immune system as an army can make the body appear to wage a simple war against an invader, even though immune responses involve many kinds of cells and signals. A different analogy may be clearer for one audience and less helpful for another. Medical educators can ask learners to explain a concept in their own words, which reveals whether the image has helped or created a misunderstanding. The aim is not to find one perfect metaphor, but to choose language that supports accurate understanding.<br><br>Good explanations also preserve the distinction between an analogy and evidence. A metaphor can help introduce a topic, but a diagram, measurement or example may be needed to show how the process actually works. Writers can signal a limitation with phrases such as “in this respect” or “the comparison is useful because”. This does not make a text less engaging. It can make the explanation more trustworthy, since readers are told where a familiar image helps and where a scientific account must take over.","q":[{"q":"28. A paragraph explaining that an everyday comparison is not a literal account.","o":["A","B","C","D","E"],"a":0,"e":"Paragraph A states that metaphors are guides, not literal descriptions."},{"q":"29. A paragraph describing how wording may affect which questions are studied.","o":["A","B","C","D","E"],"a":1,"e":"Paragraph B discusses metaphors shaping research attention."},{"q":"30. A paragraph warning that a familiar comparison can be overextended.","o":["A","B","C","D","E"],"a":2,"e":"Paragraph C explains the risks of treating a metaphor as complete."},{"q":"31. A paragraph discussing the different meanings a technical word may have.","o":["A","B","C","D","E"],"a":3,"e":"Paragraph D contrasts specialist and general interpretations."},{"q":"32. A paragraph examining how metaphors change across languages and audiences.","o":["A","B","C","D","E"],"a":4,"e":"Paragraph E focuses on translation and cultural meaning."},{"q":"33. The passage says that scientific metaphors can help explain processes that cannot be observed directly.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"This is stated in paragraph A."},{"q":"34. A metaphor determines the outcome of every scientific experiment.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"The passage says a metaphor does not determine experimental results."},{"q":"35. The author argues that all scientific metaphors should be removed from research.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"The text says replacing every metaphor is neither possible nor necessary."},{"q":"36. A general reader may interpret “feedback” differently from a specialist.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"Paragraph D explains the different meanings."},{"q":"37. Translators always keep the original metaphor in a medical text.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"They may keep, explain or replace the original image."},{"q":"38. What is the main point of the passage?","o":["Metaphors can clarify science, but their limits and audience should be considered.","Scientific writing should avoid all familiar language.","Metaphors are more reliable than measurements.","Every reader interprets comparisons in the same way."],"a":0,"e":"The author presents both the usefulness and limitations of metaphors."},{"q":"39. Why can the “brain as a computer” comparison be misleading?","o":["It may suggest that memories are retrieved unchanged.","It proves that memory is stored digitally.","It shows that the brain cannot change over time.","It prevents researchers from studying information."],"a":0,"e":"The comparison can imply fixed file-like memory."},{"q":"40. What does the author recommend for clear scientific communication?","o":["Explain comparisons and test them with the intended audience.","Use only technical definitions.","Translate every metaphor word for word.","Remove uncertainty from public explanations."],"a":0,"e":"The conclusion recommends audience testing and clear explanation of uncertainty."}]}];
+var L = [{"t":"Listening Part 1 — Arranging a furniture delivery","i":"Questions 1–10. Complete the delivery form. Write NO MORE THAN TWO WORDS AND/OR A NUMBER.","x":"NORTHLINE FURNITURE — DELIVERY DETAILS<br>Family name: 1 _____<br>Item: 2 _____<br>Delivery day: 3 _____<br>Date: 4 _____<br>Time window: 5 _____<br>Delivery fee: 6 £_____<br>Assembly charge: 7 £_____<br>Entry: use the 8 _____ gate<br>Payment: 9 _____ card<br>Order reference: 10 _____","q":[{"q":"1. Family name","a":["Wallace"],"e":"The customer’s surname is Wallace."},{"q":"2. Item","a":["standing desk","desk"],"e":"The order is for a standing desk."},{"q":"3. Delivery day","a":["Tuesday"],"e":"The delivery is arranged for Tuesday."},{"q":"4. Date","a":["23 September","September 23","23rd September"],"e":"The date is 23 September."},{"q":"5. Time window","a":["2 to 4","2–4","2.00 to 4.00","2 pm to 4 pm","2-4 pm"],"e":"The two-hour delivery window is from two until four."},{"q":"6. Delivery fee","a":["18","£18"],"e":"The delivery fee is eighteen pounds."},{"q":"7. Assembly charge","a":["12","£12"],"e":"Assembly costs twelve pounds."},{"q":"8. Entry","a":["side"],"e":"The delivery team should use the side gate."},{"q":"9. Payment","a":["debit"],"e":"The customer will pay by debit card."},{"q":"10. Order reference","a":["5481"],"e":"The order reference is 5481."}]},{"t":"Listening Part 2 — First visit to the indoor climbing centre","i":"Questions 11–15. Choose A, B or C. Questions 16–20. Match each service with the letter on the SVG visitor plan.","x":"Visitor plan labels: A. reception &nbsp; B. shoe hire &nbsp; C. beginner wall &nbsp; D. café &nbsp; E. first-aid room","q":[{"q":"11. What must new visitors do before climbing?","o":["Watch a short safety briefing","Complete a fitness test","Buy a day membership"],"a":0,"e":"New climbers watch a safety briefing."},{"q":"12. When is the centre least busy on weekdays?","o":["Before 9.00 am","Between 1.00 and 3.00 pm","After 8.00 pm"],"a":1,"e":"The quietest period is usually early afternoon."},{"q":"13. What is included in the first visit price?","o":["A harness","Climbing shoes","A drink"],"a":0,"e":"The harness is included."},{"q":"14. How long does the beginner session last?","o":["45 minutes","One hour","90 minutes"],"a":2,"e":"The instructor session lasts ninety minutes."},{"q":"15. What should visitors do with jewellery?","o":["Leave it in a locker","Give it to the instructor","Wear it under a glove"],"a":0,"e":"Jewellery should be secured in a locker."},{"q":"16. Where should a visitor collect the safety card?","o":["A","B","C","D","E"],"a":0,"e":"The safety card is available at reception."},{"q":"17. Where can someone borrow climbing shoes?","o":["A","B","C","D","E"],"a":1,"e":"Shoes are hired at the shoe counter."},{"q":"18. Where does the instructor teach beginners?","o":["A","B","C","D","E"],"a":2,"e":"Beginners use the low practice wall."},{"q":"19. Where can climbers buy a sandwich?","o":["A","B","C","D","E"],"a":3,"e":"The café serves food."},{"q":"20. Where should someone go for a minor injury?","o":["A","B","C","D","E"],"a":4,"e":"The first-aid room is beside the staff door."}],"im":"<img class=\"chart\" alt=\"Summit Climbing Centre floor plan: reception, shoe hire, beginner wall, cafe and first aid room labelled A to E\" src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3NjAiIGhlaWdodD0iNDMwIiB2aWV3Qm94PSIwIDAgNzYwIDQzMCI+PHJlY3Qgd2lkdGg9Ijc2MCIgaGVpZ2h0PSI0MzAiIHJ4PSIxNiIgZmlsbD0iI2Y0ZjdmYiIvPjx0ZXh0IHg9IjM4MCIgeT0iMzAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyMCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzE4Mjk0ZCI+U1VNTUlUIENMSU1CSU5HIENFTlRSRSDigJQgRkxPT1IgUExBTjwvdGV4dD48dGV4dCB4PSIzODAiIHk9IjUyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTMiIGZpbGw9IiM1MjYwNzkiPlVzZSB0aGUgbGV0dGVycyB0byBsb2NhdGUgZWFjaCBzZXJ2aWNlPC90ZXh0PjxnIGZvbnQtZmFtaWx5PSJBcmlhbCIgZmlsbD0iIzE4Mjk0ZCI+PHJlY3QgeD0iMzUiIHk9Ijc1IiB3aWR0aD0iMjEyIiBoZWlnaHQ9IjEyNSIgcng9IjEyIiBmaWxsPSIjZTNmMGY4IiBzdHJva2U9IiM0OTZjOTEiIHN0cm9rZS13aWR0aD0iMyIvPjxjaXJjbGUgY3g9IjYzIiBjeT0iMTAxIiByPSIxNyIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjNDk2YzkxIiBzdHJva2Utd2lkdGg9IjIiLz48dGV4dCB4PSI2MyIgeT0iMTA3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iNzAwIj5BPC90ZXh0Pjx0ZXh0IHg9IjE0NiIgeT0iMTA0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE3IiBmb250LXdlaWdodD0iNzAwIj5SRUNFUFRJT048L3RleHQ+PHJlY3QgeD0iOTciIHk9IjEzMCIgd2lkdGg9Ijk4IiBoZWlnaHQ9IjI4IiByeD0iNCIgZmlsbD0iIzhlYjVkNSIgc3Ryb2tlPSIjMzU1Nzc3IiBzdHJva2Utd2lkdGg9IjIiLz48cGF0aCBkPSJNMTA4IDEzMHYtOWg3NXY5IiBmaWxsPSJub25lIiBzdHJva2U9IiMzNTU3NzciIHN0cm9rZS13aWR0aD0iMyIvPjx0ZXh0IHg9IjE0NiIgeT0iMTg1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjEyIj5zYWZldHkgY2FyZHMgYW5kIGNoZWNrLWluPC90ZXh0PjxyZWN0IHg9IjI2NyIgeT0iNzUiIHdpZHRoPSIyMTIiIGhlaWdodD0iMTI1IiByeD0iMTIiIGZpbGw9IiNmZmYxZGYiIHN0cm9rZT0iI2E3Nzk0OCIgc3Ryb2tlLXdpZHRoPSIzIi8+PGNpcmNsZSBjeD0iMjk1IiBjeT0iMTAxIiByPSIxNyIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjYTc3OTQ4IiBzdHJva2Utd2lkdGg9IjIiLz48dGV4dCB4PSIyOTUiIHk9IjEwNyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNiIgZm9udC13ZWlnaHQ9IjcwMCI+QjwvdGV4dD48dGV4dCB4PSIzNzciIHk9IjEwNCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNyIgZm9udC13ZWlnaHQ9IjcwMCI+U0hPRSBISVJFPC90ZXh0PjxwYXRoIGQ9Ik0zMzYgMTUxYzE0LTIgMjItMTIgMzEtMTEgNyAwIDEzIDcgMjEgOHYxMGgtNTJ6IiBmaWxsPSIjZDc4ZDUyIiBzdHJva2U9IiM4YjVkMzUiIHN0cm9rZS13aWR0aD0iMyIvPjx0ZXh0IHg9IjM3NyIgeT0iMTg1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjEyIj5jbGltYmluZyBzaG9lczwvdGV4dD48cmVjdCB4PSI0OTkiIHk9Ijc1IiB3aWR0aD0iMjI2IiBoZWlnaHQ9IjI1NSIgcng9IjEyIiBmaWxsPSIjZTdmNGVjIiBzdHJva2U9IiM0ZTg4NjkiIHN0cm9rZS13aWR0aD0iMyIvPjxjaXJjbGUgY3g9IjUyNyIgY3k9IjEwMSIgcj0iMTciIGZpbGw9IiNmZmYiIHN0cm9rZT0iIzRlODg2OSIgc3Ryb2tlLXdpZHRoPSIyIi8+PHRleHQgeD0iNTI3IiB5PSIxMDciIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTYiIGZvbnQtd2VpZ2h0PSI3MDAiPkM8L3RleHQ+PHRleHQgeD0iNjIwIiB5PSIxMDQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTciIGZvbnQtd2VpZ2h0PSI3MDAiPkJFR0lOTkVSIFdBTEw8L3RleHQ+PHBhdGggZD0iTTU0MCAyOTJMNTcwIDEzMmgxMTRsMjIgMTYweiIgZmlsbD0iI2IzZDdjMCIgc3Ryb2tlPSIjNGU4ODY5IiBzdHJva2Utd2lkdGg9IjMiLz48cGF0aCBkPSJNNTY2IDI1NWwxMy04IDkgOW0xNy0zOSAxMC04IDkgOW0yMS00MyAxMC05IDkgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzU1N2U2MyIgc3Ryb2tlLXdpZHRoPSI1Ii8+PGNpcmNsZSBjeD0iNjAxIiBjeT0iMTg5IiByPSI4IiBmaWxsPSIjZDc4MzQ0Ii8+PHBhdGggZD0iTTYwMSAxOThsLTggMjAgMTUgMTNtLTEyLTMxIDE5LTltLTIwIDI4LTEzIDE4bTI3LTEzIDEyIDE3IiBmaWxsPSJub25lIiBzdHJva2U9IiMyOTNkNWEiIHN0cm9rZS13aWR0aD0iNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHRleHQgeD0iNjEyIiB5PSIzMTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTIiPmxvdyBwcmFjdGljZSB3YWxsPC90ZXh0PjxyZWN0IHg9IjM1IiB5PSIyMTgiIHdpZHRoPSIyMTIiIGhlaWdodD0iMTEyIiByeD0iMTIiIGZpbGw9IiNmZmY3ZGMiIHN0cm9rZT0iI2E5OGEzZiIgc3Ryb2tlLXdpZHRoPSIzIi8+PGNpcmNsZSBjeD0iNjMiIGN5PSIyNDQiIHI9IjE3IiBmaWxsPSIjZmZmIiBzdHJva2U9IiNhOThhM2YiIHN0cm9rZS13aWR0aD0iMiIvPjx0ZXh0IHg9IjYzIiB5PSIyNTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTYiIGZvbnQtd2VpZ2h0PSI3MDAiPkQ8L3RleHQ+PHRleHQgeD0iMTQ2IiB5PSIyNDciIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTciIGZvbnQtd2VpZ2h0PSI3MDAiPkNBRsOJPC90ZXh0PjxwYXRoIGQ9Ik0xMDUgMjY4aDQ0bC00IDIyaC0zNHpNMTQ5IDI3MmgxMGE4IDggMCAwIDEgMCAxNWgtMTIiIGZpbGw9IiNjOTlhNTUiIHN0cm9rZT0iIzgwNjAyZiIgc3Ryb2tlLXdpZHRoPSIzIi8+PHBhdGggZD0iTTExMiAyNjNjLTctNyAzLTktMi0xNG0xOCAxNGMtNy03IDMtOS0yLTE0IiBmaWxsPSJub25lIiBzdHJva2U9IiM4MDYwMmYiIHN0cm9rZS13aWR0aD0iMiIvPjx0ZXh0IHg9IjE0NiIgeT0iMzE3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjEyIj5zbmFja3MgYW5kIGhvdCBkcmlua3M8L3RleHQ+PHJlY3QgeD0iMjY3IiB5PSIyMTgiIHdpZHRoPSIyMTIiIGhlaWdodD0iMTEyIiByeD0iMTIiIGZpbGw9IiNlZWU4ZjciIHN0cm9rZT0iIzc1NjI5YSIgc3Ryb2tlLXdpZHRoPSIzIi8+PGNpcmNsZSBjeD0iMjk1IiBjeT0iMjQ0IiByPSIxNyIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjNzU2MjlhIiBzdHJva2Utd2lkdGg9IjIiLz48dGV4dCB4PSIyOTUiIHk9IjI1MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNiIgZm9udC13ZWlnaHQ9IjcwMCI+RTwvdGV4dD48dGV4dCB4PSIzNzciIHk9IjI0NyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNyIgZm9udC13ZWlnaHQ9IjcwMCI+RklSU1QgQUlEPC90ZXh0PjxyZWN0IHg9IjMzMCIgeT0iMjY2IiB3aWR0aD0iOTQiIGhlaWdodD0iMjgiIHJ4PSI0IiBmaWxsPSIjZmZmIiBzdHJva2U9IiM3NTYyOWEiIHN0cm9rZS13aWR0aD0iMiIvPjxwYXRoIGQ9Ik0zNzMgMjcxaDl2OGg4djhoLTh2OGgtOXYtOGgtOHYtOGg4eiIgZmlsbD0iI2M4NWQ2MyIvPjx0ZXh0IHg9IjM3NyIgeT0iMzE3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjEyIj5oZWxwIHdpdGggbWlub3IgaW5qdXJpZXM8L3RleHQ+PHBhdGggZD0iTTM1IDM2MGg2OTAiIHN0cm9rZT0iIzlhYThiYiIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtZGFzaGFycmF5PSI4IDYiLz48dGV4dCB4PSIzODAiIHk9IjM4NiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxMyIgZmlsbD0iIzUyNjA3OSI+TUFJTiBFTlRSQU5DRTwvdGV4dD48L2c+PC9zdmc+\">"},{"t":"Listening Part 3 — A study of lighting and concentration","i":"Questions 21–25. Choose A, B or C. Questions 26–30. Match each task with student A–F.","x":"Student tasks: A. design the concentration task &nbsp; B. recruit volunteers &nbsp; C. check the light meters &nbsp; D. analyse scores &nbsp; E. review research &nbsp; F. present findings","q":[{"q":"21. What are the students comparing?","o":["Concentration under two lighting conditions","Reading speed on paper and screens","Noise levels in two classrooms"],"a":0,"e":"The study compares concentration under different lighting."},{"q":"22. Who will take part in the study?","o":["University students","Primary school pupils","Professional designers"],"a":0,"e":"The planned participants are university students."},{"q":"23. What did the pilot reveal?","o":["The task instructions were unclear.","The lights overheated.","The room was too noisy."],"a":0,"e":"Participants did not understand one instruction."},{"q":"24. What will the team do before the main trial?","o":["Rewrite the instructions and test them again","Increase the number of light conditions","Remove the concentration task"],"a":0,"e":"They will rewrite and retest the instructions."},{"q":"25. What does the tutor advise about the conclusion?","o":["Avoid claiming that lighting alone caused a score difference.","Recommend one light for every classroom.","Exclude participants who work slowly."],"a":0,"e":"Other factors could influence performance."},{"q":"26. Who will design the concentration task?","o":["A","B","C","D","E","F"],"a":0,"e":"Nora will design the task."},{"q":"27. Who will recruit the volunteers?","o":["A","B","C","D","E","F"],"a":1,"e":"Eli will recruit volunteers."},{"q":"28. Who will check the light meters?","o":["A","B","C","D","E","F"],"a":2,"e":"Nora will check the meters."},{"q":"29. Who will analyse the scores?","o":["A","B","C","D","E","F"],"a":3,"e":"Eli will analyse the scores."},{"q":"30. Who will present the findings?","o":["A","B","C","D","E","F"],"a":5,"e":"Nora will give the presentation."}]},{"t":"Listening Part 4 — Making a large telescope mirror","i":"Questions 31–40. Complete the notes. Write NO MORE THAN TWO WORDS for each answer.","x":"MAKING A LARGE TELESCOPE MIRROR<br>Manufacturers begin with a thick glass 31 _____.<br>Low-expansion glass is chosen to limit changes with 32 _____.<br>The glass is heated and slowly 33 _____.<br>Grinding gives the surface its first 34 _____.<br>Smaller particles of 35 _____ smooth the surface.<br>Polishing removes tiny 36 _____.<br>A reflective layer, often 37 _____, is applied.<br>An optical test checks the mirror’s 38 _____.<br>Work takes place in a clean, low-39 _____ room.<br>The finished mirror is stored in a protective 40 _____.","q":[{"q":"31. Gap 31","a":["blank","glass blank"],"e":"A thick glass blank is the starting piece."},{"q":"32. Gap 32","a":["temperature"],"e":"Low-expansion glass changes less with temperature."},{"q":"33. Gap 33","a":["cooled","annealed"],"e":"The glass is cooled slowly, a process called annealing."},{"q":"34. Gap 34","a":["curve","shape"],"e":"Grinding gives the surface its first curve."},{"q":"35. Gap 35","a":["abrasive","abrasives"],"e":"Fine abrasive particles smooth the surface."},{"q":"36. Gap 36","a":["scratches"],"e":"Polishing removes tiny scratches."},{"q":"37. Gap 37","a":["aluminium","aluminum"],"e":"A reflective aluminium layer may be used."},{"q":"38. Gap 38","a":["shape","surface"],"e":"An optical test checks the mirror’s shape."},{"q":"39. Gap 39","a":["dust"],"e":"The room is kept clean and low in dust."},{"q":"40. Gap 40","a":["container","case"],"e":"A protective container is used for storage."}]}];
+var T = ["Northline Furniture, hello. Hello, I am calling to arrange delivery of a desk I ordered. Could I have the family name, please? Wallace, W A L L A C E. Thank you. I can see the order for a standing desk. We have Tuesday the twenty-third of September available. Is that the date you wanted? Yes. We can give you a two-hour delivery window, from two until four in the afternoon. The delivery fee is eighteen pounds. Would you like us to assemble the desk? Yes, please. Assembly is an extra twelve pounds. The delivery team normally uses the front entrance, but the path is being repaired. Please ask them to use the side gate. I will add that to the notes. How would you like to pay? I will use a debit card. You can pay the full amount when the desk arrives. Your order reference is five four eight one. Please keep it in case you need to contact us again. We will send a text the day before with a more precise arrival estimate.","Welcome to Summit Indoor Climbing. If this is your first visit, please watch the short safety briefing before you enter the climbing area. On weekdays the centre is usually quietest between one and three in the afternoon. Your first-visit price includes a harness, but climbing shoes are hired separately at the shoe counter. The beginner session with an instructor lasts ninety minutes. Please arrive ten minutes before it begins. Remove jewellery and place it in a locker; it can catch on the climbing wall or equipment. You can collect a safety card at reception. It explains the signals used by instructors and the rules for checking equipment. The shoe-hire counter is just beyond the entrance. New climbers practise on the low wall in the beginner area, where the instructor can demonstrate each movement. The café sells sandwiches, fruit and hot drinks. If you have a minor injury, tell a member of staff and go to the first-aid room beside the staff door. Do not climb until the instructor has checked your equipment.","Nora: Our project will compare concentration under two lighting conditions. We will use the same task in both sessions and invite university students to participate. Eli: The pilot was useful. One instruction was unclear, so we should rewrite it and test it again before the main trial. Nora: I can design the concentration task and check the light meters. Eli: I will recruit the volunteers and analyse their scores. We should also review the research on light and attention. I can do that before we start. Nora: The tutor said we should be careful with our conclusion. If the scores differ, we cannot claim that lighting alone caused the difference. People may have slept differently or already know the task. Eli: We can list those as limitations. Who will present the results? Nora: I will. We should also record the time of day, because concentration may change over the day. Eli: Good point. We can keep the session short and use the same room for both conditions.","Producing a large telescope mirror begins with a thick piece of glass known as a blank. Manufacturers choose glass that expands very little when its temperature changes. The blank is heated and then cooled slowly in a process called annealing. This reduces internal stress, so the shape is less likely to change later. The next stage is grinding. A tool removes material until the surface has the required curve. Fine abrasive particles are then used to make the surface smoother. Polishing removes tiny scratches and creates a finish that can reflect light accurately. A thin reflective layer, often aluminium, is applied to the back surface. Before the mirror is accepted, an optical test checks its shape. Even a small error can distort the image formed by the telescope. Workers carry out the polishing in a clean room with very little dust. A single particle could mark the surface. The work can take months, and the mirror must be stored in a protective case when it is not being tested. A careful record is kept at each stage so that any change can be traced. The same principles apply to smaller mirrors, although large pieces require heavier equipment and more precise temperature control."];
+var FULL=true, AUDIO=["","","",""];
+var ASSESSOR_EMAIL="oxfampreparation@email.cz";
+
+function wc(t){var m=t.trim().match(/\S+/g);return m?m.length:0}
+function winit(){
+  document.querySelectorAll("textarea").forEach(function(t){t.oninput=function(){document.getElementById(t.id+"c").textContent=wc(t.value)+" words"}});
+  document.querySelectorAll("[data-c]").forEach(function(b){b.onclick=function(){var t=document.getElementById(b.dataset.c).value;if(navigator.clipboard)navigator.clipboard.writeText(t)}});
+  document.querySelectorAll("[data-s]").forEach(function(b){b.onclick=function(){
+    var t=document.getElementById(b.dataset.s).value,nameField=document.getElementById("nm"),nm=((nameField&&nameField.value)||"Student").trim()||"Student";
+    if(!wc(t)){b.textContent="Write something first!";setTimeout(function(){b.textContent="Send writing to assessor"},2000);return}
+    var subject="IELTS Academic Practice Test 6 - "+b.dataset.t+" - "+nm;
+    var message="Student: "+nm+"\nTest: IELTS Academic Practice Test 6\nTask: "+b.dataset.t+"\n\n"+t;
+    var status=b.parentNode.parentNode.querySelector(".email-status");if(!status){status=document.createElement("p");status.className="note email-status";status.setAttribute("role","status");b.parentNode.parentNode.appendChild(status)}
+    status.textContent="Your email app should open with the assessor, task and writing filled in. Review the draft and press Send.";
+    var mailto="mailto:"+ASSESSOR_EMAIL+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(message);
+    window.location.href=mailto;b.textContent="Open email draft";setTimeout(function(){b.textContent="Send writing to assessor"},3500);
+  }});
+}
+var playId=0;
+function say(i,done){
+  var id=++playId;speechSynthesis.cancel();
+  var parts=T[i].split(/(\{pause\}|\{short\}|\bSpeaker \d:|\b[A-Z][A-Za-z]+:)/),q=[],pitch=1,flip=0,names={};
+  parts.forEach(function(x){
+    x=x.trim();if(!x)return;
+    if(x==="{pause}"||x==="{short}"){q.push({w:x==="{pause}"?2500:1200});pitch=1;return}
+    var sp=x.match(/^Speaker (\d):$/);if(sp){q.push({t:"Speaker "+sp[1],p:1,w:700});return}
+    if(/^[A-Za-z 0-9 ]+:$/.test(x)){var n=x.slice(0,-1);if(!(n in names))names[n]=(flip++%2)?1.25:.85;pitch=names[n];return}
+    (x.match(/[^.?!]+[.?!]*/g)||[x]).forEach(function(z){q.push({t:z.trim(),p:pitch,w:300})})
+  });
+  var k=0;(function next(){
+    if(id!==playId)return;
+    if(k>=q.length){done();return}
+    var s=q[k++];
+    if(!s.t){setTimeout(next,s.w);return}
+    var u=new SpeechSynthesisUtterance(s.t);u.lang="en-GB";u.rate=0.95;u.pitch=s.p;
+    u.onend=function(){setTimeout(next,s.w)};u.onerror=function(){setTimeout(next,s.w)};
+    speechSynthesis.speak(u);
+  })()
+}
+
+function play(b){if(b._busy)return;var i=+b.dataset.i,wrap=b.parentNode,stop=wrap.querySelector(".listen-stop"),status=wrap.querySelector(".listen-status");if(!window.speechSynthesis||!window.SpeechSynthesisUtterance){if(status)status.textContent="Text-to-speech is not available in this browser.";b.textContent="TTS unavailable";return}b._busy=true;b.textContent="Playing…";stop.disabled=false;if(status)status.textContent="Playing Part "+(i+1)+" using your browser voice…";say(i,function(){b._busy=false;b.disabled=false;b.textContent="Replay listening audio";stop.disabled=true;if(status)status.textContent="Part "+(i+1)+" finished. Replay is available."})}
+
+function init(){[["t1",60],["t2",30],["t3",60],["sp2prep",1],["sp2talk",2]].forEach(function(a){timer(a[0],a[1])});if(!FULL)return;build(R,document.getElementById("rbox"),"r");build(L,document.getElementById("lbox"),"l");document.getElementById("ck1").onclick=function(){check(document.getElementById("rbox"),document.getElementById("sc1"))};document.getElementById("ck2").onclick=function(){check(document.getElementById("lbox"),document.getElementById("sc2"))};document.querySelectorAll(".listen-play").forEach(function(b){b.onclick=function(){play(b)}});document.querySelectorAll(".listen-stop").forEach(function(b){b.onclick=function(){if(window.speechSynthesis)speechSynthesis.cancel();playId++;var wrap=b.parentNode,p=wrap.querySelector(".listen-play"),s=wrap.querySelector(".listen-status");if(p){p._busy=false;p.disabled=false;p.textContent="Play listening audio"}b.disabled=true;if(s)s.textContent="Playback stopped. Press Play to restart."}});winit()}
+
+(function(){
+  var g=document.getElementById("gate"),m=document.getElementById("main");
+  function show(){g.hidden=true;m.hidden=false;if(window.init)init()}
+  if(unlocked()){show();return}
+  document.getElementById("gf").onsubmit=function(e){
+    e.preventDefault();
+    if(document.getElementById("pw").value.trim()===PW){
+      try{sessionStorage.setItem("ielts_academic_practice_6","1")}catch(x){}
+      show();
+    } else {
+      document.getElementById("err").textContent="Wrong password.";
+    }
+  }
+  
+  var themeBtn = document.getElementById('themeBtn');
+  if(themeBtn) {
+    themeBtn.onclick = function() {
+      var currentTheme = document.documentElement.getAttribute('data-theme');
+      if(currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        themeBtn.textContent = '🌙';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeBtn.textContent = '☀️';
+      }
+    };
+  }
+  
+  var menuToggle = document.getElementById('menuToggle');
+  if(menuToggle) {
+    menuToggle.onclick = function() {
+      document.body.classList.toggle('menuopen');
+    };
+  }
+  
+  var loginBtn = document.getElementById('loginBtn');
+  var dlg = document.getElementById('dlg');
+  var cancel = document.getElementById('cancel');
+  if(loginBtn && dlg) {
+    loginBtn.onclick = function() { dlg.showModal(); }
+  }
+  if(cancel && dlg) {
+    cancel.onclick = function() { dlg.close(); }
+  }
+})();
+</script>
+</body>
+</html>

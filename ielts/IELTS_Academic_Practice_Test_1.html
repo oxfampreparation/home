@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>IELTS Academic Practice Test 1</title>
+
+<style>
+/* Default theme is explicitly light */
+:root {
+  --bg: #f6f7fb;
+  --paper: #fff;
+  --ink: #14213d;
+  --muted: #4b5266;
+  --line: #d5d9e6;
+  --mark: #2b59ff;
+  --hi: #ffe45e;
+  --ok: #1a7f52;
+  --bad: #b3261e;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Dark theme applied ONLY when data-theme="dark" is present */
+:root[data-theme="dark"] {
+  --bg: #0f1526;
+  --paper: #182038;
+  --ink: #eef1fb;
+  --muted: #a9b1c9;
+  --line: #2c3656;
+  --mark: #7d9bff;
+  --hi: #e9d24a;
+  --ok: #57c58f;
+  --bad: #ff8a80;
+}
+
+html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: border-box; }
+
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1.0625rem/1.6 "Atkinson Hyperlegible", system-ui, sans-serif; }
+h1, h2, h3 { font-family: Archivo, "Helvetica Neue", Arial, sans-serif; line-height: 1.05; margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--mark); outline-offset: 3px; }
+.wrap { max-width: 74rem; margin: 0 auto; padding: 0 1.25rem; }
+
+header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .75rem; padding: 1.25rem 0; position: sticky; top: 0; background: var(--bg); z-index: 100; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+.head-left { display: flex; align-items: center; gap: .75rem; }
+#menuToggle { background: transparent; border: none; cursor: pointer; color: var(--ink); display: flex; padding: .25rem; border-radius: .25rem; }
+#menuToggle:hover { background: var(--line); }
+#menuToggle svg { width: 1.6rem; height: 1.6rem; }
+.logo { font: 800 1.25rem Archivo, sans-serif; text-decoration: none; }
+nav a { margin-left: 1.25rem; text-decoration: none; color: var(--muted); }
+nav a:hover { color: var(--ink); }
+
+.btn { display: inline-block; background: var(--ink); color: var(--bg); padding: .8rem 1.4rem; border-radius: .5rem; font-weight: 700; text-decoration: none; border: 0; cursor: pointer; font-size: 1rem; font-family: inherit; }
+.btn.alt { background: transparent; color: var(--ink); border: 2px solid var(--ink); }
+.hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2rem; align-items: start; padding: 1rem 0 3rem; }
+.hero-text { margin-top: 2.5rem; }
+
+h1 { font-size: clamp(2rem, 3.4vw, 3rem); font-weight: 800; font-stretch: 90%; letter-spacing: -.02em; margin-top: 1rem; margin-bottom: 0; }
+h1 span { background: linear-gradient(transparent 62%, var(--hi) 62%); }
+.lead { color: var(--muted); max-width: 32rem; margin: 1.25rem 0 1.75rem; font-size: 1.15rem; }
+.row { display: flex; gap: .75rem; flex-wrap: wrap; }
+
+.sheet { background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.sheet h2 { font-size: 1.1rem; margin-bottom: .25rem; }
+.sheet p { margin: 0 0 1rem; color: var(--muted); font-size: .95rem; }
+.q { padding: .7rem 0; border-top: 1px solid var(--line); }
+.q b { display: inline-block; font-weight: 800; margin-bottom: .45rem; margin-right: 0.5rem; }
+
+.opts { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem; width: fit-content; }
+.opt { display: flex; align-items: center; gap: .4rem; padding: .3rem .7rem .3rem .35rem; border: 1.5px solid var(--line); border-radius: 2rem; background: transparent; color: inherit; font-size: .95rem; cursor: pointer; width: fit-content; }
+.opt i { width: 1.4rem; height: 1.4rem; border-radius: 50%; border: 2px solid var(--muted); display: grid; place-items: center; font: 700 .7rem Archivo, sans-serif; font-style: normal; flex-shrink: 0; }
+
+.opt[aria-pressed="true"] { border-color: var(--mark); }
+.opt[aria-pressed="true"] i { background: var(--mark); border-color: var(--mark); color: var(--bg); }
+.opt.right { border-color: var(--ok); } .opt.right i { background: var(--ok); border-color: var(--ok); color: var(--bg); }
+.opt.wrong { border-color: var(--bad); } .opt.wrong i { background: var(--bad); border-color: var(--bad); color: var(--bg); }
+
+/* Image Options specific styles */
+.img-opts-grid { display: flex; flex-direction: row; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+.img-opt { flex-direction: column; align-items: center; padding: 0.5rem; border-radius: 0.5rem; gap: 0.5rem; text-align: center; }
+.img-opt img { height: 120px; width: 160px; object-fit: cover; background: var(--paper); border-radius: 0.25rem; }
+.img-opt i { margin-bottom: 0.25rem; }
+
+.result { margin-top: 1rem; font-weight: 700; min-height: 1.6rem; }
+section { padding: 3.5rem 0; border-top: 1px solid var(--line); }
+h2.t { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: .75rem; letter-spacing: -.01em; }
+
+.sub, .txt { color: var(--muted); max-width: 48rem; margin: 0 0 2rem; white-space: pre-line; line-height: 1.6; }
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: .6rem; background: var(--paper); }
+table { border-collapse: collapse; width: 100%; min-width: 38rem; }
+th, td { text-align: left; padding: .9rem 1rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font: 800 1.2rem Archivo, sans-serif; white-space: nowrap; }
+td small { display: block; font: 400 .9rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+
+.support-strip { position: fixed; bottom: 0; left: 0; right: 0; background: var(--ink); color: var(--bg); padding: 1rem 1.25rem; z-index: 999; box-shadow: 0 -4px 12px rgba(0,0,0,0.15); }
+.support-strip-inner { max-width: 74rem; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; width: 100%; font-weight: 700; }
+footer { border-top: 1px solid var(--line); padding: 2rem 0 5rem; color: var(--muted); font-size: .95rem; }
+
+.lang { display: flex; gap: .25rem; flex-wrap: wrap; } .lang button { font: 700 .8rem Archivo, sans-serif; padding: .35rem .6rem; border: 1.5px solid var(--line); border-radius: .4rem; background: transparent; color: var(--muted); cursor: pointer; } .lang button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.layout { display: grid; grid-template-columns: 12.5rem minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+.layout.collapsed { grid-template-columns: 1fr; gap: 0; }
+.layout.collapsed .side { display: none; }
+.side { position: sticky; top: 5rem; max-height: calc(100vh - 6rem); max-height: calc(100dvh - 6rem); overflow-y: auto; display: flex; flex-direction: column; gap: .15rem; }
+summary { cursor: pointer; font: 700 .95rem Archivo, sans-serif; color: var(--muted); padding: .4rem .75rem; border-radius: .5rem; } summary:hover { color: var(--ink); } .ex[open] summary { margin-bottom: .15rem; }
+.side nav { display: flex; flex-direction: column; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); } .side nav a { margin: 0; color: inherit; } .side .lang { margin-bottom: 1rem; }
+.side p { margin: 0 0 .5rem; font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+.side a { text-decoration: none; padding: .5rem .75rem; border-radius: .5rem; font: 700 1rem Archivo, sans-serif; border-left: 3px solid transparent; }
+.side a small { display: block; font: 400 .8rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+.side a:hover { background: var(--paper); border-left-color: var(--mark); }
+tr:target td { background: var(--hi); color: #14213d; } tr:target td small { color: #14213d; }
+
+@media (max-width: 52rem) { .layout { grid-template-columns: 1fr; gap: 0; } .side { position: static; max-height: none; margin: 0 0 1rem; padding: 0 0 1rem; border-bottom: 1px solid var(--line); } }
+
+.hr { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; } .hr .btn { padding: .45rem 1rem; font-size: .9rem; }
+dialog { border: 2px solid var(--ink); border-radius: .75rem; background: var(--paper); color: var(--ink); padding: 1.5rem; width: min(26rem, 92vw); max-height: 90vh; overflow: auto; } dialog::backdrop { background: rgba(10,16,32,.55); }
+dialog h2 { font-size: 1.4rem; margin-bottom: .5rem; } dialog label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+dialog input { width: 100%; padding: .65rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.demo { color: var(--muted); font-size: .9rem; margin: .5rem 0 0; } .err { color: var(--bad); min-height: 1.5rem; margin-top: .5rem; font-size: .95rem; }
+
+@media (max-width: 40rem) {
+  .wrap { padding: 0 1rem; }
+  header { padding: 1rem 0; }
+  .hero { padding-bottom: 2rem; }
+  .sheet { padding: 1.1rem; }
+  section { padding: 2.5rem 0; }
+  .scroll { border: 0; background: transparent; overflow: visible; }
+  table, tbody, tr, td { display: block; min-width: 0; width: 100%; }
+  thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  tr { background: var(--paper); border: 1px solid var(--line); border-radius: .6rem; padding: .6rem 0; margin-bottom: .75rem; }
+  td { border: 0; padding: .15rem 1rem; }
+  td:first-child { font-size: 1.3rem; padding-top: .4rem; }
+  tr:target { border-color: var(--ink); }
+}
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+html { scroll-padding-top: calc(5rem + env(safe-area-inset-top, 0px)); }
+body header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); padding: .6rem 0; border-bottom: 1px solid var(--line); }
+.brand { display: flex; align-items: center; gap: .75rem; }
+body .logo { font-size: 1.85rem; letter-spacing: -.02em; }
+.mbtn { display: inline-flex; flex-direction: column; justify-content: center; gap: 5px; width: 2.75rem; height: 2.75rem; padding: 0 .7rem; border: 2px solid var(--ink); border-radius: .5rem; background: transparent; cursor: pointer; flex: none; }
+.mbtn span { display: block; height: 2px; background: var(--ink); border-radius: 2px; }
+.mbtn:hover { background: var(--paper); }
+body .side { top: 5.5rem; max-height: calc(100vh - 6.5rem); max-height: calc(100dvh - 6.5rem); }
+body.nomenu .layout { grid-template-columns: minmax(0, 1fr); }
+body.nomenu .side { display: none; }
+body:has(#app[hidden]) .mbtn { display: none; }
+.side>.hr { margin-bottom: 1rem; }
+.scrim { display: none; }
+
+@media (max-width: 52rem) {
+  body .side { position: fixed; top: 0; left: 0; bottom: 0; width: min(19rem, 86vw); max-height: none; margin: 0; padding: calc(1rem + env(safe-area-inset-top, 0px)) 1rem calc(1rem + env(safe-area-inset-bottom, 0px)); background: var(--paper); border: 0; border-right: 2px solid var(--ink); z-index: 50; overflow-y: auto; transform: translateX(-105%); visibility: hidden; transition: transform .25s ease, visibility 0s .25s; }
+  body.menuopen .side { transform: none; visibility: visible; transition: transform .25s ease; }
+  body .side nav { flex-direction: column; flex-wrap: nowrap; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+  body .side nav a { padding: .5rem .75rem; }
+  .scrim { display: block; position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: rgba(10,16,32,.5); z-index: 40; opacity: 0; pointer-events: none; transition: opacity .25s; }
+  body.menuopen .scrim { opacity: 1; pointer-events: auto; }
+  body .logo { font-size: 1.6rem; }
+}
+
+.gatebox { max-width: 26rem; margin: 2rem auto; background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.gatebox label, .wr label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+input[type=text], input[type=password], textarea { width: 100%; padding: .6rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.q input[type=text] { width: 14rem; max-width: 100%; }
+.part { background: var(--paper); border: 1px solid var(--line); border-radius: .75rem; padding: 1.5rem; margin-bottom: 1.25rem; }
+.q.ok { border-left: 4px solid var(--ok); padding-left: .75rem; } .q.no { border-left: 4px solid var(--bad); padding-left: .75rem; } .fb { font-weight: 700; margin-top: .25rem; }
+.tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0; }
+nav.tabs a { margin: 0; padding: .4rem 1rem; border: 1.5px solid var(--line); border-radius: 2rem; text-decoration: none; font-weight: 700; }
+nav.tabs a[aria-current=page] { background: var(--ink); color: var(--bg); }
+.bar { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; margin: 1rem 0; } .time { font: 800 1.6rem Archivo, sans-serif; }
+.pics { display: flex; gap: 1rem; flex-wrap: wrap; } .pics svg, .pics img { flex: 1 1 14rem; max-width: 22rem; border: 2px solid var(--ink); border-radius: .5rem; background: var(--paper); object-fit: cover; aspect-ratio: 3/2; }
+.audio-player{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;padding:.75rem 1rem;margin:1rem 0;background:var(--paper);border:1px solid var(--line);border-radius:.75rem}.audio-player .listen-status{font-weight:600;color:var(--muted)}
+textarea { min-height: 15rem; } .tr { display: none; } .note { padding: .75rem 1rem; border-left: 4px solid var(--mark); background: var(--paper); margin: 1rem 0; }
+.sec { padding-top: 2rem; margin-top: 2rem; border-top: 1px solid var(--line); } .jump { margin-top: 0; } .ex { color: var(--muted); margin-top: .15rem; font-size: .95rem; }
+ .chart{display:block;width:min(100%,760px);height:auto;margin:1rem auto;border:1px solid var(--line);border-radius:12px;background:#fff}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header id="siteHeader">
+<div class="head-left">
+<button aria-label="Toggle menu" id="menuToggle">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
+</button>
+<a class="logo" href="../index.html">Oxfam Preparation</a>
+</div>
+<div class="hr">
+<button aria-label="Toggle theme" class="btn alt" id="themeBtn" style="padding:.45rem .6rem; min-width:0; font-size:1.1rem">🌙</button>
+<button class="btn" id="loginBtn" type="button">Log in</button>
+</div>
+</header>
+<div class="layout">
+<aside aria-label="Menu" class="side">
+<nav>
+<a href="../cpe.html">All tests</a>
+</nav>
+</aside>
+<main id="top">
+<div id="gate">
+<div class="gatebox">
+<h1><span>IELTS Academic Practice Test 1</span></h1>
+<p>Enter the password to open this IELTS Academic practice test.</p>
+<form id="gf">
+<label for="pw">Password</label>
+<input autocomplete="off" id="pw" type="password"/>
+<div class="err" id="err"></div>
+<div class="row" style="margin-top:1rem">
+<button class="btn" type="submit">Open</button>
+<a class="btn alt" href="../cpe.html">Back</a>
+</div>
+</form>
+</div>
+</div>
+<div hidden id="main"><h1>IELTS Academic Practice Test 1</h1><p class="sub">Original IELTS Academic practice paper. Browser TTS is used for the listening audio.</p><div class="part"><label for="nm"><strong>Student name (optional)</strong></label><input id="nm" type="text" placeholder="Enter your name"></div><nav class="tabs jump"><a href="#read">Reading</a><a href="#listen">Listening</a><a href="#write">Writing</a><a href="#speak">Speaking</a></nav><section class="sec" id="read"><h2 class="t">Academic Reading (60 minutes)</h2><div class="bar"><span class="time" id="t1"></span><button class="btn alt">Start</button></div><p class="note">Three original passages; 40 questions.</p><div id="rbox"></div><button class="btn" id="ck1">Check Reading answers</button><b id="sc1"></b></section><section class="sec" id="listen"><h2 class="t">Listening (about 30 minutes)</h2><div class="bar"><span class="time" id="t2"></span><button class="btn alt">Start</button></div><p class="note">Four parts, 40 questions. Browser TTS reads these original practice scripts. IELTS recordings in the exam are played once.</p><div id="lbox"></div><button class="btn" id="ck2">Check Listening answers</button><b id="sc2"></b></section><section class="sec" id="write"><h2 class="t">Academic Writing (60 minutes)</h2><div class="bar"><span class="time" id="t3"></span><button class="btn alt">Start</button></div><div class="part"><h2>Task 1</h2><p>Spend about 20 minutes. Write at least 150 words.</p><div class="note">The chart shows the percentage of commuters using four types of transport in Northbridge in 2010 and 2025. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</div><img class="chart" alt="Northbridge transport use in 2010 and 2025" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3MDAiIGhlaWdodD0iMzkwIiB2aWV3Qm94PSIwIDAgNzAwIDM5MCI+PHJlY3Qgd2lkdGg9IjcwMCIgaGVpZ2h0PSIzOTAiIGZpbGw9IndoaXRlIi8+PHRleHQgeD0iMzUwIiB5PSIzMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjIwIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzE4Mjk0ZCI+Tm9ydGhicmlkZ2UgY29tbXV0ZXJzICglKTwvdGV4dD48ZyBzdHJva2U9IiNkYmUxZWIiIHN0cm9rZS13aWR0aD0iMiI+PHBhdGggZD0iTTgwIDMyMEg2NjBNODAgMjcwSDY2ME04MCAyMjBINjYwTTgwIDE3MEg2NjBNODAgMTIwSDY2ME04MCA3MEg2NjAiLz48L2c+PGcgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEzIiBmaWxsPSIjMzk0NjVlIiB0ZXh0LWFuY2hvcj0iZW5kIj48dGV4dCB4PSI3MCIgeT0iMzI1Ij4wPC90ZXh0Pjx0ZXh0IHg9IjcwIiB5PSIyNzUiPjEwPC90ZXh0Pjx0ZXh0IHg9IjcwIiB5PSIyMjUiPjIwPC90ZXh0Pjx0ZXh0IHg9IjcwIiB5PSIxNzUiPjMwPC90ZXh0Pjx0ZXh0IHg9IjcwIiB5PSIxMjUiPjQwPC90ZXh0Pjx0ZXh0IHg9IjcwIiB5PSI3NSI+NTA8L3RleHQ+PC9nPjxwYXRoIGQ9Ik04MCA3MFYzMjAiIHN0cm9rZT0iIzI5M2Q1YSIgc3Ryb2tlLXdpZHRoPSIzIi8+PGc+PHJlY3QgeD0iMTQwIiB5PSIxNDAiIHdpZHRoPSIzNSIgaGVpZ2h0PSIxODAiIGZpbGw9IiM4MWFiYzYiLz48cmVjdCB4PSIxNzgiIHk9IjE4MCIgd2lkdGg9IjM1IiBoZWlnaHQ9IjE0MCIgZmlsbD0iI2U2OWI3MCIvPjxyZWN0IHg9IjI3NiIgeT0iMjIwIiB3aWR0aD0iMzUiIGhlaWdodD0iMTAwIiBmaWxsPSIjODFhYmM2Ii8+PHJlY3QgeD0iMzE0IiB5PSIxOTAiIHdpZHRoPSIzNSIgaGVpZ2h0PSIxMzAiIGZpbGw9IiNlNjliNzAiLz48cmVjdCB4PSI0MTIiIHk9IjI1MCIgd2lkdGg9IjM1IiBoZWlnaHQ9IjcwIiBmaWxsPSIjODFhYmM2Ii8+PHJlY3QgeD0iNDUwIiB5PSIyMzUiIHdpZHRoPSIzNSIgaGVpZ2h0PSI4NSIgZmlsbD0iI2U2OWI3MCIvPjxyZWN0IHg9IjU0OCIgeT0iMjkwIiB3aWR0aD0iMzUiIGhlaWdodD0iMzAiIGZpbGw9IiM4MWFiYzYiLz48cmVjdCB4PSI1ODYiIHk9IjI2MCIgd2lkdGg9IjM1IiBoZWlnaHQ9IjYwIiBmaWxsPSIjZTY5YjcwIi8+PC9nPjxnIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzE4Mjk0ZCI+PHRleHQgeD0iMTc3IiB5PSIzNDYiPkNhcjwvdGV4dD48dGV4dCB4PSIzMTMiIHk9IjM0NiI+QnVzPC90ZXh0Pjx0ZXh0IHg9IjQ0OSIgeT0iMzQ2Ij5CaWN5Y2xlPC90ZXh0Pjx0ZXh0IHg9IjU4NSIgeT0iMzQ2Ij5XYWxrPC90ZXh0PjwvZz48ZyBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTMiIGZpbGw9IiMzOTQ2NWUiPjxyZWN0IHg9IjI0NSIgeT0iMzY1IiB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIGZpbGw9IiM4MWFiYzYiLz48dGV4dCB4PSIyNjQiIHk9IjM3NyI+MjAxMDwvdGV4dD48cmVjdCB4PSIzNDAiIHk9IjM2NSIgd2lkdGg9IjE0IiBoZWlnaHQ9IjE0IiBmaWxsPSIjZTY5YjcwIi8+PHRleHQgeD0iMzU5IiB5PSIzNzciPjIwMjU8L3RleHQ+PC9nPjwvc3ZnPg=="><textarea id="w1"></textarea><div class="bar"><b id="w1c">0 words</b><button class="btn alt" data-c="w1">Copy</button><button class="btn" data-s="w1" data-t="Writing Task 1">Send writing to assessor</button></div></div><div class="part"><h2>Task 2</h2><p>Spend about 40 minutes. Write at least 250 words.</p><div class="note">Some people believe that cities should make public transport free for everyone. Others think passengers should pay the full cost of their journeys. Discuss both views and give your own opinion.</div><textarea id="w2"></textarea><div class="bar"><b id="w2c">0 words</b><button class="btn alt" data-c="w2">Copy</button><button class="btn" data-s="w2" data-t="Writing Task 2">Send writing to assessor</button></div></div></section><section class="sec" id="speak"><h2 class="t">Speaking (11–14 minutes)</h2><div class="part"><h2>Part 1 — Interview</h2><p>Where do you live? Do you work or study? How often do you use public transport? What food do you enjoy? How do you spend your free time?</p></div><div class="part"><h2>Part 2 — Long turn</h2><div class="note"><b>Describe a skill that you learned from another person.</b><br>Say what the skill is, who taught you, how you learned it, and why it is useful.</div><div class="bar"><span class="time" id="sp2prep"></span><button class="btn alt">Start 1-minute preparation</button><span class="time" id="sp2talk"></span><button class="btn alt">Start 2-minute talk</button></div></div><div class="part"><h2>Part 3 — Discussion</h2><p>Should practical skills be taught at school? How has technology changed learning? Is it better to learn alone or with a teacher? Why do adults continue learning? Should employers train their staff?</p></div></section></div></div>
+</main>
+</div>
+<div class="support-strip">
+<div class="support-strip-inner">
+<div><span _k="Customer support every day from 9:00 to 16:30">Customer support every day from 9:00 to 16:30</span></div>
+<div class="support-info">
+<a href="mailto:oxfampreparation@email.cz">oxfampreparation@email.cz</a>
+<a href="tel:+420723200988">+420 723 200 988</a>
+</div>
+</div>
+</div>
+<footer>© 2020-2026 Oxfam - Oxford family. All rights reserved. Not affiliated with Cambridge University Press &amp; Assessment. Exam names belong to their owners.</footer>
+</div>
+<dialog aria-labelledby="dt" id="dlg">
+<h2 id="dt">Sign in to open your tests</h2>
+<form id="lf" novalidate="">
+<label for="em">Email</label><input autocomplete="username" id="em" type="email"/>
+<label for="pw">Password</label><input autocomplete="current-password" id="pw" type="password"/>
+<p class="demo" hidden="" id="demo"></p>
+<div aria-live="polite" class="err" id="err"></div>
+<div class="row" style="margin-top:1rem"><button class="btn" type="submit">Log in</button><button class="btn alt" id="cancel" type="button">Cancel</button></div>
+</form>
+</dialog>
+<script>
+var PW="COPT";
+function unlocked(){try{return sessionStorage.getItem("ielts_academic_practice_1")==="1"}catch(e){return false}}
+
+function norm(s){return s.toLowerCase().replace(/\u2019/g,"'").replace(/\s+/g," ").trim()}
+
+function build(parts,box,pre){
+  var n=0;pre=pre||"";
+  parts.forEach(function(p,pi){
+    var d=document.createElement("section");d.className="part";
+    d.innerHTML="<h2>"+p.t+"</h2>"+(pre==="l"?"<div class='audio-player'><button class='btn listen-play' type='button' data-i='"+pi+"'>Play listening audio</button><button class='btn alt listen-stop' type='button' disabled>Stop</button><span class='listen-status' role='status'>Browser voice · Part "+(pi+1)+"</span></div>":"")+(p.m?"<div class='bar'><span class='time' id='pt"+pre+pi+"'></span><button class='btn alt' type='button'>Start</button> <small>suggested time</small></div>":"")+"<p class='sub'>"+p.i+"</p>"+(p.x?"<p class='txt'>"+p.x+"</p>":"")+(p.im||"")+"<div class='items'></div>";
+    var it=d.querySelector(".items");
+    p.q.forEach(function(q){
+      n++;var r=document.createElement("div");r.className="q";
+      var label = q.q && /^(\d+)\.\s*/.test(q.q) ? q.q.match(/^(\d+)\.\s*/)[1] : n; var qtext = (q.q||"").replace(/^\d+\.\s*/,"").replace(/\n/g,"<br>"); var h="<b>"+label+"</b> "+qtext+(q.h?" <strong>"+q.h+"</strong>":"");
+      if(q.o){
+        var isImg = q.o.length > 0 && /^(https?:\/\/|data:image\/)/i.test(q.o[0]);
+        var optsHtml = q.o.map(function(o,i){
+          var letter = "ABCDEFGH"[i];
+          if(q.o.length === 2 && (o === "A" || o === "B" || o.includes("Correct") || o.includes("YES"))) {
+            letter = ["A", "B"][i];
+          }
+          if (isImg) {
+            return "<label class='opt img-opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> <img src='"+o+"' alt='Option "+letter+"' onerror=\"this.style.display='none'\"></label>";
+          } else {
+            var text = o === letter ? "" : o;
+            return "<label class='opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> "+text+"</label>";
+          }
+        }).join("");
+        var gridClass = isImg ? "opts img-opts-grid" : "opts";
+        h += "<div class='" + gridClass + "'>" + optsHtml + "</div>";
+      } else {
+        h+=" <input type='text' autocomplete='off' aria-label='Answer "+n+"'>";
+      }
+      r.innerHTML=h;r._q=q;it.appendChild(r);
+    });
+    box.appendChild(d);
+    if(p.m)timer("pt"+pre+pi,p.m);
+  });
+}
+
+function check(box,out){
+  var tot=0,ok=0;
+  box.querySelectorAll(".part").forEach(function(part){
+    var pTot=0,pOk=0;
+    part.querySelectorAll(".q").forEach(function(r){
+      pTot++;var q=r._q,good,ans;
+      if(q.o){
+        var c=r.querySelector("input:checked");
+        good=c&&+c.value===q.a;
+        var letter = "ABCDEFGH"[q.a];
+        if(q.o.length === 2) letter = ["A", "B"][q.a];
+        var isImg = q.o.length > 0 && /^(https?:\/\/|data:image\/)/i.test(q.o[0]);
+        ans = isImg ? letter : (q.o[q.a] === letter ? letter : letter + " " + q.o[q.a]);
+      } else {
+        var v=norm(r.querySelector("input").value);
+        good=q.a.some(function(a){return norm(a)===v});
+        ans=q.a[0];
+      }
+      r.classList.toggle("ok",!!good);
+      r.classList.toggle("no",!good);
+      var f=r.querySelector(".fb");
+      if(!f){f=document.createElement("div");f.className="fb";r.appendChild(f)}
+      f.textContent=good?"Correct":"Answer: "+ans;
+      var x=r.querySelector(".ex");
+      if(!x){x=document.createElement("div");x.className="ex";r.appendChild(x)}
+      x.textContent=q.e||"";
+      if(good)pOk++;
+    });
+    if(pTot>0){
+      var ps=part.querySelector(".pscore");
+      if(!ps){ps=document.createElement("div");ps.className="pscore note";ps.style.marginTop="1.5rem";part.appendChild(ps)}
+      ps.innerHTML="<b>Part score:</b> "+pOk+" / "+pTot;
+    }
+    tot+=pTot;ok+=pOk;
+  });
+  out.textContent="Total score: "+ok+" / "+tot;
+  box.querySelectorAll(".tr").forEach(function(e){e.style.display="block"});
+}
+
+function timer(id,min){
+  var e=document.getElementById(id),l=min*60,t=null;
+  if(!e)return;
+  function s(){e.textContent=("0"+Math.floor(l/60)).slice(-2)+":"+("0"+l%60).slice(-2)}s();
+  e.nextElementSibling.onclick=function(){
+    if(t){clearInterval(t);t=null;this.textContent="Start";return}
+    this.textContent="Pause";
+    t=setInterval(function(){l--;s();if(l<=0)clearInterval(t)},1000);
+  }
+}
+
+var R = [{"t":"Reading Passage 1 — Urban shade","i":"Questions 1–5: choose the correct heading A–G for paragraphs A–E. Questions 6–10: TRUE, FALSE or NOT GIVEN. Questions 11–13: answer in NO MORE THAN TWO WORDS.","x":"<b>Headings:</b> A. Why locations matter  B. A measure with limits  C. Planning for the future  D. Different effects for different people  E. A change in the research question  F. The cost of maintenance  G. An unexpected historical influence<br><br><b>URBAN TREES AND SUMMER HEAT</b><br><br><b>A</b> In many cities, a walk from one neighbourhood to another can involve a striking change in temperature. Streets with mature trees often feel cooler than nearby streets dominated by concrete and glass. Researchers once treated this mainly as a question of comfort. Recent heatwaves, however, have made urban shade a public-health concern. A city’s average temperature can hide short, intense hot spots where older residents, outdoor workers and people without air conditioning face greater risks. Some local governments now combine temperature records with health data to identify such areas. Such combined information has also changed emergency planning. During a heat alert, a health service can identify streets where people may need access to a cool public building. The data can guide temporary measures, while longer planting plans take years to have an effect.<br><br><b>B</b> It is tempting to measure a tree canopy by looking only at the amount of land covered by leaves. This gives a useful first picture, but it does not show how shade is distributed. A large park may have extensive tree cover while a busy road nearby offers none. New mapping projects therefore divide cities into small blocks and record canopy above streets, playgrounds and walking routes separately. Satellite images can be compared with photographs taken at street level. The two sources do not always agree: a tree may appear large from above but provide little shade over the pavement where people walk. A useful canopy map therefore records more than a total percentage. It may show tree height, the width of the crown and the hours when a street receives direct sunlight. These details help planners compare locations fairly, although collecting them requires time and regular updates.<br><br><b>C</b> The benefits of trees are not limited to cooler air. Leaves can slow rainwater before it reaches drains, and roots may help water enter the soil. Trees also provide places for birds and insects. Yet these effects depend on the species, age and condition of each tree. A young tree planted this year offers little immediate shade and needs regular watering. Some fast-growing varieties produce shade quickly but may require more maintenance or damage nearby paths. For planners, the question is not simply how many trees to plant, but which trees can thrive in each location over decades. The team also found that residents valued shade differently. A parent might ask for protection over a playground, whereas a shop owner may prefer a clear view of a street. Public meetings helped explain these choices, but attendance was uneven, so online forms and local groups were used as well.<br><br><b>D</b> Decisions about planting can affect groups differently. In one study, researchers compared tree cover with household income and found that wealthier districts had more mature trees on average. The finding did not prove that income alone caused the difference. Older streets, garden size and past planning choices also mattered. Still, the result led the city to ask residents where additional shade would be most useful. They requested trees near bus stops, school entrances and outdoor markets. Officials had initially prioritised wide central avenues, but the consultation shifted some planting towards places used daily by people with few private gardens. Maintenance records can reveal patterns that are difficult to see from a single inspection. If young trees repeatedly die along one route, the cause may be compacted soil or a lack of water rather than unsuitable species. Sharing these observations allows the next planting plan to respond to experience.<br><br><b>E</b> Planting programmes can fail when cities announce ambitious totals but do not plan for care. Young trees need water during dry periods, protection from vehicles and checks for disease. A neighbourhood group may help with simple tasks, but long-term responsibility must be clear. Some cities now publish a public register showing the location, species and condition of each street tree. This makes it easier to see where replacements are needed and whether maintenance visits have taken place. The register does not solve the problem by itself; it gives residents and local services a shared basis for discussing what should happen next. A canopy register can support this process, but only if local staff update it after inspections. Residents may then report a missing tree or damaged guard with a clear location. Over time, these small records help planners distinguish a one-off problem from a repeated pattern and direct limited resources where they are most needed.","q":[{"q":"1. Choose a heading for paragraph A.","o":["A","B","C","D","E","F","G"],"a":4,"e":"Paragraph A describes a shift from comfort to a public-health question."},{"q":"2. Choose a heading for paragraph B.","o":["A","B","C","D","E","F","G"],"a":1,"e":"Match the paragraph’s main focus to the heading list."},{"q":"3. Choose a heading for paragraph C.","o":["A","B","C","D","E","F","G"],"a":2,"e":"Match the paragraph’s main focus to the heading list."},{"q":"4. Choose a heading for paragraph D.","o":["A","B","C","D","E","F","G"],"a":3,"e":"Match the paragraph’s main focus to the heading list."},{"q":"5. Choose a heading for paragraph E.","o":["A","B","C","D","E","F","G"],"a":5,"e":"Match the paragraph’s main focus to the heading list."},{"q":"6. Early research treated urban tree shade mainly as a comfort issue.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"The passage says researchers once treated it mainly as comfort."},{"q":"7. Satellite images always show exactly how much shade pedestrians receive.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"The passage says satellite and street-level observations may differ."},{"q":"8. The passage names one tree species as the best choice for all cities.","o":["TRUE","FALSE","NOT GIVEN"],"a":2,"e":"No single species is named as universally best."},{"q":"9. The study proved that income was the only cause of differences in tree cover.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"Other factors also mattered."},{"q":"10. Residents asked for shade near places they use regularly.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"They requested trees near bus stops, schools and markets."},{"q":"11. What kind of data did researchers combine with temperature records?","a":["health data"],"e":"The passage says health data."},{"q":"12. What can roots help water enter?","a":["the soil","soil"],"e":"Roots may help water enter the soil."},{"q":"13. What do cities publish to record tree location and condition?","a":["a public register","public register","tree register"],"e":"The text calls it a public register."}]},{"t":"Reading Passage 2 — Repair cafés","i":"Questions 14–18: choose A, B, C or D. Questions 19–23: match each statement to a repair model A–D. Questions 24–27: complete the sentences using NO MORE THAN TWO WORDS.","x":"<b>KEEPING EVERYDAY OBJECTS IN USE</b><br><br>Repair cafés are community events where people bring broken household objects and work on them with volunteer repairers. The first events were small gatherings in local halls, but the idea has since spread to libraries, schools and workshops. Their purpose is not simply to provide free repairs. Organisers also want visitors to understand how objects work and to feel more confident repairing them in future.<br><br>Researchers studying these events have noticed that the social setting matters. Visitors often arrive convinced that a toaster or lamp is impossible to fix. A volunteer may begin by asking what happened, then invite the owner to help open the device. Even when a repair is unsuccessful, the visitor may leave with a clearer explanation of the fault. This exchange can change how people think about ownership: an object is not necessarily rubbish just because it has stopped working.<br><br>Repair events differ in organisation. A monthly repair café in a town library accepts small appliances, clothes and toys. It has limited tools, so larger objects are referred elsewhere. A mobile workshop visits housing estates on a rotating schedule, bringing equipment to residents who may find the town centre difficult to reach. A school-based programme teaches pupils to repair bicycles and simple electrical items during lessons. Finally, an online advice service connects users to video guides and remote volunteers, but it cannot safely assist with every kind of electrical fault.<br><br>Measuring success is more difficult than counting repaired objects. One team records how many items leave the event working. Another follows up with visitors six months later to ask whether they have attempted repairs at home. The second method takes longer, but it reveals whether people have gained lasting skills. Organisers also estimate the weight of equipment kept out of general waste, although such figures vary according to the object and the local disposal system.<br><br>There are practical limits. Volunteers may not have the training needed for dangerous faults, and older equipment can be difficult to open without special parts. Organisers therefore need clear safety rules and must be willing to refuse a repair. Some groups keep a list of trusted local technicians for cases beyond their ability. This can frustrate visitors who hoped for an immediate solution, but it protects both the public and the volunteers. The effect on household spending is less clear. A repaired kettle may save its owner the price of a replacement, but volunteers and venues still have costs. Some groups receive small grants, while others ask for donations or work with a library that already has suitable rooms. This makes it difficult to compare events by counting repairs alone. The most useful evaluation may combine several measures: objects kept in use, skills learned, visitor confidence and the time needed to complete each repair. Researchers also caution that an event may attract people who already enjoy practical work, leaving out residents who are less confident. Organisers have tested short demonstrations and appointments to make the first visit easier. These changes do not guarantee that every object can be saved, but they can help more people take part.<br><br>Supporters argue that repair cafés can complement, rather than replace, professional services. They may reduce waste and help people learn, while also creating a place where neighbours meet. Their long-term effect will depend on access to tools, steady volunteer support and manufacturers making products that can be opened and repaired. Product design is therefore part of the issue. A device held together with ordinary screws is easier to inspect than one sealed with strong glue. Manufacturers may also make replacement parts available for a longer period. Repair groups cannot change every design, yet feedback from repeated events can show which parts fail most often. Some organisations share those findings with schools and local businesses. This information may encourage buyers to consider durability as well as price. It can also help public authorities decide whether repair support belongs in a wider waste-reduction plan.","q":[{"q":"14. What is one aim of repair cafés besides repairing objects?","o":["To teach visitors how objects work","To sell replacement appliances","To train professional electricians"],"a":0,"e":"Organisers want visitors to understand and learn."},{"q":"15. Why might a visitor leave after an unsuccessful repair with a positive result?","o":["They understand the problem better.","They receive a free replacement.","They learn to avoid electrical objects."],"a":0,"e":"The visitor may leave with an explanation of the fault."},{"q":"16. What is a limitation of the mobile workshop?","o":["It visits only schools.","It follows a rotating schedule.","It cannot accept bicycles."],"a":1,"e":"It visits housing estates on a rotating schedule."},{"q":"17. Why does the six-month follow-up take longer?","o":["The team must contact visitors later.","Repairs take six months to complete.","The objects are stored for half a year."],"a":0,"e":"Researchers follow up with visitors six months later."},{"q":"18. Why might a group refuse to repair an object?","o":["The fault may be dangerous.","The owner did not buy it locally.","The object is too new."],"a":0,"e":"Safety rules mean some repairs must be refused."},{"q":"19. Which model visits housing estates?","o":["A","B","C","D"],"a":1,"e":"Model B is the mobile workshop."},{"q":"20. Which model is based in a library?","o":["A","B","C","D"],"a":0,"e":"Model A is the library repair café."},{"q":"21. Which model teaches repair during lessons?","o":["A","B","C","D"],"a":2,"e":"Model C is school-based."},{"q":"22. Which model may use video guides?","o":["A","B","C","D"],"a":3,"e":"Model D is the online advice service."},{"q":"23. Which model cannot safely advise on every electrical fault?","o":["A","B","C","D"],"a":3,"e":"The online service has safety limits."},{"q":"24. What do some volunteers invite the owner to help open?","a":["the device","device"],"e":"They may invite the owner to help open the device."},{"q":"25. What do organisers estimate keeping out of general waste?","a":["the weight","weight"],"e":"They estimate the weight of equipment."},{"q":"26. What do some groups provide for difficult cases?","a":["a list of technicians","trusted technicians","a list"],"e":"They keep a list of trusted technicians."},{"q":"27. What should manufacturers make products easier to do?","a":["repair","be repaired"],"e":"The final paragraph says products should be repairable."}]},{"t":"Reading Passage 3 — Predicting harvests","i":"Questions 28–32: choose the correct heading A–G for paragraphs A–E. Questions 33–37: TRUE, FALSE or NOT GIVEN. Questions 38–40: choose A, B, C or D.","x":"<b>Headings:</b> A. A tool is useful only with local knowledge  B. Data collected before crops are planted  C. Why early estimates were unreliable  D. A shared picture of changing conditions  E. Farmers question who controls information  F. The danger of relying on one signal  G. Predictions become more valuable over time<br><br><b>FORECASTING THE HARVEST</b><br><br><b>A</b> For generations, farmers have estimated harvests from experience: the timing of rain, the colour of leaves and the condition of the soil. These observations remain valuable, but changing weather has made some familiar patterns less dependable. In several regions, a warm spring no longer guarantees an early harvest because a sudden cold period may follow. Researchers now combine local observations with weather stations and satellite images. The aim is not to replace farmers’ judgement, but to provide a wider view of conditions across a region. The quality of each data source also changes over time. A sensor can stop working, a field may be replanted, and cloud cover can affect an image. Analysts therefore attach dates and reliability notes to observations. This helps users distinguish a current measurement from a historical average.<br><br><b>B</b> A forecasting system may use rainfall, temperature, soil moisture and records of previous harvests. Each type of information has weaknesses. A weather station measures conditions at one point, while a field several kilometres away may receive different rainfall. Satellite images cover large areas but cannot always distinguish a healthy crop from weeds between rows. The most useful forecasts compare several sources and show how uncertain the estimate is. A single number can look precise while hiding major gaps in the evidence. Forecasts are not exact promises. A model describes likely outcomes under stated conditions, and an unusual storm may still change the result. Some researchers provide a range rather than a single figure, allowing planners to consider both a poor and a strong harvest.<br><br><b>C</b> Early digital forecasts sometimes failed because the models were trained on old patterns. When the climate shifted, relationships that had once been reliable became less useful. A system might predict that a particular amount of rain would produce a certain yield, even though new heat conditions changed the result. Researchers have improved the models by adding more recent observations and checking forecasts against what farmers actually harvest. This process is repeated each season, rather than treated as a one-time calibration. For a farmer, even a small improvement in timing may matter. A forecast could inform the choice of storage, the day to hire machinery or when to contact a buyer. The information is most useful when it arrives early enough to support a decision and is explained in familiar language.<br><br><b>D</b> Forecasts are increasingly shared among farmers, local advisers and food agencies. A regional picture can help transport companies prepare storage and help public services identify areas where food prices may rise. Farmers may use the same information to decide when to sell or whether to store part of a crop. The system is most effective when users can see the source and age of the data. If an image is several weeks old, a storm or irrigation change may already have altered the field. Data agreements can also describe how long information is kept and whether it is shared outside the project. Farmers may be more willing to contribute when they can correct errors and withdraw from optional services. These practical safeguards do not settle wider debates about commercial use, but they make the relationship clearer.<br><br><b>E</b> Access to agricultural data raises questions about control. Some platforms are run by private companies, which may combine field information with other commercial records. Farmers may not know whether their data are used only to produce a forecast or also to support other services. Cooperative projects have tried to give growers a stronger role in deciding what is collected and who can view it. Clear agreements do not remove every concern, but they can make participation more informed. Trust, like forecast accuracy, takes time to build. The lecture concludes that no single technology can guarantee a good harvest. Reliable decisions come from combining measurements with experience, communicating uncertainty and checking what happened after the prediction. In this way, forecasting is best viewed as a continuing conversation between data and people who know the land. As climate conditions keep changing, those conversations may become more important than producing a seemingly perfect estimate.","q":[{"q":"28. Choose a heading for paragraph A.","o":["A","B","C","D","E","F","G"],"a":0,"e":"Choose the heading that best summarises the paragraph."},{"q":"29. Choose a heading for paragraph B.","o":["A","B","C","D","E","F","G"],"a":5,"e":"Choose the heading that best summarises the paragraph."},{"q":"30. Choose a heading for paragraph C.","o":["A","B","C","D","E","F","G"],"a":2,"e":"Choose the heading that best summarises the paragraph."},{"q":"31. Choose a heading for paragraph D.","o":["A","B","C","D","E","F","G"],"a":3,"e":"Choose the heading that best summarises the paragraph."},{"q":"32. Choose a heading for paragraph E.","o":["A","B","C","D","E","F","G"],"a":4,"e":"Choose the heading that best summarises the paragraph."},{"q":"33. Forecasting systems are intended to replace farmers’ observations.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"The passage says the aim is not to replace farmers’ judgement."},{"q":"34. Satellite images can always identify healthy crops without difficulty.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"The passage says images cannot always distinguish crops from weeds."},{"q":"35. Researchers compare predictions with actual harvests.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"The text says they check forecasts against harvests."},{"q":"36. All agricultural data platforms are operated by farmers’ cooperatives.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"Some are run by private companies."},{"q":"37. The passage gives the name of a company that sells forecasting tools.","o":["TRUE","FALSE","NOT GIVEN"],"a":2,"e":"No company is named."},{"q":"38. Why can one weather station give an incomplete picture?","o":["It measures conditions at one location.","It cannot record temperature.","It only operates during harvest.","It measures soil rather than rain."],"a":0,"e":"Conditions can vary between the station and nearby fields."},{"q":"39. What does the passage say about a single precise forecast number?","o":["It may hide gaps in the evidence.","It is always more useful than a range.","It proves that a crop will succeed.","It should not be shared with farmers."],"a":0,"e":"A precise number can hide uncertainty."},{"q":"40. What can clear data agreements help to do?","o":["Make participation more informed","Guarantee higher crop prices","Remove the need for forecasts","Stop weather from changing"],"a":0,"e":"Agreements help people understand how data are used."}]}];
+var L = [{"t":"Listening Part 1 — Community course booking","i":"Questions 1–10. Complete the form. Write NO MORE THAN TWO WORDS AND/OR A NUMBER.","x":"NORTHBRIDGE COMMUNITY CENTRE\nCourse registration\nSurname: 1 _____\nCourse: 2 _____\nDay: 3 _____\nFirst class: 4 _____\nFee: 5 £_____\nBring: 6 an _____\nRoom: 7 _____\nClass begins: 8 _____\nClass ends: 9 _____\nBus from station: 10 number _____","q":[{"q":"1. Surname","a":["wallace"],"e":"The surname is Wallace."},{"q":"2. Course","a":["pottery"],"e":"The course is pottery."},{"q":"3. Day","a":["tuesday"],"e":"Classes are on Tuesday."},{"q":"4. First class","a":["14 may","may 14"],"e":"The first class is on 14 May."},{"q":"5. Fee","a":["48","£48"],"e":"The fee is forty-eight pounds."},{"q":"6. Bring","a":["apron","an apron"],"e":"Bring an apron."},{"q":"7. Room","a":["12","room 12"],"e":"The class is in Room 12."},{"q":"8. Begins","a":["6.30","6:30","6.30 pm","6:30 pm"],"e":"The class begins at 6.30."},{"q":"9. Ends","a":["8","8.00","8:00","8 pm"],"e":"It ends at eight."},{"q":"10. Bus number","a":["6","six"],"e":"Take bus number six."}]},{"t":"Listening Part 2 — Museum visitor talk","i":"Questions 11–15. Choose A, B or C. Questions 16–20. Match each place with the correct letter A–E.","x":"Places: A. garden  B. café  C. gift shop  D. workshop  E. reading room","q":[{"q":"11. What time does the museum open?","o":["9.00","9.30","10.00"],"a":1,"e":"It opens at half past nine."},{"q":"12. Where can visitors leave large bags?","o":["At the front desk","In the café","In the reading room"],"a":0,"e":"The front desk has a bag area."},{"q":"13. What is included in the entry price?","o":["A guided tour","A small map","A drink"],"a":1,"e":"A map is included."},{"q":"14. When does the model-making activity begin?","o":["10.15","10.45","11.15"],"a":1,"e":"It begins at quarter to eleven."},{"q":"15. What should visitors do before taking photographs?","o":["Ask a member of staff","Buy a photography ticket","Turn off all lights"],"a":0,"e":"Visitors should ask staff first."},{"q":"16. Where can visitors buy a postcard?","o":["A","B","C","D","E"],"a":2,"e":"Postcards are sold in the gift shop."},{"q":"17. Where can visitors sit outside?","o":["A","B","C","D","E"],"a":0,"e":"The garden has outdoor benches."},{"q":"18. Where can visitors have lunch?","o":["A","B","C","D","E"],"a":1,"e":"Lunch is served in the café."},{"q":"19. Where can visitors read old letters?","o":["A","B","C","D","E"],"a":4,"e":"The letters are in the reading room."},{"q":"20. Where can visitors make a clay tile?","o":["A","B","C","D","E"],"a":3,"e":"The activity takes place in the workshop."}]},{"t":"Listening Part 3 — Student project discussion","i":"Questions 21–25. Choose A, B or C. Questions 26–30. Choose the correct letter A–F.","x":"Project roles: A. survey design  B. taking photographs  C. checking sources  D. drawing the map  E. writing the conclusion  F. presenting results","q":[{"q":"21. What is the students’ project about?","o":["How people use a city park","Changes in local bus routes","The history of a sports centre"],"a":0,"e":"Their project concerns use of the city park."},{"q":"22. Why did they change their original question?","o":["It was too broad.","They could not find a teacher.","The park was closed."],"a":0,"e":"The original question covered too much."},{"q":"23. What information will they collect first?","o":["The number of visitors","The cost of park repairs","The age of the trees"],"a":0,"e":"They will count visitors first."},{"q":"24. When will they visit the park?","o":["Monday morning","Wednesday afternoon","Saturday evening"],"a":1,"e":"They plan to go Wednesday afternoon."},{"q":"25. What does the tutor advise them to do?","o":["Keep a record of the weather","Interview every visitor","Use only online information"],"a":0,"e":"Weather may affect visitor numbers."},{"q":"26. Who will design the survey?","o":["A","B","C","D","E","F"],"a":0,"e":"Nadia will design the survey."},{"q":"27. Who will take photographs?","o":["A","B","C","D","E","F"],"a":1,"e":"Tom will take photographs."},{"q":"28. Who will check the sources?","o":["A","B","C","D","E","F"],"a":2,"e":"Leila will check their sources."},{"q":"29. Who will draw the map?","o":["A","B","C","D","E","F"],"a":3,"e":"Tom will draw the map."},{"q":"30. Who will present the results?","o":["A","B","C","D","E","F"],"a":5,"e":"Nadia will present the results."}]},{"t":"Listening Part 4 — Lecture on mangrove restoration","i":"Questions 31–40. Complete the notes. Write NO MORE THAN TWO WORDS for each answer.","x":"MANGROVE FORESTS\nMangroves grow along tropical 31 _____.\nTheir roots reduce the force of 32 _____.\nThey provide shelter for young 33 _____.\nResearchers measure changes using 34 _____ photographs.\nNew plants are first grown in a 35 _____.\nPlanting should follow the natural 36 _____.\nProjects need support from local 37 _____.\nA common problem is plastic 38 _____.\nSuccess may take several 39 _____.\nThe speaker recommends long-term 40 _____.","q":[{"q":"31. Gap 31","a":["coasts","coastlines"],"e":"Mangroves grow along tropical coasts."},{"q":"32. Gap 32","a":["waves","wave"],"e":"Their roots reduce wave force."},{"q":"33. Gap 33","a":["fish"],"e":"They shelter young fish."},{"q":"34. Gap 34","a":["aerial","satellite"],"e":"The talk mentions aerial photographs."},{"q":"35. Gap 35","a":["nursery","plant nursery"],"e":"Young plants grow in a nursery."},{"q":"36. Gap 36","a":["tide","tides"],"e":"Planting should follow the natural tide."},{"q":"37. Gap 37","a":["communities","community"],"e":"Local communities need to support projects."},{"q":"38. Gap 38","a":["waste","plastic waste"],"e":"Plastic waste is a problem."},{"q":"39. Gap 39","a":["years"],"e":"Restoration may take several years."},{"q":"40. Gap 40","a":["monitoring"],"e":"The speaker recommends long-term monitoring."}]}];
+var T = ["Northbridge Community Centre, good morning. I would like to join a class. Certainly. What is your surname? It is Wallace, W A L L A C E. Thank you. Which class are you interested in? Pottery. I have never tried it before. We have a beginner group on Tuesday evenings. That sounds right. When does it start? The first class is on the fourteenth of May. The whole course costs forty-eight pounds, and that includes the clay. Do I need to bring anything? Please bring an apron. We provide the tools. Where is the class? Room twelve, at the end of the ground-floor corridor. What time should I arrive? The class begins at six thirty and finishes at eight. I will take the bus from the station. Number six stops outside the centre. Great, I will write that down.","Welcome to the Riverside Museum. We open at half past nine, and the last entry is at four thirty. You can leave large bags at the front desk, but please keep valuables with you. A small printed map is included in the entry price. The model-making activity starts at quarter to eleven in the workshop and is suitable for adults as well as children. Before taking photographs, ask a member of staff because some objects are sensitive to light. You can buy postcards and guidebooks in the gift shop. The garden has benches where you can sit outside. Lunch and hot drinks are available in the café. In the reading room, visitors can look at letters written by people who lived beside the river two hundred years ago. The workshop is also where today’s clay tile activity takes place. Please return tools to the table when you finish.","Nadia: We need to narrow our park project. Our first question about whether the park is good for the city is much too broad. Tom: Could we look at how people use it during the week? Leila: That seems manageable. We should count visitors at different times and note what areas they use. Nadia: I can design a short survey, but we should not interrupt everyone. Tom: I can take photographs and draw a simple map showing the main paths. Leila: I will check the information we use about the park’s history. When should we go? Wednesday afternoon is possible for me. Nadia: That works. Our tutor said to record the weather because a rainy day could change the number of visitors. We should go again if the first visit is unusually wet. Tom: Who will present our findings? Nadia: I can do that. Leila: Good. I will check that our sources are reliable, and Tom can take the photographs and prepare the map.","Mangrove forests grow along tropical coasts, where land meets the sea. Their trees can survive in salty water and in soil that is often covered by the tide. The roots form a complex network. This network slows waves and can reduce the amount of soil carried away during storms. It also creates sheltered places where young fish and other small animals can grow before moving into deeper water. For people, mangroves may protect homes and roads near the shore, although the level of protection depends on the width and condition of the forest. Scientists use aerial and satellite photographs to compare the size of a mangrove area over time. They also visit the coast to measure water depth and examine the soil, since an image alone cannot explain every change. Restoration projects often begin by protecting a natural area from damage. If planting is needed, young trees may first be raised in a nursery. The timing of planting matters: workers need to follow the local tide so roots are not washed away. Local communities are important partners because they know how the coast changes and may depend on fishing there. Plastic waste can collect among the roots, so some projects organise regular clean-ups. Mangroves grow slowly; visible results can take several years. For this reason, the lecturer recommends long-term monitoring rather than judging a project after its first season."];
+var FULL=true, AUDIO=["","","",""];
+var ASSESSOR_EMAIL="oxfampreparation@email.cz";
+
+function wc(t){var m=t.trim().match(/\S+/g);return m?m.length:0}
+function winit(){
+  document.querySelectorAll("textarea").forEach(function(t){t.oninput=function(){document.getElementById(t.id+"c").textContent=wc(t.value)+" words"}});
+  document.querySelectorAll("[data-c]").forEach(function(b){b.onclick=function(){var t=document.getElementById(b.dataset.c).value;if(navigator.clipboard)navigator.clipboard.writeText(t)}});
+  document.querySelectorAll("[data-s]").forEach(function(b){b.onclick=function(){
+    var t=document.getElementById(b.dataset.s).value,nameField=document.getElementById("nm"),nm=((nameField&&nameField.value)||"Student").trim()||"Student";
+    if(!wc(t)){b.textContent="Write something first!";setTimeout(function(){b.textContent="Send writing to assessor"},2000);return}
+    var subject="IELTS Academic Practice Test 1 - "+b.dataset.t+" - "+nm;
+    var message="Student: "+nm+"\nTest: IELTS Academic Practice Test 1\nTask: "+b.dataset.t+"\n\n"+t;
+    var status=b.parentNode.parentNode.querySelector(".email-status");if(!status){status=document.createElement("p");status.className="note email-status";status.setAttribute("role","status");b.parentNode.parentNode.appendChild(status)}
+    status.textContent="Your email app should open with the assessor, task and writing filled in. Review the draft and press Send.";
+    var mailto="mailto:"+encodeURIComponent(ASSESSOR_EMAIL)+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(message);
+    window.location.href=mailto;b.textContent="Open email draft";setTimeout(function(){b.textContent="Send writing to assessor"},3500);
+  }});
+}
+var playId=0;
+function say(i,done){
+  var id=++playId;speechSynthesis.cancel();
+  var parts=T[i].split(/(\{pause\}|\{short\}|\bSpeaker \d:|\b[A-Z][A-Za-z]+:)/),q=[],pitch=1,flip=0,names={};
+  parts.forEach(function(x){
+    x=x.trim();if(!x)return;
+    if(x==="{pause}"||x==="{short}"){q.push({w:x==="{pause}"?2500:1200});pitch=1;return}
+    var sp=x.match(/^Speaker (\d):$/);if(sp){q.push({t:"Speaker "+sp[1],p:1,w:700});return}
+    if(/^[A-Za-z 0-9 ]+:$/.test(x)){var n=x.slice(0,-1);if(!(n in names))names[n]=(flip++%2)?1.25:.85;pitch=names[n];return}
+    (x.match(/[^.?!]+[.?!]*/g)||[x]).forEach(function(z){q.push({t:z.trim(),p:pitch,w:300})})
+  });
+  var k=0;(function next(){
+    if(id!==playId)return;
+    if(k>=q.length){done();return}
+    var s=q[k++];
+    if(!s.t){setTimeout(next,s.w);return}
+    var u=new SpeechSynthesisUtterance(s.t);u.lang="en-GB";u.rate=0.95;u.pitch=s.p;
+    u.onend=function(){setTimeout(next,s.w)};u.onerror=function(){setTimeout(next,s.w)};
+    speechSynthesis.speak(u);
+  })()
+}
+
+function play(b){if(b._busy)return;var i=+b.dataset.i,wrap=b.parentNode,stop=wrap.querySelector(".listen-stop"),status=wrap.querySelector(".listen-status");if(!window.speechSynthesis||!window.SpeechSynthesisUtterance){if(status)status.textContent="Text-to-speech is not available in this browser.";b.textContent="TTS unavailable";return}b._busy=true;b.textContent="Playing…";stop.disabled=false;if(status)status.textContent="Playing Part "+(i+1)+" using your browser voice…";say(i,function(){b._busy=false;b.disabled=false;b.textContent="Replay listening audio";stop.disabled=true;if(status)status.textContent="Part "+(i+1)+" finished. Replay is available."})}
+
+function init(){[["t1",60],["t2",30],["t3",60],["sp2prep",1],["sp2talk",2]].forEach(function(a){timer(a[0],a[1])});if(!FULL)return;build(R,document.getElementById("rbox"),"r");build(L,document.getElementById("lbox"),"l");document.getElementById("ck1").onclick=function(){check(document.getElementById("rbox"),document.getElementById("sc1"))};document.getElementById("ck2").onclick=function(){check(document.getElementById("lbox"),document.getElementById("sc2"))};document.querySelectorAll(".listen-play").forEach(function(b){b.onclick=function(){play(b)}});document.querySelectorAll(".listen-stop").forEach(function(b){b.onclick=function(){if(window.speechSynthesis)speechSynthesis.cancel();playId++;var wrap=b.parentNode,p=wrap.querySelector(".listen-play"),s=wrap.querySelector(".listen-status");if(p){p._busy=false;p.disabled=false;p.textContent="Play listening audio"}b.disabled=true;if(s)s.textContent="Playback stopped. Press Play to restart."}});winit()}
+
+(function(){
+  var g=document.getElementById("gate"),m=document.getElementById("main");
+  function show(){g.hidden=true;m.hidden=false;if(window.init)init()}
+  if(unlocked()){show();return}
+  document.getElementById("gf").onsubmit=function(e){
+    e.preventDefault();
+    if(document.getElementById("pw").value.trim()===PW){
+      try{sessionStorage.setItem("ielts_academic_practice_1","1")}catch(x){}
+      show();
+    } else {
+      document.getElementById("err").textContent="Wrong password.";
+    }
+  }
+  
+  var themeBtn = document.getElementById('themeBtn');
+  if(themeBtn) {
+    themeBtn.onclick = function() {
+      var currentTheme = document.documentElement.getAttribute('data-theme');
+      if(currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        themeBtn.textContent = '🌙';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeBtn.textContent = '☀️';
+      }
+    };
+  }
+  
+  var menuToggle = document.getElementById('menuToggle');
+  if(menuToggle) {
+    menuToggle.onclick = function() {
+      document.body.classList.toggle('menuopen');
+    };
+  }
+  
+  var loginBtn = document.getElementById('loginBtn');
+  var dlg = document.getElementById('dlg');
+  var cancel = document.getElementById('cancel');
+  if(loginBtn && dlg) {
+    loginBtn.onclick = function() { dlg.showModal(); }
+  }
+  if(cancel && dlg) {
+    cancel.onclick = function() { dlg.close(); }
+  }
+})();
+</script>
+</body>
+</html>

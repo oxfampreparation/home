@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>IELTS Academic Practice Test 9</title>
+
+<style>
+/* Default theme is explicitly light */
+:root {
+  --bg: #f6f7fb;
+  --paper: #fff;
+  --ink: #14213d;
+  --muted: #4b5266;
+  --line: #d5d9e6;
+  --mark: #2b59ff;
+  --hi: #ffe45e;
+  --ok: #1a7f52;
+  --bad: #b3261e;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Dark theme applied ONLY when data-theme="dark" is present */
+:root[data-theme="dark"] {
+  --bg: #0f1526;
+  --paper: #182038;
+  --ink: #eef1fb;
+  --muted: #a9b1c9;
+  --line: #2c3656;
+  --mark: #7d9bff;
+  --hi: #e9d24a;
+  --ok: #57c58f;
+  --bad: #ff8a80;
+}
+
+html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: border-box; }
+
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1.0625rem/1.6 "Atkinson Hyperlegible", system-ui, sans-serif; }
+h1, h2, h3 { font-family: Archivo, "Helvetica Neue", Arial, sans-serif; line-height: 1.05; margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--mark); outline-offset: 3px; }
+.wrap { max-width: 74rem; margin: 0 auto; padding: 0 1.25rem; }
+
+header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .75rem; padding: 1.25rem 0; position: sticky; top: 0; background: var(--bg); z-index: 100; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+.head-left { display: flex; align-items: center; gap: .75rem; }
+#menuToggle { background: transparent; border: none; cursor: pointer; color: var(--ink); display: flex; padding: .25rem; border-radius: .25rem; }
+#menuToggle:hover { background: var(--line); }
+#menuToggle svg { width: 1.6rem; height: 1.6rem; }
+.logo { font: 800 1.25rem Archivo, sans-serif; text-decoration: none; }
+nav a { margin-left: 1.25rem; text-decoration: none; color: var(--muted); }
+nav a:hover { color: var(--ink); }
+
+.btn { display: inline-block; background: var(--ink); color: var(--bg); padding: .8rem 1.4rem; border-radius: .5rem; font-weight: 700; text-decoration: none; border: 0; cursor: pointer; font-size: 1rem; font-family: inherit; }
+.btn.alt { background: transparent; color: var(--ink); border: 2px solid var(--ink); }
+.hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2rem; align-items: start; padding: 1rem 0 3rem; }
+.hero-text { margin-top: 2.5rem; }
+
+h1 { font-size: clamp(2rem, 3.4vw, 3rem); font-weight: 800; font-stretch: 90%; letter-spacing: -.02em; margin-top: 1rem; margin-bottom: 0; }
+h1 span { background: linear-gradient(transparent 62%, var(--hi) 62%); }
+.lead { color: var(--muted); max-width: 32rem; margin: 1.25rem 0 1.75rem; font-size: 1.15rem; }
+.row { display: flex; gap: .75rem; flex-wrap: wrap; }
+
+.sheet { background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.sheet h2 { font-size: 1.1rem; margin-bottom: .25rem; }
+.sheet p { margin: 0 0 1rem; color: var(--muted); font-size: .95rem; }
+.q { padding: .7rem 0; border-top: 1px solid var(--line); }
+.q b { display: inline-block; font-weight: 800; margin-bottom: .45rem; margin-right: 0.5rem; }
+
+.opts { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem; width: fit-content; }
+.opt { display: flex; align-items: center; gap: .4rem; padding: .3rem .7rem .3rem .35rem; border: 1.5px solid var(--line); border-radius: 2rem; background: transparent; color: inherit; font-size: .95rem; cursor: pointer; width: fit-content; }
+.opt i { width: 1.4rem; height: 1.4rem; border-radius: 50%; border: 2px solid var(--muted); display: grid; place-items: center; font: 700 .7rem Archivo, sans-serif; font-style: normal; flex-shrink: 0; }
+
+.opt[aria-pressed="true"] { border-color: var(--mark); }
+.opt[aria-pressed="true"] i { background: var(--mark); border-color: var(--mark); color: var(--bg); }
+.opt.right { border-color: var(--ok); } .opt.right i { background: var(--ok); border-color: var(--ok); color: var(--bg); }
+.opt.wrong { border-color: var(--bad); } .opt.wrong i { background: var(--bad); border-color: var(--bad); color: var(--bg); }
+
+/* Image Options specific styles */
+.img-opts-grid { display: flex; flex-direction: row; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+.img-opt { flex-direction: column; align-items: center; padding: 0.5rem; border-radius: 0.5rem; gap: 0.5rem; text-align: center; }
+.img-opt img { height: 120px; width: 160px; object-fit: cover; background: var(--paper); border-radius: 0.25rem; }
+.img-opt i { margin-bottom: 0.25rem; }
+
+.result { margin-top: 1rem; font-weight: 700; min-height: 1.6rem; }
+section { padding: 3.5rem 0; border-top: 1px solid var(--line); }
+h2.t { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: .75rem; letter-spacing: -.01em; }
+
+.sub, .txt { color: var(--muted); max-width: 48rem; margin: 0 0 2rem; white-space: pre-line; line-height: 1.6; }
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: .6rem; background: var(--paper); }
+table { border-collapse: collapse; width: 100%; min-width: 38rem; }
+th, td { text-align: left; padding: .9rem 1rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font: 800 1.2rem Archivo, sans-serif; white-space: nowrap; }
+td small { display: block; font: 400 .9rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+
+.support-strip { position: fixed; bottom: 0; left: 0; right: 0; background: var(--ink); color: var(--bg); padding: 1rem 1.25rem; z-index: 999; box-shadow: 0 -4px 12px rgba(0,0,0,0.15); }
+.support-strip-inner { max-width: 74rem; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; width: 100%; font-weight: 700; }
+footer { border-top: 1px solid var(--line); padding: 2rem 0 5rem; color: var(--muted); font-size: .95rem; }
+
+.lang { display: flex; gap: .25rem; flex-wrap: wrap; } .lang button { font: 700 .8rem Archivo, sans-serif; padding: .35rem .6rem; border: 1.5px solid var(--line); border-radius: .4rem; background: transparent; color: var(--muted); cursor: pointer; } .lang button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.layout { display: grid; grid-template-columns: 12.5rem minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+.layout.collapsed { grid-template-columns: 1fr; gap: 0; }
+.layout.collapsed .side { display: none; }
+.side { position: sticky; top: 5rem; max-height: calc(100vh - 6rem); max-height: calc(100dvh - 6rem); overflow-y: auto; display: flex; flex-direction: column; gap: .15rem; }
+summary { cursor: pointer; font: 700 .95rem Archivo, sans-serif; color: var(--muted); padding: .4rem .75rem; border-radius: .5rem; } summary:hover { color: var(--ink); } .ex[open] summary { margin-bottom: .15rem; }
+.side nav { display: flex; flex-direction: column; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); } .side nav a { margin: 0; color: inherit; } .side .lang { margin-bottom: 1rem; }
+.side p { margin: 0 0 .5rem; font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+.side a { text-decoration: none; padding: .5rem .75rem; border-radius: .5rem; font: 700 1rem Archivo, sans-serif; border-left: 3px solid transparent; }
+.side a small { display: block; font: 400 .8rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+.side a:hover { background: var(--paper); border-left-color: var(--mark); }
+tr:target td { background: var(--hi); color: #14213d; } tr:target td small { color: #14213d; }
+
+@media (max-width: 52rem) { .layout { grid-template-columns: 1fr; gap: 0; } .side { position: static; max-height: none; margin: 0 0 1rem; padding: 0 0 1rem; border-bottom: 1px solid var(--line); } }
+
+.hr { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; } .hr .btn { padding: .45rem 1rem; font-size: .9rem; }
+dialog { border: 2px solid var(--ink); border-radius: .75rem; background: var(--paper); color: var(--ink); padding: 1.5rem; width: min(26rem, 92vw); max-height: 90vh; overflow: auto; } dialog::backdrop { background: rgba(10,16,32,.55); }
+dialog h2 { font-size: 1.4rem; margin-bottom: .5rem; } dialog label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+dialog input { width: 100%; padding: .65rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.demo { color: var(--muted); font-size: .9rem; margin: .5rem 0 0; } .err { color: var(--bad); min-height: 1.5rem; margin-top: .5rem; font-size: .95rem; }
+
+@media (max-width: 40rem) {
+  .wrap { padding: 0 1rem; }
+  header { padding: 1rem 0; }
+  .hero { padding-bottom: 2rem; }
+  .sheet { padding: 1.1rem; }
+  section { padding: 2.5rem 0; }
+  .scroll { border: 0; background: transparent; overflow: visible; }
+  table, tbody, tr, td { display: block; min-width: 0; width: 100%; }
+  thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  tr { background: var(--paper); border: 1px solid var(--line); border-radius: .6rem; padding: .6rem 0; margin-bottom: .75rem; }
+  td { border: 0; padding: .15rem 1rem; }
+  td:first-child { font-size: 1.3rem; padding-top: .4rem; }
+  tr:target { border-color: var(--ink); }
+}
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+html { scroll-padding-top: calc(5rem + env(safe-area-inset-top, 0px)); }
+body header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); padding: .6rem 0; border-bottom: 1px solid var(--line); }
+.brand { display: flex; align-items: center; gap: .75rem; }
+body .logo { font-size: 1.85rem; letter-spacing: -.02em; }
+.mbtn { display: inline-flex; flex-direction: column; justify-content: center; gap: 5px; width: 2.75rem; height: 2.75rem; padding: 0 .7rem; border: 2px solid var(--ink); border-radius: .5rem; background: transparent; cursor: pointer; flex: none; }
+.mbtn span { display: block; height: 2px; background: var(--ink); border-radius: 2px; }
+.mbtn:hover { background: var(--paper); }
+body .side { top: 5.5rem; max-height: calc(100vh - 6.5rem); max-height: calc(100dvh - 6.5rem); }
+body.nomenu .layout { grid-template-columns: minmax(0, 1fr); }
+body.nomenu .side { display: none; }
+body:has(#app[hidden]) .mbtn { display: none; }
+.side>.hr { margin-bottom: 1rem; }
+.scrim { display: none; }
+
+@media (max-width: 52rem) {
+  body .side { position: fixed; top: 0; left: 0; bottom: 0; width: min(19rem, 86vw); max-height: none; margin: 0; padding: calc(1rem + env(safe-area-inset-top, 0px)) 1rem calc(1rem + env(safe-area-inset-bottom, 0px)); background: var(--paper); border: 0; border-right: 2px solid var(--ink); z-index: 50; overflow-y: auto; transform: translateX(-105%); visibility: hidden; transition: transform .25s ease, visibility 0s .25s; }
+  body.menuopen .side { transform: none; visibility: visible; transition: transform .25s ease; }
+  body .side nav { flex-direction: column; flex-wrap: nowrap; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+  body .side nav a { padding: .5rem .75rem; }
+  .scrim { display: block; position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: rgba(10,16,32,.5); z-index: 40; opacity: 0; pointer-events: none; transition: opacity .25s; }
+  body.menuopen .scrim { opacity: 1; pointer-events: auto; }
+  body .logo { font-size: 1.6rem; }
+}
+
+.gatebox { max-width: 26rem; margin: 2rem auto; background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.gatebox label, .wr label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+input[type=text], input[type=password], textarea { width: 100%; padding: .6rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.q input[type=text] { width: 14rem; max-width: 100%; }
+.part { background: var(--paper); border: 1px solid var(--line); border-radius: .75rem; padding: 1.5rem; margin-bottom: 1.25rem; }
+.q.ok { border-left: 4px solid var(--ok); padding-left: .75rem; } .q.no { border-left: 4px solid var(--bad); padding-left: .75rem; } .fb { font-weight: 700; margin-top: .25rem; }
+.tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0; }
+nav.tabs a { margin: 0; padding: .4rem 1rem; border: 1.5px solid var(--line); border-radius: 2rem; text-decoration: none; font-weight: 700; }
+nav.tabs a[aria-current=page] { background: var(--ink); color: var(--bg); }
+.bar { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; margin: 1rem 0; } .time { font: 800 1.6rem Archivo, sans-serif; }
+.pics { display: flex; gap: 1rem; flex-wrap: wrap; } .pics svg, .pics img { flex: 1 1 14rem; max-width: 22rem; border: 2px solid var(--ink); border-radius: .5rem; background: var(--paper); object-fit: cover; aspect-ratio: 3/2; }
+.audio-player{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;padding:.75rem 1rem;margin:1rem 0;background:var(--paper);border:1px solid var(--line);border-radius:.75rem}.audio-player .listen-status{font-weight:600;color:var(--muted)}
+textarea { min-height: 15rem; } .tr { display: none; } .note { padding: .75rem 1rem; border-left: 4px solid var(--mark); background: var(--paper); margin: 1rem 0; }
+.sec { padding-top: 2rem; margin-top: 2rem; border-top: 1px solid var(--line); } .jump { margin-top: 0; } .ex { color: var(--muted); margin-top: .15rem; font-size: .95rem; }
+ .chart{display:block;width:min(100%,760px);height:auto;margin:1rem auto;border:1px solid var(--line);border-radius:12px;background:#fff}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header id="siteHeader">
+<div class="head-left">
+<button aria-label="Toggle menu" id="menuToggle">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
+</button>
+<a class="logo" href="../index.html">Oxfam Preparation</a>
+</div>
+<div class="hr">
+<button aria-label="Toggle theme" class="btn alt" id="themeBtn" style="padding:.45rem .6rem; min-width:0; font-size:1.1rem">🌙</button>
+<button class="btn" id="loginBtn" type="button">Log in</button>
+</div>
+</header>
+<div class="layout">
+<aside aria-label="Menu" class="side">
+<nav>
+<a href="../cpe.html">All tests</a>
+</nav>
+</aside>
+<main id="top">
+<div id="gate">
+<div class="gatebox">
+<h1><span>IELTS Academic Practice Test 9</span></h1>
+<p>Enter the password to open this IELTS Academic practice test.</p>
+<form id="gf">
+<label for="pw">Password</label>
+<input autocomplete="off" id="pw" type="password"/>
+<div class="err" id="err"></div>
+<div class="row" style="margin-top:1rem">
+<button class="btn" type="submit">Open</button>
+<a class="btn alt" href="../cpe.html">Back</a>
+</div>
+</form>
+</div>
+</div>
+<div hidden id="main"><h1>IELTS Academic Practice Test 9</h1><p class="sub">Original IELTS Academic practice paper. Browser TTS is used for the listening audio.</p><div class="part"><label for="nm"><strong>Student name (optional)</strong></label><input id="nm" type="text" placeholder="Enter your name"></div><nav class="tabs jump"><a href="#read">Reading</a><a href="#listen">Listening</a><a href="#write">Writing</a><a href="#speak">Speaking</a></nav><section class="sec" id="read"><h2 class="t">Academic Reading (60 minutes)</h2><div class="bar"><span class="time" id="t1"></span><button class="btn alt">Start</button></div><p class="note">Three original passages; 40 questions.</p><div id="rbox"></div><button class="btn" id="ck1">Check Reading answers</button><b id="sc1"></b></section><section class="sec" id="listen"><h2 class="t">Listening (about 30 minutes)</h2><div class="bar"><span class="time" id="t2"></span><button class="btn alt">Start</button></div><p class="note">Four parts, 40 questions. Browser TTS reads these original practice scripts. IELTS recordings in the exam are played once.</p><div id="lbox"></div><button class="btn" id="ck2">Check Listening answers</button><b id="sc2"></b></section><section class="sec" id="write"><h2 class="t">Academic Writing (60 minutes)</h2><div class="bar"><span class="time" id="t3"></span><button class="btn alt">Start</button></div><div class="part"><h2>Task 1</h2><p>Spend about 20 minutes. Write at least 150 words.</p><div class="note">The line graph shows the annual number of participants, in thousands, on guided architecture walks in three city districts between 2015 and 2024. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</div><img class="chart" alt="Annual participants in guided architecture walks in three city districts, in thousands, 2015 to 2024" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3NjAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgNzYwIDQyMCI+PHJlY3Qgd2lkdGg9Ijc2MCIgaGVpZ2h0PSI0MjAiIGZpbGw9IiNmZmYiLz48dGV4dCB4PSIzODAiIHk9IjI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTkiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMxODI5NGQiPlBhcnRpY2lwYW50cyBvbiBndWlkZWQgYXJjaGl0ZWN0dXJlIHdhbGtzPC90ZXh0Pjx0ZXh0IHg9IjM4MCIgeT0iNTEiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMyIgZmlsbD0iIzM5NDY1ZSI+VGhvdXNhbmRzIG9mIHBhcnRpY2lwYW50czwvdGV4dD48ZyBzdHJva2U9IiNkYmUxZWIiIHN0cm9rZS13aWR0aD0iMSI+PHBhdGggZD0iTTkwIDMzMEg3MDBNOTAgMjgySDcwME05MCAyMzRINzAwTTkwIDE4Nkg3MDBNOTAgMTM4SDcwME05MCA5MEg3MDAiLz48L2c+PGcgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSIjMzk0NjVlIiB0ZXh0LWFuY2hvcj0iZW5kIj48dGV4dCB4PSI3OCIgeT0iMzM0Ij4wPC90ZXh0Pjx0ZXh0IHg9Ijc4IiB5PSIyODYiPjI8L3RleHQ+PHRleHQgeD0iNzgiIHk9IjIzOCI+NDwvdGV4dD48dGV4dCB4PSI3OCIgeT0iMTkwIj42PC90ZXh0Pjx0ZXh0IHg9Ijc4IiB5PSIxNDIiPjg8L3RleHQ+PHRleHQgeD0iNzgiIHk9Ijk0Ij4xMDwvdGV4dD48L2c+PHBhdGggZD0iTTkwIDkwVjMzMEg3MDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzI5M2Q1YSIgc3Ryb2tlLXdpZHRoPSIyIi8+PGcgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEzIiBmaWxsPSIjMzk0NjVlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj48dGV4dCB4PSIxMzAiIHk9IjM1NCI+MjAxNTwvdGV4dD48dGV4dCB4PSIzMTAiIHk9IjM1NCI+MjAxODwvdGV4dD48dGV4dCB4PSI0OTAiIHk9IjM1NCI+MjAyMTwvdGV4dD48dGV4dCB4PSI2NzAiIHk9IjM1NCI+MjAyNDwvdGV4dD48L2c+PHBvbHlsaW5lIHBvaW50cz0iMTMwLDIzNCAzMTAsMTg2IDQ5MCwyNTggNjcwLDEzOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzE4MmE4IiBzdHJva2Utd2lkdGg9IjQiLz48cG9seWxpbmUgcG9pbnRzPSIxMzAsMjU4IDMxMCwyMTAgNDkwLDI4MiA2NzAsMTYyIiBmaWxsPSJub25lIiBzdHJva2U9IiNkNzgzNDQiIHN0cm9rZS13aWR0aD0iNCIvPjxwb2x5bGluZSBwb2ludHM9IjEzMCwyODIgMzEwLDIzNCA0OTAsMzA2IDY3MCwxODYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRhOWI3NiIgc3Ryb2tlLXdpZHRoPSI0Ii8+PGcgZmlsbD0iIzMxODJhOCI+PGNpcmNsZSBjeD0iMTMwIiBjeT0iMjM0IiByPSI1Ii8+PGNpcmNsZSBjeD0iMzEwIiBjeT0iMTg2IiByPSI1Ii8+PGNpcmNsZSBjeD0iNDkwIiBjeT0iMjU4IiByPSI1Ii8+PGNpcmNsZSBjeD0iNjcwIiBjeT0iMTM4IiByPSI1Ii8+PC9nPjxnIGZpbGw9IiNkNzgzNDQiPjxjaXJjbGUgY3g9IjEzMCIgY3k9IjI1OCIgcj0iNSIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjIxMCIgcj0iNSIvPjxjaXJjbGUgY3g9IjQ5MCIgY3k9IjI4MiIgcj0iNSIvPjxjaXJjbGUgY3g9IjY3MCIgY3k9IjE2MiIgcj0iNSIvPjwvZz48ZyBmaWxsPSIjNGE5Yjc2Ij48Y2lyY2xlIGN4PSIxMzAiIGN5PSIyODIiIHI9IjUiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSIyMzQiIHI9IjUiLz48Y2lyY2xlIGN4PSI0OTAiIGN5PSIzMDYiIHI9IjUiLz48Y2lyY2xlIGN4PSI2NzAiIGN5PSIxODYiIHI9IjUiLz48L2c+PGcgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEzIiBmaWxsPSIjMTgyOTRkIj48bGluZSB4MT0iMTkwIiB5MT0iMzg5IiB4Mj0iMjIwIiB5Mj0iMzg5IiBzdHJva2U9IiMzMTgyYTgiIHN0cm9rZS13aWR0aD0iNCIvPjx0ZXh0IHg9IjIyOCIgeT0iMzk0Ij5PbGQgUXVhcnRlcjwvdGV4dD48bGluZSB4MT0iMzU1IiB5MT0iMzg5IiB4Mj0iMzg1IiB5Mj0iMzg5IiBzdHJva2U9IiNkNzgzNDQiIHN0cm9rZS13aWR0aD0iNCIvPjx0ZXh0IHg9IjM5MyIgeT0iMzk0Ij5Eb2Nrc2lkZTwvdGV4dD48bGluZSB4MT0iNTA1IiB5MT0iMzg5IiB4Mj0iNTM1IiB5Mj0iMzg5IiBzdHJva2U9IiM0YTliNzYiIHN0cm9rZS13aWR0aD0iNCIvPjx0ZXh0IHg9IjU0MyIgeT0iMzk0Ij5NYXJrZXQ8L3RleHQ+PC9nPjwvc3ZnPg=="><textarea id="w1"></textarea><div class="bar"><b id="w1c">0 words</b><button class="btn alt" data-c="w1">Copy</button><button class="btn" data-s="w1" data-t="Writing Task 1">Send writing to assessor</button></div></div><div class="part"><h2>Task 2</h2><p>Spend about 40 minutes. Write at least 250 words.</p><div class="note">Some people believe that old buildings should be preserved even when they are difficult to use, while others think they should be replaced with modern buildings. Discuss both views and give your own opinion.</div><textarea id="w2"></textarea><div class="bar"><b id="w2c">0 words</b><button class="btn alt" data-c="w2">Copy</button><button class="btn" data-s="w2" data-t="Writing Task 2">Send writing to assessor</button></div></div></section><section class="sec" id="speak"><h2 class="t">Speaking (11–14 minutes)</h2><div class="part"><h2>Part 1 — Interview</h2><p>Do you like taking photographs? What do you usually take pictures of? Do you keep photographs on your phone or print them? Do you prefer looking at old or recent photographs? How do you share pictures with friends?</p></div><div class="part"><h2>Part 2 — Long turn</h2><div class="note"><b>Describe a photograph that is important to you.</b><br>Say what is in the photograph, when it was taken, who took it, and explain why it is important to you.</div><div class="bar"><span class="time" id="sp2prep"></span><button class="btn alt">Start 1-minute preparation</button><span class="time" id="sp2talk"></span><button class="btn alt">Start 2-minute talk</button></div></div><div class="part"><h2>Part 3 — Discussion</h2><p>Why do people take photographs? How have phones changed photography? Should children learn how to record events accurately? Can a photograph give a complete account of an event? What rules should apply when people photograph others in public?</p></div></section></div></div>
+</main>
+</div>
+<div class="support-strip">
+<div class="support-strip-inner">
+<div><span _k="Customer support every day from 9:00 to 16:30">Customer support every day from 9:00 to 16:30</span></div>
+<div class="support-info">
+<a href="mailto:oxfampreparation@email.cz">oxfampreparation@email.cz</a>
+<a href="tel:+420723200988">+420 723 200 988</a>
+</div>
+</div>
+</div>
+<footer>© 2020-2026 Oxfam - Oxford family. All rights reserved. Not affiliated with Cambridge University Press &amp; Assessment. Exam names belong to their owners.</footer>
+</div>
+<dialog aria-labelledby="dt" id="dlg">
+<h2 id="dt">Sign in to open your tests</h2>
+<form id="lf" novalidate="">
+<label for="em">Email</label><input autocomplete="username" id="em" type="email"/>
+<label for="pw">Password</label><input autocomplete="current-password" id="pw" type="password"/>
+<p class="demo" hidden="" id="demo"></p>
+<div aria-live="polite" class="err" id="err"></div>
+<div class="row" style="margin-top:1rem"><button class="btn" type="submit">Log in</button><button class="btn alt" id="cancel" type="button">Cancel</button></div>
+</form>
+</dialog>
+<script>
+var PW="COPT";
+function unlocked(){try{return sessionStorage.getItem("ielts_academic_practice_9")==="1"}catch(e){return false}}
+
+function norm(s){return s.toLowerCase().replace(/\u2019/g,"'").replace(/\s+/g," ").trim()}
+
+function build(parts,box,pre){
+  var n=0;pre=pre||"";
+  parts.forEach(function(p,pi){
+    var d=document.createElement("section");d.className="part";
+    d.innerHTML="<h2>"+p.t+"</h2>"+(pre==="l"?"<div class='audio-player'><button class='btn listen-play' type='button' data-i='"+pi+"'>Play listening audio</button><button class='btn alt listen-stop' type='button' disabled>Stop</button><span class='listen-status' role='status'>Browser voice · Part "+(pi+1)+"</span></div>":"")+(p.m?"<div class='bar'><span class='time' id='pt"+pre+pi+"'></span><button class='btn alt' type='button'>Start</button> <small>suggested time</small></div>":"")+"<p class='sub'>"+p.i+"</p>"+(p.x?"<p class='txt'>"+p.x+"</p>":"")+(p.im||"")+"<div class='items'></div>";
+    var it=d.querySelector(".items");
+    p.q.forEach(function(q){
+      n++;var r=document.createElement("div");r.className="q";
+      var label = q.q && /^(\d+)\.\s*/.test(q.q) ? q.q.match(/^(\d+)\.\s*/)[1] : n; var qtext = (q.q||"").replace(/^\d+\.\s*/,"").replace(/\n/g,"<br>"); var h="<b>"+label+"</b> "+qtext+(q.h?" <strong>"+q.h+"</strong>":"");
+      if(q.o){
+        var isImg = q.o.length > 0 && /^(https?:\/\/|data:image\/)/i.test(q.o[0]);
+        var optsHtml = q.o.map(function(o,i){
+          var letter = "ABCDEFGH"[i];
+          if(q.o.length === 2 && (o === "A" || o === "B" || o.includes("Correct") || o.includes("YES"))) {
+            letter = ["A", "B"][i];
+          }
+          if (isImg) {
+            return "<label class='opt img-opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> <img src='"+o+"' alt='Option "+letter+"' onerror=\"this.style.display='none'\"></label>";
+          } else {
+            var text = o === letter ? "" : o;
+            return "<label class='opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> "+text+"</label>";
+          }
+        }).join("");
+        var gridClass = isImg ? "opts img-opts-grid" : "opts";
+        h += "<div class='" + gridClass + "'>" + optsHtml + "</div>";
+      } else {
+        h+=" <input type='text' autocomplete='off' aria-label='Answer "+n+"'>";
+      }
+      r.innerHTML=h;r._q=q;it.appendChild(r);
+    });
+    box.appendChild(d);
+    if(p.m)timer("pt"+pre+pi,p.m);
+  });
+}
+
+function check(box,out){
+  var tot=0,ok=0;
+  box.querySelectorAll(".part").forEach(function(part){
+    var pTot=0,pOk=0;
+    part.querySelectorAll(".q").forEach(function(r){
+      pTot++;var q=r._q,good,ans;
+      if(q.o){
+        var c=r.querySelector("input:checked");
+        good=c&&+c.value===q.a;
+        var letter = "ABCDEFGH"[q.a];
+        if(q.o.length === 2) letter = ["A", "B"][q.a];
+        var isImg = q.o.length > 0 && /^(https?:\/\/|data:image\/)/i.test(q.o[0]);
+        ans = isImg ? letter : (q.o[q.a] === letter ? letter : letter + " " + q.o[q.a]);
+      } else {
+        var v=norm(r.querySelector("input").value);
+        good=q.a.some(function(a){return norm(a)===v});
+        ans=q.a[0];
+      }
+      r.classList.toggle("ok",!!good);
+      r.classList.toggle("no",!good);
+      var f=r.querySelector(".fb");
+      if(!f){f=document.createElement("div");f.className="fb";r.appendChild(f)}
+      f.textContent=good?"Correct":"Answer: "+ans;
+      var x=r.querySelector(".ex");
+      if(!x){x=document.createElement("div");x.className="ex";r.appendChild(x)}
+      x.textContent=q.e||"";
+      if(good)pOk++;
+    });
+    if(pTot>0){
+      var ps=part.querySelector(".pscore");
+      if(!ps){ps=document.createElement("div");ps.className="pscore note";ps.style.marginTop="1.5rem";part.appendChild(ps)}
+      ps.innerHTML="<b>Part score:</b> "+pOk+" / "+pTot;
+    }
+    tot+=pTot;ok+=pOk;
+  });
+  out.textContent="Total score: "+ok+" / "+tot;
+  box.querySelectorAll(".tr").forEach(function(e){e.style.display="block"});
+}
+
+function timer(id,min){
+  var e=document.getElementById(id),l=min*60,t=null;
+  if(!e)return;
+  function s(){e.textContent=("0"+Math.floor(l/60)).slice(-2)+":"+("0"+l%60).slice(-2)}s();
+  e.nextElementSibling.onclick=function(){
+    if(t){clearInterval(t);t=null;this.textContent="Start";return}
+    this.textContent="Pause";
+    t=setInterval(function(){l--;s();if(l<=0)clearInterval(t)},1000);
+  }
+}
+
+var R = [{"t":"Reading Passage 1 — Dating the history of a building","i":"Questions 1–5: choose the correct heading A–G for paragraphs A–E. Questions 6–10: TRUE, FALSE or NOT GIVEN. Questions 11–13: answer in NO MORE THAN TWO WORDS.","x":"<b>Headings</b>: A. Reading changes in the structure itself &nbsp; B. A clue hidden in building materials &nbsp; C. Why no single date is sufficient &nbsp; D. Records that show a building’s changing use &nbsp; E. New technologies replace inspection &nbsp; F. Dating a structure through its connections &nbsp; G. Deciding what should be preserved<br><br><b>HOW ARCHITECTURAL HISTORIANS DATE OLD BUILDINGS</b><br><br><b>A</b> A building rarely has one simple date. A stone hall may have been begun in one century, extended in another and altered several times since. Historians therefore ask which part of a building they are trying to date. A carved doorway can be older than the wall around it if it was reused during a later renovation. A roof may be new while its supporting structure is much older. Instead of searching for a single year, researchers assemble a sequence of evidence and explain how certain each conclusion is. The result is often a chronology of stages rather than a precise birthday for the whole building.<br><br><b>B</b> Construction joints can reveal where one phase of work ended and another began. If masonry changes direction or a wall has a vertical seam, the builders may have added a room later. A blocked window can indicate that an adjacent structure was built against an older exterior wall. Researchers examine how bricks or stones are arranged and whether the mortar is continuous across a joint. These clues are not always conclusive: a repair may imitate an earlier pattern, and a seam can be hidden beneath plaster. Historians therefore compare several features rather than treating one line in a wall as definitive proof.<br><br><b>C</b> Mortar and paint can provide another set of clues. The composition of mortar changed over time as builders used different mixtures of lime, sand and other materials. A sample can be examined in a laboratory, but the result must be interpreted in context. A repair made recently may use an older recipe, and a building may contain material brought from another site. Layers of paint can show that a room was decorated more than once. If a later layer covers an earlier pattern, researchers can establish an order of change, even when they cannot identify the exact year of each coat.<br><br><b>D</b> Documents and images help place physical evidence in a wider history. A map may show when a building first appeared on a street, while a photograph can reveal a doorway or roofline that no longer exists. Tax records, building permits and household inventories can explain how rooms were used. The records are incomplete and sometimes describe a neighbouring property instead. Historians check addresses, names and landmarks carefully. An image may be dated by the clothing of people in it or by another building visible in the background. This work is slow, but it can link a physical alteration to an event or change in ownership.<br><br><b>E</b> The strongest chronology often comes from combining independent evidence. A seam in the masonry might suggest an extension; a permit could show that work was planned in a particular decade; a photograph might confirm that the new wall was in place by a later date. If these sources disagree, the difference can reveal that the building was repaired in stages or that a document refers to a different part of the property. Historians record both their conclusion and the limits of the evidence. Conservation teams can then decide which features have historical value and which changes are more recent. Dating is not simply an academic exercise: it helps guide repairs that respect the building’s different periods.<br><br>Conservation work also raises the question of what should be changed. A building may contain an alteration that is historically important even if it does not belong to the first phase. Removing it to reveal an earlier design could erase evidence about how later residents used the space. Historians prepare reports that describe the sequence of changes and the confidence attached to each date. Architects and owners can then decide whether to retain, repair or reveal a feature. In some cases, a reversible intervention allows a building to serve a new purpose without permanently removing an older layer.<br><br>Researchers sometimes use scientific dating methods to check an architectural chronology. A sample from timber can be compared with a sequence of known growth patterns, while a small amount of mortar may be analysed to estimate when it hardened. These methods can be valuable, but they require appropriate material and careful sampling. Removing a fragment from a protected surface may cause damage, and a sample from a later repair will not date the original construction. Historians decide whether the expected information justifies the intervention and document exactly where a sample came from.","q":[{"q":"1. Choose a heading for paragraph A.","o":["A","B","C","D","E","F","G"],"a":2,"e":"The paragraph explains why a building may have several dates."},{"q":"2. Choose a heading for paragraph B.","o":["A","B","C","D","E","F","G"],"a":5,"e":"Joints can show how later work connects to older construction."},{"q":"3. Choose a heading for paragraph C.","o":["A","B","C","D","E","F","G"],"a":1,"e":"Mortar and paint are material clues."},{"q":"4. Choose a heading for paragraph D.","o":["A","B","C","D","E","F","G"],"a":3,"e":"The paragraph describes documentary and image records."},{"q":"5. Choose a heading for paragraph E.","o":["A","B","C","D","E","F","G"],"a":6,"e":"The evidence helps decide what should be conserved."},{"q":"6. Historians always identify one exact year for an entire building.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"They often create a chronology of different stages."},{"q":"7. A reused carved doorway may be older than the wall around it.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"The opening paragraph gives this example."},{"q":"8. A vertical seam in masonry proves that a room was added later.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"It may suggest an addition but is not conclusive by itself."},{"q":"9. A photograph can show a feature that no longer exists.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"The text says photographs may reveal removed doorways or rooflines."},{"q":"10. Historians agree that documents are more reliable than physical evidence.","o":["TRUE","FALSE","NOT GIVEN"],"a":2,"e":"No such ranking is stated."},{"q":"11. What material can be examined to learn about wall construction?","a":["mortar"],"e":"Mortar composition can provide clues."},{"q":"12. What type of record may show when a building appeared on a street?","a":["a map","map"],"e":"A map can show the building’s appearance."},{"q":"13. What can a later paint layer cover?","a":["an earlier pattern","earlier pattern"],"e":"Paint layers can preserve earlier patterns."}]},{"t":"Reading Passage 2 — Restoring land after mining","i":"Questions 14–18: choose A, B, C or D. Questions 19–23: match each statement with group A–E. Questions 24–27: answer in NO MORE THAN TWO WORDS.","x":"<b>Groups</b>: A. ecologists &nbsp; B. hydrologists &nbsp; C. residents &nbsp; D. mining companies &nbsp; E. regulators<br><br><b>WHAT HAPPENS AFTER A MINE CLOSES?</b><br><br>When a mine closes, the visible machinery may disappear, but its effects on the surrounding land can remain. Soil may have been removed or compacted, streams may have changed course, and waste rock may contain minerals that affect water quality. Restoration is not simply a matter of covering the ground with plants. A project has to understand how the site worked, what materials remain and how water moves through it. Some sites recover through natural processes; others need active work to prevent pollution or make the land safe for people and wildlife.<br><br>Ecologists begin by studying the plants and animals that remain nearby. This helps them identify which species are suited to the local conditions and which habitats could return. A common mistake is to select fast-growing plants because they create quick visual cover. Such plants may not support local insects or birds, and they may compete with native species. Ecologists often recommend a mixture of native grasses, shrubs and trees, but the exact choice depends on soil, rainfall and the intended future use. A wetland restoration, for example, requires a different plan from a hillside that will remain open grassland.<br><br>Hydrologists examine surface water and groundwater. They measure stream flow, sample water quality and look for changes between wet and dry seasons. A single sample cannot show whether a mine is affecting a stream; it may reflect recent rain or a temporary disturbance. Researchers collect baseline data before major restoration work and continue monitoring afterward. If water contains metals above safe levels, engineers may redirect it through a treatment area or isolate the source. These systems need maintenance, so the design should include a plan for who will inspect them after the project team leaves.<br><br>Residents often know how a site was used before and during mining. They may remember a spring that disappeared, a path that was closed or a place where families gathered. Their knowledge can reveal changes that official records do not capture. Community meetings also allow people to discuss what the restored land should become. Some may prefer public access and walking routes; others may prioritise wildlife habitat or water protection. These aims can conflict, and not every request can be met. Project teams use the discussion to identify concerns early and explain which decisions are governed by safety or environmental rules.<br><br>Mining companies usually have a legal responsibility to close and restore the site, although the exact requirements vary by country and permit. A closure plan may specify how waste will be managed, how water will be monitored and what evidence is needed before the company can finish its obligations. Regulators review the plan and inspect the work. The company may provide funding for long-term monitoring, but regulators must also consider what happens if the company later changes ownership or no longer operates. Clear records and a reliable financial arrangement reduce the risk that future costs will fall unexpectedly on the public.<br><br>Successful restoration is judged over a longer period than the construction phase. A slope can look stable after planting and still erode during the next heavy storm. A treatment wetland may improve water quality in one season but require adjustments after a dry year. Teams set measurable goals, such as reducing sediment in a stream or increasing the survival of native plants. They also record what did not work. If a species fails to establish, the cause may be soil chemistry, grazing or a lack of water rather than poor planting technique. This information allows later projects to adapt their plans rather than repeating the same mistake.<br><br>Some restored sites support recreation or renewable energy, while others are left to develop as wildlife areas. A new use must be compatible with the condition of the land. A former mine may contain unstable ground or restricted zones that are not suitable for public access. Restoration plans therefore describe both what people can do and which areas should remain protected. The most successful outcome is not identical at every site; it is one that is safe, environmentally sound and accepted by the people who live nearby.<br><br>Restoration can take several years, and the teams involved may change during that period. A monitoring plan should therefore record the location of each sample, the method used and the conditions at the time. If a later team uses a different method, it can be difficult to compare the results. Residents can also help report unusual changes, such as a new muddy flow after rain, but their observations should be checked alongside measurements. Combining local attention with technical monitoring creates a more complete picture of a site and helps teams respond before a small problem becomes widespread.<br><br>Monitoring also needs a clear end point, even if the land will continue to change. A regulator may require water tests for a set period and ask for further work if results do not meet agreed standards. Ecologists can track whether plants survive and whether animals return to a habitat. The measures should reflect the site’s goals: a wetland may be judged by water quality and habitat, while a public path may also be assessed for safe access. Publishing results helps residents understand what has been achieved and which problems remain.","q":[{"q":"14. Why does restoration require more than planting vegetation?","o":["Mining can change soil, water and land stability.","All plant species grow at the same rate.","Mining equipment remains in use after closure.","Plants prevent every form of pollution."],"a":0,"e":"The site may have altered soil, streams and waste materials."},{"q":"15. Why do hydrologists collect data across wet and dry seasons?","o":["A single sample may reflect temporary conditions.","The mine closes only during the wet season.","Groundwater exists only in summer.","Plants grow only after heavy rain."],"a":0,"e":"Seasonal data help distinguish longer patterns from recent events."},{"q":"16. What risk can arise from selecting only fast-growing plants?","o":["They may not support local wildlife.","They always remove native species.","They require no water.","They make the ground unstable immediately."],"a":0,"e":"Fast-growing plants may not support local insects or birds."},{"q":"17. What can residents contribute to a restoration plan?","o":["Knowledge of past local use and changes","Legal decisions about permits","Laboratory measurements of metals","A guarantee that every request will be met"],"a":0,"e":"Residents may recall changes and explain community priorities."},{"q":"18. What does the passage say about judging restoration?","o":["It requires monitoring beyond the construction phase.","A site can be judged as soon as it is planted.","Every site should have the same final use.","A successful project never needs adjustments."],"a":0,"e":"The text says conditions can change after the work is complete."},{"q":"19. Which group selects locally suitable plant species?","o":["A","B","C","D","E"],"a":0,"e":"Ecologists study local species and habitats."},{"q":"20. Which group tracks water flow and quality?","o":["A","B","C","D","E"],"a":1,"e":"Hydrologists measure water conditions."},{"q":"21. Which group may recall a former spring or gathering place?","o":["A","B","C","D","E"],"a":2,"e":"Residents contribute local memory."},{"q":"22. Which group prepares a closure plan and manages waste?","o":["A","B","C","D","E"],"a":3,"e":"Mining companies have closure responsibilities."},{"q":"23. Which group reviews plans and inspects restoration work?","o":["A","B","C","D","E"],"a":4,"e":"Regulators review and inspect the work."},{"q":"24. What should be measured before major restoration begins?","a":["baseline data","baseline"],"e":"Baseline measurements allow later comparison."},{"q":"25. What kind of plants are often recommended for local conditions?","a":["native plants","native species"],"e":"Ecologists often recommend native species."},{"q":"26. What can treatment wetlands improve?","a":["water quality"],"e":"Treatment wetlands can improve water quality."},{"q":"27. What can heavy storms cause on a planted slope?","a":["erosion"],"e":"A slope may erode after heavy rain."}]},{"t":"Reading Passage 3 — The hidden cost of interruptions","i":"Questions 28–32: match each statement with paragraph A–E. Questions 33–37: TRUE, FALSE or NOT GIVEN. Questions 38–40: choose A, B, C or D.","x":"<b>Paragraphs</b>: A–E<br><br><b>WHY AN INTERRUPTION CAN LAST LONGER THAN A MOMENT</b><br><br><b>A</b> An interruption may take only a few seconds, yet the cost can continue after the conversation or alert has ended. When people move from one task to another, they need to remember where they were, what they intended to do and which information matters next. Researchers call this a resumption cost. In a study task, a participant may return to the same document but take longer to complete the next step. The delay is not always visible to a manager, who may count the interruption itself but not the time needed to recover concentration.<br><br><b>B</b> Digital tools make it easy to interrupt oneself. A notification can prompt someone to check a message even when no other person has asked for an immediate response. Some people switch between several open tasks because they expect to be more efficient, but the benefit depends on what the tasks require. A simple, familiar activity may be easy to resume; a complex problem that relies on several connected ideas can be harder to leave. The number of notifications is not the only issue. Their timing and relevance affect whether a person sees them as useful information or as a distraction.<br><br><b>C</b> Not every interruption is harmful. A colleague may notice an error, provide information that prevents wasted work or ask for help in an urgent situation. The effect depends on whether the interruption is relevant, whether the person can pause safely and how much control they have over the timing. Some workers prefer a short, scheduled discussion to many unplanned questions. Others need to remain available because their role involves responding to clients or equipment. A policy that simply bans all interruptions would therefore create problems of its own.<br><br><b>D</b> Workplaces can reduce avoidable interruptions without making people unreachable. Teams may agree on quiet periods, use status indicators or create a shared space where questions can be collected until a suitable time. The design should fit the work. A laboratory technician may need to respond immediately to a safety alert, while a writer may benefit from an hour without routine messages. Clear expectations matter: if workers fear that a delayed reply will be judged as unhelpful, a quiet period may not change their behaviour. Managers can model the practice by avoiding unnecessary messages outside agreed times.<br><br><b>E</b> Measuring interruptions is more complicated than counting notifications. Researchers may record how often a person changes task, ask how demanding the task feels and examine the accuracy of the final work. A quiet office can still contain frequent interruptions through personal devices, while a busy office can allow long periods of concentration if questions are coordinated. Studies also differ in how they define an interruption. Some count only an external event; others include a person’s own decision to switch tasks. These distinctions make it important to explain the method before comparing results. A useful study considers both task performance and the worker’s experience.<br><br>Workers can also use simple routines to protect attention. They may group low-priority messages and check them at set times, while agreeing that safety or urgent client needs can interrupt immediately. Such routines work only if teams share expectations. If one person replies instantly to every message, colleagues may assume that everyone should do the same. Managers can help by asking whether an interruption is urgent and by giving staff a way to signal when they are concentrating. The goal is not silence; it is a work pattern in which important information arrives without constantly breaking tasks that require sustained thought.<br><br>Teams can also distinguish between an interruption that is urgent and one that is merely convenient. A message about a safety issue may need an immediate response, while a routine question can wait until a scheduled check-in. When expectations are clear, people are less likely to interrupt simply to confirm that a message has been seen. This can reduce repeated contact without delaying important work. A well-designed system gives workers a reliable way to signal urgency, rather than requiring them to monitor every channel continuously.","q":[{"q":"28. A paragraph describing the time needed to resume a task.","o":["A","B","C","D","E"],"a":0,"e":"Paragraph A explains resumption costs."},{"q":"29. A paragraph discussing how notifications prompt people to switch tasks themselves.","o":["A","B","C","D","E"],"a":1,"e":"Paragraph B focuses on digital notifications and self-interruption."},{"q":"30. A paragraph explaining why some interruptions can be useful.","o":["A","B","C","D","E"],"a":2,"e":"Paragraph C describes helpful interruptions and context."},{"q":"31. A paragraph giving ways workplaces can protect concentration.","o":["A","B","C","D","E"],"a":3,"e":"Paragraph D suggests quiet periods and shared practices."},{"q":"32. A paragraph explaining why studies may be difficult to compare.","o":["A","B","C","D","E"],"a":4,"e":"Paragraph E notes that researchers define and measure interruptions differently."},{"q":"33. Every interruption reduces the quality of a person’s work.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"The passage says some interruptions can prevent wasted work."},{"q":"34. People may need time to recover concentration after an interruption.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"This is the resumption cost described in paragraph A."},{"q":"35. The number of notifications is the only factor affecting distraction.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"Timing and relevance also matter."},{"q":"36. A workplace policy banning every interruption could cause problems.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"The passage explains some roles need timely responses."},{"q":"37. All interruption studies use the same definition.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"The final paragraph notes that definitions differ."},{"q":"38. What is the main point of the passage?","o":["Interruptions have varied effects, and their cost depends on context and task.","All workplaces should stop workers from speaking.","Notifications are more harmful than face-to-face questions.","Managers can measure concentration by counting messages alone."],"a":0,"e":"The passage presents different effects and measurement limits."},{"q":"39. Why might switching away from a complex task be difficult?","o":["Several connected ideas may need to be remembered.","The task is always interrupted by a manager.","Digital tools cannot reopen documents.","A complex task has no clear next step."],"a":0,"e":"The text says connected ideas make resumption harder."},{"q":"40. What does the passage recommend researchers consider?","o":["Task performance and workers’ experience","Only the number of alerts","Only the length of a conversation","Whether a workplace has an open office"],"a":0,"e":"The conclusion recommends both performance and experience measures."}]}];
+var L = [{"t":"Listening Part 1 — Booking an architecture walking tour","i":"Questions 1–10. Complete the booking form. Write NO MORE THAN TWO WORDS AND/OR A NUMBER.","x":"OLD QUAY WALKS — BOOKING DETAILS<br>Family name: 1 _____<br>Tour: 2 _____ architecture<br>Day: 3 _____<br>Date: 4 _____<br>Meet at: 5 _____<br>Tour length: 6 _____ hours<br>Fee: 7 £_____<br>Bring: a water 8 _____<br>9. Meeting point: Clock _____<br>10. Tour ends at: Market _____","q":[{"q":"1. Family name","a":["Rahman"],"e":"The booking is under Rahman."},{"q":"2. Tour","a":["industrial"],"e":"The tour focuses on industrial architecture."},{"q":"3. Day","a":["Sunday"],"e":"The tour is on Sunday."},{"q":"4. Date","a":["13 July","July 13","13th July"],"e":"It takes place on 13 July."},{"q":"5. Meet at","a":["10.10","10:10","10.10 am","10:10 am"],"e":"The group meets at ten past ten."},{"q":"6. Tour length","a":["2.5","two and a half","two and a half hours"],"e":"The walk lasts two and a half hours."},{"q":"7. Fee","a":["19","£19"],"e":"The fee is nineteen pounds."},{"q":"8. Bring","a":["bottle","water bottle"],"e":"Bring a water bottle."},{"q":"9. Meeting point","a":["Tower","Clock Tower"],"e":"The group meets at the Clock Tower."},{"q":"10. Tour ends at","a":["Square","Market Square"],"e":"The walk ends at Market Square."}]},{"t":"Listening Part 2 — Welcome to the sculpture garden","i":"Questions 11–15. Choose A, B or C. Questions 16–20. Match each place or feature with the letter on the SVG garden plan.","x":"Plan labels: A. information pavilion &nbsp; B. stone terrace &nbsp; C. water garden &nbsp; D. sculpture hall &nbsp; E. café","q":[{"q":"11. What time does the garden open?","o":["9.30 am","10.00 am","10.30 am"],"a":1,"e":"The garden opens at ten."},{"q":"12. How much does entry cost?","o":["It is free.","£3","£5"],"a":0,"e":"There is no admission charge."},{"q":"13. Which path is recommended for visitors with limited mobility?","o":["The blue loop","The hill path","The woodland steps"],"a":0,"e":"The blue loop avoids steep ground."},{"q":"14. When does the guided talk begin?","o":["1.30 pm","2.00 pm","2.30 pm"],"a":2,"e":"The talk starts at half past two."},{"q":"15. What should visitors do before photographing an artwork indoors?","o":["Check the sign or ask a member of staff","Use flash to improve the image","Move the artwork into daylight"],"a":0,"e":"Some works have restrictions, so visitors should check first."},{"q":"16. Where can visitors pick up a garden map?","o":["A","B","C","D","E"],"a":0,"e":"Maps are available at the information pavilion."},{"q":"17. Where can visitors sit beside a pond?","o":["A","B","C","D","E"],"a":2,"e":"The water garden has benches beside the pond."},{"q":"18. Where are the indoor metal sculptures displayed?","o":["A","B","C","D","E"],"a":3,"e":"The metal works are in the sculpture hall."},{"q":"19. Where can visitors buy a light lunch?","o":["A","B","C","D","E"],"a":4,"e":"The café serves lunch."},{"q":"20. Where can visitors see the large carved stone figure?","o":["A","B","C","D","E"],"a":1,"e":"The large stone figure stands on the stone terrace."}],"im":"<img class=\"chart\" alt=\"Riverside Sculpture Garden plan with information pavilion, stone terrace, water garden, sculpture hall and cafe labelled A to E\" src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3NjAiIGhlaWdodD0iNDMwIiB2aWV3Qm94PSIwIDAgNzYwIDQzMCI+PHJlY3Qgd2lkdGg9Ijc2MCIgaGVpZ2h0PSI0MzAiIHJ4PSIxNiIgZmlsbD0iI2Y0ZjdmYiIvPjx0ZXh0IHg9IjM4MCIgeT0iMzAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyMCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzE4Mjk0ZCI+UklWRVJTSURFIFNDVUxQVFVSRSBHQVJERU4g4oCUIFBMQU48L3RleHQ+PHRleHQgeD0iMzgwIiB5PSI1MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEzIiBmaWxsPSIjNTI2MDc5Ij5Vc2UgdGhlIGxldHRlcnMgdG8gbG9jYXRlIGdhcmRlbiBmZWF0dXJlczwvdGV4dD48ZyBmb250LWZhbWlseT0iQXJpYWwiIGZpbGw9IiMxODI5NGQiPjxyZWN0IHg9IjM1IiB5PSI3NSIgd2lkdGg9IjIxMCIgaGVpZ2h0PSIxMjAiIHJ4PSIxMiIgZmlsbD0iI2UzZjBmOCIgc3Ryb2tlPSIjNDk2YzkxIiBzdHJva2Utd2lkdGg9IjMiLz48Y2lyY2xlIGN4PSI2MyIgY3k9IjEwMSIgcj0iMTciIGZpbGw9IiNmZmYiIHN0cm9rZT0iIzQ5NmM5MSIgc3Ryb2tlLXdpZHRoPSIyIi8+PHRleHQgeD0iNjMiIHk9IjEwNyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNiIgZm9udC13ZWlnaHQ9IjcwMCI+QTwvdGV4dD48dGV4dCB4PSIxNDUiIHk9IjEwNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNiIgZm9udC13ZWlnaHQ9IjcwMCI+SU5GTyBQQVZJTElPTjwvdGV4dD48cmVjdCB4PSI5NSIgeT0iMTI4IiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjI3IiByeD0iNCIgZmlsbD0iIzhlYjVkNSIgc3Ryb2tlPSIjMzU1Nzc3IiBzdHJva2Utd2lkdGg9IjIiLz48cGF0aCBkPSJNMTA2IDEyOHYtOGg3NnY4IiBmaWxsPSJub25lIiBzdHJva2U9IiMzNTU3NzciIHN0cm9rZS13aWR0aD0iMyIvPjx0ZXh0IHg9IjE0NSIgeT0iMTgwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjEyIj5tYXBzIGFuZCB2aXNpdG9yIGhlbHA8L3RleHQ+PHJlY3QgeD0iMjY1IiB5PSI3NSIgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxMjAiIHJ4PSIxMiIgZmlsbD0iI2ZmZjFkZiIgc3Ryb2tlPSIjYTc3OTQ4IiBzdHJva2Utd2lkdGg9IjMiLz48Y2lyY2xlIGN4PSIyOTMiIGN5PSIxMDEiIHI9IjE3IiBmaWxsPSIjZmZmIiBzdHJva2U9IiNhNzc5NDgiIHN0cm9rZS13aWR0aD0iMiIvPjx0ZXh0IHg9IjI5MyIgeT0iMTA3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iNzAwIj5CPC90ZXh0Pjx0ZXh0IHg9IjM3NSIgeT0iMTA1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iNzAwIj5TVE9ORSBURVJSQUNFPC90ZXh0PjxwYXRoIGQ9Ik0zNDUgMTY0di0yOGwxMi0xOCAxMyAxOHYyOG0tMjUgMGgyNW0tMjkgNWgzMyIgZmlsbD0iI2M3YTQ3YiIgc3Ryb2tlPSIjODE2MzQ0IiBzdHJva2Utd2lkdGg9IjMiLz48dGV4dCB4PSIzNzUiIHk9IjE4NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxMiI+Y2FydmVkIHN0b25lIGZpZ3VyZTwvdGV4dD48cmVjdCB4PSI1MDUiIHk9Ijc1IiB3aWR0aD0iMjIwIiBoZWlnaHQ9IjEyMCIgcng9IjEyIiBmaWxsPSIjZTdmNGVjIiBzdHJva2U9IiM0ZTg4NjkiIHN0cm9rZS13aWR0aD0iMyIvPjxjaXJjbGUgY3g9IjUzMyIgY3k9IjEwMSIgcj0iMTciIGZpbGw9IiNmZmYiIHN0cm9rZT0iIzRlODg2OSIgc3Ryb2tlLXdpZHRoPSIyIi8+PHRleHQgeD0iNTMzIiB5PSIxMDciIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTYiIGZvbnQtd2VpZ2h0PSI3MDAiPkM8L3RleHQ+PHRleHQgeD0iNjE3IiB5PSIxMDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTYiIGZvbnQtd2VpZ2h0PSI3MDAiPldBVEVSIEdBUkRFTjwvdGV4dD48ZWxsaXBzZSBjeD0iNjE3IiBjeT0iMTUxIiByeD0iNTciIHJ5PSIxOCIgZmlsbD0iIzljZDRkZiIgc3Ryb2tlPSIjNGU4ODY5IiBzdHJva2Utd2lkdGg9IjMiLz48cGF0aCBkPSJNNjE3IDE0M3YtMjJtMCAyMi0xMC0xMG0xMCAxMCAxMC0xMCIgc3Ryb2tlPSIjNDM4YmEwIiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiLz48dGV4dCB4PSI2MTciIHk9IjE4NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxMiI+cG9uZCBhbmQgYmVuY2hlczwvdGV4dD48cmVjdCB4PSIzNSIgeT0iMjE1IiB3aWR0aD0iMzI1IiBoZWlnaHQ9IjEzMCIgcng9IjEyIiBmaWxsPSIjZWVlOGY3IiBzdHJva2U9IiM3NTYyOWEiIHN0cm9rZS13aWR0aD0iMyIvPjxjaXJjbGUgY3g9IjYzIiBjeT0iMjQxIiByPSIxNyIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjNzU2MjlhIiBzdHJva2Utd2lkdGg9IjIiLz48dGV4dCB4PSI2MyIgeT0iMjQ3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iNzAwIj5EPC90ZXh0Pjx0ZXh0IHg9IjIwMCIgeT0iMjQ1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iNzAwIj5TQ1VMUFRVUkUgSEFMTDwvdGV4dD48cGF0aCBkPSJNMTI5IDMwOGg0NWwtNi0zOGgtMzN6TTE4NSAzMDhoNDVsLTYtNTJoLTMzek0yNDEgMzA4aDQ1bC02LTI4aC0zM3oiIGZpbGw9IiNiOWFiYzkiIHN0cm9rZT0iIzc1NjI5YSIgc3Ryb2tlLXdpZHRoPSIzIi8+PHRleHQgeD0iMjAwIiB5PSIzMzciIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTIiPmluZG9vciBtZXRhbCB3b3JrczwvdGV4dD48cmVjdCB4PSIzODAiIHk9IjIxNSIgd2lkdGg9IjM0NSIgaGVpZ2h0PSIxMzAiIHJ4PSIxMiIgZmlsbD0iI2ZmZjdkYyIgc3Ryb2tlPSIjYTk4YTNmIiBzdHJva2Utd2lkdGg9IjMiLz48Y2lyY2xlIGN4PSI0MDgiIGN5PSIyNDEiIHI9IjE3IiBmaWxsPSIjZmZmIiBzdHJva2U9IiNhOThhM2YiIHN0cm9rZS13aWR0aD0iMiIvPjx0ZXh0IHg9IjQwOCIgeT0iMjQ3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iNzAwIj5FPC90ZXh0Pjx0ZXh0IHg9IjU1MiIgeT0iMjQ1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iNzAwIj5DQUbDiTwvdGV4dD48cGF0aCBkPSJNNTE1IDI3MGg0OGwtNSAyNWgtMzh6TTU2MyAyNzRoMTBhOCA4IDAgMCAxIDAgMTVoLTEyIiBmaWxsPSIjYzk5YTU1IiBzdHJva2U9IiM4MDYwMmYiIHN0cm9rZS13aWR0aD0iMyIvPjxwYXRoIGQ9Ik01MjQgMjY1Yy03LTcgMy05LTItMTRtMTggMTRjLTctNyAzLTktMi0xNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjODA2MDJmIiBzdHJva2Utd2lkdGg9IjIiLz48dGV4dCB4PSI1NTIiIHk9IjMzNyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxMiI+bGlnaHQgbWVhbHMgYW5kIGRyaW5rczwvdGV4dD48cGF0aCBkPSJNMzUgMzcwaDY5MCIgc3Ryb2tlPSIjOWFhOGJiIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1kYXNoYXJyYXk9IjggNiIvPjx0ZXh0IHg9IjM4MCIgeT0iMzk3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjEzIiBmaWxsPSIjNTI2MDc5Ij5SSVZFUiBHQVRFIEVOVFJBTkNFPC90ZXh0PjwvZz48L3N2Zz4=\">"},{"t":"Listening Part 3 — Testing music and proofreading","i":"Questions 21–25. Choose A, B or C. Questions 26–30. Match each task with student A–F.","x":"Student tasks: A. prepare proofreading texts &nbsp; B. recruit volunteers &nbsp; C. set sound levels &nbsp; D. score errors &nbsp; E. review research &nbsp; F. present the results","q":[{"q":"21. What are the students investigating?","o":["Whether background music affects proofreading","Whether students prefer printed books","Whether group work improves writing speed"],"a":0,"e":"They are testing music and proofreading accuracy."},{"q":"22. Which students will participate?","o":["Second-year students","First-year students","Postgraduate tutors"],"a":0,"e":"The sample will be second-year students."},{"q":"23. What happened in the pilot?","o":["Lyrics distracted some participants.","The speakers failed.","The proofreading text was too short."],"a":0,"e":"Lyrics distracted participants."},{"q":"24. What will the team use in the main test?","o":["Instrumental music only","Several songs with lyrics","Music at a different volume for each person"],"a":0,"e":"They will use instrumental tracks."},{"q":"25. What should remain the same across the two conditions?","o":["The time limit","The room temperature","The order of all participants"],"a":0,"e":"The task time limit should be consistent."},{"q":"26. Who will prepare the proofreading texts?","o":["A","B","C","D","E","F"],"a":0,"e":"Chloe will prepare the texts."},{"q":"27. Who will recruit the volunteers?","o":["A","B","C","D","E","F"],"a":1,"e":"Arun will recruit participants."},{"q":"28. Who will set the sound levels?","o":["A","B","C","D","E","F"],"a":2,"e":"Bea will set the sound levels."},{"q":"29. Who will score the errors?","o":["A","B","C","D","E","F"],"a":3,"e":"Chloe will score the errors."},{"q":"30. Who will present the results?","o":["A","B","C","D","E","F"],"a":5,"e":"Bea will present the results."}]},{"t":"Listening Part 4 — How the body controls temperature","i":"Questions 31–40. Complete the notes. Write NO MORE THAN TWO WORDS for each answer.","x":"HUMAN THERMOREGULATION<br>Sensors send temperature information to the 31 _____.<br>Sweat cools the body as it 32 _____.<br>Evaporation is slower in humid 33 _____.<br>In warmth, blood vessels near the skin 34 _____.<br>This moves heat towards the body’s 35 _____.<br>In cold, these vessels 36 _____.<br>Muscles may begin 37 _____.<br>Shivering produces extra 38 _____.<br>Long exposure to cold can cause 39 _____.<br>Exercise in heat requires careful 40 _____.","q":[{"q":"31. Gap 31","a":["hypothalamus"],"e":"The hypothalamus processes temperature information."},{"q":"32. Gap 32","a":["evaporates","is evaporated"],"e":"Sweat cools the body as it evaporates."},{"q":"33. Gap 33","a":["air","conditions"],"e":"Evaporation is slower in humid conditions."},{"q":"34. Gap 34","a":["widen","dilate"],"e":"Blood vessels widen in warm conditions."},{"q":"35. Gap 35","a":["skin surface","skin"],"e":"Widening moves heat towards the skin surface."},{"q":"36. Gap 36","a":["constrict","narrow"],"e":"In cold, the vessels constrict."},{"q":"37. Gap 37","a":["shivering"],"e":"Muscles may begin shivering."},{"q":"38. Gap 38","a":["heat"],"e":"Shivering produces heat."},{"q":"39. Gap 39","a":["hypothermia"],"e":"Long exposure to cold can cause hypothermia."},{"q":"40. Gap 40","a":["hydration"],"e":"Exercise in heat requires monitoring hydration."}]}];
+var T = ["Old Quay Walks, hello. Hello, I would like to reserve two places on the architecture walk. Could I have your family name? Rahman, R A H M A N. Thank you. The tour focuses on industrial architecture, including the old mill and the former dock offices. It runs on Sunday the thirteenth of July. We meet at ten past ten in the morning at the Clock Tower. The walk lasts about two and a half hours. It costs nineteen pounds per person. Please bring a water bottle; we stop for a short break but there is no shop on the route. The walk ends at Market Square, where there are several cafés. Is the route suitable for someone who walks slowly? It includes one short flight of steps, but the guide can suggest an alternative route. The number eight bus stops near the Clock Tower. You can pay when you arrive, but please be there ten minutes early so we can check the booking list.","Welcome to the Sculpture Garden. We open at ten o’clock and entry is free. Visitors with limited mobility are encouraged to follow the blue loop, which avoids the steep hill path and the woodland steps. The guided talk begins at half past two by the central fountain. Before taking photographs indoors, please check the sign beside each artwork or ask a member of staff. Some pieces are sensitive to light. A garden map is available at the information pavilion near the gate. Benches beside the pond are in the water garden. The large carved stone figure stands on the stone terrace overlooking the lower lawn. Metal sculptures and smaller works are displayed inside the sculpture hall. The café serves soup, sandwiches and fruit until four o’clock. Please do not touch the outdoor works, as the surface can be damaged by oils from hands. You are welcome to sketch in the garden, but keep pathways clear for other visitors.","Chloe: Our project asks whether background music affects proofreading. We will invite second-year students to check two short texts. Arun: In the pilot, lyrics distracted several people. We should use instrumental music only in the main test. Bea: I can set the sound levels and make sure they are the same for everyone. Chloe: I will prepare the texts and score the errors. Arun: I will recruit the volunteers. We should review the research before we finalise the method. Bea: I can do that. The tutor said the time limit should stay the same in both conditions. Otherwise, we would not know whether any difference came from the music or from having longer to work. Arun: We should also alternate which text people see first. Chloe: Good idea. We can record how many errors each person finds and ask whether the music helped them concentrate. The tutor says the survey answer should be reported separately from the proofreading scores. Who will present the results? Bea: I will do that.","The human body keeps its core temperature within a narrow range. Sensors in the skin and inside the body send information to the hypothalamus, a region of the brain that helps coordinate a response. In warm conditions, sweat is released onto the skin. As it evaporates, it carries heat away. Evaporation is slower in humid air, so sweating may be less effective. Blood vessels near the skin widen, bringing more warm blood close to the surface and allowing heat to escape. When the body is cold, those vessels constrict, reducing heat loss. Muscles may begin to contract rapidly in shivering. This movement produces extra heat. People also change their behaviour, for example by putting on another layer or moving somewhere sheltered. Prolonged exposure to low temperatures can lead to hypothermia, in which the body loses heat faster than it can produce it. Exercise in hot weather brings a different risk. People lose water through sweat, so hydration needs to be monitored. The body’s response depends on age, health, activity and the surrounding conditions. Researchers measure core temperature and skin temperature separately because they can change at different rates. A person may feel warm at the surface while the body’s core remains within its usual range."];
+var FULL=true, AUDIO=["","","",""];
+var ASSESSOR_EMAIL="oxfampreparation@email.cz";
+
+function wc(t){var m=t.trim().match(/\S+/g);return m?m.length:0}
+function winit(){
+  document.querySelectorAll("textarea").forEach(function(t){t.oninput=function(){document.getElementById(t.id+"c").textContent=wc(t.value)+" words"}});
+  document.querySelectorAll("[data-c]").forEach(function(b){b.onclick=function(){var t=document.getElementById(b.dataset.c).value;if(navigator.clipboard)navigator.clipboard.writeText(t)}});
+  document.querySelectorAll("[data-s]").forEach(function(b){b.onclick=function(){
+    var t=document.getElementById(b.dataset.s).value,nameField=document.getElementById("nm"),nm=((nameField&&nameField.value)||"Student").trim()||"Student";
+    if(!wc(t)){b.textContent="Write something first!";setTimeout(function(){b.textContent="Send writing to assessor"},2000);return}
+    var subject="IELTS Academic Practice Test 9 - "+b.dataset.t+" - "+nm;
+    var message="Student: "+nm+"\nTest: IELTS Academic Practice Test 9\nTask: "+b.dataset.t+"\n\n"+t;
+    var status=b.parentNode.parentNode.querySelector(".email-status");if(!status){status=document.createElement("p");status.className="note email-status";status.setAttribute("role","status");b.parentNode.parentNode.appendChild(status)}
+    status.textContent="Your email app should open with the assessor, task and writing filled in. Review the draft and press Send.";
+    var mailto="mailto:"+ASSESSOR_EMAIL+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(message);
+    window.location.href=mailto;b.textContent="Open email draft";setTimeout(function(){b.textContent="Send writing to assessor"},3500);
+  }});
+}
+var playId=0;
+function say(i,done){
+  var id=++playId;speechSynthesis.cancel();
+  var parts=T[i].split(/(\{pause\}|\{short\}|\bSpeaker \d:|\b[A-Z][A-Za-z]+:)/),q=[],pitch=1,flip=0,names={};
+  parts.forEach(function(x){
+    x=x.trim();if(!x)return;
+    if(x==="{pause}"||x==="{short}"){q.push({w:x==="{pause}"?2500:1200});pitch=1;return}
+    var sp=x.match(/^Speaker (\d):$/);if(sp){q.push({t:"Speaker "+sp[1],p:1,w:700});return}
+    if(/^[A-Za-z 0-9 ]+:$/.test(x)){var n=x.slice(0,-1);if(!(n in names))names[n]=(flip++%2)?1.25:.85;pitch=names[n];return}
+    (x.match(/[^.?!]+[.?!]*/g)||[x]).forEach(function(z){q.push({t:z.trim(),p:pitch,w:300})})
+  });
+  var k=0;(function next(){
+    if(id!==playId)return;
+    if(k>=q.length){done();return}
+    var s=q[k++];
+    if(!s.t){setTimeout(next,s.w);return}
+    var u=new SpeechSynthesisUtterance(s.t);u.lang="en-GB";u.rate=0.95;u.pitch=s.p;
+    u.onend=function(){setTimeout(next,s.w)};u.onerror=function(){setTimeout(next,s.w)};
+    speechSynthesis.speak(u);
+  })()
+}
+
+function play(b){if(b._busy)return;var i=+b.dataset.i,wrap=b.parentNode,stop=wrap.querySelector(".listen-stop"),status=wrap.querySelector(".listen-status");if(!window.speechSynthesis||!window.SpeechSynthesisUtterance){if(status)status.textContent="Text-to-speech is not available in this browser.";b.textContent="TTS unavailable";return}b._busy=true;b.textContent="Playing…";stop.disabled=false;if(status)status.textContent="Playing Part "+(i+1)+" using your browser voice…";say(i,function(){b._busy=false;b.disabled=false;b.textContent="Replay listening audio";stop.disabled=true;if(status)status.textContent="Part "+(i+1)+" finished. Replay is available."})}
+
+function init(){[["t1",60],["t2",30],["t3",60],["sp2prep",1],["sp2talk",2]].forEach(function(a){timer(a[0],a[1])});if(!FULL)return;build(R,document.getElementById("rbox"),"r");build(L,document.getElementById("lbox"),"l");document.getElementById("ck1").onclick=function(){check(document.getElementById("rbox"),document.getElementById("sc1"))};document.getElementById("ck2").onclick=function(){check(document.getElementById("lbox"),document.getElementById("sc2"))};document.querySelectorAll(".listen-play").forEach(function(b){b.onclick=function(){play(b)}});document.querySelectorAll(".listen-stop").forEach(function(b){b.onclick=function(){if(window.speechSynthesis)speechSynthesis.cancel();playId++;var wrap=b.parentNode,p=wrap.querySelector(".listen-play"),s=wrap.querySelector(".listen-status");if(p){p._busy=false;p.disabled=false;p.textContent="Play listening audio"}b.disabled=true;if(s)s.textContent="Playback stopped. Press Play to restart."}});winit()}
+
+(function(){
+  var g=document.getElementById("gate"),m=document.getElementById("main");
+  function show(){g.hidden=true;m.hidden=false;if(window.init)init()}
+  if(unlocked()){show();return}
+  document.getElementById("gf").onsubmit=function(e){
+    e.preventDefault();
+    if(document.getElementById("pw").value.trim()===PW){
+      try{sessionStorage.setItem("ielts_academic_practice_9","1")}catch(x){}
+      show();
+    } else {
+      document.getElementById("err").textContent="Wrong password.";
+    }
+  }
+  
+  var themeBtn = document.getElementById('themeBtn');
+  if(themeBtn) {
+    themeBtn.onclick = function() {
+      var currentTheme = document.documentElement.getAttribute('data-theme');
+      if(currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        themeBtn.textContent = '🌙';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeBtn.textContent = '☀️';
+      }
+    };
+  }
+  
+  var menuToggle = document.getElementById('menuToggle');
+  if(menuToggle) {
+    menuToggle.onclick = function() {
+      document.body.classList.toggle('menuopen');
+    };
+  }
+  
+  var loginBtn = document.getElementById('loginBtn');
+  var dlg = document.getElementById('dlg');
+  var cancel = document.getElementById('cancel');
+  if(loginBtn && dlg) {
+    loginBtn.onclick = function() { dlg.showModal(); }
+  }
+  if(cancel && dlg) {
+    cancel.onclick = function() { dlg.close(); }
+  }
+})();
+</script>
+</body>
+</html>

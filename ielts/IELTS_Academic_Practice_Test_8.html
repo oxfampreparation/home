@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>IELTS Academic Practice Test 8</title>
+
+<style>
+/* Default theme is explicitly light */
+:root {
+  --bg: #f6f7fb;
+  --paper: #fff;
+  --ink: #14213d;
+  --muted: #4b5266;
+  --line: #d5d9e6;
+  --mark: #2b59ff;
+  --hi: #ffe45e;
+  --ok: #1a7f52;
+  --bad: #b3261e;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Dark theme applied ONLY when data-theme="dark" is present */
+:root[data-theme="dark"] {
+  --bg: #0f1526;
+  --paper: #182038;
+  --ink: #eef1fb;
+  --muted: #a9b1c9;
+  --line: #2c3656;
+  --mark: #7d9bff;
+  --hi: #e9d24a;
+  --ok: #57c58f;
+  --bad: #ff8a80;
+}
+
+html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: border-box; }
+
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1.0625rem/1.6 "Atkinson Hyperlegible", system-ui, sans-serif; }
+h1, h2, h3 { font-family: Archivo, "Helvetica Neue", Arial, sans-serif; line-height: 1.05; margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--mark); outline-offset: 3px; }
+.wrap { max-width: 74rem; margin: 0 auto; padding: 0 1.25rem; }
+
+header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .75rem; padding: 1.25rem 0; position: sticky; top: 0; background: var(--bg); z-index: 100; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+.head-left { display: flex; align-items: center; gap: .75rem; }
+#menuToggle { background: transparent; border: none; cursor: pointer; color: var(--ink); display: flex; padding: .25rem; border-radius: .25rem; }
+#menuToggle:hover { background: var(--line); }
+#menuToggle svg { width: 1.6rem; height: 1.6rem; }
+.logo { font: 800 1.25rem Archivo, sans-serif; text-decoration: none; }
+nav a { margin-left: 1.25rem; text-decoration: none; color: var(--muted); }
+nav a:hover { color: var(--ink); }
+
+.btn { display: inline-block; background: var(--ink); color: var(--bg); padding: .8rem 1.4rem; border-radius: .5rem; font-weight: 700; text-decoration: none; border: 0; cursor: pointer; font-size: 1rem; font-family: inherit; }
+.btn.alt { background: transparent; color: var(--ink); border: 2px solid var(--ink); }
+.hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2rem; align-items: start; padding: 1rem 0 3rem; }
+.hero-text { margin-top: 2.5rem; }
+
+h1 { font-size: clamp(2rem, 3.4vw, 3rem); font-weight: 800; font-stretch: 90%; letter-spacing: -.02em; margin-top: 1rem; margin-bottom: 0; }
+h1 span { background: linear-gradient(transparent 62%, var(--hi) 62%); }
+.lead { color: var(--muted); max-width: 32rem; margin: 1.25rem 0 1.75rem; font-size: 1.15rem; }
+.row { display: flex; gap: .75rem; flex-wrap: wrap; }
+
+.sheet { background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.sheet h2 { font-size: 1.1rem; margin-bottom: .25rem; }
+.sheet p { margin: 0 0 1rem; color: var(--muted); font-size: .95rem; }
+.q { padding: .7rem 0; border-top: 1px solid var(--line); }
+.q b { display: inline-block; font-weight: 800; margin-bottom: .45rem; margin-right: 0.5rem; }
+
+.opts { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem; width: fit-content; }
+.opt { display: flex; align-items: center; gap: .4rem; padding: .3rem .7rem .3rem .35rem; border: 1.5px solid var(--line); border-radius: 2rem; background: transparent; color: inherit; font-size: .95rem; cursor: pointer; width: fit-content; }
+.opt i { width: 1.4rem; height: 1.4rem; border-radius: 50%; border: 2px solid var(--muted); display: grid; place-items: center; font: 700 .7rem Archivo, sans-serif; font-style: normal; flex-shrink: 0; }
+
+.opt[aria-pressed="true"] { border-color: var(--mark); }
+.opt[aria-pressed="true"] i { background: var(--mark); border-color: var(--mark); color: var(--bg); }
+.opt.right { border-color: var(--ok); } .opt.right i { background: var(--ok); border-color: var(--ok); color: var(--bg); }
+.opt.wrong { border-color: var(--bad); } .opt.wrong i { background: var(--bad); border-color: var(--bad); color: var(--bg); }
+
+/* Image Options specific styles */
+.img-opts-grid { display: flex; flex-direction: row; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+.img-opt { flex-direction: column; align-items: center; padding: 0.5rem; border-radius: 0.5rem; gap: 0.5rem; text-align: center; }
+.img-opt img { height: 120px; width: 160px; object-fit: cover; background: var(--paper); border-radius: 0.25rem; }
+.img-opt i { margin-bottom: 0.25rem; }
+
+.result { margin-top: 1rem; font-weight: 700; min-height: 1.6rem; }
+section { padding: 3.5rem 0; border-top: 1px solid var(--line); }
+h2.t { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: .75rem; letter-spacing: -.01em; }
+
+.sub, .txt { color: var(--muted); max-width: 48rem; margin: 0 0 2rem; white-space: pre-line; line-height: 1.6; }
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: .6rem; background: var(--paper); }
+table { border-collapse: collapse; width: 100%; min-width: 38rem; }
+th, td { text-align: left; padding: .9rem 1rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font: 800 1.2rem Archivo, sans-serif; white-space: nowrap; }
+td small { display: block; font: 400 .9rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+
+.support-strip { position: fixed; bottom: 0; left: 0; right: 0; background: var(--ink); color: var(--bg); padding: 1rem 1.25rem; z-index: 999; box-shadow: 0 -4px 12px rgba(0,0,0,0.15); }
+.support-strip-inner { max-width: 74rem; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; width: 100%; font-weight: 700; }
+footer { border-top: 1px solid var(--line); padding: 2rem 0 5rem; color: var(--muted); font-size: .95rem; }
+
+.lang { display: flex; gap: .25rem; flex-wrap: wrap; } .lang button { font: 700 .8rem Archivo, sans-serif; padding: .35rem .6rem; border: 1.5px solid var(--line); border-radius: .4rem; background: transparent; color: var(--muted); cursor: pointer; } .lang button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.layout { display: grid; grid-template-columns: 12.5rem minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+.layout.collapsed { grid-template-columns: 1fr; gap: 0; }
+.layout.collapsed .side { display: none; }
+.side { position: sticky; top: 5rem; max-height: calc(100vh - 6rem); max-height: calc(100dvh - 6rem); overflow-y: auto; display: flex; flex-direction: column; gap: .15rem; }
+summary { cursor: pointer; font: 700 .95rem Archivo, sans-serif; color: var(--muted); padding: .4rem .75rem; border-radius: .5rem; } summary:hover { color: var(--ink); } .ex[open] summary { margin-bottom: .15rem; }
+.side nav { display: flex; flex-direction: column; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); } .side nav a { margin: 0; color: inherit; } .side .lang { margin-bottom: 1rem; }
+.side p { margin: 0 0 .5rem; font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+.side a { text-decoration: none; padding: .5rem .75rem; border-radius: .5rem; font: 700 1rem Archivo, sans-serif; border-left: 3px solid transparent; }
+.side a small { display: block; font: 400 .8rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+.side a:hover { background: var(--paper); border-left-color: var(--mark); }
+tr:target td { background: var(--hi); color: #14213d; } tr:target td small { color: #14213d; }
+
+@media (max-width: 52rem) { .layout { grid-template-columns: 1fr; gap: 0; } .side { position: static; max-height: none; margin: 0 0 1rem; padding: 0 0 1rem; border-bottom: 1px solid var(--line); } }
+
+.hr { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; } .hr .btn { padding: .45rem 1rem; font-size: .9rem; }
+dialog { border: 2px solid var(--ink); border-radius: .75rem; background: var(--paper); color: var(--ink); padding: 1.5rem; width: min(26rem, 92vw); max-height: 90vh; overflow: auto; } dialog::backdrop { background: rgba(10,16,32,.55); }
+dialog h2 { font-size: 1.4rem; margin-bottom: .5rem; } dialog label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+dialog input { width: 100%; padding: .65rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.demo { color: var(--muted); font-size: .9rem; margin: .5rem 0 0; } .err { color: var(--bad); min-height: 1.5rem; margin-top: .5rem; font-size: .95rem; }
+
+@media (max-width: 40rem) {
+  .wrap { padding: 0 1rem; }
+  header { padding: 1rem 0; }
+  .hero { padding-bottom: 2rem; }
+  .sheet { padding: 1.1rem; }
+  section { padding: 2.5rem 0; }
+  .scroll { border: 0; background: transparent; overflow: visible; }
+  table, tbody, tr, td { display: block; min-width: 0; width: 100%; }
+  thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  tr { background: var(--paper); border: 1px solid var(--line); border-radius: .6rem; padding: .6rem 0; margin-bottom: .75rem; }
+  td { border: 0; padding: .15rem 1rem; }
+  td:first-child { font-size: 1.3rem; padding-top: .4rem; }
+  tr:target { border-color: var(--ink); }
+}
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+html { scroll-padding-top: calc(5rem + env(safe-area-inset-top, 0px)); }
+body header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); padding: .6rem 0; border-bottom: 1px solid var(--line); }
+.brand { display: flex; align-items: center; gap: .75rem; }
+body .logo { font-size: 1.85rem; letter-spacing: -.02em; }
+.mbtn { display: inline-flex; flex-direction: column; justify-content: center; gap: 5px; width: 2.75rem; height: 2.75rem; padding: 0 .7rem; border: 2px solid var(--ink); border-radius: .5rem; background: transparent; cursor: pointer; flex: none; }
+.mbtn span { display: block; height: 2px; background: var(--ink); border-radius: 2px; }
+.mbtn:hover { background: var(--paper); }
+body .side { top: 5.5rem; max-height: calc(100vh - 6.5rem); max-height: calc(100dvh - 6.5rem); }
+body.nomenu .layout { grid-template-columns: minmax(0, 1fr); }
+body.nomenu .side { display: none; }
+body:has(#app[hidden]) .mbtn { display: none; }
+.side>.hr { margin-bottom: 1rem; }
+.scrim { display: none; }
+
+@media (max-width: 52rem) {
+  body .side { position: fixed; top: 0; left: 0; bottom: 0; width: min(19rem, 86vw); max-height: none; margin: 0; padding: calc(1rem + env(safe-area-inset-top, 0px)) 1rem calc(1rem + env(safe-area-inset-bottom, 0px)); background: var(--paper); border: 0; border-right: 2px solid var(--ink); z-index: 50; overflow-y: auto; transform: translateX(-105%); visibility: hidden; transition: transform .25s ease, visibility 0s .25s; }
+  body.menuopen .side { transform: none; visibility: visible; transition: transform .25s ease; }
+  body .side nav { flex-direction: column; flex-wrap: nowrap; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+  body .side nav a { padding: .5rem .75rem; }
+  .scrim { display: block; position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: rgba(10,16,32,.5); z-index: 40; opacity: 0; pointer-events: none; transition: opacity .25s; }
+  body.menuopen .scrim { opacity: 1; pointer-events: auto; }
+  body .logo { font-size: 1.6rem; }
+}
+
+.gatebox { max-width: 26rem; margin: 2rem auto; background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.gatebox label, .wr label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+input[type=text], input[type=password], textarea { width: 100%; padding: .6rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.q input[type=text] { width: 14rem; max-width: 100%; }
+.part { background: var(--paper); border: 1px solid var(--line); border-radius: .75rem; padding: 1.5rem; margin-bottom: 1.25rem; }
+.q.ok { border-left: 4px solid var(--ok); padding-left: .75rem; } .q.no { border-left: 4px solid var(--bad); padding-left: .75rem; } .fb { font-weight: 700; margin-top: .25rem; }
+.tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0; }
+nav.tabs a { margin: 0; padding: .4rem 1rem; border: 1.5px solid var(--line); border-radius: 2rem; text-decoration: none; font-weight: 700; }
+nav.tabs a[aria-current=page] { background: var(--ink); color: var(--bg); }
+.bar { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; margin: 1rem 0; } .time { font: 800 1.6rem Archivo, sans-serif; }
+.pics { display: flex; gap: 1rem; flex-wrap: wrap; } .pics svg, .pics img { flex: 1 1 14rem; max-width: 22rem; border: 2px solid var(--ink); border-radius: .5rem; background: var(--paper); object-fit: cover; aspect-ratio: 3/2; }
+.audio-player{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;padding:.75rem 1rem;margin:1rem 0;background:var(--paper);border:1px solid var(--line);border-radius:.75rem}.audio-player .listen-status{font-weight:600;color:var(--muted)}
+textarea { min-height: 15rem; } .tr { display: none; } .note { padding: .75rem 1rem; border-left: 4px solid var(--mark); background: var(--paper); margin: 1rem 0; }
+.sec { padding-top: 2rem; margin-top: 2rem; border-top: 1px solid var(--line); } .jump { margin-top: 0; } .ex { color: var(--muted); margin-top: .15rem; font-size: .95rem; }
+ .chart{display:block;width:min(100%,760px);height:auto;margin:1rem auto;border:1px solid var(--line);border-radius:12px;background:#fff}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header id="siteHeader">
+<div class="head-left">
+<button aria-label="Toggle menu" id="menuToggle">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
+</button>
+<a class="logo" href="../index.html">Oxfam Preparation</a>
+</div>
+<div class="hr">
+<button aria-label="Toggle theme" class="btn alt" id="themeBtn" style="padding:.45rem .6rem; min-width:0; font-size:1.1rem">🌙</button>
+<button class="btn" id="loginBtn" type="button">Log in</button>
+</div>
+</header>
+<div class="layout">
+<aside aria-label="Menu" class="side">
+<nav>
+<a href="../cpe.html">All tests</a>
+</nav>
+</aside>
+<main id="top">
+<div id="gate">
+<div class="gatebox">
+<h1><span>IELTS Academic Practice Test 8</span></h1>
+<p>Enter the password to open this IELTS Academic practice test.</p>
+<form id="gf">
+<label for="pw">Password</label>
+<input autocomplete="off" id="pw" type="password"/>
+<div class="err" id="err"></div>
+<div class="row" style="margin-top:1rem">
+<button class="btn" type="submit">Open</button>
+<a class="btn alt" href="../cpe.html">Back</a>
+</div>
+</form>
+</div>
+</div>
+<div hidden id="main"><h1>IELTS Academic Practice Test 8</h1><p class="sub">Original IELTS Academic practice paper. Browser TTS is used for the listening audio.</p><div class="part"><label for="nm"><strong>Student name (optional)</strong></label><input id="nm" type="text" placeholder="Enter your name"></div><nav class="tabs jump"><a href="#read">Reading</a><a href="#listen">Listening</a><a href="#write">Writing</a><a href="#speak">Speaking</a></nav><section class="sec" id="read"><h2 class="t">Academic Reading (60 minutes)</h2><div class="bar"><span class="time" id="t1"></span><button class="btn alt">Start</button></div><p class="note">Three original passages; 40 questions.</p><div id="rbox"></div><button class="btn" id="ck1">Check Reading answers</button><b id="sc1"></b></section><section class="sec" id="listen"><h2 class="t">Listening (about 30 minutes)</h2><div class="bar"><span class="time" id="t2"></span><button class="btn alt">Start</button></div><p class="note">Four parts, 40 questions. Browser TTS reads these original practice scripts. IELTS recordings in the exam are played once.</p><div id="lbox"></div><button class="btn" id="ck2">Check Listening answers</button><b id="sc2"></b></section><section class="sec" id="write"><h2 class="t">Academic Writing (60 minutes)</h2><div class="bar"><span class="time" id="t3"></span><button class="btn alt">Start</button></div><div class="part"><h2>Task 1</h2><p>Spend about 20 minutes. Write at least 150 words.</p><div class="note">The line graph shows estimated temperature changes at three research sites from 1920 to 2000, compared with a baseline period. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</div><img class="chart" alt="Estimated temperature change at three research sites from 1920 to 2000, in degrees Celsius" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3NjAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgNzYwIDQyMCI+PHJlY3Qgd2lkdGg9Ijc2MCIgaGVpZ2h0PSI0MjAiIGZpbGw9IiNmZmYiLz48dGV4dCB4PSIzODAiIHk9IjI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTkiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMxODI5NGQiPkVzdGltYXRlZCB0ZW1wZXJhdHVyZSBjaGFuZ2UgYXQgcmVzZWFyY2ggc2l0ZXM8L3RleHQ+PHRleHQgeD0iMzgwIiB5PSI1MSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEzIiBmaWxsPSIjMzk0NjVlIj5DaGFuZ2UgZnJvbSBiYXNlbGluZSAowrBDKTwvdGV4dD48ZyBzdHJva2U9IiNkYmUxZWIiIHN0cm9rZS13aWR0aD0iMSI+PHBhdGggZD0iTTkwIDMzMEg3MDBNOTAgMjkwSDcwME05MCAyNTBINzAwTTkwIDIxMEg3MDBNOTAgMTcwSDcwME05MCAxMzBINzAwTTkwIDkwSDcwMCIvPjwvZz48ZyBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiMzOTQ2NWUiIHRleHQtYW5jaG9yPSJlbmQiPjx0ZXh0IHg9Ijc4IiB5PSIzMzQiPuKIkjAuNDwvdGV4dD48dGV4dCB4PSI3OCIgeT0iMjk0Ij7iiJIwLjI8L3RleHQ+PHRleHQgeD0iNzgiIHk9IjI1NCI+MC4wPC90ZXh0Pjx0ZXh0IHg9Ijc4IiB5PSIyMTQiPjAuMjwvdGV4dD48dGV4dCB4PSI3OCIgeT0iMTc0Ij4wLjQ8L3RleHQ+PHRleHQgeD0iNzgiIHk9IjEzNCI+MC42PC90ZXh0Pjx0ZXh0IHg9Ijc4IiB5PSI5NCI+MC44PC90ZXh0PjwvZz48cGF0aCBkPSJNOTAgOTBWMzMwSDcwMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjkzZDVhIiBzdHJva2Utd2lkdGg9IjIiLz48ZyBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTMiIGZpbGw9IiMzOTQ2NWUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjx0ZXh0IHg9IjEzMCIgeT0iMzU0Ij4xOTIwPC90ZXh0Pjx0ZXh0IHg9IjI2NSIgeT0iMzU0Ij4xOTQwPC90ZXh0Pjx0ZXh0IHg9IjQwMCIgeT0iMzU0Ij4xOTYwPC90ZXh0Pjx0ZXh0IHg9IjUzNSIgeT0iMzU0Ij4xOTgwPC90ZXh0Pjx0ZXh0IHg9IjY3MCIgeT0iMzU0Ij4yMDAwPC90ZXh0PjwvZz48cG9seWxpbmUgcG9pbnRzPSIxMzAsMjcwIDI2NSwyNTAgNDAwLDI0MCA1MzUsMTkwIDY3MCwxMjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzMxODJhOCIgc3Ryb2tlLXdpZHRoPSI0Ii8+PHBvbHlsaW5lIHBvaW50cz0iMTMwLDI1MCAyNjUsMjQwIDQwMCwyMzAgNTM1LDIwMCA2NzAsMTUwIiBmaWxsPSJub25lIiBzdHJva2U9IiNkNzgzNDQiIHN0cm9rZS13aWR0aD0iNCIvPjxwb2x5bGluZSBwb2ludHM9IjEzMCwyOTAgMjY1LDI4MCA0MDAsMjYwIDUzNSwyMjAgNjcwLDE3MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNGE5Yjc2IiBzdHJva2Utd2lkdGg9IjQiLz48ZyBmaWxsPSIjMzE4MmE4Ij48Y2lyY2xlIGN4PSIxMzAiIGN5PSIyNzAiIHI9IjUiLz48Y2lyY2xlIGN4PSIyNjUiIGN5PSIyNTAiIHI9IjUiLz48Y2lyY2xlIGN4PSI0MDAiIGN5PSIyNDAiIHI9IjUiLz48Y2lyY2xlIGN4PSI1MzUiIGN5PSIxOTAiIHI9IjUiLz48Y2lyY2xlIGN4PSI2NzAiIGN5PSIxMjAiIHI9IjUiLz48L2c+PGcgZmlsbD0iI2Q3ODM0NCI+PGNpcmNsZSBjeD0iMTMwIiBjeT0iMjUwIiByPSI1Ii8+PGNpcmNsZSBjeD0iMjY1IiBjeT0iMjQwIiByPSI1Ii8+PGNpcmNsZSBjeD0iNDAwIiBjeT0iMjMwIiByPSI1Ii8+PGNpcmNsZSBjeD0iNTM1IiBjeT0iMjAwIiByPSI1Ii8+PGNpcmNsZSBjeD0iNjcwIiBjeT0iMTUwIiByPSI1Ii8+PC9nPjxnIGZpbGw9IiM0YTliNzYiPjxjaXJjbGUgY3g9IjEzMCIgY3k9IjI5MCIgcj0iNSIvPjxjaXJjbGUgY3g9IjI2NSIgY3k9IjI4MCIgcj0iNSIvPjxjaXJjbGUgY3g9IjQwMCIgY3k9IjI2MCIgcj0iNSIvPjxjaXJjbGUgY3g9IjUzNSIgY3k9IjIyMCIgcj0iNSIvPjxjaXJjbGUgY3g9IjY3MCIgY3k9IjE3MCIgcj0iNSIvPjwvZz48ZyBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTMiIGZpbGw9IiMxODI5NGQiPjxsaW5lIHgxPSIyMjUiIHkxPSIzODkiIHgyPSIyNTUiIHkyPSIzODkiIHN0cm9rZT0iIzMxODJhOCIgc3Ryb2tlLXdpZHRoPSI0Ii8+PHRleHQgeD0iMjYzIiB5PSIzOTQiPkhpZ2hsYW5kPC90ZXh0PjxsaW5lIHgxPSIzNjAiIHkxPSIzODkiIHgyPSIzOTAiIHkyPSIzODkiIHN0cm9rZT0iI2Q3ODM0NCIgc3Ryb2tlLXdpZHRoPSI0Ii8+PHRleHQgeD0iMzk4IiB5PSIzOTQiPkNvYXN0YWw8L3RleHQ+PGxpbmUgeDE9IjQ5NSIgeTE9IjM4OSIgeDI9IjUyNSIgeTI9IjM4OSIgc3Ryb2tlPSIjNGE5Yjc2IiBzdHJva2Utd2lkdGg9IjQiLz48dGV4dCB4PSI1MzMiIHk9IjM5NCI+SW5sYW5kPC90ZXh0PjwvZz48L3N2Zz4="><textarea id="w1"></textarea><div class="bar"><b id="w1c">0 words</b><button class="btn alt" data-c="w1">Copy</button><button class="btn" data-s="w1" data-t="Writing Task 1">Send writing to assessor</button></div></div><div class="part"><h2>Task 2</h2><p>Spend about 40 minutes. Write at least 250 words.</p><div class="note">Some people believe that personal finance should be taught as a separate school subject, while others think families should teach it at home. Discuss both views and give your own opinion.</div><textarea id="w2"></textarea><div class="bar"><b id="w2c">0 words</b><button class="btn alt" data-c="w2">Copy</button><button class="btn" data-s="w2" data-t="Writing Task 2">Send writing to assessor</button></div></div></section><section class="sec" id="speak"><h2 class="t">Speaking (11–14 minutes)</h2><div class="part"><h2>Part 1 — Interview</h2><p>Do you enjoy working with other people? What kinds of tasks do you usually do in a group? Do you prefer to lead or support a team? How do you make sure you remember important tasks? What do you do when a group disagrees?</p></div><div class="part"><h2>Part 2 — Long turn</h2><div class="note"><b>Describe a time when you worked as part of a team.</b><br>Say what the team was doing, who was involved, what your role was, and explain what you learned from the experience.</div><div class="bar"><span class="time" id="sp2prep"></span><button class="btn alt">Start 1-minute preparation</button><span class="time" id="sp2talk"></span><button class="btn alt">Start 2-minute talk</button></div></div><div class="part"><h2>Part 3 — Discussion</h2><p>What makes a team work well? Should schools give students more group projects? How can a leader handle disagreement? Is competition useful in a team? What kinds of work are best done individually?</p></div></section></div></div>
+</main>
+</div>
+<div class="support-strip">
+<div class="support-strip-inner">
+<div><span _k="Customer support every day from 9:00 to 16:30">Customer support every day from 9:00 to 16:30</span></div>
+<div class="support-info">
+<a href="mailto:oxfampreparation@email.cz">oxfampreparation@email.cz</a>
+<a href="tel:+420723200988">+420 723 200 988</a>
+</div>
+</div>
+</div>
+<footer>© 2020-2026 Oxfam - Oxford family. All rights reserved. Not affiliated with Cambridge University Press &amp; Assessment. Exam names belong to their owners.</footer>
+</div>
+<dialog aria-labelledby="dt" id="dlg">
+<h2 id="dt">Sign in to open your tests</h2>
+<form id="lf" novalidate="">
+<label for="em">Email</label><input autocomplete="username" id="em" type="email"/>
+<label for="pw">Password</label><input autocomplete="current-password" id="pw" type="password"/>
+<p class="demo" hidden="" id="demo"></p>
+<div aria-live="polite" class="err" id="err"></div>
+<div class="row" style="margin-top:1rem"><button class="btn" type="submit">Log in</button><button class="btn alt" id="cancel" type="button">Cancel</button></div>
+</form>
+</dialog>
+<script>
+var PW="COPT";
+function unlocked(){try{return sessionStorage.getItem("ielts_academic_practice_8")==="1"}catch(e){return false}}
+
+function norm(s){return s.toLowerCase().replace(/\u2019/g,"'").replace(/\s+/g," ").trim()}
+
+function build(parts,box,pre){
+  var n=0;pre=pre||"";
+  parts.forEach(function(p,pi){
+    var d=document.createElement("section");d.className="part";
+    d.innerHTML="<h2>"+p.t+"</h2>"+(pre==="l"?"<div class='audio-player'><button class='btn listen-play' type='button' data-i='"+pi+"'>Play listening audio</button><button class='btn alt listen-stop' type='button' disabled>Stop</button><span class='listen-status' role='status'>Browser voice · Part "+(pi+1)+"</span></div>":"")+(p.m?"<div class='bar'><span class='time' id='pt"+pre+pi+"'></span><button class='btn alt' type='button'>Start</button> <small>suggested time</small></div>":"")+"<p class='sub'>"+p.i+"</p>"+(p.x?"<p class='txt'>"+p.x+"</p>":"")+(p.im||"")+"<div class='items'></div>";
+    var it=d.querySelector(".items");
+    p.q.forEach(function(q){
+      n++;var r=document.createElement("div");r.className="q";
+      var label = q.q && /^(\d+)\.\s*/.test(q.q) ? q.q.match(/^(\d+)\.\s*/)[1] : n; var qtext = (q.q||"").replace(/^\d+\.\s*/,"").replace(/\n/g,"<br>"); var h="<b>"+label+"</b> "+qtext+(q.h?" <strong>"+q.h+"</strong>":"");
+      if(q.o){
+        var isImg = q.o.length > 0 && /^(https?:\/\/|data:image\/)/i.test(q.o[0]);
+        var optsHtml = q.o.map(function(o,i){
+          var letter = "ABCDEFGH"[i];
+          if(q.o.length === 2 && (o === "A" || o === "B" || o.includes("Correct") || o.includes("YES"))) {
+            letter = ["A", "B"][i];
+          }
+          if (isImg) {
+            return "<label class='opt img-opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> <img src='"+o+"' alt='Option "+letter+"' onerror=\"this.style.display='none'\"></label>";
+          } else {
+            var text = o === letter ? "" : o;
+            return "<label class='opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> "+text+"</label>";
+          }
+        }).join("");
+        var gridClass = isImg ? "opts img-opts-grid" : "opts";
+        h += "<div class='" + gridClass + "'>" + optsHtml + "</div>";
+      } else {
+        h+=" <input type='text' autocomplete='off' aria-label='Answer "+n+"'>";
+      }
+      r.innerHTML=h;r._q=q;it.appendChild(r);
+    });
+    box.appendChild(d);
+    if(p.m)timer("pt"+pre+pi,p.m);
+  });
+}
+
+function check(box,out){
+  var tot=0,ok=0;
+  box.querySelectorAll(".part").forEach(function(part){
+    var pTot=0,pOk=0;
+    part.querySelectorAll(".q").forEach(function(r){
+      pTot++;var q=r._q,good,ans;
+      if(q.o){
+        var c=r.querySelector("input:checked");
+        good=c&&+c.value===q.a;
+        var letter = "ABCDEFGH"[q.a];
+        if(q.o.length === 2) letter = ["A", "B"][q.a];
+        var isImg = q.o.length > 0 && /^(https?:\/\/|data:image\/)/i.test(q.o[0]);
+        ans = isImg ? letter : (q.o[q.a] === letter ? letter : letter + " " + q.o[q.a]);
+      } else {
+        var v=norm(r.querySelector("input").value);
+        good=q.a.some(function(a){return norm(a)===v});
+        ans=q.a[0];
+      }
+      r.classList.toggle("ok",!!good);
+      r.classList.toggle("no",!good);
+      var f=r.querySelector(".fb");
+      if(!f){f=document.createElement("div");f.className="fb";r.appendChild(f)}
+      f.textContent=good?"Correct":"Answer: "+ans;
+      var x=r.querySelector(".ex");
+      if(!x){x=document.createElement("div");x.className="ex";r.appendChild(x)}
+      x.textContent=q.e||"";
+      if(good)pOk++;
+    });
+    if(pTot>0){
+      var ps=part.querySelector(".pscore");
+      if(!ps){ps=document.createElement("div");ps.className="pscore note";ps.style.marginTop="1.5rem";part.appendChild(ps)}
+      ps.innerHTML="<b>Part score:</b> "+pOk+" / "+pTot;
+    }
+    tot+=pTot;ok+=pOk;
+  });
+  out.textContent="Total score: "+ok+" / "+tot;
+  box.querySelectorAll(".tr").forEach(function(e){e.style.display="block"});
+}
+
+function timer(id,min){
+  var e=document.getElementById(id),l=min*60,t=null;
+  if(!e)return;
+  function s(){e.textContent=("0"+Math.floor(l/60)).slice(-2)+":"+("0"+l%60).slice(-2)}s();
+  e.nextElementSibling.onclick=function(){
+    if(t){clearInterval(t);t=null;this.textContent="Start";return}
+    this.textContent="Pause";
+    t=setInterval(function(){l--;s();if(l<=0)clearInterval(t)},1000);
+  }
+}
+
+var R = [{"t":"Reading Passage 1 — The adoption of standard time","i":"Questions 1–5: choose the correct heading A–G for paragraphs A–E. Questions 6–10: TRUE, FALSE or NOT GIVEN. Questions 11–13: answer in NO MORE THAN TWO WORDS.","x":"<b>Headings</b>: A. A practical problem for long journeys &nbsp; B. Why noon differed from town to town &nbsp; C. A system that became more precise &nbsp; D. Resistance to a shared clock &nbsp; E. Timekeeping moves beyond local needs &nbsp; F. The limits of a single clock &nbsp; G. Agreement through a new technology<br><br><b>HOW THE WORLD LEARNED TO SHARE THE SAME TIME</b><br><br><b>A</b> Before mechanical clocks became common, many communities organised the day around the sun. Noon was often identified as the time when the sun reached its highest point in the sky. Since sunrise and sunset occur at slightly different moments from one longitude to another, a town’s local noon did not exactly match the noon of a distant town. The difference was usually unimportant when most journeys were made on foot or by horse. A traveller could set a clock after arriving, and local schedules were flexible. As people began moving over longer distances more quickly, however, the lack of a shared time became harder to ignore.<br><br><b>B</b> Railways made the problem visible. A train might pass through several towns in a single day, each using a slightly different local time. Printed timetables could not easily explain whether a departure was based on the time at the starting station or the town where the passenger read the notice. Railway companies began adopting a common time across their networks. This reduced confusion for passengers and made it easier to coordinate signals and train movements. The change was not simply a scientific improvement; it was also a practical rule that helped a new transport system function reliably.<br><br><b>C</b> Some communities were reluctant to change their clocks. Local time was tied to familiar routines, and a town might see no reason to adjust its noon to match a railway office elsewhere. In Britain, railway time spread gradually, and clocks in public places did not all change at once. The transition could be especially confusing where a station clock and a nearby church clock displayed different times. People learned which time applied to a particular train or meeting. Shared time became accepted less because everyone agreed on its cultural meaning than because transport and communication increasingly depended on it.<br><br><b>D</b> The telegraph helped standard time travel beyond railway lines. A signal could carry a time reference between distant places, allowing clocks to be checked and schedules coordinated. Observatories were important because they used astronomical observations to establish accurate time. A signal sent from an observatory could be distributed to railway stations, offices and public clocks. This system linked local clocks to a common reference without requiring every community to make its own observations. The network of signals also made timekeeping more precise, although clocks still needed regular maintenance and adjustment.<br><br><b>E</b> International travel and trade increased pressure for common time zones. In the nineteenth century, delegates from several countries met to discuss how the globe could be divided into zones based on a shared reference meridian. Adoption did not happen everywhere at the same pace, and political boundaries sometimes affected where a zone line was drawn. Today, satellites and networked computers allow clocks to be compared with extreme precision. Yet everyday time still depends on social decisions, including daylight-saving rules and national time zones. Technology can measure a common reference; communities and governments decide how that reference will fit daily life.<br><br>Accurate time signals were important for scientific work as well as transport. Observatories needed to compare observations made at different moments, and communication networks made those comparisons possible over greater distances. A public clock could be checked against the signal and adjusted when it gained or lost time. The system was not perfectly uniform: equipment varied, and a signal might not reach every place immediately. Still, it replaced isolated local decisions with a shared reference that could be checked and improved. People could now coordinate an activity without first agreeing on the position of the sun in each town.<br><br>Time zones are a compromise between astronomical accuracy and convenient administration. A boundary may follow a political border rather than a line of longitude, so two places at similar distances from the sun can use different official times. Countries sometimes adjust their zone for trade with neighbours or to simplify government schedules. These choices do not change the underlying movement of Earth, but they affect when people begin work, travel or school. The history of standard time is therefore both a story of measurement and an example of how societies organise shared routines.","q":[{"q":"1. Choose a heading for paragraph A.","o":["A","B","C","D","E","F","G"],"a":1,"e":"Paragraph A explains why local noon differed between places."},{"q":"2. Choose a heading for paragraph B.","o":["A","B","C","D","E","F","G"],"a":0,"e":"Railway timetables created a practical coordination problem."},{"q":"3. Choose a heading for paragraph C.","o":["A","B","C","D","E","F","G"],"a":3,"e":"Communities did not immediately accept shared railway time."},{"q":"4. Choose a heading for paragraph D.","o":["A","B","C","D","E","F","G"],"a":6,"e":"Telegraph signals helped distribute a common reference."},{"q":"5. Choose a heading for paragraph E.","o":["A","B","C","D","E","F","G"],"a":2,"e":"Modern technology allows more precise comparison of clocks."},{"q":"6. Local time differences were a major problem for most short journeys on foot.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"The passage says the difference was usually unimportant for such journeys."},{"q":"7. Railway companies adopted a common time to help coordinate their networks.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"This is stated in paragraph B."},{"q":"8. All British public clocks changed to railway time on the same day.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"The change happened gradually."},{"q":"9. Observatories used astronomical observations to establish accurate time.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"The passage explicitly says this."},{"q":"10. Every country adopted the international time-zone proposal immediately.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"Adoption did not occur at the same pace."},{"q":"11. Which transport system made the problem of different local times more visible?","a":["railways","the railway"],"e":"Railways connected towns with different local times."},{"q":"12. What technology carried time signals between distant places?","a":["the telegraph","telegraph"],"e":"The telegraph distributed a time reference."},{"q":"13. Which reference feature was used to define time zones?","a":["meridian","shared meridian"],"e":"Delegates discussed a shared reference meridian."}]},{"t":"Reading Passage 2 — How sign languages develop in schools","i":"Questions 14–18: choose A, B, C or D. Questions 19–23: match each statement with group A–E. Questions 24–27: answer in NO MORE THAN TWO WORDS.","x":"<b>Groups</b>: A. teachers &nbsp; B. families &nbsp; C. language researchers &nbsp; D. school administrators &nbsp; E. interpreters<br><br><b>BUILDING A SHARED LANGUAGE IN THE CLASSROOM</b><br><br>Sign languages are complete natural languages with their own grammar and vocabulary. They are not simply spoken languages translated word for word into hand movements, and different communities have developed distinct sign languages. In a school, students may arrive with very different experiences. Some have used a sign language from early childhood; others have had limited access to fluent signers. The way a classroom supports communication can therefore affect both learning and the social relationships students build.<br><br>Teachers need to consider how lessons are presented. A teacher who signs may pause to let students look between the speaker, a diagram and the board. If the teacher continues signing while writing with their back to the class, students may miss information. Visual materials can help, but they need to be organised so that attention is not divided among too many places at once. Teachers sometimes use a clear sequence: explain a concept, display an example, then allow time for questions. This does not mean that a signed lesson is slower in every situation. It means that timing and visual access have to be planned deliberately.<br><br>Families influence language access long before a child enters school. Some families learn sign language together, while others may have limited contact with fluent signers or local classes. Parents can be supportive and involved even when they are still learning. Schools may offer family workshops or connect parents with community organisations. These services are not intended to replace a child’s wider language community. They give families practical ways to communicate at home and understand how a school is using language in class. A family’s preferred communication approach should be discussed rather than assumed.<br><br>Language researchers study how students acquire vocabulary, sentence structure and ways of telling stories. A child’s progress cannot be judged only by how many signs they use in one short test. Researchers observe communication in different contexts and compare students’ language over time. They also need to distinguish a language delay from a lack of opportunity to learn. If a student has not had consistent access to fluent signers, a small vocabulary may reflect limited exposure rather than an underlying difficulty. Researchers work with educators and families to understand the student’s history before drawing conclusions from assessment data.<br><br>School administrators make decisions about staffing, classroom layouts and access to interpreters. A qualified interpreter can support communication between a signing student and people who do not sign, but an interpreter is not a substitute for a teacher who can communicate directly with the student. Administrators also consider whether a student needs an interpreter for a particular activity, such as a meeting with a visiting speaker, or whether the whole teaching day should be delivered in a shared sign language. The decision depends on the student, the lesson and the available staff. Schools need to plan in advance because last-minute arrangements can make it difficult for students to participate fully.<br><br>Interpreters prepare for lessons by learning names, subject terms and the structure of an activity. They may agree with a teacher on where to stand so that the student can see both the interpreter and the classroom materials. In a science demonstration, for example, the interpreter may need to pause while a student watches a change in an experiment. Interpreting is a skilled language task that requires preparation and concentration. It is also collaborative: teachers should share lesson plans and interpreters can tell them when a phrase or activity may need adjustment for visual clarity.<br><br>Schools that involve students in decisions often learn which arrangements work best. A student might prefer a particular seat, a quieter room for group discussion or access to a vocabulary list before a new topic begins. These preferences can change as the student becomes more confident or moves to a different subject. A school can review its arrangements periodically rather than treating an initial plan as permanent. The aim is not merely to provide an interpreter or a set of visual aids, but to make sure students have meaningful access to language, instruction and conversation with their peers.<br><br>Language access also matters during informal parts of school life. Students may learn a great deal during lunch, clubs or conversations between lessons, when an interpreter is not always present. Schools can encourage staff to learn basic signs and create settings where students can communicate directly with one another. This should not be treated as a replacement for fluent language access in class. It complements formal arrangements by making everyday interaction easier. Students can also advise schools about situations in which they feel included or left out, giving administrators information that cannot be gathered from timetables alone.<br><br>Peer relationships can also support language development. A student who signs fluently may help a newer signer learn informal vocabulary, while group projects create a reason to share ideas outside teacher-led discussion. Schools should make sure that this support is voluntary and does not place responsibility for access on another student. Staff can structure group activities so that everyone has time to contribute and can see the speaker. These arrangements benefit the whole class by making communication clearer, rather than treating accessibility as an extra task for one learner.","q":[{"q":"14. What is sign language, according to the passage?","o":["A natural language with its own grammar","A word-for-word version of spoken language","A system used only in classrooms","A collection of gestures without vocabulary"],"a":0,"e":"The opening defines sign languages as natural languages."},{"q":"15. Why should teachers plan when to write and sign?","o":["Students need to see the teacher and visual materials.","Students cannot understand diagrams.","Writing always interrupts a lesson.","Teachers must avoid asking questions."],"a":0,"e":"Students may miss information if attention is split."},{"q":"16. What should schools avoid assuming about families?","o":["That every family has the same communication preference","That parents want to learn anything new","That families are involved in schooling","That children learn at home"],"a":0,"e":"The passage says communication preferences should be discussed."},{"q":"17. What should researchers consider before interpreting a small vocabulary?","o":["The student’s access to fluent signers","The student’s seating position only","The number of classroom posters","The teacher’s spoken accent"],"a":0,"e":"Limited language exposure may explain the result."},{"q":"18. What does the passage say about interpreters?","o":["They support communication but do not replace the teacher.","They should plan all classroom lessons.","They are needed for every activity in the same way.","They can work without preparation."],"a":0,"e":"An interpreter is not a substitute for a teacher."},{"q":"19. Which group may arrange a sequence of explanation, example and questions?","o":["A","B","C","D","E"],"a":0,"e":"Teachers plan the presentation of lessons."},{"q":"20. Which group may attend workshops to learn practical communication strategies?","o":["A","B","C","D","E"],"a":1,"e":"Families may attend school workshops."},{"q":"21. Which group observes language development across different contexts?","o":["A","B","C","D","E"],"a":2,"e":"Language researchers study vocabulary and language over time."},{"q":"22. Which group arranges staffing and interpreter access?","o":["A","B","C","D","E"],"a":3,"e":"Administrators plan staffing and access."},{"q":"23. Which group prepares subject vocabulary before a lesson?","o":["A","B","C","D","E"],"a":4,"e":"Interpreters prepare names and subject terms."},{"q":"24. What should a teacher share with an interpreter in advance?","a":["lesson plans","a lesson plan"],"e":"Interpreters prepare with lesson plans."},{"q":"25. What might students receive before a new topic to support access?","a":["a vocabulary list","vocabulary list"],"e":"The passage gives a vocabulary list as an example."},{"q":"26. What type of access should a school make meaningful?","a":["language access"],"e":"The conclusion emphasises access to language."},{"q":"27. What can change as a student becomes more confident?","a":["preferences","student preferences"],"e":"A student’s preferences may change over time."}]},{"t":"Reading Passage 3 — Reconstructing climate from natural records","i":"Questions 28–32: match each statement with paragraph A–E. Questions 33–37: TRUE, FALSE or NOT GIVEN. Questions 38–40: choose A, B, C or D.","x":"<b>Paragraphs</b>: A–E<br><br><b>WHAT NATURE CAN TELL US ABOUT PAST CLIMATES</b><br><br><b>A</b> Thermometers provide direct measurements, but they have only been used widely for a relatively short part of Earth’s history. To investigate climates before systematic records began, researchers use natural evidence known as proxies. A proxy is not a direct temperature reading. It is a feature of the environment that responds to climate in a measurable way, such as the width of a tree ring or the chemical composition of an ice layer. Each proxy captures a particular aspect of past conditions. Scientists therefore need to understand how it formed and what other influences may have affected it before treating it as evidence of climate.<br><br><b>B</b> Trees in seasonal climates usually form a new ring each year. In some regions, a wider ring can indicate a favourable growing season with sufficient warmth and moisture. A narrow ring may suggest a difficult year. The interpretation is not automatic: disease, competition for light or damage from insects can also affect growth. Researchers compare many trees from the same region and look for patterns that appear across samples. They can match overlapping ring sequences from living trees and older pieces of timber, extending the record further back in time. Dendrochronology is especially useful for annual detail, but it does not represent every location or every climate variable equally well.<br><br><b>C</b> Ice sheets preserve layers of snow that accumulated over long periods. As snow is compressed, small air bubbles become trapped in the ice. These bubbles contain samples of the atmosphere at the time the layer formed. Dust and chemical traces can provide additional information about volcanic activity, sea spray or conditions in the wider environment. Researchers drill a core and examine its layers, but dating them becomes harder deeper in the ice because pressure can compress or distort the sequence. The record may also be affected by melting or movement of the ice. Scientists compare several cores and use known events, such as volcanic ash layers, to improve the timeline.<br><br><b>D</b> Sediment at the bottom of lakes and seas offers another archive. Each layer may contain pollen, tiny shells and fragments of plants. Pollen can indicate which vegetation grew nearby, while the chemistry of shells may reflect water temperature. A shift in the types of pollen can suggest that a region became warmer or drier, but land use can also change vegetation. A lake surrounded by new farms may record human activity as well as climate. Researchers identify these alternative explanations by comparing sediment records with archaeological evidence and with data from nearby sites. A single sediment sample can tell a limited story; a sequence of layers provides a clearer account of change.<br><br><b>E</b> Combining proxies can reveal patterns that no single record can establish. Tree rings may provide yearly detail, while ice cores offer information about atmospheric composition over a much longer period. Sediment can show how ecosystems changed in response. If the records point in the same direction, confidence in an interpretation may increase. If they disagree, the difference can reveal that climate varied by location or that one proxy was influenced by another factor. Researchers use statistical methods to estimate uncertainty and report a range rather than presenting every past temperature as an exact figure. The goal is not to create a perfect account of every year, but to understand broad patterns and their possible causes.<br><br>Proxy records also differ in the period they represent. A tree ring can reflect a growing season, while an ice layer may include information accumulated over several years. Researchers have to match the time scale of the evidence to the question they are asking. A short-term event may be visible in a tree record but blurred in a thick sediment layer. A long-term trend may be difficult to identify from one tree alone. Comparing records with different time scales can reveal both rapid events and gradual change, provided the differences are clearly described.<br><br>Different proxies may also be available in different parts of the world. A region without long-lived trees may offer few ring records, while an ice core is only possible where ice has accumulated. This uneven coverage means that a global reconstruction cannot rely on one source. Researchers identify gaps, seek records from other environments and state where conclusions are less certain. Improvements in laboratory techniques can sometimes extract more information from an existing sample, but no method can recover evidence that was never preserved. A complete account of past climate is therefore unlikely; the aim is to make the best-supported account possible.","q":[{"q":"28. A paragraph explaining that natural evidence is not a direct measurement.","o":["A","B","C","D","E"],"a":0,"e":"Paragraph A defines proxies and their limits."},{"q":"29. A paragraph describing how annual growth patterns can be extended using older wood.","o":["A","B","C","D","E"],"a":1,"e":"Paragraph B explains overlapping tree-ring sequences."},{"q":"30. A paragraph explaining why dating becomes harder deeper in a record.","o":["A","B","C","D","E"],"a":2,"e":"Paragraph C discusses compression and distortion in deep ice."},{"q":"31. A paragraph identifying human land use as a possible influence on evidence.","o":["A","B","C","D","E"],"a":3,"e":"Paragraph D notes that farming can change pollen records."},{"q":"32. A paragraph explaining why researchers combine different records.","o":["A","B","C","D","E"],"a":4,"e":"Paragraph E describes the value of combining proxies."},{"q":"33. Thermometers have provided direct measurements throughout all of Earth’s history.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"The passage says they have been used widely for only a relatively short time."},{"q":"34. Tree-ring width can be affected by factors other than climate.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"Disease and insect damage are given as examples."},{"q":"35. Ice-core air bubbles can contain samples of the past atmosphere.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"This is stated in paragraph C."},{"q":"36. Pollen records are never affected by human activity.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"Land use can change vegetation and pollen."},{"q":"37. When proxies disagree, the difference may reveal local variation.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"The passage says this is one possible explanation."},{"q":"38. What is the main point of the passage?","o":["Past climate is reconstructed by interpreting and combining imperfect natural records.","Tree rings provide an exact global temperature for every year.","Ice cores are more useful than every other proxy.","Human activity has no effect on climate evidence."],"a":0,"e":"The passage emphasises the limits and combined value of proxies."},{"q":"39. Why do researchers compare several tree-ring samples?","o":["To identify patterns that recur across trees","To remove the oldest rings","To measure air bubbles in wood","To distinguish tree species only"],"a":0,"e":"Repeated patterns help identify regional signals."},{"q":"40. How do researchers report uncertainty?","o":["They estimate it and give a range of values.","They remove every result that differs.","They present each figure as exact.","They rely on one proxy at a time."],"a":0,"e":"The final paragraph says they report a range rather than exact figures."}]}];
+var L = [{"t":"Listening Part 1 — Booking a home energy assessment","i":"Questions 1–10. Complete the booking form. Write NO MORE THAN TWO WORDS AND/OR A NUMBER.","x":"BRIGHTHOME — HOME VISIT BOOKING<br>Family name: 1 _____<br>Assessment: 2 home energy _____<br>Day: 3 _____<br>Date: 4 _____<br>Start time: 5 _____<br>Visit length: 6 _____ minutes<br>Fee: 7 £_____<br>Access: use the 8 _____ door<br>Have a recent 9 _____ bill ready<br>Meter number: 10 _____","q":[{"q":"1. Family name","a":["James"],"e":"The caller’s surname is James."},{"q":"2. Assessment","a":["audit","energy audit"],"e":"The service is a home energy audit."},{"q":"3. Day","a":["Monday"],"e":"The appointment is on Monday."},{"q":"4. Date","a":["2 June","June 2","2nd June"],"e":"It is booked for 2 June."},{"q":"5. Start time","a":["9.15","9:15","9.15 am","9:15 am"],"e":"The visit starts at quarter past nine."},{"q":"6. Visit length","a":["90","ninety"],"e":"The assessment lasts ninety minutes."},{"q":"7. Fee","a":["45","£45"],"e":"The fee is forty-five pounds."},{"q":"8. Access","a":["back"],"e":"The assessor should use the back door."},{"q":"9. Bill","a":["energy"],"e":"Have a recent energy bill ready."},{"q":"10. Meter number","a":["71105"],"e":"The meter number is 71105."}]},{"t":"Listening Part 2 — University open day visitor guide","i":"Questions 11–15. Choose A, B or C. Questions 16–20. Match each activity or service with the letter on the SVG campus plan.","x":"Plan labels: A. admissions desk &nbsp; B. engineering lab &nbsp; C. biology lab &nbsp; D. lecture theatre &nbsp; E. café","q":[{"q":"11. What time does the open day begin?","o":["9.00 am","9.30 am","10.00 am"],"a":0,"e":"The open day begins at nine."},{"q":"12. Where should visitors collect their name badge?","o":["At the main gate","At the welcome desk","In the lecture theatre"],"a":1,"e":"Badges are collected at the welcome desk."},{"q":"13. What is needed to join a laboratory demonstration?","o":["A pre-booked time slot","A laboratory coat from home","A printed examination result"],"a":0,"e":"Visitors need to book a time slot."},{"q":"14. When is the student music performance?","o":["12.00 pm","12.30 pm","1.00 pm"],"a":1,"e":"The performance starts at half past twelve."},{"q":"15. What should visitors do if they need step-free access?","o":["Ask a volunteer at the entrance","Use the rear stairs","Wait until after lunch"],"a":0,"e":"Volunteers at the entrance can explain the step-free route."},{"q":"16. Where can someone ask about an application?","o":["A","B","C","D","E"],"a":0,"e":"Admissions questions are handled at the admissions desk."},{"q":"17. Where can visitors see a bridge model being tested?","o":["A","B","C","D","E"],"a":1,"e":"The bridge demonstration is in the engineering lab."},{"q":"18. Where can visitors look at insects through a microscope?","o":["A","B","C","D","E"],"a":2,"e":"The microscope display is in the biology lab."},{"q":"19. Where will the student music performance take place?","o":["A","B","C","D","E"],"a":3,"e":"The performance is in the lecture theatre."},{"q":"20. Where can visitors buy lunch?","o":["A","B","C","D","E"],"a":4,"e":"Lunch is available in the café."}],"im":"<img class=\"chart\" alt=\"University open day map with welcome and admissions desk, engineering lab, biology lab, lecture theatre and cafe labelled A to E\" src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3NjAiIGhlaWdodD0iNDMwIiB2aWV3Qm94PSIwIDAgNzYwIDQzMCI+PHJlY3Qgd2lkdGg9Ijc2MCIgaGVpZ2h0PSI0MzAiIHJ4PSIxNiIgZmlsbD0iI2Y0ZjdmYiIvPjx0ZXh0IHg9IjM4MCIgeT0iMzAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyMCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzE4Mjk0ZCI+VU5JVkVSU0lUWSBPUEVOIERBWSDigJQgQ0FNUFVTIFBMQU48L3RleHQ+PHRleHQgeD0iMzgwIiB5PSI1MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEzIiBmaWxsPSIjNTI2MDc5Ij5Vc2UgdGhlIGxhYmVsbGVkIGJ1aWxkaW5ncyB0byBhbnN3ZXIgUXVlc3Rpb25zIDE24oCTMjA8L3RleHQ+PGcgZm9udC1mYW1pbHk9IkFyaWFsIiBmaWxsPSIjMTgyOTRkIj48cmVjdCB4PSIzNSIgeT0iNzUiIHdpZHRoPSIyMTUiIGhlaWdodD0iMTI1IiByeD0iMTIiIGZpbGw9IiNlM2YwZjgiIHN0cm9rZT0iIzQ5NmM5MSIgc3Ryb2tlLXdpZHRoPSIzIi8+PGNpcmNsZSBjeD0iNjMiIGN5PSIxMDEiIHI9IjE3IiBmaWxsPSIjZmZmIiBzdHJva2U9IiM0OTZjOTEiIHN0cm9rZS13aWR0aD0iMiIvPjx0ZXh0IHg9IjYzIiB5PSIxMDciIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTYiIGZvbnQtd2VpZ2h0PSI3MDAiPkE8L3RleHQ+PHRleHQgeD0iMTUwIiB5PSIxMDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTciIGZvbnQtd2VpZ2h0PSI3MDAiPldFTENPTUUgLyBBRE1JU1NJT05TPC90ZXh0PjxyZWN0IHg9IjEwMSIgeT0iMTMwIiB3aWR0aD0iOTgiIGhlaWdodD0iMjciIHJ4PSI0IiBmaWxsPSIjOGViNWQ1IiBzdHJva2U9IiMzNTU3NzciIHN0cm9rZS13aWR0aD0iMiIvPjxwYXRoIGQ9Ik0xMTEgMTMwdi04aDc2djgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzM1NTc3NyIgc3Ryb2tlLXdpZHRoPSIzIi8+PHRleHQgeD0iMTUwIiB5PSIxODUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTIiPmNvdXJzZSBhbmQgYXBwbGljYXRpb24gaGVscDwvdGV4dD48cmVjdCB4PSIyNzAiIHk9Ijc1IiB3aWR0aD0iMjE1IiBoZWlnaHQ9IjEyNSIgcng9IjEyIiBmaWxsPSIjZmZmMWRmIiBzdHJva2U9IiNhNzc5NDgiIHN0cm9rZS13aWR0aD0iMyIvPjxjaXJjbGUgY3g9IjI5OCIgY3k9IjEwMSIgcj0iMTciIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2E3Nzk0OCIgc3Ryb2tlLXdpZHRoPSIyIi8+PHRleHQgeD0iMjk4IiB5PSIxMDciIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTYiIGZvbnQtd2VpZ2h0PSI3MDAiPkI8L3RleHQ+PHRleHQgeD0iMzc3IiB5PSIxMDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTciIGZvbnQtd2VpZ2h0PSI3MDAiPkVOR0lORUVSSU5HIExBQjwvdGV4dD48cGF0aCBkPSJNMzIxIDE2NWgxMTJNMzMzIDE2NWwxOC0zNSAxOCAzNSAxOC0zNSAxOCAzNSAxOC0zNSAxOCAzNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjOGI1ZDM1IiBzdHJva2Utd2lkdGg9IjMiLz48dGV4dCB4PSIzNzciIHk9IjE4NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxMiI+YnJpZGdlIG1vZGVsIHRlc3Q8L3RleHQ+PHJlY3QgeD0iNTA1IiB5PSI3NSIgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxMjUiIHJ4PSIxMiIgZmlsbD0iI2U3ZjRlYyIgc3Ryb2tlPSIjNGU4ODY5IiBzdHJva2Utd2lkdGg9IjMiLz48Y2lyY2xlIGN4PSI1MzMiIGN5PSIxMDEiIHI9IjE3IiBmaWxsPSIjZmZmIiBzdHJva2U9IiM0ZTg4NjkiIHN0cm9rZS13aWR0aD0iMiIvPjx0ZXh0IHg9IjUzMyIgeT0iMTA3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iNzAwIj5DPC90ZXh0Pjx0ZXh0IHg9IjYxNyIgeT0iMTA1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE3IiBmb250LXdlaWdodD0iNzAwIj5CSU9MT0dZIExBQjwvdGV4dD48cGF0aCBkPSJNNTk5IDEzMmgzNnY1aC0zNnpNNjE2IDEzN3YyOG0tMTAgMGgyMG0tMTAtMjhsLTEzLTExbTEzIDExIDE0LTEyIiBmaWxsPSJub25lIiBzdHJva2U9IiM0ZTg4NjkiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PGVsbGlwc2UgY3g9IjYwMSIgY3k9IjEyMSIgcng9IjgiIHJ5PSI0IiBmaWxsPSIjODNhZThlIi8+PGVsbGlwc2UgY3g9IjYzMyIgY3k9IjEyMCIgcng9IjgiIHJ5PSI0IiBmaWxsPSIjODNhZThlIi8+PHRleHQgeD0iNjE3IiB5PSIxODUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTIiPm1pY3Jvc2NvcGUgZGlzcGxheTwvdGV4dD48cmVjdCB4PSIzNSIgeT0iMjIwIiB3aWR0aD0iNDMwIiBoZWlnaHQ9IjEzNSIgcng9IjEyIiBmaWxsPSIjZWVlOGY3IiBzdHJva2U9IiM3NTYyOWEiIHN0cm9rZS13aWR0aD0iMyIvPjxjaXJjbGUgY3g9IjYzIiBjeT0iMjQ2IiByPSIxNyIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjNzU2MjlhIiBzdHJva2Utd2lkdGg9IjIiLz48dGV4dCB4PSI2MyIgeT0iMjUyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iNzAwIj5EPC90ZXh0Pjx0ZXh0IHg9IjI1MCIgeT0iMjUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE3IiBmb250LXdlaWdodD0iNzAwIj5MRUNUVVJFIFRIRUFUUkU8L3RleHQ+PHBhdGggZD0iTTEzNSAyOTNoMjMwTTE0NSAzMDhoMjEwTTE1NSAzMjNoMTkwIiBzdHJva2U9IiM3NTYyOWEiIHN0cm9rZS13aWR0aD0iNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHJlY3QgeD0iMjI0IiB5PSIyNjciIHdpZHRoPSI1MiIgaGVpZ2h0PSIxMyIgcng9IjMiIGZpbGw9IiNjNWI5ZDkiLz48dGV4dCB4PSIyNTAiIHk9IjM0NyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxMiI+c3R1ZGVudCBwZXJmb3JtYW5jZSBhbmQgdGFsa3M8L3RleHQ+PHJlY3QgeD0iNDg1IiB5PSIyMjAiIHdpZHRoPSIyNDAiIGhlaWdodD0iMTM1IiByeD0iMTIiIGZpbGw9IiNmZmY3ZGMiIHN0cm9rZT0iI2E5OGEzZiIgc3Ryb2tlLXdpZHRoPSIzIi8+PGNpcmNsZSBjeD0iNTEzIiBjeT0iMjQ2IiByPSIxNyIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjYTk4YTNmIiBzdHJva2Utd2lkdGg9IjIiLz48dGV4dCB4PSI1MTMiIHk9IjI1MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNiIgZm9udC13ZWlnaHQ9IjcwMCI+RTwvdGV4dD48dGV4dCB4PSI2MTciIHk9IjI1MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNyIgZm9udC13ZWlnaHQ9IjcwMCI+Q0FGw4k8L3RleHQ+PHBhdGggZD0iTTU3NSAyNzdoNDhsLTUgMjRoLTM4ek02MjMgMjgxaDEwYTggOCAwIDAgMSAwIDE1aC0xMiIgZmlsbD0iI2M5OWE1NSIgc3Ryb2tlPSIjODA2MDJmIiBzdHJva2Utd2lkdGg9IjMiLz48cGF0aCBkPSJNNTg0IDI3MWMtNy03IDMtOS0yLTE0bTE4IDE0Yy03LTcgMy05LTItMTQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzgwNjAyZiIgc3Ryb2tlLXdpZHRoPSIyIi8+PHRleHQgeD0iNjE3IiB5PSIzMzgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTIiPmx1bmNoIGFuZCBob3QgZHJpbmtzPC90ZXh0PjxwYXRoIGQ9Ik0zNSAzODBoNjkwIiBzdHJva2U9IiM5YWE4YmIiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWRhc2hhcnJheT0iOCA2Ii8+PHRleHQgeD0iMzgwIiB5PSI0MDciIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTMiIGZpbGw9IiM1MjYwNzkiPk1BSU4gRU5UUkFOQ0U8L3RleHQ+PC9nPjwvc3ZnPg==\">"},{"t":"Listening Part 3 — Comparing campus maps","i":"Questions 21–25. Choose A, B or C. Questions 26–30. Match each task with student A–F.","x":"Student tasks: A. prepare the route questions &nbsp; B. recruit first-year students &nbsp; C. set up the test area &nbsp; D. record completion times &nbsp; E. review mapping research &nbsp; F. present the results","q":[{"q":"21. What are the students comparing?","o":["How quickly people find rooms using printed and digital maps","How visitors choose a university course","How often students use the library"],"a":0,"e":"The study compares printed and digital campus maps."},{"q":"22. Who will participate?","o":["First-year students","Campus security staff","Final-year engineering students"],"a":0,"e":"First-year students will test the maps."},{"q":"23. What issue appeared in the pilot?","o":["The digital map needed an internet connection.","The printed map had no building names.","The test route was too short."],"a":0,"e":"The online map required internet access."},{"q":"24. What solution will the team add?","o":["An offline version of the digital map","More buildings to the route","A longer instruction video"],"a":0,"e":"They will prepare an offline version."},{"q":"25. What does the tutor say about timing?","o":["Record completion time but also note wrong turns.","Ignore participants who take too long.","Use time as the only measure."],"a":0,"e":"The tutor asks them to record wrong turns as well."},{"q":"26. Who will prepare the route questions?","o":["A","B","C","D","E","F"],"a":0,"e":"Tariq will prepare the questions."},{"q":"27. Who will recruit first-year students?","o":["A","B","C","D","E","F"],"a":1,"e":"Mina will recruit the participants."},{"q":"28. Who will set up the test area?","o":["A","B","C","D","E","F"],"a":2,"e":"Tariq will arrange the test area."},{"q":"29. Who will record completion times?","o":["A","B","C","D","E","F"],"a":3,"e":"Mina will record the times."},{"q":"30. Who will present the results?","o":["A","B","C","D","E","F"],"a":5,"e":"Tariq will present the results."}]},{"t":"Listening Part 4 — Light produced by deep-sea life","i":"Questions 31–40. Complete the notes. Write NO MORE THAN TWO WORDS for each answer.","x":"BIOLUMINESCENCE IN THE OCEAN<br>Light is made through a chemical 31 _____.<br>A light-producing molecule is called 32 _____.<br>An enzyme often called luciferase speeds the 33 _____.<br>Some animals use light to confuse a 34 _____.<br>Other species use flashes to attract 35 _____.<br>Many glowing organisms live in the 36 _____ zone.<br>Researchers observe them with deep-sea 37 _____.<br>White lamps can disturb animal 38 _____.<br>Red light is less 39 _____ to some deep-sea animals.<br>Each species may produce a different 40 _____.","q":[{"q":"31. Gap 31","a":["reaction","chemical reaction"],"e":"Light is created through a chemical reaction."},{"q":"32. Gap 32","a":["luciferin"],"e":"The light-producing molecule is luciferin."},{"q":"33. Gap 33","a":["reaction"],"e":"Luciferase speeds the reaction."},{"q":"34. Gap 34","a":["predator"],"e":"A flash can confuse a predator."},{"q":"35. Gap 35","a":["prey"],"e":"Some species use light to attract prey."},{"q":"36. Gap 36","a":["midwater","mid-water"],"e":"Many glowing organisms live in the midwater zone."},{"q":"37. Gap 37","a":["submersibles","deep-sea submersibles"],"e":"Researchers observe them with submersibles."},{"q":"38. Gap 38","a":["behaviour","behavior"],"e":"White lamps can disturb animal behaviour."},{"q":"39. Gap 39","a":["visible"],"e":"The speaker says red light is less visible to some deep-sea animals."},{"q":"40. Gap 40","a":["light pattern","pattern"],"e":"Each species may produce a different pattern."}]}];
+var T = ["BrightHome assessments, hello. Hello, I would like to arrange a home energy visit. Certainly. Can I take your family name? James, J A M E S. Thank you. We call the visit a home energy audit. We look at insulation, windows and heating controls. Is Monday the second of June available? Yes. The assessor can arrive at quarter past nine. The visit normally takes about ninety minutes. The fee is forty-five pounds. Please ask the assessor to use the back door, as the front path is being repaired. I will add that to the booking. Is there anything I should prepare? If you have a recent energy bill, please have it ready. It helps us understand how much energy the home uses. We will also need the meter number. It is on the small display beside the meter. Mine says seven one one zero five. Thank you. Could I take a contact number? Yes, it is 07762 319 804. The assessor will call if the appointment time needs to change.","Welcome to the university open day. The event begins at nine o’clock. Please collect your name badge at the welcome desk inside the main entrance. Visitors who want to join a laboratory demonstration need to book a time slot; the booking board is beside the desk. The student music performance starts at half past twelve in the lecture theatre. If you need step-free access, ask one of the volunteers at the entrance. They can show you the lift route. If you have a question about applying for a course, the admissions desk is the best place to start. In the engineering lab, students will test a small bridge model and explain how they measure its strength. In the biology lab, you can look at insects through a microscope. The lecture theatre hosts the music performance and a short talk by the student society. The café serves lunch and hot drinks from eleven. Please keep food away from the laboratories. There is a quiet seating area on the upper floor if you need a break.","Tariq: We need to compare how quickly first-year students find rooms using a printed map and a digital map. Mina: In the pilot, the digital map needed an internet connection, and the signal was poor in one building. We should prepare an offline version for the main test. Tariq: I can prepare the route questions and set up the test area. Mina: I will recruit first-year students and record their completion times. The tutor said we should note wrong turns as well as the time. A person might arrive quickly by guessing, so time alone will not tell us whether the map was clear. Tariq: We should review the research on wayfinding too. I can do that before we run the study. Mina: Good. We will use the same route with both maps and alternate which one each participant sees first. Who will present the results? Tariq: I can. We should also ask participants which map they preferred, but we should not treat preference as the only measure.","Many deep-sea animals produce light through a chemical reaction called bioluminescence. In many organisms, a molecule known as luciferin reacts with oxygen. An enzyme, often called luciferase, speeds the reaction and light is released. The colour can vary between species. In dark water, a brief flash may serve several purposes. Some animals use light to confuse a predator or hide their outline. Others produce a signal that attracts prey, or use a repeated pattern to communicate with another member of the same species. Researchers study glowing organisms with cameras attached to deep-sea submersibles. Bright white lamps can disturb behaviour, so teams use dim red lighting where possible. Red light is less visible to some deep-sea animals, though it does not solve every problem. Scientists also use filters and short camera exposures to capture flashes without lighting a large area. Many bioluminescent organisms live in the midwater zone, between the sunlit surface and the sea floor. Observing them is difficult because the animals may move away from a vehicle or produce light only under particular conditions. A species’ light pattern can help researchers identify it, but observations must be compared with other features. The study of bioluminescence has also inspired medical imaging tools, where light-producing reactions can help scientists observe processes in living cells."];
+var FULL=true, AUDIO=["","","",""];
+var ASSESSOR_EMAIL="oxfampreparation@email.cz";
+
+function wc(t){var m=t.trim().match(/\S+/g);return m?m.length:0}
+function winit(){
+  document.querySelectorAll("textarea").forEach(function(t){t.oninput=function(){document.getElementById(t.id+"c").textContent=wc(t.value)+" words"}});
+  document.querySelectorAll("[data-c]").forEach(function(b){b.onclick=function(){var t=document.getElementById(b.dataset.c).value;if(navigator.clipboard)navigator.clipboard.writeText(t)}});
+  document.querySelectorAll("[data-s]").forEach(function(b){b.onclick=function(){
+    var t=document.getElementById(b.dataset.s).value,nameField=document.getElementById("nm"),nm=((nameField&&nameField.value)||"Student").trim()||"Student";
+    if(!wc(t)){b.textContent="Write something first!";setTimeout(function(){b.textContent="Send writing to assessor"},2000);return}
+    var subject="IELTS Academic Practice Test 8 - "+b.dataset.t+" - "+nm;
+    var message="Student: "+nm+"\nTest: IELTS Academic Practice Test 8\nTask: "+b.dataset.t+"\n\n"+t;
+    var status=b.parentNode.parentNode.querySelector(".email-status");if(!status){status=document.createElement("p");status.className="note email-status";status.setAttribute("role","status");b.parentNode.parentNode.appendChild(status)}
+    status.textContent="Your email app should open with the assessor, task and writing filled in. Review the draft and press Send.";
+    var mailto="mailto:"+ASSESSOR_EMAIL+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(message);
+    window.location.href=mailto;b.textContent="Open email draft";setTimeout(function(){b.textContent="Send writing to assessor"},3500);
+  }});
+}
+var playId=0;
+function say(i,done){
+  var id=++playId;speechSynthesis.cancel();
+  var parts=T[i].split(/(\{pause\}|\{short\}|\bSpeaker \d:|\b[A-Z][A-Za-z]+:)/),q=[],pitch=1,flip=0,names={};
+  parts.forEach(function(x){
+    x=x.trim();if(!x)return;
+    if(x==="{pause}"||x==="{short}"){q.push({w:x==="{pause}"?2500:1200});pitch=1;return}
+    var sp=x.match(/^Speaker (\d):$/);if(sp){q.push({t:"Speaker "+sp[1],p:1,w:700});return}
+    if(/^[A-Za-z 0-9 ]+:$/.test(x)){var n=x.slice(0,-1);if(!(n in names))names[n]=(flip++%2)?1.25:.85;pitch=names[n];return}
+    (x.match(/[^.?!]+[.?!]*/g)||[x]).forEach(function(z){q.push({t:z.trim(),p:pitch,w:300})})
+  });
+  var k=0;(function next(){
+    if(id!==playId)return;
+    if(k>=q.length){done();return}
+    var s=q[k++];
+    if(!s.t){setTimeout(next,s.w);return}
+    var u=new SpeechSynthesisUtterance(s.t);u.lang="en-GB";u.rate=0.95;u.pitch=s.p;
+    u.onend=function(){setTimeout(next,s.w)};u.onerror=function(){setTimeout(next,s.w)};
+    speechSynthesis.speak(u);
+  })()
+}
+
+function play(b){if(b._busy)return;var i=+b.dataset.i,wrap=b.parentNode,stop=wrap.querySelector(".listen-stop"),status=wrap.querySelector(".listen-status");if(!window.speechSynthesis||!window.SpeechSynthesisUtterance){if(status)status.textContent="Text-to-speech is not available in this browser.";b.textContent="TTS unavailable";return}b._busy=true;b.textContent="Playing…";stop.disabled=false;if(status)status.textContent="Playing Part "+(i+1)+" using your browser voice…";say(i,function(){b._busy=false;b.disabled=false;b.textContent="Replay listening audio";stop.disabled=true;if(status)status.textContent="Part "+(i+1)+" finished. Replay is available."})}
+
+function init(){[["t1",60],["t2",30],["t3",60],["sp2prep",1],["sp2talk",2]].forEach(function(a){timer(a[0],a[1])});if(!FULL)return;build(R,document.getElementById("rbox"),"r");build(L,document.getElementById("lbox"),"l");document.getElementById("ck1").onclick=function(){check(document.getElementById("rbox"),document.getElementById("sc1"))};document.getElementById("ck2").onclick=function(){check(document.getElementById("lbox"),document.getElementById("sc2"))};document.querySelectorAll(".listen-play").forEach(function(b){b.onclick=function(){play(b)}});document.querySelectorAll(".listen-stop").forEach(function(b){b.onclick=function(){if(window.speechSynthesis)speechSynthesis.cancel();playId++;var wrap=b.parentNode,p=wrap.querySelector(".listen-play"),s=wrap.querySelector(".listen-status");if(p){p._busy=false;p.disabled=false;p.textContent="Play listening audio"}b.disabled=true;if(s)s.textContent="Playback stopped. Press Play to restart."}});winit()}
+
+(function(){
+  var g=document.getElementById("gate"),m=document.getElementById("main");
+  function show(){g.hidden=true;m.hidden=false;if(window.init)init()}
+  if(unlocked()){show();return}
+  document.getElementById("gf").onsubmit=function(e){
+    e.preventDefault();
+    if(document.getElementById("pw").value.trim()===PW){
+      try{sessionStorage.setItem("ielts_academic_practice_8","1")}catch(x){}
+      show();
+    } else {
+      document.getElementById("err").textContent="Wrong password.";
+    }
+  }
+  
+  var themeBtn = document.getElementById('themeBtn');
+  if(themeBtn) {
+    themeBtn.onclick = function() {
+      var currentTheme = document.documentElement.getAttribute('data-theme');
+      if(currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        themeBtn.textContent = '🌙';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeBtn.textContent = '☀️';
+      }
+    };
+  }
+  
+  var menuToggle = document.getElementById('menuToggle');
+  if(menuToggle) {
+    menuToggle.onclick = function() {
+      document.body.classList.toggle('menuopen');
+    };
+  }
+  
+  var loginBtn = document.getElementById('loginBtn');
+  var dlg = document.getElementById('dlg');
+  var cancel = document.getElementById('cancel');
+  if(loginBtn && dlg) {
+    loginBtn.onclick = function() { dlg.showModal(); }
+  }
+  if(cancel && dlg) {
+    cancel.onclick = function() { dlg.close(); }
+  }
+})();
+</script>
+</body>
+</html>

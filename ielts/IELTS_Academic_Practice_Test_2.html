@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>IELTS Academic Practice Test 2</title>
+
+<style>
+/* Default theme is explicitly light */
+:root {
+  --bg: #f6f7fb;
+  --paper: #fff;
+  --ink: #14213d;
+  --muted: #4b5266;
+  --line: #d5d9e6;
+  --mark: #2b59ff;
+  --hi: #ffe45e;
+  --ok: #1a7f52;
+  --bad: #b3261e;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Dark theme applied ONLY when data-theme="dark" is present */
+:root[data-theme="dark"] {
+  --bg: #0f1526;
+  --paper: #182038;
+  --ink: #eef1fb;
+  --muted: #a9b1c9;
+  --line: #2c3656;
+  --mark: #7d9bff;
+  --hi: #e9d24a;
+  --ok: #57c58f;
+  --bad: #ff8a80;
+}
+
+html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: border-box; }
+
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1.0625rem/1.6 "Atkinson Hyperlegible", system-ui, sans-serif; }
+h1, h2, h3 { font-family: Archivo, "Helvetica Neue", Arial, sans-serif; line-height: 1.05; margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--mark); outline-offset: 3px; }
+.wrap { max-width: 74rem; margin: 0 auto; padding: 0 1.25rem; }
+
+header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .75rem; padding: 1.25rem 0; position: sticky; top: 0; background: var(--bg); z-index: 100; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+.head-left { display: flex; align-items: center; gap: .75rem; }
+#menuToggle { background: transparent; border: none; cursor: pointer; color: var(--ink); display: flex; padding: .25rem; border-radius: .25rem; }
+#menuToggle:hover { background: var(--line); }
+#menuToggle svg { width: 1.6rem; height: 1.6rem; }
+.logo { font: 800 1.25rem Archivo, sans-serif; text-decoration: none; }
+nav a { margin-left: 1.25rem; text-decoration: none; color: var(--muted); }
+nav a:hover { color: var(--ink); }
+
+.btn { display: inline-block; background: var(--ink); color: var(--bg); padding: .8rem 1.4rem; border-radius: .5rem; font-weight: 700; text-decoration: none; border: 0; cursor: pointer; font-size: 1rem; font-family: inherit; }
+.btn.alt { background: transparent; color: var(--ink); border: 2px solid var(--ink); }
+.hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2rem; align-items: start; padding: 1rem 0 3rem; }
+.hero-text { margin-top: 2.5rem; }
+
+h1 { font-size: clamp(2rem, 3.4vw, 3rem); font-weight: 800; font-stretch: 90%; letter-spacing: -.02em; margin-top: 1rem; margin-bottom: 0; }
+h1 span { background: linear-gradient(transparent 62%, var(--hi) 62%); }
+.lead { color: var(--muted); max-width: 32rem; margin: 1.25rem 0 1.75rem; font-size: 1.15rem; }
+.row { display: flex; gap: .75rem; flex-wrap: wrap; }
+
+.sheet { background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.sheet h2 { font-size: 1.1rem; margin-bottom: .25rem; }
+.sheet p { margin: 0 0 1rem; color: var(--muted); font-size: .95rem; }
+.q { padding: .7rem 0; border-top: 1px solid var(--line); }
+.q b { display: inline-block; font-weight: 800; margin-bottom: .45rem; margin-right: 0.5rem; }
+
+.opts { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem; width: fit-content; }
+.opt { display: flex; align-items: center; gap: .4rem; padding: .3rem .7rem .3rem .35rem; border: 1.5px solid var(--line); border-radius: 2rem; background: transparent; color: inherit; font-size: .95rem; cursor: pointer; width: fit-content; }
+.opt i { width: 1.4rem; height: 1.4rem; border-radius: 50%; border: 2px solid var(--muted); display: grid; place-items: center; font: 700 .7rem Archivo, sans-serif; font-style: normal; flex-shrink: 0; }
+
+.opt[aria-pressed="true"] { border-color: var(--mark); }
+.opt[aria-pressed="true"] i { background: var(--mark); border-color: var(--mark); color: var(--bg); }
+.opt.right { border-color: var(--ok); } .opt.right i { background: var(--ok); border-color: var(--ok); color: var(--bg); }
+.opt.wrong { border-color: var(--bad); } .opt.wrong i { background: var(--bad); border-color: var(--bad); color: var(--bg); }
+
+/* Image Options specific styles */
+.img-opts-grid { display: flex; flex-direction: row; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+.img-opt { flex-direction: column; align-items: center; padding: 0.5rem; border-radius: 0.5rem; gap: 0.5rem; text-align: center; }
+.img-opt img { height: 120px; width: 160px; object-fit: cover; background: var(--paper); border-radius: 0.25rem; }
+.img-opt i { margin-bottom: 0.25rem; }
+
+.result { margin-top: 1rem; font-weight: 700; min-height: 1.6rem; }
+section { padding: 3.5rem 0; border-top: 1px solid var(--line); }
+h2.t { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: .75rem; letter-spacing: -.01em; }
+
+.sub, .txt { color: var(--muted); max-width: 48rem; margin: 0 0 2rem; white-space: pre-line; line-height: 1.6; }
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: .6rem; background: var(--paper); }
+table { border-collapse: collapse; width: 100%; min-width: 38rem; }
+th, td { text-align: left; padding: .9rem 1rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font: 800 1.2rem Archivo, sans-serif; white-space: nowrap; }
+td small { display: block; font: 400 .9rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+
+.support-strip { position: fixed; bottom: 0; left: 0; right: 0; background: var(--ink); color: var(--bg); padding: 1rem 1.25rem; z-index: 999; box-shadow: 0 -4px 12px rgba(0,0,0,0.15); }
+.support-strip-inner { max-width: 74rem; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; width: 100%; font-weight: 700; }
+footer { border-top: 1px solid var(--line); padding: 2rem 0 5rem; color: var(--muted); font-size: .95rem; }
+
+.lang { display: flex; gap: .25rem; flex-wrap: wrap; } .lang button { font: 700 .8rem Archivo, sans-serif; padding: .35rem .6rem; border: 1.5px solid var(--line); border-radius: .4rem; background: transparent; color: var(--muted); cursor: pointer; } .lang button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.layout { display: grid; grid-template-columns: 12.5rem minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+.layout.collapsed { grid-template-columns: 1fr; gap: 0; }
+.layout.collapsed .side { display: none; }
+.side { position: sticky; top: 5rem; max-height: calc(100vh - 6rem); max-height: calc(100dvh - 6rem); overflow-y: auto; display: flex; flex-direction: column; gap: .15rem; }
+summary { cursor: pointer; font: 700 .95rem Archivo, sans-serif; color: var(--muted); padding: .4rem .75rem; border-radius: .5rem; } summary:hover { color: var(--ink); } .ex[open] summary { margin-bottom: .15rem; }
+.side nav { display: flex; flex-direction: column; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); } .side nav a { margin: 0; color: inherit; } .side .lang { margin-bottom: 1rem; }
+.side p { margin: 0 0 .5rem; font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+.side a { text-decoration: none; padding: .5rem .75rem; border-radius: .5rem; font: 700 1rem Archivo, sans-serif; border-left: 3px solid transparent; }
+.side a small { display: block; font: 400 .8rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+.side a:hover { background: var(--paper); border-left-color: var(--mark); }
+tr:target td { background: var(--hi); color: #14213d; } tr:target td small { color: #14213d; }
+
+@media (max-width: 52rem) { .layout { grid-template-columns: 1fr; gap: 0; } .side { position: static; max-height: none; margin: 0 0 1rem; padding: 0 0 1rem; border-bottom: 1px solid var(--line); } }
+
+.hr { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; } .hr .btn { padding: .45rem 1rem; font-size: .9rem; }
+dialog { border: 2px solid var(--ink); border-radius: .75rem; background: var(--paper); color: var(--ink); padding: 1.5rem; width: min(26rem, 92vw); max-height: 90vh; overflow: auto; } dialog::backdrop { background: rgba(10,16,32,.55); }
+dialog h2 { font-size: 1.4rem; margin-bottom: .5rem; } dialog label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+dialog input { width: 100%; padding: .65rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.demo { color: var(--muted); font-size: .9rem; margin: .5rem 0 0; } .err { color: var(--bad); min-height: 1.5rem; margin-top: .5rem; font-size: .95rem; }
+
+@media (max-width: 40rem) {
+  .wrap { padding: 0 1rem; }
+  header { padding: 1rem 0; }
+  .hero { padding-bottom: 2rem; }
+  .sheet { padding: 1.1rem; }
+  section { padding: 2.5rem 0; }
+  .scroll { border: 0; background: transparent; overflow: visible; }
+  table, tbody, tr, td { display: block; min-width: 0; width: 100%; }
+  thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  tr { background: var(--paper); border: 1px solid var(--line); border-radius: .6rem; padding: .6rem 0; margin-bottom: .75rem; }
+  td { border: 0; padding: .15rem 1rem; }
+  td:first-child { font-size: 1.3rem; padding-top: .4rem; }
+  tr:target { border-color: var(--ink); }
+}
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+html { scroll-padding-top: calc(5rem + env(safe-area-inset-top, 0px)); }
+body header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); padding: .6rem 0; border-bottom: 1px solid var(--line); }
+.brand { display: flex; align-items: center; gap: .75rem; }
+body .logo { font-size: 1.85rem; letter-spacing: -.02em; }
+.mbtn { display: inline-flex; flex-direction: column; justify-content: center; gap: 5px; width: 2.75rem; height: 2.75rem; padding: 0 .7rem; border: 2px solid var(--ink); border-radius: .5rem; background: transparent; cursor: pointer; flex: none; }
+.mbtn span { display: block; height: 2px; background: var(--ink); border-radius: 2px; }
+.mbtn:hover { background: var(--paper); }
+body .side { top: 5.5rem; max-height: calc(100vh - 6.5rem); max-height: calc(100dvh - 6.5rem); }
+body.nomenu .layout { grid-template-columns: minmax(0, 1fr); }
+body.nomenu .side { display: none; }
+body:has(#app[hidden]) .mbtn { display: none; }
+.side>.hr { margin-bottom: 1rem; }
+.scrim { display: none; }
+
+@media (max-width: 52rem) {
+  body .side { position: fixed; top: 0; left: 0; bottom: 0; width: min(19rem, 86vw); max-height: none; margin: 0; padding: calc(1rem + env(safe-area-inset-top, 0px)) 1rem calc(1rem + env(safe-area-inset-bottom, 0px)); background: var(--paper); border: 0; border-right: 2px solid var(--ink); z-index: 50; overflow-y: auto; transform: translateX(-105%); visibility: hidden; transition: transform .25s ease, visibility 0s .25s; }
+  body.menuopen .side { transform: none; visibility: visible; transition: transform .25s ease; }
+  body .side nav { flex-direction: column; flex-wrap: nowrap; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+  body .side nav a { padding: .5rem .75rem; }
+  .scrim { display: block; position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: rgba(10,16,32,.5); z-index: 40; opacity: 0; pointer-events: none; transition: opacity .25s; }
+  body.menuopen .scrim { opacity: 1; pointer-events: auto; }
+  body .logo { font-size: 1.6rem; }
+}
+
+.gatebox { max-width: 26rem; margin: 2rem auto; background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.gatebox label, .wr label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+input[type=text], input[type=password], textarea { width: 100%; padding: .6rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.q input[type=text] { width: 14rem; max-width: 100%; }
+.part { background: var(--paper); border: 1px solid var(--line); border-radius: .75rem; padding: 1.5rem; margin-bottom: 1.25rem; }
+.q.ok { border-left: 4px solid var(--ok); padding-left: .75rem; } .q.no { border-left: 4px solid var(--bad); padding-left: .75rem; } .fb { font-weight: 700; margin-top: .25rem; }
+.tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0; }
+nav.tabs a { margin: 0; padding: .4rem 1rem; border: 1.5px solid var(--line); border-radius: 2rem; text-decoration: none; font-weight: 700; }
+nav.tabs a[aria-current=page] { background: var(--ink); color: var(--bg); }
+.bar { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; margin: 1rem 0; } .time { font: 800 1.6rem Archivo, sans-serif; }
+.pics { display: flex; gap: 1rem; flex-wrap: wrap; } .pics svg, .pics img { flex: 1 1 14rem; max-width: 22rem; border: 2px solid var(--ink); border-radius: .5rem; background: var(--paper); object-fit: cover; aspect-ratio: 3/2; }
+.audio-player{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;padding:.75rem 1rem;margin:1rem 0;background:var(--paper);border:1px solid var(--line);border-radius:.75rem}.audio-player .listen-status{font-weight:600;color:var(--muted)}
+textarea { min-height: 15rem; } .tr { display: none; } .note { padding: .75rem 1rem; border-left: 4px solid var(--mark); background: var(--paper); margin: 1rem 0; }
+.sec { padding-top: 2rem; margin-top: 2rem; border-top: 1px solid var(--line); } .jump { margin-top: 0; } .ex { color: var(--muted); margin-top: .15rem; font-size: .95rem; }
+ .chart{display:block;width:min(100%,760px);height:auto;margin:1rem auto;border:1px solid var(--line);border-radius:12px;background:#fff}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header id="siteHeader">
+<div class="head-left">
+<button aria-label="Toggle menu" id="menuToggle">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
+</button>
+<a class="logo" href="../index.html">Oxfam Preparation</a>
+</div>
+<div class="hr">
+<button aria-label="Toggle theme" class="btn alt" id="themeBtn" style="padding:.45rem .6rem; min-width:0; font-size:1.1rem">🌙</button>
+<button class="btn" id="loginBtn" type="button">Log in</button>
+</div>
+</header>
+<div class="layout">
+<aside aria-label="Menu" class="side">
+<nav>
+<a href="../cpe.html">All tests</a>
+</nav>
+</aside>
+<main id="top">
+<div id="gate">
+<div class="gatebox">
+<h1><span>IELTS Academic Practice Test 2</span></h1>
+<p>Enter the password to open this IELTS Academic practice test.</p>
+<form id="gf">
+<label for="pw">Password</label>
+<input autocomplete="off" id="pw" type="password"/>
+<div class="err" id="err"></div>
+<div class="row" style="margin-top:1rem">
+<button class="btn" type="submit">Open</button>
+<a class="btn alt" href="../cpe.html">Back</a>
+</div>
+</form>
+</div>
+</div>
+<div hidden id="main"><h1>IELTS Academic Practice Test 2</h1><p class="sub">Original IELTS Academic practice paper. Browser TTS is used for the listening audio.</p><div class="part"><label for="nm"><strong>Student name (optional)</strong></label><input id="nm" type="text" placeholder="Enter your name"></div><nav class="tabs jump"><a href="#read">Reading</a><a href="#listen">Listening</a><a href="#write">Writing</a><a href="#speak">Speaking</a></nav><section class="sec" id="read"><h2 class="t">Academic Reading (60 minutes)</h2><div class="bar"><span class="time" id="t1"></span><button class="btn alt">Start</button></div><p class="note">Three original passages; 40 questions.</p><div id="rbox"></div><button class="btn" id="ck1">Check Reading answers</button><b id="sc1"></b></section><section class="sec" id="listen"><h2 class="t">Listening (about 30 minutes)</h2><div class="bar"><span class="time" id="t2"></span><button class="btn alt">Start</button></div><p class="note">Four parts, 40 questions. Browser TTS reads these original practice scripts. IELTS recordings in the exam are played once.</p><div id="lbox"></div><button class="btn" id="ck2">Check Listening answers</button><b id="sc2"></b></section><section class="sec" id="write"><h2 class="t">Academic Writing (60 minutes)</h2><div class="bar"><span class="time" id="t3"></span><button class="btn alt">Start</button></div><div class="part"><h2>Task 1</h2><p>Spend about 20 minutes. Write at least 150 words.</p><div class="note">The line graph shows average daily household water use per resident in three districts between 2015 and 2025. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</div><img class="chart" alt="Average daily household water use per resident in three districts, 2015 to 2025" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3NjAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgNzYwIDQyMCI+PHJlY3Qgd2lkdGg9Ijc2MCIgaGVpZ2h0PSI0MjAiIGZpbGw9IiNmZmYiLz48dGV4dCB4PSIzODAiIHk9IjI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTkiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMxODI5NGQiPkRhaWx5IGhvdXNlaG9sZCB3YXRlciB1c2UgcGVyIHJlc2lkZW50PC90ZXh0Pjx0ZXh0IHg9IjM4MCIgeT0iNTEiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMyIgZmlsbD0iIzM5NDY1ZSI+TGl0cmVzIHBlciBkYXk8L3RleHQ+PGcgc3Ryb2tlPSIjZGJlMWViIiBzdHJva2Utd2lkdGg9IjEiPjxwYXRoIGQ9Ik05MCAzMzBINzAwTTkwIDI3MEg3MDBNOTAgMjEwSDcwME05MCAxNTBINzAwTTkwIDkwSDcwMCIvPjwvZz48ZyBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiMzOTQ2NWUiIHRleHQtYW5jaG9yPSJlbmQiPjx0ZXh0IHg9Ijc4IiB5PSIzMzQiPjEyMDwvdGV4dD48dGV4dCB4PSI3OCIgeT0iMjc0Ij4xNDA8L3RleHQ+PHRleHQgeD0iNzgiIHk9IjIxNCI+MTYwPC90ZXh0Pjx0ZXh0IHg9Ijc4IiB5PSIxNTQiPjE4MDwvdGV4dD48dGV4dCB4PSI3OCIgeT0iOTQiPjIwMDwvdGV4dD48L2c+PHBhdGggZD0iTTkwIDkwVjMzMEg3MDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzI5M2Q1YSIgc3Ryb2tlLXdpZHRoPSIyIi8+PGcgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEzIiBmaWxsPSIjMzk0NjVlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj48dGV4dCB4PSIxMzAiIHk9IjM1NCI+MjAxNTwvdGV4dD48dGV4dCB4PSIzMTAiIHk9IjM1NCI+MjAxODwvdGV4dD48dGV4dCB4PSI0OTAiIHk9IjM1NCI+MjAyMTwvdGV4dD48dGV4dCB4PSI2NzAiIHk9IjM1NCI+MjAyNTwvdGV4dD48L2c+PHBvbHlsaW5lIHBvaW50cz0iMTMwLDEzOCAzMTAsMTY1IDQ5MCwyMDQgNjcwLDIzNyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzE4MmE4IiBzdHJva2Utd2lkdGg9IjQiLz48cG9seWxpbmUgcG9pbnRzPSIxMzAsMjA0IDMxMCwyMTMgNDkwLDI0NiA2NzAsMjczIiBmaWxsPSJub25lIiBzdHJva2U9IiNkNzgzNDQiIHN0cm9rZS13aWR0aD0iNCIvPjxwb2x5bGluZSBwb2ludHM9IjEzMCwyNDYgMzEwLDIzNCA0OTAsMjU1IDY3MCwyNjciIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRhOWI3NiIgc3Ryb2tlLXdpZHRoPSI0Ii8+PGcgZmlsbD0iIzMxODJhOCI+PGNpcmNsZSBjeD0iMTMwIiBjeT0iMTM4IiByPSI1Ii8+PGNpcmNsZSBjeD0iMzEwIiBjeT0iMTY1IiByPSI1Ii8+PGNpcmNsZSBjeD0iNDkwIiBjeT0iMjA0IiByPSI1Ii8+PGNpcmNsZSBjeD0iNjcwIiBjeT0iMjM3IiByPSI1Ii8+PC9nPjxnIGZpbGw9IiNkNzgzNDQiPjxjaXJjbGUgY3g9IjEzMCIgY3k9IjIwNCIgcj0iNSIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjIxMyIgcj0iNSIvPjxjaXJjbGUgY3g9IjQ5MCIgY3k9IjI0NiIgcj0iNSIvPjxjaXJjbGUgY3g9IjY3MCIgY3k9IjI3MyIgcj0iNSIvPjwvZz48ZyBmaWxsPSIjNGE5Yjc2Ij48Y2lyY2xlIGN4PSIxMzAiIGN5PSIyNDYiIHI9IjUiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSIyMzQiIHI9IjUiLz48Y2lyY2xlIGN4PSI0OTAiIGN5PSIyNTUiIHI9IjUiLz48Y2lyY2xlIGN4PSI2NzAiIGN5PSIyNjciIHI9IjUiLz48L2c+PGcgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEzIiBmaWxsPSIjMTgyOTRkIj48bGluZSB4MT0iMTkwIiB5MT0iMzg5IiB4Mj0iMjIwIiB5Mj0iMzg5IiBzdHJva2U9IiMzMTgyYTgiIHN0cm9rZS13aWR0aD0iNCIvPjx0ZXh0IHg9IjIyOCIgeT0iMzk0Ij5Ob3J0aCBEaXN0cmljdDwvdGV4dD48bGluZSB4MT0iMzQ1IiB5MT0iMzg5IiB4Mj0iMzc1IiB5Mj0iMzg5IiBzdHJva2U9IiNkNzgzNDQiIHN0cm9rZS13aWR0aD0iNCIvPjx0ZXh0IHg9IjM4MyIgeT0iMzk0Ij5DZW50cmFsIERpc3RyaWN0PC90ZXh0PjxsaW5lIHgxPSI1MjAiIHkxPSIzODkiIHgyPSI1NTAiIHkyPSIzODkiIHN0cm9rZT0iIzRhOWI3NiIgc3Ryb2tlLXdpZHRoPSI0Ii8+PHRleHQgeD0iNTU4IiB5PSIzOTQiPldlc3QgRGlzdHJpY3Q8L3RleHQ+PC9nPjwvc3ZnPg=="><textarea id="w1"></textarea><div class="bar"><b id="w1c">0 words</b><button class="btn alt" data-c="w1">Copy</button><button class="btn" data-s="w1" data-t="Writing Task 1">Send writing to assessor</button></div></div><div class="part"><h2>Task 2</h2><p>Spend about 40 minutes. Write at least 250 words.</p><div class="note">Some people believe that university students should study a range of subjects outside their main field. Others think they should concentrate only on their chosen subject. Discuss both views and give your own opinion.</div><textarea id="w2"></textarea><div class="bar"><b id="w2c">0 words</b><button class="btn alt" data-c="w2">Copy</button><button class="btn" data-s="w2" data-t="Writing Task 2">Send writing to assessor</button></div></div></section><section class="sec" id="speak"><h2 class="t">Speaking (11–14 minutes)</h2><div class="part"><h2>Part 1 — Interview</h2><p>What kind of place do you live in? What do you enjoy doing at home? Do you prefer working in the morning or evening? How often do you cook? What kinds of public places do you like visiting?</p></div><div class="part"><h2>Part 2 — Long turn</h2><div class="note"><b>Describe a public place that you enjoy visiting.</b><br>Say where it is, when you go there, what you do there, and explain why you enjoy spending time there.</div><div class="bar"><span class="time" id="sp2prep"></span><button class="btn alt">Start 1-minute preparation</button><span class="time" id="sp2talk"></span><button class="btn alt">Start 2-minute talk</button></div></div><div class="part"><h2>Part 3 — Discussion</h2><p>What makes a public place welcoming? How can cities make public spaces useful to different age groups? Should more money be spent on parks or indoor community facilities? How have public spaces changed in recent years? Who should be responsible for maintaining them?</p></div></section></div></div>
+</main>
+</div>
+<div class="support-strip">
+<div class="support-strip-inner">
+<div><span _k="Customer support every day from 9:00 to 16:30">Customer support every day from 9:00 to 16:30</span></div>
+<div class="support-info">
+<a href="mailto:oxfampreparation@email.cz">oxfampreparation@email.cz</a>
+<a href="tel:+420723200988">+420 723 200 988</a>
+</div>
+</div>
+</div>
+<footer>© 2020-2026 Oxfam - Oxford family. All rights reserved. Not affiliated with Cambridge University Press &amp; Assessment. Exam names belong to their owners.</footer>
+</div>
+<dialog aria-labelledby="dt" id="dlg">
+<h2 id="dt">Sign in to open your tests</h2>
+<form id="lf" novalidate="">
+<label for="em">Email</label><input autocomplete="username" id="em" type="email"/>
+<label for="pw">Password</label><input autocomplete="current-password" id="pw" type="password"/>
+<p class="demo" hidden="" id="demo"></p>
+<div aria-live="polite" class="err" id="err"></div>
+<div class="row" style="margin-top:1rem"><button class="btn" type="submit">Log in</button><button class="btn alt" id="cancel" type="button">Cancel</button></div>
+</form>
+</dialog>
+<script>
+var PW="COPT";
+function unlocked(){try{return sessionStorage.getItem("ielts_academic_practice_2")==="1"}catch(e){return false}}
+
+function norm(s){return s.toLowerCase().replace(/\u2019/g,"'").replace(/\s+/g," ").trim()}
+
+function build(parts,box,pre){
+  var n=0;pre=pre||"";
+  parts.forEach(function(p,pi){
+    var d=document.createElement("section");d.className="part";
+    d.innerHTML="<h2>"+p.t+"</h2>"+(pre==="l"?"<div class='audio-player'><button class='btn listen-play' type='button' data-i='"+pi+"'>Play listening audio</button><button class='btn alt listen-stop' type='button' disabled>Stop</button><span class='listen-status' role='status'>Browser voice · Part "+(pi+1)+"</span></div>":"")+(p.m?"<div class='bar'><span class='time' id='pt"+pre+pi+"'></span><button class='btn alt' type='button'>Start</button> <small>suggested time</small></div>":"")+"<p class='sub'>"+p.i+"</p>"+(p.x?"<p class='txt'>"+p.x+"</p>":"")+(p.im||"")+"<div class='items'></div>";
+    var it=d.querySelector(".items");
+    p.q.forEach(function(q){
+      n++;var r=document.createElement("div");r.className="q";
+      var label = q.q && /^(\d+)\.\s*/.test(q.q) ? q.q.match(/^(\d+)\.\s*/)[1] : n; var qtext = (q.q||"").replace(/^\d+\.\s*/,"").replace(/\n/g,"<br>"); var h="<b>"+label+"</b> "+qtext+(q.h?" <strong>"+q.h+"</strong>":"");
+      if(q.o){
+        var isImg = q.o.length > 0 && /^(https?:\/\/|data:image\/)/i.test(q.o[0]);
+        var optsHtml = q.o.map(function(o,i){
+          var letter = "ABCDEFGH"[i];
+          if(q.o.length === 2 && (o === "A" || o === "B" || o.includes("Correct") || o.includes("YES"))) {
+            letter = ["A", "B"][i];
+          }
+          if (isImg) {
+            return "<label class='opt img-opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> <img src='"+o+"' alt='Option "+letter+"' onerror=\"this.style.display='none'\"></label>";
+          } else {
+            var text = o === letter ? "" : o;
+            return "<label class='opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> "+text+"</label>";
+          }
+        }).join("");
+        var gridClass = isImg ? "opts img-opts-grid" : "opts";
+        h += "<div class='" + gridClass + "'>" + optsHtml + "</div>";
+      } else {
+        h+=" <input type='text' autocomplete='off' aria-label='Answer "+n+"'>";
+      }
+      r.innerHTML=h;r._q=q;it.appendChild(r);
+    });
+    box.appendChild(d);
+    if(p.m)timer("pt"+pre+pi,p.m);
+  });
+}
+
+function check(box,out){
+  var tot=0,ok=0;
+  box.querySelectorAll(".part").forEach(function(part){
+    var pTot=0,pOk=0;
+    part.querySelectorAll(".q").forEach(function(r){
+      pTot++;var q=r._q,good,ans;
+      if(q.o){
+        var c=r.querySelector("input:checked");
+        good=c&&+c.value===q.a;
+        var letter = "ABCDEFGH"[q.a];
+        if(q.o.length === 2) letter = ["A", "B"][q.a];
+        var isImg = q.o.length > 0 && /^(https?:\/\/|data:image\/)/i.test(q.o[0]);
+        ans = isImg ? letter : (q.o[q.a] === letter ? letter : letter + " " + q.o[q.a]);
+      } else {
+        var v=norm(r.querySelector("input").value);
+        good=q.a.some(function(a){return norm(a)===v});
+        ans=q.a[0];
+      }
+      r.classList.toggle("ok",!!good);
+      r.classList.toggle("no",!good);
+      var f=r.querySelector(".fb");
+      if(!f){f=document.createElement("div");f.className="fb";r.appendChild(f)}
+      f.textContent=good?"Correct":"Answer: "+ans;
+      var x=r.querySelector(".ex");
+      if(!x){x=document.createElement("div");x.className="ex";r.appendChild(x)}
+      x.textContent=q.e||"";
+      if(good)pOk++;
+    });
+    if(pTot>0){
+      var ps=part.querySelector(".pscore");
+      if(!ps){ps=document.createElement("div");ps.className="pscore note";ps.style.marginTop="1.5rem";part.appendChild(ps)}
+      ps.innerHTML="<b>Part score:</b> "+pOk+" / "+pTot;
+    }
+    tot+=pTot;ok+=pOk;
+  });
+  out.textContent="Total score: "+ok+" / "+tot;
+  box.querySelectorAll(".tr").forEach(function(e){e.style.display="block"});
+}
+
+function timer(id,min){
+  var e=document.getElementById(id),l=min*60,t=null;
+  if(!e)return;
+  function s(){e.textContent=("0"+Math.floor(l/60)).slice(-2)+":"+("0"+l%60).slice(-2)}s();
+  e.nextElementSibling.onclick=function(){
+    if(t){clearInterval(t);t=null;this.textContent="Start";return}
+    this.textContent="Pause";
+    t=setInterval(function(){l--;s();if(l<=0)clearInterval(t)},1000);
+  }
+}
+
+var R = [{"t":"Reading Passage 1 — The public weather forecast","i":"Questions 1–5: choose the correct heading A–G for paragraphs A–E. Questions 6–10: TRUE, FALSE or NOT GIVEN. Questions 11–13: answer in NO MORE THAN TWO WORDS.","x":"<b>Headings</b>: A. A forecast becomes a public service &nbsp; B. The danger of a single number &nbsp; C. Learning to read uncertain predictions &nbsp; D. A new tool changes the work &nbsp; E. Forecasts influence everyday choices &nbsp; F. The search for a perfect instrument &nbsp; G. Sharing observations across borders<br><br><b>HOW WEATHER FORECASTING BECAME EVERYDAY INFORMATION</b><br><br><b>A</b> For most of human history, people relied on local signs to anticipate weather. Sailors watched cloud shapes, farmers examined the soil and travellers listened for distant thunder. These observations could be useful, but they were difficult to share and did not provide much warning of conditions far away. During the nineteenth century, improvements in telegraph networks allowed weather stations to send observations to central offices quickly. A map-maker could compare pressure readings from several places and identify a storm moving across a region. The forecast was still uncertain, yet it offered something a village observation could not: a view of weather as a connected system. Governments first used these reports to protect ships and ports. Newspapers later made short forecasts available to a much wider public.<br><br><b>B</b> Early forecasts often described the expected weather in broad terms: fine, unsettled or stormy. Such words were easy to print, but readers did not always interpret them in the same way. One person might call a day with brief showers “fine”, while a gardener would consider it wet. Modern forecasts use numbers and probabilities, which appear more precise but can also be misunderstood. A 40 per cent chance of rain does not mean that rain will fall for 40 per cent of the day. It represents the likelihood of measurable rain in a defined area and time period. Forecasters therefore need to communicate not only a result but what the result means. Some services add maps showing the range of possible rainfall, while others explain uncertainty in short notes.<br><br><b>C</b> A forecast is not simply a statement about what will happen. It can change what people decide to do. A local authority may postpone road repairs if heavy rain is likely, while a delivery company may plan an earlier departure before strong winds. These decisions create a practical test for forecast services: was the information useful at the time it was needed? Accuracy remains important, but a highly accurate forecast delivered too late may have little value. Researchers now study how different users act on warnings. A coastal community may need several hours to move equipment, whereas a concert organiser may only need to decide whether to open an outdoor stage. The same weather information can therefore call for different kinds of advice.<br><br><b>D</b> Satellites transformed the amount of information available to forecasters. They provide repeated images of cloud systems over oceans, where ground stations are scarce. Radar can estimate the location and movement of rain, and automated sensors can report conditions at regular intervals. Computers combine these observations with mathematical models of the atmosphere. They do not produce one guaranteed future; instead, they run many versions of a forecast using slightly different starting conditions. If most versions point towards similar weather, confidence is greater. If they differ, the forecast should show that uncertainty. The technology has also shifted some work away from manual map drawing. Forecasters spend more time checking data quality, comparing model results and explaining what the patterns mean for particular places.<br><br><b>E</b> Forecasting depends on cooperation. Weather systems cross national borders, so observations from one country can improve predictions in another. International organisations set shared standards for how pressure, temperature and wind are measured. Without common units and reporting times, a computer could not reliably combine readings from stations thousands of kilometres apart. Yet not every region has the same density of sensors. Remote islands and low-income areas may have fewer instruments, leaving gaps in the global picture. Some research projects are testing lower-cost weather stations that communities can maintain locally. The aim is not to replace professional networks but to add useful observations where they are missing. Better coverage can improve warnings for everyone, including people living far from the place where a storm first develops.<br><br>Forecast services are also adapting to the way people receive information. A warning on a mobile phone can reach someone quickly, but a short message has little space for explanation. Designers test whether users understand the difference between a watch, which signals a possibility, and a warning, which indicates a more immediate threat. They also consider accessibility: colour maps should be readable by people with colour-vision differences, and spoken alerts can help those who cannot easily read a screen. These details may seem separate from meteorology, but they affect whether useful knowledge leads to useful action.","q":[{"q":"1. Choose a heading for paragraph A.","o":["A","B","C","D","E","F","G"],"a":0,"e":"It describes forecasts becoming widely shared information."},{"q":"2. Choose a heading for paragraph B.","o":["A","B","C","D","E","F","G"],"a":1,"e":"The paragraph explains how a probability can be misunderstood."},{"q":"3. Choose a heading for paragraph C.","o":["A","B","C","D","E","F","G"],"a":4,"e":"It focuses on decisions people make using forecasts."},{"q":"4. Choose a heading for paragraph D.","o":["A","B","C","D","E","F","G"],"a":3,"e":"It describes satellite, radar and computer tools changing forecasters’ work."},{"q":"5. Choose a heading for paragraph E.","o":["A","B","C","D","E","F","G"],"a":6,"e":"The paragraph concerns shared standards and cross-border observations."},{"q":"6. Telegraph networks helped central offices compare observations from different places.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"The passage says telegraphs sent observations to central offices."},{"q":"7. A 40 per cent chance of rain means rain will fall for 40 per cent of the day.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"The passage explicitly says this is not what it means."},{"q":"8. All newspapers published weather forecasts before the twentieth century.","o":["TRUE","FALSE","NOT GIVEN"],"a":2,"e":"The passage does not give a date or say all newspapers did this."},{"q":"9. The same forecast may lead different users to take different actions.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"A coastal community and an event organiser have different needs."},{"q":"10. Satellite images provide repeated observations over oceans.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"This is stated in paragraph D."},{"q":"11. Which network first allowed rapid transmission of weather observations?","a":["telegraph networks","telegraph network"],"e":"The telegraph network made rapid sharing possible."},{"q":"12. What do forecasters use to estimate the location and movement of rain?","a":["radar"],"e":"Radar provides this information."},{"q":"13. Which type of stations are being tested in some research projects?","a":["lower-cost stations","low-cost stations"],"e":"The paragraph describes lower-cost stations maintained locally."}]},{"t":"Reading Passage 2 — Solar cookers in remote communities","i":"Questions 14–18: choose A, B, C or D. Questions 19–23: match each statement with the correct group A–E. Questions 24–27: answer in NO MORE THAN TWO WORDS.","x":"<b>Groups</b>: A. engineers &nbsp; B. local cooks &nbsp; C. health workers &nbsp; D. school leaders &nbsp; E. project funders<br><br><b>COOKING WITH SUNLIGHT: DESIGNING FOR REAL HOMES</b><br><br>Solar cookers use sunlight to heat food, reducing the need for firewood or other fuels. Their basic principle is simple: reflective surfaces direct sunlight towards a dark cooking pot, while a transparent cover helps retain heat. Yet a device that works well in a laboratory may be unsuitable for everyday life. In communities where fuel is costly or difficult to obtain, a cooker must be affordable, repairable and convenient enough to become part of a household routine.<br><br>Early projects often brought a single design into a region and measured how quickly it heated water. This offered a clear technical comparison but said little about whether families would use the cooker. Some models were too large for small kitchens; others required users to keep turning them towards the sun. A design that needed several hours of direct sunlight could not reliably cook an evening meal if clouds arrived in the afternoon. Researchers gradually broadened their definition of success. They began to ask households to test prototypes, record cooking times and explain why they chose one method over another.<br><br>One design challenge is the difference between a sunny climate and dependable sunlight at the right time. A high average number of sunny days does not show whether a particular village has clear skies during the hours when people prepare dinner. Mountain shadows, seasonal cloud and dust can all reduce heat. Engineers therefore collect local observations and test cookers during different months. They also compare the temperature inside a pot with the time required to cook familiar foods. Boiling water is useful for measuring performance, but it does not represent every meal. Beans, flatbreads and stews require different amounts of heat and attention.<br><br>Local cooks have helped projects understand these practical demands. In one trial, families preferred a cooker that was slower but could hold several pots at once. They prepared other ingredients while food cooked, which fitted their routine better than a faster model that needed constant adjustment. In another location, participants valued a foldable cooker because it could be stored safely when not in use. Such feedback can challenge assumptions made by designers, who may focus on heat output or material cost. It also reveals that the same cooker will not suit every household. Household size, cooking customs and the availability of shaded outdoor space all matter.<br><br>Health workers have a different reason to support fuel-saving devices. Smoke from indoor fires can irritate eyes and lungs, especially in homes with limited ventilation. Replacing some wood-fired meals with solar cooking may reduce exposure, though it does not remove smoke if families continue to use a fire for other tasks. Health workers explain these limits and help researchers choose what to measure. A short trial can record whether a cooker is used, but changes in respiratory health may take longer to identify and can be influenced by many other factors.<br><br>Schools have also become useful partners. A school kitchen can demonstrate the technology to families, and science classes can monitor temperature or compare cooking times. However, school leaders have to consider the timetable, food safety and the work required to maintain equipment. A cooker stored outdoors may need a lockable shelter. Projects that rely on a teacher volunteering extra hours are unlikely to continue indefinitely, so organisers try to fit demonstrations into existing lessons or meal programmes.<br><br>Funding decisions can shape a project long before a cooker is built. Funders often ask for measurable outcomes, such as the number of devices distributed or the quantity of fuel saved. These figures are easy to report, but they do not show whether the devices remain in use. Some projects now set aside money for repairs and follow-up visits. They also ask residents to help decide which results matter locally. A durable programme may distribute fewer cookers at first, but it can learn from faults and adapt a design before expanding. The most useful question is not simply how many devices were delivered, but whether people can keep using them after the project team leaves.<br><br>Material choice introduces another trade-off. Reflective panels may be made from polished metal, foil or locally available materials. A highly reflective surface can direct more sunlight, but it may be expensive or difficult to replace. A simple cooker built from common materials may be less efficient yet easier to repair nearby. Teams therefore compare the whole life of a device, including transport, maintenance and replacement parts. They also ask whether households can make small repairs themselves. This can reduce dependence on outside technicians and help a project continue when its original organisers are no longer present.","q":[{"q":"14. What was a limitation of early solar-cooker projects?","o":["They focused on laboratory performance.","They used too many different fuels.","They were designed only for schools.","They avoided measuring water temperature."],"a":0,"e":"The early comparison measured heating but not everyday use."},{"q":"15. Why is an average number of sunny days insufficient?","o":["It does not show when sunlight is available.","It is based on household surveys.","It ignores the cost of cooking pots.","It predicts the amount of firewood used."],"a":0,"e":"Cooking depends on sunlight at the time meals are prepared."},{"q":"16. What did some families prefer in one trial?","o":["A slower cooker that held several pots","A model that required constant turning","A cooker made only for boiling water","A device too large for indoor storage"],"a":0,"e":"Participants valued fitting the cooker to their cooking routine."},{"q":"17. What do health workers explain to households?","o":["Solar cooking may reduce, but not eliminate, smoke exposure.","Solar cookers prevent every respiratory illness.","Indoor fires are safer when windows are closed.","Health changes can be measured in a single day."],"a":0,"e":"The text stresses that families may still use fires for other tasks."},{"q":"18. What does the passage suggest about long-term projects?","o":["They should plan for repairs and continued use.","They should distribute as many devices as possible immediately.","They should avoid asking residents for feedback.","They should depend on unpaid school staff."],"a":0,"e":"Follow-up and maintenance help equipment remain useful."},{"q":"19. Which group compares cooker temperature and food preparation times?","o":["A","B","C","D","E"],"a":0,"e":"Engineers carry out technical testing."},{"q":"20. Which group described preferences for foldable or multi-pot models?","o":["A","B","C","D","E"],"a":1,"e":"Local cooks tested prototypes and gave practical feedback."},{"q":"21. Which group may track irritation to eyes and lungs?","o":["A","B","C","D","E"],"a":2,"e":"Health workers help choose health measures."},{"q":"22. Which group considers whether demonstrations fit lessons and meal schedules?","o":["A","B","C","D","E"],"a":3,"e":"School leaders manage the timetable and facilities."},{"q":"23. Which group may request evidence of fuel savings and distribution totals?","o":["A","B","C","D","E"],"a":4,"e":"Funders often require measurable outcomes."},{"q":"24. Which transparent component helps retain heat?","a":["cover","transparent cover"],"e":"A cover helps trap heat around the pot."},{"q":"25. Name one environmental factor, besides clouds, that can reduce heat.","a":["mountain shadows","dust","mountain shadow"],"e":"The text mentions mountain shadows and dust."},{"q":"26. Which fuel is specifically mentioned as being reduced?","a":["firewood","wood"],"e":"Solar cookers can reduce the need for firewood."},{"q":"27. What should projects budget for after devices are distributed?","a":["repairs","repair"],"e":"Some funding should support repairs and follow-up."}]},{"t":"Reading Passage 3 — How handwriting shapes memory","i":"Questions 28–32: match each statement with the paragraph A–E. Questions 33–37: TRUE, FALSE or NOT GIVEN. Questions 38–40: choose A, B, C or D.","x":"<b>Paragraphs</b>: A–E<br><br><b>NOTES, MEMORY AND THE ROLE OF HANDWRITING</b><br><br><b>A</b> Students have long debated whether taking notes by hand helps learning more than typing. The question became more urgent as laptops and tablets entered lecture halls. Typing is usually faster, which allows students to capture a larger share of a lecture. Handwriting is slower, so writers must select and shorten information. One explanation is that this selection encourages processing: a student who paraphrases a point may connect it to what they already know. However, a simple comparison of exam scores cannot show exactly why one group performs better. Students may differ in their prior knowledge, attention or familiarity with the subject. Researchers therefore need to separate the effect of the note-taking method from other influences.<br><br><b>B</b> Early experiments gave participants a short lecture and asked one group to write notes by hand and another to type. Both groups later answered questions about the material. In some studies, the groups performed similarly on factual questions, while the handwriting group did better on questions requiring an explanation. The researchers suggested that typists had recorded sentences almost word for word, leaving less opportunity to organise ideas. Yet the experiment took place under controlled conditions. A student using a laptop in a real class may pause to review a diagram, search a term or organise notes with headings. The result could therefore depend on how the device is used, rather than on the device alone.<br><br><b>C</b> A later set of studies examined what happens when students are explicitly told not to transcribe a lecture. When typists were instructed to summarise and use their own words, the difference between the groups became smaller. This supports the idea that mental activity matters more than the physical act of writing. At the same time, handwriting may make summarising unavoidable for some people because it limits the number of words they can record. Researchers caution that speed is not automatically harmful. A fast typist can still decide what matters, while a handwritten page can contain copied phrases without much thought. The useful distinction may be between active and passive note-taking, not simply between pen and keyboard.<br><br><b>D</b> Memory is also influenced by what happens after a lecture. Students who revisit, reorganise or test themselves on their notes often remember more than those who leave the notes untouched. A digital document can be searched, edited and shared; it may make later revision easier. Paper notes can also be reorganised, but usually require more time to copy or scan. Some learners find that the physical layout of a page helps them recall where an idea appeared. Others benefit from digital tools that link notes to audio or diagrams. These differences make broad claims about a single best method difficult. The learning strategy used after note-taking may be as important as how the notes were first made.<br><br><b>E</b> New research increasingly looks at learning over weeks rather than a single session. A short test may reward immediate recall but fail to show whether knowledge remains available later. Studies can compare groups after several days, while also recording how often participants reviewed their notes. Researchers must be careful not to treat a preferred tool as a universal solution. A student with limited access to a suitable computer may need paper, while another may use assistive software to follow a lecture. The broader lesson is that note-taking should be taught as a set of choices: selecting, organising and reviewing information. Schools and universities can help students practise these skills and then choose tools that suit their tasks and circumstances.<br><br>Technology has also changed the question from “Which tool is best?” to “Which strategy fits this task?” A student preparing for a factual quiz may want searchable notes, while someone developing an argument may benefit from drawing connections across a page. Accessibility matters as well: speech-to-text software can enable participation for learners who find handwriting difficult, and adjustable fonts can make long notes easier to read. These options do not make careful thinking automatic. Students still need to decide what deserves attention and how they will return to the material. Instructors can make that process visible by comparing examples of concise notes, asking students to explain their choices and giving time for review. The goal is not to prescribe a particular device but to help learners notice which habits support their own understanding.","q":[{"q":"28. A paragraph describing how individual differences can complicate comparisons.","o":["A","B","C","D","E"],"a":0,"e":"Paragraph A notes prior knowledge and attention as possible influences."},{"q":"29. A paragraph reporting that instructions to summarise changed the results.","o":["A","B","C","D","E"],"a":2,"e":"Paragraph C discusses explicit instructions to paraphrase."},{"q":"30. A paragraph comparing ways to revisit notes after a lesson.","o":["A","B","C","D","E"],"a":3,"e":"Paragraph D focuses on review and revision."},{"q":"31. A paragraph explaining why a short-term result may be incomplete.","o":["A","B","C","D","E"],"a":4,"e":"Paragraph E argues for studying learning over weeks."},{"q":"32. A paragraph giving examples of controlled experiments.","o":["A","B","C","D","E"],"a":1,"e":"Paragraph B describes lecture-and-test experiments."},{"q":"33. Typing always produces better results on factual questions.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"The studies found similar performance on factual questions in some cases."},{"q":"34. Some studies found a handwriting advantage on questions requiring explanation.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"This is stated in paragraph B."},{"q":"35. Researchers have proved that the physical movement of handwriting causes better memory.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"The passage says the mechanism is not established and activity may matter more."},{"q":"36. The passage states that every student reviews digital notes more frequently than paper notes.","o":["TRUE","FALSE","NOT GIVEN"],"a":2,"e":"No comparison of review frequency by format is given."},{"q":"37. Reviewing or testing oneself on notes can support later recall.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"Paragraph D states that revisiting and testing often improves recall."},{"q":"38. What is the main argument of the passage?","o":["The best note-taking method depends partly on how notes are processed and used.","Students should stop using digital devices in lectures.","Handwriting improves every type of memory.","Typing is useful only for students with prior knowledge."],"a":0,"e":"The passage presents no universal tool and emphasises active learning."},{"q":"39. What did the authors infer from instructions to summarise?","o":["The effort to select information may matter more than the tool.","All typists are unable to paraphrase.","Handwriting is always slower than thought.","Lecture tests are not useful in research."],"a":0,"e":"When typists summarised, differences narrowed."},{"q":"40. What do the researchers recommend educational institutions teach?","o":["A flexible set of note-taking and review skills","One fixed note format for every subject","How to type lecture transcripts word for word","How to avoid digital tools entirely"],"a":0,"e":"The final paragraph calls for teaching selection, organisation and review."}]}];
+var L = [{"t":"Listening Part 1 — Booking a bicycle maintenance course","i":"Questions 1–10. Complete the form. Write NO MORE THAN TWO WORDS AND/OR A NUMBER.","x":"RIVER STREET WORKSHOP — COURSE BOOKING<br>Family name: 1 _____<br>Course: 2 _____<br>Preferred day: 3 _____<br>First session: 4 _____<br>Course fee: 5 £_____<br>Bring: 6 _____<br>Workshop room: 7 _____<br>Start time: 8 _____<br>Finish time: 9 _____<br>Bus from station: 10 number _____","q":[{"q":"1. Family name","a":["Bennett","Bennet"],"e":"The surname is Bennett."},{"q":"2. Course","a":["bicycle maintenance","bike maintenance"],"e":"The course is bicycle maintenance."},{"q":"3. Preferred day","a":["Thursday"],"e":"The evening class is on Thursday."},{"q":"4. First session","a":["12 June","June 12","12th June"],"e":"The course begins on 12 June."},{"q":"5. Course fee","a":["65","£65"],"e":"The total fee is sixty-five pounds."},{"q":"6. Bring","a":["a small pump","small pump"],"e":"Participants should bring a small pump."},{"q":"7. Workshop room","a":["Room 3","3"],"e":"It is in Room 3."},{"q":"8. Start time","a":["6.15","6:15","6.15 pm","6:15 pm"],"e":"The class starts at quarter past six."},{"q":"9. Finish time","a":["8.15","8:15","8.15 pm","8:15 pm"],"e":"It finishes at quarter past eight."},{"q":"10. Bus number","a":["14","fourteen"],"e":"Take bus number fourteen."}]},{"t":"Listening Part 2 — A guide to the Harbour Ferry","i":"Questions 11–15. Choose A, B or C. Questions 16–20. Match each facility with the correct letter A–E.","x":"Ferry facilities: A. ticket office &nbsp; B. waiting room &nbsp; C. bicycle deck &nbsp; D. café counter &nbsp; E. information desk","q":[{"q":"11. How often does the ferry leave on weekdays?","o":["Every 20 minutes","Every 30 minutes","Every 45 minutes"],"a":1,"e":"The weekday service runs every half hour."},{"q":"12. Where should passengers buy a return ticket?","o":["Online only","At the ticket office","On the upper deck"],"a":1,"e":"The guide directs passengers to the ticket office."},{"q":"13. What is different about the first sailing on Sunday?","o":["It leaves from another pier.","It carries bicycles free.","It starts later than usual."],"a":0,"e":"The first Sunday sailing uses Pier 2."},{"q":"14. What should passengers do if the weather is poor?","o":["Check the service board","Call the captain","Wait beside the café"],"a":0,"e":"Changes are shown on the service board."},{"q":"15. Which passengers can travel at a reduced fare?","o":["Those under sixteen","Those with a library card","Those travelling after six"],"a":0,"e":"The concession is for passengers under sixteen."},{"q":"16. Where can a passenger ask about a lost bag?","o":["A","B","C","D","E"],"a":4,"e":"Lost property enquiries go to the information desk."},{"q":"17. Where are bicycles secured during the crossing?","o":["A","B","C","D","E"],"a":2,"e":"Bicycles are placed on the bicycle deck."},{"q":"18. Where can passengers sit indoors before boarding?","o":["A","B","C","D","E"],"a":1,"e":"The waiting room has indoor seats."},{"q":"19. Where can passengers buy a hot drink?","o":["A","B","C","D","E"],"a":3,"e":"Hot drinks are sold at the café counter."},{"q":"20. Where can someone buy a ticket in person?","o":["A","B","C","D","E"],"a":0,"e":"The ticket office sells tickets."}]},{"t":"Listening Part 3 — Planning an indoor air-quality study","i":"Questions 21–25. Choose A, B or C. Questions 26–30. Match each task with the correct student A–F.","x":"Student tasks: A. recruit volunteers &nbsp; B. calibrate sensors &nbsp; C. prepare the room map &nbsp; D. check the literature &nbsp; E. enter the readings &nbsp; F. present the findings","q":[{"q":"21. What is the focus of the students’ project?","o":["Air quality in study rooms","Noise levels in the library","Energy use in lecture theatres"],"a":0,"e":"They are measuring indoor air quality in study rooms."},{"q":"22. Why will they compare rooms at different times?","o":["Occupancy may affect the readings.","The sensors cannot work in daylight.","The rooms have different floor areas."],"a":0,"e":"The number of people in a room may change the readings."},{"q":"23. What problem did they find during the pilot?","o":["One sensor gave inconsistent results.","Students refused to answer a survey.","The room map was out of date."],"a":0,"e":"One sensor produced inconsistent readings."},{"q":"24. What will they do before collecting the main data?","o":["Calibrate the sensors again","Buy a different computer","Close the rooms to students"],"a":0,"e":"They will recalibrate before the main study."},{"q":"25. What does their tutor advise about the conclusion?","o":["Avoid claiming that one factor proves a cause.","Include every reading in the final paragraph.","Compare their results with another university."],"a":0,"e":"The tutor warns them not to claim causation from a limited comparison."},{"q":"26. Who will recruit volunteers?","o":["A","B","C","D","E","F"],"a":0,"e":"Mina will contact volunteers."},{"q":"27. Who will check the published research?","o":["A","B","C","D","E","F"],"a":3,"e":"Owen will review the literature."},{"q":"28. Who will prepare a map of the rooms?","o":["A","B","C","D","E","F"],"a":2,"e":"Sara will prepare the room map."},{"q":"29. Who will enter the sensor readings?","o":["A","B","C","D","E","F"],"a":4,"e":"Mina will enter the data."},{"q":"30. Who will present the findings?","o":["A","B","C","D","E","F"],"a":5,"e":"Owen will give the presentation."}]},{"t":"Listening Part 4 — Monitoring active volcanoes","i":"Questions 31–40. Complete the notes. Write NO MORE THAN TWO WORDS for each answer.","x":"VOLCANO MONITORING<br>Scientists measure tiny changes in the volcano’s 31 _____.<br>Ground movement may show that 32 _____ is rising.<br>Small earthquakes are recorded by 33 _____.<br>Gas samples are collected near 34 _____.<br>Changes in sulphur dioxide can indicate new 35 _____.<br>Thermal cameras identify areas of unusual 36 _____.<br>Satellite measurements are useful when roads are 37 _____.<br>Local observers may report changes in a lake’s 38 _____.<br>No single signal can predict an 39 _____.<br>Public warnings depend on clear communication and regular 40 _____.","q":[{"q":"31. Gap 31","a":["shape"],"e":"Scientists monitor small changes in the volcano’s shape."},{"q":"32. Gap 32","a":["magma"],"e":"Ground movement may indicate rising magma."},{"q":"33. Gap 33","a":["seismometers","seismometer"],"e":"Seismometers record small earthquakes."},{"q":"34. Gap 34","a":["vents","vent"],"e":"Gas is sampled near volcanic vents."},{"q":"35. Gap 35","a":["magma movement","magma"],"e":"Sulphur dioxide changes can indicate magma movement."},{"q":"36. Gap 36","a":["heat"],"e":"Thermal cameras show unusual heat."},{"q":"37. Gap 37","a":["blocked","closed"],"e":"Satellite data help when roads are blocked."},{"q":"38. Gap 38","a":["colour","color"],"e":"Observers can report a change in lake colour."},{"q":"39. Gap 39","a":["eruption"],"e":"No single signal can predict an eruption."},{"q":"40. Gap 40","a":["updates","communication"],"e":"Warnings require regular updates."}]}];
+var T = ["River Street Workshop, hello. Hi, I am calling to book a place on one of your evening courses. Of course. Can I take your family name first? Bennett, B E N N E T T. And which course did you want? Bicycle maintenance. I can already repair a puncture, but I would like to learn how to adjust the gears. We have a course that covers that. Thursday is the usual evening, though there is also a Saturday morning group. Thursday would be better. The first session is on the twelfth of June. The course costs sixty-five pounds for four weeks. Do I need to bring my own tools? We provide most of them, but please bring a small pump so you can practise with the one you normally use. Where do we meet? In Room 3, through the blue door at the back of the workshop. The class starts at six fifteen and finishes at quarter past eight. I will come by bus. The number fourteen stops close to the entrance. Excellent. I will reserve your place and email the details this afternoon.","Welcome aboard the Harbour Ferry. On weekdays, boats leave every thirty minutes. At weekends the schedule is slightly different, so please check the printed timetable. The first Sunday crossing leaves from Pier 2 instead of Pier 1. Return tickets are available at the ticket office, and you can also buy them on the website. If the weather is poor, please look at the service board near the entrance before joining the queue. Any cancelled crossing will be listed there. Children and other passengers under sixteen can travel at a reduced fare. If you need help with a lost bag, speak to staff at the information desk beside the gate. Passengers bringing bicycles should use the marked bicycle deck and secure their bikes with the straps provided. There is an indoor waiting room for people who arrive early. Hot drinks and snacks are sold at the café counter, but please finish drinks before boarding. The ticket office is open until the last boat of the day.","Mina: We should agree on the main question for our indoor air-quality project. Owen: We are measuring study rooms, so we need to record the carbon dioxide level and the number of people present. Sara: That means we should compare each room at different times. Occupancy could affect a reading. Mina: During the pilot, one sensor gave inconsistent results. The technician said it may have been knocked while we set it up. Owen: Before we collect the main data, let us calibrate all the sensors again. Sara: I have checked the room map; I will prepare a clean version showing where each one will stand. Mina: I can recruit volunteers and then enter the readings into the shared file. Owen: I will check the published research and present the findings. Our tutor said we need to be careful with the conclusion. If one room has a higher reading, we cannot say that one particular feature caused it. There may be several explanations. We should describe what we observed and recommend a larger study if we want to test causes.","Volcano monitoring brings together several types of evidence. Scientists first establish what is normal for a particular volcano, because each one behaves differently. Survey instruments can measure tiny changes in the shape of the ground. If the surface rises or tilts, magma may be moving below it, but movement alone does not prove an eruption is imminent. Seismometers record small earthquakes. A rise in their number can be important, especially when the events become shallower, yet some volcanoes produce frequent earthquakes without erupting. Teams also collect gas samples near vents. A change in the amount of sulphur dioxide may suggest that magma is approaching the surface. Thermal cameras can identify areas of unusual heat, while satellite measurements offer a view of remote slopes. That is especially useful when roads are blocked by ash or damaged by earthquakes. Local observers add another kind of information. They may notice that a crater lake has changed colour or that water levels have fallen. Such reports must be checked against instruments. No single signal can predict an eruption with certainty. Scientists compare evidence over time, discuss the level of risk and share regular updates with local authorities. Clear communication matters: residents need to know what has changed, which areas are affected and where they can find reliable advice."];
+var FULL=true, AUDIO=["","","",""];
+var ASSESSOR_EMAIL="oxfampreparation@email.cz";
+
+function wc(t){var m=t.trim().match(/\S+/g);return m?m.length:0}
+function winit(){
+  document.querySelectorAll("textarea").forEach(function(t){t.oninput=function(){document.getElementById(t.id+"c").textContent=wc(t.value)+" words"}});
+  document.querySelectorAll("[data-c]").forEach(function(b){b.onclick=function(){var t=document.getElementById(b.dataset.c).value;if(navigator.clipboard)navigator.clipboard.writeText(t)}});
+  document.querySelectorAll("[data-s]").forEach(function(b){b.onclick=function(){
+    var t=document.getElementById(b.dataset.s).value,nameField=document.getElementById("nm"),nm=((nameField&&nameField.value)||"Student").trim()||"Student";
+    if(!wc(t)){b.textContent="Write something first!";setTimeout(function(){b.textContent="Send writing to assessor"},2000);return}
+    var subject="IELTS Academic Practice Test 2 - "+b.dataset.t+" - "+nm;
+    var message="Student: "+nm+"\nTest: IELTS Academic Practice Test 2\nTask: "+b.dataset.t+"\n\n"+t;
+    var status=b.parentNode.parentNode.querySelector(".email-status");if(!status){status=document.createElement("p");status.className="note email-status";status.setAttribute("role","status");b.parentNode.parentNode.appendChild(status)}
+    status.textContent="Your email app should open with the assessor, task and writing filled in. Review the draft and press Send.";
+    var mailto="mailto:"+ASSESSOR_EMAIL+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(message);
+    window.location.href=mailto;b.textContent="Open email draft";setTimeout(function(){b.textContent="Send writing to assessor"},3500);
+  }});
+}
+var playId=0;
+function say(i,done){
+  var id=++playId;speechSynthesis.cancel();
+  var parts=T[i].split(/(\{pause\}|\{short\}|\bSpeaker \d:|\b[A-Z][A-Za-z]+:)/),q=[],pitch=1,flip=0,names={};
+  parts.forEach(function(x){
+    x=x.trim();if(!x)return;
+    if(x==="{pause}"||x==="{short}"){q.push({w:x==="{pause}"?2500:1200});pitch=1;return}
+    var sp=x.match(/^Speaker (\d):$/);if(sp){q.push({t:"Speaker "+sp[1],p:1,w:700});return}
+    if(/^[A-Za-z 0-9 ]+:$/.test(x)){var n=x.slice(0,-1);if(!(n in names))names[n]=(flip++%2)?1.25:.85;pitch=names[n];return}
+    (x.match(/[^.?!]+[.?!]*/g)||[x]).forEach(function(z){q.push({t:z.trim(),p:pitch,w:300})})
+  });
+  var k=0;(function next(){
+    if(id!==playId)return;
+    if(k>=q.length){done();return}
+    var s=q[k++];
+    if(!s.t){setTimeout(next,s.w);return}
+    var u=new SpeechSynthesisUtterance(s.t);u.lang="en-GB";u.rate=0.95;u.pitch=s.p;
+    u.onend=function(){setTimeout(next,s.w)};u.onerror=function(){setTimeout(next,s.w)};
+    speechSynthesis.speak(u);
+  })()
+}
+
+function play(b){if(b._busy)return;var i=+b.dataset.i,wrap=b.parentNode,stop=wrap.querySelector(".listen-stop"),status=wrap.querySelector(".listen-status");if(!window.speechSynthesis||!window.SpeechSynthesisUtterance){if(status)status.textContent="Text-to-speech is not available in this browser.";b.textContent="TTS unavailable";return}b._busy=true;b.textContent="Playing…";stop.disabled=false;if(status)status.textContent="Playing Part "+(i+1)+" using your browser voice…";say(i,function(){b._busy=false;b.disabled=false;b.textContent="Replay listening audio";stop.disabled=true;if(status)status.textContent="Part "+(i+1)+" finished. Replay is available."})}
+
+function init(){[["t1",60],["t2",30],["t3",60],["sp2prep",1],["sp2talk",2]].forEach(function(a){timer(a[0],a[1])});if(!FULL)return;build(R,document.getElementById("rbox"),"r");build(L,document.getElementById("lbox"),"l");document.getElementById("ck1").onclick=function(){check(document.getElementById("rbox"),document.getElementById("sc1"))};document.getElementById("ck2").onclick=function(){check(document.getElementById("lbox"),document.getElementById("sc2"))};document.querySelectorAll(".listen-play").forEach(function(b){b.onclick=function(){play(b)}});document.querySelectorAll(".listen-stop").forEach(function(b){b.onclick=function(){if(window.speechSynthesis)speechSynthesis.cancel();playId++;var wrap=b.parentNode,p=wrap.querySelector(".listen-play"),s=wrap.querySelector(".listen-status");if(p){p._busy=false;p.disabled=false;p.textContent="Play listening audio"}b.disabled=true;if(s)s.textContent="Playback stopped. Press Play to restart."}});winit()}
+
+(function(){
+  var g=document.getElementById("gate"),m=document.getElementById("main");
+  function show(){g.hidden=true;m.hidden=false;if(window.init)init()}
+  if(unlocked()){show();return}
+  document.getElementById("gf").onsubmit=function(e){
+    e.preventDefault();
+    if(document.getElementById("pw").value.trim()===PW){
+      try{sessionStorage.setItem("ielts_academic_practice_2","1")}catch(x){}
+      show();
+    } else {
+      document.getElementById("err").textContent="Wrong password.";
+    }
+  }
+  
+  var themeBtn = document.getElementById('themeBtn');
+  if(themeBtn) {
+    themeBtn.onclick = function() {
+      var currentTheme = document.documentElement.getAttribute('data-theme');
+      if(currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        themeBtn.textContent = '🌙';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeBtn.textContent = '☀️';
+      }
+    };
+  }
+  
+  var menuToggle = document.getElementById('menuToggle');
+  if(menuToggle) {
+    menuToggle.onclick = function() {
+      document.body.classList.toggle('menuopen');
+    };
+  }
+  
+  var loginBtn = document.getElementById('loginBtn');
+  var dlg = document.getElementById('dlg');
+  var cancel = document.getElementById('cancel');
+  if(loginBtn && dlg) {
+    loginBtn.onclick = function() { dlg.showModal(); }
+  }
+  if(cancel && dlg) {
+    cancel.onclick = function() { dlg.close(); }
+  }
+})();
+</script>
+</body>
+</html>

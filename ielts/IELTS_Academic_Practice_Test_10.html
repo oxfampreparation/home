@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>IELTS Academic Practice Test 10</title>
+
+<style>
+/* Default theme is explicitly light */
+:root {
+  --bg: #f6f7fb;
+  --paper: #fff;
+  --ink: #14213d;
+  --muted: #4b5266;
+  --line: #d5d9e6;
+  --mark: #2b59ff;
+  --hi: #ffe45e;
+  --ok: #1a7f52;
+  --bad: #b3261e;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Dark theme applied ONLY when data-theme="dark" is present */
+:root[data-theme="dark"] {
+  --bg: #0f1526;
+  --paper: #182038;
+  --ink: #eef1fb;
+  --muted: #a9b1c9;
+  --line: #2c3656;
+  --mark: #7d9bff;
+  --hi: #e9d24a;
+  --ok: #57c58f;
+  --bad: #ff8a80;
+}
+
+html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: border-box; }
+
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1.0625rem/1.6 "Atkinson Hyperlegible", system-ui, sans-serif; }
+h1, h2, h3 { font-family: Archivo, "Helvetica Neue", Arial, sans-serif; line-height: 1.05; margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--mark); outline-offset: 3px; }
+.wrap { max-width: 74rem; margin: 0 auto; padding: 0 1.25rem; }
+
+header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .75rem; padding: 1.25rem 0; position: sticky; top: 0; background: var(--bg); z-index: 100; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+.head-left { display: flex; align-items: center; gap: .75rem; }
+#menuToggle { background: transparent; border: none; cursor: pointer; color: var(--ink); display: flex; padding: .25rem; border-radius: .25rem; }
+#menuToggle:hover { background: var(--line); }
+#menuToggle svg { width: 1.6rem; height: 1.6rem; }
+.logo { font: 800 1.25rem Archivo, sans-serif; text-decoration: none; }
+nav a { margin-left: 1.25rem; text-decoration: none; color: var(--muted); }
+nav a:hover { color: var(--ink); }
+
+.btn { display: inline-block; background: var(--ink); color: var(--bg); padding: .8rem 1.4rem; border-radius: .5rem; font-weight: 700; text-decoration: none; border: 0; cursor: pointer; font-size: 1rem; font-family: inherit; }
+.btn.alt { background: transparent; color: var(--ink); border: 2px solid var(--ink); }
+.hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2rem; align-items: start; padding: 1rem 0 3rem; }
+.hero-text { margin-top: 2.5rem; }
+
+h1 { font-size: clamp(2rem, 3.4vw, 3rem); font-weight: 800; font-stretch: 90%; letter-spacing: -.02em; margin-top: 1rem; margin-bottom: 0; }
+h1 span { background: linear-gradient(transparent 62%, var(--hi) 62%); }
+.lead { color: var(--muted); max-width: 32rem; margin: 1.25rem 0 1.75rem; font-size: 1.15rem; }
+.row { display: flex; gap: .75rem; flex-wrap: wrap; }
+
+.sheet { background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.sheet h2 { font-size: 1.1rem; margin-bottom: .25rem; }
+.sheet p { margin: 0 0 1rem; color: var(--muted); font-size: .95rem; }
+.q { padding: .7rem 0; border-top: 1px solid var(--line); }
+.q b { display: inline-block; font-weight: 800; margin-bottom: .45rem; margin-right: 0.5rem; }
+
+.opts { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem; width: fit-content; }
+.opt { display: flex; align-items: center; gap: .4rem; padding: .3rem .7rem .3rem .35rem; border: 1.5px solid var(--line); border-radius: 2rem; background: transparent; color: inherit; font-size: .95rem; cursor: pointer; width: fit-content; }
+.opt i { width: 1.4rem; height: 1.4rem; border-radius: 50%; border: 2px solid var(--muted); display: grid; place-items: center; font: 700 .7rem Archivo, sans-serif; font-style: normal; flex-shrink: 0; }
+
+.opt[aria-pressed="true"] { border-color: var(--mark); }
+.opt[aria-pressed="true"] i { background: var(--mark); border-color: var(--mark); color: var(--bg); }
+.opt.right { border-color: var(--ok); } .opt.right i { background: var(--ok); border-color: var(--ok); color: var(--bg); }
+.opt.wrong { border-color: var(--bad); } .opt.wrong i { background: var(--bad); border-color: var(--bad); color: var(--bg); }
+
+/* Image Options specific styles */
+.img-opts-grid { display: flex; flex-direction: row; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+.img-opt { flex-direction: column; align-items: center; padding: 0.5rem; border-radius: 0.5rem; gap: 0.5rem; text-align: center; }
+.img-opt img { height: 120px; width: 160px; object-fit: cover; background: var(--paper); border-radius: 0.25rem; }
+.img-opt i { margin-bottom: 0.25rem; }
+
+.result { margin-top: 1rem; font-weight: 700; min-height: 1.6rem; }
+section { padding: 3.5rem 0; border-top: 1px solid var(--line); }
+h2.t { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: .75rem; letter-spacing: -.01em; }
+
+.sub, .txt { color: var(--muted); max-width: 48rem; margin: 0 0 2rem; white-space: pre-line; line-height: 1.6; }
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: .6rem; background: var(--paper); }
+table { border-collapse: collapse; width: 100%; min-width: 38rem; }
+th, td { text-align: left; padding: .9rem 1rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font: 800 1.2rem Archivo, sans-serif; white-space: nowrap; }
+td small { display: block; font: 400 .9rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+
+.support-strip { position: fixed; bottom: 0; left: 0; right: 0; background: var(--ink); color: var(--bg); padding: 1rem 1.25rem; z-index: 999; box-shadow: 0 -4px 12px rgba(0,0,0,0.15); }
+.support-strip-inner { max-width: 74rem; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; width: 100%; font-weight: 700; }
+footer { border-top: 1px solid var(--line); padding: 2rem 0 5rem; color: var(--muted); font-size: .95rem; }
+
+.lang { display: flex; gap: .25rem; flex-wrap: wrap; } .lang button { font: 700 .8rem Archivo, sans-serif; padding: .35rem .6rem; border: 1.5px solid var(--line); border-radius: .4rem; background: transparent; color: var(--muted); cursor: pointer; } .lang button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.layout { display: grid; grid-template-columns: 12.5rem minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+.layout.collapsed { grid-template-columns: 1fr; gap: 0; }
+.layout.collapsed .side { display: none; }
+.side { position: sticky; top: 5rem; max-height: calc(100vh - 6rem); max-height: calc(100dvh - 6rem); overflow-y: auto; display: flex; flex-direction: column; gap: .15rem; }
+summary { cursor: pointer; font: 700 .95rem Archivo, sans-serif; color: var(--muted); padding: .4rem .75rem; border-radius: .5rem; } summary:hover { color: var(--ink); } .ex[open] summary { margin-bottom: .15rem; }
+.side nav { display: flex; flex-direction: column; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); } .side nav a { margin: 0; color: inherit; } .side .lang { margin-bottom: 1rem; }
+.side p { margin: 0 0 .5rem; font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+.side a { text-decoration: none; padding: .5rem .75rem; border-radius: .5rem; font: 700 1rem Archivo, sans-serif; border-left: 3px solid transparent; }
+.side a small { display: block; font: 400 .8rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+.side a:hover { background: var(--paper); border-left-color: var(--mark); }
+tr:target td { background: var(--hi); color: #14213d; } tr:target td small { color: #14213d; }
+
+@media (max-width: 52rem) { .layout { grid-template-columns: 1fr; gap: 0; } .side { position: static; max-height: none; margin: 0 0 1rem; padding: 0 0 1rem; border-bottom: 1px solid var(--line); } }
+
+.hr { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; } .hr .btn { padding: .45rem 1rem; font-size: .9rem; }
+dialog { border: 2px solid var(--ink); border-radius: .75rem; background: var(--paper); color: var(--ink); padding: 1.5rem; width: min(26rem, 92vw); max-height: 90vh; overflow: auto; } dialog::backdrop { background: rgba(10,16,32,.55); }
+dialog h2 { font-size: 1.4rem; margin-bottom: .5rem; } dialog label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+dialog input { width: 100%; padding: .65rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.demo { color: var(--muted); font-size: .9rem; margin: .5rem 0 0; } .err { color: var(--bad); min-height: 1.5rem; margin-top: .5rem; font-size: .95rem; }
+
+@media (max-width: 40rem) {
+  .wrap { padding: 0 1rem; }
+  header { padding: 1rem 0; }
+  .hero { padding-bottom: 2rem; }
+  .sheet { padding: 1.1rem; }
+  section { padding: 2.5rem 0; }
+  .scroll { border: 0; background: transparent; overflow: visible; }
+  table, tbody, tr, td { display: block; min-width: 0; width: 100%; }
+  thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  tr { background: var(--paper); border: 1px solid var(--line); border-radius: .6rem; padding: .6rem 0; margin-bottom: .75rem; }
+  td { border: 0; padding: .15rem 1rem; }
+  td:first-child { font-size: 1.3rem; padding-top: .4rem; }
+  tr:target { border-color: var(--ink); }
+}
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+html { scroll-padding-top: calc(5rem + env(safe-area-inset-top, 0px)); }
+body header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); padding: .6rem 0; border-bottom: 1px solid var(--line); }
+.brand { display: flex; align-items: center; gap: .75rem; }
+body .logo { font-size: 1.85rem; letter-spacing: -.02em; }
+.mbtn { display: inline-flex; flex-direction: column; justify-content: center; gap: 5px; width: 2.75rem; height: 2.75rem; padding: 0 .7rem; border: 2px solid var(--ink); border-radius: .5rem; background: transparent; cursor: pointer; flex: none; }
+.mbtn span { display: block; height: 2px; background: var(--ink); border-radius: 2px; }
+.mbtn:hover { background: var(--paper); }
+body .side { top: 5.5rem; max-height: calc(100vh - 6.5rem); max-height: calc(100dvh - 6.5rem); }
+body.nomenu .layout { grid-template-columns: minmax(0, 1fr); }
+body.nomenu .side { display: none; }
+body:has(#app[hidden]) .mbtn { display: none; }
+.side>.hr { margin-bottom: 1rem; }
+.scrim { display: none; }
+
+@media (max-width: 52rem) {
+  body .side { position: fixed; top: 0; left: 0; bottom: 0; width: min(19rem, 86vw); max-height: none; margin: 0; padding: calc(1rem + env(safe-area-inset-top, 0px)) 1rem calc(1rem + env(safe-area-inset-bottom, 0px)); background: var(--paper); border: 0; border-right: 2px solid var(--ink); z-index: 50; overflow-y: auto; transform: translateX(-105%); visibility: hidden; transition: transform .25s ease, visibility 0s .25s; }
+  body.menuopen .side { transform: none; visibility: visible; transition: transform .25s ease; }
+  body .side nav { flex-direction: column; flex-wrap: nowrap; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+  body .side nav a { padding: .5rem .75rem; }
+  .scrim { display: block; position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: rgba(10,16,32,.5); z-index: 40; opacity: 0; pointer-events: none; transition: opacity .25s; }
+  body.menuopen .scrim { opacity: 1; pointer-events: auto; }
+  body .logo { font-size: 1.6rem; }
+}
+
+.gatebox { max-width: 26rem; margin: 2rem auto; background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.gatebox label, .wr label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+input[type=text], input[type=password], textarea { width: 100%; padding: .6rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.q input[type=text] { width: 14rem; max-width: 100%; }
+.part { background: var(--paper); border: 1px solid var(--line); border-radius: .75rem; padding: 1.5rem; margin-bottom: 1.25rem; }
+.q.ok { border-left: 4px solid var(--ok); padding-left: .75rem; } .q.no { border-left: 4px solid var(--bad); padding-left: .75rem; } .fb { font-weight: 700; margin-top: .25rem; }
+.tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0; }
+nav.tabs a { margin: 0; padding: .4rem 1rem; border: 1.5px solid var(--line); border-radius: 2rem; text-decoration: none; font-weight: 700; }
+nav.tabs a[aria-current=page] { background: var(--ink); color: var(--bg); }
+.bar { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; margin: 1rem 0; } .time { font: 800 1.6rem Archivo, sans-serif; }
+.pics { display: flex; gap: 1rem; flex-wrap: wrap; } .pics svg, .pics img { flex: 1 1 14rem; max-width: 22rem; border: 2px solid var(--ink); border-radius: .5rem; background: var(--paper); object-fit: cover; aspect-ratio: 3/2; }
+.audio-player{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;padding:.75rem 1rem;margin:1rem 0;background:var(--paper);border:1px solid var(--line);border-radius:.75rem}.audio-player .listen-status{font-weight:600;color:var(--muted)}
+textarea { min-height: 15rem; } .tr { display: none; } .note { padding: .75rem 1rem; border-left: 4px solid var(--mark); background: var(--paper); margin: 1rem 0; }
+.sec { padding-top: 2rem; margin-top: 2rem; border-top: 1px solid var(--line); } .jump { margin-top: 0; } .ex { color: var(--muted); margin-top: .15rem; font-size: .95rem; }
+ .chart{display:block;width:min(100%,760px);height:auto;margin:1rem auto;border:1px solid var(--line);border-radius:12px;background:#fff}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header id="siteHeader">
+<div class="head-left">
+<button aria-label="Toggle menu" id="menuToggle">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
+</button>
+<a class="logo" href="../index.html">Oxfam Preparation</a>
+</div>
+<div class="hr">
+<button aria-label="Toggle theme" class="btn alt" id="themeBtn" style="padding:.45rem .6rem; min-width:0; font-size:1.1rem">🌙</button>
+<button class="btn" id="loginBtn" type="button">Log in</button>
+</div>
+</header>
+<div class="layout">
+<aside aria-label="Menu" class="side">
+<nav>
+<a href="../cpe.html">All tests</a>
+</nav>
+</aside>
+<main id="top">
+<div id="gate">
+<div class="gatebox">
+<h1><span>IELTS Academic Practice Test 10</span></h1>
+<p>Enter the password to open this IELTS Academic practice test.</p>
+<form id="gf">
+<label for="pw">Password</label>
+<input autocomplete="off" id="pw" type="password"/>
+<div class="err" id="err"></div>
+<div class="row" style="margin-top:1rem">
+<button class="btn" type="submit">Open</button>
+<a class="btn alt" href="../cpe.html">Back</a>
+</div>
+</form>
+</div>
+</div>
+<div hidden id="main"><h1>IELTS Academic Practice Test 10</h1><p class="sub">Original IELTS Academic practice paper. Browser TTS is used for the listening audio.</p><div class="part"><label for="nm"><strong>Student name (optional)</strong></label><input id="nm" type="text" placeholder="Enter your name"></div><nav class="tabs jump"><a href="#read">Reading</a><a href="#listen">Listening</a><a href="#write">Writing</a><a href="#speak">Speaking</a></nav><section class="sec" id="read"><h2 class="t">Academic Reading (60 minutes)</h2><div class="bar"><span class="time" id="t1"></span><button class="btn alt">Start</button></div><p class="note">Three original passages; 40 questions.</p><div id="rbox"></div><button class="btn" id="ck1">Check Reading answers</button><b id="sc1"></b></section><section class="sec" id="listen"><h2 class="t">Listening (about 30 minutes)</h2><div class="bar"><span class="time" id="t2"></span><button class="btn alt">Start</button></div><p class="note">Four parts, 40 questions. Browser TTS reads these original practice scripts. IELTS recordings in the exam are played once.</p><div id="lbox"></div><button class="btn" id="ck2">Check Listening answers</button><b id="sc2"></b></section><section class="sec" id="write"><h2 class="t">Academic Writing (60 minutes)</h2><div class="bar"><span class="time" id="t3"></span><button class="btn alt">Start</button></div><div class="part"><h2>Task 1</h2><p>Spend about 20 minutes. Write at least 150 words.</p><div class="note">The line graph shows the percentage of households with rainwater tanks in three towns between 2012 and 2024. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</div><img class="chart" alt="Percentage of households with rainwater tanks in Ridge, Harbor and Plain, 2012 to 2024" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3NjAiIGhlaWdodD0iNDMwIiB2aWV3Qm94PSIwIDAgNzYwIDQzMCI+PHJlY3Qgd2lkdGg9Ijc2MCIgaGVpZ2h0PSI0MzAiIGZpbGw9IiNmZmYiLz48dGV4dCB4PSIzODAiIHk9IjI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTkiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMxODI5NGQiPkhPVVNFSE9MRFMgV0lUSCBSQUlOV0FURVIgVEFOS1M8L3RleHQ+PHRleHQgeD0iMzgwIiB5PSI1MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEzIiBmaWxsPSIjMzk0NjVlIj5QZXJjZW50YWdlIG9mIGhvdXNlaG9sZHMsIDIwMTLigJMyMDI0PC90ZXh0PjxnIHN0cm9rZT0iI2RiZTFlYiIgc3Ryb2tlLXdpZHRoPSIxIj48cGF0aCBkPSJNOTAgMzQwSDcwME05MCAyOTJINzAwTTkwIDI0NEg3MDBNOTAgMTk2SDcwME05MCAxNDhINzAwTTkwIDEwMEg3MDAiLz48L2c+PGcgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSIjMzk0NjVlIiB0ZXh0LWFuY2hvcj0iZW5kIj48dGV4dCB4PSI3OCIgeT0iMzQ0Ij4wPC90ZXh0Pjx0ZXh0IHg9Ijc4IiB5PSIyOTYiPjEwPC90ZXh0Pjx0ZXh0IHg9Ijc4IiB5PSIyNDgiPjIwPC90ZXh0Pjx0ZXh0IHg9Ijc4IiB5PSIyMDAiPjMwPC90ZXh0Pjx0ZXh0IHg9Ijc4IiB5PSIxNTIiPjQwPC90ZXh0Pjx0ZXh0IHg9Ijc4IiB5PSIxMDQiPjUwPC90ZXh0PjwvZz48cGF0aCBkPSJNOTAgMTAwVjM0MEg3MDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzI5M2Q1YSIgc3Ryb2tlLXdpZHRoPSIyIi8+PGcgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEzIiBmaWxsPSIjMzk0NjVlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj48dGV4dCB4PSIxMzAiIHk9IjM2NCI+MjAxMjwvdGV4dD48dGV4dCB4PSIzMTAiIHk9IjM2NCI+MjAxNjwvdGV4dD48dGV4dCB4PSI0OTAiIHk9IjM2NCI+MjAyMDwvdGV4dD48dGV4dCB4PSI2NzAiIHk9IjM2NCI+MjAyNDwvdGV4dD48L2c+PHBvbHlsaW5lIHBvaW50cz0iMTMwLDI4MiAzMTAsMjM0IDQ5MCwxNjcgNjcwLDkxIiBmaWxsPSJub25lIiBzdHJva2U9IiMzMTgyYTgiIHN0cm9rZS13aWR0aD0iNCIvPjxwb2x5bGluZSBwb2ludHM9IjEzMCwzMDIgMzEwLDI1NCA0OTAsMTkxIDY3MCwxMjQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2Q3ODM0NCIgc3Ryb2tlLXdpZHRoPSI0Ii8+PHBvbHlsaW5lIHBvaW50cz0iMTMwLDMxNiAzMTAsMjgyIDQ5MCwyMjUgNjcwLDE1MyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNGE5Yjc2IiBzdHJva2Utd2lkdGg9IjQiLz48ZyBmaWxsPSIjMzE4MmE4Ij48Y2lyY2xlIGN4PSIxMzAiIGN5PSIyODIiIHI9IjUiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSIyMzQiIHI9IjUiLz48Y2lyY2xlIGN4PSI0OTAiIGN5PSIxNjciIHI9IjUiLz48Y2lyY2xlIGN4PSI2NzAiIGN5PSI5MSIgcj0iNSIvPjwvZz48ZyBmaWxsPSIjZDc4MzQ0Ij48Y2lyY2xlIGN4PSIxMzAiIGN5PSIzMDIiIHI9IjUiLz48Y2lyY2xlIGN4PSIzMTAiIGN5PSIyNTQiIHI9IjUiLz48Y2lyY2xlIGN4PSI0OTAiIGN5PSIxOTEiIHI9IjUiLz48Y2lyY2xlIGN4PSI2NzAiIGN5PSIxMjQiIHI9IjUiLz48L2c+PGcgZmlsbD0iIzRhOWI3NiI+PGNpcmNsZSBjeD0iMTMwIiBjeT0iMzE2IiByPSI1Ii8+PGNpcmNsZSBjeD0iMzEwIiBjeT0iMjgyIiByPSI1Ii8+PGNpcmNsZSBjeD0iNDkwIiBjeT0iMjI1IiByPSI1Ii8+PGNpcmNsZSBjeD0iNjcwIiBjeT0iMTUzIiByPSI1Ii8+PC9nPjxnIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMyIgZmlsbD0iIzE4Mjk0ZCI+PGxpbmUgeDE9IjE1MCIgeTE9IjM5NSIgeDI9IjE4MCIgeTI9IjM5NSIgc3Ryb2tlPSIjMzE4MmE4IiBzdHJva2Utd2lkdGg9IjQiLz48dGV4dCB4PSIxODgiIHk9IjQwMCI+UmlkZ2U8L3RleHQ+PGxpbmUgeDE9IjI5MCIgeTE9IjM5NSIgeDI9IjMyMCIgeTI9IjM5NSIgc3Ryb2tlPSIjZDc4MzQ0IiBzdHJva2Utd2lkdGg9IjQiLz48dGV4dCB4PSIzMjgiIHk9IjQwMCI+SGFyYm9yPC90ZXh0PjxsaW5lIHgxPSI0NDAiIHkxPSIzOTUiIHgyPSI0NzAiIHkyPSIzOTUiIHN0cm9rZT0iIzRhOWI3NiIgc3Ryb2tlLXdpZHRoPSI0Ii8+PHRleHQgeD0iNDc4IiB5PSI0MDAiPlBsYWluPC90ZXh0PjwvZz48L3N2Zz4="><textarea id="w1"></textarea><div class="bar"><b id="w1c">0 words</b><button class="btn alt" data-c="w1">Copy</button><button class="btn" data-s="w1" data-t="Writing Task 1">Send writing to assessor</button></div></div><div class="part"><h2>Task 2</h2><p>Spend about 40 minutes. Write at least 250 words.</p><div class="note">Some people believe that every adult should receive basic first-aid training. Others think this should be optional. Discuss both views and give your own opinion.</div><textarea id="w2"></textarea><div class="bar"><b id="w2c">0 words</b><button class="btn alt" data-c="w2">Copy</button><button class="btn" data-s="w2" data-t="Writing Task 2">Send writing to assessor</button></div></div></section><section class="sec" id="speak"><h2 class="t">Speaking (11–14 minutes)</h2><div class="part"><h2>Part 1 — Interview</h2><p>Do you usually make plans in advance? What do you do when plans change? Do you prefer spending free time indoors or outdoors? How do you decide what to do at the weekend? Have you ever helped organise an event?</p></div><div class="part"><h2>Part 2 — Long turn</h2><div class="note"><b>Describe a time when you had to change your plans unexpectedly.</b><br>Say what you had planned, why the plan changed, what you did instead, and explain how you felt about the change.</div><div class="bar"><span class="time" id="sp2prep"></span><button class="btn alt">Start 1-minute preparation</button><span class="time" id="sp2talk"></span><button class="btn alt">Start 2-minute talk</button></div></div><div class="part"><h2>Part 3 — Discussion</h2><p>Why do plans sometimes need to change? Are people today more willing to change plans than in the past? How can organisations prepare for unexpected problems? Do people make better decisions alone or in groups? Should schools teach students how to respond to setbacks? What are the advantages and disadvantages of planning far ahead?</p></div></section></div></div>
+</main>
+</div>
+<div class="support-strip">
+<div class="support-strip-inner">
+<div><span _k="Customer support every day from 9:00 to 16:30">Customer support every day from 9:00 to 16:30</span></div>
+<div class="support-info">
+<a href="mailto:oxfampreparation@email.cz">oxfampreparation@email.cz</a>
+<a href="tel:+420723200988">+420 723 200 988</a>
+</div>
+</div>
+</div>
+<footer>© 2020-2026 Oxfam - Oxford family. All rights reserved. Not affiliated with Cambridge University Press &amp; Assessment. Exam names belong to their owners.</footer>
+</div>
+<dialog aria-labelledby="dt" id="dlg">
+<h2 id="dt">Sign in to open your tests</h2>
+<form id="lf" novalidate="">
+<label for="em">Email</label><input autocomplete="username" id="em" type="email"/>
+<label for="pw">Password</label><input autocomplete="current-password" id="pw" type="password"/>
+<p class="demo" hidden="" id="demo"></p>
+<div aria-live="polite" class="err" id="err"></div>
+<div class="row" style="margin-top:1rem"><button class="btn" type="submit">Log in</button><button class="btn alt" id="cancel" type="button">Cancel</button></div>
+</form>
+</dialog>
+<script>
+var PW="COPT";
+function unlocked(){try{return sessionStorage.getItem("ielts_academic_practice_10")==="1"}catch(e){return false}}
+
+function norm(s){return s.toLowerCase().replace(/\u2019/g,"'").replace(/\s+/g," ").trim()}
+
+function build(parts,box,pre){
+  var n=0;pre=pre||"";
+  parts.forEach(function(p,pi){
+    var d=document.createElement("section");d.className="part";
+    d.innerHTML="<h2>"+p.t+"</h2>"+(pre==="l"?"<div class='audio-player'><button class='btn listen-play' type='button' data-i='"+pi+"'>Play listening audio</button><button class='btn alt listen-stop' type='button' disabled>Stop</button><span class='listen-status' role='status'>Browser voice · Part "+(pi+1)+"</span></div>":"")+(p.m?"<div class='bar'><span class='time' id='pt"+pre+pi+"'></span><button class='btn alt' type='button'>Start</button> <small>suggested time</small></div>":"")+"<p class='sub'>"+p.i+"</p>"+(p.x?"<p class='txt'>"+p.x+"</p>":"")+(p.im||"")+"<div class='items'></div>";
+    var it=d.querySelector(".items");
+    p.q.forEach(function(q){
+      n++;var r=document.createElement("div");r.className="q";
+      var label = q.q && /^(\d+)\.\s*/.test(q.q) ? q.q.match(/^(\d+)\.\s*/)[1] : n; var qtext = (q.q||"").replace(/^\d+\.\s*/,"").replace(/\n/g,"<br>"); var h="<b>"+label+"</b> "+qtext+(q.h?" <strong>"+q.h+"</strong>":"");
+      if(q.o){
+        var isImg = q.o.length > 0 && /^(https?:\/\/|data:image\/)/i.test(q.o[0]);
+        var optsHtml = q.o.map(function(o,i){
+          var letter = "ABCDEFGH"[i];
+          if(q.o.length === 2 && (o === "A" || o === "B" || o.includes("Correct") || o.includes("YES"))) {
+            letter = ["A", "B"][i];
+          }
+          if (isImg) {
+            return "<label class='opt img-opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> <img src='"+o+"' alt='Option "+letter+"' onerror=\"this.style.display='none'\"></label>";
+          } else {
+            var text = o === letter ? "" : o;
+            return "<label class='opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> "+text+"</label>";
+          }
+        }).join("");
+        var gridClass = isImg ? "opts img-opts-grid" : "opts";
+        h += "<div class='" + gridClass + "'>" + optsHtml + "</div>";
+      } else {
+        h+=" <input type='text' autocomplete='off' aria-label='Answer "+n+"'>";
+      }
+      r.innerHTML=h;r._q=q;it.appendChild(r);
+    });
+    box.appendChild(d);
+    if(p.m)timer("pt"+pre+pi,p.m);
+  });
+}
+
+function check(box,out){
+  var tot=0,ok=0;
+  box.querySelectorAll(".part").forEach(function(part){
+    var pTot=0,pOk=0;
+    part.querySelectorAll(".q").forEach(function(r){
+      pTot++;var q=r._q,good,ans;
+      if(q.o){
+        var c=r.querySelector("input:checked");
+        good=c&&+c.value===q.a;
+        var letter = "ABCDEFGH"[q.a];
+        if(q.o.length === 2) letter = ["A", "B"][q.a];
+        var isImg = q.o.length > 0 && /^(https?:\/\/|data:image\/)/i.test(q.o[0]);
+        ans = isImg ? letter : (q.o[q.a] === letter ? letter : letter + " " + q.o[q.a]);
+      } else {
+        var v=norm(r.querySelector("input").value);
+        good=q.a.some(function(a){return norm(a)===v});
+        ans=q.a[0];
+      }
+      r.classList.toggle("ok",!!good);
+      r.classList.toggle("no",!good);
+      var f=r.querySelector(".fb");
+      if(!f){f=document.createElement("div");f.className="fb";r.appendChild(f)}
+      f.textContent=good?"Correct":"Answer: "+ans;
+      var x=r.querySelector(".ex");
+      if(!x){x=document.createElement("div");x.className="ex";r.appendChild(x)}
+      x.textContent=q.e||"";
+      if(good)pOk++;
+    });
+    if(pTot>0){
+      var ps=part.querySelector(".pscore");
+      if(!ps){ps=document.createElement("div");ps.className="pscore note";ps.style.marginTop="1.5rem";part.appendChild(ps)}
+      ps.innerHTML="<b>Part score:</b> "+pOk+" / "+pTot;
+    }
+    tot+=pTot;ok+=pOk;
+  });
+  out.textContent="Total score: "+ok+" / "+tot;
+  box.querySelectorAll(".tr").forEach(function(e){e.style.display="block"});
+}
+
+function timer(id,min){
+  var e=document.getElementById(id),l=min*60,t=null;
+  if(!e)return;
+  function s(){e.textContent=("0"+Math.floor(l/60)).slice(-2)+":"+("0"+l%60).slice(-2)}s();
+  e.nextElementSibling.onclick=function(){
+    if(t){clearInterval(t);t=null;this.textContent="Start";return}
+    this.textContent="Pause";
+    t=setInterval(function(){l--;s();if(l<=0)clearInterval(t)},1000);
+  }
+}
+
+var R = [{"t":"Reading Passage 1 — Securing water on small islands","i":"Questions 1–5: choose the correct heading A–G for paragraphs A–E. Questions 6–10: TRUE, FALSE or NOT GIVEN. Questions 11–13: answer in NO MORE THAN TWO WORDS.","x":"<b>Headings</b>: A. The energy cost of making fresh water &nbsp; B. Planning beyond a single solution &nbsp; C. Why rainfall is not always reliable &nbsp; D. Turning seawater into drinking water &nbsp; E. A hidden issue in the distribution system &nbsp; F. Designing storage to protect water quality &nbsp; G. A growing pressure on island supplies<br><br><b>FRESH WATER IN A SMALL ISLAND COMMUNITY</b><br><br><b>A</b> Small islands often have limited sources of fresh water. Rain may be abundant during part of the year, but a dry season can leave reservoirs low. Some islands depend on underground water stored in porous rock. If too much is pumped out, seawater can move into the aquifer and make the supply salty. Population growth and tourism may increase demand at the same time. A community therefore needs to understand not only how much rain falls, but how much water households, farms and businesses use and how quickly local stores can recover.<br><br><b>B</b> One option is desalination, which removes salt from seawater. Modern plants often use reverse osmosis: water is pushed through a membrane that allows water molecules to pass while keeping much of the salt behind. The process can provide a steady supply, especially during a drought, but the plant needs electricity and regular maintenance. Filters and membranes have to be replaced, and the concentrated salty water left over must be discharged carefully. If it is released in a poorly chosen location, it can affect marine life near the outlet. Desalination is therefore a source of water, not a complete water-management plan.<br><br><b>C</b> The energy used by a desalination plant can be a major operating cost. Some islands use solar or wind power to supply part of the electricity, but renewable generation varies with weather and time of day. A battery can store energy, although batteries add cost and eventually need replacement. Operators may run a plant more intensively when power is available and store the treated water for later use. This requires enough storage capacity and careful monitoring. A plant that can produce water cheaply for part of the day may still be expensive if it is operated inefficiently or if equipment is poorly maintained.<br><br><b>D</b> Rainwater collection can reduce pressure on other supplies. Roofs channel water into tanks, where it can be stored for household use or irrigation. The first rain after a long dry spell may carry dust or bird droppings from a roof, so a simple diverter can send that initial flow away from the tank. Storage design matters: dark, covered tanks limit algae and contamination, while screens keep leaves and insects out. Rainwater systems vary in scale, from a small household barrel to a community reservoir. They work best when maintenance is planned and people know which uses require treated water.<br><br><b>E</b> The most reliable approach combines several sources and manages demand. A utility may repair leaks, promote efficient appliances, collect rainwater and use desalination as a backup. It can also publish information about reservoir levels so residents understand when restrictions may be necessary. Planning requires coordination between engineers, health officials, local businesses and households. A source that is dependable in one season may be less useful in another. Combining options does not remove every risk, but it allows a community to respond more flexibly when rainfall, energy supply or population changes.<br><br>Local planners also have to consider the quality of water after it has been collected. A tank may be large enough for a household yet still need a filter or a treatment step before the water is used for drinking. The rules differ according to the source and the intended use. Water for gardens may need fewer controls than water used for cooking. Health authorities can test samples and explain how often tanks should be cleaned. Clear guidance matters because residents may otherwise assume that water which looks clean is safe to drink.<br><br>Demand management can be less visible than building a new plant, but it can change the size of the supply problem. A utility might find that a small number of leaks account for a large share of water loss. Repairing pipes can be cheaper than producing additional water, although old networks may be difficult to inspect. Hotels can install systems that reuse lightly used water for gardens, while households can fit efficient showers and taps. These measures need local support and reliable information. If restrictions are introduced without explaining the reason, people may regard them as unfair. A public plan that shows how supply, storage and demand fit together can make difficult decisions easier to understand.","q":[{"q":"1. Choose a heading for paragraph A.","o":["A","B","C","D","E","F","G"],"a":6,"e":"The paragraph explains pressure on limited island supplies."},{"q":"2. Choose a heading for paragraph B.","o":["A","B","C","D","E","F","G"],"a":3,"e":"It explains how desalination works."},{"q":"3. Choose a heading for paragraph C.","o":["A","B","C","D","E","F","G"],"a":0,"e":"The paragraph focuses on energy costs and operation."},{"q":"4. Choose a heading for paragraph D.","o":["A","B","C","D","E","F","G"],"a":5,"e":"The paragraph describes rainwater collection and tank design to protect quality."},{"q":"5. Choose a heading for paragraph E.","o":["A","B","C","D","E","F","G"],"a":1,"e":"The conclusion recommends an integrated plan."},{"q":"6. Pumping too much underground water may allow seawater into an aquifer.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"The passage states this risk."},{"q":"7. Reverse osmosis allows salt to pass through the membrane more easily than water.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"The membrane allows water through while retaining much of the salt."},{"q":"8. The passage gives exact percentages for the renewable electricity used by each island.","o":["TRUE","FALSE","NOT GIVEN"],"a":2,"e":"The passage gives no percentage figures for individual islands."},{"q":"9. A first-flush diverter can keep the first rainwater from entering a tank.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"The initial flow can be diverted."},{"q":"10. Publishing reservoir levels can help residents understand restrictions.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"This is stated in paragraph E."},{"q":"11. What does reverse osmosis remove from seawater?","a":["salt"],"e":"The process removes salt."},{"q":"12. What does a desalination plant need to store treated water for later use?","a":["storage capacity","storage"],"e":"Operators may store treated water for later use."},{"q":"13. What can screens keep out of a rainwater tank?","a":["leaves","insects"],"e":"Screens keep leaves and insects out."}]},{"t":"Reading Passage 2 — Community radio during emergencies","i":"Questions 14–18: choose A, B, C or D. Questions 19–23: match each statement with group A–E. Questions 24–27: answer in NO MORE THAN TWO WORDS.","x":"<b>Groups</b>: A. radio broadcasters &nbsp; B. local volunteers &nbsp; C. emergency planners &nbsp; D. residents &nbsp; E. communication researchers<br><br><b>WHY LOCAL RADIO STILL MATTERS IN A CRISIS</b><br><br>When a storm, flood or power failure disrupts communication, people need information that is timely and relevant to where they live. Mobile networks and internet services can provide rapid updates, but they may become unreliable if power or transmission equipment is damaged. Community radio offers another route. A small station can broadcast on battery power or a generator and reach listeners who do not have mobile data. Its usefulness depends on preparation: equipment must be maintained, staff need a plan and listeners need to know where to find the service.<br><br>Broadcasters prepare by agreeing how official information will be checked before it goes on air. A station may receive updates from a local emergency office, fire service or health team. A presenter should identify the source and time of a notice, because conditions can change quickly. If an announcement gives a road closure but not an alternative route, a local reporter may call the authority for clarification. Stations also prepare short templates for evacuation details, shelter locations and contact numbers. Templates speed up broadcasting, but presenters still need to confirm that each instruction applies to the current event.<br><br>Local volunteers can help stations gather information from different parts of a region. They may report whether a bridge is open, which streets are flooded or whether a community centre has power. Their role is not to issue official safety orders. Broadcasters check reports before sharing them, especially if they could cause people to move towards danger. Volunteers are trained to send a location, time and clear description rather than a vague message. A shared reporting form makes it easier for station staff to compare updates and ask follow-up questions. Volunteers also need to know how to protect their own safety and when not to travel.<br><br>Emergency planners work with stations before a crisis. They can provide contact lists, explain which details may change and arrange a reliable way to send updates. In some places, the station is included in emergency exercises. A practice broadcast can reveal that a shelter name is difficult to pronounce or that listeners do not know where a public building is located. Planners may use the feedback to revise signs or public information. They also need to avoid sending too many updates through different channels at once, since conflicting messages can reduce trust.<br><br>Residents use local radio for practical information as well as official warnings. A listener may want to know whether a pharmacy has opened, where clean drinking water is available or when a school will resume. Community stations can include questions from callers, but they have to protect privacy and avoid repeating unverified claims. A station may ask callers not to give personal medical details on air. When information is incomplete, a presenter can say what is known and when another update is expected. A clear account of uncertainty may be more useful than a confident answer that later proves wrong.<br><br>Communication researchers study how different groups receive and act on emergency messages. They may survey listeners after an exercise or compare the reach of radio with text alerts. A high audience number does not show whether people understood the instruction. Researchers ask participants to explain what they would do and whether the source seemed trustworthy. They also study who may be missed, including people who do not speak the main broadcast language or who cannot hear radio. Stations can provide summaries in several languages, while local organisations may share printed information or face-to-face updates. Radio is most effective as one part of a communication network rather than a replacement for every other channel.<br><br>Trust is built over time rather than during the first hour of an emergency. A station that has corrected an error openly may be more credible than one that hides it. Broadcasters can keep a log of the wording used, the source of each update and the time it was received. After the event, this record helps staff identify where a message became unclear or outdated. It can also help emergency offices improve the way they send information to the public.<br><br>Technology changes the way local radio operates, but the basic editorial questions remain. A station may stream programmes online and post short updates on social media. These channels can reach people who are away from a radio, although they also depend on a working network and a charged device. A concise audio message can be replayed, while a written post may be easier to search. Each format has limits. For example, a short alert might omit the reason for a road closure, whereas a longer broadcast can explain what residents should do next. Staff need to choose a format that suits the urgency and complexity of the message.<br><br>Preparation is also practical. Stations can test backup batteries, keep a current list of contacts and decide who has authority to interrupt normal programmes. Volunteers should know how to send information without putting themselves at risk. Residents can be encouraged to save the station frequency before an emergency occurs. These small steps do not guarantee that every person will receive every instruction. They make it more likely that accurate local information will continue to circulate when ordinary systems are under pressure.","q":[{"q":"14. Why can community radio be useful during a power failure?","o":["It may operate with battery power or a generator.","It does not need staff to prepare updates.","It can guarantee that every listener receives a message.","It replaces all mobile services permanently."],"a":0,"e":"A small station may continue broadcasting with backup power."},{"q":"15. What should a presenter do before broadcasting an official notice?","o":["Check its source and time.","Remove the name of the authority.","Wait until the event is over.","Ask callers to confirm it on air."],"a":0,"e":"The information should be checked and identified."},{"q":"16. What information should a volunteer include in a report?","o":["A location, time and clear description","A personal opinion about the cause","The names of everyone nearby","A suggested evacuation order"],"a":0,"e":"A shared report includes location, time and description."},{"q":"17. What can a practice broadcast reveal?","o":["Whether listeners understand place names and instructions","How many mobile phones are working","Which roads can be rebuilt fastest","Whether all residents own a radio"],"a":0,"e":"Exercises can expose unclear names or locations."},{"q":"18. What does the passage say about radio in a communication network?","o":["It works best alongside other channels.","It should replace face-to-face updates.","It is useful only for official warnings.","It can reach people who cannot hear it."],"a":0,"e":"The conclusion says radio is one part of a wider network."},{"q":"19. Which group prepares message templates and verifies notices?","o":["A","B","C","D","E"],"a":0,"e":"Broadcasters prepare and check information."},{"q":"20. Which group may report the condition of a bridge or street?","o":["A","B","C","D","E"],"a":1,"e":"Local volunteers provide local observations."},{"q":"21. Which group participates in exercises and supplies official updates?","o":["A","B","C","D","E"],"a":2,"e":"Emergency planners coordinate with stations."},{"q":"22. Which group may call about water or pharmacy availability?","o":["A","B","C","D","E"],"a":3,"e":"Residents ask for practical local information."},{"q":"23. Which group studies whether messages are understood?","o":["A","B","C","D","E"],"a":4,"e":"Communication researchers examine reach and comprehension."},{"q":"24. What backup source may power a radio station?","a":["battery power","a generator","generator"],"e":"Stations can use batteries or generators."},{"q":"25. What must be identified for an official update?","a":["the source","source"],"e":"Presenters should identify the source of a notice."},{"q":"26. What kind of reports should broadcasters avoid repeating?","a":["unverified claims","unverified information"],"e":"Stations avoid sharing unverified claims."},{"q":"27. What type of information may be shared in several languages?","a":["summaries","radio summaries"],"e":"Stations can provide summaries in several languages."}]},{"t":"Reading Passage 3 — Sleep, shift work and decision-making","i":"Questions 28–32: match each statement with paragraph A–E. Questions 33–37: TRUE, FALSE or NOT GIVEN. Questions 38–40: choose A, B, C or D.","x":"<b>Paragraphs</b>: A–E<br><br><b>WHEN WORK SCHEDULES MEET THE BODY CLOCK</b><br><br><b>A</b> Human alertness changes across the day. The body follows a roughly twenty-four-hour rhythm influenced by light, sleep and regular activities. Many people feel most alert during daylight and become sleepier late at night, although individual patterns differ. Shift work can require people to be active when their internal rhythm is promoting rest. A worker may complete the required hours yet still feel less alert at certain times. The challenge is not only the amount of sleep but also when that sleep occurs and how well it fits the body’s timing.<br><br><b>B</b> Research on shift work distinguishes sleep loss from circadian misalignment. A person who sleeps fewer hours than needed experiences sleep restriction. Someone who sleeps during the day after a night shift may get enough hours but still rest at a time that conflicts with the body clock. In practice, both conditions can occur together. Researchers use sleep diaries and wearable devices to estimate when participants sleep, while tests of attention can reveal changes in reaction time. These measures do not directly show every kind of judgement a worker makes, but they help researchers understand how schedules affect alertness.<br><br><b>C</b> Decision-making involves more than reacting quickly. A tired person may take longer to notice a change, overlook a detail or rely more heavily on a familiar routine. In a study, participants working after a night without sleep may perform differently from those who have had a short daytime rest. The result can depend on the task: a simple response test may remain stable while a complex problem-solving exercise becomes harder. Researchers therefore avoid treating one test score as a complete measure of workplace performance. Safety-critical jobs may need additional checks, such as team review or a pause before a high-impact decision.<br><br><b>D</b> Employers can reduce some risks through schedule design. Predictable shifts allow workers to plan sleep and family responsibilities. Adequate rest between shifts gives the body more opportunity to recover, while repeated last-minute changes can make routines difficult. Some organisations limit the number of consecutive night shifts or provide brighter lighting at particular times. These measures may improve alertness for some workers, but they do not remove the biological effects of night work. Individual preferences and health conditions also matter. A schedule that suits one employee may not work equally well for another.<br><br><b>E</b> Studies of shift work have limits. Volunteers in a laboratory may not face the same demands as nurses, drivers or factory staff. In a real workplace, noise, workload, food and stress can affect sleep and attention. Researchers also need to consider whether workers choose night shifts or are assigned them, since the groups may differ before a study begins. Long-term studies can follow people across several schedules, but they take time and may lose participants. Better evidence combines controlled tests with workplace observations and allows workers to describe the conditions they experience.<br><br>One proposed response is to make work schedules more predictable. A worker who knows the rota several weeks in advance can plan sleep, meals, childcare and travel. A quick change may be unavoidable when a colleague is ill, but repeated changes can make it difficult to maintain a regular routine. Some organisations ask employees to report fatigue before a shift becomes unsafe. This can help managers adjust tasks or arrange a break, although workers may hesitate if they believe that speaking up will affect their job. A reporting system therefore needs clear rules and support from supervisors.<br><br>Researchers have explored whether planned naps can help during long night shifts. A short nap may improve alertness for a time, but it does not replace a full period of sleep. Workers also need time to wake fully before doing tasks that require immediate concentration. Bright light, quiet rest areas and access to suitable food may support wellbeing, but evidence from one workplace cannot automatically be applied to another. The demands of an emergency department differ from those of a transport depot, and a strategy that works for a small team may be difficult to organise in a larger organisation.<br><br>Understanding these limits is important for public policy. A simple claim that night work is either safe or unsafe overlooks differences in task, schedule and individual health. Better decisions draw on several forms of evidence: controlled attention tests, records of real incidents, sleep measurements and interviews with workers. Researchers can then identify patterns without assuming that every person responds in the same way. Employers still have to make practical choices, but a careful account of uncertainty can help them review those choices as new evidence becomes available.","q":[{"q":"28. A paragraph describing the body’s daily rhythm and individual differences.","o":["A","B","C","D","E"],"a":0,"e":"Paragraph A introduces daily alertness rhythms."},{"q":"29. A paragraph distinguishing too little sleep from sleeping at the wrong time.","o":["A","B","C","D","E"],"a":1,"e":"Paragraph B explains sleep restriction and circadian misalignment."},{"q":"30. A paragraph explaining why one test score cannot represent all workplace decisions.","o":["A","B","C","D","E"],"a":2,"e":"Paragraph C discusses task differences and limits."},{"q":"31. A paragraph recommending predictable schedules and adequate rest.","o":["A","B","C","D","E"],"a":3,"e":"Paragraph D concerns schedule design."},{"q":"32. A paragraph describing challenges in studying real workers.","o":["A","B","C","D","E"],"a":4,"e":"Paragraph E explains limitations of shift-work studies."},{"q":"33. The amount of sleep is the only factor that affects alertness.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"Timing and fit with the body clock also matter."},{"q":"34. A person may get enough sleep hours but still rest at a time that conflicts with their body clock.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"This describes circadian misalignment."},{"q":"35. Simple reaction tests and complex problem-solving tasks always show the same results.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"The passage says performance can differ by task."},{"q":"36. Predictable work shifts can help workers plan sleep.","o":["TRUE","FALSE","NOT GIVEN"],"a":0,"e":"This is stated in paragraph D."},{"q":"37. All shift workers choose their own schedules.","o":["TRUE","FALSE","NOT GIVEN"],"a":1,"e":"The passage says some choose shifts and others are assigned them."},{"q":"38. What is the main point of the passage?","o":["Shift schedules affect alertness in ways that depend on timing, task and individual circumstances.","Night work always makes accurate decisions impossible.","Wearable devices directly measure every type of judgement.","A single schedule change can remove all risks."],"a":0,"e":"The passage describes multiple interacting influences and limits."},{"q":"39. Why might a complex task be harder after a night shift?","o":["It may require sustained attention and noticing details.","It always takes less time than a simple test.","It is unaffected by sleep timing.","It removes the need for team review."],"a":0,"e":"The text says tired workers may overlook details or struggle with complex tasks."},{"q":"40. What does the author recommend for research on shift work?","o":["Combine controlled tests with observations and workers’ accounts.","Study only volunteers in a laboratory.","Ignore schedules that change unexpectedly.","Use reaction time as the only outcome."],"a":0,"e":"The conclusion recommends combining evidence types."}]}];
+var L = [{"t":"Listening Part 1 — Hiring camping equipment","i":"Questions 1–10. Complete the hire form. Write NO MORE THAN TWO WORDS AND/OR A NUMBER.","x":"TRAILSIDE EQUIPMENT HIRE<br>Family name: 1 _____<br>Item: 2-person _____<br>Pickup day: 3 _____<br>Pickup date: 4 _____<br>Pickup time: 5 _____<br>Return day: 6 _____<br>Return by: 7 _____ am<br>Total hire cost: 8 £_____<br>Deposit: 9 £_____<br>Collection point: East _____","q":[{"q":"1. Family name","a":["Yilmaz"],"e":"The customer’s surname is Yilmaz."},{"q":"2. Item","a":["tent","two-person tent"],"e":"The hire item is a two-person tent."},{"q":"3. Pickup day","a":["Saturday"],"e":"The equipment is collected on Saturday."},{"q":"4. Pickup date","a":["24 May","May 24","24th May"],"e":"The date is 24 May."},{"q":"5. Pickup time","a":["11.30","11:30","11.30 am","11:30 am"],"e":"Pickup is at half past eleven."},{"q":"6. Return day","a":["Monday"],"e":"The equipment is returned on Monday."},{"q":"7. Return by","a":["9","9.00","9:00"],"e":"It must be returned by nine in the morning."},{"q":"8. Total hire cost","a":["54","£54"],"e":"The hire cost is fifty-four pounds."},{"q":"9. Deposit","a":["20","£20"],"e":"The deposit is twenty pounds."},{"q":"10. Collection point","a":["Depot","East Depot"],"e":"Collection is at the East Depot."}]},{"t":"Listening Part 2 — Visitor guide to the community health centre","i":"Questions 11–15. Choose A, B or C. Questions 16–20. Match each service with the letter on the SVG centre plan.","x":"Plan labels: A. reception &nbsp; B. pharmacy &nbsp; C. vaccination clinic &nbsp; D. family waiting room &nbsp; E. café","q":[{"q":"11. What time does the centre open on weekdays?","o":["8.00 am","8.30 am","9.00 am"],"a":1,"e":"It opens at half past eight."},{"q":"12. Where should patients check in for an appointment?","o":["At reception","At the café","In the family waiting room"],"a":0,"e":"Patients check in at reception."},{"q":"13. Which entrance has step-free access?","o":["The main entrance","The side entrance","The rear staff entrance"],"a":1,"e":"The side entrance has a level route."},{"q":"14. When is the nurse’s health talk?","o":["11.15 am","11.45 am","12.15 pm"],"a":1,"e":"The talk begins at quarter to twelve."},{"q":"15. What should visitors do if they have a fever?","o":["Tell reception before sitting down","Wait in the café","Use the children’s play area"],"a":0,"e":"Visitors should inform reception."},{"q":"16. Where can a patient collect prescribed medicine?","o":["A","B","C","D","E"],"a":1,"e":"Prescriptions are collected at the pharmacy."},{"q":"17. Where does the nurse give vaccinations?","o":["A","B","C","D","E"],"a":2,"e":"Vaccinations take place in the vaccination clinic."},{"q":"18. Where can a parent wait with a young child?","o":["A","B","C","D","E"],"a":3,"e":"The family waiting room has space for children."},{"q":"19. Where can visitors buy a drink?","o":["A","B","C","D","E"],"a":4,"e":"The café serves drinks."},{"q":"20. Where should someone ask for help with an appointment?","o":["A","B","C","D","E"],"a":0,"e":"Reception handles appointment questions."}],"im":"<img class=\"chart\" alt=\"Illustrated plan of the community health centre showing reception, pharmacy, vaccination clinic, family waiting room and café\" src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3NjAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgNzYwIDUwMCI+PHJlY3Qgd2lkdGg9Ijc2MCIgaGVpZ2h0PSI1MDAiIHJ4PSIxOCIgZmlsbD0iI2Y1ZjdmYiIvPjx0ZXh0IHg9IjM4MCIgeT0iMzQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCxzYW5zLXNlcmlmIiBmb250LXNpemU9IjIyIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjMTgyOTRkIj5DT01NVU5JVFkgSEVBTFRIIENFTlRSRTwvdGV4dD48dGV4dCB4PSIzODAiIHk9IjU2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMyIgZmlsbD0iIzUzNjI3YSI+U0VSVklDRSBQTEFOIMK3IEZBQ0lMSVRJRVMgQeKAk0U8L3RleHQ+CjxnIGZvbnQtZmFtaWx5PSJBcmlhbCxzYW5zLXNlcmlmIiBmaWxsPSIjMTgyOTRkIj48cmVjdCB4PSIyNSIgeT0iNzUiIHdpZHRoPSIyMjUiIGhlaWdodD0iMTcwIiByeD0iMTQiIGZpbGw9IiNmZmYiIHN0cm9rZT0iIzU1Nzc5YiIgc3Ryb2tlLXdpZHRoPSIzIi8+PGNpcmNsZSBjeD0iNTMiIGN5PSIxMDMiIHI9IjE4IiBmaWxsPSIjZTRlZWY4IiBzdHJva2U9IiM1NTc3OWIiIHN0cm9rZS13aWR0aD0iMiIvPjx0ZXh0IHg9IjUzIiB5PSIxMDkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTciIGZvbnQtd2VpZ2h0PSI3MDAiPkE8L3RleHQ+PHRleHQgeD0iMTUxIiB5PSIxMDkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTYiIGZvbnQtd2VpZ2h0PSI3MDAiPlJFQ0VQVElPTjwvdGV4dD48cGF0aCBkPSJNNzYgMTQ1aDEyNHY0Mkg3NnoiIGZpbGw9IiNkY2U5ZjUiIHN0cm9rZT0iIzU1Nzc5YiIgc3Ryb2tlLXdpZHRoPSIzIi8+PHBhdGggZD0iTTg4IDE1N2gxMDBNODggMTcwaDcyIiBzdHJva2U9IiM1NTc3OWIiIHN0cm9rZS13aWR0aD0iNSIvPjx0ZXh0IHg9IjEzNyIgeT0iMjE1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjEzIj5DaGVjay1pbiDCtyBhcHBvaW50bWVudCBoZWxwPC90ZXh0Pgo8cmVjdCB4PSIyNjciIHk9Ijc1IiB3aWR0aD0iMjI1IiBoZWlnaHQ9IjE3MCIgcng9IjE0IiBmaWxsPSIjZmZmIiBzdHJva2U9IiNhNDc3NDgiIHN0cm9rZS13aWR0aD0iMyIvPjxjaXJjbGUgY3g9IjI5NSIgY3k9IjEwMyIgcj0iMTgiIGZpbGw9IiNmZmYxZGYiIHN0cm9rZT0iI2E0Nzc0OCIgc3Ryb2tlLXdpZHRoPSIyIi8+PHRleHQgeD0iMjk1IiB5PSIxMDkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTciIGZvbnQtd2VpZ2h0PSI3MDAiPkI8L3RleHQ+PHRleHQgeD0iMzkyIiB5PSIxMDkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTYiIGZvbnQtd2VpZ2h0PSI3MDAiPlBIQVJNQUNZPC90ZXh0PjxyZWN0IHg9IjMzMCIgeT0iMTM3IiB3aWR0aD0iOTgiIGhlaWdodD0iNTAiIHJ4PSI2IiBmaWxsPSIjZmZmMWRmIiBzdHJva2U9IiNhNDc3NDgiIHN0cm9rZS13aWR0aD0iMyIvPjxwYXRoIGQ9Ik0zNDEgMTQ5aDc2TTM0MSAxNjBoNzZNMzQxIDE3MWg1MiIgc3Ryb2tlPSIjYTQ3NzQ4IiBzdHJva2Utd2lkdGg9IjQiLz48cGF0aCBkPSJNMzc1IDE5M2gyN3YxOGE4IDggMCAwIDEtOCA4aC0xMWE4IDggMCAwIDEtOC04eiIgZmlsbD0iI2U4NzU2OCIvPjxwYXRoIGQ9Ik0zODggMTkzdjI2IiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMiIvPjx0ZXh0IHg9IjM4MCIgeT0iMjM0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjEzIj5Db2xsZWN0IHByZXNjcmlwdGlvbnM8L3RleHQ+CjxyZWN0IHg9IjUwOSIgeT0iNzUiIHdpZHRoPSIyMjUiIGhlaWdodD0iMTcwIiByeD0iMTQiIGZpbGw9IiNmZmYiIHN0cm9rZT0iIzRlODg2OSIgc3Ryb2tlLXdpZHRoPSIzIi8+PGNpcmNsZSBjeD0iNTM3IiBjeT0iMTAzIiByPSIxOCIgZmlsbD0iI2U2ZjRlYyIgc3Ryb2tlPSIjNGU4ODY5IiBzdHJva2Utd2lkdGg9IjIiLz48dGV4dCB4PSI1MzciIHk9IjEwOSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNyIgZm9udC13ZWlnaHQ9IjcwMCI+QzwvdGV4dD48dGV4dCB4PSI2MzYiIHk9IjEwMSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjcwMCI+VkFDQ0lOQVRJT048L3RleHQ+PHRleHQgeD0iNjM2IiB5PSIxMTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI3MDAiPkNMSU5JQzwvdGV4dD48cmVjdCB4PSI1OTAiIHk9IjEzOCIgd2lkdGg9IjkyIiBoZWlnaHQ9IjUyIiByeD0iMTAiIGZpbGw9IiNlNmY0ZWMiIHN0cm9rZT0iIzRlODg2OSIgc3Ryb2tlLXdpZHRoPSIzIi8+PHBhdGggZD0iTTYzNiAxNDd2MzRNNjE5IDE2NGgzNCIgc3Ryb2tlPSIjNGU4ODY5IiBzdHJva2Utd2lkdGg9IjciLz48dGV4dCB4PSI2MjEiIHk9IjIxNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxMyI+TnVyc2UgwrcgaGVhbHRoIGNoZWNrczwvdGV4dD4KPHJlY3QgeD0iOTUiIHk9IjI2NyIgd2lkdGg9IjI3MCIgaGVpZ2h0PSIxNzAiIHJ4PSIxNCIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjNzU2MjlhIiBzdHJva2Utd2lkdGg9IjMiLz48Y2lyY2xlIGN4PSIxMjQiIGN5PSIyOTUiIHI9IjE4IiBmaWxsPSIjZWVlOWY2IiBzdHJva2U9IiM3NTYyOWEiIHN0cm9rZS13aWR0aD0iMiIvPjx0ZXh0IHg9IjEyNCIgeT0iMzAxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE3IiBmb250LXdlaWdodD0iNzAwIj5EPC90ZXh0Pjx0ZXh0IHg9IjI0NyIgeT0iMjkyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE1IiBmb250LXdlaWdodD0iNzAwIj5GQU1JTFkgV0FJVElORzwvdGV4dD48dGV4dCB4PSIyNDciIHk9IjMxMSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNSIgZm9udC13ZWlnaHQ9IjcwMCI+Uk9PTTwvdGV4dD48cmVjdCB4PSIxNTMiIHk9IjM0MiIgd2lkdGg9IjgyIiBoZWlnaHQ9IjMxIiByeD0iNCIgZmlsbD0iI2U4ZTNmMiIgc3Ryb2tlPSIjNzU2MjlhIiBzdHJva2Utd2lkdGg9IjMiLz48cGF0aCBkPSJNMTYwIDM3M3YxMk0yMjggMzczdjEyIiBzdHJva2U9IiM3NTYyOWEiIHN0cm9rZS13aWR0aD0iNCIvPjxyZWN0IHg9IjI0OSIgeT0iMzUwIiB3aWR0aD0iNjYiIGhlaWdodD0iMjUiIHJ4PSI0IiBmaWxsPSIjZThlM2YyIiBzdHJva2U9IiM3NTYyOWEiIHN0cm9rZS13aWR0aD0iMyIvPjxwYXRoIGQ9Ik0yNTYgMzc1djEwTTMwOCAzNzV2MTAiIHN0cm9rZT0iIzc1NjI5YSIgc3Ryb2tlLXdpZHRoPSI0Ii8+PHJlY3QgeD0iMjAxIiB5PSIzMjIiIHdpZHRoPSIyNCIgaGVpZ2h0PSIxNyIgcng9IjMiIGZpbGw9IiNlOGJkNjMiLz48dGV4dCB4PSIyMzAiIHk9IjQxOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxMyI+Qm9va3MgwrcgY2hpbGQgcGxheSB0YWJsZTwvdGV4dD4KPHJlY3QgeD0iMzk1IiB5PSIyNjciIHdpZHRoPSIyNzAiIGhlaWdodD0iMTcwIiByeD0iMTQiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2I0NzgzNiIgc3Ryb2tlLXdpZHRoPSIzIi8+PGNpcmNsZSBjeD0iNDI0IiBjeT0iMjk1IiByPSIxOCIgZmlsbD0iI2ZmZjBkYyIgc3Ryb2tlPSIjYjQ3ODM2IiBzdHJva2Utd2lkdGg9IjIiLz48dGV4dCB4PSI0MjQiIHk9IjMwMSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNyIgZm9udC13ZWlnaHQ9IjcwMCI+RTwvdGV4dD48dGV4dCB4PSI1NDYiIHk9IjMwMSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNiIgZm9udC13ZWlnaHQ9IjcwMCI+Q0FGw4k8L3RleHQ+PHBhdGggZD0iTTQ5OCAzNDBoNzRsLTggMzloLTU4eiIgZmlsbD0iI2Q5YTQ1YiIgc3Ryb2tlPSIjODc1ZDJmIiBzdHJva2Utd2lkdGg9IjMiLz48cGF0aCBkPSJNNTY3IDM0OGgxNmExMyAxMyAwIDAgMSAwIDI2aC0yMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjODc1ZDJmIiBzdHJva2Utd2lkdGg9IjQiLz48cGF0aCBkPSJNNTE2IDMzM2MtOS0xMCA3LTEyIDEtMjNNNTQwIDMzM2MtOS0xMCA3LTEyIDEtMjMiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzZlOWFhYSIgc3Ryb2tlLXdpZHRoPSIzIi8+PHRleHQgeD0iNTMwIiB5PSI0MTgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTMiPkRyaW5rcyDCtyBzYW5kd2ljaGVzIMK3IGZydWl0PC90ZXh0Pgo8cGF0aCBkPSJNMzgwIDQ0M3YyNW0tMTAtMTAgMTAgMTAgMTAtMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzMxNDc2YiIgc3Ryb2tlLXdpZHRoPSI0Ii8+PHRleHQgeD0iNDA1IiB5PSI0ODAiIGZvbnQtc2l6ZT0iMTMiIGZpbGw9IiMzOTQ2NWUiPlNJREUgRU5UUkFOQ0Ug4oCUIHN0ZXAtZnJlZSBhY2Nlc3M8L3RleHQ+PC9nPjwvc3ZnPg==\">"},{"t":"Listening Part 3 — Comparing speech-recognition tools","i":"Questions 21–25. Choose A, B or C. Questions 26–30. Match each task with student A–F.","x":"Student tasks: A. prepare test sentences &nbsp; B. recruit speakers &nbsp; C. operate the software &nbsp; D. count recognition errors &nbsp; E. review research &nbsp; F. present findings","q":[{"q":"21. What are the students comparing?","o":["How accurately two speech-recognition tools transcribe different accents","How quickly students can read aloud","How people remember new vocabulary"],"a":0,"e":"The project compares transcription accuracy for different accents."},{"q":"22. Who will take part?","o":["Speakers with several regional accents","Only professional broadcasters","People who do not use English"],"a":0,"e":"They plan to recruit speakers with different regional accents."},{"q":"23. What issue appeared in the pilot?","o":["Background noise affected some recordings.","The software could not save files.","Participants did not understand the sentences."],"a":0,"e":"Background noise affected a few recordings."},{"q":"24. What will the students do in the main test?","o":["Record in a quiet room with the same microphone","Use a different microphone for every speaker","Ask participants to read outside"],"a":0,"e":"They will use a quiet room and one microphone."},{"q":"25. What does the tutor advise about the results?","o":["Report word errors separately from punctuation errors.","Combine all errors into one total only.","Ignore differences between the tools."],"a":0,"e":"The tutor recommends separating word and punctuation errors."},{"q":"26. Who will prepare the test sentences?","o":["A","B","C","D","E","F"],"a":0,"e":"Sara will prepare the sentences."},{"q":"27. Who will recruit the speakers?","o":["A","B","C","D","E","F"],"a":1,"e":"Leo will recruit participants."},{"q":"28. Who will operate the software?","o":["A","B","C","D","E","F"],"a":2,"e":"Sara will run the software."},{"q":"29. Who will count recognition errors?","o":["A","B","C","D","E","F"],"a":3,"e":"Leo will count the errors."},{"q":"30. Who will present the findings?","o":["A","B","C","D","E","F"],"a":5,"e":"Sara will present the findings."}]},{"t":"Listening Part 4 — How shipping containers changed transport","i":"Questions 31–40. Complete the notes. Write NO MORE THAN TWO WORDS for each answer.","x":"THE STANDARD SHIPPING CONTAINER<br>Early containers were built to a standard 31 _____.<br>Strong 32 _____ allows containers to be stacked.<br>Corner fittings let a 33 _____ lift a container.<br>Ships, trains and 34 _____ can carry the same unit.<br>Standard sizes reduce time spent 35 _____ goods.<br>A container can be sealed with a numbered 36 _____.<br>Tracking systems record its 37 _____.<br>Ports use large 38 _____ to move containers.<br>Refrigerated units keep food at a controlled 39 _____.<br>Standardisation helped lower transport 40 _____.","q":[{"q":"31. Gap 31","a":["size"],"e":"Containers were built to a standard size."},{"q":"32. Gap 32","a":["steel"],"e":"Strong steel allows safe stacking."},{"q":"33. Gap 33","a":["crane"],"e":"Corner fittings connect to lifting equipment such as a crane."},{"q":"34. Gap 34","a":["trucks","road trucks"],"e":"The same container can be moved by truck."},{"q":"35. Gap 35","a":["loading"],"e":"Standard sizes reduce time spent loading goods."},{"q":"36. Gap 36","a":["seal"],"e":"A numbered seal can secure a container."},{"q":"37. Gap 37","a":["location"],"e":"Tracking systems record its location."},{"q":"38. Gap 38","a":["cranes"],"e":"Ports use large cranes."},{"q":"39. Gap 39","a":["temperature"],"e":"Refrigerated containers control temperature."},{"q":"40. Gap 40","a":["costs","transport costs"],"e":"Standardisation helped reduce transport costs."}]}];
+var T = ["Trailside Equipment Hire, hello. Hello, I need to hire a tent for a weekend trip. Could I have your family name? Yilmaz, Y I L M A Z. Thanks. We have a two-person tent available. I think that will be large enough. You can collect it on Saturday the twenty-fourth of May. What time does the depot open? It opens at ten, but your booking is for half past eleven. You should return the tent on Monday by nine in the morning, as another customer has booked it. The total hire cost is fifty-four pounds. We also take a twenty-pound deposit, which we return when the tent is checked. Is that all right? Yes. Where do I collect it? At the East Depot, just beyond the bus station. We will send you a reminder with the address. Do I need to bring anything? Just bring photo identification and the confirmation email. The staff will show you how to fold the tent before you leave.","Welcome to the community health centre. We open at half past eight on weekdays. When you arrive for an appointment, check in at reception by the main entrance. If you have a fever, please tell the receptionist before sitting down so staff can direct you to the right area. The side entrance has a level route for visitors who cannot use steps. At quarter to twelve, a nurse will give a short health talk in the group room. Prescribed medicines can be collected at the pharmacy counter beside the exit. Vaccinations are given in the clinic across the corridor. Parents with young children can wait in the family room, which has books and a small play table. The café is open from ten until three and serves drinks, sandwiches and fruit. If you have a question about your appointment, reception can check the time or contact the relevant team. Please do not leave personal medical documents on the public desk.","Sara: Our project compares how accurately two speech-recognition tools transcribe speakers with different regional accents. Leo: We have speakers from several regions, but we need to make sure the recordings are comparable. In the pilot, background noise affected a few recordings. We should use the quiet room and the same microphone for everyone. Sara: I can prepare the test sentences and operate the software. Leo: I will recruit the speakers and count the recognition errors. We should review previous research on speech recognition before writing the method. Sara: I can do that too. The tutor said to report word errors separately from punctuation errors. A system might recognise the words correctly but place commas differently. Leo: Good point. We should use the same sentences for every speaker and keep the recording distance constant. Sara: I will present the results. We should explain that our sample is small and cannot represent every accent.","The standard shipping container changed the way goods move around the world. Before containers became common, workers often loaded individual boxes and sacks onto a ship by hand. The process took time and goods could be damaged or stolen. A standard container has fixed dimensions and a strong steel frame. Corner fittings allow a crane to lift it and connect it to a ship, rail wagon or truck. The same sealed unit can travel across several forms of transport without the goods being handled at each transfer. This is known as intermodal transport. A numbered seal shows whether a container may have been opened, and tracking systems record its location as it moves between ports and warehouses. Large cranes lift containers in ports, where computer systems help organise their position. Some units are refrigerated so food or medicine can be kept at a controlled temperature. Standard sizes make it easier to stack containers safely and to plan cargo space. They also reduce the time and cost of loading and unloading. The system still depends on roads, rail lines, ports and customs checks, but the shared container format made it possible to connect these parts of a journey more efficiently. Today, shipping companies use digital records to coordinate schedules and identify delays, yet the basic principle remains a durable box that can move between transport modes."];
+var FULL=true, AUDIO=["","","",""];
+var ASSESSOR_EMAIL="oxfampreparation@email.cz";
+
+function wc(t){var m=t.trim().match(/\S+/g);return m?m.length:0}
+function winit(){
+  document.querySelectorAll("textarea").forEach(function(t){t.oninput=function(){document.getElementById(t.id+"c").textContent=wc(t.value)+" words"}});
+  document.querySelectorAll("[data-c]").forEach(function(b){b.onclick=function(){var t=document.getElementById(b.dataset.c).value;if(navigator.clipboard)navigator.clipboard.writeText(t)}});
+  document.querySelectorAll("[data-s]").forEach(function(b){b.onclick=function(){
+    var t=document.getElementById(b.dataset.s).value,nameField=document.getElementById("nm"),nm=((nameField&&nameField.value)||"Student").trim()||"Student";
+    if(!wc(t)){b.textContent="Write something first!";setTimeout(function(){b.textContent="Send writing to assessor"},2000);return}
+    var subject="IELTS Academic Practice Test 10 - "+b.dataset.t+" - "+nm;
+    var message="Student: "+nm+"\nTest: IELTS Academic Practice Test 10\nTask: "+b.dataset.t+"\n\n"+t;
+    var status=b.parentNode.parentNode.querySelector(".email-status");if(!status){status=document.createElement("p");status.className="note email-status";status.setAttribute("role","status");b.parentNode.parentNode.appendChild(status)}
+    status.textContent="Your email app should open with the assessor, task and writing filled in. Review the draft and press Send.";
+    var mailto="mailto:"+ASSESSOR_EMAIL+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(message);
+    window.location.href=mailto;b.textContent="Open email draft";setTimeout(function(){b.textContent="Send writing to assessor"},3500);
+  }});
+}
+var playId=0;
+function say(i,done){
+  var id=++playId;speechSynthesis.cancel();
+  var parts=T[i].split(/(\{pause\}|\{short\}|\bSpeaker \d:|\b[A-Z][A-Za-z]+:)/),q=[],pitch=1,flip=0,names={};
+  parts.forEach(function(x){
+    x=x.trim();if(!x)return;
+    if(x==="{pause}"||x==="{short}"){q.push({w:x==="{pause}"?2500:1200});pitch=1;return}
+    var sp=x.match(/^Speaker (\d):$/);if(sp){q.push({t:"Speaker "+sp[1],p:1,w:700});return}
+    if(/^[A-Za-z 0-9 ]+:$/.test(x)){var n=x.slice(0,-1);if(!(n in names))names[n]=(flip++%2)?1.25:.85;pitch=names[n];return}
+    (x.match(/[^.?!]+[.?!]*/g)||[x]).forEach(function(z){q.push({t:z.trim(),p:pitch,w:300})})
+  });
+  var k=0;(function next(){
+    if(id!==playId)return;
+    if(k>=q.length){done();return}
+    var s=q[k++];
+    if(!s.t){setTimeout(next,s.w);return}
+    var u=new SpeechSynthesisUtterance(s.t);u.lang="en-GB";u.rate=0.95;u.pitch=s.p;
+    u.onend=function(){setTimeout(next,s.w)};u.onerror=function(){setTimeout(next,s.w)};
+    speechSynthesis.speak(u);
+  })()
+}
+
+function play(b){if(b._busy)return;var i=+b.dataset.i,wrap=b.parentNode,stop=wrap.querySelector(".listen-stop"),status=wrap.querySelector(".listen-status");if(!window.speechSynthesis||!window.SpeechSynthesisUtterance){if(status)status.textContent="Text-to-speech is not available in this browser.";b.textContent="TTS unavailable";return}b._busy=true;b.textContent="Playing…";stop.disabled=false;if(status)status.textContent="Playing Part "+(i+1)+" using your browser voice…";say(i,function(){b._busy=false;b.disabled=false;b.textContent="Replay listening audio";stop.disabled=true;if(status)status.textContent="Part "+(i+1)+" finished. Replay is available."})}
+
+function init(){[["t1",60],["t2",30],["t3",60],["sp2prep",1],["sp2talk",2]].forEach(function(a){timer(a[0],a[1])});if(!FULL)return;build(R,document.getElementById("rbox"),"r");build(L,document.getElementById("lbox"),"l");document.getElementById("ck1").onclick=function(){check(document.getElementById("rbox"),document.getElementById("sc1"))};document.getElementById("ck2").onclick=function(){check(document.getElementById("lbox"),document.getElementById("sc2"))};document.querySelectorAll(".listen-play").forEach(function(b){b.onclick=function(){play(b)}});document.querySelectorAll(".listen-stop").forEach(function(b){b.onclick=function(){if(window.speechSynthesis)speechSynthesis.cancel();playId++;var wrap=b.parentNode,p=wrap.querySelector(".listen-play"),s=wrap.querySelector(".listen-status");if(p){p._busy=false;p.disabled=false;p.textContent="Play listening audio"}b.disabled=true;if(s)s.textContent="Playback stopped. Press Play to restart."}});winit()}
+
+(function(){
+  var g=document.getElementById("gate"),m=document.getElementById("main");
+  function show(){g.hidden=true;m.hidden=false;if(window.init)init()}
+  if(unlocked()){show();return}
+  document.getElementById("gf").onsubmit=function(e){
+    e.preventDefault();
+    if(document.getElementById("pw").value.trim()===PW){
+      try{sessionStorage.setItem("ielts_academic_practice_10","1")}catch(x){}
+      show();
+    } else {
+      document.getElementById("err").textContent="Wrong password.";
+    }
+  }
+  
+  var themeBtn = document.getElementById('themeBtn');
+  if(themeBtn) {
+    themeBtn.onclick = function() {
+      var currentTheme = document.documentElement.getAttribute('data-theme');
+      if(currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        themeBtn.textContent = '🌙';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeBtn.textContent = '☀️';
+      }
+    };
+  }
+  
+  var menuToggle = document.getElementById('menuToggle');
+  if(menuToggle) {
+    menuToggle.onclick = function() {
+      document.body.classList.toggle('menuopen');
+    };
+  }
+  
+  var loginBtn = document.getElementById('loginBtn');
+  var dlg = document.getElementById('dlg');
+  var cancel = document.getElementById('cancel');
+  if(loginBtn && dlg) {
+    loginBtn.onclick = function() { dlg.showModal(); }
+  }
+  if(cancel && dlg) {
+    cancel.onclick = function() { dlg.close(); }
+  }
+})();
+</script>
+</body>
+</html>
