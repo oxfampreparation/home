@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>B1 Preliminary for Schools Test 5 - Oxfam Preparation</title>
+
+<style>
+/* Default theme is explicitly light */
+:root {
+  --bg: #f6f7fb;
+  --paper: #fff;
+  --ink: #14213d;
+  --muted: #4b5266;
+  --line: #d5d9e6;
+  --mark: #2b59ff;
+  --hi: #ffe45e;
+  --ok: #1a7f52;
+  --bad: #b3261e;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Dark theme applied ONLY when data-theme="dark" is present */
+:root[data-theme="dark"] {
+  --bg: #0f1526;
+  --paper: #182038;
+  --ink: #eef1fb;
+  --muted: #a9b1c9;
+  --line: #2c3656;
+  --mark: #7d9bff;
+  --hi: #e9d24a;
+  --ok: #57c58f;
+  --bad: #ff8a80;
+}
+
+html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: border-box; }
+
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1.0625rem/1.6 "Atkinson Hyperlegible", system-ui, sans-serif; }
+h1, h2, h3 { font-family: Archivo, "Helvetica Neue", Arial, sans-serif; line-height: 1.05; margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--mark); outline-offset: 3px; }
+.wrap { max-width: 74rem; margin: 0 auto; padding: 0 1.25rem; }
+
+header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .75rem; padding: 1.25rem 0; position: sticky; top: 0; background: var(--bg); z-index: 100; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+.head-left { display: flex; align-items: center; gap: .75rem; }
+#menuToggle { background: transparent; border: none; cursor: pointer; color: var(--ink); display: flex; padding: .25rem; border-radius: .25rem; }
+#menuToggle:hover { background: var(--line); }
+#menuToggle svg { width: 1.6rem; height: 1.6rem; }
+.logo { font: 800 1.25rem Archivo, sans-serif; text-decoration: none; }
+nav a { margin-left: 1.25rem; text-decoration: none; color: var(--muted); }
+nav a:hover { color: var(--ink); }
+
+.btn { display: inline-block; background: var(--ink); color: var(--bg); padding: .8rem 1.4rem; border-radius: .5rem; font-weight: 700; text-decoration: none; border: 0; cursor: pointer; font-size: 1rem; font-family: inherit; }
+.btn.alt { background: transparent; color: var(--ink); border: 2px solid var(--ink); }
+.hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2rem; align-items: start; padding: 1rem 0 3rem; }
+.hero-text { margin-top: 2.5rem; }
+
+h1 { font-size: clamp(2rem, 3.4vw, 3rem); font-weight: 800; font-stretch: 90%; letter-spacing: -.02em; margin-top: 1rem; margin-bottom: 0; }
+h1 span { background: linear-gradient(transparent 62%, var(--hi) 62%); }
+.lead { color: var(--muted); max-width: 32rem; margin: 1.25rem 0 1.75rem; font-size: 1.15rem; }
+.row { display: flex; gap: .75rem; flex-wrap: wrap; }
+
+.sheet { background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.sheet h2 { font-size: 1.1rem; margin-bottom: .25rem; }
+.sheet p { margin: 0 0 1rem; color: var(--muted); font-size: .95rem; }
+.q { padding: .7rem 0; border-top: 1px solid var(--line); }
+.q b { display: inline-block; font-weight: 800; margin-bottom: .45rem; margin-right: 0.5rem; }
+
+.opts { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem; width: fit-content; }
+.opt { display: flex; align-items: center; gap: .4rem; padding: .3rem .7rem .3rem .35rem; border: 1.5px solid var(--line); border-radius: 2rem; background: transparent; color: inherit; font-size: .95rem; cursor: pointer; width: fit-content; }
+.opt i { width: 1.4rem; height: 1.4rem; border-radius: 50%; border: 2px solid var(--muted); display: grid; place-items: center; font: 700 .7rem Archivo, sans-serif; font-style: normal; flex-shrink: 0; }
+
+.opt[aria-pressed="true"] { border-color: var(--mark); }
+.opt[aria-pressed="true"] i { background: var(--mark); border-color: var(--mark); color: var(--bg); }
+.opt.right { border-color: var(--ok); } .opt.right i { background: var(--ok); border-color: var(--ok); color: var(--bg); }
+.opt.wrong { border-color: var(--bad); } .opt.wrong i { background: var(--bad); border-color: var(--bad); color: var(--bg); }
+
+/* Image Options specific styles */
+.img-opts-grid { display: flex; flex-direction: row; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+.img-opt { flex-direction: column; align-items: center; padding: 0.5rem; border-radius: 0.5rem; gap: 0.5rem; text-align: center; }
+.img-opt img { height: 120px; width: 160px; object-fit: cover; background: var(--paper); border-radius: 0.25rem; }
+.img-opt i { margin-bottom: 0.25rem; }
+
+.result { margin-top: 1rem; font-weight: 700; min-height: 1.6rem; }
+section { padding: 3.5rem 0; border-top: 1px solid var(--line); }
+h2.t { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: .75rem; letter-spacing: -.01em; }
+
+.sub, .txt { color: var(--muted); max-width: 48rem; margin: 0 0 2rem; white-space: pre-line; line-height: 1.6; }
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: .6rem; background: var(--paper); }
+table { border-collapse: collapse; width: 100%; min-width: 38rem; }
+th, td { text-align: left; padding: .9rem 1rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font: 800 1.2rem Archivo, sans-serif; white-space: nowrap; }
+td small { display: block; font: 400 .9rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+
+.support-strip { position: fixed; bottom: 0; left: 0; right: 0; background: var(--ink); color: var(--bg); padding: 1rem 1.25rem; z-index: 999; box-shadow: 0 -4px 12px rgba(0,0,0,0.15); }
+.support-strip-inner { max-width: 74rem; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; width: 100%; font-weight: 700; }
+footer { border-top: 1px solid var(--line); padding: 2rem 0 5rem; color: var(--muted); font-size: .95rem; }
+
+.lang { display: flex; gap: .25rem; flex-wrap: wrap; } .lang button { font: 700 .8rem Archivo, sans-serif; padding: .35rem .6rem; border: 1.5px solid var(--line); border-radius: .4rem; background: transparent; color: var(--muted); cursor: pointer; } .lang button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.layout { display: grid; grid-template-columns: 12.5rem minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+.layout.collapsed { grid-template-columns: 1fr; gap: 0; }
+.layout.collapsed .side { display: none; }
+.side { position: sticky; top: 5rem; max-height: calc(100vh - 6rem); max-height: calc(100dvh - 6rem); overflow-y: auto; display: flex; flex-direction: column; gap: .15rem; }
+summary { cursor: pointer; font: 700 .95rem Archivo, sans-serif; color: var(--muted); padding: .4rem .75rem; border-radius: .5rem; } summary:hover { color: var(--ink); } .ex[open] summary { margin-bottom: .15rem; }
+.side nav { display: flex; flex-direction: column; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); } .side nav a { margin: 0; color: inherit; } .side .lang { margin-bottom: 1rem; }
+.side p { margin: 0 0 .5rem; font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+.side a { text-decoration: none; padding: .5rem .75rem; border-radius: .5rem; font: 700 1rem Archivo, sans-serif; border-left: 3px solid transparent; }
+.side a small { display: block; font: 400 .8rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+.side a:hover { background: var(--paper); border-left-color: var(--mark); }
+tr:target td { background: var(--hi); color: #14213d; } tr:target td small { color: #14213d; }
+
+@media (max-width: 52rem) { .layout { grid-template-columns: 1fr; gap: 0; } .side { position: static; max-height: none; margin: 0 0 1rem; padding: 0 0 1rem; border-bottom: 1px solid var(--line); } }
+
+.hr { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; } .hr .btn { padding: .45rem 1rem; font-size: .9rem; }
+dialog { border: 2px solid var(--ink); border-radius: .75rem; background: var(--paper); color: var(--ink); padding: 1.5rem; width: min(26rem, 92vw); max-height: 90vh; overflow: auto; } dialog::backdrop { background: rgba(10,16,32,.55); }
+dialog h2 { font-size: 1.4rem; margin-bottom: .5rem; } dialog label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+dialog input { width: 100%; padding: .65rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.demo { color: var(--muted); font-size: .9rem; margin: .5rem 0 0; } .err { color: var(--bad); min-height: 1.5rem; margin-top: .5rem; font-size: .95rem; }
+
+@media (max-width: 40rem) {
+  .wrap { padding: 0 1rem; }
+  header { padding: 1rem 0; }
+  .hero { padding-bottom: 2rem; }
+  .sheet { padding: 1.1rem; }
+  section { padding: 2.5rem 0; }
+  .scroll { border: 0; background: transparent; overflow: visible; }
+  table, tbody, tr, td { display: block; min-width: 0; width: 100%; }
+  thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  tr { background: var(--paper); border: 1px solid var(--line); border-radius: .6rem; padding: .6rem 0; margin-bottom: .75rem; }
+  td { border: 0; padding: .15rem 1rem; }
+  td:first-child { font-size: 1.3rem; padding-top: .4rem; }
+  tr:target { border-color: var(--ink); }
+}
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+html { scroll-padding-top: calc(5rem + env(safe-area-inset-top, 0px)); }
+body header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); padding: .6rem 0; border-bottom: 1px solid var(--line); }
+.brand { display: flex; align-items: center; gap: .75rem; }
+body .logo { font-size: 1.85rem; letter-spacing: -.02em; }
+.mbtn { display: inline-flex; flex-direction: column; justify-content: center; gap: 5px; width: 2.75rem; height: 2.75rem; padding: 0 .7rem; border: 2px solid var(--ink); border-radius: .5rem; background: transparent; cursor: pointer; flex: none; }
+.mbtn span { display: block; height: 2px; background: var(--ink); border-radius: 2px; }
+.mbtn:hover { background: var(--paper); }
+body .side { top: 5.5rem; max-height: calc(100vh - 6.5rem); max-height: calc(100dvh - 6.5rem); }
+body.nomenu .layout { grid-template-columns: minmax(0, 1fr); }
+body.nomenu .side { display: none; }
+body:has(#app[hidden]) .mbtn { display: none; }
+.side>.hr { margin-bottom: 1rem; }
+.scrim { display: none; }
+
+@media (max-width: 52rem) {
+  body .side { position: fixed; top: 0; left: 0; bottom: 0; width: min(19rem, 86vw); max-height: none; margin: 0; padding: calc(1rem + env(safe-area-inset-top, 0px)) 1rem calc(1rem + env(safe-area-inset-bottom, 0px)); background: var(--paper); border: 0; border-right: 2px solid var(--ink); z-index: 50; overflow-y: auto; transform: translateX(-105%); visibility: hidden; transition: transform .25s ease, visibility 0s .25s; }
+  body.menuopen .side { transform: none; visibility: visible; transition: transform .25s ease; }
+  body .side nav { flex-direction: column; flex-wrap: nowrap; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+  body .side nav a { padding: .5rem .75rem; }
+  .scrim { display: block; position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: rgba(10,16,32,.5); z-index: 40; opacity: 0; pointer-events: none; transition: opacity .25s; }
+  body.menuopen .scrim { opacity: 1; pointer-events: auto; }
+  body .logo { font-size: 1.6rem; }
+}
+
+.gatebox { max-width: 26rem; margin: 2rem auto; background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.gatebox label, .wr label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+input[type=text], input[type=password], textarea { width: 100%; padding: .6rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.q input[type=text] { width: 14rem; max-width: 100%; }
+.part { background: var(--paper); border: 1px solid var(--line); border-radius: .75rem; padding: 1.5rem; margin-bottom: 1.25rem; }
+.q.ok { border-left: 4px solid var(--ok); padding-left: .75rem; } .q.no { border-left: 4px solid var(--bad); padding-left: .75rem; } .fb { font-weight: 700; margin-top: .25rem; }
+.tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0; }
+nav.tabs a { margin: 0; padding: .4rem 1rem; border: 1.5px solid var(--line); border-radius: 2rem; text-decoration: none; font-weight: 700; }
+nav.tabs a[aria-current=page] { background: var(--ink); color: var(--bg); }
+.bar { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; margin: 1rem 0; } .time { font: 800 1.6rem Archivo, sans-serif; }
+.pics { display: flex; gap: 1rem; flex-wrap: wrap; } .pics svg, .pics img { flex: 1 1 14rem; max-width: 22rem; border: 2px solid var(--ink); border-radius: .5rem; background: var(--paper); object-fit: cover; aspect-ratio: 3/2; }
+textarea { min-height: 15rem; } .tr { display: none; } .note { padding: .75rem 1rem; border-left: 4px solid var(--mark); background: var(--paper); margin: 1rem 0; }
+.sec { padding-top: 2rem; margin-top: 2rem; border-top: 1px solid var(--line); } .jump { margin-top: 0; } .ex { color: var(--muted); margin-top: .15rem; font-size: .95rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header id="siteHeader">
+<div class="head-left">
+<button aria-label="Toggle menu" id="menuToggle">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
+</button>
+<a class="logo" href="../index.html">Oxfam Preparation</a>
+</div>
+<div class="hr">
+<button aria-label="Toggle theme" class="btn alt" id="themeBtn" style="padding:.45rem .6rem; min-width:0; font-size:1.1rem">🌙</button>
+<button class="btn" id="loginBtn" type="button">Log in</button>
+</div>
+</header>
+<div class="layout">
+<aside aria-label="Menu" class="side">
+<nav>
+<a href="../cpe.html">All tests</a>
+</nav>
+</aside>
+<main id="top">
+<div id="gate">
+<div class="gatebox">
+<h1><span>B1 Preliminary for Schools Test 5</span></h1>
+<p>Enter the password to open this test.</p>
+<form id="gf">
+<label for="pw">Password</label>
+<input autocomplete="off" id="pw" type="password"/>
+<div class="err" id="err"></div>
+<div class="row" style="margin-top:1rem">
+<button class="btn" type="submit">Open</button>
+<a class="btn alt" href="../cpe.html">Back</a>
+</div>
+</form>
+</div>
+</div>
+<div hidden="" id="main">
+<h1 style="margin-top: 1rem">B1 Preliminary for Schools - Test 5 | Original Practice Paper</h1>
+<div class="part" style="margin-top:1rem">
+<label for="nm"><strong>Student name (optional — included with writing submissions)</strong></label>
+<input autocomplete="name" id="nm" type="text" placeholder="Enter your name"/>
+</div>
+<nav aria-label="Papers" class="tabs jump" style="margin-top: 2.5rem; margin-bottom: 2rem">
+<a href="#rd">Reading and Writing</a>
+<a href="#li">Listening</a>
+<a href="#sk">Speaking</a>
+</nav>
+<section class="sec" id="rd">
+<h2 class="t">Reading (45 minutes) and Writing (45 minutes)</h2>
+<div class="bar"><span class="time" id="t1"></span><button class="btn alt" type="button">Start</button></div>
+<div id="rbox"></div>
+<div class="part">
+<h2>Writing Part 1 — Email</h2><p class="sub">Write about 100 words. Answer your friend and include all three notes.</p><div class="note">Your English friend Alex has emailed you.<br/><br/><em>“I want to join a climbing class, but I’m not sure where to start. What should I bring, which day would be best, and who could come with me?”</em><br/><br/>Write an email to Alex. In your email, you should:<br/>• recommend what to bring<br/>• suggest a suitable day<br/>• say who could join Alex.</div><textarea aria-label="Email answer" id="e1"></textarea><div class="bar"><b id="e1c">0 words</b><button class="btn alt" data-c="e1" type="button">Copy</button><button class="btn" data-s="e1" data-t="Writing Part 1 - Email" type="button">Send writing to assessor</button></div><div class="part"><h2>Writing Part 2 — Choose one question</h2><p class="sub">Write about 100 words. Answer either Question 2 (article) or Question 3 (story), not both.</p><p><strong>Question 2 — Article</strong><br/>Write an article for your school magazine about a challenge you tried. Explain what you did and what you learned from it.<br/><br/><strong>Question 3 — Story</strong><br/>Your story must begin with this sentence:<br/><em>When I reached for the next handhold, I noticed a small message behind it.</em></p><textarea aria-label="Article or story answer" id="e2"></textarea><div class="bar"><b id="e2c">0 words</b><button class="btn alt" data-c="e2" type="button">Copy</button><button class="btn" data-s="e2" data-t="Writing Part 2 - Article or Story" type="button">Send writing to assessor</button></div></div>
+<div class="bar"><button class="btn" id="ck1" type="button">Check Reading &amp; Writing Part 1 answers</button><b id="sc1"></b></div>
+</section>
+<section class="sec" id="li">
+<h2 class="t">Listening (about 30 minutes)</h2>
+<div class="bar"><span class="time" id="t2"></span><button class="btn alt" type="button">Start</button></div>
+<p class="note">These are original B1 practice scripts read aloud by your browser’s text-to-speech voice. Each recording can be played twice. This is not official Cambridge audio.</p>
+<div id="lbox"></div>
+<div class="bar"><button class="btn" id="ck2" type="button">Check answers</button><b id="sc2"></b></div>
+</section>
+<section class="sec" id="sk">
+<h2 class="t">Speaking (10–12 minutes)</h2>
+<div class="bar"><span class="time" id="t4"></span><button class="btn alt" type="button">Start</button></div>
+<p class="note">Practise with a partner or teacher. The real test involves two candidates and two examiners. These are original school-age prompts.</p>
+<div class="part"><h2>Part 1 — Interview (2–3 minutes)</h2><div class="bar"><span class="time" id="sp1"></span><button class="btn alt" type="button">Start</button></div><ul><li>What do you enjoy doing to stay active?</li><li>Do you like trying activities that are difficult at first?</li><li>Would you rather exercise indoors or outdoors? Why?</li><li>How do you usually encourage a friend?</li><li>Tell me about a time you learned a new skill.</li></ul></div><div class="part"><h2>Part 2 — Extended Turn (3 minutes)</h2><div class="bar"><span class="time" id="sp2"></span><button class="btn alt" type="button">Start</button></div><p>Describe the picture. Say what the young people are doing, what they might be saying, and how they may feel.</p><div class="pics"><img alt="Two teenagers taking turns to climb an indoor wall while a friend supports them." src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0ODAiIGhlaWdodD0iMzAwIj48cmVjdCB3aWR0aD0iNDgwIiBoZWlnaHQ9IjMwMCIgcng9IjI0IiBmaWxsPSIjZWFmMmY4Ii8+PHJlY3QgeD0iMjk0IiB5PSIyOCIgd2lkdGg9IjE1MyIgaGVpZ2h0PSIyMzgiIHJ4PSIxMCIgZmlsbD0iI2E5YzVkNCIgc3Ryb2tlPSIjMjYzZjU1IiBzdHJva2Utd2lkdGg9IjciLz48cGF0aCBkPSJNMzIwIDIyNSAzNDUgMTg1IDMzMSAxNDMgMzcxIDExMCAzNTUgNzUgNDA3IDQ4IiBmaWxsPSJub25lIiBzdHJva2U9IiNlOTZmNGYiIHN0cm9rZS13aWR0aD0iOSIvPjxnIGZpbGw9IiNlOTZmNGYiIHN0cm9rZT0iIzI2M2Y1NSIgc3Ryb2tlLXdpZHRoPSIzIj48Y2lyY2xlIGN4PSIzMjAiIGN5PSIyMjUiIHI9IjExIi8+PGNpcmNsZSBjeD0iMzQ1IiBjeT0iMTg1IiByPSIxMSIvPjxjaXJjbGUgY3g9IjMzMSIgY3k9IjE0MyIgcj0iMTEiLz48Y2lyY2xlIGN4PSIzNzEiIGN5PSIxMTAiIHI9IjExIi8+PGNpcmNsZSBjeD0iMzU1IiBjeT0iNzUiIHI9IjExIi8+PGNpcmNsZSBjeD0iNDA3IiBjeT0iNDgiIHI9IjExIi8+PC9nPjxjaXJjbGUgY3g9IjE0MiIgY3k9IjkwIiByPSIxOCIgZmlsbD0iI2Q3YTA3YSIvPjxwYXRoIGQ9Ik0xNDIgMTEwdjc0bTAtMzggMzkgMTZtLTM5LTE2LTMwIDI3bTMwIDExLTIwIDQ2bTIwLTQ2IDI1IDQ2IiBzdHJva2U9IiM0OTg4YTciIHN0cm9rZS13aWR0aD0iMTIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxjaXJjbGUgY3g9IjIzNiIgY3k9IjExNSIgcj0iMTciIGZpbGw9IiNjOThjNjgiLz48cGF0aCBkPSJNMjM2IDEzNHY2MG0wLTMyLTI3IDE3bTI3LTE3IDMwIDltLTMwIDIzLTE5IDQwbTE5LTQwIDIxIDQwIiBzdHJva2U9IiNlZjhiNTUiIHN0cm9rZS13aWR0aD0iMTIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxwYXRoIGQ9Ik0xMzAgMjc5aDExNSIgc3Ryb2tlPSIjMjYzZjU1IiBzdHJva2Utd2lkdGg9IjUiLz48dGV4dCB4PSIyNDAiIHk9IjI4MyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE3IiBmaWxsPSIjMjYzZjU1Ij5DbGltYmluZyBwcmFjdGljZTwvdGV4dD48L3N2Zz4="/></div><p>Follow-up: Tell your partner about a challenge you would like to try.</p></div><div class="part"><h2>Part 3 — Collaborative Task (3–4 minutes)</h2><div class="bar"><span class="time" id="sp3"></span><button class="btn alt" type="button">Start</button></div><p>A youth centre wants to offer a new weekend programme. Talk together about these ideas and decide which two would be most popular.</p><ul><li>indoor climbing session</li><li>beginner dance class</li><li>team puzzle challenge</li><li>outdoor nature walk</li><li>craft workshop</li></ul><p>Useful questions: Which activities need special equipment? What would suit beginners? Which options could friends do together?</p></div><div class="part"><h2>Part 4 — Discussion (3 minutes)</h2><div class="bar"><span class="time" id="sp4"></span><button class="btn alt" type="button">Start</button></div><ul><li>Why do some people enjoy challenging sports?</li><li>Should schools offer more activities after lessons?</li><li>Is it easier to learn a skill alone or with a group?</li><li>How can friends help each other feel confident?</li><li>What makes a good instructor?</li></ul></div>
+</section>
+</div>
+</main>
+</div>
+<div class="support-strip">
+<div class="support-strip-inner">
+<div><span _k="Customer support every day from 9:00 to 16:30">Customer support every day from 9:00 to 16:30</span></div>
+<div class="support-info">
+<a href="mailto:oxfampreparation@email.cz">oxfampreparation@email.cz</a>
+<a href="tel:+420723200988">+420 723 200 988</a>
+</div>
+</div>
+</div>
+<footer>© 2020-2026 Oxfam - Oxford family. All rights reserved. Not affiliated with Cambridge University Press &amp; Assessment. Exam names belong to their owners.</footer>
+</div>
+<dialog aria-labelledby="dt" id="dlg">
+<h2 id="dt">Sign in to open your tests</h2>
+<form id="lf" novalidate="">
+<label for="em">Email</label><input autocomplete="username" id="em" type="email"/>
+<label for="pw">Password</label><input autocomplete="current-password" id="pw" type="password"/>
+<p class="demo" hidden="" id="demo">Demo mode: any email and password is accepted.</p>
+<div aria-live="polite" class="err" id="err"></div>
+<div class="row" style="margin-top:1rem"><button class="btn" type="submit">Log in</button><button class="btn alt" id="cancel" type="button">Cancel</button></div>
+</form>
+</dialog>
+<script>
+var PW="Bt91";
+function unlocked(){try{return sessionStorage.getItem("pet_schools_test_5")==="1"}catch(e){return false}}
+
+function norm(s){return s.toLowerCase().replace(/\u2019/g,"'").replace(/\s+/g," ").trim()}
+
+function build(parts,box,pre){
+  var n=0;pre=pre||"";
+  parts.forEach(function(p,pi){
+    var d=document.createElement("section");d.className="part";
+    d.innerHTML="<h2>"+p.t+"</h2>"+(p.m?"<div class='bar'><span class='time' id='pt"+pre+pi+"'></span><button class='btn alt' type='button'>Start</button> <small>suggested time</small></div>":"")+"<p class='sub'>"+p.i+"</p>"+(p.x?"<p class='txt'>"+p.x+"</p>":"")+(p.im||"")+"<div class='items'></div>";
+    var it=d.querySelector(".items");
+    p.q.forEach(function(q){
+      n++;var r=document.createElement("div");r.className="q";
+      var label = q.q && /^(\d+)\.\s*/.test(q.q) ? q.q.match(/^(\d+)\.\s*/)[1] : n; var qtext = (q.q||"").replace(/^\d+\.\s*/,"").replace(/\n/g,"<br>"); var h="<b>"+label+"</b> "+qtext+(q.h?" <strong>"+q.h+"</strong>":"");
+      if(q.o){
+        var isImg = q.o.length > 0 && /^(https?:\/\/|data:image\/)/i.test(q.o[0]);
+        var optsHtml = q.o.map(function(o,i){
+          var letter = "ABCDEFGH"[i];
+          if(q.o.length === 2 && (o === "A" || o === "B" || o.includes("Correct") || o.includes("YES"))) {
+            letter = ["A", "B"][i];
+          }
+          if (isImg) {
+            return "<label class='opt img-opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> <img src='"+o+"' alt='Option "+letter+"' onerror=\"this.style.display='none'\"></label>";
+          } else {
+            var text = o === letter ? "" : o;
+            return "<label class='opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> "+text+"</label>";
+          }
+        }).join("");
+        var gridClass = isImg ? "opts img-opts-grid" : "opts";
+        h += "<div class='" + gridClass + "'>" + optsHtml + "</div>";
+      } else {
+        h+=" <input type='text' autocomplete='off' aria-label='Answer "+n+"'>";
+      }
+      r.innerHTML=h;r._q=q;it.appendChild(r);
+    });
+    box.appendChild(d);
+    if(p.m)timer("pt"+pre+pi,p.m);
+  });
+}
+
+function check(box,out){
+  var tot=0,ok=0;
+  box.querySelectorAll(".part").forEach(function(part){
+    var pTot=0,pOk=0;
+    part.querySelectorAll(".q").forEach(function(r){
+      pTot++;var q=r._q,good,ans;
+      if(q.o){
+        var c=r.querySelector("input:checked");
+        good=c&&+c.value===q.a;
+        var letter = "ABCDEFGH"[q.a];
+        if(q.o.length === 2) letter = ["A", "B"][q.a];
+        var isImg = q.o.length > 0 && /^(https?:\/\/|data:image\/)/i.test(q.o[0]);
+        ans = isImg ? letter : (q.o[q.a] === letter ? letter : letter + " " + q.o[q.a]);
+      } else {
+        var v=norm(r.querySelector("input").value);
+        good=q.a.some(function(a){return norm(a)===v});
+        ans=q.a[0];
+      }
+      r.classList.toggle("ok",!!good);
+      r.classList.toggle("no",!good);
+      var f=r.querySelector(".fb");
+      if(!f){f=document.createElement("div");f.className="fb";r.appendChild(f)}
+      f.textContent=good?"Correct":"Answer: "+ans;
+      var x=r.querySelector(".ex");
+      if(!x){x=document.createElement("div");x.className="ex";r.appendChild(x)}
+      x.textContent=q.e||"";
+      if(good)pOk++;
+    });
+    if(pTot>0){
+      var ps=part.querySelector(".pscore");
+      if(!ps){ps=document.createElement("div");ps.className="pscore note";ps.style.marginTop="1.5rem";part.appendChild(ps)}
+      ps.innerHTML="<b>Part score:</b> "+pOk+" / "+pTot;
+    }
+    tot+=pTot;ok+=pOk;
+  });
+  out.textContent="Total score: "+ok+" / "+tot;
+  box.querySelectorAll(".tr").forEach(function(e){e.style.display="block"});
+}
+
+function timer(id,min){
+  var e=document.getElementById(id),l=min*60,t=null;
+  if(!e)return;
+  function s(){e.textContent=("0"+Math.floor(l/60)).slice(-2)+":"+("0"+l%60).slice(-2)}s();
+  e.nextElementSibling.onclick=function(){
+    if(t){clearInterval(t);t=null;this.textContent="Start";return}
+    this.textContent="Pause";
+    t=setInterval(function(){l--;s();if(l<=0)clearInterval(t)},1000);
+  }
+}
+
+var R = [{"t":"Reading Part 1 — Notices and Messages","i":"For questions 1–5, choose the correct meaning: A, B or C.","m":5,"q":[{"q":"1. CLIMBING CENTRE\nThe training wall is closed until 2 p.m. today while staff replace several handholds. The beginner wall is open as usual.","o":["Beginners can still use one wall this morning.","All climbing walls are closed today.","The training wall will reopen tomorrow."],"a":0,"e":"Only the training wall is closed until 2 p.m."},{"q":"2. Message from Anya\nI left my blue water bottle in the changing room. Could you put it in your locker until I see you after class?","o":["Anya wants the bottle taken to the classroom.","Anya asks a friend to keep the bottle safe.","Anya has already collected her bottle."],"a":1,"e":"She asks her friend to keep it in a locker."},{"q":"3. BEGINNERS’ SESSION\nPlaces are limited to ten climbers. Please reserve a space online before Friday; names cannot be added at the door.","o":["You must book before arriving.","The session is open to any number of climbers.","You can register after the session."],"a":0,"e":"The notice says to reserve online before Friday."},{"q":"4. ROUTE NOTICE\nThe green route is being checked by the instructor. Please choose another colour until the safety test is complete.","o":["The green route is temporarily unavailable.","Only green routes are safe for beginners.","The instructor has changed the route colours."],"a":0,"e":"The green route is on hold during a safety check."},{"q":"5. EQUIPMENT DESK\nClimbing shoes are included in the lesson price. Please bring your own sports socks; they are not available to borrow.","o":["The centre lends socks to climbers.","Students must bring socks themselves.","Shoes cost extra for the lesson."],"a":1,"e":"Climbers need to bring their own socks."}]},{"t":"Reading Part 2 — Matching","i":"For questions 6–10, match each student with the most suitable climbing activity, A–H.","m":7,"x":"A. First Climb — a gentle indoor session for people who have never climbed before.\n\nB. Knot Skills — practise tying and checking basic climbing knots with an instructor.\n\nC. Family Wall Time — climb with a parent or relative on Sunday mornings.\n\nD. Route Reading — learn how to plan a safe path up the wall on Wednesday afternoons.\n\nE. Outdoor Taster — try climbing on a low natural rock face with safety equipment provided.\n\nF. Fitness for Climbers — exercises to improve balance and strength after school on Fridays.\n\nG. Junior Competition — timed routes for climbers who already have some experience.\n\nH. Equipment Workshop — learn how to check a harness, rope and helmet before a climb.","q":[{"q":"6. Mark has never climbed before and wants an introductory lesson with an instructor.","o":["A","B","C","D","E","F","G","H"],"a":0,"e":"First Climb is designed for complete beginners."},{"q":"7. Zuzana wants to climb with her dad, who is free on Sundays.","o":["A","B","C","D","E","F","G","H"],"a":2,"e":"Family Wall Time is for climbers with a relative on Sundays."},{"q":"8. Adam is already confident on the wall and wants to try a timed challenge.","o":["A","B","C","D","E","F","G","H"],"a":6,"e":"The Junior Competition offers timed routes for experienced climbers."},{"q":"9. Klara wants to learn how to inspect equipment before using it.","o":["A","B","C","D","E","F","G","H"],"a":7,"e":"The Equipment Workshop focuses on safety checks."},{"q":"10. Filip wants to understand how to choose a route before starting to climb.","o":["A","B","C","D","E","F","G","H"],"a":3,"e":"Route Reading teaches safe route planning."}]},{"t":"Reading Part 3 — Multiple Choice","i":"For questions 11–16, choose A, B or C.","m":9,"x":"\nMY FIRST CLIMBING COURSE\n\nI signed up for a climbing course because my friend Eli said it was a fun way to get active. I imagined that everyone else would be much stronger than me, and I nearly changed my mind on the first day. Our instructor, Rosa, noticed I was nervous and explained that beginners would start on the easiest part of the wall.\n\nBefore we climbed, Rosa showed us how to check each other’s harnesses. We practised saying the safety instructions clearly, so our partner knew when we were ready. I liked this part because it meant we had to pay attention to one another, not only to the wall.\n\nAt first, I tried to reach the top as quickly as possible. Rosa suggested that I stop and look for the next coloured handhold before moving. This made the route feel easier. I also learned to use my feet carefully rather than pulling with my arms all the time.\n\nAfter four lessons, our group tried a longer route. Eli finished first, but I was pleased that I reached the final section without asking for help. Rosa said progress was different for every climber. I now go once a week, mostly because the group encourages each other. I still feel nervous before a new route, but I know how to prepare for it.","q":[{"q":"11. Why did the writer almost change their mind?","o":["They thought the other climbers would be stronger.","They did not like the instructor.","They had forgotten their shoes."],"a":0,"e":"The writer worried that everyone else would be stronger."},{"q":"12. What did the students practise before climbing?","o":["Checking a partner’s harness","Running up the wall","Choosing a team name"],"a":0,"e":"Rosa taught them to check each other’s harnesses."},{"q":"13. What helped the writer choose the next move?","o":["Stopping to look for a coloured handhold","Pulling harder with both arms","Following Eli as quickly as possible"],"a":0,"e":"Rosa advised the writer to pause and find the next hold."},{"q":"14. What did the writer learn about using their feet?","o":["They should be used carefully to help the climb.","They are less important than strong arms.","They should always move at the same time."],"a":0,"e":"The writer learned to place their feet carefully."},{"q":"15. How did the writer feel after the longer route?","o":["Pleased with their progress","Angry that Eli finished first","Surprised that Rosa helped them to the top"],"a":0,"e":"They were pleased to reach the final section independently."},{"q":"16. Why does the writer continue climbing?","o":["The group supports one another.","The lessons are always easy.","They want to become an instructor."],"a":0,"e":"The writer values the encouragement from the group."}]},{"t":"Reading Part 4 — Gapped Text","i":"Five sentences have been removed. Choose A–F for gaps 17–21. One sentence is extra.","m":8,"x":"\nGETTING READY FOR THE WALL\n\nBefore my first climbing lesson, I thought I only needed to be brave. (17) _____. The instructor showed us how to wear a harness and fasten it securely.\n\nWe began with a short warm-up on the floor. (18) _____. Then we practised holding the rope while our partner climbed a few metres.\n\nI was surprised by how much communication mattered. (19) _____. A clear answer helped the climber feel safe.\n\nAfter that, we tried a simple route. (20) _____. I stopped twice to plan where my hands and feet would go next.\n\nBy the end of the session, I wanted to try another one. (21) _____.","q":[{"q":"17. Gap 17","o":["I soon learned that safety checks were important too.","It helped us warm up our shoulders and legs.","We called out to each other before moving the rope.","The wall looked taller from the ground than I expected.","I still ask questions whenever something is unclear.","The building was closed for repairs the following week."],"a":0,"e":"The text moves from bravery to the safety instruction."},{"q":"18. Gap 18","o":["I soon learned that safety checks were important too.","It helped us warm up our shoulders and legs.","We called out to each other before moving the rope.","The wall looked taller from the ground than I expected.","I still ask questions whenever something is unclear.","The building was closed for repairs the following week."],"a":1,"e":"A warm-up prepares the body before climbing."},{"q":"19. Gap 19","o":["I soon learned that safety checks were important too.","It helped us warm up our shoulders and legs.","We called out to each other before moving the rope.","The wall looked taller from the ground than I expected.","I still ask questions whenever something is unclear.","The building was closed for repairs the following week."],"a":2,"e":"The next sentence refers to giving a clear answer."},{"q":"20. Gap 20","o":["I soon learned that safety checks were important too.","It helped us warm up our shoulders and legs.","We called out to each other before moving the rope.","The wall looked taller from the ground than I expected.","I still ask questions whenever something is unclear.","The building was closed for repairs the following week."],"a":3,"e":"The next sentence says the writer stopped to plan moves."},{"q":"21. Gap 21","o":["I soon learned that safety checks were important too.","It helped us warm up our shoulders and legs.","We called out to each other before moving the rope.","The wall looked taller from the ground than I expected.","I still ask questions whenever something is unclear.","The building was closed for repairs the following week."],"a":4,"e":"The final thought describes how the writer approaches the sport now."}]},{"t":"Reading Part 5 — Multiple-choice Cloze","i":"For questions 22–27, choose A, B, C or D.","m":7,"x":"\nA NEW ROUTE\n\nOur climbing group was given a route to plan for younger students. We started by (22) _____ the wall carefully and choosing holds that were easy to see. Rosa asked us to make the first moves quite (23) _____, so a new climber would not feel worried. We checked that each handhold was fixed (24) _____ before testing the route. Then two students tried it and gave us their (25) _____. We changed one hold because it was difficult to reach. The finished route was simple but still (26) _____. The instructor said we had done a good job of thinking (27) _____ the needs of other climbers.","q":[{"q":"22. Gap 22","o":["examining","forgetting","collecting","arriving"],"a":0,"e":"They examined the wall before choosing holds."},{"q":"23. Gap 23","o":["easy","easily","easier","easiest"],"a":0,"e":"“Quite easy” describes the first moves."},{"q":"24. Gap 24","o":["securely","recently","politely","quietly"],"a":0,"e":"A hold must be fixed securely."},{"q":"25. Gap 25","o":["advice","advise","opinionated","suggest"],"a":0,"e":"They gave the group advice."},{"q":"26. Gap 26","o":["interesting","interested","interest","interestingly"],"a":0,"e":"Interesting describes the route."},{"q":"27. Gap 27","o":["about","for","at","from"],"a":0,"e":"The phrase is think about someone’s needs."}]},{"t":"Reading Part 6 — Open Cloze","i":"For questions 28–32, write one word in each gap.","m":6,"x":"\nA VISIT TO THE CLIMBING CENTRE\n\nOur class went (28) _____ the climbing centre on Thursday. We arrived early and waited (29) _____ the instructor near the entrance. She gave each of us a helmet and explained what to do (30) _____ we needed help. I watched my partner climb first, then it was (31) _____ turn. I was tired at the end, but happy (32) _____ I had tried something new.","q":[{"q":"28. Gap 28","a":["to"],"e":"Go to a place."},{"q":"29. Gap 29","a":["for"],"e":"Wait for someone."},{"q":"30. Gap 30","a":["if"],"e":"If we needed help."},{"q":"31. Gap 31","a":["my"],"e":"It was my turn."},{"q":"32. Gap 32","a":["because"],"e":"The reason the writer was happy."}]}];
+
+var L = [{"t":"Listening Part 1 — Picture Choice","i":"For questions 1–7, choose the picture that matches what you hear.","im":"<p><button class='btn alt say' data-i='0' type='button'>Play Part 1</button></p>","m":8,"q":[{"q":"1. Which route will Ben try first?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VkZjRmOCIvPjxjaXJjbGUgY3g9IjMxMSIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyY2E1OSIvPjxwYXRoIGQ9Ik0wIDE4N3E4NS0yMiAxNzYgMHQxODQgMHYyM0gweiIgZmlsbD0iI2IyYzlhMyIvPjxyZWN0IHg9Ijc2IiB5PSIzNSIgd2lkdGg9IjIwOCIgaGVpZ2h0PSIxNjUiIHJ4PSIxMiIgZmlsbD0iI2M4ZGNlOSIgc3Ryb2tlPSIjMjgzZjU1IiBzdHJva2Utd2lkdGg9IjciLz48cGF0aCBkPSJNOTIgMTg1cTkyLTE1IDE3NiAwIiBmaWxsPSJub25lIiBzdHJva2U9IiNlZGYzZjciIHN0cm9rZS13aWR0aD0iNSIvPjxnIGZpbGw9IiM4Zjc1YmEiIHN0cm9rZT0iIzI1M2I1MCIgc3Ryb2tlLXdpZHRoPSIzIj48Y2lyY2xlIGN4PSIxMTkiIGN5PSIxNjAiIHI9IjExIi8+PGNpcmNsZSBjeD0iMTY4IiBjeT0iMTMwIiByPSIxMSIvPjxjaXJjbGUgY3g9IjEzNiIgY3k9Ijk2IiByPSIxMSIvPjxjaXJjbGUgY3g9IjIwOCIgY3k9Ijc4IiByPSIxMSIvPjxjaXJjbGUgY3g9IjI0NyIgY3k9IjUzIiByPSIxMSIvPjwvZz48cGF0aCBkPSJNMTE5IDE2MCAxNjggMTMwIDEzNiA5NiAyMDggNzggMjQ3IDUzIiBmaWxsPSJub25lIiBzdHJva2U9IiM4Zjc1YmEiIHN0cm9rZS13aWR0aD0iNSIvPjwvc3ZnPg==","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VkZjRmOCIvPjxjaXJjbGUgY3g9IjMxMSIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyY2E1OSIvPjxwYXRoIGQ9Ik0wIDE4N3E4NS0yMiAxNzYgMHQxODQgMHYyM0gweiIgZmlsbD0iI2IyYzlhMyIvPjxyZWN0IHg9Ijc2IiB5PSIzNSIgd2lkdGg9IjIwOCIgaGVpZ2h0PSIxNjUiIHJ4PSIxMiIgZmlsbD0iI2M4ZGNlOSIgc3Ryb2tlPSIjMjgzZjU1IiBzdHJva2Utd2lkdGg9IjciLz48cGF0aCBkPSJNOTIgMTg1cTkyLTE1IDE3NiAwIiBmaWxsPSJub25lIiBzdHJva2U9IiNlZGYzZjciIHN0cm9rZS13aWR0aD0iNSIvPjxnIGZpbGw9IiNlZThhNGUiIHN0cm9rZT0iIzI1M2I1MCIgc3Ryb2tlLXdpZHRoPSIzIj48Y2lyY2xlIGN4PSIxMTkiIGN5PSIxNjAiIHI9IjExIi8+PGNpcmNsZSBjeD0iMTY4IiBjeT0iMTMwIiByPSIxMSIvPjxjaXJjbGUgY3g9IjEzNiIgY3k9Ijk2IiByPSIxMSIvPjxjaXJjbGUgY3g9IjIwOCIgY3k9Ijc4IiByPSIxMSIvPjxjaXJjbGUgY3g9IjI0NyIgY3k9IjUzIiByPSIxMSIvPjwvZz48cGF0aCBkPSJNMTE5IDE2MCAxNjggMTMwIDEzNiA5NiAyMDggNzggMjQ3IDUzIiBmaWxsPSJub25lIiBzdHJva2U9IiNlZThhNGUiIHN0cm9rZS13aWR0aD0iNSIvPjwvc3ZnPg==","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VkZjRmOCIvPjxjaXJjbGUgY3g9IjMxMSIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyY2E1OSIvPjxwYXRoIGQ9Ik0wIDE4N3E4NS0yMiAxNzYgMHQxODQgMHYyM0gweiIgZmlsbD0iI2IyYzlhMyIvPjxyZWN0IHg9Ijc2IiB5PSIzNSIgd2lkdGg9IjIwOCIgaGVpZ2h0PSIxNjUiIHJ4PSIxMiIgZmlsbD0iI2M4ZGNlOSIgc3Ryb2tlPSIjMjgzZjU1IiBzdHJva2Utd2lkdGg9IjciLz48cGF0aCBkPSJNOTIgMTg1cTkyLTE1IDE3NiAwIiBmaWxsPSJub25lIiBzdHJva2U9IiNlZGYzZjciIHN0cm9rZS13aWR0aD0iNSIvPjxnIGZpbGw9IiM2MWE3NmUiIHN0cm9rZT0iIzI1M2I1MCIgc3Ryb2tlLXdpZHRoPSIzIj48Y2lyY2xlIGN4PSIxMTkiIGN5PSIxNjAiIHI9IjExIi8+PGNpcmNsZSBjeD0iMTY4IiBjeT0iMTMwIiByPSIxMSIvPjxjaXJjbGUgY3g9IjEzNiIgY3k9Ijk2IiByPSIxMSIvPjxjaXJjbGUgY3g9IjIwOCIgY3k9Ijc4IiByPSIxMSIvPjxjaXJjbGUgY3g9IjI0NyIgY3k9IjUzIiByPSIxMSIvPjwvZz48cGF0aCBkPSJNMTE5IDE2MCAxNjggMTMwIDEzNiA5NiAyMDggNzggMjQ3IDUzIiBmaWxsPSJub25lIiBzdHJva2U9IiM2MWE3NmUiIHN0cm9rZS13aWR0aD0iNSIvPjwvc3ZnPg=="],"a":1,"e":"The instructor recommends the orange route."},{"q":"2. What does Amira need to borrow?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VkZjRmOCIvPjxjaXJjbGUgY3g9IjMxMSIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyY2E1OSIvPjxwYXRoIGQ9Ik0wIDE4N3E4NS0yMiAxNzYgMHQxODQgMHYyM0gweiIgZmlsbD0iI2IyYzlhMyIvPjxwYXRoIGQ9Ik05NSAxNDJxNS03OCA4NS04MiA3OCA1IDg1IDgySDk1eiIgZmlsbD0iI2YwYzU0ZiIgc3Ryb2tlPSIjMjgzZjU1IiBzdHJva2Utd2lkdGg9IjgiLz48cGF0aCBkPSJNODIgMTQyaDIwM3EtMTAgMjQtNTkgMjhoLTg3cS00OC00LTU3LTI4eiIgZmlsbD0iI2VkOWE0ZiIgc3Ryb2tlPSIjMjgzZjU1IiBzdHJva2Utd2lkdGg9IjciLz48cGF0aCBkPSJNMTYwIDYzdjYybS0yOC01NiAxMiA1N202Mi01Ny0xMiA1NyIgc3Ryb2tlPSIjZmZmMmM4IiBzdHJva2Utd2lkdGg9IjUiLz48L3N2Zz4=","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VkZjRmOCIvPjxjaXJjbGUgY3g9IjMxMSIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyY2E1OSIvPjxwYXRoIGQ9Ik0wIDE4N3E4NS0yMiAxNzYgMHQxODQgMHYyM0gweiIgZmlsbD0iI2IyYzlhMyIvPjxwYXRoIGQ9Ik0xMzUgNTBoOTBsMjUgNTQtMjEgODZoLTk4bC0yMS04NnoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2RmNjg0ZiIgc3Ryb2tlLXdpZHRoPSIxOCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjxwYXRoIGQ9Ik0xNDIgMTA2aDc2bS04NCAzOGg5Mk0xNTkgNTZsLTIwIDUwbTYyLTUwIDIwIDUwIiBzdHJva2U9IiMyODNmNTUiIHN0cm9rZS13aWR0aD0iNyIvPjxjaXJjbGUgY3g9IjE4MCIgY3k9IjE0NSIgcj0iMTEiIGZpbGw9IiNlOWJkNTAiIHN0cm9rZT0iIzI4M2Y1NSIgc3Ryb2tlLXdpZHRoPSI1Ii8+PC9zdmc+","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VkZjRmOCIvPjxjaXJjbGUgY3g9IjMxMSIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyY2E1OSIvPjxwYXRoIGQ9Ik0wIDE4N3E4NS0yMiAxNzYgMHQxODQgMHYyM0gweiIgZmlsbD0iI2IyYzlhMyIvPjxwYXRoIGQ9Ik03OCAxMTJxNDggMTAgNjQtNTJsMzIgM3E0IDQ0IDQwIDU3bDU2IDEzcTIxIDcgMTcgMzZIODFxLTIxLTIyLTMtNTd6IiBmaWxsPSIjZTg3NTUyIiBzdHJva2U9IiMyODNmNTUiIHN0cm9rZS13aWR0aD0iNyIvPjxwYXRoIGQ9Ik0yMDUgMTA5cTM1IDkgNTAtNDdsMzAgMnE2IDQ1IDQwIDYwbDE3IDE2cTE0IDEyIDggMzFIMjA0cS0xOS0yMiAxLTYyeiIgZmlsbD0iIzYyYTZiYSIgc3Ryb2tlPSIjMjgzZjU1IiBzdHJva2Utd2lkdGg9IjciLz48cGF0aCBkPSJNOTMgMTc4aDE2OW0tMTQzLTM4IDM0IDRtODMgMzNoMTM0IiBzdHJva2U9IiNmNGQ2OWMiIHN0cm9rZS13aWR0aD0iNiIvPjwvc3ZnPg=="],"a":0,"e":"She needs to borrow a helmet."},{"q":"3. What did Leo pack in his bag?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VkZjRmOCIvPjxjaXJjbGUgY3g9IjMxMSIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyY2E1OSIvPjxwYXRoIGQ9Ik0wIDE4N3E4NS0yMiAxNzYgMHQxODQgMHYyM0gweiIgZmlsbD0iI2IyYzlhMyIvPjxwYXRoIGQ9Ik0xNDkgNTVWMzdoNjJ2MThsMTggMjJ2MTA4cTAgMTUtMTUgMTVoLTY4cS0xNSAwLTE1LTE1Vjc3eiIgZmlsbD0iIzY1YmFkMSIgc3Ryb2tlPSIjMjgzZjU1IiBzdHJva2Utd2lkdGg9IjciLz48cGF0aCBkPSJNMTQ5IDU1aDYybS04MCA2NWg5OCIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjkiLz48cGF0aCBkPSJNMTY0IDE0NmgzNiIgc3Ryb2tlPSIjYzllZWY1IiBzdHJva2Utd2lkdGg9IjgiLz48L3N2Zz4=","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VkZjRmOCIvPjxjaXJjbGUgY3g9IjMxMSIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyY2E1OSIvPjxwYXRoIGQ9Ik0wIDE4N3E4NS0yMiAxNzYgMHQxODQgMHYyM0gweiIgZmlsbD0iI2IyYzlhMyIvPjxwYXRoIGQ9Ik0xMTkgNzZxNjAtMzYgMTIyIDBsLTEyIDEwNXEtNTAgMjctOTggMHoiIGZpbGw9IiNkYTc5NTUiIHN0cm9rZT0iIzI4M2Y1NSIgc3Ryb2tlLXdpZHRoPSI3Ii8+PHBhdGggZD0iTTExOSA4M3E2MCAzMyAxMjIgMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZjNkNmE3IiBzdHJva2Utd2lkdGg9IjciLz48cGF0aCBkPSJNMTQ1IDU5cTM1LTMxIDcwIDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzI4M2Y1NSIgc3Ryb2tlLXdpZHRoPSI3Ii8+PC9zdmc+","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VkZjRmOCIvPjxjaXJjbGUgY3g9IjMxMSIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyY2E1OSIvPjxwYXRoIGQ9Ik0wIDE4N3E4NS0yMiAxNzYgMHQxODQgMHYyM0gweiIgZmlsbD0iI2IyYzlhMyIvPjxyZWN0IHg9IjEwMCIgeT0iOTEiIHdpZHRoPSIxNjAiIGhlaWdodD0iNzUiIHJ4PSIyOCIgZmlsbD0iI2M1OGU1MSIgc3Ryb2tlPSIjMjgzZjU1IiBzdHJva2Utd2lkdGg9IjciLz48cGF0aCBkPSJNMTIwIDExMGgxMjBNMTIwIDE0NmgxMjAiIHN0cm9rZT0iI2YzZDlhYyIgc3Ryb2tlLXdpZHRoPSI5Ii8+PHBhdGggZD0ibTE0MiA5MiAxNyA3NG00Mi03NCAxNiA3NCIgc3Ryb2tlPSIjOTA2NDNkIiBzdHJva2Utd2lkdGg9IjUiLz48L3N2Zz4="],"a":2,"e":"He packed a snack bar."},{"q":"4. How will the climber reach the top?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VkZjRmOCIvPjxjaXJjbGUgY3g9IjMxMSIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyY2E1OSIvPjxwYXRoIGQ9Ik0wIDE4N3E4NS0yMiAxNzYgMHQxODQgMHYyM0gweiIgZmlsbD0iI2IyYzlhMyIvPjxwYXRoIGQ9Ik04NiA0NWgxODh2MTUwSDg2eiIgZmlsbD0iIzkxYjVjYSIgc3Ryb2tlPSIjMjgzZjU1IiBzdHJva2Utd2lkdGg9IjgiLz48cGF0aCBkPSJNMTE5IDE2NSAxNTcgMTMwIDE0NyA5NyAxOTkgODMgMjM5IDU5IiBmaWxsPSJub25lIiBzdHJva2U9IiNlZTg1NGYiIHN0cm9rZS13aWR0aD0iOCIvPjxnIGZpbGw9IiNlZTg1NGYiPjxjaXJjbGUgY3g9IjExOSIgY3k9IjE2NSIgcj0iMTEiLz48Y2lyY2xlIGN4PSIxNTciIGN5PSIxMzAiIHI9IjExIi8+PGNpcmNsZSBjeD0iMTQ3IiBjeT0iOTciIHI9IjExIi8+PGNpcmNsZSBjeD0iMTk5IiBjeT0iODMiIHI9IjExIi8+PGNpcmNsZSBjeD0iMjM5IiBjeT0iNTkiIHI9IjExIi8+PC9nPjwvc3ZnPg==","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VkZjRmOCIvPjxjaXJjbGUgY3g9IjMxMSIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyY2E1OSIvPjxwYXRoIGQ9Ik0wIDE4N3E4NS0yMiAxNzYgMHQxODQgMHYyM0gweiIgZmlsbD0iI2IyYzlhMyIvPjxwYXRoIGQ9Ik0xMzIgNDUgOTMgMTg5bTEzNS0xNDQgNDAgMTQ0TTExMCAxMjZoMTUwbS0xMzctMzhoMTI0bS0xMTEgNzZoMTAwIiBmaWxsPSJub25lIiBzdHJva2U9IiNiZjgxNTAiIHN0cm9rZS13aWR0aD0iMTEiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxwYXRoIGQ9Ik05NiAxODloMTc0IiBzdHJva2U9IiMyODNmNTUiIHN0cm9rZS13aWR0aD0iOCIvPjwvc3ZnPg==","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VkZjRmOCIvPjxjaXJjbGUgY3g9IjMxMSIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyY2E1OSIvPjxwYXRoIGQ9Ik0wIDE4N3E4NS0yMiAxNzYgMHQxODQgMHYyM0gweiIgZmlsbD0iI2IyYzlhMyIvPjxwYXRoIGQ9Ik0xNzIgNDVxNjkgMzAgMCA2MXQwIDYycTcwIDMwIDAgNTQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2U3YmQ2MiIgc3Ryb2tlLXdpZHRoPSIxNyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTE3MiA0NXE2OSAzMCAwIDYxdDAgNjJxNzAgMzAgMCA1NCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmMWM3IiBzdHJva2Utd2lkdGg9IjUiIHN0cm9rZS1kYXNoYXJyYXk9IjQgMTIiLz48L3N2Zz4="],"a":0,"e":"He is going up the climbing wall."},{"q":"5. What time does the group start?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VkZjRmOCIvPjxjaXJjbGUgY3g9IjMxMSIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyY2E1OSIvPjxwYXRoIGQ9Ik0wIDE4N3E4NS0yMiAxNzYgMHQxODQgMHYyM0gweiIgZmlsbD0iI2IyYzlhMyIvPjxjaXJjbGUgY3g9IjE4MCIgY3k9IjExNSIgcj0iNzYiIGZpbGw9IiNmZmYiIHN0cm9rZT0iIzI4M2Y1NSIgc3Ryb2tlLXdpZHRoPSI4Ii8+PHBhdGggZD0iTTE4MCA0N3YxMm0wIDExMnYxMm0tNjgtNjhoMTJtMTEyIDBoMTIiIHN0cm9rZT0iIzI4M2Y1NSIgc3Ryb2tlLXdpZHRoPSI1Ii8+PHBhdGggZD0iTTE4MCAxMTUgMjMyIDExNU0xODAgMTE1IDE5My4zOTM5MjAxMzI3NzgxMyAxNDcuMzM1NzgzNjM3ODk1MDIiIHN0cm9rZT0iI2RmNWI1NCIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48Y2lyY2xlIGN4PSIxODAiIGN5PSIxMTUiIHI9IjciIGZpbGw9IiMyODNmNTUiLz48L3N2Zz4=","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VkZjRmOCIvPjxjaXJjbGUgY3g9IjMxMSIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyY2E1OSIvPjxwYXRoIGQ9Ik0wIDE4N3E4NS0yMiAxNzYgMHQxODQgMHYyM0gweiIgZmlsbD0iI2IyYzlhMyIvPjxjaXJjbGUgY3g9IjE4MCIgY3k9IjExNSIgcj0iNzYiIGZpbGw9IiNmZmYiIHN0cm9rZT0iIzI4M2Y1NSIgc3Ryb2tlLXdpZHRoPSI4Ii8+PHBhdGggZD0iTTE4MCA0N3YxMm0wIDExMnYxMm0tNjgtNjhoMTJtMTEyIDBoMTIiIHN0cm9rZT0iIzI4M2Y1NSIgc3Ryb2tlLXdpZHRoPSI1Ii8+PHBhdGggZD0iTTE4MCAxMTUgMTgwIDE2N00xODAgMTE1IDE4OS4wNTg2NjY1Nzg1ODgyMyAxNDguODA3NDAzOTIwMTE3NCIgc3Ryb2tlPSIjZGY1YjU0IiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxjaXJjbGUgY3g9IjE4MCIgY3k9IjExNSIgcj0iNyIgZmlsbD0iIzI4M2Y1NSIvPjwvc3ZnPg==","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VkZjRmOCIvPjxjaXJjbGUgY3g9IjMxMSIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyY2E1OSIvPjxwYXRoIGQ9Ik0wIDE4N3E4NS0yMiAxNzYgMHQxODQgMHYyM0gweiIgZmlsbD0iI2IyYzlhMyIvPjxjaXJjbGUgY3g9IjE4MCIgY3k9IjExNSIgcj0iNzYiIGZpbGw9IiNmZmYiIHN0cm9rZT0iIzI4M2Y1NSIgc3Ryb2tlLXdpZHRoPSI4Ii8+PHBhdGggZD0iTTE4MCA0N3YxMm0wIDExMnYxMm0tNjgtNjhoMTJtMTEyIDBoMTIiIHN0cm9rZT0iIzI4M2Y1NSIgc3Ryb2tlLXdpZHRoPSI1Ii8+PHBhdGggZD0iTTE4MCAxMTUgMTI4IDExNU0xODAgMTE1IDE4NC41Njg0MTY3Mjc3MDE4MiAxNDkuNzAwNTcwMTQ4MDgzMzYiIHN0cm9rZT0iI2RmNWI1NCIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48Y2lyY2xlIGN4PSIxODAiIGN5PSIxMTUiIHI9IjciIGZpbGw9IiMyODNmNTUiLz48L3N2Zz4="],"a":1,"e":"The group starts at half past five."},{"q":"6. Which snack does Sara choose?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VkZjRmOCIvPjxjaXJjbGUgY3g9IjMxMSIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyY2E1OSIvPjxwYXRoIGQ9Ik0wIDE4N3E4NS0yMiAxNzYgMHQxODQgMHYyM0gweiIgZmlsbD0iI2IyYzlhMyIvPjxwYXRoIGQ9Ik0xNzkgNzFxLTItMzIgMjgtNDJtLTI2IDQycS0zMS0yNS01MSAxLTI3IDM4IDcgOTkgMjAgMzYgNDYgOSAyNyAyNiA0OS0xMCAzNS02MCA5LTk4LTIwLTI3LTYyLTF6IiBmaWxsPSIjZDk1NTRkIiBzdHJva2U9IiMyODNmNTUiIHN0cm9rZS13aWR0aD0iNyIvPjxwYXRoIGQ9Ik0xNzkgNzBxMi0zMCAyNy00MiIgc3Ryb2tlPSIjNzA0YjM2IiBzdHJva2Utd2lkdGg9IjgiLz48cGF0aCBkPSJNMTkwIDU0cTM1LTI3IDU1IDAtMjcgMTgtNTUgMCIgZmlsbD0iIzc1YTY1ZCIvPjwvc3ZnPg==","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VkZjRmOCIvPjxjaXJjbGUgY3g9IjMxMSIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyY2E1OSIvPjxwYXRoIGQ9Ik0wIDE4N3E4NS0yMiAxNzYgMHQxODQgMHYyM0gweiIgZmlsbD0iI2IyYzlhMyIvPjxwYXRoIGQ9Ik05MSAxMjlxNzAgNzkgMTcwIDMgMTMtMTAgMjEgMi02MSA4MS0xNjAgNzAtNDQtNC01MS03NXoiIGZpbGw9IiNmMWNiNTYiIHN0cm9rZT0iIzI4M2Y1NSIgc3Ryb2tlLXdpZHRoPSI3Ii8+PHBhdGggZD0iTTk0IDEyNXExMSAxNiAyOSAxOG0xNTctMTcgMTQgNSIgc3Ryb2tlPSIjNzg1MTNlIiBzdHJva2Utd2lkdGg9IjkiLz48L3N2Zz4=","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VkZjRmOCIvPjxjaXJjbGUgY3g9IjMxMSIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyY2E1OSIvPjxwYXRoIGQ9Ik0wIDE4N3E4NS0yMiAxNzYgMHQxODQgMHYyM0gweiIgZmlsbD0iI2IyYzlhMyIvPjxyZWN0IHg9IjkyIiB5PSI4MiIgd2lkdGg9IjE3NiIgaGVpZ2h0PSI5NiIgcng9IjE4IiBmaWxsPSIjZGViODczIiBzdHJva2U9IiMyODNmNTUiIHN0cm9rZS13aWR0aD0iNyIvPjxwYXRoIGQ9Ik0xMTEgMTA1aDEzOHY1MEgxMTF6IiBmaWxsPSIjYWU3OTUyIi8+PGcgZmlsbD0iI2Y1ZDdhMSI+PGNpcmNsZSBjeD0iMTMxIiBjeT0iMTIwIiByPSI4Ii8+PGNpcmNsZSBjeD0iMTY2IiBjeT0iMTM5IiByPSI4Ii8+PGNpcmNsZSBjeD0iMjAyIiBjeT0iMTE4IiByPSI4Ii8+PGNpcmNsZSBjeD0iMjMxIiBjeT0iMTM5IiByPSI4Ii8+PC9nPjwvc3ZnPg=="],"a":2,"e":"She chooses a granola bar."},{"q":"7. What will the weather be like at the outdoor session?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VkZjRmOCIvPjxjaXJjbGUgY3g9IjMxMSIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyY2E1OSIvPjxwYXRoIGQ9Ik0wIDE4N3E4NS0yMiAxNzYgMHQxODQgMHYyM0gweiIgZmlsbD0iI2IyYzlhMyIvPjxjaXJjbGUgY3g9IjE4MCIgY3k9IjEwNyIgcj0iNDgiIGZpbGw9IiNmMmM2NTMiIHN0cm9rZT0iIzI4M2Y1NSIgc3Ryb2tlLXdpZHRoPSI2Ii8+PHBhdGggZD0iTTE4MCAzMnYyNW0wIDEwMHYyNW03NS03NWgtMjVNMTMwIDEwN2gtMjVtMTI4LTUzLTE4IDE4bS03MCA3MC0xOCAxOG0xMDYgMC0xOC0xOG0tNzAtNzAtMTgtMTgiIHN0cm9rZT0iI2U2YTY0ZCIgc3Ryb2tlLXdpZHRoPSIxMCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PC9zdmc+","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VkZjRmOCIvPjxjaXJjbGUgY3g9IjMxMSIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyY2E1OSIvPjxwYXRoIGQ9Ik0wIDE4N3E4NS0yMiAxNzYgMHQxODQgMHYyM0gweiIgZmlsbD0iI2IyYzlhMyIvPjxwYXRoIGQ9Ik02NSA3OWgxNjhxMzggMCAyMi0yNi0xMy0xOC0yOS0yTTY1IDExN2gyMjRxMzggMCAyMiAyNy0xMyAxOC0yOSAyTTY1IDE1NWgxMzNxMzggMCAyMiAyNi0xMyAxOC0yOSAyIiBmaWxsPSJub25lIiBzdHJva2U9IiM1ZTliYjMiIHN0cm9rZS13aWR0aD0iMTAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjwvc3ZnPg==","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VkZjRmOCIvPjxjaXJjbGUgY3g9IjMxMSIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyY2E1OSIvPjxwYXRoIGQ9Ik0wIDE4N3E4NS0yMiAxNzYgMHQxODQgMHYyM0gweiIgZmlsbD0iI2IyYzlhMyIvPjxwYXRoIGQ9Ik0xMDYgMTI1cS0zMy00MiA1LTcwIDIwLTE4IDQzLTUgMTctMzYgNTctMjQgMzEgOSAyOSA0MCA0OS0zIDQ4IDM3LTIgMjktMzYgMjlIMTIxeiIgZmlsbD0iI2E1YmZjZSIgc3Ryb2tlPSIjMjgzZjU1IiBzdHJva2Utd2lkdGg9IjciLz48cGF0aCBkPSJtMTMzIDE1MS0xMiAyN201NC0yNy0xMiAyN201NC0yNy0xMiAyN201NC0yNy0xMiAyNyIgc3Ryb2tlPSIjNGU5ZGM2IiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjwvc3ZnPg=="],"a":1,"e":"The forecast says it will be windy."}]},{"t":"Listening Part 2 — Short Conversations","i":"You will hear six short conversations. For questions 8–13, choose A, B or C.","im":"<p><button class='btn alt say' data-i='1' type='button'>Play Part 2</button></p>","m":7,"q":[{"q":"8. Why does Eva want to stop climbing for a moment?","o":["Her hands are tired.","She needs a drink.","She has forgotten the route."],"a":0,"e":"Eva says her hands need a short rest."},{"q":"9. Which skill will Tom practise today?","o":["Checking a harness","Tying a knot","Reading a route map"],"a":1,"e":"The instructor is teaching them a new knot."},{"q":"10. Where will the climbers leave their bags?","o":["Near the entrance","In the changing room","Beside the training wall"],"a":1,"e":"The staff have asked them to use the changing room."},{"q":"11. When will the instructor arrive?","o":["At quarter past four","At half past four","At quarter to five"],"a":2,"e":"She will arrive at quarter to five."},{"q":"12. Why does the coach stop Amir?","o":["His harness needs checking.","He is climbing too quickly.","He has chosen a difficult route."],"a":0,"e":"The coach notices that the harness needs another check."},{"q":"13. What will Mia try at her next lesson?","o":["A longer route","A route on the outdoor wall","Climbing with a new partner"],"a":1,"e":"She plans to try the outdoor wall next time."}]},{"t":"Listening Part 3 — Note Completion","i":"You will hear an announcement about Junior Climbing Day. Complete questions 14–19 with one or two words or a number.","im":"<p><button class='btn alt say' data-i='2' type='button'>Play Part 3</button></p>","m":6,"q":[{"q":"14. Event: Junior Climbing _____","a":["day"],"e":"It is called Junior Climbing Day."},{"q":"15. Date: Saturday 12 _____","a":["september"],"e":"The date is Saturday 12 September."},{"q":"16. Meet at the sports park _____","a":["gate"],"e":"Participants meet at the sports park gate."},{"q":"17. First activity begins at _____","a":["9.45"],"e":"The first activity starts at quarter to ten."},{"q":"18. Bring a pair of _____","a":["gloves"],"e":"Participants should bring gloves."},{"q":"19. Register by calling _____","a":["731406"],"e":"The booking number is 731406."}]},{"t":"Listening Part 4 — Interview","i":"You will hear an interviewer talking to a young climbing instructor. For questions 20–25, choose A, B or C.","im":"<p><button class='btn alt say' data-i='3' type='button'>Play Part 4</button></p>","m":7,"q":[{"q":"20. Why did Lina become a climbing instructor?","o":["She enjoyed helping a younger relative learn.","She wanted to travel abroad.","Her school required her to choose a sport."],"a":0,"e":"Lina first helped her younger cousin and found she enjoyed teaching."},{"q":"21. What does Lina do before a group arrives?","o":["Checks the route and equipment","Writes a list of competition results","Practises the hardest climb"],"a":0,"e":"She checks the wall route and safety equipment."},{"q":"22. What does Lina say helps climbers stay safe?","o":["Partners checking one another","Climbing as quickly as possible","Using the same route every week"],"a":0,"e":"She stresses partner checks."},{"q":"23. What should beginners pay attention to?","o":["Where they place their feet","How high they can reach","How fast they finish"],"a":0,"e":"Good foot placement helps beginners climb steadily."},{"q":"24. How does Lina help students notice their progress?","o":["They keep a short climbing log.","She gives them a test each week.","They compare their times with others."],"a":0,"e":"She asks them to record routes and feelings in a log."},{"q":"25. What would Lina like to organise next?","o":["A family introduction session","A trip to another country","A climbing competition for adults"],"a":0,"e":"She hopes to run an introduction session for families."}]}];
+
+var T = ["Extract 1. Boy: Should I start on the purple route? Instructor: It has some tricky holds. The orange route is a little easier. Boy: I'll try that one first, then. Instructor: Good choice. {pause} Extract 2. Amira: I have my harness and shoes, but I can't find my helmet. Friend: The desk has helmets to borrow. Amira: Great, I'll get one before we start. {pause} Extract 3. Mum: Did you pack your water bottle? Leo: Yes, and the chalk bag. Mum: What about a snack? Leo: I put a snack bar in the side pocket. {pause} Extract 4. Girl: Is the boy climbing the rope ladder? Boy: No, that is part of the warm-up course. He's moving up the climbing wall. Girl: I can see him now. {pause} Extract 5. Boy: The group starts at quarter past five, right? Girl: The earlier class begins then. Ours starts at half past. Boy: I'll meet you at five thirty. {pause} Extract 6. Sara: Do you want an apple or a banana? Friend: I brought those already. Sara: There's also a granola bar. Friend: Perfect, I'll have that before the session. {pause} Extract 7. Coach: The outdoor session is still on. Student: Is it going to rain? Coach: No, but it will be windy. We should tie back anything loose. Student: I'll bring my jacket. {pause}","Conversation 1. Eva: Can we pause for a minute? My hands are tired. Coach: Sure. Have a rest and drink some water if you need it. Eva: I'll be ready again soon. {pause} Conversation 2. Tom: Are we practising harness checks today? Instructor: We did that last week. Today I'll show you how to tie a knot for the rope. Tom: I'll get the practice rope. {pause} Conversation 3. Girl: Where should I leave my bag? Boy: The staff said to put everything in the changing room. Girl: I'll take my shoes in with me. {pause} Conversation 4. Student: Is the instructor coming at half past four? Receptionist: She called. She'll arrive at quarter to five because of traffic. Student: I'll wait in the café. {pause} Conversation 5. Amir: Why did the coach ask me to stop? Friend: One strap on your harness looks loose. The coach wants to check it before you continue. Amir: Good thing they noticed. {pause} Conversation 6. Mia: What route are you doing next week? Friend: The longer one on the inside wall. Mia: I've already tried that. I'd like to have a go on the outdoor wall if the weather is good. {pause}","Hello, climbers. Junior Climbing Day will take place on Saturday 12 September at Stonebridge Sports Park. Please meet at the sports park gate. Our first activity begins at quarter to ten, so arrive a little earlier to collect your name tag. The instructors will organise small groups and provide helmets and harnesses. Please bring a pair of gloves and wear comfortable clothes. A café will be open at lunchtime. The event is suitable for children aged ten and over. To register, call 731406 before Wednesday. If you have questions about the equipment, ask for Coach Lin. We look forward to seeing you on the wall.","Interviewer: Lina, how did you become a climbing instructor? Lina: I used to take my younger cousin to the wall. She was nervous at first, and I liked helping her learn the basics. Later, I trained to teach groups. Interviewer: What do you do before a class starts? Lina: I check the route and look over the equipment. It is important to make sure everything is ready before anyone climbs. Interviewer: What safety habit do you teach first? Lina: Partners should check one another’s harnesses and listen to the answer before climbing. It is a simple routine, but it matters. Interviewer: What should beginners focus on? Lina: Their feet. Many beginners reach with their hands and forget that careful foot placement makes a climb easier. Interviewer: How do students see their progress? Lina: I ask them to keep a short climbing log. They write down which route they tried and how they felt. After a few weeks, they can see what has changed. Interviewer: What would you like to do next? Lina: I'd like to run an introduction session for families so children and parents can learn together."];
+
+var FULL=true, AUDIO=["","","",""];
+var ASSESSOR_EMAIL="oxfampreparation@email.cz";
+
+function wc(t){var m=t.trim().match(/\S+/g);return m?m.length:0}
+function winit(){
+  document.querySelectorAll("textarea").forEach(function(t){t.oninput=function(){document.getElementById(t.id+"c").textContent=wc(t.value)+" words"}});
+  document.querySelectorAll("[data-c]").forEach(function(b){b.onclick=function(){var t=document.getElementById(b.dataset.c).value;if(navigator.clipboard)navigator.clipboard.writeText(t)}});
+  document.querySelectorAll("[data-s]").forEach(function(b){b.onclick=async function(){
+    var t=document.getElementById(b.dataset.s).value,nameField=document.getElementById("nm"),nm=((nameField&&nameField.value)||"Student").trim()||"Student";
+    if(!wc(t)){b.textContent="Write something first!";setTimeout(function(){b.textContent="Send writing to assessor"},2000);return}
+    var subject="B1 Preliminary for Schools Test 5 - "+b.dataset.t+" - "+nm;
+    var message="Student: "+nm+"\nTest: B1 Preliminary for Schools Test 5\nTask: "+b.dataset.t+"\n\n"+t;
+    var status=b.parentNode.parentNode.querySelector(".email-status");if(!status){status=document.createElement("p");status.className="note email-status";status.setAttribute("role","status");b.parentNode.parentNode.appendChild(status)}
+    b.disabled=true;b.textContent="Sending…";status.textContent="Sending your writing to "+ASSESSOR_EMAIL+"…";
+    try{var response=await fetch("https://formsubmit.co/ajax/"+ASSESSOR_EMAIL,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify({name:nm,_subject:subject,message:message})});var result=await response.json();if(!response.ok||result.success===false||result.success==="false")throw new Error(result.message||"The email service did not accept the submission.");status.textContent="Submission accepted. On first use, the assessor must confirm the address through the verification email before delivery is enabled.";b.textContent="Submitted";
+    }catch(err){status.textContent="We couldn't send the writing. Check the internet connection and try again. "+(err&&err.message?err.message:"");b.disabled=false;b.textContent="Retry sending";return}
+    b.disabled=false;setTimeout(function(){b.textContent="Send writing to assessor"},4000);
+  }});
+}
+var playId=0;
+function say(i,done){
+  var id=++playId;speechSynthesis.cancel();
+  var parts=T[i].split(/(\{pause\}|\{short\}|\bSpeaker \d:|\b[A-Z][A-Za-z]+:)/),q=[],pitch=1,flip=0,names={};
+  parts.forEach(function(x){
+    x=x.trim();if(!x)return;
+    if(x==="{pause}"||x==="{short}"){q.push({w:x==="{pause}"?2500:1200});pitch=1;return}
+    var sp=x.match(/^Speaker (\d):$/);if(sp){q.push({t:"Speaker "+sp[1],p:1,w:700});return}
+    if(/^[A-Za-z 0-9 ]+:$/.test(x)){var n=x.slice(0,-1);if(!(n in names))names[n]=(flip++%2)?1.25:.85;pitch=names[n];return}
+    (x.match(/[^.?!]+[.?!]*/g)||[x]).forEach(function(z){q.push({t:z.trim(),p:pitch,w:300})})
+  });
+  var k=0;(function next(){
+    if(id!==playId)return;
+    if(k>=q.length){done();return}
+    var s=q[k++];
+    if(!s.t){setTimeout(next,s.w);return}
+    var u=new SpeechSynthesisUtterance(s.t);u.lang="en-GB";u.rate=0.95;u.pitch=s.p;
+    u.onend=function(){setTimeout(next,s.w)};u.onerror=function(){setTimeout(next,s.w)};
+    speechSynthesis.speak(u);
+  })()
+}
+
+function play(b){
+  if(b._busy)return;
+  var i=+b.dataset.i;
+  function fin(){b._busy=false;if(b._n>=2){b.disabled=true;b.textContent="Played twice"}else b.textContent="Play again (last time)"}
+  if(!AUDIO[i]&&(!window.speechSynthesis||!window.SpeechSynthesisUtterance)){b.textContent="TTS not supported in this browser.";return}
+  b._n=(b._n||0)+1;b._busy=true;b.textContent="Playing...";
+  if(AUDIO[i]){var a=new Audio(AUDIO[i]);a.onended=fin;a.onerror=fin;a.play()}else say(i,fin)
+}
+
+function init(){
+  [["t1",90],["t2",35],["t4",12],["sp1",3],["sp2",3],["sp3",3],["sp4",3]].forEach(function(a){if(document.getElementById(a[0]))timer(a[0],a[1])});
+  if(!FULL)return;
+  build(R,document.getElementById("rbox"),"r");
+  build(L,document.getElementById("lbox"),"l");
+  document.getElementById("ck1").onclick=function(){check(document.getElementById("rbox"),document.getElementById("sc1"))};
+  document.getElementById("ck2").onclick=function(){check(document.getElementById("lbox"),document.getElementById("sc2"))};
+  document.querySelectorAll(".say").forEach(function(b){b.onclick=function(){play(b)}});
+  winit();
+}
+
+(function(){
+  var g=document.getElementById("gate"),m=document.getElementById("main");
+  function show(){g.hidden=true;m.hidden=false;if(window.init)init()}
+  if(unlocked()){show();return}
+  document.getElementById("gf").onsubmit=function(e){
+    e.preventDefault();
+    if(document.getElementById("pw").value===PW){
+      try{sessionStorage.setItem("pet_schools_test_5","1")}catch(x){}
+      show();
+    } else {
+      document.getElementById("err").textContent="Wrong password.";
+    }
+  }
+  
+  var themeBtn = document.getElementById('themeBtn');
+  if(themeBtn) {
+    themeBtn.onclick = function() {
+      var currentTheme = document.documentElement.getAttribute('data-theme');
+      if(currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        themeBtn.textContent = '🌙';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeBtn.textContent = '☀️';
+      }
+    };
+  }
+  
+  var menuToggle = document.getElementById('menuToggle');
+  if(menuToggle) {
+    menuToggle.onclick = function() {
+      document.body.classList.toggle('menuopen');
+    };
+  }
+  
+  var loginBtn = document.getElementById('loginBtn');
+  var dlg = document.getElementById('dlg');
+  var cancel = document.getElementById('cancel');
+  if(loginBtn && dlg) {
+    loginBtn.onclick = function() { dlg.showModal(); }
+  }
+  if(cancel && dlg) {
+    cancel.onclick = function() { dlg.close(); }
+  }
+})();
+</script>
+</body>
+</html>

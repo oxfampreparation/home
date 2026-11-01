@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>B1 Preliminary for Schools Test 2 - Oxfam Preparation</title>
+
+<style>
+/* Default theme is explicitly light */
+:root {
+  --bg: #f6f7fb;
+  --paper: #fff;
+  --ink: #14213d;
+  --muted: #4b5266;
+  --line: #d5d9e6;
+  --mark: #2b59ff;
+  --hi: #ffe45e;
+  --ok: #1a7f52;
+  --bad: #b3261e;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Dark theme applied ONLY when data-theme="dark" is present */
+:root[data-theme="dark"] {
+  --bg: #0f1526;
+  --paper: #182038;
+  --ink: #eef1fb;
+  --muted: #a9b1c9;
+  --line: #2c3656;
+  --mark: #7d9bff;
+  --hi: #e9d24a;
+  --ok: #57c58f;
+  --bad: #ff8a80;
+}
+
+html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: border-box; }
+
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1.0625rem/1.6 "Atkinson Hyperlegible", system-ui, sans-serif; }
+h1, h2, h3 { font-family: Archivo, "Helvetica Neue", Arial, sans-serif; line-height: 1.05; margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--mark); outline-offset: 3px; }
+.wrap { max-width: 74rem; margin: 0 auto; padding: 0 1.25rem; }
+
+header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .75rem; padding: 1.25rem 0; position: sticky; top: 0; background: var(--bg); z-index: 100; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+.head-left { display: flex; align-items: center; gap: .75rem; }
+#menuToggle { background: transparent; border: none; cursor: pointer; color: var(--ink); display: flex; padding: .25rem; border-radius: .25rem; }
+#menuToggle:hover { background: var(--line); }
+#menuToggle svg { width: 1.6rem; height: 1.6rem; }
+.logo { font: 800 1.25rem Archivo, sans-serif; text-decoration: none; }
+nav a { margin-left: 1.25rem; text-decoration: none; color: var(--muted); }
+nav a:hover { color: var(--ink); }
+
+.btn { display: inline-block; background: var(--ink); color: var(--bg); padding: .8rem 1.4rem; border-radius: .5rem; font-weight: 700; text-decoration: none; border: 0; cursor: pointer; font-size: 1rem; font-family: inherit; }
+.btn.alt { background: transparent; color: var(--ink); border: 2px solid var(--ink); }
+.hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2rem; align-items: start; padding: 1rem 0 3rem; }
+.hero-text { margin-top: 2.5rem; }
+
+h1 { font-size: clamp(2rem, 3.4vw, 3rem); font-weight: 800; font-stretch: 90%; letter-spacing: -.02em; margin-top: 1rem; margin-bottom: 0; }
+h1 span { background: linear-gradient(transparent 62%, var(--hi) 62%); }
+.lead { color: var(--muted); max-width: 32rem; margin: 1.25rem 0 1.75rem; font-size: 1.15rem; }
+.row { display: flex; gap: .75rem; flex-wrap: wrap; }
+
+.sheet { background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.sheet h2 { font-size: 1.1rem; margin-bottom: .25rem; }
+.sheet p { margin: 0 0 1rem; color: var(--muted); font-size: .95rem; }
+.q { padding: .7rem 0; border-top: 1px solid var(--line); }
+.q b { display: inline-block; font-weight: 800; margin-bottom: .45rem; margin-right: 0.5rem; }
+
+.opts { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem; width: fit-content; }
+.opt { display: flex; align-items: center; gap: .4rem; padding: .3rem .7rem .3rem .35rem; border: 1.5px solid var(--line); border-radius: 2rem; background: transparent; color: inherit; font-size: .95rem; cursor: pointer; width: fit-content; }
+.opt i { width: 1.4rem; height: 1.4rem; border-radius: 50%; border: 2px solid var(--muted); display: grid; place-items: center; font: 700 .7rem Archivo, sans-serif; font-style: normal; flex-shrink: 0; }
+
+.opt[aria-pressed="true"] { border-color: var(--mark); }
+.opt[aria-pressed="true"] i { background: var(--mark); border-color: var(--mark); color: var(--bg); }
+.opt.right { border-color: var(--ok); } .opt.right i { background: var(--ok); border-color: var(--ok); color: var(--bg); }
+.opt.wrong { border-color: var(--bad); } .opt.wrong i { background: var(--bad); border-color: var(--bad); color: var(--bg); }
+
+/* Image Options specific styles */
+.img-opts-grid { display: flex; flex-direction: row; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+.img-opt { flex-direction: column; align-items: center; padding: 0.5rem; border-radius: 0.5rem; gap: 0.5rem; text-align: center; }
+.img-opt img { height: 120px; width: 160px; object-fit: cover; background: var(--paper); border-radius: 0.25rem; }
+.img-opt i { margin-bottom: 0.25rem; }
+
+.result { margin-top: 1rem; font-weight: 700; min-height: 1.6rem; }
+section { padding: 3.5rem 0; border-top: 1px solid var(--line); }
+h2.t { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: .75rem; letter-spacing: -.01em; }
+
+.sub, .txt { color: var(--muted); max-width: 48rem; margin: 0 0 2rem; white-space: pre-line; line-height: 1.6; }
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: .6rem; background: var(--paper); }
+table { border-collapse: collapse; width: 100%; min-width: 38rem; }
+th, td { text-align: left; padding: .9rem 1rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font: 800 1.2rem Archivo, sans-serif; white-space: nowrap; }
+td small { display: block; font: 400 .9rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+
+.support-strip { position: fixed; bottom: 0; left: 0; right: 0; background: var(--ink); color: var(--bg); padding: 1rem 1.25rem; z-index: 999; box-shadow: 0 -4px 12px rgba(0,0,0,0.15); }
+.support-strip-inner { max-width: 74rem; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; width: 100%; font-weight: 700; }
+footer { border-top: 1px solid var(--line); padding: 2rem 0 5rem; color: var(--muted); font-size: .95rem; }
+
+.lang { display: flex; gap: .25rem; flex-wrap: wrap; } .lang button { font: 700 .8rem Archivo, sans-serif; padding: .35rem .6rem; border: 1.5px solid var(--line); border-radius: .4rem; background: transparent; color: var(--muted); cursor: pointer; } .lang button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.layout { display: grid; grid-template-columns: 12.5rem minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+.layout.collapsed { grid-template-columns: 1fr; gap: 0; }
+.layout.collapsed .side { display: none; }
+.side { position: sticky; top: 5rem; max-height: calc(100vh - 6rem); max-height: calc(100dvh - 6rem); overflow-y: auto; display: flex; flex-direction: column; gap: .15rem; }
+summary { cursor: pointer; font: 700 .95rem Archivo, sans-serif; color: var(--muted); padding: .4rem .75rem; border-radius: .5rem; } summary:hover { color: var(--ink); } .ex[open] summary { margin-bottom: .15rem; }
+.side nav { display: flex; flex-direction: column; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); } .side nav a { margin: 0; color: inherit; } .side .lang { margin-bottom: 1rem; }
+.side p { margin: 0 0 .5rem; font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+.side a { text-decoration: none; padding: .5rem .75rem; border-radius: .5rem; font: 700 1rem Archivo, sans-serif; border-left: 3px solid transparent; }
+.side a small { display: block; font: 400 .8rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+.side a:hover { background: var(--paper); border-left-color: var(--mark); }
+tr:target td { background: var(--hi); color: #14213d; } tr:target td small { color: #14213d; }
+
+@media (max-width: 52rem) { .layout { grid-template-columns: 1fr; gap: 0; } .side { position: static; max-height: none; margin: 0 0 1rem; padding: 0 0 1rem; border-bottom: 1px solid var(--line); } }
+
+.hr { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; } .hr .btn { padding: .45rem 1rem; font-size: .9rem; }
+dialog { border: 2px solid var(--ink); border-radius: .75rem; background: var(--paper); color: var(--ink); padding: 1.5rem; width: min(26rem, 92vw); max-height: 90vh; overflow: auto; } dialog::backdrop { background: rgba(10,16,32,.55); }
+dialog h2 { font-size: 1.4rem; margin-bottom: .5rem; } dialog label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+dialog input { width: 100%; padding: .65rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.demo { color: var(--muted); font-size: .9rem; margin: .5rem 0 0; } .err { color: var(--bad); min-height: 1.5rem; margin-top: .5rem; font-size: .95rem; }
+
+@media (max-width: 40rem) {
+  .wrap { padding: 0 1rem; }
+  header { padding: 1rem 0; }
+  .hero { padding-bottom: 2rem; }
+  .sheet { padding: 1.1rem; }
+  section { padding: 2.5rem 0; }
+  .scroll { border: 0; background: transparent; overflow: visible; }
+  table, tbody, tr, td { display: block; min-width: 0; width: 100%; }
+  thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  tr { background: var(--paper); border: 1px solid var(--line); border-radius: .6rem; padding: .6rem 0; margin-bottom: .75rem; }
+  td { border: 0; padding: .15rem 1rem; }
+  td:first-child { font-size: 1.3rem; padding-top: .4rem; }
+  tr:target { border-color: var(--ink); }
+}
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+html { scroll-padding-top: calc(5rem + env(safe-area-inset-top, 0px)); }
+body header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); padding: .6rem 0; border-bottom: 1px solid var(--line); }
+.brand { display: flex; align-items: center; gap: .75rem; }
+body .logo { font-size: 1.85rem; letter-spacing: -.02em; }
+.mbtn { display: inline-flex; flex-direction: column; justify-content: center; gap: 5px; width: 2.75rem; height: 2.75rem; padding: 0 .7rem; border: 2px solid var(--ink); border-radius: .5rem; background: transparent; cursor: pointer; flex: none; }
+.mbtn span { display: block; height: 2px; background: var(--ink); border-radius: 2px; }
+.mbtn:hover { background: var(--paper); }
+body .side { top: 5.5rem; max-height: calc(100vh - 6.5rem); max-height: calc(100dvh - 6.5rem); }
+body.nomenu .layout { grid-template-columns: minmax(0, 1fr); }
+body.nomenu .side { display: none; }
+body:has(#app[hidden]) .mbtn { display: none; }
+.side>.hr { margin-bottom: 1rem; }
+.scrim { display: none; }
+
+@media (max-width: 52rem) {
+  body .side { position: fixed; top: 0; left: 0; bottom: 0; width: min(19rem, 86vw); max-height: none; margin: 0; padding: calc(1rem + env(safe-area-inset-top, 0px)) 1rem calc(1rem + env(safe-area-inset-bottom, 0px)); background: var(--paper); border: 0; border-right: 2px solid var(--ink); z-index: 50; overflow-y: auto; transform: translateX(-105%); visibility: hidden; transition: transform .25s ease, visibility 0s .25s; }
+  body.menuopen .side { transform: none; visibility: visible; transition: transform .25s ease; }
+  body .side nav { flex-direction: column; flex-wrap: nowrap; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+  body .side nav a { padding: .5rem .75rem; }
+  .scrim { display: block; position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: rgba(10,16,32,.5); z-index: 40; opacity: 0; pointer-events: none; transition: opacity .25s; }
+  body.menuopen .scrim { opacity: 1; pointer-events: auto; }
+  body .logo { font-size: 1.6rem; }
+}
+
+.gatebox { max-width: 26rem; margin: 2rem auto; background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.gatebox label, .wr label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+input[type=text], input[type=password], textarea { width: 100%; padding: .6rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.q input[type=text] { width: 14rem; max-width: 100%; }
+.part { background: var(--paper); border: 1px solid var(--line); border-radius: .75rem; padding: 1.5rem; margin-bottom: 1.25rem; }
+.q.ok { border-left: 4px solid var(--ok); padding-left: .75rem; } .q.no { border-left: 4px solid var(--bad); padding-left: .75rem; } .fb { font-weight: 700; margin-top: .25rem; }
+.tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0; }
+nav.tabs a { margin: 0; padding: .4rem 1rem; border: 1.5px solid var(--line); border-radius: 2rem; text-decoration: none; font-weight: 700; }
+nav.tabs a[aria-current=page] { background: var(--ink); color: var(--bg); }
+.bar { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; margin: 1rem 0; } .time { font: 800 1.6rem Archivo, sans-serif; }
+.pics { display: flex; gap: 1rem; flex-wrap: wrap; } .pics svg, .pics img { flex: 1 1 14rem; max-width: 22rem; border: 2px solid var(--ink); border-radius: .5rem; background: var(--paper); object-fit: cover; aspect-ratio: 3/2; }
+textarea { min-height: 15rem; } .tr { display: none; } .note { padding: .75rem 1rem; border-left: 4px solid var(--mark); background: var(--paper); margin: 1rem 0; }
+.sec { padding-top: 2rem; margin-top: 2rem; border-top: 1px solid var(--line); } .jump { margin-top: 0; } .ex { color: var(--muted); margin-top: .15rem; font-size: .95rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header id="siteHeader">
+<div class="head-left">
+<button aria-label="Toggle menu" id="menuToggle">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
+</button>
+<a class="logo" href="../index.html">Oxfam Preparation</a>
+</div>
+<div class="hr">
+<button aria-label="Toggle theme" class="btn alt" id="themeBtn" style="padding:.45rem .6rem; min-width:0; font-size:1.1rem">🌙</button>
+<button class="btn" id="loginBtn" type="button">Log in</button>
+</div>
+</header>
+<div class="layout">
+<aside aria-label="Menu" class="side">
+<nav>
+<a href="../cpe.html">All tests</a>
+</nav>
+</aside>
+<main id="top">
+<div id="gate">
+<div class="gatebox">
+<h1><span>B1 Preliminary for Schools Test 2</span></h1>
+<p>Enter the password to open this test.</p>
+<form id="gf">
+<label for="pw">Password</label>
+<input autocomplete="off" id="pw" type="password"/>
+<div class="err" id="err"></div>
+<div class="row" style="margin-top:1rem">
+<button class="btn" type="submit">Open</button>
+<a class="btn alt" href="../cpe.html">Back</a>
+</div>
+</form>
+</div>
+</div>
+<div hidden="" id="main">
+<h1 style="margin-top: 1rem">B1 Preliminary for Schools - Test 2 | Original Practice Paper</h1>
+<div class="part" style="margin-top:1rem">
+<label for="nm"><strong>Student name (optional — included with writing submissions)</strong></label>
+<input autocomplete="name" id="nm" type="text" placeholder="Enter your name"/>
+</div>
+<nav aria-label="Papers" class="tabs jump" style="margin-top: 2.5rem; margin-bottom: 2rem">
+<a href="#rd">Reading and Writing</a>
+<a href="#li">Listening</a>
+<a href="#sk">Speaking</a>
+</nav>
+<section class="sec" id="rd">
+<h2 class="t">Reading (45 minutes) and Writing (45 minutes)</h2>
+<div class="bar"><span class="time" id="t1"></span><button class="btn alt" type="button">Start</button></div>
+<div id="rbox"></div>
+<div class="part">
+<h2>Writing Part 1 — Email</h2><p class="sub">Write about 100 words. Answer your friend and include all three notes.</p><div class="note">Your English friend Jamie has emailed you.<br/><br/><em>“Our class may visit the new transport museum. Which part would you most like to see, what questions could we ask the guide, and how should we travel there?”</em><br/><br/>Write an email to Jamie. In your email, you should:<br/>• say which exhibit interests you<br/>• suggest questions for the guide<br/>• recommend how to travel.</div><textarea aria-label="Email answer" id="e1"></textarea><div class="bar"><b id="e1c">0 words</b><button class="btn alt" data-c="e1" type="button">Copy</button><button class="btn" data-s="e1" data-t="Writing Part 1 - Email" type="button">Send to assessor</button></div></div><div class="part"><h2>Writing Part 2 — Choose one question</h2><p class="sub">Write about 100 words. Answer either Question 2 (article) or Question 3 (story), not both.</p><p><strong>Question 2 — Article</strong><br/>Your school website is asking students to write about a place in their town that deserves more visitors. Describe the place and explain why people should go there.<br/><br/><strong>Question 3 — Story</strong><br/>Your story must begin with this sentence:<br/><em>When the lights went out, I heard a familiar voice from the other side of the hall.</em></p><textarea aria-label="Article or story answer" id="e2"></textarea><div class="bar"><b id="e2c">0 words</b><button class="btn alt" data-c="e2" type="button">Copy</button><button class="btn" data-s="e2" data-t="Writing Part 2 - Article or Story" type="button">Send to assessor</button></div></div>
+<div class="bar"><button class="btn" id="ck1" type="button">Check Reading &amp; Writing Part 1 answers</button><b id="sc1"></b></div>
+</section>
+<section class="sec" id="li">
+<h2 class="t">Listening (about 30 minutes)</h2>
+<div class="bar"><span class="time" id="t2"></span><button class="btn alt" type="button">Start</button></div>
+<p class="note">These are original B1 practice scripts read aloud by your browser’s text-to-speech voice. Each recording can be played twice. This is not official Cambridge audio.</p>
+<div id="lbox"></div>
+<div class="bar"><button class="btn" id="ck2" type="button">Check answers</button><b id="sc2"></b></div>
+</section>
+<section class="sec" id="sk">
+<h2 class="t">Speaking (10–12 minutes)</h2>
+<div class="bar"><span class="time" id="t4"></span><button class="btn alt" type="button">Start</button></div>
+<p class="note">Practise with a partner or teacher. The real test involves two candidates and two examiners. These are original school-age prompts.</p>
+<div class="part"><h2>Part 1 — Interview (2–3 minutes)</h2><div class="bar"><span class="time" id="sp1"></span><button class="btn alt" type="button">Start</button></div><ul><li>What do you like doing when you have a free afternoon?</li><li>Do you prefer visiting new places or returning to familiar places? Why?</li><li>What kind of museum would you enjoy visiting?</li><li>How do you usually travel around your town?</li><li>Tell me about something you have learned from an older person.</li></ul></div><div class="part"><h2>Part 2 — Extended Turn (3 minutes)</h2><div class="bar"><span class="time" id="sp2"></span><button class="btn alt" type="button">Start</button></div><p>Describe the picture. Say what the young people are doing, what they might be saying, and how they may feel.</p><div class="pics"><img alt="Two teenagers working together to assemble a large kite in a park on a breezy day." src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0ODAiIGhlaWdodD0iMzAwIj48cmVjdCB3aWR0aD0iNDgwIiBoZWlnaHQ9IjMwMCIgcng9IjIyIiBmaWxsPSIjZThmMmZiIi8+PGNpcmNsZSBjeD0iNDEwIiBjeT0iNDgiIHI9IjI4IiBmaWxsPSIjZjJjYjY3Ii8+PHBhdGggZD0iTTAgMjIwIFExMDAgMTkwIDIyMCAyMTggVDQ4MCAyMTBWMzAwSDBaIiBmaWxsPSIjOGZiZDg0Ii8+PHBhdGggZD0iTTgwIDIxMCBMMjQwIDYyIEwzOTAgMjEwWiIgZmlsbD0iI2VmOGI1NSIgc3Ryb2tlPSIjMjQ0MzVjIiBzdHJva2Utd2lkdGg9IjciLz48cGF0aCBkPSJNMjQwIDYyIEwyNDUgMjM1IE0yNDAgMTAwIEwxMTAgMTg1IE0yNDUgMTE1IEwzNTUgMTkwIiBzdHJva2U9IiMyNDQzNWMiIHN0cm9rZS13aWR0aD0iNSIvPjxjaXJjbGUgY3g9IjE1MCIgY3k9IjIyMCIgcj0iMTYiIGZpbGw9IiNjNzg5NjUiLz48cGF0aCBkPSJNMTUwIDIzOHYzNW0wLTIwLTE4IDE1bTE4LTE1IDE4IDEzIiBzdHJva2U9IiMyNDQzNWMiIHN0cm9rZS13aWR0aD0iNyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PGNpcmNsZSBjeD0iMzEwIiBjeT0iMjIwIiByPSIxNiIgZmlsbD0iI2Q5OWM3NSIvPjxwYXRoIGQ9Ik0zMTAgMjM4djM1bTAtMjAtMTggMTVtMTgtMTUgMTggMTMiIHN0cm9rZT0iIzI0NDM1YyIgc3Ryb2tlLXdpZHRoPSI3IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48dGV4dCB4PSIyNDAiIHk9IjI4NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE3IiBmaWxsPSIjMTczMjRiIj5BIHdpbmR5IGFmdGVybm9vbiBpbiB0aGUgcGFyazwvdGV4dD48L3N2Zz4="/></div><p>Follow-up: Tell your partner about an activity you enjoy doing outside.</p></div><div class="part"><h2>Part 3 — Collaborative Task (3–4 minutes)</h2><div class="bar"><span class="time" id="sp3"></span><button class="btn alt" type="button">Start</button></div><p>Your school is organising a charity afternoon. Talk together about these ideas and decide which two activities students would enjoy most.</p><ul><li>second-hand book table</li><li>music performance</li><li>team games</li><li>student art display</li><li>snack stall</li></ul><p>Useful questions: Which activities are easy to organise? Which could raise money? What would interest different age groups?</p></div><div class="part"><h2>Part 4 — Discussion (3 minutes)</h2><div class="bar"><span class="time" id="sp4"></span><button class="btn alt" type="button">Start</button></div><ul><li>Why do people enjoy visiting museums?</li><li>Should students help choose school trips? Why?</li><li>What can young people learn from doing activities with others?</li><li>Is it important to know about the history of your town?</li><li>What makes a good community event?</li></ul></div>
+</section>
+</div>
+</main>
+</div>
+<div class="support-strip">
+<div class="support-strip-inner">
+<div><span _k="Customer support every day from 9:00 to 16:30">Customer support every day from 9:00 to 16:30</span></div>
+<div class="support-info">
+<a href="mailto:oxfampreparation@email.cz">oxfampreparation@email.cz</a>
+<a href="tel:+420723200988">+420 723 200 988</a>
+</div>
+</div>
+</div>
+<footer>© 2020-2026 Oxfam - Oxford family. All rights reserved. Not affiliated with Cambridge University Press &amp; Assessment. Exam names belong to their owners.</footer>
+</div>
+<dialog aria-labelledby="dt" id="dlg">
+<h2 id="dt">Sign in to open your tests</h2>
+<form id="lf" novalidate="">
+<label for="em">Email</label><input autocomplete="username" id="em" type="email"/>
+<label for="pw">Password</label><input autocomplete="current-password" id="pw" type="password"/>
+<p class="demo" hidden="" id="demo">Demo mode: any email and password is accepted.</p>
+<div aria-live="polite" class="err" id="err"></div>
+<div class="row" style="margin-top:1rem"><button class="btn" type="submit">Log in</button><button class="btn alt" id="cancel" type="button">Cancel</button></div>
+</form>
+</dialog>
+<script>
+var PW="Bt91";
+function unlocked(){try{return sessionStorage.getItem("pet_schools_test_2")==="1"}catch(e){return false}}
+
+function norm(s){return s.toLowerCase().replace(/\u2019/g,"'").replace(/\s+/g," ").trim()}
+
+function build(parts,box,pre){
+  var n=0;pre=pre||"";
+  parts.forEach(function(p,pi){
+    var d=document.createElement("section");d.className="part";
+    d.innerHTML="<h2>"+p.t+"</h2>"+(p.m?"<div class='bar'><span class='time' id='pt"+pre+pi+"'></span><button class='btn alt' type='button'>Start</button> <small>suggested time</small></div>":"")+"<p class='sub'>"+p.i+"</p>"+(p.x?"<p class='txt'>"+p.x+"</p>":"")+(p.im||"")+"<div class='items'></div>";
+    var it=d.querySelector(".items");
+    p.q.forEach(function(q){
+      n++;var r=document.createElement("div");r.className="q";
+      var label = q.q && /^(\d+)\.\s*/.test(q.q) ? q.q.match(/^(\d+)\.\s*/)[1] : n; var qtext = (q.q||"").replace(/^\d+\.\s*/,"").replace(/\n/g,"<br>"); var h="<b>"+label+"</b> "+qtext+(q.h?" <strong>"+q.h+"</strong>":"");
+      if(q.o){
+        var isImg = q.o.length > 0 && /^(https?:\/\/|data:image\/)/i.test(q.o[0]);
+        var optsHtml = q.o.map(function(o,i){
+          var letter = "ABCDEFGH"[i];
+          if(q.o.length === 2 && (o === "A" || o === "B" || o.includes("Correct") || o.includes("YES"))) {
+            letter = ["A", "B"][i];
+          }
+          if (isImg) {
+            return "<label class='opt img-opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> <img src='"+o+"' alt='Option "+letter+"' onerror=\"this.style.display='none'\"></label>";
+          } else {
+            var text = o === letter ? "" : o;
+            return "<label class='opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> "+text+"</label>";
+          }
+        }).join("");
+        var gridClass = isImg ? "opts img-opts-grid" : "opts";
+        h += "<div class='" + gridClass + "'>" + optsHtml + "</div>";
+      } else {
+        h+=" <input type='text' autocomplete='off' aria-label='Answer "+n+"'>";
+      }
+      r.innerHTML=h;r._q=q;it.appendChild(r);
+    });
+    box.appendChild(d);
+    if(p.m)timer("pt"+pre+pi,p.m);
+  });
+}
+
+function check(box,out){
+  var tot=0,ok=0;
+  box.querySelectorAll(".part").forEach(function(part){
+    var pTot=0,pOk=0;
+    part.querySelectorAll(".q").forEach(function(r){
+      pTot++;var q=r._q,good,ans;
+      if(q.o){
+        var c=r.querySelector("input:checked");
+        good=c&&+c.value===q.a;
+        var letter = "ABCDEFGH"[q.a];
+        if(q.o.length === 2) letter = ["A", "B"][q.a];
+        var isImg = q.o.length > 0 && /^(https?:\/\/|data:image\/)/i.test(q.o[0]);
+        ans = isImg ? letter : (q.o[q.a] === letter ? letter : letter + " " + q.o[q.a]);
+      } else {
+        var v=norm(r.querySelector("input").value);
+        good=q.a.some(function(a){return norm(a)===v});
+        ans=q.a[0];
+      }
+      r.classList.toggle("ok",!!good);
+      r.classList.toggle("no",!good);
+      var f=r.querySelector(".fb");
+      if(!f){f=document.createElement("div");f.className="fb";r.appendChild(f)}
+      f.textContent=good?"Correct":"Answer: "+ans;
+      var x=r.querySelector(".ex");
+      if(!x){x=document.createElement("div");x.className="ex";r.appendChild(x)}
+      x.textContent=q.e||"";
+      if(good)pOk++;
+    });
+    if(pTot>0){
+      var ps=part.querySelector(".pscore");
+      if(!ps){ps=document.createElement("div");ps.className="pscore note";ps.style.marginTop="1.5rem";part.appendChild(ps)}
+      ps.innerHTML="<b>Part score:</b> "+pOk+" / "+pTot;
+    }
+    tot+=pTot;ok+=pOk;
+  });
+  out.textContent="Total score: "+ok+" / "+tot;
+  box.querySelectorAll(".tr").forEach(function(e){e.style.display="block"});
+}
+
+function timer(id,min){
+  var e=document.getElementById(id),l=min*60,t=null;
+  if(!e)return;
+  function s(){e.textContent=("0"+Math.floor(l/60)).slice(-2)+":"+("0"+l%60).slice(-2)}s();
+  e.nextElementSibling.onclick=function(){
+    if(t){clearInterval(t);t=null;this.textContent="Start";return}
+    this.textContent="Pause";
+    t=setInterval(function(){l--;s();if(l<=0)clearInterval(t)},1000);
+  }
+}
+
+var R = [{"t":"Reading Part 1 — Notices and Messages","i":"For questions 1–5, choose the correct meaning: A, B or C.","m":5,"q":[{"q":"1. COMMUNITY CENTRE NOTICE\nThe pottery room is open on Saturday mornings this month. Please book a place by email because only eight people can use it at once.","o":["You need to reserve a place before going.","The room is closed to beginners.","You can bring eight friends without booking."],"a":0,"e":"The notice asks visitors to book by email."},{"q":"2. Message from Pavel\nCould you leave my geography folder with Ms Reed? I need it for the lesson after lunch. I will be at the dentist when you get to school.","o":["Pavel wants his friend to take the folder home.","Pavel will collect the folder before lunch.","Pavel needs the folder later in the school day."],"a":2,"e":"He needs it for the lesson after lunch."},{"q":"3. SCHOOL EXCHANGE\nStudents going to Brno on Thursday should meet outside the main entrance at 7.45. The coach cannot wait for late arrivals.","o":["Students should be at school before eight.","The coach leaves at 8.45.","Students must meet inside the hall."],"a":0,"e":"They meet at 7.45 outside the entrance."},{"q":"4. LOST: CAMERA CASE\nA black camera case was found beside the tennis courts. Ask at the sports office and be ready to describe what was inside it.","o":["The case is waiting at the sports office.","The finder should take it to reception.","The owner must show a photograph."],"a":0,"e":"It was found and taken to the sports office."},{"q":"5. CAFETERIA\nThe soup special will be available from 12.15 today. Students with lunch tickets can collect theirs from the counter near the windows.","o":["Lunch tickets are sold at the window counter.","The soup can be collected after quarter past twelve.","All students must eat in the cafeteria."],"a":1,"e":"It is available from 12.15."}]},{"t":"Reading Part 2 — Matching","i":"For questions 6–10, match each student with the most suitable club, A–H.","x":"A. Creative Writing Circle — invent characters and write short stories on Tuesdays.\n\nB. Birdwatchers — look for local birds on Sunday mornings; binoculars are available.\n\nC. Cook Around the World — prepare a simple dish from another country on Fridays.\n\nD. Table Tennis — learn to play in the sports room at Thursday lunchtime.\n\nE. Costume Design — make clothes and accessories for school performances on Wednesdays.\n\nF. French Conversation — practise everyday French with a friendly group on Mondays.\n\nG. Astronomy Club — learn about planets and use a telescope on Friday evenings.\n\nH. Young Guides — learn local stories and lead short museum tours after school on Tuesdays.","m":7,"q":[{"q":"6. Hana likes speaking to visitors and would enjoy learning local stories.","o":["A","B","C","D","E","F","G","H"],"a":7,"e":"Young Guides learn local stories and lead museum tours."},{"q":"7. Tomas wants to design something to wear for the school performance.","o":["A","B","C","D","E","F","G","H"],"a":4,"e":"Costume Design makes clothes and accessories for performances."},{"q":"8. Eva is free on Sunday mornings and enjoys looking for wildlife outdoors.","o":["A","B","C","D","E","F","G","H"],"a":1,"e":"Birdwatchers meet on Sunday mornings."},{"q":"9. Marek wants to practise speaking French with other learners.","o":["A","B","C","D","E","F","G","H"],"a":5,"e":"French Conversation is for practising everyday French."},{"q":"10. Lenka wants to learn to play an indoor sport with a partner.","o":["A","B","C","D","E","F","G","H"],"a":3,"e":"Table Tennis is played with a partner in the sports room."}]},{"t":"Reading Part 3 — Multiple Choice","i":"For questions 11–16, choose A, B or C.","m":9,"x":"\nTHE REPAIR CAFÉ\n\nWhen our town library announced a repair café, I imagined a place where people drank coffee while experts fixed things. It was actually a monthly meeting in the library hall, and anyone could bring a small broken object. Volunteers showed visitors how to repair items instead of throwing them away.\n\nMy first visit was with my uncle, whose old desk lamp had stopped working. A volunteer called Rosa checked the plug and discovered that one wire had come loose. She explained each step to my uncle and let him do the repair himself. The lamp worked again, and he was pleased that he had learned something useful.\n\nI expected the volunteers to be professional repair workers, but most had learned their skills at home or through hobbies. One repaired toys, while another knew about bicycles. They did not promise to fix everything. If an object was unsafe or needed a special part, they explained why it could not be repaired there.\n\nI returned the next month, this time with a jacket that had a missing button. A volunteer showed me how to sew it on. I had never done that before, but it was easier than I thought. Now I keep a small sewing kit at home. The café is not only about saving money; it helps people feel confident about solving everyday problems.","q":[{"q":"11. What did the writer first think the repair café would be?","o":["A place where people met while experts repaired things.","A shop that sold tools and coffee.","A lesson about how to cook."],"a":0,"e":"The writer expected visitors to drink coffee as experts worked."},{"q":"12. What had happened to the uncle’s lamp?","o":["Its switch was missing.","A wire had become loose.","The bulb was the wrong size."],"a":1,"e":"Rosa found a loose wire near the plug."},{"q":"13. How did Rosa help the uncle?","o":["She repaired the lamp while he watched.","She explained the process and let him do it.","She told him to buy a new one."],"a":1,"e":"She guided him through the repair."},{"q":"14. What surprised the writer about the volunteers?","o":["Many had learned their skills informally.","They all worked for a repair company.","They repaired large machines."],"a":0,"e":"Most had learned at home or through hobbies."},{"q":"15. Why might an object not be repaired at the café?","o":["It could be dangerous or need a special part.","The owner had not paid for coffee.","The volunteers only repaired clothes."],"a":0,"e":"The article explains these two reasons."},{"q":"16. What does the writer say about sewing on a button?","o":["It was easier than expected.","It needed professional equipment.","It took several visits to learn."],"a":0,"e":"The writer says it was easier than expected."}]},{"t":"Reading Part 4 — Gapped Text","i":"Five sentences have been removed. Choose A–F for gaps 17–21. One sentence is extra.","m":8,"x":"\nA SMALL THEATRE, A BIG IDEA\n\nOur class visited a theatre that performs plays in different neighbourhoods. (17) _____. The actors bring a simple stage and lights with them.\n\nThe theatre began when a group of friends wanted children to see live stories near home. (18) _____. They now perform in schools, community halls and even outdoor courtyards.\n\nBefore the show, we helped arrange the chairs in a circle. (19) _____. This made it easy to see the actors from every seat.\n\nThe play was about a girl who wanted to build a treehouse. (20) _____. After the show, the actors asked us what we might have done in her place.\n\nI enjoyed the visit because everyone could join in the discussion. (21) _____. I hope they return to our school next year.","q":[{"q":"17. Gap 17","o":["It does not have one permanent building.","At first, they performed only once a year.","The audience was invited to suggest a new ending.","We sat close enough to notice every expression.","Some students thought the main character should ask for help.","The actors travelled by boat to reach the town."],"a":0,"e":"They perform in different neighbourhoods and bring a stage with them."},{"q":"18. Gap 18","o":["It does not have one permanent building.","At first, they performed only once a year.","The audience was invited to suggest a new ending.","We sat close enough to notice every expression.","Some students thought the main character should ask for help.","The actors travelled by boat to reach the town."],"a":1,"e":"This follows the theatre’s origin story before mentioning its wider work now."},{"q":"19. Gap 19","o":["It does not have one permanent building.","At first, they performed only once a year.","The audience was invited to suggest a new ending.","We sat close enough to notice every expression.","Some students thought the main character should ask for help.","The actors travelled by boat to reach the town."],"a":3,"e":"The sentence about seeing the actors clearly follows arranging chairs in a circle."},{"q":"20. Gap 20","o":["It does not have one permanent building.","At first, they performed only once a year.","The audience was invited to suggest a new ending.","We sat close enough to notice every expression.","Some students thought the main character should ask for help.","The actors travelled by boat to reach the town."],"a":4,"e":"The later discussion asks what students would do in the character’s place."},{"q":"21. Gap 21","o":["It does not have one permanent building.","At first, they performed only once a year.","The audience was invited to suggest a new ending.","We sat close enough to notice every expression.","Some students thought the main character should ask for help.","The actors travelled by boat to reach the town."],"a":2,"e":"The audience discussion included ideas for the story."}]},{"t":"Reading Part 5 — Multiple-choice Cloze","i":"For questions 22–27, choose A, B, C or D.","m":7,"x":"\nA SCHOOL PHOTO EXHIBITION\n\nOur photography group decided to hold an exhibition in the school hall. We wanted to (22) _____ pictures of places students enjoy after lessons. First, we asked everyone to (23) _____ one photograph and write a short caption. The teachers helped us (24) _____ the pictures by theme. We put the outdoor photographs (25) _____ the entrance, so visitors saw them first. On the opening day, many families came to (26) _____ the display. The project was a good way to (27) _____ our town from a new point of view.","q":[{"q":"22. Gap 22","o":["show","carry","lend","keep"],"a":0,"e":"Show means display for people to see."},{"q":"23. Gap 23","o":["choose","invite","spend","guess"],"a":0,"e":"Each student selected a photograph."},{"q":"24. Gap 24","o":["organise","borrow","repair","expect"],"a":0,"e":"Pictures can be organised by theme."},{"q":"25. Gap 25","o":["near","across","between","through"],"a":0,"e":"Near the entrance means close to it."},{"q":"26. Gap 26","o":["visit","arrive","reach","attend"],"a":0,"e":"People visit an exhibition."},{"q":"27. Gap 27","o":["see","watch","look","viewing"],"a":0,"e":"The natural phrase is see the town from a new point of view."}]},{"t":"Reading Part 6 — Open Cloze","i":"For questions 28–32, write one word in each gap.","m":6,"x":"\nA WEEK WITHOUT A CAR\n\nLast month my family decided to travel around town (28) _____ bicycle for a week. My younger brother was worried (29) _____ getting tired, so we planned short journeys. We left home earlier (30) _____ usual and used a map to find quiet streets. It took us a little longer to reach school, but we felt more awake when we arrived. In the evenings, we sometimes walked (31) _____ the shops together. By the end of the week, we had learned that getting around without a car was easier (32) _____ we expected.","q":[{"q":"28. Gap 28","a":["by"],"e":"The phrase is by bicycle."},{"q":"29. Gap 29","a":["about"],"e":"Worried about is the correct preposition."},{"q":"30. Gap 30","a":["than"],"e":"The comparative phrase is earlier than usual."},{"q":"31. Gap 31","a":["to"],"e":"Walk to the shops."},{"q":"32. Gap 32","a":["than"],"e":"Easier than we expected."}]}];
+
+var L = [{"t":"Listening Part 1 — Picture Choice","i":"For questions 1–7, choose the picture that matches what you hear. Each option is an original labelled illustration.","im":"<p><button class='btn alt say' data-i='0' type='button'>Play Part 1</button></p>","m":8,"q":[{"q":"1. How will Amira travel to the zoo?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjRmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxOSIgZmlsbD0iI2YyYzg1YiIvPjxwYXRoIGQ9Ik0wIDE3NHE3NS0xNiAxNDUgMHQyMTUtMnYzOEgweiIgZmlsbD0iI2E4YzlhMSIvPjxyZWN0IHg9IjgyIiB5PSI0OCIgd2lkdGg9IjE5NiIgaGVpZ2h0PSIxMTIiIHJ4PSIyMCIgZmlsbD0iIzY1YjdjMyIgc3Ryb2tlPSIjMjYzYjUxIiBzdHJva2Utd2lkdGg9IjciLz48cGF0aCBkPSJNMTAwIDY4aDYwdjQ0aC02MHptNzggMGg3OHY0NGgtNzh6IiBmaWxsPSIjZTlmNGY0IiBzdHJva2U9IiMyNjNiNTEiIHN0cm9rZS13aWR0aD0iNSIvPjxwYXRoIGQ9Ik0xMDAgMTMwaDE2MG0tMTMwIDMwdjE4bTExMC0xOHYxOE02NSAxOTBoMjMwTTgwIDE4MGgyMDAiIHN0cm9rZT0iIzI2M2I1MSIgc3Ryb2tlLXdpZHRoPSI2Ii8+PGNpcmNsZSBjeD0iMTI1IiBjeT0iMTYwIiByPSIxNCIgZmlsbD0iIzI2M2I1MSIvPjxjaXJjbGUgY3g9IjIzNSIgY3k9IjE2MCIgcj0iMTQiIGZpbGw9IiMyNjNiNTEiLz48L3N2Zz4=","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjRmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxOSIgZmlsbD0iI2YyYzg1YiIvPjxwYXRoIGQ9Ik0wIDE3NHE3NS0xNiAxNDUgMHQyMTUtMnYzOEgweiIgZmlsbD0iI2E4YzlhMSIvPjxjaXJjbGUgY3g9IjEwNSIgY3k9IjE0NSIgcj0iNDIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzI2M2I1MSIgc3Ryb2tlLXdpZHRoPSI3Ii8+PGNpcmNsZSBjeD0iMjYwIiBjeT0iMTQ1IiByPSI0MiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjYzYjUxIiBzdHJva2Utd2lkdGg9IjciLz48cGF0aCBkPSJNMTA1IDE0NWw0NS02NSA1MCA2NWgtOTVsNDUtNjVoNDhsMTItMjBtLTYzIDE4aC0yOG05NCAwaDI1IiBmaWxsPSJub25lIiBzdHJva2U9IiNlZjgzNTQiIHN0cm9rZS13aWR0aD0iOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjRmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxOSIgZmlsbD0iI2YyYzg1YiIvPjxwYXRoIGQ9Ik0wIDE3NHE3NS0xNiAxNDUgMHQyMTUtMnYzOEgweiIgZmlsbD0iI2E4YzlhMSIvPjxwYXRoIGQ9Ik03OCAxMzdsMjAtNDhxNi0xNCAyMi0xNGgxMTJxMTYgMCAyMyAxNWwyMCA0NyAxNyAxMnYzNEg2NHYtMzR6IiBmaWxsPSIjZWY4MzU0IiBzdHJva2U9IiMyNjNiNTEiIHN0cm9rZS13aWR0aD0iNyIvPjxwYXRoIGQ9Ik0xMTIgODloNTZ2NDFIOTZ6bTY4IDBoNDBxMTEgMCAxNiAxMmwxMyAyOWgtNjl6IiBmaWxsPSIjZGZmMmY2IiBzdHJva2U9IiMyNjNiNTEiIHN0cm9rZS13aWR0aD0iNSIvPjxjaXJjbGUgY3g9IjExMiIgY3k9IjE4MiIgcj0iMTgiIGZpbGw9IiMyNjNiNTEiLz48Y2lyY2xlIGN4PSIyNDIiIGN5PSIxODIiIHI9IjE4IiBmaWxsPSIjMjYzYjUxIi8+PC9zdmc+"],"a":0,"e":"She decides to take the tram."},{"q":"2. Which drink will Theo order?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjRmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxOSIgZmlsbD0iI2YyYzg1YiIvPjxwYXRoIGQ9Ik0wIDE3NHE3NS0xNiAxNDUgMHQyMTUtMnYzOEgweiIgZmlsbD0iI2E4YzlhMSIvPjxwYXRoIGQ9Ik0xMjcgNzJoMTA1bC0xMyAxMTJxLTIgMTQtMTUgMTRoLTUxcS0xMyAwLTE1LTE0eiIgZmlsbD0iI2Y1YTYyMyIgc3Ryb2tlPSIjMjYzYjUxIiBzdHJva2Utd2lkdGg9IjciLz48cGF0aCBkPSJNMTQ1IDExM2g3MCIgc3Ryb2tlPSIjZmZmMWJmIiBzdHJva2Utd2lkdGg9IjgiLz48cGF0aCBkPSJNMjA1IDY1bDI4LTMwIiBzdHJva2U9IiNlODVlNGYiIHN0cm9rZS13aWR0aD0iNyIvPjxwYXRoIGQ9Ik0yMTAgNDNxMjUtMjggNDUtNS0yMyAxNS00NSA1IiBmaWxsPSIjNzBhYTY1Ii8+PC9zdmc+","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjRmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxOSIgZmlsbD0iI2YyYzg1YiIvPjxwYXRoIGQ9Ik0wIDE3NHE3NS0xNiAxNDUgMHQyMTUtMnYzOEgweiIgZmlsbD0iI2E4YzlhMSIvPjxwYXRoIGQ9Ik0xMDUgODloMTMzbC0xMiA5MXEtMiAxNS0xNyAxNWgtNzNxLTE1IDAtMTctMTV6IiBmaWxsPSIjOWI1YjNlIiBzdHJva2U9IiMyNjNiNTEiIHN0cm9rZS13aWR0aD0iNyIvPjxwYXRoIGQ9Ik0yMzggMTA4aDI1cTMyIDAgMjIgMzMtNSAxOC00MCAxOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjYzYjUxIiBzdHJva2Utd2lkdGg9IjkiLz48cGF0aCBkPSJNMTM5IDcwcS0xMi0xNyAwLTMxbTM1IDMxcS0xMi0xNyAwLTMxbTM1IDMxcS0xMi0xNyAwLTMxIiBmaWxsPSJub25lIiBzdHJva2U9IiM5OGFhYmIiIHN0cm9rZS13aWR0aD0iNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PC9zdmc+","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjRmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxOSIgZmlsbD0iI2YyYzg1YiIvPjxwYXRoIGQ9Ik0wIDE3NHE3NS0xNiAxNDUgMHQyMTUtMnYzOEgweiIgZmlsbD0iI2E4YzlhMSIvPjxwYXRoIGQ9Ik0xNDQgNjdWNDlsMjEtMjBoNDNsMjAgMjB2MThsMTggMjN2MTAxcTAgMTMtMTQgMTNoLTk0cS0xNCAwLTE0LTEzVjkweiIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjMjYzYjUxIiBzdHJva2Utd2lkdGg9IjciLz48cGF0aCBkPSJNMTQ0IDY3aDg0TTEzOSAxMjZoMTAyIiBzdHJva2U9IiM4OGJiZDIiIHN0cm9rZS13aWR0aD0iMTIiLz48cGF0aCBkPSJNMTY1IDE1MWg1MiIgc3Ryb2tlPSIjZGNlYWYxIiBzdHJva2Utd2lkdGg9IjciLz48L3N2Zz4="],"a":1,"e":"He chooses hot chocolate."},{"q":"3. Where will the family go on Sunday?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjRmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxOSIgZmlsbD0iI2YyYzg1YiIvPjxwYXRoIGQ9Ik0wIDE3NHE3NS0xNiAxNDUgMHQyMTUtMnYzOEgweiIgZmlsbD0iI2E4YzlhMSIvPjxyZWN0IHg9IjU3IiB5PSI1NSIgd2lkdGg9IjI0NiIgaGVpZ2h0PSIxMzUiIHJ4PSIxMiIgZmlsbD0iI2E4ZGVlZCIgc3Ryb2tlPSIjMjYzYjUxIiBzdHJva2Utd2lkdGg9IjciLz48cGF0aCBkPSJNNjUgMTYzcTQ1LTI1IDkwIDB0MTQ1IDB2MjBINjV6IiBmaWxsPSIjNTFhN2IyIi8+PHBhdGggZD0iTTEwNiAxMTlxMTgtMjMgNDIgMC0yNCAyMy00MiAwbTgxIDI4cTE5LTI0IDQzIDAtMjQgMjQtNDMgMCIgZmlsbD0iI2YxYTI1NCIgc3Ryb2tlPSIjMjYzYjUxIiBzdHJva2Utd2lkdGg9IjQiLz48cGF0aCBkPSJNMTQ1IDExOWwtMTQtMTB2MjB6bTgzIDI4IDE0LTEwdjIweiIgZmlsbD0iI2VmODM1NCIvPjxjaXJjbGUgY3g9IjkzIiBjeT0iODMiIHI9IjUiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIyNDYiIGN5PSI5NCIgcj0iNyIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg==","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjRmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxOSIgZmlsbD0iI2YyYzg1YiIvPjxwYXRoIGQ9Ik0wIDE3NHE3NS0xNiAxNDUgMHQyMTUtMnYzOEgweiIgZmlsbD0iI2E4YzlhMSIvPjxyZWN0IHg9IjcyIiB5PSI0NyIgd2lkdGg9IjIxNiIgaGVpZ2h0PSIxNDciIHJ4PSI4IiBmaWxsPSIjZDZhODdjIiBzdHJva2U9IiMyNjNiNTEiIHN0cm9rZS13aWR0aD0iNyIvPjxwYXRoIGQ9Ik03OCA5NmgyMDRNNzggMTQ1aDIwNCIgc3Ryb2tlPSIjMjYzYjUxIiBzdHJva2Utd2lkdGg9IjYiLz48cGF0aCBkPSJNOTQgNThoMjZ2MzNIOTR6bTM5LTRoMzB2MzdoLTMwem00NSA3aDI1djMwaC0yNXptNDEtOWgyOXYzOWgtMjl6bS0xMTggNDloMjh2MzNoLTI4em00MSA2aDI4djI3aC0yOHptNDItOGgyNnYzNWgtMjZ6bTQwIDloMzJ2MjZoLTMyem0tOTIgNDVoMzB2MzJoLTMwem00OCAyaDI4djMwaC0yOHptNDYtNmgyOXYzNmgtMjl6IiBmaWxsPSIjZTg3ODU1IiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMyIvPjwvc3ZnPg==","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjRmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxOSIgZmlsbD0iI2YyYzg1YiIvPjxwYXRoIGQ9Ik0wIDE3NHE3NS0xNiAxNDUgMHQyMTUtMnYzOEgweiIgZmlsbD0iI2E4YzlhMSIvPjxwYXRoIGQ9Ik02NCA5MWgyMzJsLTIwLTQ0SDg0eiIgZmlsbD0iI2VmODM1NCIgc3Ryb2tlPSIjMjYzYjUxIiBzdHJva2Utd2lkdGg9IjYiLz48cGF0aCBkPSJNMTExIDQ4djQzbTU4LTQzdjQzbTU4LTQzdjQzIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMTIiLz48cmVjdCB4PSI3OCIgeT0iOTQiIHdpZHRoPSIyMDMiIGhlaWdodD0iOTYiIGZpbGw9IiNmM2QzYTIiIHN0cm9rZT0iIzI2M2I1MSIgc3Ryb2tlLXdpZHRoPSI2Ii8+PHBhdGggZD0iTTkzIDEzOWgxNzAiIHN0cm9rZT0iIzI2M2I1MSIgc3Ryb2tlLXdpZHRoPSI1Ii8+PGNpcmNsZSBjeD0iMTI0IiBjeT0iMTIzIiByPSIxMyIgZmlsbD0iI2Q5NGM0OCIvPjxjaXJjbGUgY3g9IjE2MyIgY3k9IjEyMiIgcj0iMTMiIGZpbGw9IiNlOWI2NDIiLz48Y2lyY2xlIGN4PSIyMDIiIGN5PSIxMjMiIHI9IjEzIiBmaWxsPSIjNzNhNzY3Ii8+PGNpcmNsZSBjeD0iMjQwIiBjeT0iMTIzIiByPSIxMyIgZmlsbD0iI2Q5NGM0OCIvPjwvc3ZnPg=="],"a":0,"e":"They decide to visit the aquarium."},{"q":"4. What did Lucy leave at the swimming pool?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjRmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxOSIgZmlsbD0iI2YyYzg1YiIvPjxwYXRoIGQ9Ik0wIDE3NHE3NS0xNiAxNDUgMHQyMTUtMnYzOEgweiIgZmlsbD0iI2E4YzlhMSIvPjxyZWN0IHg9Ijc1IiB5PSI2NyIgd2lkdGg9IjIxMCIgaGVpZ2h0PSIxMjUiIHJ4PSIxMiIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjMjYzYjUxIiBzdHJva2Utd2lkdGg9IjciLz48cGF0aCBkPSJNOTUgNzJ2MTE1bTM1LTExNXYxMTVtMzUtMTE1djExNW0zNS0xMTV2MTE1bTM1LTExNXYxMTVtMzUtMTE1djExNSIgc3Ryb2tlPSIjNTBhNWMxIiBzdHJva2Utd2lkdGg9IjE3Ii8+PHBhdGggZD0iTTkzIDcydjExNW03NC0xMTV2MTE1bTc0LTExNXYxMTUiIHN0cm9rZT0iI2YxYTI1OCIgc3Ryb2tlLXdpZHRoPSI2Ii8+PC9zdmc+","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjRmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxOSIgZmlsbD0iI2YyYzg1YiIvPjxwYXRoIGQ9Ik0wIDE3NHE3NS0xNiAxNDUgMHQyMTUtMnYzOEgweiIgZmlsbD0iI2E4YzlhMSIvPjxwYXRoIGQ9Ik03OSAxNDNxNy03MCA5NC04NSA2MiAwIDkxIDY1bC02IDI0SDkwcS0xNyAwLTExLTR6IiBmaWxsPSIjZGM1MTRkIiBzdHJva2U9IiMyNjNiNTEiIHN0cm9rZS13aWR0aD0iNyIvPjxwYXRoIGQ9Ik05MSAxNDZxODMgMTkgMTkyIDItMTEgMjgtOTQgMzFIOTNxLTIyLTUtMi0zM3oiIGZpbGw9IiNlZjgzNTQiIHN0cm9rZT0iIzI2M2I1MSIgc3Ryb2tlLXdpZHRoPSI3Ii8+PHBhdGggZD0iTTE3NiA2M3Y1MyIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjUiLz48L3N2Zz4=","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjRmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxOSIgZmlsbD0iI2YyYzg1YiIvPjxwYXRoIGQ9Ik0wIDE3NHE3NS0xNiAxNDUgMHQyMTUtMnYzOEgweiIgZmlsbD0iI2E4YzlhMSIvPjxwYXRoIGQ9Ik0xNDUgNTFWMzJoNjh2MTlsMTkgMjR2MTA2cTAgMTctMTcgMTdoLTcycS0xNyAwLTE3LTE3Vjc1eiIgZmlsbD0iIzZjYzZkYyIgc3Ryb2tlPSIjMjYzYjUxIiBzdHJva2Utd2lkdGg9IjciLz48cGF0aCBkPSJNMTQ1IDUxaDY4bS04NyA2OWgxMDYiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxMCIvPjxwYXRoIGQ9Ik0xNjMgMTQyaDUyIiBzdHJva2U9IiNkNWY0ZjgiIHN0cm9rZS13aWR0aD0iNyIvPjwvc3ZnPg=="],"a":1,"e":"She remembers leaving her red cap."},{"q":"5. Which animal is on the wildlife poster?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjRmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxOSIgZmlsbD0iI2YyYzg1YiIvPjxwYXRoIGQ9Ik0wIDE3NHE3NS0xNiAxNDUgMHQyMTUtMnYzOEgweiIgZmlsbD0iI2E4YzlhMSIvPjxwYXRoIGQ9Ik04MyAxMDQgOTQgNDlsNTEgMzFxMzQtMTkgNjkgMGw1MS0zMSAxMiA1OHEyNSA1OC0zMSA5MS00OSAyOC05MCAwLTU2LTMzLTczLTk0eiIgZmlsbD0iI2U5ODI0NSIgc3Ryb2tlPSIjMjYzYjUxIiBzdHJva2Utd2lkdGg9IjciLz48cGF0aCBkPSJtMTExIDc5IDMxIDIwLTM4IDZ6bTEyOSAwLTMxIDIwIDM4IDZ6IiBmaWxsPSIjZjVkNmI5Ii8+PGVsbGlwc2UgY3g9IjE1MyIgY3k9IjEyNiIgcng9IjgiIHJ5PSIxMSIgZmlsbD0iIzI2M2I1MSIvPjxlbGxpcHNlIGN4PSIyMTEiIGN5PSIxMjYiIHJ4PSI4IiByeT0iMTEiIGZpbGw9IiMyNjNiNTEiLz48cGF0aCBkPSJNMTY2IDE1NHExNi0xNiAzMiAwbC0xNiAxN3oiIGZpbGw9IiNmZmYyZGYiIHN0cm9rZT0iIzI2M2I1MSIgc3Ryb2tlLXdpZHRoPSI0Ii8+PC9zdmc+","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjRmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxOSIgZmlsbD0iI2YyYzg1YiIvPjxwYXRoIGQ9Ik0wIDE3NHE3NS0xNiAxNDUgMHQyMTUtMnYzOEgweiIgZmlsbD0iI2E4YzlhMSIvPjxlbGxpcHNlIGN4PSIxODAiIGN5PSIxMzIiIHJ4PSI5MSIgcnk9IjcwIiBmaWxsPSIjOTg2YjRiIiBzdHJva2U9IiMyNjNiNTEiIHN0cm9rZS13aWR0aD0iNyIvPjxwYXRoIGQ9Im0xMDMgODAtMTgtNDIgNTMgMjRtMTA3IDE4IDE4LTQyLTUzIDI0IiBmaWxsPSIjOTg2YjRiIiBzdHJva2U9IiMyNjNiNTEiIHN0cm9rZS13aWR0aD0iNyIvPjxjaXJjbGUgY3g9IjE0NSIgY3k9IjExOSIgcj0iMzEiIGZpbGw9IiNmZmY0ZGQiLz48Y2lyY2xlIGN4PSIyMTUiIGN5PSIxMTkiIHI9IjMxIiBmaWxsPSIjZmZmNGRkIi8+PGNpcmNsZSBjeD0iMTQ5IiBjeT0iMTIwIiByPSIxMiIgZmlsbD0iIzI2M2I1MSIvPjxjaXJjbGUgY3g9IjIxMSIgY3k9IjEyMCIgcj0iMTIiIGZpbGw9IiMyNjNiNTEiLz48cGF0aCBkPSJtMTcxIDE0NSAxOCAwLTkgMTh6IiBmaWxsPSIjZWY5YjQ3Ii8+PC9zdmc+","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjRmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxOSIgZmlsbD0iI2YyYzg1YiIvPjxwYXRoIGQ9Ik0wIDE3NHE3NS0xNiAxNDUgMHQyMTUtMnYzOEgweiIgZmlsbD0iI2E4YzlhMSIvPjxlbGxpcHNlIGN4PSIxODAiIGN5PSIxNTMiIHJ4PSI3NCIgcnk9IjQ5IiBmaWxsPSIjZjRlZWU1IiBzdHJva2U9IiMyNjNiNTEiIHN0cm9rZS13aWR0aD0iNyIvPjxlbGxpcHNlIGN4PSIxNDQiIGN5PSI2OCIgcng9IjI0IiByeT0iNTciIHRyYW5zZm9ybT0icm90YXRlKC0xNCAxNDQgNjgpIiBmaWxsPSIjZjRlZWU1IiBzdHJva2U9IiMyNjNiNTEiIHN0cm9rZS13aWR0aD0iNyIvPjxlbGxpcHNlIGN4PSIyMTMiIGN5PSI2NiIgcng9IjI0IiByeT0iNTgiIHRyYW5zZm9ybT0icm90YXRlKDEyIDIxMyA2NikiIGZpbGw9IiNmNGVlZTUiIHN0cm9rZT0iIzI2M2I1MSIgc3Ryb2tlLXdpZHRoPSI3Ii8+PGVsbGlwc2UgY3g9IjE0NCIgY3k9IjY3IiByeD0iOSIgcnk9IjM1IiB0cmFuc2Zvcm09InJvdGF0ZSgtMTQgMTQ0IDY3KSIgZmlsbD0iI2U5YTJhMyIvPjxlbGxpcHNlIGN4PSIyMTMiIGN5PSI2NiIgcng9IjkiIHJ5PSIzNSIgdHJhbnNmb3JtPSJyb3RhdGUoMTIgMjEzIDY2KSIgZmlsbD0iI2U5YTJhMyIvPjxjaXJjbGUgY3g9IjE1NyIgY3k9IjEzOSIgcj0iNyIgZmlsbD0iIzI2M2I1MSIvPjxjaXJjbGUgY3g9IjIwNCIgY3k9IjEzOSIgcj0iNyIgZmlsbD0iIzI2M2I1MSIvPjxjaXJjbGUgY3g9IjE4MCIgY3k9IjE1NyIgcj0iNyIgZmlsbD0iI2U3N2M4MyIvPjxjaXJjbGUgY3g9IjI1OCIgY3k9IjE2NiIgcj0iMTgiIGZpbGw9IiNmZmYiIHN0cm9rZT0iIzI2M2I1MSIgc3Ryb2tlLXdpZHRoPSI1Ii8+PC9zdmc+"],"a":2,"e":"The poster shows a rabbit."},{"q":"6. Where will the craft club meet today?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjRmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxOSIgZmlsbD0iI2YyYzg1YiIvPjxwYXRoIGQ9Ik0wIDE3NHE3NS0xNiAxNDUgMHQyMTUtMnYzOEgweiIgZmlsbD0iI2E4YzlhMSIvPjxwYXRoIGQ9Ik04NyAxNzQgMTIyIDU4aDExNmwzNSAxMTYiIGZpbGw9IiNlN2M5OWEiIHN0cm9rZT0iIzI2M2I1MSIgc3Ryb2tlLXdpZHRoPSI3Ii8+PHJlY3QgeD0iMTM2IiB5PSI3NyIgd2lkdGg9Ijg4IiBoZWlnaHQ9Ijc1IiBmaWxsPSIjYjhkOWU3IiBzdHJva2U9IiMyNjNiNTEiIHN0cm9rZS13aWR0aD0iNiIvPjxwYXRoIGQ9Im0xMjUgMTgyIDM0LTI4bTU2LTEgMjcgMzEiIHN0cm9rZT0iIzI2M2I1MSIgc3Ryb2tlLXdpZHRoPSI3Ii8+PGNpcmNsZSBjeD0iMjgwIiBjeT0iMTAyIiByPSIzMSIgZmlsbD0iI2YzYzg1YiIgc3Ryb2tlPSIjMjYzYjUxIiBzdHJva2Utd2lkdGg9IjUiLz48Y2lyY2xlIGN4PSIyNzAiIGN5PSI5NCIgcj0iNSIgZmlsbD0iI2U4Nzk2MiIvPjxjaXJjbGUgY3g9IjI4NiIgY3k9IjEwNSIgcj0iNSIgZmlsbD0iIzVjYTZiYiIvPjxjaXJjbGUgY3g9IjI3MSIgY3k9IjExNSIgcj0iNSIgZmlsbD0iIzc0YTk2YiIvPjwvc3ZnPg==","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjRmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxOSIgZmlsbD0iI2YyYzg1YiIvPjxwYXRoIGQ9Ik0wIDE3NHE3NS0xNiAxNDUgMHQyMTUtMnYzOEgweiIgZmlsbD0iI2E4YzlhMSIvPjxwYXRoIGQ9Ik02OCAxNjZoMjI1IiBzdHJva2U9IiMyNjNiNTEiIHN0cm9rZS13aWR0aD0iOCIvPjxyZWN0IHg9Ijk1IiB5PSIxMzMiIHdpZHRoPSIxMzAiIGhlaWdodD0iMjQiIHJ4PSI2IiBmaWxsPSIjYmQ4MDU0IiBzdHJva2U9IiMyNjNiNTEiIHN0cm9rZS13aWR0aD0iNSIvPjxwYXRoIGQ9Ik0xMTAgMTU3djMwbTk4LTMwdjMwTTE2MCAxMzFWODIiIHN0cm9rZT0iIzI2M2I1MSIgc3Ryb2tlLXdpZHRoPSI3Ii8+PGNpcmNsZSBjeD0iMTYwIiBjeT0iNzIiIHI9IjQzIiBmaWxsPSIjNzliNTZiIiBzdHJva2U9IiMyNjNiNTEiIHN0cm9rZS13aWR0aD0iNiIvPjxwYXRoIGQ9Ik0yNTcgNTl2MTI4bTAtOTMgMzctMzBtLTM3IDUyLTMxLTI1IiBzdHJva2U9IiM3YTViNDciIHN0cm9rZS13aWR0aD0iOSIvPjxjaXJjbGUgY3g9IjI2NCIgY3k9IjU1IiByPSIyOCIgZmlsbD0iIzc5YjU2YiIvPjwvc3ZnPg==","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjRmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxOSIgZmlsbD0iI2YyYzg1YiIvPjxwYXRoIGQ9Ik0wIDE3NHE3NS0xNiAxNDUgMHQyMTUtMnYzOEgweiIgZmlsbD0iI2E4YzlhMSIvPjxyZWN0IHg9IjYwIiB5PSI0OSIgd2lkdGg9IjI0MCIgaGVpZ2h0PSIxMTYiIHJ4PSI5IiBmaWxsPSIjODJiODhhIiBzdHJva2U9IiMyNjNiNTEiIHN0cm9rZS13aWR0aD0iNyIvPjxwYXRoIGQ9Ik0xNzggNDl2MTE2IiBzdHJva2U9IiNlOGYxZGYiIHN0cm9rZS13aWR0aD0iNCIvPjxwYXRoIGQ9Ik0xMDUgOTNoNTNtLTUzIDE3aDM2bTUzLTE4aDcwbS03MCAxOGg1MiIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjUiLz48cGF0aCBkPSJNODIgMTgwaDIwOE0xMDUgMTgwdjI3bTE2NC0yN3YyNyIgc3Ryb2tlPSIjMjYzYjUxIiBzdHJva2Utd2lkdGg9IjciLz48cmVjdCB4PSIxMTEiIHk9IjE1MyIgd2lkdGg9IjYxIiBoZWlnaHQ9IjIwIiByeD0iNCIgZmlsbD0iI2M5OTA1ZSIvPjxyZWN0IHg9IjIwMCIgeT0iMTUzIiB3aWR0aD0iNjEiIGhlaWdodD0iMjAiIHJ4PSI0IiBmaWxsPSIjYzk5MDVlIi8+PC9zdmc+"],"a":2,"e":"The teacher moves the group to Classroom 8."},{"q":"7. How will the students get to the sports centre?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjRmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxOSIgZmlsbD0iI2YyYzg1YiIvPjxwYXRoIGQ9Ik0wIDE3NHE3NS0xNiAxNDUgMHQyMTUtMnYzOEgweiIgZmlsbD0iI2E4YzlhMSIvPjxwYXRoIGQ9Ik00MiAxODJxODUtNTMgMTY1IDB0MTE1LTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2M0OWE2YyIgc3Ryb2tlLXdpZHRoPSIyOCIvPjxjaXJjbGUgY3g9IjEzNyIgY3k9IjczIiByPSIxOCIgZmlsbD0iI2Q5OWM3NSIvPjxwYXRoIGQ9Ik0xMzcgOTR2NThtMC0zNC0yOSAyM20yOS0yMiAzMCAxNm0tMzAgMTctMjQgMzRtMjQtMzQgMjMgMzMiIHN0cm9rZT0iIzM5N2VhZiIgc3Ryb2tlLXdpZHRoPSIxMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PGNpcmNsZSBjeD0iMjI5IiBjeT0iODkiIHI9IjE3IiBmaWxsPSIjYzc4OTY1Ii8+PHBhdGggZD0iTTIyOSAxMDh2NDhtMC0yOS0yNSAxOW0yNS0xOSAyNyAxM20tMjcgMTYtMTggMzRtMTgtMzQgMjQgMzMiIHN0cm9rZT0iI2VmODM1NCIgc3Ryb2tlLXdpZHRoPSIxMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PC9zdmc+","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjRmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxOSIgZmlsbD0iI2YyYzg1YiIvPjxwYXRoIGQ9Ik0wIDE3NHE3NS0xNiAxNDUgMHQyMTUtMnYzOEgweiIgZmlsbD0iI2E4YzlhMSIvPjxwYXRoIGQ9Ik02NSAxNDJoMjMwbC0yOCA0NUgxMDF6IiBmaWxsPSIjNjViN2MzIiBzdHJva2U9IiMyNjNiNTEiIHN0cm9rZS13aWR0aD0iNyIvPjxyZWN0IHg9IjExMiIgeT0iNzUiIHdpZHRoPSIxMzAiIGhlaWdodD0iNjciIGZpbGw9IiNmZmYiIHN0cm9rZT0iIzI2M2I1MSIgc3Ryb2tlLXdpZHRoPSI2Ii8+PHBhdGggZD0iTTE0NiA3NVY0OWg1OXYyNiIgZmlsbD0iI2VmODM1NCIgc3Ryb2tlPSIjMjYzYjUxIiBzdHJva2Utd2lkdGg9IjYiLz48cGF0aCBkPSJNMTMzIDk3aDMxdjI1aC0zMXptNDggMGgzMXYyNWgtMzF6IiBmaWxsPSIjOTVkMmU1IiBzdHJva2U9IiMyNjNiNTEiIHN0cm9rZS13aWR0aD0iNCIvPjxwYXRoIGQ9Ik02MCAxOTVxNDAtMTggODAgMHQ4MCAwIDgwIDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRlYTRjNCIgc3Ryb2tlLXdpZHRoPSI5Ii8+PC9zdmc+","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjRmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxOSIgZmlsbD0iI2YyYzg1YiIvPjxwYXRoIGQ9Ik0wIDE3NHE3NS0xNiAxNDUgMHQyMTUtMnYzOEgweiIgZmlsbD0iI2E4YzlhMSIvPjxyZWN0IHg9IjU0IiB5PSI3OSIgd2lkdGg9IjI1MiIgaGVpZ2h0PSIxMDMiIHJ4PSIyMiIgZmlsbD0iI2YyYzY0YiIgc3Ryb2tlPSIjMjYzYjUxIiBzdHJva2Utd2lkdGg9IjciLz48cGF0aCBkPSJNODMgOTZoNjJ2NDJIODN6bTc0IDBoNjF2NDJoLTYxem03MyAwaDQ2djQyaC00NnoiIGZpbGw9IiNkZmYyZjYiIHN0cm9rZT0iIzI2M2I1MSIgc3Ryb2tlLXdpZHRoPSI1Ii8+PHBhdGggZD0iTTYyIDE1MWgyMzciIHN0cm9rZT0iI2VmODM1NCIgc3Ryb2tlLXdpZHRoPSIxMCIvPjxjaXJjbGUgY3g9IjExMCIgY3k9IjE4MSIgcj0iMTgiIGZpbGw9IiMyNjNiNTEiLz48Y2lyY2xlIGN4PSIyNTgiIGN5PSIxODEiIHI9IjE4IiBmaWxsPSIjMjYzYjUxIi8+PC9zdmc+"],"a":2,"e":"The school has booked a minibus."}]},{"t":"Listening Part 2 — Short Conversations","i":"You will hear six conversations. For questions 8–13, choose A, B or C.","im":"<p><button class='btn alt say' data-i='1' type='button'>Play Part 2</button></p>","m":7,"q":[{"q":"8. Why can’t Klara come to the music club?","o":["She needs to feed her neighbour’s rabbit.","She has a dentist appointment.","She has forgotten her instrument."],"a":0,"e":"Klara agreed to look after the rabbit."},{"q":"9. What did Ben buy at the book fair?","o":["A map of the city","A book of jokes","A science magazine"],"a":1,"e":"He chose the joke book."},{"q":"10. What must the class bring for the bake sale?","o":["Paper napkins","A large table","Bottles of water"],"a":0,"e":"The teacher asks them to bring napkins."},{"q":"11. When does the school concert begin?","o":["At six o’clock","At half past six","At seven o’clock"],"a":1,"e":"The concert starts at half past six."},{"q":"12. Why has Marta joined the swimming group?","o":["To get stronger for another sport","To learn to dive","To train for a race"],"a":0,"e":"She hopes swimming will help her basketball."},{"q":"13. Where will the geography display be shown?","o":["In the main corridor","In the library","In the computer room"],"a":1,"e":"The display will be in the library."}]},{"t":"Listening Part 3 — Note Completion","i":"You will hear an announcement about a town nature walk. Complete questions 14–19 with one or two words or a number.","im":"<p><button class='btn alt say' data-i='2' type='button'>Play Part 3</button></p>","m":6,"q":[{"q":"14. Event: River _____","a":["walk"],"e":"The event is called the River Walk."},{"q":"15. Date: Sunday 12 _____","a":["april"],"e":"It takes place on 12 April."},{"q":"16. Meet at: the old _____ bridge","a":["stone"],"e":"The group meets at the old stone bridge."},{"q":"17. Start time: _____ a.m.","a":["9.30"],"e":"The start time is half past nine."},{"q":"18. Bring: a bottle of _____","a":["water"],"e":"Participants should bring water."},{"q":"19. Book by calling _____","a":["442781"],"e":"The number given is 442781."}]},{"t":"Listening Part 4 — Interview","i":"You will hear an interviewer talking to a student who helped organise a school swap day. For questions 20–25, choose A, B or C.","im":"<p><button class='btn alt say' data-i='3' type='button'>Play Part 4</button></p>","m":7,"q":[{"q":"20. Why did Adam suggest a swap day?","o":["He wanted students to exchange things they no longer used.","He needed money for a school trip.","A teacher asked him to sell sports equipment."],"a":0,"e":"He wanted useful items to find new owners."},{"q":"21. What was Adam worried about before the event?","o":["Not enough students would bring items.","The hall would be too small.","The event would take all day."],"a":0,"e":"He was unsure whether enough people would join."},{"q":"22. How did the team organise the tables?","o":["By the age of the students","By the type of item","By the order items arrived"],"a":1,"e":"They grouped books, games and clothes separately."},{"q":"23. What did visitors need to do before taking an item?","o":["Pay a small fee","Ask a teacher","Leave one of their own items"],"a":2,"e":"The swap worked by exchanging an item."},{"q":"24. What happened to things left at the end?","o":["They were donated to a community shop.","They were stored for next year.","They were returned to every student."],"a":0,"e":"The remaining things went to a community shop."},{"q":"25. What would Adam change next time?","o":["Open the event to families, too.","Hold it in the gym.","Ask students to bring fewer books."],"a":0,"e":"He hopes to invite families at the next event."}]}];
+
+var T = ["Extract 1. Girl: The zoo is across town. We could ride our bikes, but it might rain. Dad: I can drive, though parking is difficult. Girl: The new tram goes straight there from the square. Dad: Good thinking. Let's take it. {pause} Extract 2. Boy: I'm cold. Should I get apple juice? Sister: It's a chilly day. The café has hot chocolate. Boy: That sounds better. I'll have that. {pause} Extract 3. Mum: We have Sunday free. Do you want to go to the market? Girl: We went last week. Is the aquarium open? Mum: Yes, and there is a new sea turtle display. Girl: Let's go there. {pause} Extract 4. Lucy: I can't find my swimming things. Dad: Your towel is here. Lucy: And my bottle. Oh, I left my red cap in the changing room yesterday. Dad: I'll call the pool. {pause} Extract 5. Teacher: Choose an animal for your wildlife poster. Tom: I drew an owl. Sara: I was going to draw a fox. Tom: The class book has a picture of a rabbit we can use. Sara: That's perfect. {pause} Extract 6. Teacher: The art studio is being painted, and the courtyard is wet. We'll have craft club in Classroom 8 today. Student: I'll tell the others. {pause} Extract 7. Boy: Are we walking to the sports centre? Girl: It's too far, and the school booked a minibus for our team. Boy: Great, I'll meet everyone at the gate.","Conversation 1. Klara: I can't come to music club today. Pavel: Are you ill? Klara: No, I promised to feed my neighbour's rabbit while she is away. Pavel: Maybe next week. {pause} Conversation 2. Ben: Did you get anything at the book fair? Eva: I bought a book of jokes for my little brother. Ben: I thought you'd get a map. Eva: I already have one. {pause} Conversation 3. Teacher: We have cakes for the bake sale. What else should we bring? Student: Cups? Teacher: The hall has those. Please bring paper napkins for the tables. {pause} Conversation 4. Girl: The concert starts at six, doesn't it? Boy: The doors open at six. The first group begins at half past. Girl: I'll tell my parents. {pause} Conversation 5. Marta: I joined the swimming group. Jana: Are you training for a race? Marta: No, I want to get stronger for basketball. Our coach says swimming is good exercise. {pause} Conversation 6. Boy: Where will they put our geography display? Girl: Not in the corridor; there isn't enough space. The library has cleared a wall for us. Boy: I'll take the maps there.","Hello, everyone. The River Walk will take place on Sunday 12 April. Please meet at the old stone bridge at half past nine in the morning. The route follows the river path for about two hours, with stops to look at birds and plants. Wear comfortable shoes and bring a bottle of water. The walk is suitable for families, but children under twelve must come with an adult. There is no charge, but places are limited. To book, call the town information desk on 442781 before Friday. If it rains heavily, we will send a text message to everyone who has registered. We hope you can join us.","Interviewer: Today I'm speaking to Adam, who helped organise a school swap day. Why did you suggest it? Adam: Lots of students had books, games and clothes they didn't use any more. I thought we could exchange them so someone else could enjoy them. Interviewer: Were you confident it would work? Adam: I was a little worried that only a few students would bring things. We asked teachers to mention it in class, and the response was much bigger than I expected. Interviewer: How did you arrange everything? Adam: We borrowed tables from the hall and grouped them by type of item. Books went together, then games, then clothes. That made it easier to find things. Interviewer: Could people just take whatever they wanted? Adam: They needed to leave one item for each thing they chose. We wanted it to be an exchange, not just a free shop. Interviewer: What happened to items nobody chose? Adam: A community shop collected them after school. Interviewer: What would you do differently next time? Adam: I'd invite families as well. They might bring things students need, and it would make the event bigger."];
+
+var FULL=true, AUDIO=["","","",""];
+var ASSESSOR_EMAIL="oxfampreparation@email.cz";
+
+function wc(t){var m=t.trim().match(/\S+/g);return m?m.length:0}
+function winit(){
+  document.querySelectorAll("textarea").forEach(function(t){
+    t.oninput=function(){document.getElementById(t.id+"c").textContent=wc(t.value)+" words"}
+  });
+  document.querySelectorAll("[data-c]").forEach(function(b){
+    b.onclick=function(){
+      var t=document.getElementById(b.dataset.c).value;
+      if(navigator.clipboard) navigator.clipboard.writeText(t);
+    }
+  });
+  document.querySelectorAll("[data-s]").forEach(function(b){
+    b.onclick=function(){
+      var t=document.getElementById(b.dataset.s).value;
+      var nameField=document.getElementById("nm");
+      var nm=((nameField && nameField.value)||"Student").trim()||"Student";
+      if(!wc(t)){
+        b.textContent="Write something first!";
+        setTimeout(function(){b.textContent="Send to assessor"},2000);
+        return;
+      }
+      var subject="B1 Preliminary for Schools Test 2 - "+b.dataset.t+" - "+nm;
+      var body="Student: "+nm+"\nTest: B1 Preliminary for Schools Test 2\nTask: "+b.dataset.t+"\n\n"+t;
+      var mailto="mailto:"+ASSESSOR_EMAIL+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
+      // Opens a pre-addressed email draft containing the complete writing answer. The student must press Send in their email app.
+      window.location.href=mailto;
+      // Keep a visible fallback in the page in case this browser has no mail app configured.
+      var part=b.parentNode.parentNode;
+      var fallback=part.querySelector(".email-fallback");
+      if(!fallback){
+        fallback=document.createElement("div");
+        fallback.className="note email-fallback";
+        fallback.style.marginTop=".75rem";
+        part.appendChild(fallback);
+      }
+      fallback.textContent="Your email draft should open addressed to "+ASSESSOR_EMAIL+" with your writing included. You must press Send in your email app. If it did not open, ";
+      var retry=document.createElement("a");
+      retry.href=mailto;
+      retry.textContent="click here to open the email draft again";
+      fallback.appendChild(retry);
+      fallback.appendChild(document.createTextNode(". You can also copy your writing above and paste it into an email to "+ASSESSOR_EMAIL+"."));
+      b.textContent="Email draft requested";
+      setTimeout(function(){b.textContent="Send to assessor"},2500);
+    }
+  });
+}
+
+var playId=0;
+function say(i,done){
+  var id=++playId;speechSynthesis.cancel();
+  var parts=T[i].split(/(\{pause\}|\{short\}|\bSpeaker \d:|\b[A-Z][A-Za-z]+:)/),q=[],pitch=1,flip=0,names={};
+  parts.forEach(function(x){
+    x=x.trim();if(!x)return;
+    if(x==="{pause}"||x==="{short}"){q.push({w:x==="{pause}"?2500:1200});pitch=1;return}
+    var sp=x.match(/^Speaker (\d):$/);if(sp){q.push({t:"Speaker "+sp[1],p:1,w:700});return}
+    if(/^[A-Za-z 0-9 ]+:$/.test(x)){var n=x.slice(0,-1);if(!(n in names))names[n]=(flip++%2)?1.25:.85;pitch=names[n];return}
+    (x.match(/[^.?!]+[.?!]*/g)||[x]).forEach(function(z){q.push({t:z.trim(),p:pitch,w:300})})
+  });
+  var k=0;(function next(){
+    if(id!==playId)return;
+    if(k>=q.length){done();return}
+    var s=q[k++];
+    if(!s.t){setTimeout(next,s.w);return}
+    var u=new SpeechSynthesisUtterance(s.t);u.lang="en-GB";u.rate=0.95;u.pitch=s.p;
+    u.onend=function(){setTimeout(next,s.w)};u.onerror=function(){setTimeout(next,s.w)};
+    speechSynthesis.speak(u);
+  })()
+}
+
+function play(b){
+  if(b._busy)return;
+  var i=+b.dataset.i;
+  function fin(){b._busy=false;if(b._n>=2){b.disabled=true;b.textContent="Played twice"}else b.textContent="Play again (last time)"}
+  if(!AUDIO[i]&&(!window.speechSynthesis||!window.SpeechSynthesisUtterance)){b.textContent="TTS not supported in this browser.";return}
+  b._n=(b._n||0)+1;b._busy=true;b.textContent="Playing...";
+  if(AUDIO[i]){var a=new Audio(AUDIO[i]);a.onended=fin;a.onerror=fin;a.play()}else say(i,fin)
+}
+
+function init(){
+  [["t1",90],["t2",35],["t4",12],["sp1",3],["sp2",3],["sp3",3],["sp4",3]].forEach(function(a){if(document.getElementById(a[0]))timer(a[0],a[1])});
+  if(!FULL)return;
+  build(R,document.getElementById("rbox"),"r");
+  build(L,document.getElementById("lbox"),"l");
+  document.getElementById("ck1").onclick=function(){check(document.getElementById("rbox"),document.getElementById("sc1"))};
+  document.getElementById("ck2").onclick=function(){check(document.getElementById("lbox"),document.getElementById("sc2"))};
+  document.querySelectorAll(".say").forEach(function(b){b.onclick=function(){play(b)}});
+  winit();
+}
+
+(function(){
+  var g=document.getElementById("gate"),m=document.getElementById("main");
+  function show(){g.hidden=true;m.hidden=false;if(window.init)init()}
+  if(unlocked()){show();return}
+  document.getElementById("gf").onsubmit=function(e){
+    e.preventDefault();
+    if(document.getElementById("pw").value===PW){
+      try{sessionStorage.setItem("pet_schools_test_2","1")}catch(x){}
+      show();
+    } else {
+      document.getElementById("err").textContent="Wrong password.";
+    }
+  }
+  
+  var themeBtn = document.getElementById('themeBtn');
+  if(themeBtn) {
+    themeBtn.onclick = function() {
+      var currentTheme = document.documentElement.getAttribute('data-theme');
+      if(currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        themeBtn.textContent = '🌙';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeBtn.textContent = '☀️';
+      }
+    };
+  }
+  
+  var menuToggle = document.getElementById('menuToggle');
+  if(menuToggle) {
+    menuToggle.onclick = function() {
+      document.body.classList.toggle('menuopen');
+    };
+  }
+  
+  var loginBtn = document.getElementById('loginBtn');
+  var dlg = document.getElementById('dlg');
+  var cancel = document.getElementById('cancel');
+  if(loginBtn && dlg) {
+    loginBtn.onclick = function() { dlg.showModal(); }
+  }
+  if(cancel && dlg) {
+    cancel.onclick = function() { dlg.close(); }
+  }
+})();
+</script>
+</body>
+</html>

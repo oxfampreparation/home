@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>B1 Preliminary for Schools Test 9 - Oxfam Preparation</title>
+
+<style>
+/* Default theme is explicitly light */
+:root {
+  --bg: #f6f7fb;
+  --paper: #fff;
+  --ink: #14213d;
+  --muted: #4b5266;
+  --line: #d5d9e6;
+  --mark: #2b59ff;
+  --hi: #ffe45e;
+  --ok: #1a7f52;
+  --bad: #b3261e;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Dark theme applied ONLY when data-theme="dark" is present */
+:root[data-theme="dark"] {
+  --bg: #0f1526;
+  --paper: #182038;
+  --ink: #eef1fb;
+  --muted: #a9b1c9;
+  --line: #2c3656;
+  --mark: #7d9bff;
+  --hi: #e9d24a;
+  --ok: #57c58f;
+  --bad: #ff8a80;
+}
+
+html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: border-box; }
+
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1.0625rem/1.6 "Atkinson Hyperlegible", system-ui, sans-serif; }
+h1, h2, h3 { font-family: Archivo, "Helvetica Neue", Arial, sans-serif; line-height: 1.05; margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--mark); outline-offset: 3px; }
+.wrap { max-width: 74rem; margin: 0 auto; padding: 0 1.25rem; }
+
+header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .75rem; padding: 1.25rem 0; position: sticky; top: 0; background: var(--bg); z-index: 100; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+.head-left { display: flex; align-items: center; gap: .75rem; }
+#menuToggle { background: transparent; border: none; cursor: pointer; color: var(--ink); display: flex; padding: .25rem; border-radius: .25rem; }
+#menuToggle:hover { background: var(--line); }
+#menuToggle svg { width: 1.6rem; height: 1.6rem; }
+.logo { font: 800 1.25rem Archivo, sans-serif; text-decoration: none; }
+nav a { margin-left: 1.25rem; text-decoration: none; color: var(--muted); }
+nav a:hover { color: var(--ink); }
+
+.btn { display: inline-block; background: var(--ink); color: var(--bg); padding: .8rem 1.4rem; border-radius: .5rem; font-weight: 700; text-decoration: none; border: 0; cursor: pointer; font-size: 1rem; font-family: inherit; }
+.btn.alt { background: transparent; color: var(--ink); border: 2px solid var(--ink); }
+.hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2rem; align-items: start; padding: 1rem 0 3rem; }
+.hero-text { margin-top: 2.5rem; }
+
+h1 { font-size: clamp(2rem, 3.4vw, 3rem); font-weight: 800; font-stretch: 90%; letter-spacing: -.02em; margin-top: 1rem; margin-bottom: 0; }
+h1 span { background: linear-gradient(transparent 62%, var(--hi) 62%); }
+.lead { color: var(--muted); max-width: 32rem; margin: 1.25rem 0 1.75rem; font-size: 1.15rem; }
+.row { display: flex; gap: .75rem; flex-wrap: wrap; }
+
+.sheet { background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.sheet h2 { font-size: 1.1rem; margin-bottom: .25rem; }
+.sheet p { margin: 0 0 1rem; color: var(--muted); font-size: .95rem; }
+.q { padding: .7rem 0; border-top: 1px solid var(--line); }
+.q b { display: inline-block; font-weight: 800; margin-bottom: .45rem; margin-right: 0.5rem; }
+
+.opts { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem; width: fit-content; }
+.opt { display: flex; align-items: center; gap: .4rem; padding: .3rem .7rem .3rem .35rem; border: 1.5px solid var(--line); border-radius: 2rem; background: transparent; color: inherit; font-size: .95rem; cursor: pointer; width: fit-content; }
+.opt i { width: 1.4rem; height: 1.4rem; border-radius: 50%; border: 2px solid var(--muted); display: grid; place-items: center; font: 700 .7rem Archivo, sans-serif; font-style: normal; flex-shrink: 0; }
+
+.opt[aria-pressed="true"] { border-color: var(--mark); }
+.opt[aria-pressed="true"] i { background: var(--mark); border-color: var(--mark); color: var(--bg); }
+.opt.right { border-color: var(--ok); } .opt.right i { background: var(--ok); border-color: var(--ok); color: var(--bg); }
+.opt.wrong { border-color: var(--bad); } .opt.wrong i { background: var(--bad); border-color: var(--bad); color: var(--bg); }
+
+/* Image Options specific styles */
+.img-opts-grid { display: flex; flex-direction: row; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+.img-opt { flex-direction: column; align-items: center; padding: 0.5rem; border-radius: 0.5rem; gap: 0.5rem; text-align: center; }
+.img-opt img { height: 120px; width: 160px; object-fit: cover; background: var(--paper); border-radius: 0.25rem; }
+.img-opt i { margin-bottom: 0.25rem; }
+
+.result { margin-top: 1rem; font-weight: 700; min-height: 1.6rem; }
+section { padding: 3.5rem 0; border-top: 1px solid var(--line); }
+h2.t { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: .75rem; letter-spacing: -.01em; }
+
+.sub, .txt { color: var(--muted); max-width: 48rem; margin: 0 0 2rem; white-space: pre-line; line-height: 1.6; }
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: .6rem; background: var(--paper); }
+table { border-collapse: collapse; width: 100%; min-width: 38rem; }
+th, td { text-align: left; padding: .9rem 1rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font: 800 1.2rem Archivo, sans-serif; white-space: nowrap; }
+td small { display: block; font: 400 .9rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+
+.support-strip { position: fixed; bottom: 0; left: 0; right: 0; background: var(--ink); color: var(--bg); padding: 1rem 1.25rem; z-index: 999; box-shadow: 0 -4px 12px rgba(0,0,0,0.15); }
+.support-strip-inner { max-width: 74rem; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; width: 100%; font-weight: 700; }
+footer { border-top: 1px solid var(--line); padding: 2rem 0 5rem; color: var(--muted); font-size: .95rem; }
+
+.lang { display: flex; gap: .25rem; flex-wrap: wrap; } .lang button { font: 700 .8rem Archivo, sans-serif; padding: .35rem .6rem; border: 1.5px solid var(--line); border-radius: .4rem; background: transparent; color: var(--muted); cursor: pointer; } .lang button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.layout { display: grid; grid-template-columns: 12.5rem minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+.layout.collapsed { grid-template-columns: 1fr; gap: 0; }
+.layout.collapsed .side { display: none; }
+.side { position: sticky; top: 5rem; max-height: calc(100vh - 6rem); max-height: calc(100dvh - 6rem); overflow-y: auto; display: flex; flex-direction: column; gap: .15rem; }
+summary { cursor: pointer; font: 700 .95rem Archivo, sans-serif; color: var(--muted); padding: .4rem .75rem; border-radius: .5rem; } summary:hover { color: var(--ink); } .ex[open] summary { margin-bottom: .15rem; }
+.side nav { display: flex; flex-direction: column; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); } .side nav a { margin: 0; color: inherit; } .side .lang { margin-bottom: 1rem; }
+.side p { margin: 0 0 .5rem; font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+.side a { text-decoration: none; padding: .5rem .75rem; border-radius: .5rem; font: 700 1rem Archivo, sans-serif; border-left: 3px solid transparent; }
+.side a small { display: block; font: 400 .8rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+.side a:hover { background: var(--paper); border-left-color: var(--mark); }
+tr:target td { background: var(--hi); color: #14213d; } tr:target td small { color: #14213d; }
+
+@media (max-width: 52rem) { .layout { grid-template-columns: 1fr; gap: 0; } .side { position: static; max-height: none; margin: 0 0 1rem; padding: 0 0 1rem; border-bottom: 1px solid var(--line); } }
+
+.hr { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; } .hr .btn { padding: .45rem 1rem; font-size: .9rem; }
+dialog { border: 2px solid var(--ink); border-radius: .75rem; background: var(--paper); color: var(--ink); padding: 1.5rem; width: min(26rem, 92vw); max-height: 90vh; overflow: auto; } dialog::backdrop { background: rgba(10,16,32,.55); }
+dialog h2 { font-size: 1.4rem; margin-bottom: .5rem; } dialog label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+dialog input { width: 100%; padding: .65rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.demo { color: var(--muted); font-size: .9rem; margin: .5rem 0 0; } .err { color: var(--bad); min-height: 1.5rem; margin-top: .5rem; font-size: .95rem; }
+
+@media (max-width: 40rem) {
+  .wrap { padding: 0 1rem; }
+  header { padding: 1rem 0; }
+  .hero { padding-bottom: 2rem; }
+  .sheet { padding: 1.1rem; }
+  section { padding: 2.5rem 0; }
+  .scroll { border: 0; background: transparent; overflow: visible; }
+  table, tbody, tr, td { display: block; min-width: 0; width: 100%; }
+  thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  tr { background: var(--paper); border: 1px solid var(--line); border-radius: .6rem; padding: .6rem 0; margin-bottom: .75rem; }
+  td { border: 0; padding: .15rem 1rem; }
+  td:first-child { font-size: 1.3rem; padding-top: .4rem; }
+  tr:target { border-color: var(--ink); }
+}
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+html { scroll-padding-top: calc(5rem + env(safe-area-inset-top, 0px)); }
+body header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); padding: .6rem 0; border-bottom: 1px solid var(--line); }
+.brand { display: flex; align-items: center; gap: .75rem; }
+body .logo { font-size: 1.85rem; letter-spacing: -.02em; }
+.mbtn { display: inline-flex; flex-direction: column; justify-content: center; gap: 5px; width: 2.75rem; height: 2.75rem; padding: 0 .7rem; border: 2px solid var(--ink); border-radius: .5rem; background: transparent; cursor: pointer; flex: none; }
+.mbtn span { display: block; height: 2px; background: var(--ink); border-radius: 2px; }
+.mbtn:hover { background: var(--paper); }
+body .side { top: 5.5rem; max-height: calc(100vh - 6.5rem); max-height: calc(100dvh - 6.5rem); }
+body.nomenu .layout { grid-template-columns: minmax(0, 1fr); }
+body.nomenu .side { display: none; }
+body:has(#app[hidden]) .mbtn { display: none; }
+.side>.hr { margin-bottom: 1rem; }
+.scrim { display: none; }
+
+@media (max-width: 52rem) {
+  body .side { position: fixed; top: 0; left: 0; bottom: 0; width: min(19rem, 86vw); max-height: none; margin: 0; padding: calc(1rem + env(safe-area-inset-top, 0px)) 1rem calc(1rem + env(safe-area-inset-bottom, 0px)); background: var(--paper); border: 0; border-right: 2px solid var(--ink); z-index: 50; overflow-y: auto; transform: translateX(-105%); visibility: hidden; transition: transform .25s ease, visibility 0s .25s; }
+  body.menuopen .side { transform: none; visibility: visible; transition: transform .25s ease; }
+  body .side nav { flex-direction: column; flex-wrap: nowrap; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+  body .side nav a { padding: .5rem .75rem; }
+  .scrim { display: block; position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: rgba(10,16,32,.5); z-index: 40; opacity: 0; pointer-events: none; transition: opacity .25s; }
+  body.menuopen .scrim { opacity: 1; pointer-events: auto; }
+  body .logo { font-size: 1.6rem; }
+}
+
+.gatebox { max-width: 26rem; margin: 2rem auto; background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.gatebox label, .wr label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+input[type=text], input[type=password], textarea { width: 100%; padding: .6rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.q input[type=text] { width: 14rem; max-width: 100%; }
+.part { background: var(--paper); border: 1px solid var(--line); border-radius: .75rem; padding: 1.5rem; margin-bottom: 1.25rem; }
+.q.ok { border-left: 4px solid var(--ok); padding-left: .75rem; } .q.no { border-left: 4px solid var(--bad); padding-left: .75rem; } .fb { font-weight: 700; margin-top: .25rem; }
+.tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0; }
+nav.tabs a { margin: 0; padding: .4rem 1rem; border: 1.5px solid var(--line); border-radius: 2rem; text-decoration: none; font-weight: 700; }
+nav.tabs a[aria-current=page] { background: var(--ink); color: var(--bg); }
+.bar { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; margin: 1rem 0; } .time { font: 800 1.6rem Archivo, sans-serif; }
+.pics { display: flex; gap: 1rem; flex-wrap: wrap; } .pics svg, .pics img { flex: 1 1 14rem; max-width: 22rem; border: 2px solid var(--ink); border-radius: .5rem; background: var(--paper); object-fit: cover; aspect-ratio: 3/2; }
+textarea { min-height: 15rem; } .tr { display: none; } .note { padding: .75rem 1rem; border-left: 4px solid var(--mark); background: var(--paper); margin: 1rem 0; }
+.sec { padding-top: 2rem; margin-top: 2rem; border-top: 1px solid var(--line); } .jump { margin-top: 0; } .ex { color: var(--muted); margin-top: .15rem; font-size: .95rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header id="siteHeader">
+<div class="head-left">
+<button aria-label="Toggle menu" id="menuToggle">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
+</button>
+<a class="logo" href="../index.html">Oxfam Preparation</a>
+</div>
+<div class="hr">
+<button aria-label="Toggle theme" class="btn alt" id="themeBtn" style="padding:.45rem .6rem; min-width:0; font-size:1.1rem">🌙</button>
+<button class="btn" id="loginBtn" type="button">Log in</button>
+</div>
+</header>
+<div class="layout">
+<aside aria-label="Menu" class="side">
+<nav>
+<a href="../cpe.html">All tests</a>
+</nav>
+</aside>
+<main id="top">
+<div id="gate">
+<div class="gatebox">
+<h1><span>B1 Preliminary for Schools Test 9</span></h1>
+<p>Enter the password to open this test.</p>
+<form id="gf">
+<label for="pw">Password</label>
+<input autocomplete="off" id="pw" type="password"/>
+<div class="err" id="err"></div>
+<div class="row" style="margin-top:1rem">
+<button class="btn" type="submit">Open</button>
+<a class="btn alt" href="../cpe.html">Back</a>
+</div>
+</form>
+</div>
+</div>
+<div hidden="" id="main">
+<h1 style="margin-top: 1rem">B1 Preliminary for Schools - Test 9 | Original Practice Paper</h1>
+<div class="part" style="margin-top:1rem">
+<label for="nm"><strong>Student name (optional — included with writing submissions)</strong></label>
+<input autocomplete="name" id="nm" type="text" placeholder="Enter your name"/>
+</div>
+<nav aria-label="Papers" class="tabs jump" style="margin-top: 2.5rem; margin-bottom: 2rem">
+<a href="#rd">Reading and Writing</a>
+<a href="#li">Listening</a>
+<a href="#sk">Speaking</a>
+</nav>
+<section class="sec" id="rd">
+<h2 class="t">Reading (45 minutes) and Writing (45 minutes)</h2>
+<div class="bar"><span class="time" id="t1"></span><button class="btn alt" type="button">Start</button></div>
+<div id="rbox"></div>
+<div class="part">
+<h2>Writing Part 1 — Email</h2><p class="sub">Write about 100 words. Answer your friend and include all three notes.</p><div class="note">Your English friend Morgan has emailed you.<br/><br/><em>“Our school is asking students for ideas for a new play space. What feature would you suggest, who should we ask for opinions, and how could we test whether the design works?”</em><br/><br/>Write an email to Morgan. In your email, you should:<br/>• suggest a feature<br/>• say who to ask<br/>• explain how to test the design.</div><textarea aria-label="Email answer" id="e1"></textarea><div class="bar"><b id="e1c">0 words</b><button class="btn alt" data-c="e1" type="button">Copy</button><button class="btn" data-s="e1" data-t="Writing Part 1 - Email" type="button">Send writing to assessor</button></div></div><div class="part"><h2>Writing Part 2 — Choose one question</h2><p class="sub">Write about 100 words. Answer either Question 2 (article) or Question 3 (story), not both.</p><p><strong>Question 2 — Article</strong><br/>Write an article for your school magazine about an outdoor place you enjoy. Describe it and explain what you like doing there.<br/><br/><strong>Question 3 — Story</strong><br/>Your story must begin with this sentence:<br/><em>When we opened the new gate, the whole class cheered.</em></p><textarea aria-label="Article or story answer" id="e2"></textarea><div class="bar"><b id="e2c">0 words</b><button class="btn alt" data-c="e2" type="button">Copy</button><button class="btn" data-s="e2" data-t="Writing Part 2 - Article or Story" type="button">Send writing to assessor</button></div></div>
+<div class="bar"><button class="btn" id="ck1" type="button">Check Reading &amp; Writing Part 1 answers</button><b id="sc1"></b></div>
+</section>
+<section class="sec" id="li">
+<h2 class="t">Listening (about 30 minutes)</h2>
+<div class="bar"><span class="time" id="t2"></span><button class="btn alt" type="button">Start</button></div>
+<p class="note">These are original B1 practice scripts read aloud by your browser’s text-to-speech voice. Each recording can be played twice. This is not official Cambridge audio.</p>
+<div id="lbox"></div>
+<div class="bar"><button class="btn" id="ck2" type="button">Check answers</button><b id="sc2"></b></div>
+</section>
+<section class="sec" id="sk">
+<h2 class="t">Speaking (10–12 minutes)</h2>
+<div class="bar"><span class="time" id="t4"></span><button class="btn alt" type="button">Start</button></div>
+<p class="note">Practise with a partner or teacher. The real test involves two candidates and two examiners. These are original school-age prompts.</p>
+<div class="part"><h2>Part 1 — Interview (2–3 minutes)</h2><div class="bar"><span class="time" id="sp1"></span><button class="btn alt" type="button">Start</button></div><ul><li>What games or activities did you enjoy when you were younger?</li><li>Do you prefer outdoor places or indoor places?</li><li>What makes a public place comfortable to use?</li><li>Have you ever helped improve something at school?</li><li>What would you add to a park near your home?</li></ul></div><div class="part"><h2>Part 2 — Extended Turn (3 minutes)</h2><div class="bar"><span class="time" id="sp2"></span><button class="btn alt" type="button">Start</button></div><p>Describe the picture. Say what the students are doing, why they might be measuring the path, and what they may do next.</p><div class="pics"><img alt="Students measuring a path in a playground as part of a design project." src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0ODAiIGhlaWdodD0iMzAwIj48cmVjdCB3aWR0aD0iNDgwIiBoZWlnaHQ9IjMwMCIgcng9IjI0IiBmaWxsPSIjZWFmM2Y3Ii8+PGNpcmNsZSBjeD0iNDAwIiBjeT0iNDciIHI9IjI1IiBmaWxsPSIjZjJjOTVhIi8+PHBhdGggZD0iTTAgMjE0cTgyLTIyIDE2MSAwdDMxOS0xdjg3SDB6IiBmaWxsPSIjOWZjMjhmIi8+PHBhdGggZD0iTTU0IDIzNCAxODQgMTcyaDIzMHY1MkgxOThsLTExNCAzNHoiIGZpbGw9IiNkNmJiOTEiIHN0cm9rZT0iIzI5NDI1NiIgc3Ryb2tlLXdpZHRoPSI2Ii8+PHBhdGggZD0iTTE5OCAyMThoMTgwIiBzdHJva2U9IiNmOGYyZGYiIHN0cm9rZS13aWR0aD0iNiIgc3Ryb2tlLWRhc2hhcnJheT0iMTUgMTIiLz48Y2lyY2xlIGN4PSIxMjAiIGN5PSI4OCIgcj0iMTciIGZpbGw9IiNkM2EwNzgiLz48cGF0aCBkPSJNMTIwIDEwNnY2Mm0wLTM2IDQxIDIwbS00MS0yMC0yOCAyMW0yOCAxNS0xNiA0Mm0xNi00MiAyMyA0MCIgc3Ryb2tlPSIjNGE4NmEzIiBzdHJva2Utd2lkdGg9IjExIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48Y2lyY2xlIGN4PSIyNjkiIGN5PSIxNDIiIHI9IjE3IiBmaWxsPSIjYzk5MDZkIi8+PHBhdGggZD0iTTI2OSAxNjB2NDNtMC0yNC0yNSAxOG0yNS0xOCAyNiAxMiIgc3Ryb2tlPSIjZGY4MDU3IiBzdHJva2Utd2lkdGg9IjExIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48Y2lyY2xlIGN4PSIzMDciIGN5PSIyMjMiIHI9IjI2IiBmaWxsPSJub25lIiBzdHJva2U9IiMyOTQyNTYiIHN0cm9rZS13aWR0aD0iNyIvPjxjaXJjbGUgY3g9IjM2NSIgY3k9IjIyMyIgcj0iMjYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzI5NDI1NiIgc3Ryb2tlLXdpZHRoPSI3Ii8+PHBhdGggZD0iTTMwNyAyMjNoNDZsLTE4LTMybS0yOCAzMiAyMS0zNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZGY4MDU3IiBzdHJva2Utd2lkdGg9IjYiLz48cGF0aCBkPSJNMTYxIDE0NXY0Nm0tMTQtNDZoMjgiIHN0cm9rZT0iI2YyYzk1YSIgc3Ryb2tlLXdpZHRoPSI1Ii8+PHRleHQgeD0iMjQwIiB5PSIyODEiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNyIgZmlsbD0iIzI5NDI1NiI+U3R1ZGVudHMgbWVhc3VyaW5nIGEgcGxheS1zcGFjZSBwYXRoPC90ZXh0Pjwvc3ZnPg=="/></div><p>Follow-up: Tell your partner about a place where people can spend time together.</p></div><div class="part"><h2>Part 3 — Collaborative Task (3–4 minutes)</h2><div class="bar"><span class="time" id="sp3"></span><button class="btn alt" type="button">Start</button></div><p>Your community is planning an outdoor play day for children and families. Talk together about these ideas and decide which two activities would be most enjoyable.</p><ul><li>simple team games</li><li>a drawing table</li><li>a music and movement session</li><li>a nature trail</li><li>a picnic area</li></ul><p>Useful questions: Which ideas suit different ages? What could families do together? Which activities need the least equipment?</p></div><div class="part"><h2>Part 4 — Discussion (3 minutes)</h2><div class="bar"><span class="time" id="sp4"></span><button class="btn alt" type="button">Start</button></div><ul><li>Why are parks and playgrounds important for a community?</li><li>Should children help adults make decisions about play areas?</li><li>What makes a place easy for everyone to use?</li><li>Do people need more outdoor spaces in towns?</li><li>How can neighbours work together to improve their area?</li></ul></div>
+</section>
+</div>
+</main>
+</div>
+<div class="support-strip">
+<div class="support-strip-inner">
+<div><span _k="Customer support every day from 9:00 to 16:30">Customer support every day from 9:00 to 16:30</span></div>
+<div class="support-info">
+<a href="mailto:oxfampreparation@email.cz">oxfampreparation@email.cz</a>
+<a href="tel:+420723200988">+420 723 200 988</a>
+</div>
+</div>
+</div>
+<footer>© 2020-2026 Oxfam - Oxford family. All rights reserved. Not affiliated with Cambridge University Press &amp; Assessment. Exam names belong to their owners.</footer>
+</div>
+<dialog aria-labelledby="dt" id="dlg">
+<h2 id="dt">Sign in to open your tests</h2>
+<form id="lf" novalidate="">
+<label for="em">Email</label><input autocomplete="username" id="em" type="email"/>
+<label for="pw">Password</label><input autocomplete="current-password" id="pw" type="password"/>
+<p class="demo" hidden="" id="demo">Demo mode: any email and password is accepted.</p>
+<div aria-live="polite" class="err" id="err"></div>
+<div class="row" style="margin-top:1rem"><button class="btn" type="submit">Log in</button><button class="btn alt" id="cancel" type="button">Cancel</button></div>
+</form>
+</dialog>
+<script>
+var PW="Bt91";
+function unlocked(){try{return sessionStorage.getItem("pet_schools_test_9")==="1"}catch(e){return false}}
+
+function norm(s){return s.toLowerCase().replace(/\u2019/g,"'").replace(/\s+/g," ").trim()}
+
+function build(parts,box,pre){
+  var n=0;pre=pre||"";
+  parts.forEach(function(p,pi){
+    var d=document.createElement("section");d.className="part";
+    d.innerHTML="<h2>"+p.t+"</h2>"+(p.m?"<div class='bar'><span class='time' id='pt"+pre+pi+"'></span><button class='btn alt' type='button'>Start</button> <small>suggested time</small></div>":"")+"<p class='sub'>"+p.i+"</p>"+(p.x?"<p class='txt'>"+p.x+"</p>":"")+(p.im||"")+"<div class='items'></div>";
+    var it=d.querySelector(".items");
+    p.q.forEach(function(q){
+      n++;var r=document.createElement("div");r.className="q";
+      var label = q.q && /^(\d+)\.\s*/.test(q.q) ? q.q.match(/^(\d+)\.\s*/)[1] : n; var qtext = (q.q||"").replace(/^\d+\.\s*/,"").replace(/\n/g,"<br>"); var h="<b>"+label+"</b> "+qtext+(q.h?" <strong>"+q.h+"</strong>":"");
+      if(q.o){
+        var isImg = q.o.length > 0 && /^(https?:\/\/|data:image\/)/i.test(q.o[0]);
+        var optsHtml = q.o.map(function(o,i){
+          var letter = "ABCDEFGH"[i];
+          if(q.o.length === 2 && (o === "A" || o === "B" || o.includes("Correct") || o.includes("YES"))) {
+            letter = ["A", "B"][i];
+          }
+          if (isImg) {
+            return "<label class='opt img-opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> <img src='"+o+"' alt='Option "+letter+"' onerror=\"this.style.display='none'\"></label>";
+          } else {
+            var text = o === letter ? "" : o;
+            return "<label class='opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> "+text+"</label>";
+          }
+        }).join("");
+        var gridClass = isImg ? "opts img-opts-grid" : "opts";
+        h += "<div class='" + gridClass + "'>" + optsHtml + "</div>";
+      } else {
+        h+=" <input type='text' autocomplete='off' aria-label='Answer "+n+"'>";
+      }
+      r.innerHTML=h;r._q=q;it.appendChild(r);
+    });
+    box.appendChild(d);
+    if(p.m)timer("pt"+pre+pi,p.m);
+  });
+}
+
+function check(box,out){
+  var tot=0,ok=0;
+  box.querySelectorAll(".part").forEach(function(part){
+    var pTot=0,pOk=0;
+    part.querySelectorAll(".q").forEach(function(r){
+      pTot++;var q=r._q,good,ans;
+      if(q.o){
+        var c=r.querySelector("input:checked");
+        good=c&&+c.value===q.a;
+        var letter = "ABCDEFGH"[q.a];
+        if(q.o.length === 2) letter = ["A", "B"][q.a];
+        var isImg = q.o.length > 0 && /^(https?:\/\/|data:image\/)/i.test(q.o[0]);
+        ans = isImg ? letter : (q.o[q.a] === letter ? letter : letter + " " + q.o[q.a]);
+      } else {
+        var v=norm(r.querySelector("input").value);
+        good=q.a.some(function(a){return norm(a)===v});
+        ans=q.a[0];
+      }
+      r.classList.toggle("ok",!!good);
+      r.classList.toggle("no",!good);
+      var f=r.querySelector(".fb");
+      if(!f){f=document.createElement("div");f.className="fb";r.appendChild(f)}
+      f.textContent=good?"Correct":"Answer: "+ans;
+      var x=r.querySelector(".ex");
+      if(!x){x=document.createElement("div");x.className="ex";r.appendChild(x)}
+      x.textContent=q.e||"";
+      if(good)pOk++;
+    });
+    if(pTot>0){
+      var ps=part.querySelector(".pscore");
+      if(!ps){ps=document.createElement("div");ps.className="pscore note";ps.style.marginTop="1.5rem";part.appendChild(ps)}
+      ps.innerHTML="<b>Part score:</b> "+pOk+" / "+pTot;
+    }
+    tot+=pTot;ok+=pOk;
+  });
+  out.textContent="Total score: "+ok+" / "+tot;
+  box.querySelectorAll(".tr").forEach(function(e){e.style.display="block"});
+}
+
+function timer(id,min){
+  var e=document.getElementById(id),l=min*60,t=null;
+  if(!e)return;
+  function s(){e.textContent=("0"+Math.floor(l/60)).slice(-2)+":"+("0"+l%60).slice(-2)}s();
+  e.nextElementSibling.onclick=function(){
+    if(t){clearInterval(t);t=null;this.textContent="Start";return}
+    this.textContent="Pause";
+    t=setInterval(function(){l--;s();if(l<=0)clearInterval(t)},1000);
+  }
+}
+
+var R = [{"t":"Reading Part 1 — Notices and Messages","i":"For questions 1–5, choose the correct meaning: A, B or C.","m":5,"q":[{"q":"1. PLAYGROUND SURVEY\nPlease return your ideas for the new play space to the school office by Thursday. You can draw a picture or write a short note.","o":["Students should share ideas before Friday.","Only drawings will be accepted.","The survey is for teachers only."],"a":0,"e":"The deadline is Thursday, and students may write or draw."},{"q":"2. WORK AREA\nThe west side of the playground is closed while workers install new equipment. Please use the path beside the gym until the fence is removed.","o":["Students can play on the west side today.","The path by the gym is the temporary route.","The gym entrance is closed."],"a":1,"e":"Visitors are directed to the path beside the gym."},{"q":"3. DESIGN MEETING\nThe meeting has moved from Room 8 to the library meeting room. It will still begin at 3.30.","o":["The meeting starts later than planned.","Students should go to a different room.","The meeting has been cancelled."],"a":1,"e":"Only the room has changed."},{"q":"4. ACCESS PATH\nPlease keep the flat path clear of bags and scooters. Wheelchair users and families with pushchairs need space to pass.","o":["The path should be kept open for everyone.","Scooters must be parked beside the gate.","The path is only for wheelchair users."],"a":0,"e":"The note asks everyone to leave the path clear."},{"q":"5. PAINTING DAY\nThe benches will be painted blue on Saturday morning. Please do not sit on them until the notice is removed on Monday.","o":["The benches are ready to use on Sunday.","The benches should not be used before Monday.","The painting takes place on Monday."],"a":1,"e":"The benches need to dry until Monday."}]},{"t":"Reading Part 2 — Matching","i":"For questions 6–10, match each student with the most suitable playground project role, A–H.","m":7,"x":"A. Young Visitors — ask younger pupils what games they enjoy and record their answers.\n\nB. Path Measuring — check that the main paths are wide and easy to use.\n\nC. Sign Makers — paint clear signs to show where different activities are.\n\nD. Planting Team — choose and plant flowers beside the seating area.\n\nE. Equipment Testers — try the new swings and report if anything feels difficult.\n\nF. Shade Survey — find which areas need a roof or tree cover in summer.\n\nG. Story Wall — collect short ideas for pictures to paint on the wall.\n\nH. Opening Helpers — welcome visitors and give them a simple map on launch day.","q":[{"q":"6. Aneta likes talking to children and wants to know what younger pupils enjoy.","o":["A","B","C","D","E","F","G","H"],"a":0,"e":"Young Visitors collect ideas from younger pupils."},{"q":"7. Tomas is careful with measurements and wants to help make paths easy to pass along.","o":["A","B","C","D","E","F","G","H"],"a":1,"e":"Path Measuring checks width and access."},{"q":"8. Hana enjoys painting and would like to make useful signs.","o":["A","B","C","D","E","F","G","H"],"a":2,"e":"Sign Makers paint direction signs."},{"q":"9. Marek likes gardening and can come to the site on Thursday.","o":["A","B","C","D","E","F","G","H"],"a":3,"e":"Planting Team works with flowers near the seats."},{"q":"10. Iva wants to help families find their way on the first day.","o":["A","B","C","D","E","F","G","H"],"a":7,"e":"Opening Helpers welcome visitors and give out maps."}]},{"t":"Reading Part 3 — Multiple Choice","i":"For questions 11–16, choose A, B or C.","m":9,"x":"\nA PLAY SPACE FOR EVERYONE\n\nWhen our school playground needed new equipment, the head teacher asked students to help with the design. At first, most of us suggested things we already liked, such as a climbing frame or a football goal. Then a visiting designer, Mr Shaw, asked us to think about pupils who might not be able to use those things easily.\n\nWe began by asking children from different classes what they wanted. Some wanted places to run, while others said they liked quieter activities. A student who used a wheelchair explained that the old path was too narrow near the benches. We measured it and found that two people could not pass comfortably.\n\nMr Shaw helped us make a plan with several kinds of space. There would be a wide path, a low table for drawing, a swing with extra support and an area with plants. We did not have enough money for every idea, so the class voted on which changes mattered most.\n\nThe building work took several weeks. When the new area opened, I noticed that pupils who had not used the old playground much were now spending time there. The quiet table was especially popular during lunch. I learned that good design is not only about making something exciting; it is also about making sure different people can use it.","q":[{"q":"11. What did the designer ask students to consider?","o":["Whether everyone could use the ideas","How to make the playground larger","Which team would win at football"],"a":0,"e":"He asked them to think about pupils who might not use some equipment easily."},{"q":"12. What problem did a wheelchair user mention?","o":["The path was too narrow near the benches.","The swings were too high.","The playground was too noisy."],"a":0,"e":"The student described the narrow path."},{"q":"13. Why did the class vote?","o":["They could not afford every idea.","They wanted to choose the paint colour.","The designer asked them to select a team."],"a":0,"e":"There was not enough money for every idea."},{"q":"14. Which feature was included in the plan?","o":["A low table for drawing","A new sports hall","A larger car park"],"a":0,"e":"The plan included a low drawing table."},{"q":"15. What did the writer notice after the opening?","o":["More pupils were using the area.","The football goal was more popular.","The benches had been removed."],"a":0,"e":"Pupils who had used the old playground less were now spending time there."},{"q":"16. What did the writer learn about good design?","o":["It should work for different people.","It should include the most expensive equipment.","It should be exciting for one group."],"a":0,"e":"The final paragraph says it matters that different people can use it."}]},{"t":"Reading Part 4 — Gapped Text","i":"Five sentences have been removed. Choose A–F for gaps 17–21. One sentence is extra.","m":8,"x":"\nTHE NEW PLAYGROUND OPENS\n\nOur class helped prepare for the opening of the new play space. (17) _____. We placed them at the entrance and beside the different activity areas.\n\nOn the morning of the event, families began arriving early. (18) _____. They showed visitors where to find the quiet table and the wide path.\n\nA teacher gave a short welcome speech. (19) _____. After that, children were free to try the new equipment.\n\nI spent most of my time near the drawing table. (20) _____. Some younger pupils asked if they could add their own pictures.\n\nAt the end, everyone helped put away the materials. (21) _____.","q":[{"q":"17. Gap 17","o":["We had made a simple map for visitors.","Two student helpers greeted people at the gate.","She thanked the pupils who had shared their ideas.","I brought extra paper and coloured pencils.","The area was tidy again before lunchtime.","The school decided to close the new space."],"a":0,"e":"The following sentence explains where the maps were placed."},{"q":"18. Gap 18","o":["We had made a simple map for visitors.","Two student helpers greeted people at the gate.","She thanked the pupils who had shared their ideas.","I brought extra paper and coloured pencils.","The area was tidy again before lunchtime.","The school decided to close the new space."],"a":1,"e":"The next sentence describes the helpers showing visitors around."},{"q":"19. Gap 19","o":["We had made a simple map for visitors.","Two student helpers greeted people at the gate.","She thanked the pupils who had shared their ideas.","I brought extra paper and coloured pencils.","The area was tidy again before lunchtime.","The school decided to close the new space."],"a":2,"e":"The welcome speech is followed by thanking the pupils."},{"q":"20. Gap 20","o":["We had made a simple map for visitors.","Two student helpers greeted people at the gate.","She thanked the pupils who had shared their ideas.","I brought extra paper and coloured pencils.","The area was tidy again before lunchtime.","The school decided to close the new space."],"a":3,"e":"Paper and pencils fit the drawing table and the children’s pictures."},{"q":"21. Gap 21","o":["We had made a simple map for visitors.","Two student helpers greeted people at the gate.","She thanked the pupils who had shared their ideas.","I brought extra paper and coloured pencils.","The area was tidy again before lunchtime.","The school decided to close the new space."],"a":4,"e":"This describes the result of putting materials away."}]},{"t":"Reading Part 5 — Multiple-choice Cloze","i":"For questions 22–27, choose A, B, C or D.","m":7,"x":"\nCHOOSING A SAFE SURFACE\n\nOur class tested different surfaces for the new play area. We walked across each one and noticed how it felt under our shoes. The soft rubber surface was the most (22) _____ when we stepped on it. The designer explained that it could also help (23) _____ small falls. We checked that rainwater could move (24) _____ the surface instead of collecting in puddles. One sample was too rough, so we decided not to (25) _____ it. We wrote down our results and shared them with the school. It was useful to make the choice (26) _____ testing the materials ourselves. Now we know why safety should come (27) _____.","q":[{"q":"22. Gap 22","o":["comfortable","comfort","comfortably","comforting"],"a":0,"e":"Comfortable describes how the surface felt."},{"q":"23. Gap 23","o":["reduce","remove","return","repeat"],"a":0,"e":"A soft surface can reduce the effect of small falls."},{"q":"24. Gap 24","o":["through","between","under","towards"],"a":0,"e":"Rainwater can move through a surface."},{"q":"25. Gap 25","o":["choose","choice","chose","choosing"],"a":0,"e":"After “decided not to”, use the base verb choose."},{"q":"26. Gap 26","o":["after","during","since","until"],"a":0,"e":"They chose after testing the materials."},{"q":"27. Gap 27","o":["first","early","ahead","beforehand"],"a":0,"e":"The phrase is safety should come first."}]},{"t":"Reading Part 6 — Open Cloze","i":"For questions 28–32, write one word in each gap.","m":6,"x":"\nA PLACE TO PLAY\n\nThere is a small playground near my home. I go there (28) _____ my younger cousin after school. She likes the swings, while I prefer sitting on a bench and reading. Last month, workers added a wide path (29) _____ the entrance to the play area. It is now easier for people to move around. We usually stay (30) _____ about an hour, unless it begins to rain. My cousin says the best part is having space to run (31) _____ her friends. I think a good playground should have something (32) _____ everyone.","q":[{"q":"28. Gap 28","a":["with"],"e":"Go there with someone."},{"q":"29. Gap 29","a":["from"],"e":"The path goes from the entrance to the play area."},{"q":"30. Gap 30","a":["for"],"e":"Stay for about an hour."},{"q":"31. Gap 31","a":["with"],"e":"Run with her friends."},{"q":"32. Gap 32","a":["for"],"e":"Something for everyone."}]}];
+
+var L = [{"t":"Listening Part 1 — Picture Choice","i":"For questions 1–7, choose the picture that matches what you hear.","im":"<p><button class='btn alt say' data-i='0' type='button'>Play Part 1</button></p>","m":8,"q":[{"q":"1. Which feature did the students request?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyYzg1YSIvPjxwYXRoIGQ9Ik0wIDE4N3E4OC0yMCAxNzcgMHQxODMgMHYyM0gweiIgZmlsbD0iI2I3Y2RhOCIvPjxwYXRoIGQ9Ik05NiA0N3YxMzNtMTY4LTEzM3YxMzNtLTE3Mi0xMjBoMTc2IiBzdHJva2U9IiMyOTQyNTYiIHN0cm9rZS13aWR0aD0iMTAiLz48cGF0aCBkPSJtMTI0IDYxIDEwIDgxbTEwMi04MS0xMCA4MSIgc3Ryb2tlPSIjNjY4ZGE0IiBzdHJva2Utd2lkdGg9IjciLz48cmVjdCB4PSIxMTkiIHk9IjEzOSIgd2lkdGg9IjExMiIgaGVpZ2h0PSIxOCIgcng9IjciIGZpbGw9IiNlNDdmNTUiIHN0cm9rZT0iIzI5NDI1NiIgc3Ryb2tlLXdpZHRoPSI1Ii8+PHBhdGggZD0iTTExMSAxODRoLTMwbTE5OCAwaC0zMCIgc3Ryb2tlPSIjN2Q2NTRmIiBzdHJva2Utd2lkdGg9IjgiLz48L3N2Zz4=","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyYzg1YSIvPjxwYXRoIGQ9Ik0wIDE4N3E4OC0yMCAxNzcgMHQxODMgMHYyM0gweiIgZmlsbD0iI2I3Y2RhOCIvPjxwYXRoIGQ9Ik03OSAxNzhoNzhsOTYtOThoMzF2OTh6IiBmaWxsPSIjZDliMTg3IiBzdHJva2U9IiMyOTQyNTYiIHN0cm9rZS13aWR0aD0iOCIvPjxwYXRoIGQ9Im0xNDMgMTcyIDEwMC04N20tODAgOTIgMTA0LTkxIiBzdHJva2U9IiNmNWVkZGEiIHN0cm9rZS13aWR0aD0iNyIvPjxwYXRoIGQ9Ik0yNTAgNzdWNTVoMzR2MjIiIHN0cm9rZT0iIzI5NDI1NiIgc3Ryb2tlLXdpZHRoPSI3Ii8+PC9zdmc+","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyYzg1YSIvPjxwYXRoIGQ9Ik0wIDE4N3E4OC0yMCAxNzcgMHQxODMgMHYyM0gweiIgZmlsbD0iI2I3Y2RhOCIvPjxwYXRoIGQ9Ik03NyA5NHExMDMtNzUgMjA2IDBsLTE1IDE3SDkyeiIgZmlsbD0iI2U2N2U1OCIgc3Ryb2tlPSIjMjk0MjU2IiBzdHJva2Utd2lkdGg9IjciLz48cGF0aCBkPSJNMTA1IDEwNnY4Nm0xNTAtODZ2ODZNODIgMTk0aDE5NiIgc3Ryb2tlPSIjMjk0MjU2IiBzdHJva2Utd2lkdGg9IjkiLz48cGF0aCBkPSJNMTEwIDEwMXE3MC01MCAxNDAgMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZjVjNjVhIiBzdHJva2Utd2lkdGg9IjgiLz48L3N2Zz4="],"a":2,"e":"They requested a shade roof."},{"q":"2. What colour will the new bench be?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyYzg1YSIvPjxwYXRoIGQ9Ik0wIDE4N3E4OC0yMCAxNzcgMHQxODMgMHYyM0gweiIgZmlsbD0iI2I3Y2RhOCIvPjxyZWN0IHg9IjgzIiB5PSI4MiIgd2lkdGg9IjE5NCIgaGVpZ2h0PSIzMCIgcng9IjciIGZpbGw9IiNkYzYxNTciIHN0cm9rZT0iIzI5NDI1NiIgc3Ryb2tlLXdpZHRoPSI3Ii8+PHJlY3QgeD0iOTIiIHk9IjEyNCIgd2lkdGg9IjE3NiIgaGVpZ2h0PSIyMyIgcng9IjUiIGZpbGw9IiNkYzYxNTciIHN0cm9rZT0iIzI5NDI1NiIgc3Ryb2tlLXdpZHRoPSI2Ii8+PHBhdGggZD0iTTExMiAxNDd2NDdtMTM2LTQ3djQ3bS0xNDggMGgxNjAiIHN0cm9rZT0iIzI5NDI1NiIgc3Ryb2tlLXdpZHRoPSI5IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48L3N2Zz4=","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyYzg1YSIvPjxwYXRoIGQ9Ik0wIDE4N3E4OC0yMCAxNzcgMHQxODMgMHYyM0gweiIgZmlsbD0iI2I3Y2RhOCIvPjxyZWN0IHg9IjgzIiB5PSI4MiIgd2lkdGg9IjE5NCIgaGVpZ2h0PSIzMCIgcng9IjciIGZpbGw9IiM2NDlmYzEiIHN0cm9rZT0iIzI5NDI1NiIgc3Ryb2tlLXdpZHRoPSI3Ii8+PHJlY3QgeD0iOTIiIHk9IjEyNCIgd2lkdGg9IjE3NiIgaGVpZ2h0PSIyMyIgcng9IjUiIGZpbGw9IiM2NDlmYzEiIHN0cm9rZT0iIzI5NDI1NiIgc3Ryb2tlLXdpZHRoPSI2Ii8+PHBhdGggZD0iTTExMiAxNDd2NDdtMTM2LTQ3djQ3bS0xNDggMGgxNjAiIHN0cm9rZT0iIzI5NDI1NiIgc3Ryb2tlLXdpZHRoPSI5IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48L3N2Zz4=","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyYzg1YSIvPjxwYXRoIGQ9Ik0wIDE4N3E4OC0yMCAxNzcgMHQxODMgMHYyM0gweiIgZmlsbD0iI2I3Y2RhOCIvPjxyZWN0IHg9IjgzIiB5PSI4MiIgd2lkdGg9IjE5NCIgaGVpZ2h0PSIzMCIgcng9IjciIGZpbGw9IiNlOWM1NGYiIHN0cm9rZT0iIzI5NDI1NiIgc3Ryb2tlLXdpZHRoPSI3Ii8+PHJlY3QgeD0iOTIiIHk9IjEyNCIgd2lkdGg9IjE3NiIgaGVpZ2h0PSIyMyIgcng9IjUiIGZpbGw9IiNlOWM1NGYiIHN0cm9rZT0iIzI5NDI1NiIgc3Ryb2tlLXdpZHRoPSI2Ii8+PHBhdGggZD0iTTExMiAxNDd2NDdtMTM2LTQ3djQ3bS0xNDggMGgxNjAiIHN0cm9rZT0iIzI5NDI1NiIgc3Ryb2tlLXdpZHRoPSI5IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48L3N2Zz4="],"a":1,"e":"The class chooses blue."},{"q":"3. Where should visitors leave their bags?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyYzg1YSIvPjxwYXRoIGQ9Ik0wIDE4N3E4OC0yMCAxNzcgMHQxODMgMHYyM0gweiIgZmlsbD0iI2I3Y2RhOCIvPjxwYXRoIGQ9Ik04MCA5NiAxODAgNDVsMTAwIDUxdjk4SDgweiIgZmlsbD0iI2QxYTA2ZCIgc3Ryb2tlPSIjMjk0MjU2IiBzdHJva2Utd2lkdGg9IjgiLz48cGF0aCBkPSJNMTQ5IDE5NHYtNjdoNjN2NjciIGZpbGw9IiM3YTllYWQiIHN0cm9rZT0iIzI5NDI1NiIgc3Ryb2tlLXdpZHRoPSI2Ii8+PHBhdGggZD0iTTEwMiAxMDVoMTU2IiBzdHJva2U9IiNmM2RkYmIiIHN0cm9rZS13aWR0aD0iNyIvPjwvc3ZnPg==","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyYzg1YSIvPjxwYXRoIGQ9Ik0wIDE4N3E4OC0yMCAxNzcgMHQxODMgMHYyM0gweiIgZmlsbD0iI2I3Y2RhOCIvPjxyZWN0IHg9Ijc3IiB5PSI2MSIgd2lkdGg9IjIwNiIgaGVpZ2h0PSIxMzUiIHJ4PSI4IiBmaWxsPSIjZThmMWYzIiBzdHJva2U9IiMyOTQyNTYiIHN0cm9rZS13aWR0aD0iOCIvPjxwYXRoIGQ9Ik03NyA5OWgyMDYiIHN0cm9rZT0iI2U0N2Y1NSIgc3Ryb2tlLXdpZHRoPSIxNiIvPjxyZWN0IHg9IjEwMSIgeT0iMTE4IiB3aWR0aD0iNTQiIGhlaWdodD0iNDciIGZpbGw9IiNhN2QzZGUiIHN0cm9rZT0iIzI5NDI1NiIgc3Ryb2tlLXdpZHRoPSI1Ii8+PHJlY3QgeD0iMTgzIiB5PSIxMTkiIHdpZHRoPSI3MCIgaGVpZ2h0PSI3NyIgZmlsbD0iI2MyOGM2MiIgc3Ryb2tlPSIjMjk0MjU2IiBzdHJva2Utd2lkdGg9IjUiLz48Y2lyY2xlIGN4PSIyMzciIGN5PSIxNTciIHI9IjQiIGZpbGw9IiNmZmYiLz48L3N2Zz4=","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyYzg1YSIvPjxwYXRoIGQ9Ik0wIDE4N3E4OC0yMCAxNzcgMHQxODMgMHYyM0gweiIgZmlsbD0iI2I3Y2RhOCIvPjxyZWN0IHg9Ijg3IiB5PSI1NyIgd2lkdGg9IjE4NiIgaGVpZ2h0PSIxNDAiIHJ4PSI4IiBmaWxsPSIjZWFmMGYyIiBzdHJva2U9IiMyOTQyNTYiIHN0cm9rZS13aWR0aD0iOCIvPjxwYXRoIGQ9Ik0xODAgNjN2MTI4IiBzdHJva2U9IiM5YWFmYmIiIHN0cm9rZS13aWR0aD0iNiIvPjxjaXJjbGUgY3g9IjE0MCIgY3k9IjEwMyIgcj0iMTUiIGZpbGw9IiM2MjlkYjUiLz48cGF0aCBkPSJNMTQwIDEyMXY0MG0tMTctMjUgMTcgMTQgMTgtMTQiIHN0cm9rZT0iIzYyOWRiNSIgc3Ryb2tlLXdpZHRoPSI3Ii8+PGNpcmNsZSBjeD0iMjIxIiBjeT0iMTAzIiByPSIxNSIgZmlsbD0iI2RlODE1NyIvPjxwYXRoIGQ9Ik0yMjEgMTIxdjQwbS0xNy0yNSAxNyAxNCAxOC0xNCIgc3Ryb2tlPSIjZGU4MTU3IiBzdHJva2Utd2lkdGg9IjciLz48L3N2Zz4="],"a":0,"e":"Bags can be left in the storage shed."},{"q":"4. What surface will be placed under the play equipment?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyYzg1YSIvPjxwYXRoIGQ9Ik0wIDE4N3E4OC0yMCAxNzcgMHQxODMgMHYyM0gweiIgZmlsbD0iI2I3Y2RhOCIvPjxyZWN0IHg9IjczIiB5PSI1NCIgd2lkdGg9IjIxNCIgaGVpZ2h0PSIxNDAiIHJ4PSI2IiBmaWxsPSIjYjdkOGQ5IiBzdHJva2U9IiMyOTQyNTYiIHN0cm9rZS13aWR0aD0iNyIvPjxnIGZpbGw9IiM2ZGE5YjMiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSI0Ij48cmVjdCB4PSI4NCIgeT0iNjUiIHdpZHRoPSI1OCIgaGVpZ2h0PSI1MyIgcng9IjgiLz48cmVjdCB4PSIxNTAiIHk9IjY1IiB3aWR0aD0iNTgiIGhlaWdodD0iNTMiIHJ4PSI4Ii8+PHJlY3QgeD0iMjE2IiB5PSI2NSIgd2lkdGg9IjU4IiBoZWlnaHQ9IjUzIiByeD0iOCIvPjxyZWN0IHg9Ijg0IiB5PSIxMjYiIHdpZHRoPSI1OCIgaGVpZ2h0PSI1NiIgcng9IjgiLz48cmVjdCB4PSIxNTAiIHk9IjEyNiIgd2lkdGg9IjU4IiBoZWlnaHQ9IjU2IiByeD0iOCIvPjxyZWN0IHg9IjIxNiIgeT0iMTI2IiB3aWR0aD0iNTgiIGhlaWdodD0iNTYiIHJ4PSI4Ii8+PC9nPjwvc3ZnPg==","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyYzg1YSIvPjxwYXRoIGQ9Ik0wIDE4N3E4OC0yMCAxNzcgMHQxODMgMHYyM0gweiIgZmlsbD0iI2I3Y2RhOCIvPjxwYXRoIGQ9Ik02MiAxODVxMTItNzUgMjggMCAxNi05NyAzMSAwIDE1LTc5IDMyIDAgMTctOTggMzMgMCAxNi04NCAzMiAwIDE4LTEwMyAzMyAwIDE1LTc5IDMyIDAgMTYtOTMgMzIgMHYzMEg2MnoiIGZpbGw9IiM3MmE4NmIiIHN0cm9rZT0iIzI5NDI1NiIgc3Ryb2tlLXdpZHRoPSI1Ii8+PHBhdGggZD0iTTcwIDE5MmgyMjAiIHN0cm9rZT0iIzVjOGY1OCIgc3Ryb2tlLXdpZHRoPSI4Ii8+PC9zdmc+","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyYzg1YSIvPjxwYXRoIGQ9Ik0wIDE4N3E4OC0yMCAxNzcgMHQxODMgMHYyM0gweiIgZmlsbD0iI2I3Y2RhOCIvPjxwYXRoIGQ9Ik02MCAxNzBxNzAtMjMgMTMwIDB0MTEwIDB2MzFINjB6IiBmaWxsPSIjYjk4ZDYwIi8+PGcgZmlsbD0iI2UwYjE3YyIgc3Ryb2tlPSIjMjk0MjU2IiBzdHJva2Utd2lkdGg9IjMiPjxlbGxpcHNlIGN4PSIxMDAiIGN5PSIxMTUiIHJ4PSIyNSIgcnk9IjEwIiB0cmFuc2Zvcm09InJvdGF0ZSgyMCAxMDAgMTE1KSIvPjxlbGxpcHNlIGN4PSIxNjQiIGN5PSIxNDYiIHJ4PSIyNSIgcnk9IjEwIiB0cmFuc2Zvcm09InJvdGF0ZSgtMTUgMTY0IDE0NikiLz48ZWxsaXBzZSBjeD0iMjI5IiBjeT0iMTA1IiByeD0iMjUiIHJ5PSIxMCIgdHJhbnNmb3JtPSJyb3RhdGUoMTcgMjI5IDEwNSkiLz48ZWxsaXBzZSBjeD0iMjY2IiBjeT0iMTUwIiByeD0iMjUiIHJ5PSIxMCIgdHJhbnNmb3JtPSJyb3RhdGUoLTE4IDI2NiAxNTApIi8+PGVsbGlwc2UgY3g9IjEyNCIgY3k9Ijc2IiByeD0iMjMiIHJ5PSI5IiB0cmFuc2Zvcm09InJvdGF0ZSgtMTIgMTI0IDc2KSIvPjwvZz48L3N2Zz4="],"a":0,"e":"The designer selects rubber tiles."},{"q":"5. Which piece of equipment will the children test first?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyYzg1YSIvPjxwYXRoIGQ9Ik0wIDE4N3E4OC0yMCAxNzcgMHQxODMgMHYyM0gweiIgZmlsbD0iI2I3Y2RhOCIvPjxwYXRoIGQ9Im0xODAgMTEwLTUzIDgxaDEwNnoiIGZpbGw9IiNkYWExNWUiIHN0cm9rZT0iIzI5NDI1NiIgc3Ryb2tlLXdpZHRoPSI3Ii8+PHBhdGggZD0iTTY3IDg4IDI5MSA2NCIgc3Ryb2tlPSIjNTU5YmI0IiBzdHJva2Utd2lkdGg9IjE1IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48Y2lyY2xlIGN4PSI3OSIgY3k9Ijg3IiByPSIxNiIgZmlsbD0iI2U3N2U1NyIvPjxjaXJjbGUgY3g9IjI3OCIgY3k9IjY2IiByPSIxNiIgZmlsbD0iI2U3N2U1NyIvPjxwYXRoIGQ9Ik03NCAxMDZ2MjdtMjA2LTQ5djI3IiBzdHJva2U9IiMyOTQyNTYiIHN0cm9rZS13aWR0aD0iNyIvPjwvc3ZnPg==","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyYzg1YSIvPjxwYXRoIGQ9Ik0wIDE4N3E4OC0yMCAxNzcgMHQxODMgMHYyM0gweiIgZmlsbD0iI2I3Y2RhOCIvPjxwYXRoIGQ9Ik0xMDMgNTd2OTNtMC04Mmg3NXYzM2g3NHYzNmgzNXYzM0gxMjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzViOWRiNCIgc3Ryb2tlLXdpZHRoPSIxNiIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTk4IDU4aDgzIiBzdHJva2U9IiNlODg3NWIiIHN0cm9rZS13aWR0aD0iMTIiLz48L3N2Zz4=","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyYzg1YSIvPjxwYXRoIGQ9Ik0wIDE4N3E4OC0yMCAxNzcgMHQxODMgMHYyM0gweiIgZmlsbD0iI2I3Y2RhOCIvPjxyZWN0IHg9IjcxIiB5PSI1NSIgd2lkdGg9IjIxOCIgaGVpZ2h0PSIxNDAiIHJ4PSI5IiBmaWxsPSIjZDZiMThiIiBzdHJva2U9IiMyOTQyNTYiIHN0cm9rZS13aWR0aD0iNyIvPjxnIHN0cm9rZT0iIzI5NDI1NiIgc3Ryb2tlLXdpZHRoPSI0Ij48Y2lyY2xlIGN4PSIxMTciIGN5PSIxMDAiIHI9IjIxIiBmaWxsPSIjZTU2ODU3Ii8+PGNpcmNsZSBjeD0iMTgwIiBjeT0iMTAwIiByPSIyMSIgZmlsbD0iI2U4YzI0ZSIvPjxjaXJjbGUgY3g9IjI0MyIgY3k9IjEwMCIgcj0iMjEiIGZpbGw9IiM2NWE0YmQiLz48cmVjdCB4PSI5MyIgeT0iMTQxIiB3aWR0aD0iNDgiIGhlaWdodD0iMzUiIHJ4PSI2IiBmaWxsPSIjN2ZhYzc1Ii8+PHBhdGggZD0iTTE1OSAxNDJoNDJtLTIxLTE4djU0bTQyLTMxIDM5IDI3bS0zOSAwIDM5LTI3IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYxZDUiIHN0cm9rZS13aWR0aD0iNyIvPjwvZz48L3N2Zz4="],"a":0,"e":"They will start by testing the seesaw."},{"q":"6. What will the volunteers use for the wall activity?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyYzg1YSIvPjxwYXRoIGQ9Ik0wIDE4N3E4OC0yMCAxNzcgMHQxODMgMHYyM0gweiIgZmlsbD0iI2I3Y2RhOCIvPjxwYXRoIGQ9Im0xMDIgMTY4IDE5LTk5IDI4IDUtMTkgOTl6bTU0IDEwIDEtMTAzIDI5IDAtMSAxMDN6bTU0LTEwIDIwLTk5IDI4IDUtMjAgOTl6IiBmaWxsPSIjZTM3NDU4IiBzdHJva2U9IiMyOTQyNTYiIHN0cm9rZS13aWR0aD0iNSIvPjxwYXRoIGQ9Im0xMjEgNjkgMTQtMjEgMTQgMjZtOC0zIDE0LTIxIDE0IDIxbTEyIDAgMTQtMjEgMTQgMjYiIGZpbGw9IiNmMmNiNTgiIHN0cm9rZT0iIzI5NDI1NiIgc3Ryb2tlLXdpZHRoPSI0Ii8+PC9zdmc+","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyYzg1YSIvPjxwYXRoIGQ9Ik0wIDE4N3E4OC0yMCAxNzcgMHQxODMgMHYyM0gweiIgZmlsbD0iI2I3Y2RhOCIvPjxwYXRoIGQ9Ik0xMTggMTY0IDIyMCA1Nm0tODIgMTE5TDI0NSA2OW0tNTcgMTI2IDgwLTk3IiBzdHJva2U9IiNiMjdkNTIiIHN0cm9rZS13aWR0aD0iMTIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxwYXRoIGQ9Im0yMTEgNjUgMTMtMjcgMTYgMThtLTcgMjEgMTktMjUgMTQgMjNtLTIgMjQgMjMtMjAgMTAgMjUiIGZpbGw9IiNlOTgyNTgiIHN0cm9rZT0iIzI5NDI1NiIgc3Ryb2tlLXdpZHRoPSI1Ii8+PC9zdmc+","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyYzg1YSIvPjxwYXRoIGQ9Ik0wIDE4N3E4OC0yMCAxNzcgMHQxODMgMHYyM0gweiIgZmlsbD0iI2I3Y2RhOCIvPjxyZWN0IHg9Ijk0IiB5PSI4MCIgd2lkdGg9IjQ3IiBoZWlnaHQ9IjExMCIgcng9IjEyIiB0cmFuc2Zvcm09InJvdGF0ZSgtMjUgOTQgODApIiBmaWxsPSIjZjFkNzZiIiBzdHJva2U9IiMyOTQyNTYiIHN0cm9rZS13aWR0aD0iNSIvPjxyZWN0IHg9IjE2MCIgeT0iNjQiIHdpZHRoPSI0NyIgaGVpZ2h0PSIxMTgiIHJ4PSIxMiIgdHJhbnNmb3JtPSJyb3RhdGUoMTIgMTYwIDY0KSIgZmlsbD0iI2U3N2M2MyIgc3Ryb2tlPSIjMjk0MjU2IiBzdHJva2Utd2lkdGg9IjUiLz48cmVjdCB4PSIyMTkiIHk9IjgwIiB3aWR0aD0iNDciIGhlaWdodD0iMTEwIiByeD0iMTIiIHRyYW5zZm9ybT0icm90YXRlKDI4IDIxOSA4MCkiIGZpbGw9IiM2ZWFiYmQiIHN0cm9rZT0iIzI5NDI1NiIgc3Ryb2tlLXdpZHRoPSI1Ii8+PC9zdmc+"],"a":2,"e":"They will use chalk to draw on the temporary wall board."},{"q":"7. Which sign will be placed near the gate?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyYzg1YSIvPjxwYXRoIGQ9Ik0wIDE4N3E4OC0yMCAxNzcgMHQxODMgMHYyM0gweiIgZmlsbD0iI2I3Y2RhOCIvPjxjaXJjbGUgY3g9IjEzMCIgY3k9Ijk4IiByPSIxNyIgZmlsbD0iI2NlOTY3MCIvPjxjaXJjbGUgY3g9IjIzMCIgY3k9Ijk4IiByPSIxNyIgZmlsbD0iI2Q4YTE3YSIvPjxwYXRoIGQ9Ik0xMzAgMTE3djUzbTAtMzEtMjAgMTltMjAtMTkgMjAgMTltODAtNDF2NTNtMC0zMS0yMCAxOW0yMC0xOSAyMCAxOSIgc3Ryb2tlPSIjNGM4YWE3IiBzdHJva2Utd2lkdGg9IjEwIi8+PHBhdGggZD0iTTE1NSAxMjFoNTBtLTExLTEyIDE0IDEyLTE0IDEyIiBmaWxsPSJub25lIiBzdHJva2U9IiNlMjdmNTgiIHN0cm9rZS13aWR0aD0iOCIvPjwvc3ZnPg==","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyYzg1YSIvPjxwYXRoIGQ9Ik0wIDE4N3E4OC0yMCAxNzcgMHQxODMgMHYyM0gweiIgZmlsbD0iI2I3Y2RhOCIvPjxjaXJjbGUgY3g9IjE4MCIgY3k9IjExNiIgcj0iNzgiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2Q5NTU1MCIgc3Ryb2tlLXdpZHRoPSIxMSIvPjxjaXJjbGUgY3g9IjE2NyIgY3k9IjgyIiByPSIxMyIgZmlsbD0iIzI5NDE1NiIvPjxwYXRoIGQ9Im0xNjcgOTkgMzAgMjUtMjQgMjNtLTYtNDctMjQgMjMtMTQgMjRtNDQgMCAyNCAyOG0tNTQtMjktMTggMzIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRlOGNhOSIgc3Ryb2tlLXdpZHRoPSIxMSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0ibTEyMiA1NyAxMTYgMTE5IiBzdHJva2U9IiNkOTU1NTAiIHN0cm9rZS13aWR0aD0iMTEiLz48L3N2Zz4=","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VlZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM3IiByPSIxNyIgZmlsbD0iI2YyYzg1YSIvPjxwYXRoIGQ9Ik0wIDE4N3E4OC0yMCAxNzcgMHQxODMgMHYyM0gweiIgZmlsbD0iI2I3Y2RhOCIvPjxyZWN0IHg9Ijg3IiB5PSI0OCIgd2lkdGg9IjE4NiIgaGVpZ2h0PSIxNDgiIHJ4PSI4IiBmaWxsPSIjZjdlZmRiIiBzdHJva2U9IiMyOTQyNTYiIHN0cm9rZS13aWR0aD0iNyIvPjxwYXRoIGQ9Ik0xMzAgMTY5VjkxaDUydjc4bS0yNS00MWg4Nm0tMTctMTcgMTggMTctMTggMTciIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzVmOWRiNSIgc3Ryb2tlLXdpZHRoPSIxMSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+"],"a":1,"e":"The sign will remind children not to run near the gate."}]},{"t":"Listening Part 2 — Short Conversations","i":"You will hear six short conversations. For questions 8–13, choose A, B or C.","im":"<p><button class='btn alt say' data-i='1' type='button'>Play Part 2</button></p>","m":7,"q":[{"q":"8. Why did the students ask for a wider path?","o":["A wheelchair user found it difficult to pass.","The path was too close to the classroom.","People wanted space for a football game."],"a":0,"e":"A student using a wheelchair needed more room."},{"q":"9. Which activity does Maya want to try at the new space?","o":["Drawing at the low table","Using the climbing frame","Playing football"],"a":0,"e":"She is interested in drawing at the low table."},{"q":"10. Where should the volunteers put the plant pots?","o":["Beside the benches","Near the main gate","Outside the gym"],"a":0,"e":"They decide to place them beside the benches."},{"q":"11. When will the designer visit the school again?","o":["On Monday morning","On Tuesday after lunch","On Friday afternoon"],"a":1,"e":"The designer will return Tuesday after lunch."},{"q":"12. What will the class bring to the opening?","o":["A box of games","A list of student ideas","A microphone"],"a":1,"e":"They will bring the list of ideas collected in class."},{"q":"13. What will the designer measure next?","o":["The width of the gate","The height of the slide","The length of the benches"],"a":0,"e":"The gate needs to be measured for access."}]},{"t":"Listening Part 3 — Note Completion","i":"You will hear an announcement about Play Space Opening Day. Complete questions 14–19 with one or two words or a number.","im":"<p><button class='btn alt say' data-i='2' type='button'>Play Part 3</button></p>","m":6,"q":[{"q":"14. Event: Play Space Opening _____","a":["day"],"e":"It is called Play Space Opening Day."},{"q":"15. Date: Saturday 16 _____","a":["may"],"e":"It takes place on Saturday 16 May."},{"q":"16. Meet at the west _____","a":["entrance"],"e":"Visitors should meet at the west entrance."},{"q":"17. The first activity begins at _____","a":["10.20"],"e":"The first activity starts at twenty past ten."},{"q":"18. Bring a sun _____","a":["hat"],"e":"Visitors should bring a sun hat."},{"q":"19. Sign up at the school _____","a":["office"],"e":"Students should sign up at the school office."}]},{"t":"Listening Part 4 — Interview","i":"You will hear an interviewer talking to a student who helped test new playground equipment. For questions 20–25, choose A, B or C.","im":"<p><button class='btn alt say' data-i='3' type='button'>Play Part 4</button></p>","m":7,"q":[{"q":"20. What did Noor do as part of the design project?","o":["Tried the equipment and shared feedback","Painted the playground wall","Chose the building company"],"a":0,"e":"Noor tested equipment and told the designer what she thought."},{"q":"21. Which feature did Noor like best?","o":["A low drawing table","A high climbing net","A large football area"],"a":0,"e":"The table was easy to use while seated."},{"q":"22. What problem did the students notice with the old path?","o":["It became slippery after rain.","It was too close to the road.","It had too many signs."],"a":0,"e":"The old path became slippery when wet."},{"q":"23. How did Noor help younger pupils?","o":["She asked them to try the activities.","She showed them how to paint.","She gave them a map of the town."],"a":0,"e":"She invited younger pupils to test the play options."},{"q":"24. What did Noor learn about design?","o":["Small details can make a space easier to use.","Bright colours are the most important part.","Older students should choose everything."],"a":0,"e":"She noticed how details such as path width mattered."},{"q":"25. What would Noor like to do next?","o":["Help plan a quiet outdoor area","Build a new sports hall","Organise a school trip"],"a":0,"e":"She wants to help design a calm outdoor area next."}]}];
+
+var T = ["Extract 1. Student: Should we ask for a low swing? Teacher: That would be useful, but some children said there is no shade on sunny days. Student: So a roof over the seating area? Teacher: Yes, let's suggest a shade roof. {pause} Extract 2. Boy: The red bench is bright. Girl: The yellow one is nice too. Boy: We need a colour that works with our blue signs. Girl: Then let's choose a blue bench. {pause} Extract 3. Volunteer: Where should families leave their bags? Student: The office is busy. Could they use the storage shed? Volunteer: Good idea, as long as we keep the door clear. {pause} Extract 4. Designer: Have you chosen the surface for under the equipment? Teacher: Grass is soft but gets muddy. The wood chips can move around. Designer: The class prefers rubber tiles, so let's order those. {pause} Extract 5. Student: Can we test the slide first? Teacher: We can, but the children are most excited about the seesaw. Let's begin there. Student: I'll ask them to take turns. {pause} Extract 6. Teacher: We have brushes and paper for the activity. Student: The wall board can be drawn on with chalk. Teacher: Great, we'll put a box of chalk on the table. {pause} Extract 7. Girl: The entrance sign is ready. Boy: Do we need another one by the gate? Girl: Yes, the school asked for a no-running sign there. Boy: I'll put it up. {pause}","Conversation 1. Student: Why did we ask for a wider path? Teacher: A student who uses a wheelchair said it was difficult to pass near the bench. Student: I remember now. We measured it with the designer. {pause} Conversation 2. Maya: What do you want to try when the playground opens? Friend: The low table looks fun. Maya: I want to draw there too. I don't really like climbing frames. Friend: We can use the table together. {pause} Conversation 3. Teacher: Where shall we place these plant pots? Student: Near the main gate? Teacher: That might block people coming in. Let's put them beside the benches. Student: I'll carry them over. {pause} Conversation 4. Student: Is the designer coming tomorrow? Teacher: No, she has another school visit. She'll be here Tuesday after lunch. Student: I'll tell the class. {pause} Conversation 5. Girl: What should we bring to the opening? Boy: The games are already there. The teacher asked us to bring the list of ideas from our class survey. Girl: I'll put it in my folder. {pause} Conversation 6. Designer: I've checked the slide and the benches. What should I measure next? Teacher: The gate is a little narrow. Could you measure its width? Designer: Yes, I'll do that before I leave. {pause}","Welcome to Play Space Opening Day, which will take place on Saturday 16 May. Visitors should meet at the west entrance of the school playground. The first activity begins at twenty past ten. There will be time to try the new equipment and see the student design display. Please bring a sun hat if the weather is warm. Water will be available beside the benches. Students who want to help on the day should sign up at the school office before Wednesday. Families are welcome, and there is no charge. We look forward to seeing you at the opening.","Interviewer: Noor, how were you involved in the new playground project? Noor: A group of students tried the equipment before it was ordered. We shared what felt easy and what needed changing. Interviewer: Which part did you like most? Noor: The low drawing table. It was easy to use while sitting down, and younger pupils could reach it too. Interviewer: Did you find any problems in the old playground? Noor: The path became slippery after rain. A few students had fallen there, so we asked for a safer surface. Interviewer: How did you get younger children involved? Noor: We invited them to try the activities and tell us what they thought. They noticed things we had missed, like where to put bags. Interviewer: What did you learn about design? Noor: Small details matter. A wider path or a lower table can make a space easier for more people to use. Interviewer: What would you like to do next? Noor: I'd like to help plan a quiet outdoor area with seats and plants. Some students need a calm place during lunch."];
+
+var FULL=true, AUDIO=["","","",""];
+var ASSESSOR_EMAIL="oxfampreparation@email.cz";
+
+function wc(t){var m=t.trim().match(/\S+/g);return m?m.length:0}
+function winit(){
+  document.querySelectorAll("textarea").forEach(function(t){t.oninput=function(){document.getElementById(t.id+"c").textContent=wc(t.value)+" words"}});
+  document.querySelectorAll("[data-c]").forEach(function(b){b.onclick=function(){var t=document.getElementById(b.dataset.c).value;if(navigator.clipboard)navigator.clipboard.writeText(t)}});
+  document.querySelectorAll("[data-s]").forEach(function(b){b.onclick=async function(){
+    var t=document.getElementById(b.dataset.s).value,nameField=document.getElementById("nm"),nm=((nameField&&nameField.value)||"Student").trim()||"Student";
+    if(!wc(t)){b.textContent="Write something first!";setTimeout(function(){b.textContent="Send writing to assessor"},2000);return}
+    var subject="B1 Preliminary for Schools Test 9 - "+b.dataset.t+" - "+nm;
+    var message="Student: "+nm+"\nTest: B1 Preliminary for Schools Test 9\nTask: "+b.dataset.t+"\n\n"+t;
+    var status=b.parentNode.parentNode.querySelector(".email-status");if(!status){status=document.createElement("p");status.className="note email-status";status.setAttribute("role","status");b.parentNode.parentNode.appendChild(status)}
+    b.disabled=true;b.textContent="Sending…";status.textContent="Sending your writing to "+ASSESSOR_EMAIL+"…";
+    try{var response=await fetch("https://formsubmit.co/ajax/"+ASSESSOR_EMAIL,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify({name:nm,_subject:subject,message:message})});var result=await response.json();if(!response.ok||result.success===false||result.success==="false")throw new Error(result.message||"The email service did not accept the submission.");status.textContent="Submission accepted. On first use, the assessor must confirm the address through the verification email before delivery is enabled.";b.textContent="Submitted";
+    }catch(err){status.textContent="We couldn't send the writing. Check the internet connection and try again. "+(err&&err.message?err.message:"");b.disabled=false;b.textContent="Retry sending";return}
+    b.disabled=false;setTimeout(function(){b.textContent="Send writing to assessor"},4000);
+  }});
+}
+var playId=0;
+function say(i,done){
+  var id=++playId;speechSynthesis.cancel();
+  var parts=T[i].split(/(\{pause\}|\{short\}|\bSpeaker \d:|\b[A-Z][A-Za-z]+:)/),q=[],pitch=1,flip=0,names={};
+  parts.forEach(function(x){
+    x=x.trim();if(!x)return;
+    if(x==="{pause}"||x==="{short}"){q.push({w:x==="{pause}"?2500:1200});pitch=1;return}
+    var sp=x.match(/^Speaker (\d):$/);if(sp){q.push({t:"Speaker "+sp[1],p:1,w:700});return}
+    if(/^[A-Za-z 0-9 ]+:$/.test(x)){var n=x.slice(0,-1);if(!(n in names))names[n]=(flip++%2)?1.25:.85;pitch=names[n];return}
+    (x.match(/[^.?!]+[.?!]*/g)||[x]).forEach(function(z){q.push({t:z.trim(),p:pitch,w:300})})
+  });
+  var k=0;(function next(){
+    if(id!==playId)return;
+    if(k>=q.length){done();return}
+    var s=q[k++];
+    if(!s.t){setTimeout(next,s.w);return}
+    var u=new SpeechSynthesisUtterance(s.t);u.lang="en-GB";u.rate=0.95;u.pitch=s.p;
+    u.onend=function(){setTimeout(next,s.w)};u.onerror=function(){setTimeout(next,s.w)};
+    speechSynthesis.speak(u);
+  })()
+}
+
+function play(b){
+  if(b._busy)return;
+  var i=+b.dataset.i;
+  function fin(){b._busy=false;if(b._n>=2){b.disabled=true;b.textContent="Played twice"}else b.textContent="Play again (last time)"}
+  if(!AUDIO[i]&&(!window.speechSynthesis||!window.SpeechSynthesisUtterance)){b.textContent="TTS not supported in this browser.";return}
+  b._n=(b._n||0)+1;b._busy=true;b.textContent="Playing...";
+  if(AUDIO[i]){var a=new Audio(AUDIO[i]);a.onended=fin;a.onerror=fin;a.play()}else say(i,fin)
+}
+
+function init(){
+  [["t1",90],["t2",35],["t4",12],["sp1",3],["sp2",3],["sp3",3],["sp4",3]].forEach(function(a){if(document.getElementById(a[0]))timer(a[0],a[1])});
+  if(!FULL)return;
+  build(R,document.getElementById("rbox"),"r");
+  build(L,document.getElementById("lbox"),"l");
+  document.getElementById("ck1").onclick=function(){check(document.getElementById("rbox"),document.getElementById("sc1"))};
+  document.getElementById("ck2").onclick=function(){check(document.getElementById("lbox"),document.getElementById("sc2"))};
+  document.querySelectorAll(".say").forEach(function(b){b.onclick=function(){play(b)}});
+  winit();
+}
+
+(function(){
+  var g=document.getElementById("gate"),m=document.getElementById("main");
+  function show(){g.hidden=true;m.hidden=false;if(window.init)init()}
+  if(unlocked()){show();return}
+  document.getElementById("gf").onsubmit=function(e){
+    e.preventDefault();
+    if(document.getElementById("pw").value===PW){
+      try{sessionStorage.setItem("pet_schools_test_9","1")}catch(x){}
+      show();
+    } else {
+      document.getElementById("err").textContent="Wrong password.";
+    }
+  }
+  
+  var themeBtn = document.getElementById('themeBtn');
+  if(themeBtn) {
+    themeBtn.onclick = function() {
+      var currentTheme = document.documentElement.getAttribute('data-theme');
+      if(currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        themeBtn.textContent = '🌙';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeBtn.textContent = '☀️';
+      }
+    };
+  }
+  
+  var menuToggle = document.getElementById('menuToggle');
+  if(menuToggle) {
+    menuToggle.onclick = function() {
+      document.body.classList.toggle('menuopen');
+    };
+  }
+  
+  var loginBtn = document.getElementById('loginBtn');
+  var dlg = document.getElementById('dlg');
+  var cancel = document.getElementById('cancel');
+  if(loginBtn && dlg) {
+    loginBtn.onclick = function() { dlg.showModal(); }
+  }
+  if(cancel && dlg) {
+    cancel.onclick = function() { dlg.close(); }
+  }
+})();
+</script>
+</body>
+</html>

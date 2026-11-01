@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>B1 Preliminary for Schools Test 8 - Oxfam Preparation</title>
+
+<style>
+/* Default theme is explicitly light */
+:root {
+  --bg: #f6f7fb;
+  --paper: #fff;
+  --ink: #14213d;
+  --muted: #4b5266;
+  --line: #d5d9e6;
+  --mark: #2b59ff;
+  --hi: #ffe45e;
+  --ok: #1a7f52;
+  --bad: #b3261e;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Dark theme applied ONLY when data-theme="dark" is present */
+:root[data-theme="dark"] {
+  --bg: #0f1526;
+  --paper: #182038;
+  --ink: #eef1fb;
+  --muted: #a9b1c9;
+  --line: #2c3656;
+  --mark: #7d9bff;
+  --hi: #e9d24a;
+  --ok: #57c58f;
+  --bad: #ff8a80;
+}
+
+html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: border-box; }
+
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1.0625rem/1.6 "Atkinson Hyperlegible", system-ui, sans-serif; }
+h1, h2, h3 { font-family: Archivo, "Helvetica Neue", Arial, sans-serif; line-height: 1.05; margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--mark); outline-offset: 3px; }
+.wrap { max-width: 74rem; margin: 0 auto; padding: 0 1.25rem; }
+
+header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .75rem; padding: 1.25rem 0; position: sticky; top: 0; background: var(--bg); z-index: 100; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+.head-left { display: flex; align-items: center; gap: .75rem; }
+#menuToggle { background: transparent; border: none; cursor: pointer; color: var(--ink); display: flex; padding: .25rem; border-radius: .25rem; }
+#menuToggle:hover { background: var(--line); }
+#menuToggle svg { width: 1.6rem; height: 1.6rem; }
+.logo { font: 800 1.25rem Archivo, sans-serif; text-decoration: none; }
+nav a { margin-left: 1.25rem; text-decoration: none; color: var(--muted); }
+nav a:hover { color: var(--ink); }
+
+.btn { display: inline-block; background: var(--ink); color: var(--bg); padding: .8rem 1.4rem; border-radius: .5rem; font-weight: 700; text-decoration: none; border: 0; cursor: pointer; font-size: 1rem; font-family: inherit; }
+.btn.alt { background: transparent; color: var(--ink); border: 2px solid var(--ink); }
+.hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2rem; align-items: start; padding: 1rem 0 3rem; }
+.hero-text { margin-top: 2.5rem; }
+
+h1 { font-size: clamp(2rem, 3.4vw, 3rem); font-weight: 800; font-stretch: 90%; letter-spacing: -.02em; margin-top: 1rem; margin-bottom: 0; }
+h1 span { background: linear-gradient(transparent 62%, var(--hi) 62%); }
+.lead { color: var(--muted); max-width: 32rem; margin: 1.25rem 0 1.75rem; font-size: 1.15rem; }
+.row { display: flex; gap: .75rem; flex-wrap: wrap; }
+
+.sheet { background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.sheet h2 { font-size: 1.1rem; margin-bottom: .25rem; }
+.sheet p { margin: 0 0 1rem; color: var(--muted); font-size: .95rem; }
+.q { padding: .7rem 0; border-top: 1px solid var(--line); }
+.q b { display: inline-block; font-weight: 800; margin-bottom: .45rem; margin-right: 0.5rem; }
+
+.opts { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem; width: fit-content; }
+.opt { display: flex; align-items: center; gap: .4rem; padding: .3rem .7rem .3rem .35rem; border: 1.5px solid var(--line); border-radius: 2rem; background: transparent; color: inherit; font-size: .95rem; cursor: pointer; width: fit-content; }
+.opt i { width: 1.4rem; height: 1.4rem; border-radius: 50%; border: 2px solid var(--muted); display: grid; place-items: center; font: 700 .7rem Archivo, sans-serif; font-style: normal; flex-shrink: 0; }
+
+.opt[aria-pressed="true"] { border-color: var(--mark); }
+.opt[aria-pressed="true"] i { background: var(--mark); border-color: var(--mark); color: var(--bg); }
+.opt.right { border-color: var(--ok); } .opt.right i { background: var(--ok); border-color: var(--ok); color: var(--bg); }
+.opt.wrong { border-color: var(--bad); } .opt.wrong i { background: var(--bad); border-color: var(--bad); color: var(--bg); }
+
+/* Image Options specific styles */
+.img-opts-grid { display: flex; flex-direction: row; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+.img-opt { flex-direction: column; align-items: center; padding: 0.5rem; border-radius: 0.5rem; gap: 0.5rem; text-align: center; }
+.img-opt img { height: 120px; width: 160px; object-fit: cover; background: var(--paper); border-radius: 0.25rem; }
+.img-opt i { margin-bottom: 0.25rem; }
+
+.result { margin-top: 1rem; font-weight: 700; min-height: 1.6rem; }
+section { padding: 3.5rem 0; border-top: 1px solid var(--line); }
+h2.t { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: .75rem; letter-spacing: -.01em; }
+
+.sub, .txt { color: var(--muted); max-width: 48rem; margin: 0 0 2rem; white-space: pre-line; line-height: 1.6; }
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: .6rem; background: var(--paper); }
+table { border-collapse: collapse; width: 100%; min-width: 38rem; }
+th, td { text-align: left; padding: .9rem 1rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font: 800 1.2rem Archivo, sans-serif; white-space: nowrap; }
+td small { display: block; font: 400 .9rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+
+.support-strip { position: fixed; bottom: 0; left: 0; right: 0; background: var(--ink); color: var(--bg); padding: 1rem 1.25rem; z-index: 999; box-shadow: 0 -4px 12px rgba(0,0,0,0.15); }
+.support-strip-inner { max-width: 74rem; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; width: 100%; font-weight: 700; }
+footer { border-top: 1px solid var(--line); padding: 2rem 0 5rem; color: var(--muted); font-size: .95rem; }
+
+.lang { display: flex; gap: .25rem; flex-wrap: wrap; } .lang button { font: 700 .8rem Archivo, sans-serif; padding: .35rem .6rem; border: 1.5px solid var(--line); border-radius: .4rem; background: transparent; color: var(--muted); cursor: pointer; } .lang button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.layout { display: grid; grid-template-columns: 12.5rem minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+.layout.collapsed { grid-template-columns: 1fr; gap: 0; }
+.layout.collapsed .side { display: none; }
+.side { position: sticky; top: 5rem; max-height: calc(100vh - 6rem); max-height: calc(100dvh - 6rem); overflow-y: auto; display: flex; flex-direction: column; gap: .15rem; }
+summary { cursor: pointer; font: 700 .95rem Archivo, sans-serif; color: var(--muted); padding: .4rem .75rem; border-radius: .5rem; } summary:hover { color: var(--ink); } .ex[open] summary { margin-bottom: .15rem; }
+.side nav { display: flex; flex-direction: column; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); } .side nav a { margin: 0; color: inherit; } .side .lang { margin-bottom: 1rem; }
+.side p { margin: 0 0 .5rem; font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+.side a { text-decoration: none; padding: .5rem .75rem; border-radius: .5rem; font: 700 1rem Archivo, sans-serif; border-left: 3px solid transparent; }
+.side a small { display: block; font: 400 .8rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+.side a:hover { background: var(--paper); border-left-color: var(--mark); }
+tr:target td { background: var(--hi); color: #14213d; } tr:target td small { color: #14213d; }
+
+@media (max-width: 52rem) { .layout { grid-template-columns: 1fr; gap: 0; } .side { position: static; max-height: none; margin: 0 0 1rem; padding: 0 0 1rem; border-bottom: 1px solid var(--line); } }
+
+.hr { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; } .hr .btn { padding: .45rem 1rem; font-size: .9rem; }
+dialog { border: 2px solid var(--ink); border-radius: .75rem; background: var(--paper); color: var(--ink); padding: 1.5rem; width: min(26rem, 92vw); max-height: 90vh; overflow: auto; } dialog::backdrop { background: rgba(10,16,32,.55); }
+dialog h2 { font-size: 1.4rem; margin-bottom: .5rem; } dialog label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+dialog input { width: 100%; padding: .65rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.demo { color: var(--muted); font-size: .9rem; margin: .5rem 0 0; } .err { color: var(--bad); min-height: 1.5rem; margin-top: .5rem; font-size: .95rem; }
+
+@media (max-width: 40rem) {
+  .wrap { padding: 0 1rem; }
+  header { padding: 1rem 0; }
+  .hero { padding-bottom: 2rem; }
+  .sheet { padding: 1.1rem; }
+  section { padding: 2.5rem 0; }
+  .scroll { border: 0; background: transparent; overflow: visible; }
+  table, tbody, tr, td { display: block; min-width: 0; width: 100%; }
+  thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  tr { background: var(--paper); border: 1px solid var(--line); border-radius: .6rem; padding: .6rem 0; margin-bottom: .75rem; }
+  td { border: 0; padding: .15rem 1rem; }
+  td:first-child { font-size: 1.3rem; padding-top: .4rem; }
+  tr:target { border-color: var(--ink); }
+}
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+html { scroll-padding-top: calc(5rem + env(safe-area-inset-top, 0px)); }
+body header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); padding: .6rem 0; border-bottom: 1px solid var(--line); }
+.brand { display: flex; align-items: center; gap: .75rem; }
+body .logo { font-size: 1.85rem; letter-spacing: -.02em; }
+.mbtn { display: inline-flex; flex-direction: column; justify-content: center; gap: 5px; width: 2.75rem; height: 2.75rem; padding: 0 .7rem; border: 2px solid var(--ink); border-radius: .5rem; background: transparent; cursor: pointer; flex: none; }
+.mbtn span { display: block; height: 2px; background: var(--ink); border-radius: 2px; }
+.mbtn:hover { background: var(--paper); }
+body .side { top: 5.5rem; max-height: calc(100vh - 6.5rem); max-height: calc(100dvh - 6.5rem); }
+body.nomenu .layout { grid-template-columns: minmax(0, 1fr); }
+body.nomenu .side { display: none; }
+body:has(#app[hidden]) .mbtn { display: none; }
+.side>.hr { margin-bottom: 1rem; }
+.scrim { display: none; }
+
+@media (max-width: 52rem) {
+  body .side { position: fixed; top: 0; left: 0; bottom: 0; width: min(19rem, 86vw); max-height: none; margin: 0; padding: calc(1rem + env(safe-area-inset-top, 0px)) 1rem calc(1rem + env(safe-area-inset-bottom, 0px)); background: var(--paper); border: 0; border-right: 2px solid var(--ink); z-index: 50; overflow-y: auto; transform: translateX(-105%); visibility: hidden; transition: transform .25s ease, visibility 0s .25s; }
+  body.menuopen .side { transform: none; visibility: visible; transition: transform .25s ease; }
+  body .side nav { flex-direction: column; flex-wrap: nowrap; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+  body .side nav a { padding: .5rem .75rem; }
+  .scrim { display: block; position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: rgba(10,16,32,.5); z-index: 40; opacity: 0; pointer-events: none; transition: opacity .25s; }
+  body.menuopen .scrim { opacity: 1; pointer-events: auto; }
+  body .logo { font-size: 1.6rem; }
+}
+
+.gatebox { max-width: 26rem; margin: 2rem auto; background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.gatebox label, .wr label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+input[type=text], input[type=password], textarea { width: 100%; padding: .6rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.q input[type=text] { width: 14rem; max-width: 100%; }
+.part { background: var(--paper); border: 1px solid var(--line); border-radius: .75rem; padding: 1.5rem; margin-bottom: 1.25rem; }
+.q.ok { border-left: 4px solid var(--ok); padding-left: .75rem; } .q.no { border-left: 4px solid var(--bad); padding-left: .75rem; } .fb { font-weight: 700; margin-top: .25rem; }
+.tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0; }
+nav.tabs a { margin: 0; padding: .4rem 1rem; border: 1.5px solid var(--line); border-radius: 2rem; text-decoration: none; font-weight: 700; }
+nav.tabs a[aria-current=page] { background: var(--ink); color: var(--bg); }
+.bar { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; margin: 1rem 0; } .time { font: 800 1.6rem Archivo, sans-serif; }
+.pics { display: flex; gap: 1rem; flex-wrap: wrap; } .pics svg, .pics img { flex: 1 1 14rem; max-width: 22rem; border: 2px solid var(--ink); border-radius: .5rem; background: var(--paper); object-fit: cover; aspect-ratio: 3/2; }
+textarea { min-height: 15rem; } .tr { display: none; } .note { padding: .75rem 1rem; border-left: 4px solid var(--mark); background: var(--paper); margin: 1rem 0; }
+.sec { padding-top: 2rem; margin-top: 2rem; border-top: 1px solid var(--line); } .jump { margin-top: 0; } .ex { color: var(--muted); margin-top: .15rem; font-size: .95rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header id="siteHeader">
+<div class="head-left">
+<button aria-label="Toggle menu" id="menuToggle">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
+</button>
+<a class="logo" href="../index.html">Oxfam Preparation</a>
+</div>
+<div class="hr">
+<button aria-label="Toggle theme" class="btn alt" id="themeBtn" style="padding:.45rem .6rem; min-width:0; font-size:1.1rem">🌙</button>
+<button class="btn" id="loginBtn" type="button">Log in</button>
+</div>
+</header>
+<div class="layout">
+<aside aria-label="Menu" class="side">
+<nav>
+<a href="../cpe.html">All tests</a>
+</nav>
+</aside>
+<main id="top">
+<div id="gate">
+<div class="gatebox">
+<h1><span>B1 Preliminary for Schools Test 8</span></h1>
+<p>Enter the password to open this test.</p>
+<form id="gf">
+<label for="pw">Password</label>
+<input autocomplete="off" id="pw" type="password"/>
+<div class="err" id="err"></div>
+<div class="row" style="margin-top:1rem">
+<button class="btn" type="submit">Open</button>
+<a class="btn alt" href="../cpe.html">Back</a>
+</div>
+</form>
+</div>
+</div>
+<div hidden="" id="main">
+<h1 style="margin-top: 1rem">B1 Preliminary for Schools - Test 8 | Original Practice Paper</h1>
+<div class="part" style="margin-top:1rem">
+<label for="nm"><strong>Student name (optional — included with writing submissions)</strong></label>
+<input autocomplete="name" id="nm" type="text" placeholder="Enter your name"/>
+</div>
+<nav aria-label="Papers" class="tabs jump" style="margin-top: 2.5rem; margin-bottom: 2rem">
+<a href="#rd">Reading and Writing</a>
+<a href="#li">Listening</a>
+<a href="#sk">Speaking</a>
+</nav>
+<section class="sec" id="rd">
+<h2 class="t">Reading (45 minutes) and Writing (45 minutes)</h2>
+<div class="bar"><span class="time" id="t1"></span><button class="btn alt" type="button">Start</button></div>
+<div id="rbox"></div>
+<div class="part">
+<h2>Writing Part 1 — Email</h2><p class="sub">Write about 100 words. Answer your friend and include all three notes.</p><div class="note">Your English friend Alex has emailed you.<br/><br/><em>“I have a lot to do before my exams and sometimes I feel tired. How do you plan your study time, what do you do during breaks, and what helps you relax in the evening?”</em><br/><br/>Write an email to Alex. In your email, you should:<br/>• explain how you plan your study time<br/>• suggest an activity for a break<br/>• say how you relax.</div><textarea aria-label="Email answer" id="e1"></textarea><div class="bar"><b id="e1c">0 words</b><button class="btn alt" data-c="e1" type="button">Copy</button><button class="btn" data-s="e1" data-t="Writing Part 1 - Email" type="button">Send writing to assessor</button></div></div><div class="part"><h2>Writing Part 2 — Choose one question</h2><p class="sub">Write about 100 words. Answer either Question 2 (article) or Question 3 (story), not both.</p><p><strong>Question 2 — Article</strong><br/>Write an article for your school magazine about a small change that made your daily life easier. Explain what you changed and how it helped.<br/><br/><strong>Question 3 — Story</strong><br/>Your story must begin with this sentence:<br/><em>The alarm rang at exactly the wrong moment, and I knew my plan had to change.</em></p><textarea aria-label="Article or story answer" id="e2"></textarea><div class="bar"><b id="e2c">0 words</b><button class="btn alt" data-c="e2" type="button">Copy</button><button class="btn" data-s="e2" data-t="Writing Part 2 - Article or Story" type="button">Send writing to assessor</button></div></div>
+<div class="bar"><button class="btn" id="ck1" type="button">Check Reading &amp; Writing Part 1 answers</button><b id="sc1"></b></div>
+</section>
+<section class="sec" id="li">
+<h2 class="t">Listening (about 30 minutes)</h2>
+<div class="bar"><span class="time" id="t2"></span><button class="btn alt" type="button">Start</button></div>
+<p class="note">These are original B1 practice scripts read aloud by your browser’s text-to-speech voice. Each recording can be played twice. This is not official Cambridge audio.</p>
+<div id="lbox"></div>
+<div class="bar"><button class="btn" id="ck2" type="button">Check answers</button><b id="sc2"></b></div>
+</section>
+<section class="sec" id="sk">
+<h2 class="t">Speaking (10–12 minutes)</h2>
+<div class="bar"><span class="time" id="t4"></span><button class="btn alt" type="button">Start</button></div>
+<p class="note">Practise with a partner or teacher. The real test involves two candidates and two examiners. These are original school-age prompts.</p>
+<div class="part"><h2>Part 1 — Interview (2–3 minutes)</h2><div class="bar"><span class="time" id="sp1"></span><button class="btn alt" type="button">Start</button></div><ul><li>What do you usually do when you need a break?</li><li>Do you prefer planning your day or deciding as you go?</li><li>What helps you feel ready for a busy school day?</li><li>Which activities help you relax?</li><li>Tell me about a healthy habit you would like to try.</li></ul></div><div class="part"><h2>Part 2 — Extended Turn (3 minutes)</h2><div class="bar"><span class="time" id="sp2"></span><button class="btn alt" type="button">Start</button></div><p>Describe the picture. Say what the students are doing, where they are, and how the activity might help them.</p><div class="pics"><img alt="Two students doing a gentle stretch outdoors during a break." src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0ODAiIGhlaWdodD0iMzAwIj48cmVjdCB3aWR0aD0iNDgwIiBoZWlnaHQ9IjMwMCIgcng9IjI0IiBmaWxsPSIjZWFmNGY1Ii8+PGNpcmNsZSBjeD0iMzk3IiBjeT0iNTEiIHI9IjI1IiBmaWxsPSIjZjFjYTU4Ii8+PHBhdGggZD0iTTAgMjI5cTk2LTI0IDE4NSAwdDI5NS0xdjcySDB6IiBmaWxsPSIjOWZjMjhkIi8+PHBhdGggZD0iTTEwNCAyMjh2LTk0bTAgNDEtMjgtMjltMjggNDAgMjgtMzIiIHN0cm9rZT0iIzc1NTg0MSIgc3Ryb2tlLXdpZHRoPSIxMCIvPjxjaXJjbGUgY3g9IjEwNSIgY3k9Ijk0IiByPSI0MCIgZmlsbD0iIzc3YTg2YyIvPjxjaXJjbGUgY3g9Ijc2IiBjeT0iMTE3IiByPSIzMCIgZmlsbD0iIzc3YTg2YyIvPjxjaXJjbGUgY3g9IjEzNCIgY3k9IjExOSIgcj0iMzEiIGZpbGw9IiM3N2E4NmMiLz48Y2lyY2xlIGN4PSIyMDUiIGN5PSIxMjciIHI9IjE2IiBmaWxsPSIjZDdhMTdjIi8+PHBhdGggZD0iTTIwNSAxNDV2NTNtMC0zMS0zOC0yMG0zOCAyMCAzMi0yN20tMzIgNTgtMjQgMzltMjQtMzkgMjggMzYiIHN0cm9rZT0iIzRiODZhMiIgc3Ryb2tlLXdpZHRoPSIxMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PGNpcmNsZSBjeD0iMzI2IiBjeT0iMTM3IiByPSIxNiIgZmlsbD0iI2M4OGY2YyIvPjxwYXRoIGQ9Ik0zMjYgMTU1djQ3bTAtMzAtMjkgMjFtMjktMjEgMzItMjNtLTMyIDUzLTIzIDM4bTIzLTM4IDI5IDM0IiBzdHJva2U9IiNlNDdlNTYiIHN0cm9rZS13aWR0aD0iMTIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxwYXRoIGQ9Ik0xNjYgMjEwaDE5MyIgc3Ryb2tlPSIjZGRjYTliIiBzdHJva2Utd2lkdGg9IjgiLz48dGV4dCB4PSIyNDAiIHk9IjI3OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE4IiBmaWxsPSIjMjk0MTU2Ij5TdHVkZW50cyB0YWtpbmcgYSBjYWxtIHN0cmV0Y2ggYnJlYWs8L3RleHQ+PC9zdmc+"/></div><p>Follow-up: Tell your partner about an activity that helps you feel refreshed.</p></div><div class="part"><h2>Part 3 — Collaborative Task (3–4 minutes)</h2><div class="bar"><span class="time" id="sp3"></span><button class="btn alt" type="button">Start</button></div><p>Your school wants to offer more useful ways for students to take a break. Talk together about these ideas and decide which two would help students most.</p><ul><li>a short walk outside</li><li>a quiet room for reading</li><li>gentle stretching</li><li>a board-game table</li><li>a calm music corner</li></ul><p>Useful questions: Which ideas are easy to organise? What can students do in a short break? Which options suit different people?</p></div><div class="part"><h2>Part 4 — Discussion (3 minutes)</h2><div class="bar"><span class="time" id="sp4"></span><button class="btn alt" type="button">Start</button></div><ul><li>Why do people need breaks during a busy day?</li><li>Is it important to have regular routines?</li><li>What can schools do to help students feel comfortable?</li><li>Do you think teenagers get enough sleep? Why?</li><li>How can friends support one another during a difficult week?</li></ul></div>
+</section>
+</div>
+</main>
+</div>
+<div class="support-strip">
+<div class="support-strip-inner">
+<div><span _k="Customer support every day from 9:00 to 16:30">Customer support every day from 9:00 to 16:30</span></div>
+<div class="support-info">
+<a href="mailto:oxfampreparation@email.cz">oxfampreparation@email.cz</a>
+<a href="tel:+420723200988">+420 723 200 988</a>
+</div>
+</div>
+</div>
+<footer>© 2020-2026 Oxfam - Oxford family. All rights reserved. Not affiliated with Cambridge University Press &amp; Assessment. Exam names belong to their owners.</footer>
+</div>
+<dialog aria-labelledby="dt" id="dlg">
+<h2 id="dt">Sign in to open your tests</h2>
+<form id="lf" novalidate="">
+<label for="em">Email</label><input autocomplete="username" id="em" type="email"/>
+<label for="pw">Password</label><input autocomplete="current-password" id="pw" type="password"/>
+<p class="demo" hidden="" id="demo">Demo mode: any email and password is accepted.</p>
+<div aria-live="polite" class="err" id="err"></div>
+<div class="row" style="margin-top:1rem"><button class="btn" type="submit">Log in</button><button class="btn alt" id="cancel" type="button">Cancel</button></div>
+</form>
+</dialog>
+<script>
+var PW="Bt91";
+function unlocked(){try{return sessionStorage.getItem("pet_schools_test_8")==="1"}catch(e){return false}}
+
+function norm(s){return s.toLowerCase().replace(/\u2019/g,"'").replace(/\s+/g," ").trim()}
+
+function build(parts,box,pre){
+  var n=0;pre=pre||"";
+  parts.forEach(function(p,pi){
+    var d=document.createElement("section");d.className="part";
+    d.innerHTML="<h2>"+p.t+"</h2>"+(p.m?"<div class='bar'><span class='time' id='pt"+pre+pi+"'></span><button class='btn alt' type='button'>Start</button> <small>suggested time</small></div>":"")+"<p class='sub'>"+p.i+"</p>"+(p.x?"<p class='txt'>"+p.x+"</p>":"")+(p.im||"")+"<div class='items'></div>";
+    var it=d.querySelector(".items");
+    p.q.forEach(function(q){
+      n++;var r=document.createElement("div");r.className="q";
+      var label = q.q && /^(\d+)\.\s*/.test(q.q) ? q.q.match(/^(\d+)\.\s*/)[1] : n; var qtext = (q.q||"").replace(/^\d+\.\s*/,"").replace(/\n/g,"<br>"); var h="<b>"+label+"</b> "+qtext+(q.h?" <strong>"+q.h+"</strong>":"");
+      if(q.o){
+        var isImg = q.o.length > 0 && /^(https?:\/\/|data:image\/)/i.test(q.o[0]);
+        var optsHtml = q.o.map(function(o,i){
+          var letter = "ABCDEFGH"[i];
+          if(q.o.length === 2 && (o === "A" || o === "B" || o.includes("Correct") || o.includes("YES"))) {
+            letter = ["A", "B"][i];
+          }
+          if (isImg) {
+            return "<label class='opt img-opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> <img src='"+o+"' alt='Option "+letter+"' onerror=\"this.style.display='none'\"></label>";
+          } else {
+            var text = o === letter ? "" : o;
+            return "<label class='opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> "+text+"</label>";
+          }
+        }).join("");
+        var gridClass = isImg ? "opts img-opts-grid" : "opts";
+        h += "<div class='" + gridClass + "'>" + optsHtml + "</div>";
+      } else {
+        h+=" <input type='text' autocomplete='off' aria-label='Answer "+n+"'>";
+      }
+      r.innerHTML=h;r._q=q;it.appendChild(r);
+    });
+    box.appendChild(d);
+    if(p.m)timer("pt"+pre+pi,p.m);
+  });
+}
+
+function check(box,out){
+  var tot=0,ok=0;
+  box.querySelectorAll(".part").forEach(function(part){
+    var pTot=0,pOk=0;
+    part.querySelectorAll(".q").forEach(function(r){
+      pTot++;var q=r._q,good,ans;
+      if(q.o){
+        var c=r.querySelector("input:checked");
+        good=c&&+c.value===q.a;
+        var letter = "ABCDEFGH"[q.a];
+        if(q.o.length === 2) letter = ["A", "B"][q.a];
+        var isImg = q.o.length > 0 && /^(https?:\/\/|data:image\/)/i.test(q.o[0]);
+        ans = isImg ? letter : (q.o[q.a] === letter ? letter : letter + " " + q.o[q.a]);
+      } else {
+        var v=norm(r.querySelector("input").value);
+        good=q.a.some(function(a){return norm(a)===v});
+        ans=q.a[0];
+      }
+      r.classList.toggle("ok",!!good);
+      r.classList.toggle("no",!good);
+      var f=r.querySelector(".fb");
+      if(!f){f=document.createElement("div");f.className="fb";r.appendChild(f)}
+      f.textContent=good?"Correct":"Answer: "+ans;
+      var x=r.querySelector(".ex");
+      if(!x){x=document.createElement("div");x.className="ex";r.appendChild(x)}
+      x.textContent=q.e||"";
+      if(good)pOk++;
+    });
+    if(pTot>0){
+      var ps=part.querySelector(".pscore");
+      if(!ps){ps=document.createElement("div");ps.className="pscore note";ps.style.marginTop="1.5rem";part.appendChild(ps)}
+      ps.innerHTML="<b>Part score:</b> "+pOk+" / "+pTot;
+    }
+    tot+=pTot;ok+=pOk;
+  });
+  out.textContent="Total score: "+ok+" / "+tot;
+  box.querySelectorAll(".tr").forEach(function(e){e.style.display="block"});
+}
+
+function timer(id,min){
+  var e=document.getElementById(id),l=min*60,t=null;
+  if(!e)return;
+  function s(){e.textContent=("0"+Math.floor(l/60)).slice(-2)+":"+("0"+l%60).slice(-2)}s();
+  e.nextElementSibling.onclick=function(){
+    if(t){clearInterval(t);t=null;this.textContent="Start";return}
+    this.textContent="Pause";
+    t=setInterval(function(){l--;s();if(l<=0)clearInterval(t)},1000);
+  }
+}
+
+var R = [{"t":"Reading Part 1 — Notices and Messages","i":"For questions 1–5, choose the correct meaning: A, B or C.","m":5,"q":[{"q":"1. WELLBEING WEEK\nThe lunchtime walk will leave from the main gate at 12.40, not from the sports hall as shown on the first poster.","o":["Walkers should meet at the main gate.","The walk has been cancelled.","Students should meet at the sports hall."],"a":0,"e":"The updated meeting place is the main gate."},{"q":"2. Message from Luca\nI left my planner in the study room. Could you put it in my locker? I need it for the meeting with our tutor after school.","o":["Luca wants the planner taken home.","The planner is in the study room and should be moved.","Luca has already given the planner to the tutor."],"a":1,"e":"He asks someone to move the planner to his locker."},{"q":"3. QUIET ROOM\nPlease keep this room free of phone calls. Students may use it for reading, resting or doing quiet work during lunch.","o":["Students can use the room for quiet activities.","Students must leave their phones outside the school.","The room is open only after lunch."],"a":0,"e":"The room is available for quiet activities at lunchtime."},{"q":"4. BREAKFAST CLUB\nThe club will start at 8.10 on Thursday. Please sign up with the office by Wednesday so the kitchen knows how many meals to prepare.","o":["Students must register before Thursday.","The club starts at 8.10 every day.","Meals are available without signing up."],"a":0,"e":"Students need to register by Wednesday."},{"q":"5. STUDY SUPPORT\nThe tutor is away this Friday. If you need help with your revision plan, book a short appointment for Monday instead.","o":["The tutor is available on Friday as usual.","Students should arrange a different day for help.","Students can only get help by email."],"a":1,"e":"Friday appointments are moved to Monday."}]},{"t":"Reading Part 2 — Matching","i":"For questions 6–10, match each student with the most suitable wellbeing activity, A–H.","m":7,"x":"A. Sleep Smart — learn how evening habits can help you feel rested at school.\n\nB. Calm Breathing — practise simple breathing exercises in a quiet group on Mondays.\n\nC. After-School Walkers — take an easy walk with a teacher on Wednesdays.\n\nD. Family Food Lab — prepare simple breakfasts with a family member on Saturday.\n\nE. Plan Your Week — organise homework and free time with a study coach on Tuesdays.\n\nF. Quiet Lunch Space — read, draw or rest in the library meeting room every day.\n\nG. Gentle Stretch — try beginner movements in the gym before lessons on Thursdays.\n\nH. Peer Helpers — learn how to listen and offer support to other students on Fridays.","q":[{"q":"6. Tomas often feels tired in the morning and wants ideas for his evening routine.","o":["A","B","C","D","E","F","G","H"],"a":0,"e":"Sleep Smart focuses on habits that help students feel rested."},{"q":"7. Anya would like to learn a simple way to feel calmer before a test.","o":["A","B","C","D","E","F","G","H"],"a":1,"e":"Calm Breathing practises breathing exercises."},{"q":"8. David enjoys being outside and is free after lessons on Wednesday.","o":["A","B","C","D","E","F","G","H"],"a":2,"e":"After-School Walkers meet on Wednesdays."},{"q":"9. Hana wants to prepare an easy breakfast with her mother.","o":["A","B","C","D","E","F","G","H"],"a":3,"e":"Family Food Lab is for preparing breakfasts together."},{"q":"10. Ivo has trouble balancing homework and free time.","o":["A","B","C","D","E","F","G","H"],"a":4,"e":"Plan Your Week helps students organise time."}]},{"t":"Reading Part 3 — Multiple Choice","i":"For questions 11–16, choose A, B or C.","m":9,"x":"\nA SMALL CHANGE TO MY EVENINGS\n\nLast term I often arrived at school feeling tired. I blamed the early bus, but my older sister noticed that I was still looking at my phone late at night. She suggested that I try a different evening routine for one week. I was not sure it would help, but I decided to give it a chance.\n\nI began charging my phone in the kitchen instead of beside my bed. At first, I kept thinking I might miss an important message. My sister explained that our family could still call if there was an emergency. I also put a book on my bedside table, so I had something to do before going to sleep.\n\nThe first few nights felt unusual. I did not fall asleep immediately, but I stopped checking the time every few minutes. After several days, I found it easier to wake up. I was surprised that I also had more time in the morning, because I was not searching for my phone.\n\nI still use my phone in the evening, but I try to put it away before I get into bed. My sister says that routines are not the same for everyone. The important thing was finding one change that worked for me. I have not become an early riser, but I feel more prepared for the school day.","q":[{"q":"11. What did the writer first blame for feeling tired?","o":["The early bus","A difficult lesson","A noisy bedroom"],"a":0,"e":"The writer thought the early bus was the reason."},{"q":"12. What did the sister notice?","o":["The writer used a phone late at night.","The writer forgot to set an alarm.","The writer went to bed too early."],"a":0,"e":"She noticed the writer was using a phone late."},{"q":"13. Where did the writer begin charging the phone?","o":["In the kitchen","In the hallway","Beside the window"],"a":0,"e":"The phone was moved to the kitchen."},{"q":"14. What helped the writer have something to do before sleep?","o":["A book by the bed","A radio in the room","A note from the sister"],"a":0,"e":"The writer put a book on the bedside table."},{"q":"15. What surprised the writer in the morning?","o":["There was more time available.","The bus arrived later.","The phone had stopped working."],"a":0,"e":"The writer was no longer searching for the phone."},{"q":"16. What does the writer say about routines?","o":["Different changes work for different people.","Everyone should follow the same bedtime.","Phones should never be used in the evening."],"a":0,"e":"The writer says routines are not the same for everyone."}]},{"t":"Reading Part 4 — Gapped Text","i":"Five sentences have been removed. Choose A–F for gaps 17–21. One sentence is extra.","m":8,"x":"\nA SCREEN-FREE EVENING\n\nOur family decided to try one evening without using phones, tablets or television. (17) _____. We wanted to see whether we could find other ways to relax together.\n\nAt first, my brother said he would be bored. (18) _____. He chose a puzzle that had been on the shelf for months.\n\nMy mother made hot drinks while I looked for a board game. (19) _____. Soon everyone was talking and laughing.\n\nWe did not finish the puzzle that night. (20) _____. We agreed to leave it out and continue another day.\n\nI thought I would miss my phone, but I hardly noticed it. (21) _____.","q":[{"q":"17. Gap 17","o":["We had all been spending a lot of time looking at screens.","Instead, he found something interesting to do.","It was a game with questions about different places.","However, we were happy to stop when it was late.","The next morning, I checked my messages as usual.","My brother said the puzzle was too easy."],"a":0,"e":"The family is trying a different way to relax because of screen use."},{"q":"18. Gap 18","o":["We had all been spending a lot of time looking at screens.","Instead, he found something interesting to do.","It was a game with questions about different places.","However, we were happy to stop when it was late.","The next morning, I checked my messages as usual.","My brother said the puzzle was too easy."],"a":1,"e":"The next sentence describes the activity he chose."},{"q":"19. Gap 19","o":["We had all been spending a lot of time looking at screens.","Instead, he found something interesting to do.","It was a game with questions about different places.","However, we were happy to stop when it was late.","The next morning, I checked my messages as usual.","My brother said the puzzle was too easy."],"a":2,"e":"The game is identified before the family starts playing."},{"q":"20. Gap 20","o":["We had all been spending a lot of time looking at screens.","Instead, he found something interesting to do.","It was a game with questions about different places.","However, we were happy to stop when it was late.","The next morning, I checked my messages as usual.","My brother said the puzzle was too easy."],"a":3,"e":"They stop and continue the puzzle another day."},{"q":"21. Gap 21","o":["We had all been spending a lot of time looking at screens.","Instead, he found something interesting to do.","It was a game with questions about different places.","However, we were happy to stop when it was late.","The next morning, I checked my messages as usual.","My brother said the puzzle was too easy."],"a":4,"e":"The writer concludes that the phone was not missed much."}]},{"t":"Reading Part 5 — Multiple-choice Cloze","i":"For questions 22–27, choose A, B, C or D.","m":7,"x":"\nTAKING A STUDY BREAK\n\nWhen I have a lot of homework, I sometimes try to finish it all without stopping. My teacher suggested I take a short break (22) _____ every half hour. I now set a timer and stretch or walk around the room. It helps me return to my desk with more (23) _____. I also keep a bottle of water nearby so I remember to drink (24) _____. The break should not be too long, or I find it difficult to start (25) _____. I try to choose an activity that makes me feel (26) _____ but does not take much time. This small habit has made my study evenings more (27) _____.","q":[{"q":"22. Gap 22","o":["after","during","since","until"],"a":0,"e":"Take a break after each half hour."},{"q":"23. Gap 23","o":["energy","energetic","energise","energetically"],"a":0,"e":"More energy is needed after “more”."},{"q":"24. Gap 24","o":["regularly","regular","regularity","regulate"],"a":0,"e":"Regularly is the adverb describing how often."},{"q":"25. Gap 25","o":["again","already","almost","also"],"a":0,"e":"Start again means return to the task."},{"q":"26. Gap 26","o":["refreshed","refreshing","refresh","refreshment"],"a":0,"e":"Refreshed describes how the student feels."},{"q":"27. Gap 27","o":["manageable","manage","managing","management"],"a":0,"e":"Manageable means easier to deal with."}]},{"t":"Reading Part 6 — Open Cloze","i":"For questions 28–32, write one word in each gap.","m":6,"x":"\nA WALK BEFORE CLASS\n\nMy friend and I started walking to school together (28) _____ the weather is good. We meet near the small shop and take a quiet street (29) _____ the park. The walk takes about fifteen minutes, so we leave home a little earlier (30) _____ usual. I like talking with my friend, but we also walk quietly when we are tired. By the time we arrive, I feel more awake and ready (31) _____ the day. If it rains, we take the bus (32) _____ of walking.","q":[{"q":"28. Gap 28","a":["when"],"e":"When the weather is good."},{"q":"29. Gap 29","a":["through"],"e":"They take a street through the park."},{"q":"30. Gap 30","a":["than"],"e":"Earlier than usual."},{"q":"31. Gap 31","a":["for"],"e":"Ready for the day."},{"q":"32. Gap 32","a":["instead"],"e":"Instead of walking."}]}];
+
+var L = [{"t":"Listening Part 1 — Picture Choice","i":"For questions 1–7, choose the picture that matches what you hear.","im":"<p><button class='btn alt say' data-i='0' type='button'>Play Part 1</button></p>","m":8,"q":[{"q":"1. What will Noor do before going to sleep?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VmZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxNyIgZmlsbD0iI2YxY2E1OCIvPjxwYXRoIGQ9Ik0wIDE4N3E4OS0yMiAxNzggMHQxODIgMHYyM0gweiIgZmlsbD0iI2I4Y2RhYSIvPjxwYXRoIGQ9Ik03MiA2MnE1NS0xNyAxMDggMTN2MTE5cS01My0zMC0xMDgtMTN6IiBmaWxsPSIjZmZmIiBzdHJva2U9IiMyOTQxNTYiIHN0cm9rZS13aWR0aD0iNyIvPjxwYXRoIGQ9Ik0yODggNjJxLTU1LTE3LTEwOCAxM3YxMTlxNTMtMzAgMTA4LTEzeiIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjMjk0MTU2IiBzdHJva2Utd2lkdGg9IjciLz48cGF0aCBkPSJNOTUgOTNoNTdtLTU3IDIxaDU3bS01NyAyMWg1N201NS00Mmg1NW0tNTUgMjFoNTVtLTU1IDIxaDU1IiBzdHJva2U9IiM3MWE5YmQiIHN0cm9rZS13aWR0aD0iNSIvPjwvc3ZnPg==","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VmZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxNyIgZmlsbD0iI2YxY2E1OCIvPjxwYXRoIGQ9Ik0wIDE4N3E4OS0yMiAxNzggMHQxODIgMHYyM0gweiIgZmlsbD0iI2I4Y2RhYSIvPjxyZWN0IHg9IjEyMiIgeT0iMzEiIHdpZHRoPSIxMTYiIGhlaWdodD0iMTc4IiByeD0iMjMiIGZpbGw9IiMzMzQ5NWQiLz48cmVjdCB4PSIxMzQiIHk9IjUwIiB3aWR0aD0iOTIiIGhlaWdodD0iMTM3IiByeD0iOSIgZmlsbD0iI2Q5ZWVmNCIvPjxwYXRoIGQ9Ik0xNTggMTAycTIwLTI1IDQwIDB2MzdoLTQweiIgZmlsbD0iI2YwY2E1YiIvPjxwYXRoIGQ9Ik0xNTEgMTQ3aDU0IiBzdHJva2U9IiM3NGE5YmQiIHN0cm9rZS13aWR0aD0iNiIvPjxjaXJjbGUgY3g9IjE4MCIgY3k9IjE5OCIgcj0iNSIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg==","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VmZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxNyIgZmlsbD0iI2YxY2E1OCIvPjxwYXRoIGQ9Ik0wIDE4N3E4OS0yMiAxNzggMHQxODIgMHYyM0gweiIgZmlsbD0iI2I4Y2RhYSIvPjxwYXRoIGQ9Ik05MCA2OWg2NXEtNiAyNSAyMCAyNyAyNy0yIDIxLTI3aDY5djUycS0yNC03LTI2IDE4IDAgMjUgMjYgMTl2NTBoLTY2cTctMjUtMTgtMjYtMjYgMC0xOSAyNkg5MHYtNTFxMjYgNyAyNy0xOCAwLTI1LTI3LTE4eiIgZmlsbD0iI2U1ODI1NiIgc3Ryb2tlPSIjMjk0MTU2IiBzdHJva2Utd2lkdGg9IjciLz48cGF0aCBkPSJNMTU1IDY5djUxbTY4IDBoNDZtLTg3IDB2NDltLTkyIDBoNjUiIHN0cm9rZT0iI2ZmZjFkMCIgc3Ryb2tlLXdpZHRoPSI1Ii8+PC9zdmc+"],"a":0,"e":"She plans to read a book."},{"q":"2. What time will Sam get up tomorrow?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VmZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxNyIgZmlsbD0iI2YxY2E1OCIvPjxwYXRoIGQ9Ik0wIDE4N3E4OS0yMiAxNzggMHQxODIgMHYyM0gweiIgZmlsbD0iI2I4Y2RhYSIvPjxjaXJjbGUgY3g9IjE4MCIgY3k9IjExNSIgcj0iNzYiIGZpbGw9IiNmZmYiIHN0cm9rZT0iIzI5NDE1NiIgc3Ryb2tlLXdpZHRoPSI4Ii8+PHBhdGggZD0iTTE4MCA0N3YxM20wIDExMHYxM20tNjgtNjhoMTNtMTEwIDBoMTMiIHN0cm9rZT0iIzI5NDE1NiIgc3Ryb2tlLXdpZHRoPSI1Ii8+PHBhdGggZD0iTTE4MCAxMTUgMTI5IDExNU0xODAgMTE1IDE2Ni45ODg3NjMyOTk1ODY5NCAxNDYuNDExOTA0MTA1MzgzNzQiIHN0cm9rZT0iI2RmNWM1NCIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48Y2lyY2xlIGN4PSIxODAiIGN5PSIxMTUiIHI9IjciIGZpbGw9IiMyOTQxNTYiLz48L3N2Zz4=","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VmZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxNyIgZmlsbD0iI2YxY2E1OCIvPjxwYXRoIGQ9Ik0wIDE4N3E4OS0yMiAxNzggMHQxODIgMHYyM0gweiIgZmlsbD0iI2I4Y2RhYSIvPjxjaXJjbGUgY3g9IjE4MCIgY3k9IjExNSIgcj0iNzYiIGZpbGw9IiNmZmYiIHN0cm9rZT0iIzI5NDE1NiIgc3Ryb2tlLXdpZHRoPSI4Ii8+PHBhdGggZD0iTTE4MCA0N3YxM20wIDExMHYxM20tNjgtNjhoMTNtMTEwIDBoMTMiIHN0cm9rZT0iIzI5NDE1NiIgc3Ryb2tlLXdpZHRoPSI1Ii8+PHBhdGggZD0iTTE4MCAxMTUgMTgwIDY0TTE4MCAxMTUgMTYzIDE0NC40NDQ4NjM3Mjg2NzA5MiIgc3Ryb2tlPSIjZGY1YzU0IiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxjaXJjbGUgY3g9IjE4MCIgY3k9IjExNSIgcj0iNyIgZmlsbD0iIzI5NDE1NiIvPjwvc3ZnPg==","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VmZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxNyIgZmlsbD0iI2YxY2E1OCIvPjxwYXRoIGQ9Ik0wIDE4N3E4OS0yMiAxNzggMHQxODIgMHYyM0gweiIgZmlsbD0iI2I4Y2RhYSIvPjxjaXJjbGUgY3g9IjE4MCIgY3k9IjExNSIgcj0iNzYiIGZpbGw9IiNmZmYiIHN0cm9rZT0iIzI5NDE1NiIgc3Ryb2tlLXdpZHRoPSI4Ii8+PHBhdGggZD0iTTE4MCA0N3YxM20wIDExMHYxM20tNjgtNjhoMTNtMTEwIDBoMTMiIHN0cm9rZT0iIzI5NDE1NiIgc3Ryb2tlLXdpZHRoPSI1Ii8+PHBhdGggZD0iTTE4MCAxMTUgMjMxIDExNU0xODAgMTE1IDE1OS4zMDIxMTE0MTM3MDM1IDE0MS45NzQwMTM1Njk5MDE5OCIgc3Ryb2tlPSIjZGY1YzU0IiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxjaXJjbGUgY3g9IjE4MCIgY3k9IjExNSIgcj0iNyIgZmlsbD0iIzI5NDE1NiIvPjwvc3ZnPg=="],"a":1,"e":"Sam says the alarm will be set for seven."},{"q":"3. What will the students have for breakfast?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VmZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxNyIgZmlsbD0iI2YxY2E1OCIvPjxwYXRoIGQ9Ik0wIDE4N3E4OS0yMiAxNzggMHQxODIgMHYyM0gweiIgZmlsbD0iI2I4Y2RhYSIvPjxwYXRoIGQ9Ik05NSAxMDRoMTcwbC0xNSA3NXEtNjkgMjgtMTQwIDB6IiBmaWxsPSIjZjRmMGRmIiBzdHJva2U9IiMyOTQxNTYiIHN0cm9rZS13aWR0aD0iNyIvPjxlbGxpcHNlIGN4PSIxODAiIGN5PSIxMDQiIHJ4PSI4NSIgcnk9IjI3IiBmaWxsPSIjZmZmIiBzdHJva2U9IiMyOTQxNTYiIHN0cm9rZS13aWR0aD0iNyIvPjxjaXJjbGUgY3g9IjE0NSIgY3k9Ijk4IiByPSI5IiBmaWxsPSIjY2Y5OTVjIi8+PGNpcmNsZSBjeD0iMTc2IiBjeT0iMTA4IiByPSIxMCIgZmlsbD0iI2M3ODU0YyIvPjxjaXJjbGUgY3g9IjIwOCIgY3k9Ijk2IiByPSI5IiBmaWxsPSIjY2Y5OTVjIi8+PGNpcmNsZSBjeD0iMjI1IiBjeT0iMTExIiByPSI4IiBmaWxsPSIjYzc4NTRjIi8+PC9zdmc+","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VmZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxNyIgZmlsbD0iI2YxY2E1OCIvPjxwYXRoIGQ9Ik0wIDE4N3E4OS0yMiAxNzggMHQxODIgMHYyM0gweiIgZmlsbD0iI2I4Y2RhYSIvPjxjaXJjbGUgY3g9IjEzMiIgY3k9IjEyNyIgcj0iNDIiIGZpbGw9IiNkYjVlNTUiIHN0cm9rZT0iIzI5NDE1NiIgc3Ryb2tlLXdpZHRoPSI2Ii8+PHBhdGggZD0iTTEzMiA4M3EwLTIzIDIwLTMwIiBzdHJva2U9IiM3MDUxM2QiIHN0cm9rZS13aWR0aD0iNyIvPjxwYXRoIGQ9Ik0xNDYgNjJxMzQtMTggNDggOC0yNiAxNi00OC04IiBmaWxsPSIjNzlhOTZiIi8+PHBhdGggZD0iTTE5OCAxNTZxLTUtNjIgNDgtNTggMjQgNDctMjYgNjh6IiBmaWxsPSIjZThiZjRiIiBzdHJva2U9IiMyOTQxNTYiIHN0cm9rZS13aWR0aD0iNiIvPjxwYXRoIGQ9Ik0yMjQgMTA1cS0xMS0yMS00LTM0IiBzdHJva2U9IiM3MTkzNTMiIHN0cm9rZS13aWR0aD0iNiIvPjwvc3ZnPg==","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VmZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxNyIgZmlsbD0iI2YxY2E1OCIvPjxwYXRoIGQ9Ik0wIDE4N3E4OS0yMiAxNzggMHQxODIgMHYyM0gweiIgZmlsbD0iI2I4Y2RhYSIvPjxwYXRoIGQ9Ik05NSAxNDNxNC02MCAzMS02MHQzMSA2MHEtMiAzMS0zMSAzMS0zMCAwLTMxLTMxem03NyAwcTQtNjAgMzEtNjB0MzEgNjBxLTIgMzEtMzEgMzEtMzAgMC0zMS0zMXptNzcgMHE0LTYwIDMxLTYwdDMxIDYwcS0yIDMxLTMxIDMxLTMwIDAtMzEtMzF6IiBmaWxsPSIjZmZmM2Q2IiBzdHJva2U9IiMyOTQxNTYiIHN0cm9rZS13aWR0aD0iNiIvPjxwYXRoIGQ9Ik03OCAxODBoMjA1IiBzdHJva2U9IiNkYjlhNWYiIHN0cm9rZS13aWR0aD0iOCIvPjwvc3ZnPg=="],"a":2,"e":"The cook is making eggs."},{"q":"4. What does Ava use for her evening homework?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VmZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxNyIgZmlsbD0iI2YxY2E1OCIvPjxwYXRoIGQ9Ik0wIDE4N3E4OS0yMiAxNzggMHQxODIgMHYyM0gweiIgZmlsbD0iI2I4Y2RhYSIvPjxwYXRoIGQ9Ik05MSAxODJoMTc4bS04OS0xIDM1LTYxLTUyLTMxbTUyIDMxIDI4LTQyIiBmaWxsPSJub25lIiBzdHJva2U9IiMzMjQ5NWYiIHN0cm9rZS13aWR0aD0iMTAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxwYXRoIGQ9Im0yMTMgNTcgNjQgMjAtMjYgNTItNjItMjF6IiBmaWxsPSIjZjBjODUzIiBzdHJva2U9IiMyOTQxNTYiIHN0cm9rZS13aWR0aD0iNyIvPjxwYXRoIGQ9Im0yMDggMTI5IDM2IDAtMTQgMjloLTUweiIgZmlsbD0iI2ZmZjNjYSIvPjwvc3ZnPg==","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VmZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxNyIgZmlsbD0iI2YxY2E1OCIvPjxwYXRoIGQ9Ik0wIDE4N3E4OS0yMiAxNzggMHQxODIgMHYyM0gweiIgZmlsbD0iI2I4Y2RhYSIvPjxyZWN0IHg9Ijg4IiB5PSI0MSIgd2lkdGg9IjE4NCIgaGVpZ2h0PSIxNTIiIHJ4PSI4IiBmaWxsPSIjYzllOWYyIiBzdHJva2U9IiMyOTQxNTYiIHN0cm9rZS13aWR0aD0iOCIvPjxwYXRoIGQ9Ik0xODAgNDV2MTQ1TTkyIDExN2gxNzYiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxMCIvPjxjaXJjbGUgY3g9IjIzOCIgY3k9Ijc4IiByPSIxOSIgZmlsbD0iI2YyY2I1YyIvPjxwYXRoIGQ9Ik0xMDIgMTg0cTM1LTMxIDY3IDB0NjggMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNzhhZDdhIiBzdHJva2Utd2lkdGg9IjgiLz48L3N2Zz4=","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VmZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxNyIgZmlsbD0iI2YxY2E1OCIvPjxwYXRoIGQ9Ik0wIDE4N3E4OS0yMiAxNzggMHQxODIgMHYyM0gweiIgZmlsbD0iI2I4Y2RhYSIvPjxyZWN0IHg9IjcwIiB5PSI0MyIgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxMjgiIHJ4PSIxMiIgZmlsbD0iIzMzNDk1ZCIvPjxyZWN0IHg9IjgyIiB5PSI1NSIgd2lkdGg9IjE5NiIgaGVpZ2h0PSIxMDMiIHJ4PSI1IiBmaWxsPSIjYzllOGYwIi8+PHBhdGggZD0iTTE0NSAxNzJ2MjJtNzAtMjJ2MjJtLTk1IDdoMTIwIiBzdHJva2U9IiMyOTQxNTYiIHN0cm9rZS13aWR0aD0iOCIvPjxwYXRoIGQ9Ik0xMDUgMTMxaDcwbS03MC0yMmgxMjJtLTEyMi0yMmg1OCIgc3Ryb2tlPSIjNmVhMmI4IiBzdHJva2Utd2lkdGg9IjciLz48L3N2Zz4="],"a":0,"e":"She switches on her desk lamp."},{"q":"5. Which activity will the class try?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VmZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxNyIgZmlsbD0iI2YxY2E1OCIvPjxwYXRoIGQ9Ik0wIDE4N3E4OS0yMiAxNzggMHQxODIgMHYyM0gweiIgZmlsbD0iI2I4Y2RhYSIvPjxwYXRoIGQ9Ik0wIDE3MHE4MC0yNiAxNjMgMHQxOTctMXY0MUgweiIgZmlsbD0iIzg3YjU3ZCIvPjxwYXRoIGQ9Ik0xNTMgMjExcS0xMy01MSAxNi03NXQtNC03M2g0MHEtMjIgMzkgNSA3M3QxNCA3NXoiIGZpbGw9IiNkNGI0OGEiLz48Y2lyY2xlIGN4PSIxODAiIGN5PSI4NyIgcj0iMTUiIGZpbGw9IiNjOThmNmEiLz48cGF0aCBkPSJNMTgwIDEwNHY0Mm0wLTI2LTIxIDE4bTIxLTE4IDIwIDEybS0yMCAxNC0xNSAzMG0xNS0zMCAxOCAyOCIgc3Ryb2tlPSIjNDM3ZmExIiBzdHJva2Utd2lkdGg9IjEwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48L3N2Zz4=","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VmZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxNyIgZmlsbD0iI2YxY2E1OCIvPjxwYXRoIGQ9Ik0wIDE4N3E4OS0yMiAxNzggMHQxODIgMHYyM0gweiIgZmlsbD0iI2I4Y2RhYSIvPjxjaXJjbGUgY3g9IjE4MSIgY3k9IjYxIiByPSIxNiIgZmlsbD0iI2QyOWI3NiIvPjxwYXRoIGQ9Ik0xODEgNzl2NDRtMC0yNC00MiAyMm00Mi0yMiAzOSAyMG0tMzkgNC00NiAzNG00Ni0zNCA0NyAzNCIgc3Ryb2tlPSIjOGM2YWIwIiBzdHJva2Utd2lkdGg9IjEyIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cGF0aCBkPSJNODggMTgzaDE4NiIgc3Ryb2tlPSIjZDZhOTc0IiBzdHJva2Utd2lkdGg9IjEyIi8+PC9zdmc+","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VmZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxNyIgZmlsbD0iI2YxY2E1OCIvPjxwYXRoIGQ9Ik0wIDE4N3E4OS0yMiAxNzggMHQxODIgMHYyM0gweiIgZmlsbD0iI2I4Y2RhYSIvPjxjaXJjbGUgY3g9IjE3OSIgY3k9IjU1IiByPSIxNyIgZmlsbD0iI2QyOWI3NiIvPjxwYXRoIGQ9Ik0xNzkgNzR2NTdtMC00My01MC0yM201MCAyMyA1MC0zN20tNTAgODAtNDEgNDZtNDEtNDYgNDggMzYiIHN0cm9rZT0iI2U3ODE1YSIgc3Ryb2tlLXdpZHRoPSIxMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0ibTExMiA0NS0xOC0xNG0xNjYtMiAxOS0xOG0tOTkgMTU0LTE4IDEybTExNiA2IDE4IDgiIHN0cm9rZT0iI2YxYzg1YyIgc3Ryb2tlLXdpZHRoPSI4Ii8+PC9zdmc+"],"a":1,"e":"They will try a short yoga session."},{"q":"6. What will help Leo organise his tasks?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VmZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxNyIgZmlsbD0iI2YxY2E1OCIvPjxwYXRoIGQ9Ik0wIDE4N3E4OS0yMiAxNzggMHQxODIgMHYyM0gweiIgZmlsbD0iI2I4Y2RhYSIvPjxyZWN0IHg9IjExMCIgeT0iNDQiIHdpZHRoPSIxNDQiIGhlaWdodD0iMTU4IiByeD0iMTAiIGZpbGw9IiNmZmYiIHN0cm9rZT0iIzI5NDE1NiIgc3Ryb2tlLXdpZHRoPSI3Ii8+PHJlY3QgeD0iMTUwIiB5PSIzNCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjI1IiByeD0iOCIgZmlsbD0iIzc1YTliZiIgc3Ryb2tlPSIjMjk0MTU2IiBzdHJva2Utd2lkdGg9IjUiLz48cGF0aCBkPSJtMTMyIDkxIDggOSAxNi0xOW0xNSAxMmg1N20tOTYgMjkgOCA5IDE2LTE5bTE1IDEyaDU3bS05NiAyOSA4IDkgMTYtMTltMTUgMTJoNTciIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzZiYTY3YiIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48L3N2Zz4=","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VmZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxNyIgZmlsbD0iI2YxY2E1OCIvPjxwYXRoIGQ9Ik0wIDE4N3E4OS0yMiAxNzggMHQxODIgMHYyM0gweiIgZmlsbD0iI2I4Y2RhYSIvPjxjaXJjbGUgY3g9IjE4MCIgY3k9IjEyMSIgcj0iNjciIGZpbGw9IiM2Y2E3YmQiIHN0cm9rZT0iIzI5NDE1NiIgc3Ryb2tlLXdpZHRoPSI4Ii8+PHJlY3QgeD0iMTYxIiB5PSIzOSIgd2lkdGg9IjM4IiBoZWlnaHQ9IjIwIiByeD0iNiIgZmlsbD0iIzMyNDk1ZiIvPjxjaXJjbGUgY3g9IjE4MCIgY3k9IjEyMSIgcj0iNDciIGZpbGw9IiNmZmYiLz48cGF0aCBkPSJNMTgwIDEyMVY4NW0wIDM2IDI3IDE3IiBzdHJva2U9IiNkZjVjNTQiIHN0cm9rZS13aWR0aD0iOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PC9zdmc+","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VmZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxNyIgZmlsbD0iI2YxY2E1OCIvPjxwYXRoIGQ9Ik0wIDE4N3E4OS0yMiAxNzggMHQxODIgMHYyM0gweiIgZmlsbD0iI2I4Y2RhYSIvPjxyZWN0IHg9IjgwIiB5PSI1NSIgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxNDUiIHJ4PSIxMSIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjMjk0MTU2IiBzdHJva2Utd2lkdGg9IjciLz48cGF0aCBkPSJNODAgOTBoMjIwIiBzdHJva2U9IiNlNzgxNWEiIHN0cm9rZS13aWR0aD0iMTYiLz48cGF0aCBkPSJNMTI5IDQzdjMwbTEyMS0zMHYzMCIgc3Ryb2tlPSIjMjk0MTU2IiBzdHJva2Utd2lkdGg9IjgiLz48ZyBmaWxsPSIjNzdhOGJmIj48cmVjdCB4PSIxMDgiIHk9IjExMSIgd2lkdGg9IjI3IiBoZWlnaHQ9IjE5IiByeD0iNCIvPjxyZWN0IHg9IjE1MSIgeT0iMTExIiB3aWR0aD0iMjciIGhlaWdodD0iMTkiIHJ4PSI0Ii8+PHJlY3QgeD0iMTk0IiB5PSIxMTEiIHdpZHRoPSIyNyIgaGVpZ2h0PSIxOSIgcng9IjQiLz48cmVjdCB4PSIyMzciIHk9IjExMSIgd2lkdGg9IjI3IiBoZWlnaHQ9IjE5IiByeD0iNCIvPjxyZWN0IHg9IjEwOCIgeT0iMTUxIiB3aWR0aD0iMjciIGhlaWdodD0iMTkiIHJ4PSI0Ii8+PHJlY3QgeD0iMTUxIiB5PSIxNTEiIHdpZHRoPSIyNyIgaGVpZ2h0PSIxOSIgcng9IjQiLz48cmVjdCB4PSIxOTQiIHk9IjE1MSIgd2lkdGg9IjI3IiBoZWlnaHQ9IjE5IiByeD0iNCIvPjwvZz48L3N2Zz4="],"a":0,"e":"He will write the tasks on a checklist."},{"q":"7. Where will the students meet at lunchtime?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VmZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxNyIgZmlsbD0iI2YxY2E1OCIvPjxwYXRoIGQ9Ik0wIDE4N3E4OS0yMiAxNzggMHQxODIgMHYyM0gweiIgZmlsbD0iI2I4Y2RhYSIvPjxyZWN0IHg9Ijc1IiB5PSI0OCIgd2lkdGg9IjIxMCIgaGVpZ2h0PSIxNDUiIHJ4PSIxMCIgZmlsbD0iI2Q4ZThlZCIgc3Ryb2tlPSIjMjk0MTU2IiBzdHJva2Utd2lkdGg9IjciLz48cGF0aCBkPSJNMTY4IDE5M3YtOTBxMTItMzYgMzUgMHY5MCIgZmlsbD0iI2M0OGE2MSIgc3Ryb2tlPSIjMjk0MTU2IiBzdHJva2Utd2lkdGg9IjYiLz48Y2lyY2xlIGN4PSIyMjAiIGN5PSIxNDQiIHI9IjUiIGZpbGw9IiNmMmNhNWIiLz48cGF0aCBkPSJNMTA3IDEwN2g0M20tNDMgMjJoMzUiIHN0cm9rZT0iIzcwYThiYyIgc3Ryb2tlLXdpZHRoPSI3Ii8+PC9zdmc+","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VmZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxNyIgZmlsbD0iI2YxY2E1OCIvPjxwYXRoIGQ9Ik0wIDE4N3E4OS0yMiAxNzggMHQxODIgMHYyM0gweiIgZmlsbD0iI2I4Y2RhYSIvPjxwYXRoIGQ9Ik02NyAxNTBoMjI2IiBzdHJva2U9IiMzMTQ5NWYiIHN0cm9rZS13aWR0aD0iMTAiLz48cGF0aCBkPSJNMTA3IDEwMHY5OW0xNDYtOTl2OTlNODcgMTAwaDQwbTEwNiAwaDQwIiBzdHJva2U9IiNlNjgwNTUiIHN0cm9rZS13aWR0aD0iMTAiLz48cGF0aCBkPSJNOTIgMTE3aDE3NiIgc3Ryb2tlPSIjNzZhYWJiIiBzdHJva2Utd2lkdGg9IjgiLz48L3N2Zz4=","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNjAiIGhlaWdodD0iMjEwIiB2aWV3Qm94PSIwIDAgMzYwIDIxMCI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIyMTAiIHJ4PSIyMiIgZmlsbD0iI2VmZjVmOCIvPjxjaXJjbGUgY3g9IjMxMCIgY3k9IjM4IiByPSIxNyIgZmlsbD0iI2YxY2E1OCIvPjxwYXRoIGQ9Ik0wIDE4N3E4OS0yMiAxNzggMHQxODIgMHYyM0gweiIgZmlsbD0iI2I4Y2RhYSIvPjxwYXRoIGQ9Ik03MiAxODRoMjE2IiBzdHJva2U9IiMzMjQ5NWYiIHN0cm9rZS13aWR0aD0iOCIvPjxwYXRoIGQ9Ik0xODAgMTc5di03MCIgc3Ryb2tlPSIjODA1ZTQ2IiBzdHJva2Utd2lkdGg9IjEyIi8+PGNpcmNsZSBjeD0iMTgwIiBjeT0iODIiIHI9IjUxIiBmaWxsPSIjNzhhOTZkIiBzdHJva2U9IiMzMjQ5NWYiIHN0cm9rZS13aWR0aD0iNiIvPjxwYXRoIGQ9Ik0xMDAgMTU2aDU0bS00OC0xOGg0MiIgc3Ryb2tlPSIjYjc4MDU1IiBzdHJva2Utd2lkdGg9IjkiLz48Y2lyY2xlIGN4PSIxMTgiIGN5PSIxMjMiIHI9IjEyIiBmaWxsPSIjZTljMTVhIi8+PC9zdmc+"],"a":2,"e":"They will meet in the courtyard."}]},{"t":"Listening Part 2 — Short Conversations","i":"You will hear six short conversations. For questions 8–13, choose A, B or C.","im":"<p><button class='btn alt say' data-i='1' type='button'>Play Part 2</button></p>","m":7,"q":[{"q":"8. Why did Hugo miss the breakfast club?","o":["His alarm did not ring.","He could not find his shoes.","He was waiting for his sister."],"a":0,"e":"He slept through his alarm."},{"q":"9. Which task did Mia finish in the study room?","o":["Her history essay","Her maths questions","Her science poster"],"a":1,"e":"She completed the maths questions there."},{"q":"10. Where will the friends meet after class?","o":["At the library entrance","By the sports hall","Outside the main office"],"a":0,"e":"They will meet by the library entrance."},{"q":"11. What will Ben try after school?","o":["A short walk","A dance class","A football practice"],"a":0,"e":"He has decided to try the walking group."},{"q":"12. What is the family changing about dinner?","o":["They will eat a little earlier.","They will cook a different meal.","They will eat in another room."],"a":0,"e":"They want to have dinner earlier."},{"q":"13. What does Ella want to ask her teacher for?","o":["Help with a revision plan","Extra time for one assignment","A new place to study"],"a":0,"e":"She wants the teacher to help her plan revision."}]},{"t":"Listening Part 3 — Note Completion","i":"You will hear an announcement about Wellbeing Morning. Complete questions 14–19 with one or two words or a number.","im":"<p><button class='btn alt say' data-i='2' type='button'>Play Part 3</button></p>","m":6,"q":[{"q":"14. Event: Wellbeing _____","a":["morning"],"e":"It is called Wellbeing Morning."},{"q":"15. Date: Wednesday 7 October","a":["october"],"e":"The date is Wednesday 8 October."},{"q":"16. Meet in the school _____","a":["courtyard"],"e":"Students should meet in the courtyard."},{"q":"17. The first activity starts at _____","a":["9.10"],"e":"It begins at ten past nine."},{"q":"18. Bring a _____","a":["water bottle"],"e":"Students should bring a water bottle."},{"q":"19. Sign up with _____","a":["mr green"],"e":"Students should sign up with Mr Green."}]},{"t":"Listening Part 4 — Interview","i":"You will hear an interviewer talking to a student who helped start a quiet lunchtime group. For questions 20–25, choose A, B or C.","im":"<p><button class='btn alt say' data-i='3' type='button'>Play Part 4</button></p>","m":7,"q":[{"q":"20. Why did Sofia suggest a quiet lunchtime group?","o":["Some students wanted a calmer place to spend lunch.","The library needed more books.","Teachers asked her to organise a sports club."],"a":0,"e":"Students said the busy lunchroom could feel overwhelming."},{"q":"21. What did Sofia do before choosing a room?","o":["Asked students what they needed","Bought new chairs","Spoke to the head teacher about lessons"],"a":0,"e":"She asked other students what would make the space useful."},{"q":"22. What can students do in the room?","o":["Read, draw or talk quietly","Use phones and play music","Eat lunch at any table"],"a":0,"e":"It is for quiet activities such as reading and drawing."},{"q":"23. What surprised Sofia?","o":["How many students began using it","How quickly the room was painted","How many teachers wanted to join"],"a":0,"e":"More students came than she expected."},{"q":"24. What does Sofia do when the room gets busy?","o":["Asks a helper to welcome students","Closes the room for the day","Moves everyone to the gym"],"a":0,"e":"A student helper welcomes people and explains the room."},{"q":"25. What would Sofia like to add next?","o":["A small shelf of art materials","A computer for games","A speaker for music"],"a":0,"e":"She hopes to add simple materials for drawing."}]}];
+
+var T = ["Extract 1. Girl: Are you going to listen to music before bed? Noor: Not tonight. I want to read a few pages of my new book instead. Girl: That sounds relaxing. Noor: I hope so. {pause} Extract 2. Sam: I keep waking up too late. Mum: What time is your alarm? Sam: It's set for seven fifteen. Mum: Try setting it for seven. Sam: I'll do that tonight. {pause} Extract 3. Teacher: Breakfast club has toast and cereal. Student: Are the eggs ready too? Teacher: Yes, the cook is making eggs this morning. Student: I'll have those, please. {pause} Extract 4. Ava: I can't see the page very well in this light. Dad: You could move closer to the window. Ava: It's already getting dark. I'll switch on my desk lamp. Dad: Good idea. {pause} Extract 5. Teacher: We can try a short walk or a dance class. Student: I did a lot of walking yesterday. Could we try yoga? Teacher: That sounds good. Let's do a short beginner session. {pause} Extract 6. Leo: I have too many things to remember this week. Friend: Why not write them down? Leo: I have a calendar, but I forget to look at it. I'll make a checklist and keep it on my desk. {pause} Extract 7. Girl: Are we meeting in the gym at lunch? Boy: The volleyball team has it today. We could use the quiet room. Girl: I'd rather sit outside if it's sunny. Boy: Let's meet in the courtyard, then. {pause}","Conversation 1. Hugo: I missed breakfast club again. Mia: Did you wake up late? Hugo: My alarm didn't ring. I must have turned it off in my sleep. Mia: That's happened to me too. {pause} Conversation 2. Mia: I stayed in the study room after school. Did you finish your poster? Friend: No, I did the maths questions. The history essay needs more time. Mia: I finished that yesterday. {pause} Conversation 3. Boy: Where should we meet after class? Girl: The sports hall is busy. Let's wait by the library entrance. Boy: I'll see you there. {pause} Conversation 4. Ben: I want to do something after school, but I don't want another class. Friend: The walking group meets today. Ben: I'll try that. A little fresh air sounds good. {pause} Conversation 5. Dad: We normally eat at seven. Mum: Your sister has an early start tomorrow. Dad: Should I cook sooner? Mum: Let's have dinner a little earlier tonight. {pause} Conversation 6. Ella: I have two tests next week and I'm not sure how to plan my revision. Teacher: Bring me your subject list tomorrow. We can make a revision plan together. Ella: Thank you. {pause}","Good morning. Wellbeing Morning will take place on Wednesday 7 October. Students should meet in the school courtyard. The first activity starts at ten past nine. There will be short sessions on movement, planning your time and relaxing before a busy day. Please bring a water bottle, and wear comfortable clothes for the movement session. To take part, sign up with Mr Green by Monday. The activities are free, and students may choose one or two sessions. If it rains, we will move everything to the main hall. We hope you find something useful to try.","Interviewer: Sofia, how did the quiet lunchtime group begin? Sofia: A few students said the lunchroom was very busy and they wanted somewhere calmer. We asked the school if we could use a small meeting room. Interviewer: What did you do before setting it up? Sofia: I asked students what they would need. Some wanted to read, others preferred drawing or just talking quietly. That helped us decide what to put in the room. Interviewer: What can students do there? Sofia: They can read, draw or talk quietly. We ask everyone to keep phones away and use a low voice. Interviewer: Were you surprised by anything? Sofia: Yes, more students came than we expected. We thought perhaps five or six would use it, but some days there are twelve. Interviewer: How do you manage when it's busy? Sofia: One of the student helpers welcomes people and explains how the room works. That makes it easier for everyone to settle in. Interviewer: What would you like to add next? Sofia: A small shelf with paper, pencils and coloured pens. People could draw without needing to bring their own things."];
+
+var FULL=true, AUDIO=["","","",""];
+var ASSESSOR_EMAIL="oxfampreparation@email.cz";
+
+function wc(t){var m=t.trim().match(/\S+/g);return m?m.length:0}
+function winit(){
+  document.querySelectorAll("textarea").forEach(function(t){t.oninput=function(){document.getElementById(t.id+"c").textContent=wc(t.value)+" words"}});
+  document.querySelectorAll("[data-c]").forEach(function(b){b.onclick=function(){var t=document.getElementById(b.dataset.c).value;if(navigator.clipboard)navigator.clipboard.writeText(t)}});
+  document.querySelectorAll("[data-s]").forEach(function(b){b.onclick=async function(){
+    var t=document.getElementById(b.dataset.s).value,nameField=document.getElementById("nm"),nm=((nameField&&nameField.value)||"Student").trim()||"Student";
+    if(!wc(t)){b.textContent="Write something first!";setTimeout(function(){b.textContent="Send writing to assessor"},2000);return}
+    var subject="B1 Preliminary for Schools Test 8 - "+b.dataset.t+" - "+nm;
+    var message="Student: "+nm+"\nTest: B1 Preliminary for Schools Test 8\nTask: "+b.dataset.t+"\n\n"+t;
+    var status=b.parentNode.parentNode.querySelector(".email-status");if(!status){status=document.createElement("p");status.className="note email-status";status.setAttribute("role","status");b.parentNode.parentNode.appendChild(status)}
+    b.disabled=true;b.textContent="Sending…";status.textContent="Sending your writing to "+ASSESSOR_EMAIL+"…";
+    try{var response=await fetch("https://formsubmit.co/ajax/"+ASSESSOR_EMAIL,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify({name:nm,_subject:subject,message:message})});var result=await response.json();if(!response.ok||result.success===false||result.success==="false")throw new Error(result.message||"The email service did not accept the submission.");status.textContent="Submission accepted. On first use, the assessor must confirm the address through the verification email before delivery is enabled.";b.textContent="Submitted";
+    }catch(err){status.textContent="We couldn't send the writing. Check the internet connection and try again. "+(err&&err.message?err.message:"");b.disabled=false;b.textContent="Retry sending";return}
+    b.disabled=false;setTimeout(function(){b.textContent="Send writing to assessor"},4000);
+  }});
+}
+var playId=0;
+function say(i,done){
+  var id=++playId;speechSynthesis.cancel();
+  var parts=T[i].split(/(\{pause\}|\{short\}|\bSpeaker \d:|\b[A-Z][A-Za-z]+:)/),q=[],pitch=1,flip=0,names={};
+  parts.forEach(function(x){
+    x=x.trim();if(!x)return;
+    if(x==="{pause}"||x==="{short}"){q.push({w:x==="{pause}"?2500:1200});pitch=1;return}
+    var sp=x.match(/^Speaker (\d):$/);if(sp){q.push({t:"Speaker "+sp[1],p:1,w:700});return}
+    if(/^[A-Za-z 0-9 ]+:$/.test(x)){var n=x.slice(0,-1);if(!(n in names))names[n]=(flip++%2)?1.25:.85;pitch=names[n];return}
+    (x.match(/[^.?!]+[.?!]*/g)||[x]).forEach(function(z){q.push({t:z.trim(),p:pitch,w:300})})
+  });
+  var k=0;(function next(){
+    if(id!==playId)return;
+    if(k>=q.length){done();return}
+    var s=q[k++];
+    if(!s.t){setTimeout(next,s.w);return}
+    var u=new SpeechSynthesisUtterance(s.t);u.lang="en-GB";u.rate=0.95;u.pitch=s.p;
+    u.onend=function(){setTimeout(next,s.w)};u.onerror=function(){setTimeout(next,s.w)};
+    speechSynthesis.speak(u);
+  })()
+}
+
+function play(b){
+  if(b._busy)return;
+  var i=+b.dataset.i;
+  function fin(){b._busy=false;if(b._n>=2){b.disabled=true;b.textContent="Played twice"}else b.textContent="Play again (last time)"}
+  if(!AUDIO[i]&&(!window.speechSynthesis||!window.SpeechSynthesisUtterance)){b.textContent="TTS not supported in this browser.";return}
+  b._n=(b._n||0)+1;b._busy=true;b.textContent="Playing...";
+  if(AUDIO[i]){var a=new Audio(AUDIO[i]);a.onended=fin;a.onerror=fin;a.play()}else say(i,fin)
+}
+
+function init(){
+  [["t1",90],["t2",35],["t4",12],["sp1",3],["sp2",3],["sp3",3],["sp4",3]].forEach(function(a){if(document.getElementById(a[0]))timer(a[0],a[1])});
+  if(!FULL)return;
+  build(R,document.getElementById("rbox"),"r");
+  build(L,document.getElementById("lbox"),"l");
+  document.getElementById("ck1").onclick=function(){check(document.getElementById("rbox"),document.getElementById("sc1"))};
+  document.getElementById("ck2").onclick=function(){check(document.getElementById("lbox"),document.getElementById("sc2"))};
+  document.querySelectorAll(".say").forEach(function(b){b.onclick=function(){play(b)}});
+  winit();
+}
+
+(function(){
+  var g=document.getElementById("gate"),m=document.getElementById("main");
+  function show(){g.hidden=true;m.hidden=false;if(window.init)init()}
+  if(unlocked()){show();return}
+  document.getElementById("gf").onsubmit=function(e){
+    e.preventDefault();
+    if(document.getElementById("pw").value===PW){
+      try{sessionStorage.setItem("pet_schools_test_8","1")}catch(x){}
+      show();
+    } else {
+      document.getElementById("err").textContent="Wrong password.";
+    }
+  }
+  
+  var themeBtn = document.getElementById('themeBtn');
+  if(themeBtn) {
+    themeBtn.onclick = function() {
+      var currentTheme = document.documentElement.getAttribute('data-theme');
+      if(currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        themeBtn.textContent = '🌙';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeBtn.textContent = '☀️';
+      }
+    };
+  }
+  
+  var menuToggle = document.getElementById('menuToggle');
+  if(menuToggle) {
+    menuToggle.onclick = function() {
+      document.body.classList.toggle('menuopen');
+    };
+  }
+  
+  var loginBtn = document.getElementById('loginBtn');
+  var dlg = document.getElementById('dlg');
+  var cancel = document.getElementById('cancel');
+  if(loginBtn && dlg) {
+    loginBtn.onclick = function() { dlg.showModal(); }
+  }
+  if(cancel && dlg) {
+    cancel.onclick = function() { dlg.close(); }
+  }
+})();
+</script>
+</body>
+</html>
