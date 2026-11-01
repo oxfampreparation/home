@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>A2 Key (KET) Test 2 - Oxfam Preparation</title>
+
+<style>
+/* Default theme is explicitly light */
+:root {
+  --bg: #f6f7fb;
+  --paper: #fff;
+  --ink: #14213d;
+  --muted: #4b5266;
+  --line: #d5d9e6;
+  --mark: #2b59ff;
+  --hi: #ffe45e;
+  --ok: #1a7f52;
+  --bad: #b3261e;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Dark theme applied ONLY when data-theme="dark" is present */
+:root[data-theme="dark"] {
+  --bg: #0f1526;
+  --paper: #182038;
+  --ink: #eef1fb;
+  --muted: #a9b1c9;
+  --line: #2c3656;
+  --mark: #7d9bff;
+  --hi: #e9d24a;
+  --ok: #57c58f;
+  --bad: #ff8a80;
+}
+
+html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: border-box; }
+
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1.0625rem/1.6 "Atkinson Hyperlegible", system-ui, sans-serif; }
+h1, h2, h3 { font-family: Archivo, "Helvetica Neue", Arial, sans-serif; line-height: 1.05; margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--mark); outline-offset: 3px; }
+.wrap { max-width: 74rem; margin: 0 auto; padding: 0 1.25rem; }
+
+header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .75rem; padding: 1.25rem 0; position: sticky; top: 0; background: var(--bg); z-index: 100; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+.head-left { display: flex; align-items: center; gap: .75rem; }
+#menuToggle { background: transparent; border: none; cursor: pointer; color: var(--ink); display: flex; padding: .25rem; border-radius: .25rem; }
+#menuToggle:hover { background: var(--line); }
+#menuToggle svg { width: 1.6rem; height: 1.6rem; }
+.logo { font: 800 1.25rem Archivo, sans-serif; text-decoration: none; }
+nav a { margin-left: 1.25rem; text-decoration: none; color: var(--muted); }
+nav a:hover { color: var(--ink); }
+
+.btn { display: inline-block; background: var(--ink); color: var(--bg); padding: .8rem 1.4rem; border-radius: .5rem; font-weight: 700; text-decoration: none; border: 0; cursor: pointer; font-size: 1rem; font-family: inherit; }
+.btn.alt { background: transparent; color: var(--ink); border: 2px solid var(--ink); }
+.hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2rem; align-items: start; padding: 1rem 0 3rem; }
+.hero-text { margin-top: 2.5rem; }
+
+h1 { font-size: clamp(2rem, 3.4vw, 3rem); font-weight: 800; font-stretch: 90%; letter-spacing: -.02em; margin-top: 1rem; margin-bottom: 0; }
+h1 span { background: linear-gradient(transparent 62%, var(--hi) 62%); }
+.lead { color: var(--muted); max-width: 32rem; margin: 1.25rem 0 1.75rem; font-size: 1.15rem; }
+.row { display: flex; gap: .75rem; flex-wrap: wrap; }
+
+.sheet { background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.sheet h2 { font-size: 1.1rem; margin-bottom: .25rem; }
+.sheet p { margin: 0 0 1rem; color: var(--muted); font-size: .95rem; }
+.q { padding: .7rem 0; border-top: 1px solid var(--line); }
+.q b { display: inline-block; font-weight: 800; margin-bottom: .45rem; margin-right: 0.5rem; }
+
+.opts { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem; width: fit-content; }
+.opt { display: flex; align-items: center; gap: .4rem; padding: .3rem .7rem .3rem .35rem; border: 1.5px solid var(--line); border-radius: 2rem; background: transparent; color: inherit; font-size: .95rem; cursor: pointer; width: fit-content; }
+.opt i { width: 1.4rem; height: 1.4rem; border-radius: 50%; border: 2px solid var(--muted); display: grid; place-items: center; font: 700 .7rem Archivo, sans-serif; font-style: normal; flex-shrink: 0; }
+
+.opt[aria-pressed="true"] { border-color: var(--mark); }
+.opt[aria-pressed="true"] i { background: var(--mark); border-color: var(--mark); color: var(--bg); }
+.opt.right { border-color: var(--ok); } .opt.right i { background: var(--ok); border-color: var(--ok); color: var(--bg); }
+.opt.wrong { border-color: var(--bad); } .opt.wrong i { background: var(--bad); border-color: var(--bad); color: var(--bg); }
+
+/* Image Options specific styles */
+.img-opts-grid { display: flex; flex-direction: row; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+.img-opt { flex-direction: column; align-items: center; padding: 0.5rem; border-radius: 0.5rem; gap: 0.5rem; text-align: center; }
+.img-opt img { height: 120px; width: 160px; object-fit: cover; background: var(--paper); border-radius: 0.25rem; }
+.img-opt i { margin-bottom: 0.25rem; }
+
+.result { margin-top: 1rem; font-weight: 700; min-height: 1.6rem; }
+section { padding: 3.5rem 0; border-top: 1px solid var(--line); }
+h2.t { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: .75rem; letter-spacing: -.01em; }
+
+.sub, .txt { color: var(--muted); max-width: 48rem; margin: 0 0 2rem; white-space: pre-line; line-height: 1.6; }
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: .6rem; background: var(--paper); }
+table { border-collapse: collapse; width: 100%; min-width: 38rem; }
+th, td { text-align: left; padding: .9rem 1rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font: 800 1.2rem Archivo, sans-serif; white-space: nowrap; }
+td small { display: block; font: 400 .9rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+
+.support-strip { position: fixed; bottom: 0; left: 0; right: 0; background: var(--ink); color: var(--bg); padding: 1rem 1.25rem; z-index: 999; box-shadow: 0 -4px 12px rgba(0,0,0,0.15); }
+.support-strip-inner { max-width: 74rem; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; width: 100%; font-weight: 700; }
+footer { border-top: 1px solid var(--line); padding: 2rem 0 5rem; color: var(--muted); font-size: .95rem; }
+
+.lang { display: flex; gap: .25rem; flex-wrap: wrap; } .lang button { font: 700 .8rem Archivo, sans-serif; padding: .35rem .6rem; border: 1.5px solid var(--line); border-radius: .4rem; background: transparent; color: var(--muted); cursor: pointer; } .lang button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.layout { display: grid; grid-template-columns: 12.5rem minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+.layout.collapsed { grid-template-columns: 1fr; gap: 0; }
+.layout.collapsed .side { display: none; }
+.side { position: sticky; top: 5rem; max-height: calc(100vh - 6rem); max-height: calc(100dvh - 6rem); overflow-y: auto; display: flex; flex-direction: column; gap: .15rem; }
+summary { cursor: pointer; font: 700 .95rem Archivo, sans-serif; color: var(--muted); padding: .4rem .75rem; border-radius: .5rem; } summary:hover { color: var(--ink); } .ex[open] summary { margin-bottom: .15rem; }
+.side nav { display: flex; flex-direction: column; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); } .side nav a { margin: 0; color: inherit; } .side .lang { margin-bottom: 1rem; }
+.side p { margin: 0 0 .5rem; font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+.side a { text-decoration: none; padding: .5rem .75rem; border-radius: .5rem; font: 700 1rem Archivo, sans-serif; border-left: 3px solid transparent; }
+.side a small { display: block; font: 400 .8rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+.side a:hover { background: var(--paper); border-left-color: var(--mark); }
+tr:target td { background: var(--hi); color: #14213d; } tr:target td small { color: #14213d; }
+
+@media (max-width: 52rem) { .layout { grid-template-columns: 1fr; gap: 0; } .side { position: static; max-height: none; margin: 0 0 1rem; padding: 0 0 1rem; border-bottom: 1px solid var(--line); } }
+
+.hr { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; } .hr .btn { padding: .45rem 1rem; font-size: .9rem; }
+dialog { border: 2px solid var(--ink); border-radius: .75rem; background: var(--paper); color: var(--ink); padding: 1.5rem; width: min(26rem, 92vw); max-height: 90vh; overflow: auto; } dialog::backdrop { background: rgba(10,16,32,.55); }
+dialog h2 { font-size: 1.4rem; margin-bottom: .5rem; } dialog label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+dialog input { width: 100%; padding: .65rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.demo { color: var(--muted); font-size: .9rem; margin: .5rem 0 0; } .err { color: var(--bad); min-height: 1.5rem; margin-top: .5rem; font-size: .95rem; }
+
+@media (max-width: 40rem) {
+  .wrap { padding: 0 1rem; }
+  header { padding: 1rem 0; }
+  .hero { padding-bottom: 2rem; }
+  .sheet { padding: 1.1rem; }
+  section { padding: 2.5rem 0; }
+  .scroll { border: 0; background: transparent; overflow: visible; }
+  table, tbody, tr, td { display: block; min-width: 0; width: 100%; }
+  thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  tr { background: var(--paper); border: 1px solid var(--line); border-radius: .6rem; padding: .6rem 0; margin-bottom: .75rem; }
+  td { border: 0; padding: .15rem 1rem; }
+  td:first-child { font-size: 1.3rem; padding-top: .4rem; }
+  tr:target { border-color: var(--ink); }
+}
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+html { scroll-padding-top: calc(5rem + env(safe-area-inset-top, 0px)); }
+body header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); padding: .6rem 0; border-bottom: 1px solid var(--line); }
+.brand { display: flex; align-items: center; gap: .75rem; }
+body .logo { font-size: 1.85rem; letter-spacing: -.02em; }
+.mbtn { display: inline-flex; flex-direction: column; justify-content: center; gap: 5px; width: 2.75rem; height: 2.75rem; padding: 0 .7rem; border: 2px solid var(--ink); border-radius: .5rem; background: transparent; cursor: pointer; flex: none; }
+.mbtn span { display: block; height: 2px; background: var(--ink); border-radius: 2px; }
+.mbtn:hover { background: var(--paper); }
+body .side { top: 5.5rem; max-height: calc(100vh - 6.5rem); max-height: calc(100dvh - 6.5rem); }
+body.nomenu .layout { grid-template-columns: minmax(0, 1fr); }
+body.nomenu .side { display: none; }
+body:has(#app[hidden]) .mbtn { display: none; }
+.side>.hr { margin-bottom: 1rem; }
+.scrim { display: none; }
+
+@media (max-width: 52rem) {
+  body .side { position: fixed; top: 0; left: 0; bottom: 0; width: min(19rem, 86vw); max-height: none; margin: 0; padding: calc(1rem + env(safe-area-inset-top, 0px)) 1rem calc(1rem + env(safe-area-inset-bottom, 0px)); background: var(--paper); border: 0; border-right: 2px solid var(--ink); z-index: 50; overflow-y: auto; transform: translateX(-105%); visibility: hidden; transition: transform .25s ease, visibility 0s .25s; }
+  body.menuopen .side { transform: none; visibility: visible; transition: transform .25s ease; }
+  body .side nav { flex-direction: column; flex-wrap: nowrap; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+  body .side nav a { padding: .5rem .75rem; }
+  .scrim { display: block; position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: rgba(10,16,32,.5); z-index: 40; opacity: 0; pointer-events: none; transition: opacity .25s; }
+  body.menuopen .scrim { opacity: 1; pointer-events: auto; }
+  body .logo { font-size: 1.6rem; }
+}
+
+.gatebox { max-width: 26rem; margin: 2rem auto; background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.gatebox label, .wr label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+input[type=text], input[type=password], textarea { width: 100%; padding: .6rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.q input[type=text] { width: 14rem; max-width: 100%; }
+.part { background: var(--paper); border: 1px solid var(--line); border-radius: .75rem; padding: 1.5rem; margin-bottom: 1.25rem; }
+.q.ok { border-left: 4px solid var(--ok); padding-left: .75rem; } .q.no { border-left: 4px solid var(--bad); padding-left: .75rem; } .fb { font-weight: 700; margin-top: .25rem; }
+.tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0; }
+nav.tabs a { margin: 0; padding: .4rem 1rem; border: 1.5px solid var(--line); border-radius: 2rem; text-decoration: none; font-weight: 700; }
+nav.tabs a[aria-current=page] { background: var(--ink); color: var(--bg); }
+.bar { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; margin: 1rem 0; } .time { font: 800 1.6rem Archivo, sans-serif; }
+.pics { display: flex; gap: 1rem; flex-wrap: wrap; } .pics svg, .pics img { flex: 1 1 14rem; max-width: 22rem; border: 2px solid var(--ink); border-radius: .5rem; background: var(--paper); object-fit: cover; aspect-ratio: 3/2; }
+textarea { min-height: 15rem; } .tr { display: none; } .note { padding: .75rem 1rem; border-left: 4px solid var(--mark); background: var(--paper); margin: 1rem 0; }
+.sec { padding-top: 2rem; margin-top: 2rem; border-top: 1px solid var(--line); } .jump { margin-top: 0; } .ex { color: var(--muted); margin-top: .15rem; font-size: .95rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header id="siteHeader">
+<div class="head-left">
+<button aria-label="Toggle menu" id="menuToggle">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
+</button>
+<a class="logo" href="../index.html">Oxfam Preparation</a>
+</div>
+<div class="hr">
+<button aria-label="Toggle theme" class="btn alt" id="themeBtn" style="padding:.45rem .6rem; min-width:0; font-size:1.1rem">🌙</button>
+<button class="btn" id="loginBtn" type="button">Log in</button>
+</div>
+</header>
+<div class="layout">
+<aside aria-label="Menu" class="side">
+<nav>
+<a href="../cpe.html">All tests</a>
+</nav>
+</aside>
+<main id="top">
+<div id="gate">
+<div class="gatebox">
+<h1><span>A2 Key (KET) Test 2</span></h1>
+<p>Enter the password to open this test.</p>
+<form id="gf">
+<label for="pw">Password</label>
+<input autocomplete="off" id="pw" type="password"/>
+<div class="err" id="err"></div>
+<div class="row" style="margin-top:1rem">
+<button class="btn" type="submit">Open</button>
+<a class="btn alt" href="../cpe.html">Back</a>
+</div>
+</form>
+</div>
+</div>
+<div hidden="" id="main">
+<h1 style="margin-top: 1rem">A2 Key (KET) Test 2 | Original Practice Paper</h1>
+<div class="part" style="margin-top:1rem">
+<label for="nm"><strong>Student name (optional — included with writing submissions)</strong></label>
+<input autocomplete="name" id="nm" type="text" placeholder="Enter your name"/>
+</div>
+<nav aria-label="Papers" class="tabs jump" style="margin-top: 2.5rem; margin-bottom: 2rem">
+<a href="#rd">Reading and Writing</a>
+<a href="#li">Listening</a>
+<a href="#sk">Speaking</a>
+</nav>
+<section class="sec" id="rd">
+<h2 class="t">Reading and Writing (60 minutes)</h2>
+<div class="bar"><span class="time" id="t1"></span><button class="btn alt" type="button">Start</button></div>
+<div id="rbox"></div><p class="sub">Questions 1–30 carry one mark each. Questions 31 and 32 are writing tasks.</p>
+<div class="part"><h2>Writing Part 6 — Email (Question 31)</h2><p>Write 25 words or more.</p><div class="note">Your friend Mia wants to learn to cook. Write an email. Tell Mia what you can cook, when you can meet, and what ingredients to bring.</div><textarea id="e1"></textarea><div class="bar"><b id="e1c">0 words</b><button class="btn alt" data-c="e1">Copy</button><button class="btn" data-s="e1" data-t="A2 Key Test 2 Part 6">Send writing to assessor</button></div></div><div class="part"><h2>Writing Part 7 — Picture story (Question 32)</h2><p>Write 35 words or more about friends preparing a meal for a visitor.</p><textarea id="e2"></textarea><div class="bar"><b id="e2c">0 words</b><button class="btn alt" data-c="e2">Copy</button><button class="btn" data-s="e2" data-t="A2 Key Test 2 Part 7">Send writing to assessor</button></div></div><div class="bar"><button class="btn" id="ck1" type="button">Check Reading &amp; Writing Part 1 answers</button><b id="sc1"></b></div>
+</section>
+<section class="sec" id="li">
+<h2 class="t">Listening (about 30 minutes)</h2>
+<div class="bar"><span class="time" id="t2"></span><button class="btn alt" type="button">Start</button></div>
+<p class="note">These are original B1 practice scripts read aloud by your browser’s text-to-speech voice. Each recording can be played twice. This is not official Cambridge audio.</p>
+<div id="lbox"></div>
+<div class="bar"><button class="btn" id="ck2" type="button">Check answers</button><b id="sc2"></b></div>
+</section>
+<section class="sec" id="sk"><h2 class="t">Speaking (8–10 minutes)</h2><div class="part"><h2>Part 1 — Interview</h2><ul><li>What food do you enjoy?</li><li>Can you cook anything?</li><li>Who do you eat dinner with?</li><li>What do you like doing at weekends?</li><li>Do you prefer eating at home or in a café?</li></ul></div><div class="part"><h2>Part 2 — Discussion</h2><p>Talk with your partner about food for a school festival. Which would you like to prepare? Give reasons and ask your partner.</p><ul><li>soup</li><li>bread</li><li>salad</li><li>rice</li><li>cake</li></ul></div></section>
+</div>
+</main>
+</div>
+<div class="support-strip">
+<div class="support-strip-inner">
+<div><span _k="Customer support every day from 9:00 to 16:30">Customer support every day from 9:00 to 16:30</span></div>
+<div class="support-info">
+<a href="mailto:oxfampreparation@email.cz">oxfampreparation@email.cz</a>
+<a href="tel:+420723200988">+420 723 200 988</a>
+</div>
+</div>
+</div>
+<footer>© 2020-2026 Oxfam - Oxford family. All rights reserved. Not affiliated with Cambridge University Press &amp; Assessment. Exam names belong to their owners.</footer>
+</div>
+<dialog aria-labelledby="dt" id="dlg">
+<h2 id="dt">Sign in to open your tests</h2>
+<form id="lf" novalidate="">
+<label for="em">Email</label><input autocomplete="username" id="em" type="email"/>
+<label for="pw">Password</label><input autocomplete="current-password" id="pw" type="password"/>
+<p class="demo" hidden="" id="demo">Demo mode: any email and password is accepted.</p>
+<div aria-live="polite" class="err" id="err"></div>
+<div class="row" style="margin-top:1rem"><button class="btn" type="submit">Log in</button><button class="btn alt" id="cancel" type="button">Cancel</button></div>
+</form>
+</dialog>
+<script>
+var PW="Nl62";
+function unlocked(){try{return sessionStorage.getItem("a2_key_test_2")==="1"}catch(e){return false}}
+
+function norm(s){return s.toLowerCase().replace(/\u2019/g,"'").replace(/\s+/g," ").trim()}
+
+function build(parts,box,pre){
+  var n=0;pre=pre||"";
+  parts.forEach(function(p,pi){
+    var d=document.createElement("section");d.className="part";
+    d.innerHTML="<h2>"+p.t+"</h2>"+(p.m?"<div class='bar'><span class='time' id='pt"+pre+pi+"'></span><button class='btn alt' type='button'>Start</button> <small>suggested time</small></div>":"")+"<p class='sub'>"+p.i+"</p>"+(p.x?"<p class='txt'>"+p.x+"</p>":"")+(p.im||"")+"<div class='items'></div>";
+    var it=d.querySelector(".items");
+    p.q.forEach(function(q){
+      n++;var r=document.createElement("div");r.className="q";
+      var label = q.q && /^(\d+)\.\s*/.test(q.q) ? q.q.match(/^(\d+)\.\s*/)[1] : n; var qtext = (q.q||"").replace(/^\d+\.\s*/,"").replace(/\n/g,"<br>"); var h="<b>"+label+"</b> "+qtext+(q.h?" <strong>"+q.h+"</strong>":"");
+      if(q.o){
+        var isImg = q.o.length > 0 && /^(https?:\/\/|data:image\/)/i.test(q.o[0]);
+        var optsHtml = q.o.map(function(o,i){
+          var letter = "ABCDEFGH"[i];
+          if(q.o.length === 2 && (o === "A" || o === "B" || o.includes("Correct") || o.includes("YES"))) {
+            letter = ["A", "B"][i];
+          }
+          if (isImg) {
+            return "<label class='opt img-opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> <img src='"+o+"' alt='Option "+letter+"' onerror=\"this.style.display='none'\"></label>";
+          } else {
+            var text = o === letter ? "" : o;
+            return "<label class='opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> "+text+"</label>";
+          }
+        }).join("");
+        var gridClass = isImg ? "opts img-opts-grid" : "opts";
+        h += "<div class='" + gridClass + "'>" + optsHtml + "</div>";
+      } else {
+        h+=" <input type='text' autocomplete='off' aria-label='Answer "+n+"'>";
+      }
+      r.innerHTML=h;r._q=q;it.appendChild(r);
+    });
+    box.appendChild(d);
+    if(p.m)timer("pt"+pre+pi,p.m);
+  });
+}
+
+function check(box,out){
+  var tot=0,ok=0;
+  box.querySelectorAll(".part").forEach(function(part){
+    var pTot=0,pOk=0;
+    part.querySelectorAll(".q").forEach(function(r){
+      pTot++;var q=r._q,good,ans;
+      if(q.o){
+        var c=r.querySelector("input:checked");
+        good=c&&+c.value===q.a;
+        var letter = "ABCDEFGH"[q.a];
+        if(q.o.length === 2) letter = ["A", "B"][q.a];
+        var isImg = q.o.length > 0 && /^(https?:\/\/|data:image\/)/i.test(q.o[0]);
+        ans = isImg ? letter : (q.o[q.a] === letter ? letter : letter + " " + q.o[q.a]);
+      } else {
+        var v=norm(r.querySelector("input").value);
+        good=q.a.some(function(a){return norm(a)===v});
+        ans=q.a[0];
+      }
+      r.classList.toggle("ok",!!good);
+      r.classList.toggle("no",!good);
+      var f=r.querySelector(".fb");
+      if(!f){f=document.createElement("div");f.className="fb";r.appendChild(f)}
+      f.textContent=good?"Correct":"Answer: "+ans;
+      var x=r.querySelector(".ex");
+      if(!x){x=document.createElement("div");x.className="ex";r.appendChild(x)}
+      x.textContent=q.e||"";
+      if(good)pOk++;
+    });
+    if(pTot>0){
+      var ps=part.querySelector(".pscore");
+      if(!ps){ps=document.createElement("div");ps.className="pscore note";ps.style.marginTop="1.5rem";part.appendChild(ps)}
+      ps.innerHTML="<b>Part score:</b> "+pOk+" / "+pTot;
+    }
+    tot+=pTot;ok+=pOk;
+  });
+  out.textContent="Total score: "+ok+" / "+tot;
+  box.querySelectorAll(".tr").forEach(function(e){e.style.display="block"});
+}
+
+function timer(id,min){
+  var e=document.getElementById(id),l=min*60,t=null;
+  if(!e)return;
+  function s(){e.textContent=("0"+Math.floor(l/60)).slice(-2)+":"+("0"+l%60).slice(-2)}s();
+  e.nextElementSibling.onclick=function(){
+    if(t){clearInterval(t);t=null;this.textContent="Start";return}
+    this.textContent="Pause";
+    t=setInterval(function(){l--;s();if(l<=0)clearInterval(t)},1000);
+  }
+}
+
+var R = [{"t":"Part 1 — Short texts","i":"Choose A, B or C for 1–6.","m":6,"q":[{"q":"1. COOKING CLUB\nBring an apron next Monday. The club will provide all ingredients.","o":["Bring food to cook.","Bring something to wear.","The club meets today."],"a":1,"e":"The text gives the correct detail."},{"q":"2. MARKET\nThe bread stall has moved beside the flower shop.","o":["The bread is sold in a new place.","The flower shop is closed.","The market opens later."],"a":0,"e":"The text gives the correct detail."},{"q":"3. MESSAGE\nI made extra soup. There is a bowl for you in the fridge.","o":["The writer wants soup.","The reader should heat the fridge.","The writer saved soup for the reader."],"a":2,"e":"The text gives the correct detail."},{"q":"4. NOTICE\nKitchen closed from 1 to 2 for cleaning.","o":["You cannot use the kitchen at lunchtime.","The kitchen is closed all day.","Cleaning starts at 2."],"a":0,"e":"The text gives the correct detail."},{"q":"5. RECIPE\nAdd the cheese after the vegetables are cooked.","o":["Cook the cheese first.","Add cheese at the end.","Do not use vegetables."],"a":1,"e":"The text gives the correct detail."},{"q":"6. TO NINA\nCan you buy lemons on your way? We have enough sugar already.","o":["Buy sugar and lemons.","Only buy lemons.","Do not buy lemons."],"a":1,"e":"The text gives the correct detail."}]},{"t":"Part 2 — Matching","i":"Read the three food club profiles. Match 7–13.","m":9,"x":"A. I like baking bread. I can come on Tuesday and I enjoy working carefully with dough.\n\nB. I enjoy making salads and cold meals. Thursday is best for me, and I like using fresh vegetables.\n\nC. I like preparing simple hot meals. I am free on Friday and can help serve everyone.","q":[{"q":"7. You want to bake bread.","o":["A","B","C"],"a":0,"e":"This matches one profile."},{"q":"8. You prefer Thursday.","o":["A","B","C"],"a":1,"e":"This matches one profile."},{"q":"9. You like making hot food.","o":["A","B","C"],"a":2,"e":"This matches one profile."},{"q":"10. You enjoy working with fresh vegetables.","o":["A","B","C"],"a":1,"e":"This matches one profile."},{"q":"11. You are available on Tuesday.","o":["A","B","C"],"a":0,"e":"This matches one profile."},{"q":"12. You can help serve the meal.","o":["A","B","C"],"a":2,"e":"This matches one profile."},{"q":"13. You like preparing cold dishes.","o":["A","B","C"],"a":1,"e":"This matches one profile."}]},{"t":"Part 3 — Long text","i":"Read and choose A, B or C for 14–18.","m":10,"x":"\nTHE COMMUNITY COOKING DAY\n\nOur town library organised a cooking day for families. I went with my older brother because we both enjoy trying new food. At first, I planned to make a cake, but the teacher suggested a simple vegetable dish that children could prepare safely.\n\nWe washed carrots and peppers, then cut them into small pieces. My brother mixed them with rice while I read the recipe aloud. We had to wait longer than we expected because the rice was still hard. The teacher showed us how to add a little water and cover the pot.\n\nWhen the food was ready, everyone shared their dishes at long tables. A family from another country brought a bean recipe, and they told us it was often made at home. I liked hearing how people used different ingredients.\n\nI had thought cooking was mostly about following steps. I learned that it is also a good way to meet people. My brother wants to go again next month.","q":[{"q":"14. Where was the cooking day?","o":["At the library","At the writer’s home","At a restaurant"],"a":0,"e":"The passage explains this."},{"q":"15. What did the writer first plan to make?","o":["A cake","A salad","Bread"],"a":0,"e":"The passage explains this."},{"q":"16. Why did they wait?","o":["The rice was not ready.","They lost the recipe.","The teacher was late."],"a":0,"e":"The passage explains this."},{"q":"17. What did the family share?","o":["A bean dish","A cake","A fruit drink"],"a":0,"e":"The passage explains this."},{"q":"18. What did the writer learn?","o":["Cooking can bring people together.","Cooking is only about recipes.","People should use the same food."],"a":0,"e":"The passage explains this."}]},{"t":"Part 4 — Multiple-choice cloze","i":"Choose the correct word for 19–24.","m":8,"x":"\nMAKING PANCAKES\n\nPancakes are easy (19) _____ make. Put flour in a bowl and add an egg. Mix everything (20) _____ a little milk. Heat a pan and put (21) _____ small amount of oil in it. Pour in some mixture and cook it (22) _____ both sides. You can eat pancakes (23) _____ fruit or honey. They taste best when they are (24) _____.","q":[{"q":"19. Gap 19","o":["to","for","at"],"a":0,"e":"Choose the word that fits the sentence."},{"q":"20. Gap 20","o":["with","by","from"],"a":0,"e":"Choose the word that fits the sentence."},{"q":"21. Gap 21","o":["a","an","the"],"a":0,"e":"Choose the word that fits the sentence."},{"q":"22. Gap 22","o":["on","at","in"],"a":0,"e":"Choose the word that fits the sentence."},{"q":"23. Gap 23","o":["with","of","to"],"a":0,"e":"Choose the word that fits the sentence."},{"q":"24. Gap 24","o":["warm","warmly","warmer"],"a":0,"e":"Choose the word that fits the sentence."}]},{"t":"Part 5 — Open cloze","i":"Write one word for 25–30.","m":8,"x":"\nEMAIL\n\nHi Ben, I’m going (25) _____ the food festival on Sunday. Would you like to come (26) _____ me? We can meet (27) _____ the bus stop at eleven. I want to try a dish (28) _____ my aunt makes. She says it is easy (29) _____ cook. Please tell me (30) _____ you are free. See you, Kate.","q":[{"q":"25. Gap 25","a":["to"],"e":"One word completes the email."},{"q":"26. Gap 26","a":["with"],"e":"One word completes the email."},{"q":"27. Gap 27","a":["at"],"e":"One word completes the email."},{"q":"28. Gap 28","a":["that","which"],"e":"One word completes the email."},{"q":"29. Gap 29","a":["to"],"e":"One word completes the email."},{"q":"30. Gap 30","a":["if"],"e":"One word completes the email."}]}];
+var L = [{"t":"Listening Part 1 — Picture choice","i":"Choose the picture you hear, 1–5.","m":5,"im":"<button class='btn alt say' data-i='0'>Play Part 1</button>","q":[{"q":"1. Which fruit will they buy?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PHBhdGggZD0iTTE2MCA2NnEtMzgtMzAtNDUgMTAtOCA0NyAzOSA1OSA2LTIyIDEyIDAgNDYtMTIgMzktNTktNy00MC00NS0xMHoiIGZpbGw9IiNkOTU3NGQiIHN0cm9rZT0iIzI5M2Q1YSIgc3Ryb2tlLXdpZHRoPSI1Ii8+PHBhdGggZD0iTTE2MCA2N3EwLTIyIDE4LTI3IiBzdHJva2U9IiM1MjdjNGQiIHN0cm9rZS13aWR0aD0iNyIvPjxyZWN0IHg9IjIwIiB5PSIxNTAiIHdpZHRoPSIyODAiIGhlaWdodD0iMjUiIHJ4PSI1IiBmaWxsPSIjZmZmIi8+PHRleHQgeD0iMTYwIiB5PSIxNjgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMyOTNkNWEiPkFQUExFUzwvdGV4dD48L3N2Zz4=","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PHBhdGggZD0iTTE2MCA1M3EtMTMgMzEtMzEgNDktMjkgNDQgMzEgNTUgNjAtMTEgMzEtNTUtMTgtMTgtMzEtNDl6IiBmaWxsPSIjOWFiODVlIiBzdHJva2U9IiMyOTNkNWEiIHN0cm9rZS13aWR0aD0iNSIvPjxwYXRoIGQ9Ik0xNjAgNTRxMC0xNiAxNS0yMiIgc3Ryb2tlPSIjNTI3YzRkIiBzdHJva2Utd2lkdGg9IjYiLz48cmVjdCB4PSIyMCIgeT0iMTUwIiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjI1IiByeD0iNSIgZmlsbD0iI2ZmZiIvPjx0ZXh0IHg9IjE2MCIgeT0iMTY4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMjkzZDVhIj5QRUFSUzwvdGV4dD48L3N2Zz4=","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PGNpcmNsZSBjeD0iMTYwIiBjeT0iOTQiIHI9IjUyIiBmaWxsPSIjZjA5YTNlIiBzdHJva2U9IiMyOTNkNWEiIHN0cm9rZS13aWR0aD0iNSIvPjxwYXRoIGQ9Ik0xNjAgNDBxMC0xNSAxNS0xOG0tMTUgMThxLTE4LTE2LTI5LTEwIiBzdHJva2U9IiM1OTgzNGYiIHN0cm9rZS13aWR0aD0iNiIvPjxyZWN0IHg9IjIwIiB5PSIxNTAiIHdpZHRoPSIyODAiIGhlaWdodD0iMjUiIHJ4PSI1IiBmaWxsPSIjZmZmIi8+PHRleHQgeD0iMTYwIiB5PSIxNjgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMyOTNkNWEiPk9SQU5HRVM8L3RleHQ+PC9zdmc+"],"a":2,"e":"The speaker gives this answer."},{"q":"2. What will Mia cook?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PHBhdGggZD0iTTk1IDk5aDEzMHEtNSA1Mi02NSA1MlQ5NSA5OXoiIGZpbGw9IiNlODk3NDYiIHN0cm9rZT0iIzI5M2Q1YSIgc3Ryb2tlLXdpZHRoPSI2Ii8+PHBhdGggZD0iTTEyMCA5MnE4LTI1IDE2IDBtMjQgMHE4LTI1IDE2IDBtMjQgMHE4LTI1IDE2IDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2NjNjg0NCIgc3Ryb2tlLXdpZHRoPSI1Ii8+PHJlY3QgeD0iMjAiIHk9IjE1MCIgd2lkdGg9IjI4MCIgaGVpZ2h0PSIyNSIgcng9IjUiIGZpbGw9IiNmZmYiLz48dGV4dCB4PSIxNjAiIHk9IjE2OCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzI5M2Q1YSI+U09VUDwvdGV4dD48L3N2Zz4=","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PHBhdGggZD0iTTEwMCA5MWgxMjB2NjBIMTAweiIgZmlsbD0iI2Q4ODk3MyIgc3Ryb2tlPSIjMjkzZDVhIiBzdHJva2Utd2lkdGg9IjUiLz48cGF0aCBkPSJNMTAwIDkxcTE1LTM1IDMwIDAgMTUtMzUgMzAgMCAxNS0zNSAzMCAwIDE1LTM1IDMwIDAiIGZpbGw9IiNmZmYwZDAiIHN0cm9rZT0iIzI5M2Q1YSIgc3Ryb2tlLXdpZHRoPSI1Ii8+PHJlY3QgeD0iMjAiIHk9IjE1MCIgd2lkdGg9IjI4MCIgaGVpZ2h0PSIyNSIgcng9IjUiIGZpbGw9IiNmZmYiLz48dGV4dCB4PSIxNjAiIHk9IjE2OCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzI5M2Q1YSI+Q0FLRTwvdGV4dD48L3N2Zz4=","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PHBhdGggZD0iTTkwIDk0cTcwIDkwIDE0MCAweiIgZmlsbD0iI2U4YzU3YyIgc3Ryb2tlPSIjMjkzZDVhIiBzdHJva2Utd2lkdGg9IjYiLz48cGF0aCBkPSJNMTE1IDk3cTE1LTQyIDMxIDAgMjAtMzkgMzQgMCAxOC0zNyAzMCAwIiBmaWxsPSIjNjVhNTZkIiBzdHJva2U9IiM0Yzg0NWIiIHN0cm9rZS13aWR0aD0iNCIvPjxyZWN0IHg9IjIwIiB5PSIxNTAiIHdpZHRoPSIyODAiIGhlaWdodD0iMjUiIHJ4PSI1IiBmaWxsPSIjZmZmIi8+PHRleHQgeD0iMTYwIiB5PSIxNjgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMyOTNkNWEiPlNBTEFEPC90ZXh0Pjwvc3ZnPg=="],"a":0,"e":"The speaker gives this answer."},{"q":"3. Where is the café?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PHBhdGggZD0iTTE2MCAxNDVWODUiIHN0cm9rZT0iIzc5NWEzZSIgc3Ryb2tlLXdpZHRoPSIxMiIvPjxjaXJjbGUgY3g9IjE2MCIgY3k9IjcwIiByPSIzNyIgZmlsbD0iIzY1YTE2YiIvPjxwYXRoIGQ9Ik03MiAxNDNoMTc2IiBzdHJva2U9IiNhMzdiNTEiIHN0cm9rZS13aWR0aD0iOCIvPjxyZWN0IHg9IjIwIiB5PSIxNTAiIHdpZHRoPSIyODAiIGhlaWdodD0iMjUiIHJ4PSI1IiBmaWxsPSIjZmZmIi8+PHRleHQgeD0iMTYwIiB5PSIxNjgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMyOTNkNWEiPkJZIFRIRSBQQVJLPC90ZXh0Pjwvc3ZnPg==","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PHBhdGggZD0iTTAgMTI1cTgwLTI0IDE2MCAwdDE2MCAwdjU1SDB6IiBmaWxsPSIjNjlhZGM1Ii8+PHBhdGggZD0iTTgwIDEyN3EzMC0yNSA2MCAwbTQwIDBxMzAtMjUgNjAgMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjciLz48cGF0aCBkPSJNMTcwIDExOFY1N2g1NXY2MSIgZmlsbD0iI2Q1YTI2OCIgc3Ryb2tlPSIjMjkzZDVhIiBzdHJva2Utd2lkdGg9IjUiLz48cmVjdCB4PSIyMCIgeT0iMTUwIiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjI1IiByeD0iNSIgZmlsbD0iI2ZmZiIvPjx0ZXh0IHg9IjE2MCIgeT0iMTY4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMjkzZDVhIj5CWSBUSEUgUklWRVI8L3RleHQ+PC9zdmc+","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PHBhdGggZD0iTTc1IDgzaDE3MHY2NUg3NXpNNjUgODNsOTUtNDggOTUgNDgiIGZpbGw9IiNkZWQ0YmQiIHN0cm9rZT0iIzI5M2Q1YSIgc3Ryb2tlLXdpZHRoPSI2Ii8+PHJlY3QgeD0iMTQwIiB5PSIxMDQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0NCIgZmlsbD0iIzZhOGVhYiIvPjxyZWN0IHg9IjIwIiB5PSIxNTAiIHdpZHRoPSIyODAiIGhlaWdodD0iMjUiIHJ4PSI1IiBmaWxsPSIjZmZmIi8+PHRleHQgeD0iMTYwIiB5PSIxNjgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMyOTNkNWEiPkJZIFRIRSBTVEFUSU9OPC90ZXh0Pjwvc3ZnPg=="],"a":1,"e":"The speaker gives this answer."},{"q":"4. What does Sam need?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PGVsbGlwc2UgY3g9IjE2MCIgY3k9IjY3IiByeD0iMjMiIHJ5PSIzMSIgZmlsbD0iI2I2YzVjYyIgc3Ryb2tlPSIjMjkzZDVhIiBzdHJva2Utd2lkdGg9IjUiLz48cGF0aCBkPSJNMTYwIDk2djU1IiBzdHJva2U9IiM5YmFlYjkiIHN0cm9rZS13aWR0aD0iMTMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxyZWN0IHg9IjIwIiB5PSIxNTAiIHdpZHRoPSIyODAiIGhlaWdodD0iMjUiIHJ4PSI1IiBmaWxsPSIjZmZmIi8+PHRleHQgeD0iMTYwIiB5PSIxNjgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMyOTNkNWEiPkEgU1BPT048L3RleHQ+PC9zdmc+","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PHBhdGggZD0iTTk0IDkwaDEzMnEtNiA2MC02NiA2MFQ5NCA5MHoiIGZpbGw9IiM3OGE5YmQiIHN0cm9rZT0iIzI5M2Q1YSIgc3Ryb2tlLXdpZHRoPSI2Ii8+PHBhdGggZD0iTTg0IDkwaDE1MiIgc3Ryb2tlPSIjMjkzZDVhIiBzdHJva2Utd2lkdGg9IjYiLz48cmVjdCB4PSIyMCIgeT0iMTUwIiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjI1IiByeD0iNSIgZmlsbD0iI2ZmZiIvPjx0ZXh0IHg9IjE2MCIgeT0iMTY4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMjkzZDVhIj5BIEJPV0w8L3RleHQ+PC9zdmc+","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PHBhdGggZD0iTTE0NSA1OHE0Mi0yNSA2NSAxNWwtNjQgMjV6IiBmaWxsPSIjYmFjOGQwIiBzdHJva2U9IiMyOTNkNWEiIHN0cm9rZS13aWR0aD0iNSIvPjxwYXRoIGQ9Im0xNDYgOTctNDUgNTIiIHN0cm9rZT0iIzk0NjM0NCIgc3Ryb2tlLXdpZHRoPSIxNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHJlY3QgeD0iMjAiIHk9IjE1MCIgd2lkdGg9IjI4MCIgaGVpZ2h0PSIyNSIgcng9IjUiIGZpbGw9IiNmZmYiLz48dGV4dCB4PSIxNjAiIHk9IjE2OCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzI5M2Q1YSI+QSBLTklGRTwvdGV4dD48L3N2Zz4="],"a":2,"e":"The speaker gives this answer."},{"q":"5. What time is lunch?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PGNpcmNsZSBjeD0iMTYwIiBjeT0iODgiIHI9IjUyIiBmaWxsPSIjZmZmIiBzdHJva2U9IiMyOTNkNWEiIHN0cm9rZS13aWR0aD0iNiIvPjxwYXRoIGQ9Ik0xNjAgNDh2NDJsNDUgMCIgc3Ryb2tlPSIjZDE1ZDRkIiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxyZWN0IHg9IjIwIiB5PSIxNTAiIHdpZHRoPSIyODAiIGhlaWdodD0iMjUiIHJ4PSI1IiBmaWxsPSIjZmZmIi8+PHRleHQgeD0iMTYwIiB5PSIxNjgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMyOTNkNWEiPjEyOjAwPC90ZXh0Pjwvc3ZnPg==","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PGNpcmNsZSBjeD0iMTYwIiBjeT0iODgiIHI9IjUyIiBmaWxsPSIjZmZmIiBzdHJva2U9IiMyOTNkNWEiIHN0cm9rZS13aWR0aD0iNiIvPjxwYXRoIGQ9Ik0xNjAgNDh2NDJsMzAgMjUiIHN0cm9rZT0iI2QxNWQ0ZCIgc3Ryb2tlLXdpZHRoPSI3IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cmVjdCB4PSIyMCIgeT0iMTUwIiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjI1IiByeD0iNSIgZmlsbD0iI2ZmZiIvPjx0ZXh0IHg9IjE2MCIgeT0iMTY4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMjkzZDVhIj4xMjozMDwvdGV4dD48L3N2Zz4=","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PGNpcmNsZSBjeD0iMTYwIiBjeT0iODgiIHI9IjUyIiBmaWxsPSIjZmZmIiBzdHJva2U9IiMyOTNkNWEiIHN0cm9rZS13aWR0aD0iNiIvPjxwYXRoIGQ9Ik0xNjAgNDh2NDJsMCA0NSIgc3Ryb2tlPSIjZDE1ZDRkIiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxyZWN0IHg9IjIwIiB5PSIxNTAiIHdpZHRoPSIyODAiIGhlaWdodD0iMjUiIHJ4PSI1IiBmaWxsPSIjZmZmIi8+PHRleHQgeD0iMTYwIiB5PSIxNjgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMyOTNkNWEiPjE6MDA8L3RleHQ+PC9zdmc+"],"a":1,"e":"The speaker gives this answer."}]},{"t":"Listening Part 2 — Notes","i":"Complete 6–10 with one or two words or a number.","m":5,"im":"<button class='btn alt say' data-i='1'>Play Part 2</button>","q":[{"q":"6. Festival day","a":["sunday"],"e":"The announcement says this."},{"q":"7. Meet at","a":["market square"],"e":"The announcement says this."},{"q":"8. Bring","a":["an apron","apron"],"e":"The announcement says this."},{"q":"9. First activity","a":["bread making"],"e":"The announcement says this."},{"q":"10. Finish at","a":["2.00","2:00","two"],"e":"The announcement says this."}]},{"t":"Listening Part 3 — Conversation","i":"Choose A, B or C for 11–15.","m":6,"im":"<button class='btn alt say' data-i='2'>Play Part 3</button>","q":[{"q":"11. What will they make?","o":["Soup","Pizza","Pancakes"],"a":0,"e":"The conversation gives the answer."},{"q":"12. What time do they meet?","o":["9.00","9.30","10.00"],"a":1,"e":"The conversation gives the answer."},{"q":"13. Who brings vegetables?","o":["Mum","Leo","The teacher"],"a":1,"e":"The conversation gives the answer."},{"q":"14. Where is the class?","o":["Room 2","The garden","The kitchen"],"a":2,"e":"The conversation gives the answer."},{"q":"15. What should they wear?","o":["An apron","A hat","Old shoes"],"a":0,"e":"The conversation gives the answer."}]},{"t":"Listening Part 4 — Main idea","i":"Choose the main topic, 16–20.","m":7,"im":"<button class='btn alt say' data-i='3'>Play Part 4</button>","q":[{"q":"16.","o":["A new recipe","A school trip","A lost bag"],"a":0,"e":"This is the topic of the extract."},{"q":"17.","o":["Shopping for food","Learning to swim","A birthday party"],"a":0,"e":"This is the topic of the extract."},{"q":"18.","o":["Making lunch together","Cleaning a room","Visiting a doctor"],"a":0,"e":"This is the topic of the extract."},{"q":"19.","o":["A café review","A sports match","A music lesson"],"a":0,"e":"This is the topic of the extract."},{"q":"20.","o":["Growing vegetables","Buying a phone","Taking a train"],"a":0,"e":"This is the topic of the extract."}]},{"t":"Listening Part 5 — Matching","i":"Match people to dishes A–F, 21–25.","m":7,"im":"<button class='btn alt say' data-i='4'>Play Part 5</button>","x":"A soup B bread C salad D rice E cake F fruit","q":[{"q":"21. Ava","o":["A","B","C","D","E","F"],"a":0,"e":"The speaker says which dish they made."},{"q":"22. Ben","o":["A","B","C","D","E","F"],"a":1,"e":"The speaker says which dish they made."},{"q":"23. Cara","o":["A","B","C","D","E","F"],"a":2,"e":"The speaker says which dish they made."},{"q":"24. Dan","o":["A","B","C","D","E","F"],"a":3,"e":"The speaker says which dish they made."},{"q":"25. Eva","o":["A","B","C","D","E","F"],"a":4,"e":"The speaker says which dish they made."}]}];
+var T = ["They choose oranges, Mia makes soup, the café is by the river, Sam needs a knife, lunch is at half past twelve.","The food festival is on Sunday in Market Square. Please bring an apron. Bread making is the first activity, and the event finishes at two.","They will make soup at half past nine. Leo brings vegetables. The class is in the kitchen. Everyone should wear an apron.","One. I found a great new recipe for tomato soup. Two. I went to the shop to buy carrots and potatoes. Three. My sister and I made lunch together. Four. The small café near school serves excellent sandwiches. Five. We planted tomatoes and beans in our garden.","Ava: I made soup. Ben: I baked bread. Cara: I prepared a salad. Dan: I cooked rice. Eva: I baked a cake."];
+var FULL=true, AUDIO=["","","",""];
+var ASSESSOR_EMAIL="oxfampreparation@email.cz";
+
+function wc(t){var m=t.trim().match(/\S+/g);return m?m.length:0}
+function winit(){
+  document.querySelectorAll("textarea").forEach(function(t){t.oninput=function(){document.getElementById(t.id+"c").textContent=wc(t.value)+" words"}});
+  document.querySelectorAll("[data-c]").forEach(function(b){b.onclick=function(){var t=document.getElementById(b.dataset.c).value;if(navigator.clipboard)navigator.clipboard.writeText(t)}});
+  document.querySelectorAll("[data-s]").forEach(function(b){b.onclick=async function(){
+    var t=document.getElementById(b.dataset.s).value,nameField=document.getElementById("nm"),nm=((nameField&&nameField.value)||"Student").trim()||"Student";
+    if(!wc(t)){b.textContent="Write something first!";setTimeout(function(){b.textContent="Send writing to assessor"},2000);return}
+    var subject="A2 Key (KET) Test 2 - "+b.dataset.t+" - "+nm;
+    var message="Student: "+nm+"\nTest: A2 Key (KET) Test 2\nTask: "+b.dataset.t+"\n\n"+t;
+    var status=b.parentNode.parentNode.querySelector(".email-status");if(!status){status=document.createElement("p");status.className="note email-status";status.setAttribute("role","status");b.parentNode.parentNode.appendChild(status)}
+    b.disabled=true;b.textContent="Sending…";status.textContent="Sending your writing to "+ASSESSOR_EMAIL+"…";
+    try{var response=await fetch("https://formsubmit.co/ajax/"+ASSESSOR_EMAIL,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify({name:nm,_subject:subject,message:message})});var result=await response.json();if(!response.ok||result.success===false||result.success==="false")throw new Error(result.message||"The email service did not accept the submission.");status.textContent="Submission accepted. On first use, the assessor must confirm the address through the verification email before delivery is enabled.";b.textContent="Submitted";
+    }catch(err){status.textContent="We couldn't send the writing. Check the internet connection and try again. "+(err&&err.message?err.message:"");b.disabled=false;b.textContent="Retry sending";return}
+    b.disabled=false;setTimeout(function(){b.textContent="Send writing to assessor"},4000);
+  }});
+}
+var playId=0;
+function say(i,done){
+  var id=++playId;speechSynthesis.cancel();
+  var parts=T[i].split(/(\{pause\}|\{short\}|\bSpeaker \d:|\b[A-Z][A-Za-z]+:)/),q=[],pitch=1,flip=0,names={};
+  parts.forEach(function(x){
+    x=x.trim();if(!x)return;
+    if(x==="{pause}"||x==="{short}"){q.push({w:x==="{pause}"?2500:1200});pitch=1;return}
+    var sp=x.match(/^Speaker (\d):$/);if(sp){q.push({t:"Speaker "+sp[1],p:1,w:700});return}
+    if(/^[A-Za-z 0-9 ]+:$/.test(x)){var n=x.slice(0,-1);if(!(n in names))names[n]=(flip++%2)?1.25:.85;pitch=names[n];return}
+    (x.match(/[^.?!]+[.?!]*/g)||[x]).forEach(function(z){q.push({t:z.trim(),p:pitch,w:300})})
+  });
+  var k=0;(function next(){
+    if(id!==playId)return;
+    if(k>=q.length){done();return}
+    var s=q[k++];
+    if(!s.t){setTimeout(next,s.w);return}
+    var u=new SpeechSynthesisUtterance(s.t);u.lang="en-GB";u.rate=0.95;u.pitch=s.p;
+    u.onend=function(){setTimeout(next,s.w)};u.onerror=function(){setTimeout(next,s.w)};
+    speechSynthesis.speak(u);
+  })()
+}
+
+function play(b){
+  if(b._busy)return;
+  var i=+b.dataset.i;
+  function fin(){b._busy=false;if(b._n>=2){b.disabled=true;b.textContent="Played twice"}else b.textContent="Play again (last time)"}
+  if(!AUDIO[i]&&(!window.speechSynthesis||!window.SpeechSynthesisUtterance)){b.textContent="TTS not supported in this browser.";return}
+  b._n=(b._n||0)+1;b._busy=true;b.textContent="Playing...";
+  if(AUDIO[i]){var a=new Audio(AUDIO[i]);a.onended=fin;a.onerror=fin;a.play()}else say(i,fin)
+}
+
+function init(){
+  [["t1",60],["t2",30],["t4",10],["sp1",4],["sp2",6]].forEach(function(a){if(document.getElementById(a[0]))timer(a[0],a[1])});
+  if(!FULL)return;
+  build(R,document.getElementById("rbox"),"r");
+  build(L,document.getElementById("lbox"),"l");
+  document.getElementById("ck1").onclick=function(){check(document.getElementById("rbox"),document.getElementById("sc1"))};
+  document.getElementById("ck2").onclick=function(){check(document.getElementById("lbox"),document.getElementById("sc2"))};
+  document.querySelectorAll(".say").forEach(function(b){b.onclick=function(){play(b)}});
+  winit();
+}
+
+(function(){
+  var g=document.getElementById("gate"),m=document.getElementById("main");
+  function show(){g.hidden=true;m.hidden=false;if(window.init)init()}
+  if(unlocked()){show();return}
+  document.getElementById("gf").onsubmit=function(e){
+    e.preventDefault();
+    if(document.getElementById("pw").value.trim()===PW){
+      try{sessionStorage.setItem("a2_key_test_2","1")}catch(x){}
+      show();
+    } else {
+      document.getElementById("err").textContent="Wrong password.";
+    }
+  }
+  
+  var themeBtn = document.getElementById('themeBtn');
+  if(themeBtn) {
+    themeBtn.onclick = function() {
+      var currentTheme = document.documentElement.getAttribute('data-theme');
+      if(currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        themeBtn.textContent = '🌙';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeBtn.textContent = '☀️';
+      }
+    };
+  }
+  
+  var menuToggle = document.getElementById('menuToggle');
+  if(menuToggle) {
+    menuToggle.onclick = function() {
+      document.body.classList.toggle('menuopen');
+    };
+  }
+  
+  var loginBtn = document.getElementById('loginBtn');
+  var dlg = document.getElementById('dlg');
+  var cancel = document.getElementById('cancel');
+  if(loginBtn && dlg) {
+    loginBtn.onclick = function() { dlg.showModal(); }
+  }
+  if(cancel && dlg) {
+    cancel.onclick = function() { dlg.close(); }
+  }
+})();
+</script>
+</body>
+</html>

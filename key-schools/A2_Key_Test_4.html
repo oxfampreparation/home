@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>A2 Key (KET) Test 4 - Oxfam Preparation</title>
+
+<style>
+/* Default theme is explicitly light */
+:root {
+  --bg: #f6f7fb;
+  --paper: #fff;
+  --ink: #14213d;
+  --muted: #4b5266;
+  --line: #d5d9e6;
+  --mark: #2b59ff;
+  --hi: #ffe45e;
+  --ok: #1a7f52;
+  --bad: #b3261e;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Dark theme applied ONLY when data-theme="dark" is present */
+:root[data-theme="dark"] {
+  --bg: #0f1526;
+  --paper: #182038;
+  --ink: #eef1fb;
+  --muted: #a9b1c9;
+  --line: #2c3656;
+  --mark: #7d9bff;
+  --hi: #e9d24a;
+  --ok: #57c58f;
+  --bad: #ff8a80;
+}
+
+html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: border-box; }
+
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1.0625rem/1.6 "Atkinson Hyperlegible", system-ui, sans-serif; }
+h1, h2, h3 { font-family: Archivo, "Helvetica Neue", Arial, sans-serif; line-height: 1.05; margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--mark); outline-offset: 3px; }
+.wrap { max-width: 74rem; margin: 0 auto; padding: 0 1.25rem; }
+
+header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .75rem; padding: 1.25rem 0; position: sticky; top: 0; background: var(--bg); z-index: 100; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+.head-left { display: flex; align-items: center; gap: .75rem; }
+#menuToggle { background: transparent; border: none; cursor: pointer; color: var(--ink); display: flex; padding: .25rem; border-radius: .25rem; }
+#menuToggle:hover { background: var(--line); }
+#menuToggle svg { width: 1.6rem; height: 1.6rem; }
+.logo { font: 800 1.25rem Archivo, sans-serif; text-decoration: none; }
+nav a { margin-left: 1.25rem; text-decoration: none; color: var(--muted); }
+nav a:hover { color: var(--ink); }
+
+.btn { display: inline-block; background: var(--ink); color: var(--bg); padding: .8rem 1.4rem; border-radius: .5rem; font-weight: 700; text-decoration: none; border: 0; cursor: pointer; font-size: 1rem; font-family: inherit; }
+.btn.alt { background: transparent; color: var(--ink); border: 2px solid var(--ink); }
+.hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2rem; align-items: start; padding: 1rem 0 3rem; }
+.hero-text { margin-top: 2.5rem; }
+
+h1 { font-size: clamp(2rem, 3.4vw, 3rem); font-weight: 800; font-stretch: 90%; letter-spacing: -.02em; margin-top: 1rem; margin-bottom: 0; }
+h1 span { background: linear-gradient(transparent 62%, var(--hi) 62%); }
+.lead { color: var(--muted); max-width: 32rem; margin: 1.25rem 0 1.75rem; font-size: 1.15rem; }
+.row { display: flex; gap: .75rem; flex-wrap: wrap; }
+
+.sheet { background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.sheet h2 { font-size: 1.1rem; margin-bottom: .25rem; }
+.sheet p { margin: 0 0 1rem; color: var(--muted); font-size: .95rem; }
+.q { padding: .7rem 0; border-top: 1px solid var(--line); }
+.q b { display: inline-block; font-weight: 800; margin-bottom: .45rem; margin-right: 0.5rem; }
+
+.opts { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem; width: fit-content; }
+.opt { display: flex; align-items: center; gap: .4rem; padding: .3rem .7rem .3rem .35rem; border: 1.5px solid var(--line); border-radius: 2rem; background: transparent; color: inherit; font-size: .95rem; cursor: pointer; width: fit-content; }
+.opt i { width: 1.4rem; height: 1.4rem; border-radius: 50%; border: 2px solid var(--muted); display: grid; place-items: center; font: 700 .7rem Archivo, sans-serif; font-style: normal; flex-shrink: 0; }
+
+.opt[aria-pressed="true"] { border-color: var(--mark); }
+.opt[aria-pressed="true"] i { background: var(--mark); border-color: var(--mark); color: var(--bg); }
+.opt.right { border-color: var(--ok); } .opt.right i { background: var(--ok); border-color: var(--ok); color: var(--bg); }
+.opt.wrong { border-color: var(--bad); } .opt.wrong i { background: var(--bad); border-color: var(--bad); color: var(--bg); }
+
+/* Image Options specific styles */
+.img-opts-grid { display: flex; flex-direction: row; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+.img-opt { flex-direction: column; align-items: center; padding: 0.5rem; border-radius: 0.5rem; gap: 0.5rem; text-align: center; }
+.img-opt img { height: 120px; width: 160px; object-fit: cover; background: var(--paper); border-radius: 0.25rem; }
+.img-opt i { margin-bottom: 0.25rem; }
+
+.result { margin-top: 1rem; font-weight: 700; min-height: 1.6rem; }
+section { padding: 3.5rem 0; border-top: 1px solid var(--line); }
+h2.t { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: .75rem; letter-spacing: -.01em; }
+
+.sub, .txt { color: var(--muted); max-width: 48rem; margin: 0 0 2rem; white-space: pre-line; line-height: 1.6; }
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: .6rem; background: var(--paper); }
+table { border-collapse: collapse; width: 100%; min-width: 38rem; }
+th, td { text-align: left; padding: .9rem 1rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font: 800 1.2rem Archivo, sans-serif; white-space: nowrap; }
+td small { display: block; font: 400 .9rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+
+.support-strip { position: fixed; bottom: 0; left: 0; right: 0; background: var(--ink); color: var(--bg); padding: 1rem 1.25rem; z-index: 999; box-shadow: 0 -4px 12px rgba(0,0,0,0.15); }
+.support-strip-inner { max-width: 74rem; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; width: 100%; font-weight: 700; }
+footer { border-top: 1px solid var(--line); padding: 2rem 0 5rem; color: var(--muted); font-size: .95rem; }
+
+.lang { display: flex; gap: .25rem; flex-wrap: wrap; } .lang button { font: 700 .8rem Archivo, sans-serif; padding: .35rem .6rem; border: 1.5px solid var(--line); border-radius: .4rem; background: transparent; color: var(--muted); cursor: pointer; } .lang button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.layout { display: grid; grid-template-columns: 12.5rem minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+.layout.collapsed { grid-template-columns: 1fr; gap: 0; }
+.layout.collapsed .side { display: none; }
+.side { position: sticky; top: 5rem; max-height: calc(100vh - 6rem); max-height: calc(100dvh - 6rem); overflow-y: auto; display: flex; flex-direction: column; gap: .15rem; }
+summary { cursor: pointer; font: 700 .95rem Archivo, sans-serif; color: var(--muted); padding: .4rem .75rem; border-radius: .5rem; } summary:hover { color: var(--ink); } .ex[open] summary { margin-bottom: .15rem; }
+.side nav { display: flex; flex-direction: column; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); } .side nav a { margin: 0; color: inherit; } .side .lang { margin-bottom: 1rem; }
+.side p { margin: 0 0 .5rem; font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+.side a { text-decoration: none; padding: .5rem .75rem; border-radius: .5rem; font: 700 1rem Archivo, sans-serif; border-left: 3px solid transparent; }
+.side a small { display: block; font: 400 .8rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+.side a:hover { background: var(--paper); border-left-color: var(--mark); }
+tr:target td { background: var(--hi); color: #14213d; } tr:target td small { color: #14213d; }
+
+@media (max-width: 52rem) { .layout { grid-template-columns: 1fr; gap: 0; } .side { position: static; max-height: none; margin: 0 0 1rem; padding: 0 0 1rem; border-bottom: 1px solid var(--line); } }
+
+.hr { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; } .hr .btn { padding: .45rem 1rem; font-size: .9rem; }
+dialog { border: 2px solid var(--ink); border-radius: .75rem; background: var(--paper); color: var(--ink); padding: 1.5rem; width: min(26rem, 92vw); max-height: 90vh; overflow: auto; } dialog::backdrop { background: rgba(10,16,32,.55); }
+dialog h2 { font-size: 1.4rem; margin-bottom: .5rem; } dialog label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+dialog input { width: 100%; padding: .65rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.demo { color: var(--muted); font-size: .9rem; margin: .5rem 0 0; } .err { color: var(--bad); min-height: 1.5rem; margin-top: .5rem; font-size: .95rem; }
+
+@media (max-width: 40rem) {
+  .wrap { padding: 0 1rem; }
+  header { padding: 1rem 0; }
+  .hero { padding-bottom: 2rem; }
+  .sheet { padding: 1.1rem; }
+  section { padding: 2.5rem 0; }
+  .scroll { border: 0; background: transparent; overflow: visible; }
+  table, tbody, tr, td { display: block; min-width: 0; width: 100%; }
+  thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  tr { background: var(--paper); border: 1px solid var(--line); border-radius: .6rem; padding: .6rem 0; margin-bottom: .75rem; }
+  td { border: 0; padding: .15rem 1rem; }
+  td:first-child { font-size: 1.3rem; padding-top: .4rem; }
+  tr:target { border-color: var(--ink); }
+}
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+html { scroll-padding-top: calc(5rem + env(safe-area-inset-top, 0px)); }
+body header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); padding: .6rem 0; border-bottom: 1px solid var(--line); }
+.brand { display: flex; align-items: center; gap: .75rem; }
+body .logo { font-size: 1.85rem; letter-spacing: -.02em; }
+.mbtn { display: inline-flex; flex-direction: column; justify-content: center; gap: 5px; width: 2.75rem; height: 2.75rem; padding: 0 .7rem; border: 2px solid var(--ink); border-radius: .5rem; background: transparent; cursor: pointer; flex: none; }
+.mbtn span { display: block; height: 2px; background: var(--ink); border-radius: 2px; }
+.mbtn:hover { background: var(--paper); }
+body .side { top: 5.5rem; max-height: calc(100vh - 6.5rem); max-height: calc(100dvh - 6.5rem); }
+body.nomenu .layout { grid-template-columns: minmax(0, 1fr); }
+body.nomenu .side { display: none; }
+body:has(#app[hidden]) .mbtn { display: none; }
+.side>.hr { margin-bottom: 1rem; }
+.scrim { display: none; }
+
+@media (max-width: 52rem) {
+  body .side { position: fixed; top: 0; left: 0; bottom: 0; width: min(19rem, 86vw); max-height: none; margin: 0; padding: calc(1rem + env(safe-area-inset-top, 0px)) 1rem calc(1rem + env(safe-area-inset-bottom, 0px)); background: var(--paper); border: 0; border-right: 2px solid var(--ink); z-index: 50; overflow-y: auto; transform: translateX(-105%); visibility: hidden; transition: transform .25s ease, visibility 0s .25s; }
+  body.menuopen .side { transform: none; visibility: visible; transition: transform .25s ease; }
+  body .side nav { flex-direction: column; flex-wrap: nowrap; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+  body .side nav a { padding: .5rem .75rem; }
+  .scrim { display: block; position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: rgba(10,16,32,.5); z-index: 40; opacity: 0; pointer-events: none; transition: opacity .25s; }
+  body.menuopen .scrim { opacity: 1; pointer-events: auto; }
+  body .logo { font-size: 1.6rem; }
+}
+
+.gatebox { max-width: 26rem; margin: 2rem auto; background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.gatebox label, .wr label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+input[type=text], input[type=password], textarea { width: 100%; padding: .6rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.q input[type=text] { width: 14rem; max-width: 100%; }
+.part { background: var(--paper); border: 1px solid var(--line); border-radius: .75rem; padding: 1.5rem; margin-bottom: 1.25rem; }
+.q.ok { border-left: 4px solid var(--ok); padding-left: .75rem; } .q.no { border-left: 4px solid var(--bad); padding-left: .75rem; } .fb { font-weight: 700; margin-top: .25rem; }
+.tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0; }
+nav.tabs a { margin: 0; padding: .4rem 1rem; border: 1.5px solid var(--line); border-radius: 2rem; text-decoration: none; font-weight: 700; }
+nav.tabs a[aria-current=page] { background: var(--ink); color: var(--bg); }
+.bar { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; margin: 1rem 0; } .time { font: 800 1.6rem Archivo, sans-serif; }
+.pics { display: flex; gap: 1rem; flex-wrap: wrap; } .pics svg, .pics img { flex: 1 1 14rem; max-width: 22rem; border: 2px solid var(--ink); border-radius: .5rem; background: var(--paper); object-fit: cover; aspect-ratio: 3/2; }
+textarea { min-height: 15rem; } .tr { display: none; } .note { padding: .75rem 1rem; border-left: 4px solid var(--mark); background: var(--paper); margin: 1rem 0; }
+.sec { padding-top: 2rem; margin-top: 2rem; border-top: 1px solid var(--line); } .jump { margin-top: 0; } .ex { color: var(--muted); margin-top: .15rem; font-size: .95rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header id="siteHeader">
+<div class="head-left">
+<button aria-label="Toggle menu" id="menuToggle">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
+</button>
+<a class="logo" href="../index.html">Oxfam Preparation</a>
+</div>
+<div class="hr">
+<button aria-label="Toggle theme" class="btn alt" id="themeBtn" style="padding:.45rem .6rem; min-width:0; font-size:1.1rem">🌙</button>
+<button class="btn" id="loginBtn" type="button">Log in</button>
+</div>
+</header>
+<div class="layout">
+<aside aria-label="Menu" class="side">
+<nav>
+<a href="../cpe.html">All tests</a>
+</nav>
+</aside>
+<main id="top">
+<div id="gate">
+<div class="gatebox">
+<h1><span>A2 Key (KET) Test 4</span></h1>
+<p>Enter the password to open this test.</p>
+<form id="gf">
+<label for="pw">Password</label>
+<input autocomplete="off" id="pw" type="password"/>
+<div class="err" id="err"></div>
+<div class="row" style="margin-top:1rem">
+<button class="btn" type="submit">Open</button>
+<a class="btn alt" href="../cpe.html">Back</a>
+</div>
+</form>
+</div>
+</div>
+<div hidden="" id="main">
+<h1 style="margin-top: 1rem">A2 Key (KET) Test 4 | Original Practice Paper</h1>
+<div class="part" style="margin-top:1rem">
+<label for="nm"><strong>Student name (optional — included with writing submissions)</strong></label>
+<input autocomplete="name" id="nm" type="text" placeholder="Enter your name"/>
+</div>
+<nav aria-label="Papers" class="tabs jump" style="margin-top: 2.5rem; margin-bottom: 2rem">
+<a href="#rd">Reading and Writing</a>
+<a href="#li">Listening</a>
+<a href="#sk">Speaking</a>
+</nav>
+<section class="sec" id="rd">
+<h2 class="t">Reading and Writing (60 minutes)</h2>
+<div class="bar"><span class="time" id="t1"></span><button class="btn alt" type="button">Start</button></div>
+<div id="rbox"></div><p class="sub">Questions 1–30 carry one mark each. Questions 31 and 32 are writing tasks.</p>
+<div class="part"><h2>Writing Part 6 — Email (Question 31)</h2><p>Write 25 words or more.</p><div class="note">Your friend Alex wants to join the drama club. Write an email. Tell Alex when the club meets, what job you would like to do, and what Alex should bring.</div><textarea id="e1" aria-label="Email answer"></textarea><div class="bar"><b id="e1c">0 words</b><button class="btn alt" data-c="e1">Copy</button><button class="btn" data-s="e1" data-t="A2 Key Test 4 Part 6">Send writing to assessor</button></div></div><div class="part"><h2>Writing Part 7 — Picture story (Question 32)</h2><p>Write 35 words or more. Tell a story about friends preparing costumes for their school play.</p><textarea id="e2" aria-label="Story answer"></textarea><div class="bar"><b id="e2c">0 words</b><button class="btn alt" data-c="e2">Copy</button><button class="btn" data-s="e2" data-t="A2 Key Test 4 Part 7">Send writing to assessor</button></div></div><div class="bar"><button class="btn" id="ck1" type="button">Check Reading &amp; Writing Part 1 answers</button><b id="sc1"></b></div>
+</section>
+<section class="sec" id="li">
+<h2 class="t">Listening (about 30 minutes)</h2>
+<div class="bar"><span class="time" id="t2"></span><button class="btn alt" type="button">Start</button></div>
+<p class="note">These are original B1 practice scripts read aloud by your browser’s text-to-speech voice. Each recording can be played twice. This is not official Cambridge audio.</p>
+<div id="lbox"></div>
+<div class="bar"><button class="btn" id="ck2" type="button">Check answers</button><b id="sc2"></b></div>
+</section>
+<section class="sec" id="sk"><h2 class="t">Speaking — 8–10 minutes per pair</h2><div class="part"><h2>Part 1 — Interview</h2><ul><li>What do you enjoy doing after school?</li><li>Do you like music or acting?</li><li>Have you ever been to a play?</li><li>What do you do with your friends at weekends?</li><li>What would you like to learn?</li></ul></div><div class="part"><h2>Part 2 — Discussion</h2><p>Talk with your partner about jobs for a school show. Which would you like to do? Give reasons and ask your partner what they think.</p><ul><li>acting</li><li>making costumes</li><li>painting scenery</li><li>playing music</li><li>welcoming visitors</li></ul></div></section>
+</div>
+</main>
+</div>
+<div class="support-strip">
+<div class="support-strip-inner">
+<div><span _k="Customer support every day from 9:00 to 16:30">Customer support every day from 9:00 to 16:30</span></div>
+<div class="support-info">
+<a href="mailto:oxfampreparation@email.cz">oxfampreparation@email.cz</a>
+<a href="tel:+420723200988">+420 723 200 988</a>
+</div>
+</div>
+</div>
+<footer>© 2020-2026 Oxfam - Oxford family. All rights reserved. Not affiliated with Cambridge University Press &amp; Assessment. Exam names belong to their owners.</footer>
+</div>
+<dialog aria-labelledby="dt" id="dlg">
+<h2 id="dt">Sign in to open your tests</h2>
+<form id="lf" novalidate="">
+<label for="em">Email</label><input autocomplete="username" id="em" type="email"/>
+<label for="pw">Password</label><input autocomplete="current-password" id="pw" type="password"/>
+<p class="demo" hidden="" id="demo">Demo mode: any email and password is accepted.</p>
+<div aria-live="polite" class="err" id="err"></div>
+<div class="row" style="margin-top:1rem"><button class="btn" type="submit">Log in</button><button class="btn alt" id="cancel" type="button">Cancel</button></div>
+</form>
+</dialog>
+<script>
+var PW="Nl62";
+function unlocked(){try{return sessionStorage.getItem("a2_key_test_4")==="1"}catch(e){return false}}
+
+function norm(s){return s.toLowerCase().replace(/\u2019/g,"'").replace(/\s+/g," ").trim()}
+
+function build(parts,box,pre){
+  var n=0;pre=pre||"";
+  parts.forEach(function(p,pi){
+    var d=document.createElement("section");d.className="part";
+    d.innerHTML="<h2>"+p.t+"</h2>"+(p.m?"<div class='bar'><span class='time' id='pt"+pre+pi+"'></span><button class='btn alt' type='button'>Start</button> <small>suggested time</small></div>":"")+"<p class='sub'>"+p.i+"</p>"+(p.x?"<p class='txt'>"+p.x+"</p>":"")+(p.im||"")+"<div class='items'></div>";
+    var it=d.querySelector(".items");
+    p.q.forEach(function(q){
+      n++;var r=document.createElement("div");r.className="q";
+      var label = q.q && /^(\d+)\.\s*/.test(q.q) ? q.q.match(/^(\d+)\.\s*/)[1] : n; var qtext = (q.q||"").replace(/^\d+\.\s*/,"").replace(/\n/g,"<br>"); var h="<b>"+label+"</b> "+qtext+(q.h?" <strong>"+q.h+"</strong>":"");
+      if(q.o){
+        var isImg = q.o.length > 0 && /^(https?:\/\/|data:image\/)/i.test(q.o[0]);
+        var optsHtml = q.o.map(function(o,i){
+          var letter = "ABCDEFGH"[i];
+          if(q.o.length === 2 && (o === "A" || o === "B" || o.includes("Correct") || o.includes("YES"))) {
+            letter = ["A", "B"][i];
+          }
+          if (isImg) {
+            return "<label class='opt img-opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> <img src='"+o+"' alt='Option "+letter+"' onerror=\"this.style.display='none'\"></label>";
+          } else {
+            var text = o === letter ? "" : o;
+            return "<label class='opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> "+text+"</label>";
+          }
+        }).join("");
+        var gridClass = isImg ? "opts img-opts-grid" : "opts";
+        h += "<div class='" + gridClass + "'>" + optsHtml + "</div>";
+      } else {
+        h+=" <input type='text' autocomplete='off' aria-label='Answer "+n+"'>";
+      }
+      r.innerHTML=h;r._q=q;it.appendChild(r);
+    });
+    box.appendChild(d);
+    if(p.m)timer("pt"+pre+pi,p.m);
+  });
+}
+
+function check(box,out){
+  var tot=0,ok=0;
+  box.querySelectorAll(".part").forEach(function(part){
+    var pTot=0,pOk=0;
+    part.querySelectorAll(".q").forEach(function(r){
+      pTot++;var q=r._q,good,ans;
+      if(q.o){
+        var c=r.querySelector("input:checked");
+        good=c&&+c.value===q.a;
+        var letter = "ABCDEFGH"[q.a];
+        if(q.o.length === 2) letter = ["A", "B"][q.a];
+        var isImg = q.o.length > 0 && /^(https?:\/\/|data:image\/)/i.test(q.o[0]);
+        ans = isImg ? letter : (q.o[q.a] === letter ? letter : letter + " " + q.o[q.a]);
+      } else {
+        var v=norm(r.querySelector("input").value);
+        good=q.a.some(function(a){return norm(a)===v});
+        ans=q.a[0];
+      }
+      r.classList.toggle("ok",!!good);
+      r.classList.toggle("no",!good);
+      var f=r.querySelector(".fb");
+      if(!f){f=document.createElement("div");f.className="fb";r.appendChild(f)}
+      f.textContent=good?"Correct":"Answer: "+ans;
+      var x=r.querySelector(".ex");
+      if(!x){x=document.createElement("div");x.className="ex";r.appendChild(x)}
+      x.textContent=q.e||"";
+      if(good)pOk++;
+    });
+    if(pTot>0){
+      var ps=part.querySelector(".pscore");
+      if(!ps){ps=document.createElement("div");ps.className="pscore note";ps.style.marginTop="1.5rem";part.appendChild(ps)}
+      ps.innerHTML="<b>Part score:</b> "+pOk+" / "+pTot;
+    }
+    tot+=pTot;ok+=pOk;
+  });
+  out.textContent="Total score: "+ok+" / "+tot;
+  box.querySelectorAll(".tr").forEach(function(e){e.style.display="block"});
+}
+
+function timer(id,min){
+  var e=document.getElementById(id),l=min*60,t=null;
+  if(!e)return;
+  function s(){e.textContent=("0"+Math.floor(l/60)).slice(-2)+":"+("0"+l%60).slice(-2)}s();
+  e.nextElementSibling.onclick=function(){
+    if(t){clearInterval(t);t=null;this.textContent="Start";return}
+    this.textContent="Pause";
+    t=setInterval(function(){l--;s();if(l<=0)clearInterval(t)},1000);
+  }
+}
+
+var R = [{"t":"Part 1 — Theatre notices","i":"Choose A, B or C.","m":6,"q":[{"q":"1. REHEARSAL\nToday’s rehearsal starts at 4.30 in the hall.","o":["It begins later than usual.","It is in a different room.","It has been cancelled."],"a":1,"e":"The notice gives this information."},{"q":"2. COSTUMES\nBring your costume on Friday. The theatre has no space to store it before then.","o":["Costumes are kept at the theatre.","Bring your costume on Friday.","The show is on Friday."],"a":1,"e":"The notice gives this information."},{"q":"3. TICKETS\nStudents can collect two free tickets from the school office.","o":["Every student gets two free tickets.","Tickets are sold in the theatre.","The office is closed."],"a":0,"e":"The notice gives this information."},{"q":"4. MESSAGE\nI left the script on your desk. Please bring it to the club tomorrow.","o":["The writer wants the script back.","The writer left a script at school.","The club is meeting today."],"a":1,"e":"The notice gives this information."},{"q":"5. THEATRE CAFÉ\nOpen before the show and during the break.","o":["The café closes during the show.","The café is open at two times.","The café sells tickets."],"a":1,"e":"The notice gives this information."},{"q":"6. NOTICE\nPlease use the side entrance while the main doors are being painted.","o":["The main entrance is temporarily unavailable.","Visitors should paint the doors.","The side entrance is closed."],"a":0,"e":"The notice gives this information."}]},{"t":"Part 2 — Matching","i":"Choose A, B or C for questions 7–13.","m":9,"x":"A. Max enjoys acting and wants to speak on stage. He can stay after school on Mondays.\n\nB. Ella likes making things. She paints scenery and can come on Wednesday afternoons.\n\nC. Ben prefers working with music. He can help with sound on Friday and already plays the keyboard.","q":[{"q":"7. You want to help paint the scenery.","o":["A","B","C"],"a":1,"e":"This detail matches one student."},{"q":"8. You are free on Monday.","o":["A","B","C"],"a":0,"e":"This detail matches one student."},{"q":"9. You would like to work with music.","o":["A","B","C"],"a":2,"e":"This detail matches one student."},{"q":"10. You enjoy performing for an audience.","o":["A","B","C"],"a":0,"e":"This detail matches one student."},{"q":"11. You can help on Wednesday afternoon.","o":["A","B","C"],"a":1,"e":"This detail matches one student."},{"q":"12. You already play an instrument.","o":["A","B","C"],"a":2,"e":"This detail matches one student."},{"q":"13. You want to make things for the stage.","o":["A","B","C"],"a":1,"e":"This detail matches one student."}]},{"t":"Part 3 — Long text","i":"Read and choose A, B or C.","m":10,"x":"\nOUR FIRST SCHOOL PLAY\n\nI joined the drama club because my friend invited me. I expected to act, but the teacher needed help with the lights, so I worked behind the stage. At first I was disappointed. Then I learned how the lights changed the mood of each scene.\n\nWe practised for six weeks. On the first evening, one actor became ill. The teacher asked me to read his lines from the side of the stage. I was nervous, but I knew the story because I had heard it so many times.\n\nThe audience laughed in the right places and clapped at the end. After the show, the actor thanked me for helping. I enjoyed being part of the team, even though I was not in the main cast. Next term I hope to help write a short play with the other students.","q":[{"q":"14. Why did the writer join the club?","o":["A friend invited them.","They wanted a new teacher.","They needed a school project."],"a":0,"e":"The passage states this clearly."},{"q":"15. What job did the writer do first?","o":["Acting","Working with the lights","Selling tickets"],"a":1,"e":"The passage states this clearly."},{"q":"16. Why did the writer read an actor’s lines?","o":["The actor was ill.","The lights stopped working.","The teacher forgot the story."],"a":0,"e":"The passage states this clearly."},{"q":"17. How did the writer feel before reading?","o":["Nervous","Angry","Bored"],"a":0,"e":"The passage states this clearly."},{"q":"18. What does the writer want to do next term?","o":["Write a play","Leave the club","Work at a theatre"],"a":0,"e":"The passage states this clearly."}]},{"t":"Part 4 — Multiple-choice cloze","i":"Choose the correct word for 19–24.","m":8,"x":"\nA NIGHT AT THE THEATRE\n\nOur class went (19) _____ see a play last week. We arrived (20) _____ time and found our seats. The actors spoke (21) _____ clearly that everyone could hear them. One funny scene made us (22) _____. At the end, we waited (23) _____ the actors came out to say hello. It was the best school trip I (24) _____ ever had.","q":[{"q":"19. Gap 19","o":["to","for","at"],"a":0,"e":"Choose the word that completes the sentence."},{"q":"20. Gap 20","o":["on","in","by"],"a":1,"e":"Choose the word that completes the sentence."},{"q":"21. Gap 21","o":["so","such","too"],"a":0,"e":"Choose the word that completes the sentence."},{"q":"22. Gap 22","o":["laugh","laughed","laughing"],"a":0,"e":"Choose the word that completes the sentence."},{"q":"23. Gap 23","o":["until","during","since"],"a":0,"e":"Choose the word that completes the sentence."},{"q":"24. Gap 24","o":["have","has","having"],"a":0,"e":"Choose the word that completes the sentence."}]},{"t":"Part 5 — Open cloze","i":"Write one word for each gap, 25–30.","m":8,"x":"\nEMAIL\n\nHi Jo, Would you like to come (25) _____ the school play on Saturday? I can get two tickets (26) _____ the office. The show starts (27) _____ seven, so let’s meet outside (28) _____ the theatre at six thirty. My sister is acting (29) _____ the play. I think you will enjoy (30) _____. See you soon!","q":[{"q":"25. Gap 25","a":["to"],"e":"Use one word to complete the email."},{"q":"26. Gap 26","a":["from"],"e":"Use one word to complete the email."},{"q":"27. Gap 27","a":["at"],"e":"Use one word to complete the email."},{"q":"28. Gap 28","a":["the"],"e":"Use one word to complete the email."},{"q":"29. Gap 29","a":["in"],"e":"Use one word to complete the email."},{"q":"30. Gap 30","a":["it"],"e":"Use one word to complete the email."}]}];
+var L = [{"t":"Part 1 — Picture choice","i":"Choose the picture you hear for questions 1–5.","m":5,"im":"<button class='btn alt say' data-i='0'>Play Part 1</button>","q":[{"q":"1. What will Mia wear on stage?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PHBhdGggZD0iTTEzMiA0OGg1NmwxMiAzMiAzNSA3N2gtNTVsLTIwLTM5LTIwIDM5SDg1bDM1LTc3eiIgZmlsbD0iIzY2OGZiZCIgc3Ryb2tlPSIjMjkzZDVhIiBzdHJva2Utd2lkdGg9IjYiLz48cGF0aCBkPSJNMTMyIDQ4cTI4IDIwIDU2IDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSI2Ii8+PHJlY3QgeD0iMjciIHk9IjE1MSIgd2lkdGg9IjI2NiIgaGVpZ2h0PSIyNCIgcng9IjYiIGZpbGw9IiNmZmYiLz48dGV4dCB4PSIxNjAiIHk9IjE2OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzI3M2I1OSI+QkxVRSBEUkVTUzwvdGV4dD48L3N2Zz4=","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PHBhdGggZD0iTTExMSAxMTZxMTItNTUgNDktNTV0NDkgNTVxLTQ5LTEzLTk4IDB6bS0yMCAxNWgxMzgiIGZpbGw9IiNjYjUxNDgiIHN0cm9rZT0iIzI5M2Q1YSIgc3Ryb2tlLXdpZHRoPSI2Ii8+PHJlY3QgeD0iMjciIHk9IjE1MSIgd2lkdGg9IjI2NiIgaGVpZ2h0PSIyNCIgcng9IjYiIGZpbGw9IiNmZmYiLz48dGV4dCB4PSIxNjAiIHk9IjE2OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzI3M2I1OSI+UkVEIEhBVDwvdGV4dD48L3N2Zz4=","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PHBhdGggZD0ibTEyNSA1MiAzNSAxOCAzNS0xOCAyNiAzNC0yMCAxOC05LTEwdjY3SDEwM1Y5NGwtOSAxMC0yMC0xOHoiIGZpbGw9IiM2NTk1NmYiIHN0cm9rZT0iIzI5M2Q1YSIgc3Ryb2tlLXdpZHRoPSI2Ii8+PHBhdGggZD0iTTE2MCA3MHY5MW0tOS02MGgxOCIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjUiLz48cmVjdCB4PSIyNyIgeT0iMTUxIiB3aWR0aD0iMjY2IiBoZWlnaHQ9IjI0IiByeD0iNiIgZmlsbD0iI2ZmZiIvPjx0ZXh0IHg9IjE2MCIgeT0iMTY5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMjczYjU5Ij5HUkVFTiBDT0FUPC90ZXh0Pjwvc3ZnPg=="],"a":0,"e":"The dialogue names the correct choice."},{"q":"2. Where is the play?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PHJlY3QgeD0iNzgiIHk9IjU1IiB3aWR0aD0iMTY0IiBoZWlnaHQ9Ijk1IiBmaWxsPSIjZGZiZDgzIiBzdHJva2U9IiMyOTNkNWEiIHN0cm9rZS13aWR0aD0iNiIvPjxwYXRoIGQ9Ik04OCA2MGgxNDV2MjJIODh6IiBmaWxsPSIjYWQ0YzQ5Ii8+PHJlY3QgeD0iMTMzIiB5PSI5NiIgd2lkdGg9IjU1IiBoZWlnaHQ9IjU0IiBmaWxsPSIjNmI4NWEyIi8+PGNpcmNsZSBjeD0iMTYwIiBjeT0iMTAzIiByPSI2IiBmaWxsPSIjZjVkMTZkIi8+PHJlY3QgeD0iMjciIHk9IjE1MSIgd2lkdGg9IjI2NiIgaGVpZ2h0PSIyNCIgcng9IjYiIGZpbGw9IiNmZmYiLz48dGV4dCB4PSIxNjAiIHk9IjE2OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzI3M2I1OSI+U0NIT09MIEhBTEw8L3RleHQ+PC9zdmc+","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PHBhdGggZD0iTTcwIDgyIDE2MCA0MGw5MCA0MnY3Mkg3MHoiIGZpbGw9IiNlN2RmY2YiIHN0cm9rZT0iIzI5M2Q1YSIgc3Ryb2tlLXdpZHRoPSI2Ii8+PHBhdGggZD0iTTcwIDgyaDE4ME0xMTMgMTU0Vjk3aDk0djU3IiBmaWxsPSIjYWM0OTQ5IiBzdHJva2U9IiMyOTNkNWEiIHN0cm9rZS13aWR0aD0iNiIvPjxwYXRoIGQ9Ik0xMzcgMTU0di0zN3EyMy0yNiA0NiAwdjM3IiBmaWxsPSIjMjYzYjU3Ii8+PHJlY3QgeD0iMjciIHk9IjE1MSIgd2lkdGg9IjI2NiIgaGVpZ2h0PSIyNCIgcng9IjYiIGZpbGw9IiNmZmYiLz48dGV4dCB4PSIxNjAiIHk9IjE2OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzI3M2I1OSI+VE9XTiBUSEVBVFJFPC90ZXh0Pjwvc3ZnPg==","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PHBhdGggZD0iTTE2MCAxNTBWODciIHN0cm9rZT0iIzc2NTUzYyIgc3Ryb2tlLXdpZHRoPSIxMyIvPjxjaXJjbGUgY3g9IjE2MCIgY3k9Ijc1IiByPSIzOSIgZmlsbD0iIzZiOWQ2ZSIvPjxjaXJjbGUgY3g9IjEzMyIgY3k9Ijk3IiByPSIyNCIgZmlsbD0iIzZiOWQ2ZSIvPjxjaXJjbGUgY3g9IjE4NyIgY3k9Ijk3IiByPSIyNCIgZmlsbD0iIzZiOWQ2ZSIvPjxwYXRoIGQ9Ik04MCAxNTBoMTYwIiBzdHJva2U9IiNhMzdkNTQiIHN0cm9rZS13aWR0aD0iOCIvPjxyZWN0IHg9IjI3IiB5PSIxNTEiIHdpZHRoPSIyNjYiIGhlaWdodD0iMjQiIHJ4PSI2IiBmaWxsPSIjZmZmIi8+PHRleHQgeD0iMTYwIiB5PSIxNjkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMyNzNiNTkiPlBBUks8L3RleHQ+PC9zdmc+"],"a":1,"e":"The dialogue names the correct choice."},{"q":"3. What instrument will Ben play?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PHBhdGggZD0iTTE0NiA2NXEtNDAtMTQtNDMgMjUtMyAzMiAyOCAzMWwtMTMgMzcgMjggMTEgMTktMzlxMzQgMCAzMC0zNi00LTM0LTM5LTI4eiIgZmlsbD0iI2Q2OWI1OCIgc3Ryb2tlPSIjMjkzZDVhIiBzdHJva2Utd2lkdGg9IjYiLz48cGF0aCBkPSJtMTYwIDY0IDQ1LTI0IDEyIDEzLTQyIDMyTTE0OCA4N3Y1MyIgc3Ryb2tlPSIjMjkzZDVhIiBzdHJva2Utd2lkdGg9IjUiLz48Y2lyY2xlIGN4PSIxNDkiIGN5PSIxMDYiIHI9IjEwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMjciIHk9IjE1MSIgd2lkdGg9IjI2NiIgaGVpZ2h0PSIyNCIgcng9IjYiIGZpbGw9IiNmZmYiLz48dGV4dCB4PSIxNjAiIHk9IjE2OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzI3M2I1OSI+R1VJVEFSPC90ZXh0Pjwvc3ZnPg==","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PGNpcmNsZSBjeD0iMTYwIiBjeT0iMTExIiByPSIzMyIgZmlsbD0iI2NmNWM1MSIgc3Ryb2tlPSIjMjkzZDVhIiBzdHJva2Utd2lkdGg9IjYiLz48Y2lyY2xlIGN4PSIxMDUiIGN5PSI4MyIgcj0iMjMiIGZpbGw9IiNkN2FkNjEiIHN0cm9rZT0iIzI5M2Q1YSIgc3Ryb2tlLXdpZHRoPSI1Ii8+PGNpcmNsZSBjeD0iMjE2IiBjeT0iODMiIHI9IjIzIiBmaWxsPSIjZDdhZDYxIiBzdHJva2U9IiMyOTNkNWEiIHN0cm9rZS13aWR0aD0iNSIvPjxwYXRoIGQ9Im0xMzAgNTUgNDggOTVtLTctOTYtNDMgOTQiIHN0cm9rZT0iIzI5M2Q1YSIgc3Ryb2tlLXdpZHRoPSI2Ii8+PHJlY3QgeD0iMjciIHk9IjE1MSIgd2lkdGg9IjI2NiIgaGVpZ2h0PSIyNCIgcng9IjYiIGZpbGw9IiNmZmYiLz48dGV4dCB4PSIxNjAiIHk9IjE2OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzI3M2I1OSI+RFJVTVM8L3RleHQ+PC9zdmc+","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PHJlY3QgeD0iNzIiIHk9IjcyIiB3aWR0aD0iMTc2IiBoZWlnaHQ9IjcyIiByeD0iOCIgZmlsbD0iIzI5M2Q1YSIvPjxwYXRoIGQ9Ik04NCA4MWgxNTB2NTJIODR6IiBmaWxsPSIjZmZmIi8+PHBhdGggZD0iTTEwNSA4MnYyOW0yMi0yOXYyOW0yMi0yOXYyOW0yMi0yOXYyOW0yMi0yOXYyOW0yMi0yOXYyOSIgc3Ryb2tlPSIjMjkzZDVhIiBzdHJva2Utd2lkdGg9IjYiLz48cmVjdCB4PSIyNyIgeT0iMTUxIiB3aWR0aD0iMjY2IiBoZWlnaHQ9IjI0IiByeD0iNiIgZmlsbD0iI2ZmZiIvPjx0ZXh0IHg9IjE2MCIgeT0iMTY5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMjczYjU5Ij5QSUFOTzwvdGV4dD48L3N2Zz4="],"a":2,"e":"The dialogue names the correct choice."},{"q":"4. What is on the poster?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PHBhdGggZD0iTTgzIDE0OFY4OGgyOVY1OWwyMiAxNyAyNi0yMiAyNyAyMiAyMS0xN3YyOWgyOXY2MHoiIGZpbGw9IiNkNmI0N2EiIHN0cm9rZT0iIzI5M2Q1YSIgc3Ryb2tlLXdpZHRoPSI2Ii8+PHBhdGggZD0iTTE0NSAxNDh2LTQ0aDMwdjQ0TTkwIDk4aDE1bTE1MCAwaC0xNSIgc3Ryb2tlPSIjMjkzZDVhIiBzdHJva2Utd2lkdGg9IjYiLz48cmVjdCB4PSIyNyIgeT0iMTUxIiB3aWR0aD0iMjY2IiBoZWlnaHQ9IjI0IiByeD0iNiIgZmlsbD0iI2ZmZiIvPjx0ZXh0IHg9IjE2MCIgeT0iMTY5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMjczYjU5Ij5BIENBU1RMRTwvdGV4dD48L3N2Zz4=","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PHBhdGggZD0iTTc3IDEyNWgxNjZsLTI4IDM1SDExMXoiIGZpbGw9IiM4YjU3NDYiIHN0cm9rZT0iIzI5M2Q1YSIgc3Ryb2tlLXdpZHRoPSI2Ii8+PHBhdGggZD0iTTE1NiA1OHY2N204LTYyIDUzIDUzaC01M3pNMTQ1IDc2IDk2IDExOGg0OXoiIGZpbGw9IiNmMWU2YzgiIHN0cm9rZT0iIzI5M2Q1YSIgc3Ryb2tlLXdpZHRoPSI1Ii8+PHJlY3QgeD0iMjciIHk9IjE1MSIgd2lkdGg9IjI2NiIgaGVpZ2h0PSIyNCIgcng9IjYiIGZpbGw9IiNmZmYiLz48dGV4dCB4PSIxNjAiIHk9IjE2OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzI3M2I1OSI+QSBTSElQPC90ZXh0Pjwvc3ZnPg==","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PHBhdGggZD0iTTEwNSAxNTIgMTM1IDg2aC0xN2wyOC00NyAyOCA0N2gtMTdsMzEgNjZ6bTcyIDAgMjQtNTJoLTE1bDI0LTM5IDI0IDM5aC0xNGwyMyA1MnoiIGZpbGw9IiM1Mzg0NjAiIHN0cm9rZT0iIzI5M2Q1YSIgc3Ryb2tlLXdpZHRoPSI1Ii8+PHJlY3QgeD0iMjciIHk9IjE1MSIgd2lkdGg9IjI2NiIgaGVpZ2h0PSIyNCIgcng9IjYiIGZpbGw9IiNmZmYiLz48dGV4dCB4PSIxNjAiIHk9IjE2OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzI3M2I1OSI+QSBGT1JFU1Q8L3RleHQ+PC9zdmc+"],"a":0,"e":"The dialogue names the correct choice."},{"q":"5. When does the show start?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PGNpcmNsZSBjeD0iMTYwIiBjeT0iOTIiIHI9IjU1IiBmaWxsPSIjZmZmIiBzdHJva2U9IiMyOTNkNWEiIHN0cm9rZS13aWR0aD0iNiIvPjxwYXRoIGQ9Ik0xNjAgNTF2NDJsMzEgMTUiIHN0cm9rZT0iI2MxNWI0YyIgc3Ryb2tlLXdpZHRoPSI3IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cmVjdCB4PSIyNyIgeT0iMTUxIiB3aWR0aD0iMjY2IiBoZWlnaHQ9IjI0IiByeD0iNiIgZmlsbD0iI2ZmZiIvPjx0ZXh0IHg9IjE2MCIgeT0iMTY5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMjczYjU5Ij42OjE1PC90ZXh0Pjwvc3ZnPg==","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PGNpcmNsZSBjeD0iMTYwIiBjeT0iOTIiIHI9IjU1IiBmaWxsPSIjZmZmIiBzdHJva2U9IiMyOTNkNWEiIHN0cm9rZS13aWR0aD0iNiIvPjxwYXRoIGQ9Ik0xNjAgNTF2NDJsMzEgMTUiIHN0cm9rZT0iI2MxNWI0YyIgc3Ryb2tlLXdpZHRoPSI3IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cmVjdCB4PSIyNyIgeT0iMTUxIiB3aWR0aD0iMjY2IiBoZWlnaHQ9IjI0IiByeD0iNiIgZmlsbD0iI2ZmZiIvPjx0ZXh0IHg9IjE2MCIgeT0iMTY5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMjczYjU5Ij43OjAwPC90ZXh0Pjwvc3ZnPg==","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PGNpcmNsZSBjeD0iMTYwIiBjeT0iOTIiIHI9IjU1IiBmaWxsPSIjZmZmIiBzdHJva2U9IiMyOTNkNWEiIHN0cm9rZS13aWR0aD0iNiIvPjxwYXRoIGQ9Ik0xNjAgNTF2NDJsMzEgMTUiIHN0cm9rZT0iI2MxNWI0YyIgc3Ryb2tlLXdpZHRoPSI3IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cmVjdCB4PSIyNyIgeT0iMTUxIiB3aWR0aD0iMjY2IiBoZWlnaHQ9IjI0IiByeD0iNiIgZmlsbD0iI2ZmZiIvPjx0ZXh0IHg9IjE2MCIgeT0iMTY5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMjczYjU5Ij43OjMwPC90ZXh0Pjwvc3ZnPg=="],"a":1,"e":"The dialogue names the correct choice."}]},{"t":"Part 2 — Note completion","i":"Complete the notes for questions 6–10 with one or two words or a number.","m":5,"im":"<button class='btn alt say' data-i='1'>Play Part 2</button>","x":"SCHOOL PLAY\nDay: 6 _____\nMeet at: 7 _____\nBring: 8 your _____\nDoors open: 9 _____\nAsk for: 10 Ms _____","q":[{"q":"6. Day","a":["saturday"],"e":"The announcement says this detail."},{"q":"7. Meet at","a":["school gate"],"e":"The announcement says this detail."},{"q":"8. Bring your","a":["costume"],"e":"The announcement says this detail."},{"q":"9. Doors open","a":["6.30","6:30","half past six"],"e":"The announcement says this detail."},{"q":"10. Ask for Ms","a":["brown"],"e":"The announcement says this detail."}]},{"t":"Part 3 — Conversation","i":"Choose A, B or C for questions 11–15.","m":6,"im":"<button class='btn alt say' data-i='2'>Play Part 3</button>","q":[{"q":"11. What will Ella do first?","o":["Paint the scenery","Sell tickets","Practise a song"],"a":0,"e":"The conversation gives this answer."},{"q":"12. Where will she get the paint?","o":["From the art room","From her house","From the shop"],"a":0,"e":"The conversation gives this answer."},{"q":"13. When will the group practise?","o":["Tuesday","Wednesday","Thursday"],"a":2,"e":"The conversation gives this answer."},{"q":"14. Who will bring the ladder?","o":["Ella","Tom","Mr Green"],"a":1,"e":"The conversation gives this answer."},{"q":"15. What does Ella need to remember?","o":["Her script","A bottle of water","The keys"],"a":0,"e":"The conversation gives this answer."}]},{"t":"Part 4 — Main idea","i":"Choose what each speaker is talking about, questions 16–20.","m":7,"im":"<button class='btn alt say' data-i='3'>Play Part 4</button>","q":[{"q":"16.","o":["A funny rehearsal","A new costume","A late bus"],"a":0,"e":"This is the main topic."},{"q":"17.","o":["A theatre visit","A school concert","A lost ticket"],"a":0,"e":"This is the main topic."},{"q":"18.","o":["Learning a dance","Painting a room","Buying a gift"],"a":0,"e":"This is the main topic."},{"q":"19.","o":["A loud audience","A school holiday","A new teacher"],"a":0,"e":"This is the main topic."},{"q":"20.","o":["Joining a club","Missing a train","Watching a film"],"a":0,"e":"This is the main topic."}]},{"t":"Part 5 — Matching","i":"Match each student with their job, A–F. One job is extra.","m":7,"im":"<button class='btn alt say' data-i='4'>Play Part 5</button>","x":"A. make costumes  B. check lights  C. welcome guests  D. play music  E. paint scenery  F. sell refreshments","q":[{"q":"21. Max","o":["A","B","C","D","E","F"],"a":3,"e":"The speaker describes this job."},{"q":"22. Ella","o":["A","B","C","D","E","F"],"a":4,"e":"The speaker describes this job."},{"q":"23. Ben","o":["A","B","C","D","E","F"],"a":1,"e":"The speaker describes this job."},{"q":"24. Sara","o":["A","B","C","D","E","F"],"a":2,"e":"The speaker describes this job."},{"q":"25. Lily","o":["A","B","C","D","E","F"],"a":0,"e":"The speaker describes this job."}]}];
+var T = ["Mia chooses a blue dress, not the red hat. The school play is at the town theatre. Ben will play the piano. The poster shows a castle. The show begins at seven.","The school play is on Saturday. Please meet at the school gate at five. Bring your costume with you. The doors open at half past six. Ask for Ms Brown when you arrive.","Ella: I will paint the scenery first. I can get the paint from the art room. We practise on Thursday. Tom will bring the ladder. I must remember my script.","One. At rehearsal, Max forgot his line and everyone laughed. It was funny. Two. We visited the town theatre and saw how the actors prepared. Three. The dance was difficult, so I practised it every evening. Four. The audience clapped loudly at the end of our show. Five. My friend told me about drama club, so I decided to join.","Max: I will play music on my keyboard. Ella: I am painting the scenery. Ben: I am checking the lights with Mr Green. Sara: I will welcome the guests at the door. Lily: I am making a hat and a coat for the actors."];
+var FULL=true, AUDIO=["","","",""];
+var ASSESSOR_EMAIL="oxfampreparation@email.cz";
+
+function wc(t){var m=t.trim().match(/\S+/g);return m?m.length:0}
+function winit(){
+  document.querySelectorAll("textarea").forEach(function(t){t.oninput=function(){document.getElementById(t.id+"c").textContent=wc(t.value)+" words"}});
+  document.querySelectorAll("[data-c]").forEach(function(b){b.onclick=function(){var t=document.getElementById(b.dataset.c).value;if(navigator.clipboard)navigator.clipboard.writeText(t)}});
+  document.querySelectorAll("[data-s]").forEach(function(b){b.onclick=async function(){
+    var t=document.getElementById(b.dataset.s).value,nameField=document.getElementById("nm"),nm=((nameField&&nameField.value)||"Student").trim()||"Student";
+    if(!wc(t)){b.textContent="Write something first!";setTimeout(function(){b.textContent="Send writing to assessor"},2000);return}
+    var subject="A2 Key (KET) Test 4 - "+b.dataset.t+" - "+nm;
+    var message="Student: "+nm+"\nTest: A2 Key (KET) Test 4\nTask: "+b.dataset.t+"\n\n"+t;
+    var status=b.parentNode.parentNode.querySelector(".email-status");if(!status){status=document.createElement("p");status.className="note email-status";status.setAttribute("role","status");b.parentNode.parentNode.appendChild(status)}
+    b.disabled=true;b.textContent="Sending…";status.textContent="Sending your writing to "+ASSESSOR_EMAIL+"…";
+    try{var response=await fetch("https://formsubmit.co/ajax/"+ASSESSOR_EMAIL,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify({name:nm,_subject:subject,message:message})});var result=await response.json();if(!response.ok||result.success===false||result.success==="false")throw new Error(result.message||"The email service did not accept the submission.");status.textContent="Submission accepted. On first use, the assessor must confirm the address through the verification email before delivery is enabled.";b.textContent="Submitted";
+    }catch(err){status.textContent="We couldn't send the writing. Check the internet connection and try again. "+(err&&err.message?err.message:"");b.disabled=false;b.textContent="Retry sending";return}
+    b.disabled=false;setTimeout(function(){b.textContent="Send writing to assessor"},4000);
+  }});
+}
+var playId=0;
+function say(i,done){
+  var id=++playId;speechSynthesis.cancel();
+  var parts=T[i].split(/(\{pause\}|\{short\}|\bSpeaker \d:|\b[A-Z][A-Za-z]+:)/),q=[],pitch=1,flip=0,names={};
+  parts.forEach(function(x){
+    x=x.trim();if(!x)return;
+    if(x==="{pause}"||x==="{short}"){q.push({w:x==="{pause}"?2500:1200});pitch=1;return}
+    var sp=x.match(/^Speaker (\d):$/);if(sp){q.push({t:"Speaker "+sp[1],p:1,w:700});return}
+    if(/^[A-Za-z 0-9 ]+:$/.test(x)){var n=x.slice(0,-1);if(!(n in names))names[n]=(flip++%2)?1.25:.85;pitch=names[n];return}
+    (x.match(/[^.?!]+[.?!]*/g)||[x]).forEach(function(z){q.push({t:z.trim(),p:pitch,w:300})})
+  });
+  var k=0;(function next(){
+    if(id!==playId)return;
+    if(k>=q.length){done();return}
+    var s=q[k++];
+    if(!s.t){setTimeout(next,s.w);return}
+    var u=new SpeechSynthesisUtterance(s.t);u.lang="en-GB";u.rate=0.95;u.pitch=s.p;
+    u.onend=function(){setTimeout(next,s.w)};u.onerror=function(){setTimeout(next,s.w)};
+    speechSynthesis.speak(u);
+  })()
+}
+
+function play(b){
+  if(b._busy)return;
+  var i=+b.dataset.i;
+  function fin(){b._busy=false;if(b._n>=2){b.disabled=true;b.textContent="Played twice"}else b.textContent="Play again (last time)"}
+  if(!AUDIO[i]&&(!window.speechSynthesis||!window.SpeechSynthesisUtterance)){b.textContent="TTS not supported in this browser.";return}
+  b._n=(b._n||0)+1;b._busy=true;b.textContent="Playing...";
+  if(AUDIO[i]){var a=new Audio(AUDIO[i]);a.onended=fin;a.onerror=fin;a.play()}else say(i,fin)
+}
+
+function init(){
+  [["t1",60],["t2",30],["t4",10],["sp1",4],["sp2",6]].forEach(function(a){if(document.getElementById(a[0]))timer(a[0],a[1])});
+  if(!FULL)return;
+  build(R,document.getElementById("rbox"),"r");
+  build(L,document.getElementById("lbox"),"l");
+  document.getElementById("ck1").onclick=function(){check(document.getElementById("rbox"),document.getElementById("sc1"))};
+  document.getElementById("ck2").onclick=function(){check(document.getElementById("lbox"),document.getElementById("sc2"))};
+  document.querySelectorAll(".say").forEach(function(b){b.onclick=function(){play(b)}});
+  winit();
+}
+
+(function(){
+  var g=document.getElementById("gate"),m=document.getElementById("main");
+  function show(){g.hidden=true;m.hidden=false;if(window.init)init()}
+  if(unlocked()){show();return}
+  document.getElementById("gf").onsubmit=function(e){
+    e.preventDefault();
+    if(document.getElementById("pw").value.trim()===PW){
+      try{sessionStorage.setItem("a2_key_test_4","1")}catch(x){}
+      show();
+    } else {
+      document.getElementById("err").textContent="Wrong password.";
+    }
+  }
+  
+  var themeBtn = document.getElementById('themeBtn');
+  if(themeBtn) {
+    themeBtn.onclick = function() {
+      var currentTheme = document.documentElement.getAttribute('data-theme');
+      if(currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        themeBtn.textContent = '🌙';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeBtn.textContent = '☀️';
+      }
+    };
+  }
+  
+  var menuToggle = document.getElementById('menuToggle');
+  if(menuToggle) {
+    menuToggle.onclick = function() {
+      document.body.classList.toggle('menuopen');
+    };
+  }
+  
+  var loginBtn = document.getElementById('loginBtn');
+  var dlg = document.getElementById('dlg');
+  var cancel = document.getElementById('cancel');
+  if(loginBtn && dlg) {
+    loginBtn.onclick = function() { dlg.showModal(); }
+  }
+  if(cancel && dlg) {
+    cancel.onclick = function() { dlg.close(); }
+  }
+})();
+</script>
+</body>
+</html>
