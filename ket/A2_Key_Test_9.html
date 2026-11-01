@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>A2 Key (KET) Test 9 - Oxfam Preparation</title>
+
+<style>
+/* Default theme is explicitly light */
+:root {
+  --bg: #f6f7fb;
+  --paper: #fff;
+  --ink: #14213d;
+  --muted: #4b5266;
+  --line: #d5d9e6;
+  --mark: #2b59ff;
+  --hi: #ffe45e;
+  --ok: #1a7f52;
+  --bad: #b3261e;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Dark theme applied ONLY when data-theme="dark" is present */
+:root[data-theme="dark"] {
+  --bg: #0f1526;
+  --paper: #182038;
+  --ink: #eef1fb;
+  --muted: #a9b1c9;
+  --line: #2c3656;
+  --mark: #7d9bff;
+  --hi: #e9d24a;
+  --ok: #57c58f;
+  --bad: #ff8a80;
+}
+
+html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: border-box; }
+
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1.0625rem/1.6 "Atkinson Hyperlegible", system-ui, sans-serif; }
+h1, h2, h3 { font-family: Archivo, "Helvetica Neue", Arial, sans-serif; line-height: 1.05; margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--mark); outline-offset: 3px; }
+.wrap { max-width: 74rem; margin: 0 auto; padding: 0 1.25rem; }
+
+header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .75rem; padding: 1.25rem 0; position: sticky; top: 0; background: var(--bg); z-index: 100; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+.head-left { display: flex; align-items: center; gap: .75rem; }
+#menuToggle { background: transparent; border: none; cursor: pointer; color: var(--ink); display: flex; padding: .25rem; border-radius: .25rem; }
+#menuToggle:hover { background: var(--line); }
+#menuToggle svg { width: 1.6rem; height: 1.6rem; }
+.logo { font: 800 1.25rem Archivo, sans-serif; text-decoration: none; }
+nav a { margin-left: 1.25rem; text-decoration: none; color: var(--muted); }
+nav a:hover { color: var(--ink); }
+
+.btn { display: inline-block; background: var(--ink); color: var(--bg); padding: .8rem 1.4rem; border-radius: .5rem; font-weight: 700; text-decoration: none; border: 0; cursor: pointer; font-size: 1rem; font-family: inherit; }
+.btn.alt { background: transparent; color: var(--ink); border: 2px solid var(--ink); }
+.hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2rem; align-items: start; padding: 1rem 0 3rem; }
+.hero-text { margin-top: 2.5rem; }
+
+h1 { font-size: clamp(2rem, 3.4vw, 3rem); font-weight: 800; font-stretch: 90%; letter-spacing: -.02em; margin-top: 1rem; margin-bottom: 0; }
+h1 span { background: linear-gradient(transparent 62%, var(--hi) 62%); }
+.lead { color: var(--muted); max-width: 32rem; margin: 1.25rem 0 1.75rem; font-size: 1.15rem; }
+.row { display: flex; gap: .75rem; flex-wrap: wrap; }
+
+.sheet { background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.sheet h2 { font-size: 1.1rem; margin-bottom: .25rem; }
+.sheet p { margin: 0 0 1rem; color: var(--muted); font-size: .95rem; }
+.q { padding: .7rem 0; border-top: 1px solid var(--line); }
+.q b { display: inline-block; font-weight: 800; margin-bottom: .45rem; margin-right: 0.5rem; }
+
+.opts { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem; width: fit-content; }
+.opt { display: flex; align-items: center; gap: .4rem; padding: .3rem .7rem .3rem .35rem; border: 1.5px solid var(--line); border-radius: 2rem; background: transparent; color: inherit; font-size: .95rem; cursor: pointer; width: fit-content; }
+.opt i { width: 1.4rem; height: 1.4rem; border-radius: 50%; border: 2px solid var(--muted); display: grid; place-items: center; font: 700 .7rem Archivo, sans-serif; font-style: normal; flex-shrink: 0; }
+
+.opt[aria-pressed="true"] { border-color: var(--mark); }
+.opt[aria-pressed="true"] i { background: var(--mark); border-color: var(--mark); color: var(--bg); }
+.opt.right { border-color: var(--ok); } .opt.right i { background: var(--ok); border-color: var(--ok); color: var(--bg); }
+.opt.wrong { border-color: var(--bad); } .opt.wrong i { background: var(--bad); border-color: var(--bad); color: var(--bg); }
+
+/* Image Options specific styles */
+.img-opts-grid { display: flex; flex-direction: row; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+.img-opt { flex-direction: column; align-items: center; padding: 0.5rem; border-radius: 0.5rem; gap: 0.5rem; text-align: center; }
+.img-opt img { height: 120px; width: 160px; object-fit: cover; background: var(--paper); border-radius: 0.25rem; }
+.img-opt i { margin-bottom: 0.25rem; }
+
+.result { margin-top: 1rem; font-weight: 700; min-height: 1.6rem; }
+section { padding: 3.5rem 0; border-top: 1px solid var(--line); }
+h2.t { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: .75rem; letter-spacing: -.01em; }
+
+.sub, .txt { color: var(--muted); max-width: 48rem; margin: 0 0 2rem; white-space: pre-line; line-height: 1.6; }
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: .6rem; background: var(--paper); }
+table { border-collapse: collapse; width: 100%; min-width: 38rem; }
+th, td { text-align: left; padding: .9rem 1rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font: 800 1.2rem Archivo, sans-serif; white-space: nowrap; }
+td small { display: block; font: 400 .9rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+
+.support-strip { position: fixed; bottom: 0; left: 0; right: 0; background: var(--ink); color: var(--bg); padding: 1rem 1.25rem; z-index: 999; box-shadow: 0 -4px 12px rgba(0,0,0,0.15); }
+.support-strip-inner { max-width: 74rem; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; width: 100%; font-weight: 700; }
+footer { border-top: 1px solid var(--line); padding: 2rem 0 5rem; color: var(--muted); font-size: .95rem; }
+
+.lang { display: flex; gap: .25rem; flex-wrap: wrap; } .lang button { font: 700 .8rem Archivo, sans-serif; padding: .35rem .6rem; border: 1.5px solid var(--line); border-radius: .4rem; background: transparent; color: var(--muted); cursor: pointer; } .lang button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.layout { display: grid; grid-template-columns: 12.5rem minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+.layout.collapsed { grid-template-columns: 1fr; gap: 0; }
+.layout.collapsed .side { display: none; }
+.side { position: sticky; top: 5rem; max-height: calc(100vh - 6rem); max-height: calc(100dvh - 6rem); overflow-y: auto; display: flex; flex-direction: column; gap: .15rem; }
+summary { cursor: pointer; font: 700 .95rem Archivo, sans-serif; color: var(--muted); padding: .4rem .75rem; border-radius: .5rem; } summary:hover { color: var(--ink); } .ex[open] summary { margin-bottom: .15rem; }
+.side nav { display: flex; flex-direction: column; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); } .side nav a { margin: 0; color: inherit; } .side .lang { margin-bottom: 1rem; }
+.side p { margin: 0 0 .5rem; font: 700 .95rem Archivo, sans-serif; color: var(--muted); }
+.side a { text-decoration: none; padding: .5rem .75rem; border-radius: .5rem; font: 700 1rem Archivo, sans-serif; border-left: 3px solid transparent; }
+.side a small { display: block; font: 400 .8rem "Atkinson Hyperlegible", sans-serif; color: var(--muted); }
+.side a:hover { background: var(--paper); border-left-color: var(--mark); }
+tr:target td { background: var(--hi); color: #14213d; } tr:target td small { color: #14213d; }
+
+@media (max-width: 52rem) { .layout { grid-template-columns: 1fr; gap: 0; } .side { position: static; max-height: none; margin: 0 0 1rem; padding: 0 0 1rem; border-bottom: 1px solid var(--line); } }
+
+.hr { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; } .hr .btn { padding: .45rem 1rem; font-size: .9rem; }
+dialog { border: 2px solid var(--ink); border-radius: .75rem; background: var(--paper); color: var(--ink); padding: 1.5rem; width: min(26rem, 92vw); max-height: 90vh; overflow: auto; } dialog::backdrop { background: rgba(10,16,32,.55); }
+dialog h2 { font-size: 1.4rem; margin-bottom: .5rem; } dialog label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+dialog input { width: 100%; padding: .65rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.demo { color: var(--muted); font-size: .9rem; margin: .5rem 0 0; } .err { color: var(--bad); min-height: 1.5rem; margin-top: .5rem; font-size: .95rem; }
+
+@media (max-width: 40rem) {
+  .wrap { padding: 0 1rem; }
+  header { padding: 1rem 0; }
+  .hero { padding-bottom: 2rem; }
+  .sheet { padding: 1.1rem; }
+  section { padding: 2.5rem 0; }
+  .scroll { border: 0; background: transparent; overflow: visible; }
+  table, tbody, tr, td { display: block; min-width: 0; width: 100%; }
+  thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  tr { background: var(--paper); border: 1px solid var(--line); border-radius: .6rem; padding: .6rem 0; margin-bottom: .75rem; }
+  td { border: 0; padding: .15rem 1rem; }
+  td:first-child { font-size: 1.3rem; padding-top: .4rem; }
+  tr:target { border-color: var(--ink); }
+}
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+html { scroll-padding-top: calc(5rem + env(safe-area-inset-top, 0px)); }
+body header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); padding: .6rem 0; border-bottom: 1px solid var(--line); }
+.brand { display: flex; align-items: center; gap: .75rem; }
+body .logo { font-size: 1.85rem; letter-spacing: -.02em; }
+.mbtn { display: inline-flex; flex-direction: column; justify-content: center; gap: 5px; width: 2.75rem; height: 2.75rem; padding: 0 .7rem; border: 2px solid var(--ink); border-radius: .5rem; background: transparent; cursor: pointer; flex: none; }
+.mbtn span { display: block; height: 2px; background: var(--ink); border-radius: 2px; }
+.mbtn:hover { background: var(--paper); }
+body .side { top: 5.5rem; max-height: calc(100vh - 6.5rem); max-height: calc(100dvh - 6.5rem); }
+body.nomenu .layout { grid-template-columns: minmax(0, 1fr); }
+body.nomenu .side { display: none; }
+body:has(#app[hidden]) .mbtn { display: none; }
+.side>.hr { margin-bottom: 1rem; }
+.scrim { display: none; }
+
+@media (max-width: 52rem) {
+  body .side { position: fixed; top: 0; left: 0; bottom: 0; width: min(19rem, 86vw); max-height: none; margin: 0; padding: calc(1rem + env(safe-area-inset-top, 0px)) 1rem calc(1rem + env(safe-area-inset-bottom, 0px)); background: var(--paper); border: 0; border-right: 2px solid var(--ink); z-index: 50; overflow-y: auto; transform: translateX(-105%); visibility: hidden; transition: transform .25s ease, visibility 0s .25s; }
+  body.menuopen .side { transform: none; visibility: visible; transition: transform .25s ease; }
+  body .side nav { flex-direction: column; flex-wrap: nowrap; gap: .15rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+  body .side nav a { padding: .5rem .75rem; }
+  .scrim { display: block; position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: rgba(10,16,32,.5); z-index: 40; opacity: 0; pointer-events: none; transition: opacity .25s; }
+  body.menuopen .scrim { opacity: 1; pointer-events: auto; }
+  body .logo { font-size: 1.6rem; }
+}
+
+.gatebox { max-width: 26rem; margin: 2rem auto; background: var(--paper); border: 2px solid var(--ink); border-radius: .75rem; padding: 1.5rem; box-shadow: .5rem .5rem 0 var(--ink); }
+.gatebox label, .wr label { display: block; font-weight: 700; margin: .75rem 0 .25rem; }
+input[type=text], input[type=password], textarea { width: 100%; padding: .6rem .75rem; border: 1.5px solid var(--line); border-radius: .4rem; background: var(--bg); color: var(--ink); font: inherit; }
+.q input[type=text] { width: 14rem; max-width: 100%; }
+.part { background: var(--paper); border: 1px solid var(--line); border-radius: .75rem; padding: 1.5rem; margin-bottom: 1.25rem; }
+.q.ok { border-left: 4px solid var(--ok); padding-left: .75rem; } .q.no { border-left: 4px solid var(--bad); padding-left: .75rem; } .fb { font-weight: 700; margin-top: .25rem; }
+.tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0; }
+nav.tabs a { margin: 0; padding: .4rem 1rem; border: 1.5px solid var(--line); border-radius: 2rem; text-decoration: none; font-weight: 700; }
+nav.tabs a[aria-current=page] { background: var(--ink); color: var(--bg); }
+.bar { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; margin: 1rem 0; } .time { font: 800 1.6rem Archivo, sans-serif; }
+.pics { display: flex; gap: 1rem; flex-wrap: wrap; } .pics svg, .pics img { flex: 1 1 14rem; max-width: 22rem; border: 2px solid var(--ink); border-radius: .5rem; background: var(--paper); object-fit: cover; aspect-ratio: 3/2; }
+textarea { min-height: 15rem; } .tr { display: none; } .note { padding: .75rem 1rem; border-left: 4px solid var(--mark); background: var(--paper); margin: 1rem 0; }
+.sec { padding-top: 2rem; margin-top: 2rem; border-top: 1px solid var(--line); } .jump { margin-top: 0; } .ex { color: var(--muted); margin-top: .15rem; font-size: .95rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header id="siteHeader">
+<div class="head-left">
+<button aria-label="Toggle menu" id="menuToggle">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
+</button>
+<a class="logo" href="../index.html">Oxfam Preparation</a>
+</div>
+<div class="hr">
+<button aria-label="Toggle theme" class="btn alt" id="themeBtn" style="padding:.45rem .6rem; min-width:0; font-size:1.1rem">🌙</button>
+<button class="btn" id="loginBtn" type="button">Log in</button>
+</div>
+</header>
+<div class="layout">
+<aside aria-label="Menu" class="side">
+<nav>
+<a href="../cpe.html">All tests</a>
+</nav>
+</aside>
+<main id="top">
+<div id="gate">
+<div class="gatebox">
+<h1><span>A2 Key (KET) Test 9</span></h1>
+<p>Enter the password to open this test.</p>
+<form id="gf">
+<label for="pw">Password</label>
+<input autocomplete="off" id="pw" type="password"/>
+<div class="err" id="err"></div>
+<div class="row" style="margin-top:1rem">
+<button class="btn" type="submit">Open</button>
+<a class="btn alt" href="../cpe.html">Back</a>
+</div>
+</form>
+</div>
+</div>
+<div hidden="" id="main">
+<h1 style="margin-top: 1rem">A2 Key (KET) Test 9 | Original Practice Paper</h1>
+<div class="part" style="margin-top:1rem">
+<label for="nm"><strong>Student name (optional — included with writing submissions)</strong></label>
+<input autocomplete="name" id="nm" type="text" placeholder="Enter your name"/>
+</div>
+<nav aria-label="Papers" class="tabs jump" style="margin-top: 2.5rem; margin-bottom: 2rem">
+<a href="#rd">Reading and Writing</a>
+<a href="#li">Listening</a>
+<a href="#sk">Speaking</a>
+</nav>
+<section class="sec" id="rd">
+<h2 class="t">Reading and Writing (60 minutes)</h2>
+<div class="bar"><span class="time" id="t1"></span><button class="btn alt" type="button">Start</button></div>
+<div id="rbox"></div><p class="sub">Questions 1–30 carry one mark each. Questions 31 and 32 are writing tasks.</p>
+<div class="part"><h2>Writing Part 6 — Email (Question 31)</h2><p>Write 25 words or more.</p><div class="note">Your friend Mia wants to volunteer at the animal centre. Write an email. Tell Mia when to go, what clothes to wear, and which animal you would like to help.</div><textarea id="e1"></textarea><div class="bar"><b id="e1c">0 words</b><button class="btn alt" data-c="e1">Copy</button><button class="btn" data-s="e1" data-t="A2 Key Test 9 Part 6">Send writing to assessor</button></div></div><div class="part"><h2>Writing Part 7 — Picture story (Question 32)</h2><p>Write 35 words or more. Use the pictures to tell a story about a lost puppy finding a home.</p><div class="pics"><img alt="A child finds a hungry dog." src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PHBhdGggZD0iTTEwMSA4OCA4NyA1NWwzNyAxN3EzNi0xNyA3MiAwbDM3LTE3LTE0IDM4cTEzIDQ0LTU5IDYxLTcyLTE3LTU5LTY2eiIgZmlsbD0iI2JkODk1ZSIgc3Ryb2tlPSIjMjkzZDVhIiBzdHJva2Utd2lkdGg9IjYiLz48Y2lyY2xlIGN4PSIxMzciIGN5PSIxMDIiIHI9IjUiLz48Y2lyY2xlIGN4PSIxODEiIGN5PSIxMDIiIHI9IjUiLz48cGF0aCBkPSJtMTUxIDEyMCAxMCA4IDEwLTgiIGZpbGw9IiM0NDNiMzgiLz48cmVjdCB4PSIxNiIgeT0iMTUxIiB3aWR0aD0iMjg4IiBoZWlnaHQ9IjI0IiByeD0iNSIgZmlsbD0iI2ZmZiIvPjx0ZXh0IHg9IjE2MCIgeT0iMTY4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMjkzZDVhIj5BIExPU1QgRE9HPC90ZXh0Pjwvc3ZnPg=="/><img alt="The child gives the dog food and water." src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PHBhdGggZD0iTTg2IDkzaDE0OHEtOCA2MS03NCA2MVQ4NiA5M3oiIGZpbGw9IiNkNWEyNWUiIHN0cm9rZT0iIzI5M2Q1YSIgc3Ryb2tlLXdpZHRoPSI2Ii8+PGNpcmNsZSBjeD0iMTMwIiBjeT0iOTAiIHI9IjkiIGZpbGw9IiM4Y2I1NmUiLz48Y2lyY2xlIGN4PSIxNTkiIGN5PSI4MiIgcj0iOSIgZmlsbD0iI2NmNzI1NCIvPjxjaXJjbGUgY3g9IjE4OCIgY3k9IjkwIiByPSI5IiBmaWxsPSIjOGNiNTZlIi8+PHJlY3QgeD0iMTYiIHk9IjE1MSIgd2lkdGg9IjI4OCIgaGVpZ2h0PSIyNCIgcng9IjUiIGZpbGw9IiNmZmYiLz48dGV4dCB4PSIxNjAiIHk9IjE2OCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzI5M2Q1YSI+R0lWRSBJVCBGT09EPC90ZXh0Pjwvc3ZnPg=="/><img alt="The child brings the dog to the animal centre." src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PHJlY3QgeD0iNzQiIHk9IjUyIiB3aWR0aD0iMTcyIiBoZWlnaHQ9Ijk5IiBmaWxsPSIjZTZkZGQwIiBzdHJva2U9IiMyOTNkNWEiIHN0cm9rZS13aWR0aD0iNiIvPjxyZWN0IHg9Ijk1IiB5PSI3MiIgd2lkdGg9IjU0IiBoZWlnaHQ9IjMxIiBmaWxsPSIjYTljZmRkIi8+PHJlY3QgeD0iMTYzIiB5PSIxMDQiIHdpZHRoPSI2NiIgaGVpZ2h0PSIxNCIgZmlsbD0iIzliNzI1MiIvPjxwYXRoIGQ9Ik0xNzAgMTE4djMybTUwLTMydjMyIiBzdHJva2U9IiM3NDU2M2YiIHN0cm9rZS13aWR0aD0iNyIvPjxyZWN0IHg9IjE2IiB5PSIxNTEiIHdpZHRoPSIyODgiIGhlaWdodD0iMjQiIHJ4PSI1IiBmaWxsPSIjZmZmIi8+PHRleHQgeD0iMTYwIiB5PSIxNjgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMyOTNkNWEiPkFOSU1BTCBDRU5UUkU8L3RleHQ+PC9zdmc+"/></div><textarea id="e2"></textarea><div class="bar"><b id="e2c">0 words</b><button class="btn alt" data-c="e2">Copy</button><button class="btn" data-s="e2" data-t="A2 Key Test 9 Part 7">Send writing to assessor</button></div></div><div class="bar"><button class="btn" id="ck1" type="button">Check Reading &amp; Writing Part 1 answers</button><b id="sc1"></b></div>
+</section>
+<section class="sec" id="li">
+<h2 class="t">Listening (about 30 minutes)</h2>
+<div class="bar"><span class="time" id="t2"></span><button class="btn alt" type="button">Start</button></div>
+<p class="note">These are original B1 practice scripts read aloud by your browser’s text-to-speech voice. Each recording can be played twice. This is not official Cambridge audio.</p>
+<div id="lbox"></div>
+<div class="bar"><button class="btn" id="ck2" type="button">Check answers</button><b id="sc2"></b></div>
+</section>
+<section class="sec" id="sk"><h2 class="t">Speaking (8–10 minutes)</h2><div class="part"><h2>Part 1 — Interview</h2><ul><li>Do you have a pet?</li><li>What animals do you like?</li><li>Have you ever helped look after an animal?</li><li>What do you enjoy doing at weekends?</li><li>Would you like to volunteer somewhere?</li></ul></div><div class="part"><h2>Part 2 — Discussion</h2><p>Talk together about jobs at an animal centre. Which would you like to do? Give reasons and ask your partner.</p><ul><li>feed the animals</li><li>walk a dog</li><li>clean cages</li><li>welcome visitors</li><li>brush the cats</li></ul></div></section>
+</div>
+</main>
+</div>
+<div class="support-strip">
+<div class="support-strip-inner">
+<div><span _k="Customer support every day from 9:00 to 16:30">Customer support every day from 9:00 to 16:30</span></div>
+<div class="support-info">
+<a href="mailto:oxfampreparation@email.cz">oxfampreparation@email.cz</a>
+<a href="tel:+420723200988">+420 723 200 988</a>
+</div>
+</div>
+</div>
+<footer>© 2020-2026 Oxfam - Oxford family. All rights reserved. Not affiliated with Cambridge University Press &amp; Assessment. Exam names belong to their owners.</footer>
+</div>
+<dialog aria-labelledby="dt" id="dlg">
+<h2 id="dt">Sign in to open your tests</h2>
+<form id="lf" novalidate="">
+<label for="em">Email</label><input autocomplete="username" id="em" type="email"/>
+<label for="pw">Password</label><input autocomplete="current-password" id="pw" type="password"/>
+<p class="demo" hidden="" id="demo">Demo mode: any email and password is accepted.</p>
+<div aria-live="polite" class="err" id="err"></div>
+<div class="row" style="margin-top:1rem"><button class="btn" type="submit">Log in</button><button class="btn alt" id="cancel" type="button">Cancel</button></div>
+</form>
+</dialog>
+<script>
+var PW="Nl62";
+function unlocked(){try{return sessionStorage.getItem("a2_key_test_9")==="1"}catch(e){return false}}
+
+function norm(s){return s.toLowerCase().replace(/\u2019/g,"'").replace(/\s+/g," ").trim()}
+
+function build(parts,box,pre){
+  var n=0;pre=pre||"";
+  parts.forEach(function(p,pi){
+    var d=document.createElement("section");d.className="part";
+    d.innerHTML="<h2>"+p.t+"</h2>"+(p.m?"<div class='bar'><span class='time' id='pt"+pre+pi+"'></span><button class='btn alt' type='button'>Start</button> <small>suggested time</small></div>":"")+"<p class='sub'>"+p.i+"</p>"+(p.x?"<p class='txt'>"+p.x+"</p>":"")+(p.im||"")+"<div class='items'></div>";
+    var it=d.querySelector(".items");
+    p.q.forEach(function(q){
+      n++;var r=document.createElement("div");r.className="q";
+      var label = q.q && /^(\d+)\.\s*/.test(q.q) ? q.q.match(/^(\d+)\.\s*/)[1] : n; var qtext = (q.q||"").replace(/^\d+\.\s*/,"").replace(/\n/g,"<br>"); var h="<b>"+label+"</b> "+qtext+(q.h?" <strong>"+q.h+"</strong>":"");
+      if(q.o){
+        var isImg = q.o.length > 0 && /^(https?:\/\/|data:image\/)/i.test(q.o[0]);
+        var optsHtml = q.o.map(function(o,i){
+          var letter = "ABCDEFGH"[i];
+          if(q.o.length === 2 && (o === "A" || o === "B" || o.includes("Correct") || o.includes("YES"))) {
+            letter = ["A", "B"][i];
+          }
+          if (isImg) {
+            return "<label class='opt img-opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> <img src='"+o+"' alt='Option "+letter+"' onerror=\"this.style.display='none'\"></label>";
+          } else {
+            var text = o === letter ? "" : o;
+            return "<label class='opt'><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> "+text+"</label>";
+          }
+        }).join("");
+        var gridClass = isImg ? "opts img-opts-grid" : "opts";
+        h += "<div class='" + gridClass + "'>" + optsHtml + "</div>";
+      } else {
+        h+=" <input type='text' autocomplete='off' aria-label='Answer "+n+"'>";
+      }
+      r.innerHTML=h;r._q=q;it.appendChild(r);
+    });
+    box.appendChild(d);
+    if(p.m)timer("pt"+pre+pi,p.m);
+  });
+}
+
+function check(box,out){
+  var tot=0,ok=0;
+  box.querySelectorAll(".part").forEach(function(part){
+    var pTot=0,pOk=0;
+    part.querySelectorAll(".q").forEach(function(r){
+      pTot++;var q=r._q,good,ans;
+      if(q.o){
+        var c=r.querySelector("input:checked");
+        good=c&&+c.value===q.a;
+        var letter = "ABCDEFGH"[q.a];
+        if(q.o.length === 2) letter = ["A", "B"][q.a];
+        var isImg = q.o.length > 0 && /^(https?:\/\/|data:image\/)/i.test(q.o[0]);
+        ans = isImg ? letter : (q.o[q.a] === letter ? letter : letter + " " + q.o[q.a]);
+      } else {
+        var v=norm(r.querySelector("input").value);
+        good=q.a.some(function(a){return norm(a)===v});
+        ans=q.a[0];
+      }
+      r.classList.toggle("ok",!!good);
+      r.classList.toggle("no",!good);
+      var f=r.querySelector(".fb");
+      if(!f){f=document.createElement("div");f.className="fb";r.appendChild(f)}
+      f.textContent=good?"Correct":"Answer: "+ans;
+      var x=r.querySelector(".ex");
+      if(!x){x=document.createElement("div");x.className="ex";r.appendChild(x)}
+      x.textContent=q.e||"";
+      if(good)pOk++;
+    });
+    if(pTot>0){
+      var ps=part.querySelector(".pscore");
+      if(!ps){ps=document.createElement("div");ps.className="pscore note";ps.style.marginTop="1.5rem";part.appendChild(ps)}
+      ps.innerHTML="<b>Part score:</b> "+pOk+" / "+pTot;
+    }
+    tot+=pTot;ok+=pOk;
+  });
+  out.textContent="Total score: "+ok+" / "+tot;
+  box.querySelectorAll(".tr").forEach(function(e){e.style.display="block"});
+}
+
+function timer(id,min){
+  var e=document.getElementById(id),l=min*60,t=null;
+  if(!e)return;
+  function s(){e.textContent=("0"+Math.floor(l/60)).slice(-2)+":"+("0"+l%60).slice(-2)}s();
+  e.nextElementSibling.onclick=function(){
+    if(t){clearInterval(t);t=null;this.textContent="Start";return}
+    this.textContent="Pause";
+    t=setInterval(function(){l--;s();if(l<=0)clearInterval(t)},1000);
+  }
+}
+
+var R = [{"t":"Part 1 — Notices","i":"Choose A, B or C for 1–6.","m":6,"q":[{"q":"1. ANIMAL CENTRE\nPlease leave food donations in the blue box by the entrance.","o":["Bring food inside the centre.","Donations go in a marked box.","The blue box is for clothes."],"a":1,"e":"This is the meaning of the notice."},{"q":"2. MESSAGE\nI can walk your dog after school, but not before lunch.","o":["The writer can help later in the day.","The writer cannot walk the dog.","The dog must stay at school."],"a":0,"e":"This is the meaning of the notice."},{"q":"3. NOTICE\nQuiet room in use. Please speak softly near the kittens.","o":["Visitors should not enter the building.","The kittens are outside.","Keep your voice low near the kittens."],"a":2,"e":"This is the meaning of the notice."},{"q":"4. VOLUNTEERS\nWear old clothes on Saturday. We are washing the dog beds.","o":["The beds are new.","Volunteers may get their clothes wet.","The centre is closed Saturday."],"a":1,"e":"This is the meaning of the notice."},{"q":"5. SIGN\nCats waiting for new homes are in Room 2.","o":["All cats have found homes.","Room 2 is closed.","You can meet the cats in Room 2."],"a":2,"e":"This is the meaning of the notice."},{"q":"6. TO AMY\nThe vet will arrive at ten. Please have the animal’s notes ready before then.","o":["The vet arrives before ten.","Prepare the notes before the vet comes.","The animal is ready to go home."],"a":1,"e":"This is the meaning of the notice."}]},{"t":"Part 2 — Matching","i":"Match questions 7–13 with a volunteer A–C.","m":9,"x":"A. I enjoy brushing dogs and can come on Monday after school. I have helped at a kennel before.\n\nB. I like talking to people and can help at the welcome desk on Saturday mornings.\n\nC. I love small animals. I can clean rabbit cages on Wednesday and bring my own gloves.","q":[{"q":"7. You have experience with dogs.","o":["A","B","C"],"a":0,"e":"This detail matches one volunteer."},{"q":"8. You are free Saturday morning.","o":["A","B","C"],"a":1,"e":"This detail matches one volunteer."},{"q":"9. You want to work with rabbits.","o":["A","B","C"],"a":2,"e":"This detail matches one volunteer."},{"q":"10. You can come on Monday.","o":["A","B","C"],"a":0,"e":"This detail matches one volunteer."},{"q":"11. You enjoy meeting visitors.","o":["A","B","C"],"a":1,"e":"This detail matches one volunteer."},{"q":"12. You can bring gloves.","o":["A","B","C"],"a":2,"e":"This detail matches one volunteer."},{"q":"13. You like brushing animals.","o":["A","B","C"],"a":0,"e":"This detail matches one volunteer."}]},{"t":"Part 3 — Long text","i":"Read and choose A, B or C for 14–18.","m":10,"x":"\nA NEW HOME FOR PIP\n\nMy family visited the animal centre because we wanted to adopt a pet. I thought we would choose a dog, but the worker introduced us to Pip, a small brown rabbit. He was shy and stayed near the back of his cage.\n\nThe worker explained that Pip needed a quiet home. We asked what he ate and how often his cage needed cleaning. She also told us to let him explore one room at a time. We decided we could look after him carefully.\n\nAt home, Pip hid behind a chair for the first hour. We sat quietly and waited. Later, he came out to smell my hand. My younger brother wanted to pick him up, but Mum reminded him to move slowly.\n\nPip is more confident now. He likes eating leaves from the garden and sitting beside the window. I learned that adopting an animal takes patience. We are happy we did not choose a pet only because it looked fun.","q":[{"q":"14. Why did the family visit the centre?","o":["They wanted to adopt a pet.","They wanted to buy food.","They were looking for a vet."],"a":0,"e":"The passage states this."},{"q":"15. What did the worker say about Pip?","o":["He needed a quiet home.","He liked loud rooms.","He could eat anything."],"a":0,"e":"The passage states this."},{"q":"16. What did Pip do at first at home?","o":["He hid behind a chair.","He ran into the garden.","He ate from the brother’s hand."],"a":0,"e":"The passage states this."},{"q":"17. What did Mum tell the brother?","o":["Move slowly.","Open the window.","Give Pip more food."],"a":0,"e":"The passage states this."},{"q":"18. What did the writer learn?","o":["Adopting a pet needs patience.","Rabbits are easy to train.","Choose the most playful animal."],"a":0,"e":"The passage states this."}]},{"t":"Part 4 — Multiple-choice cloze","i":"Choose the correct word for 19–24.","m":8,"x":"\nCARING FOR A DOG\n\nDogs need fresh water every day. Put the bowl (19) _____ a quiet place. Take your dog for a walk (20) _____ the morning and again later. Give it food at the same time (21) _____ day. If it looks tired, let it (22) _____. Keep its bed clean and make sure it has enough space (23) _____ sleep. A vet can help if your dog is not (24) _____.","q":[{"q":"19. Gap 19","o":["in","on","at"],"a":0,"e":"Choose the word that fits."},{"q":"20. Gap 20","o":["in","at","by"],"a":0,"e":"Choose the word that fits."},{"q":"21. Gap 21","o":["each","all","any"],"a":0,"e":"Choose the word that fits."},{"q":"22. Gap 22","o":["rest","rests","resting"],"a":0,"e":"Choose the word that fits."},{"q":"23. Gap 23","o":["to","for","of"],"a":0,"e":"Choose the word that fits."},{"q":"24. Gap 24","o":["well","good","better"],"a":0,"e":"Choose the word that fits."}]},{"t":"Part 5 — Open cloze","i":"Write one word for each gap, 25–30.","m":8,"x":"\nEMAIL\n\nHi Jess, I’m helping (25) _____ the animal centre this weekend. Would you like to come (26) _____ me? We can meet (27) _____ the front door at ten. You can help feed the cats, and I will walk (28) _____ dog. Please wear shoes that you do not mind getting (29) _____. Let me know (30) _____ you are free. Max","q":[{"q":"25. Gap 25","a":["at"],"e":"One word completes the email."},{"q":"26. Gap 26","a":["with"],"e":"One word completes the email."},{"q":"27. Gap 27","a":["at"],"e":"One word completes the email."},{"q":"28. Gap 28","a":["the"],"e":"One word completes the email."},{"q":"29. Gap 29","a":["dirty"],"e":"One word completes the email."},{"q":"30. Gap 30","a":["if"],"e":"One word completes the email."}]}];
+var L = [{"t":"Part 1 — Picture choice","i":"Choose the picture you hear for 1–5.","m":5,"im":"<button class='btn alt say' data-i='0'>Play Part 1</button>","q":[{"q":"1. Which animal will they look after?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PHBhdGggZD0iTTEwMSA4OCA4NyA1NWwzNyAxN3EzNi0xNyA3MiAwbDM3LTE3LTE0IDM4cTEzIDQ0LTU5IDYxLTcyLTE3LTU5LTY2eiIgZmlsbD0iI2JkODk1ZSIgc3Ryb2tlPSIjMjkzZDVhIiBzdHJva2Utd2lkdGg9IjYiLz48Y2lyY2xlIGN4PSIxMzciIGN5PSIxMDIiIHI9IjUiLz48Y2lyY2xlIGN4PSIxODEiIGN5PSIxMDIiIHI9IjUiLz48cGF0aCBkPSJtMTUxIDEyMCAxMCA4IDEwLTgiIGZpbGw9IiM0NDNiMzgiLz48cmVjdCB4PSIxNiIgeT0iMTUxIiB3aWR0aD0iMjg4IiBoZWlnaHQ9IjI0IiByeD0iNSIgZmlsbD0iI2ZmZiIvPjx0ZXh0IHg9IjE2MCIgeT0iMTY4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMjkzZDVhIj5BIERPRzwvdGV4dD48L3N2Zz4=","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PHBhdGggZD0ibTEwOCA4MCA1LTM3IDM2IDIycTE4LTQgMzYgMGwzNi0yMiA1IDM3cTE0IDIyIDUgNDYtMTQgMzItNjQgMzJ0LTY0LTMycS05LTI0IDUtNDZ6IiBmaWxsPSIjZDVhNDZlIiBzdHJva2U9IiMyOTNkNWEiIHN0cm9rZS13aWR0aD0iNiIvPjxjaXJjbGUgY3g9IjE0MCIgY3k9IjEwMCIgcj0iNSIvPjxjaXJjbGUgY3g9IjE4MCIgY3k9IjEwMCIgcj0iNSIvPjxwYXRoIGQ9Im0xNTEgMTE5IDkgNyA5LTciIGZpbGw9IiNiZjY1NTciLz48cmVjdCB4PSIxNiIgeT0iMTUxIiB3aWR0aD0iMjg4IiBoZWlnaHQ9IjI0IiByeD0iNSIgZmlsbD0iI2ZmZiIvPjx0ZXh0IHg9IjE2MCIgeT0iMTY4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMjkzZDVhIj5BIENBVDwvdGV4dD48L3N2Zz4=","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PGVsbGlwc2UgY3g9IjE2MCIgY3k9IjExMSIgcng9IjUzIiByeT0iNDIiIGZpbGw9IiNlZWU4ZGMiIHN0cm9rZT0iIzI5M2Q1YSIgc3Ryb2tlLXdpZHRoPSI2Ii8+PGVsbGlwc2UgY3g9IjEzOSIgY3k9IjU0IiByeD0iMTQiIHJ5PSI0NCIgdHJhbnNmb3JtPSJyb3RhdGUoLTEyIDEzOSA1NCkiIGZpbGw9IiNlZWU4ZGMiIHN0cm9rZT0iIzI5M2Q1YSIgc3Ryb2tlLXdpZHRoPSI1Ii8+PGVsbGlwc2UgY3g9IjE4MSIgY3k9IjU0IiByeD0iMTQiIHJ5PSI0NCIgdHJhbnNmb3JtPSJyb3RhdGUoMTIgMTgxIDU0KSIgZmlsbD0iI2VlZThkYyIgc3Ryb2tlPSIjMjkzZDVhIiBzdHJva2Utd2lkdGg9IjUiLz48Y2lyY2xlIGN4PSIxNDUiIGN5PSIxMDUiIHI9IjUiLz48Y2lyY2xlIGN4PSIxNzUiIGN5PSIxMDUiIHI9IjUiLz48cmVjdCB4PSIxNiIgeT0iMTUxIiB3aWR0aD0iMjg4IiBoZWlnaHQ9IjI0IiByeD0iNSIgZmlsbD0iI2ZmZiIvPjx0ZXh0IHg9IjE2MCIgeT0iMTY4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMjkzZDVhIj5BIFJBQkJJVDwvdGV4dD48L3N2Zz4="],"a":2,"e":"The recording names this picture."},{"q":"2. What should Ben bring?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PHBhdGggZD0iTTExMiAxMTVxMC01OCA0OC01OHQ0OCA1OHEwIDI1LTI0IDI1dC0yNC0yNVY3NXEwLTE4IDE4LTE4IiBmaWxsPSJub25lIiBzdHJva2U9IiNjZjY4NGQiIHN0cm9rZS13aWR0aD0iMTIiLz48Y2lyY2xlIGN4PSIxODQiIGN5PSI1NiIgcj0iMTEiIGZpbGw9IiNiOGM4ZDAiIHN0cm9rZT0iIzI5M2Q1YSIgc3Ryb2tlLXdpZHRoPSI0Ii8+PHJlY3QgeD0iMTYiIHk9IjE1MSIgd2lkdGg9IjI4OCIgaGVpZ2h0PSIyNCIgcng9IjUiIGZpbGw9IiNmZmYiLz48dGV4dCB4PSIxNjAiIHk9IjE2OCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzI5M2Q1YSI+QSBMRUFEPC90ZXh0Pjwvc3ZnPg==","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PHBhdGggZD0iTTg2IDkzaDE0OHEtOCA2MS03NCA2MVQ4NiA5M3oiIGZpbGw9IiNkNWEyNWUiIHN0cm9rZT0iIzI5M2Q1YSIgc3Ryb2tlLXdpZHRoPSI2Ii8+PGNpcmNsZSBjeD0iMTMwIiBjeT0iOTAiIHI9IjkiIGZpbGw9IiM4Y2I1NmUiLz48Y2lyY2xlIGN4PSIxNTkiIGN5PSI4MiIgcj0iOSIgZmlsbD0iI2NmNzI1NCIvPjxjaXJjbGUgY3g9IjE4OCIgY3k9IjkwIiByPSI5IiBmaWxsPSIjOGNiNTZlIi8+PHJlY3QgeD0iMTYiIHk9IjE1MSIgd2lkdGg9IjI4OCIgaGVpZ2h0PSIyNCIgcng9IjUiIGZpbGw9IiNmZmYiLz48dGV4dCB4PSIxNjAiIHk9IjE2OCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzI5M2Q1YSI+UEVUIEZPT0Q8L3RleHQ+PC9zdmc+","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PHBhdGggZD0iTTkxIDU4aDEzOHY5NUg5MXoiIGZpbGw9IiM3MzhmYjAiIHN0cm9rZT0iIzI5M2Q1YSIgc3Ryb2tlLXdpZHRoPSI2Ii8+PHBhdGggZD0iTTkxIDg4aDEzOG0tOTItMzB2OTVtNDYtOTV2OTUiIHN0cm9rZT0iI2YxZTNjNyIgc3Ryb2tlLXdpZHRoPSI2Ii8+PHJlY3QgeD0iMTYiIHk9IjE1MSIgd2lkdGg9IjI4OCIgaGVpZ2h0PSIyNCIgcng9IjUiIGZpbGw9IiNmZmYiLz48dGV4dCB4PSIxNjAiIHk9IjE2OCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzI5M2Q1YSI+QSBCTEFOS0VUPC90ZXh0Pjwvc3ZnPg=="],"a":0,"e":"The recording names this picture."},{"q":"3. Where will they meet?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PHJlY3QgeD0iNzQiIHk9IjQ4IiB3aWR0aD0iMTcyIiBoZWlnaHQ9IjEwNSIgZmlsbD0iI2VlZTNjZSIgc3Ryb2tlPSIjMjkzZDVhIiBzdHJva2Utd2lkdGg9IjYiLz48cmVjdCB4PSI5NSIgeT0iNjgiIHdpZHRoPSI1MiIgaGVpZ2h0PSIzOSIgZmlsbD0iIzlmYzdkNiIvPjxyZWN0IHg9IjE3NiIgeT0iOTUiIHdpZHRoPSI0NyIgaGVpZ2h0PSI1OCIgZmlsbD0iI2I4N2I1NSIvPjx0ZXh0IHg9IjEyMCIgeT0iMTM3IiBmb250LXNpemU9IjE1Ij5ST09NIDE8L3RleHQ+PHJlY3QgeD0iMTYiIHk9IjE1MSIgd2lkdGg9IjI4OCIgaGVpZ2h0PSIyNCIgcng9IjUiIGZpbGw9IiNmZmYiLz48dGV4dCB4PSIxNjAiIHk9IjE2OCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzI5M2Q1YSI+Uk9PTSAxPC90ZXh0Pjwvc3ZnPg==","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PHBhdGggZD0iTTAgMTM1cTgwLTIwIDE2MCAwdDE2MCAwdjQ1SDB6IiBmaWxsPSIjODBhNjZjIi8+PHBhdGggZD0iTTcwIDEzNlY4NW05MCA1MVY2NW05MCA3MVY5MSIgc3Ryb2tlPSIjNzk1NzNlIiBzdHJva2Utd2lkdGg9IjgiLz48Y2lyY2xlIGN4PSI3MCIgY3k9Ijc1IiByPSIyMyIgZmlsbD0iIzY3OTU2NSIvPjxjaXJjbGUgY3g9IjE2MCIgY3k9IjU1IiByPSIzMCIgZmlsbD0iIzY3OTU2NSIvPjxjaXJjbGUgY3g9IjI1MCIgY3k9IjgxIiByPSIyNCIgZmlsbD0iIzY3OTU2NSIvPjxyZWN0IHg9IjE2IiB5PSIxNTEiIHdpZHRoPSIyODgiIGhlaWdodD0iMjQiIHJ4PSI1IiBmaWxsPSIjZmZmIi8+PHRleHQgeD0iMTYwIiB5PSIxNjgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMyOTNkNWEiPlRIRSBHQVJERU48L3RleHQ+PC9zdmc+","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PHJlY3QgeD0iNzQiIHk9IjUyIiB3aWR0aD0iMTcyIiBoZWlnaHQ9Ijk5IiBmaWxsPSIjZTZkZGQwIiBzdHJva2U9IiMyOTNkNWEiIHN0cm9rZS13aWR0aD0iNiIvPjxyZWN0IHg9Ijk1IiB5PSI3MiIgd2lkdGg9IjU0IiBoZWlnaHQ9IjMxIiBmaWxsPSIjYTljZmRkIi8+PHJlY3QgeD0iMTYzIiB5PSIxMDQiIHdpZHRoPSI2NiIgaGVpZ2h0PSIxNCIgZmlsbD0iIzliNzI1MiIvPjxwYXRoIGQ9Ik0xNzAgMTE4djMybTUwLTMydjMyIiBzdHJva2U9IiM3NDU2M2YiIHN0cm9rZS13aWR0aD0iNyIvPjxyZWN0IHg9IjE2IiB5PSIxNTEiIHdpZHRoPSIyODgiIGhlaWdodD0iMjQiIHJ4PSI1IiBmaWxsPSIjZmZmIi8+PHRleHQgeD0iMTYwIiB5PSIxNjgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMyOTNkNWEiPlRIRSBPRkZJQ0U8L3RleHQ+PC9zdmc+"],"a":1,"e":"The recording names this picture."},{"q":"4. Which toy will the puppy use?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PGNpcmNsZSBjeD0iMTYwIiBjeT0iOTQiIHI9IjU1IiBmaWxsPSIjZTVhOTRlIiBzdHJva2U9IiMyOTNkNWEiIHN0cm9rZS13aWR0aD0iNiIvPjxwYXRoIGQ9Ik0xMDUgOTRoMTEwbS01NS01NXEtMjcgNTUgMCAxMTBtMC0xMTBxMjcgNTUgMCAxMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSI2Ii8+PHJlY3QgeD0iMTYiIHk9IjE1MSIgd2lkdGg9IjI4OCIgaGVpZ2h0PSIyNCIgcng9IjUiIGZpbGw9IiNmZmYiLz48dGV4dCB4PSIxNjAiIHk9IjE2OCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzI5M2Q1YSI+QSBCQUxMPC90ZXh0Pjwvc3ZnPg==","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PHBhdGggZD0iTTEwNCA1MHE1NiAzNSAwIDcxdDAgNzFtMTEyLTE0MnEtNTYgMzUgMCA3MXQwIDcxIiBmaWxsPSJub25lIiBzdHJva2U9IiNiOTc4NDgiIHN0cm9rZS13aWR0aD0iMTMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxwYXRoIGQ9Ik05NyA0NGgxOG05MCAwaDE4bS0xMjYgMTQzaDE4bTkwIDBoMTgiIHN0cm9rZT0iIzI5M2Q1YSIgc3Ryb2tlLXdpZHRoPSI4Ii8+PHJlY3QgeD0iMTYiIHk9IjE1MSIgd2lkdGg9IjI4OCIgaGVpZ2h0PSIyNCIgcng9IjUiIGZpbGw9IiNmZmYiLz48dGV4dCB4PSIxNjAiIHk9IjE2OCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzI5M2Q1YSI+QSBST1BFPC90ZXh0Pjwvc3ZnPg==","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PGVsbGlwc2UgY3g9IjE1MyIgY3k9IjEwMiIgcng9IjQ4IiByeT0iMzIiIGZpbGw9IiM4ODk5YWEiIHN0cm9rZT0iIzI5M2Q1YSIgc3Ryb2tlLXdpZHRoPSI1Ii8+PGNpcmNsZSBjeD0iMTk0IiBjeT0iOTEiIHI9IjIyIiBmaWxsPSIjODg5OWFhIiBzdHJva2U9IiMyOTNkNWEiIHN0cm9rZS13aWR0aD0iNSIvPjxjaXJjbGUgY3g9IjE4MiIgY3k9IjY5IiByPSIxMCIgZmlsbD0iI2RjOWI5ZSIvPjxjaXJjbGUgY3g9IjIwNCIgY3k9Ijg4IiByPSI0Ii8+PHBhdGggZD0iTTEwNiAxMDZxLTQ0IDMtMjcgMzAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzI5M2Q1YSIgc3Ryb2tlLXdpZHRoPSI1Ii8+PHJlY3QgeD0iMTYiIHk9IjE1MSIgd2lkdGg9IjI4OCIgaGVpZ2h0PSIyNCIgcng9IjUiIGZpbGw9IiNmZmYiLz48dGV4dCB4PSIxNjAiIHk9IjE2OCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzI5M2Q1YSI+QSBUT1kgTU9VU0U8L3RleHQ+PC9zdmc+"],"a":0,"e":"The recording names this picture."},{"q":"5. What time does the centre open?","o":["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PGNpcmNsZSBjeD0iMTYwIiBjeT0iODgiIHI9IjUyIiBmaWxsPSIjZmZmIiBzdHJva2U9IiMyOTNkNWEiIHN0cm9rZS13aWR0aD0iNiIvPjxwYXRoIGQ9Ik0xNjAgNDh2NDBsMCA0MiIgc3Ryb2tlPSIjZDA1ZTRkIiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxyZWN0IHg9IjE2IiB5PSIxNTEiIHdpZHRoPSIyODgiIGhlaWdodD0iMjQiIHJ4PSI1IiBmaWxsPSIjZmZmIi8+PHRleHQgeD0iMTYwIiB5PSIxNjgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMyOTNkNWEiPjk6MDA8L3RleHQ+PC9zdmc+","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PGNpcmNsZSBjeD0iMTYwIiBjeT0iODgiIHI9IjUyIiBmaWxsPSIjZmZmIiBzdHJva2U9IiMyOTNkNWEiIHN0cm9rZS13aWR0aD0iNiIvPjxwYXRoIGQ9Ik0xNjAgNDh2NDBsNDAgMTgiIHN0cm9rZT0iI2QwNWU0ZCIgc3Ryb2tlLXdpZHRoPSI3IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cmVjdCB4PSIxNiIgeT0iMTUxIiB3aWR0aD0iMjg4IiBoZWlnaHQ9IjI0IiByeD0iNSIgZmlsbD0iI2ZmZiIvPjx0ZXh0IHg9IjE2MCIgeT0iMTY4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMjkzZDVhIj4xMDozMDwvdGV4dD48L3N2Zz4=","data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgcng9IjE4IiBmaWxsPSIjZWRmNWY4Ii8+PGNpcmNsZSBjeD0iMTYwIiBjeT0iODgiIHI9IjUyIiBmaWxsPSIjZmZmIiBzdHJva2U9IiMyOTNkNWEiIHN0cm9rZS13aWR0aD0iNiIvPjxwYXRoIGQ9Ik0xNjAgNDh2NDBsLTQyIDAiIHN0cm9rZT0iI2QwNWU0ZCIgc3Ryb2tlLXdpZHRoPSI3IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cmVjdCB4PSIxNiIgeT0iMTUxIiB3aWR0aD0iMjg4IiBoZWlnaHQ9IjI0IiByeD0iNSIgZmlsbD0iI2ZmZiIvPjx0ZXh0IHg9IjE2MCIgeT0iMTY4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMjkzZDVhIj4xMTowMDwvdGV4dD48L3N2Zz4="],"a":1,"e":"The recording names this picture."}]},{"t":"Part 2 — Note completion","i":"Write one or two words or a number for 6–10.","m":5,"im":"<button class='btn alt say' data-i='1'>Play Part 2</button>","x":"VOLUNTEER MORNING\nDay: 6 _____\nMeet at: 7 _____\nWear: 8 _____ shoes\nFirst job: 9 _____\nAsk for: 10 Ms _____","q":[{"q":"6. Gap 6","a":["saturday"],"e":"The announcement gives this detail."},{"q":"7. Gap 7","a":["front desk"],"e":"The announcement gives this detail."},{"q":"8. Gap 8","a":["old"],"e":"The announcement gives this detail."},{"q":"9. Gap 9","a":["feed the cats","feeding the cats"],"e":"The announcement gives this detail."},{"q":"10. Gap 10","a":["jones"],"e":"The announcement gives this detail."}]},{"t":"Part 3 — Conversation","i":"Choose A, B or C for 11–15.","m":6,"im":"<button class='btn alt say' data-i='2'>Play Part 3</button>","q":[{"q":"11. Which animal will Lily help?","o":["A puppy","A kitten","A rabbit"],"a":0,"e":"The conversation gives the answer."},{"q":"12. What time will she arrive?","o":["9.00","9.30","10.00"],"a":1,"e":"The conversation gives the answer."},{"q":"13. What will she take?","o":["A towel","A brush","A box"],"a":1,"e":"The conversation gives the answer."},{"q":"14. Where will she work?","o":["In the garden","In the kitchen","In Room 2"],"a":2,"e":"The conversation gives the answer."},{"q":"15. Who will meet her?","o":["Her brother","Ms Jones","A vet"],"a":1,"e":"The conversation gives the answer."}]},{"t":"Part 4 — Main idea","i":"Choose the main topic for questions 16–20.","m":7,"im":"<button class='btn alt say' data-i='3'>Play Part 4</button>","q":[{"q":"16.","o":["A lost kitten","A new bicycle","A school play"],"a":0,"e":"This is the speaker’s main topic."},{"q":"17.","o":["Walking a dog","Making a cake","Taking a train"],"a":0,"e":"This is the speaker’s main topic."},{"q":"18.","o":["A visit to the vet","A music lesson","A football game"],"a":0,"e":"This is the speaker’s main topic."},{"q":"19.","o":["Finding a home for a rabbit","Buying a phone","Learning to swim"],"a":0,"e":"This is the speaker’s main topic."},{"q":"20.","o":["Helping at an animal centre","Cleaning a classroom","Going to the cinema"],"a":0,"e":"This is the speaker’s main topic."}]},{"t":"Part 5 — Matching","i":"Match people with their task A–F, questions 21–25.","m":7,"im":"<button class='btn alt say' data-i='4'>Play Part 5</button>","x":"A. clean cages  B. walk dogs  C. prepare food  D. welcome visitors  E. brush cats  F. wash blankets","q":[{"q":"21. Tom","o":["A","B","C","D","E","F"],"a":3,"e":"The speaker describes this job."},{"q":"22. Rose","o":["A","B","C","D","E","F"],"a":1,"e":"The speaker describes this job."},{"q":"23. Amir","o":["A","B","C","D","E","F"],"a":0,"e":"The speaker describes this job."},{"q":"24. Ella","o":["A","B","C","D","E","F"],"a":4,"e":"The speaker describes this job."},{"q":"25. Jack","o":["A","B","C","D","E","F"],"a":2,"e":"The speaker describes this job."}]}];
+var T = ["They will help a rabbit today. Ben should bring a lead for the dog. Meet in the garden. The puppy will play with a ball. The centre opens at half past ten.","Volunteer morning is on Saturday. Meet at the front desk at nine. Wear old shoes because the garden may be wet. The first job is feeding the cats. Ask for Ms Jones when you arrive.","Lily will help a puppy. She will arrive at half past nine. She should bring a brush. She will work in Room 2. Ms Jones will meet her at the door.","One. A small kitten was sitting alone near our house, so we took it to the animal centre. Two. I take my neighbour’s dog for a walk every afternoon. Three. The vet checked my rabbit and said it was healthy. Four. We found a kind family who wanted to adopt the rabbit. Five. I spend Saturday mornings helping to feed the animals at the centre.","Tom: I will stand by the entrance and show people where to go. Rose: I can take the dogs for a walk. Amir: I will clean the cages before the visitors arrive. Ella: I enjoy brushing cats. Jack: I can prepare the food bowls for lunchtime."];
+var FULL=true, AUDIO=["","","",""];
+var ASSESSOR_EMAIL="oxfampreparation@email.cz";
+
+function wc(t){var m=t.trim().match(/\S+/g);return m?m.length:0}
+function winit(){
+  document.querySelectorAll("textarea").forEach(function(t){t.oninput=function(){document.getElementById(t.id+"c").textContent=wc(t.value)+" words"}});
+  document.querySelectorAll("[data-c]").forEach(function(b){b.onclick=function(){var t=document.getElementById(b.dataset.c).value;if(navigator.clipboard)navigator.clipboard.writeText(t)}});
+  document.querySelectorAll("[data-s]").forEach(function(b){b.onclick=async function(){
+    var t=document.getElementById(b.dataset.s).value,nameField=document.getElementById("nm"),nm=((nameField&&nameField.value)||"Student").trim()||"Student";
+    if(!wc(t)){b.textContent="Write something first!";setTimeout(function(){b.textContent="Send writing to assessor"},2000);return}
+    var subject="A2 Key (KET) Test 9 - "+b.dataset.t+" - "+nm;
+    var message="Student: "+nm+"\nTest: A2 Key (KET) Test 9\nTask: "+b.dataset.t+"\n\n"+t;
+    var status=b.parentNode.parentNode.querySelector(".email-status");if(!status){status=document.createElement("p");status.className="note email-status";status.setAttribute("role","status");b.parentNode.parentNode.appendChild(status)}
+    b.disabled=true;b.textContent="Sending…";status.textContent="Sending your writing to "+ASSESSOR_EMAIL+"…";
+    try{var response=await fetch("https://formsubmit.co/ajax/"+ASSESSOR_EMAIL,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify({name:nm,_subject:subject,message:message})});var result=await response.json();if(!response.ok||result.success===false||result.success==="false")throw new Error(result.message||"The email service did not accept the submission.");status.textContent="Submission accepted. On first use, the assessor must confirm the address through the verification email before delivery is enabled.";b.textContent="Submitted";
+    }catch(err){status.textContent="We couldn't send the writing. Check the internet connection and try again. "+(err&&err.message?err.message:"");b.disabled=false;b.textContent="Retry sending";return}
+    b.disabled=false;setTimeout(function(){b.textContent="Send writing to assessor"},4000);
+  }});
+}
+var playId=0;
+function say(i,done){
+  var id=++playId;speechSynthesis.cancel();
+  var parts=T[i].split(/(\{pause\}|\{short\}|\bSpeaker \d:|\b[A-Z][A-Za-z]+:)/),q=[],pitch=1,flip=0,names={};
+  parts.forEach(function(x){
+    x=x.trim();if(!x)return;
+    if(x==="{pause}"||x==="{short}"){q.push({w:x==="{pause}"?2500:1200});pitch=1;return}
+    var sp=x.match(/^Speaker (\d):$/);if(sp){q.push({t:"Speaker "+sp[1],p:1,w:700});return}
+    if(/^[A-Za-z 0-9 ]+:$/.test(x)){var n=x.slice(0,-1);if(!(n in names))names[n]=(flip++%2)?1.25:.85;pitch=names[n];return}
+    (x.match(/[^.?!]+[.?!]*/g)||[x]).forEach(function(z){q.push({t:z.trim(),p:pitch,w:300})})
+  });
+  var k=0;(function next(){
+    if(id!==playId)return;
+    if(k>=q.length){done();return}
+    var s=q[k++];
+    if(!s.t){setTimeout(next,s.w);return}
+    var u=new SpeechSynthesisUtterance(s.t);u.lang="en-GB";u.rate=0.95;u.pitch=s.p;
+    u.onend=function(){setTimeout(next,s.w)};u.onerror=function(){setTimeout(next,s.w)};
+    speechSynthesis.speak(u);
+  })()
+}
+
+function play(b){
+  if(b._busy)return;
+  var i=+b.dataset.i;
+  function fin(){b._busy=false;if(b._n>=2){b.disabled=true;b.textContent="Played twice"}else b.textContent="Play again (last time)"}
+  if(!AUDIO[i]&&(!window.speechSynthesis||!window.SpeechSynthesisUtterance)){b.textContent="TTS not supported in this browser.";return}
+  b._n=(b._n||0)+1;b._busy=true;b.textContent="Playing...";
+  if(AUDIO[i]){var a=new Audio(AUDIO[i]);a.onended=fin;a.onerror=fin;a.play()}else say(i,fin)
+}
+
+function init(){
+  [["t1",60],["t2",30],["t4",10],["sp1",4],["sp2",6]].forEach(function(a){if(document.getElementById(a[0]))timer(a[0],a[1])});
+  if(!FULL)return;
+  build(R,document.getElementById("rbox"),"r");
+  build(L,document.getElementById("lbox"),"l");
+  document.getElementById("ck1").onclick=function(){check(document.getElementById("rbox"),document.getElementById("sc1"))};
+  document.getElementById("ck2").onclick=function(){check(document.getElementById("lbox"),document.getElementById("sc2"))};
+  document.querySelectorAll(".say").forEach(function(b){b.onclick=function(){play(b)}});
+  winit();
+}
+
+(function(){
+  var g=document.getElementById("gate"),m=document.getElementById("main");
+  function show(){g.hidden=true;m.hidden=false;if(window.init)init()}
+  if(unlocked()){show();return}
+  document.getElementById("gf").onsubmit=function(e){
+    e.preventDefault();
+    if(document.getElementById("pw").value.trim()===PW){
+      try{sessionStorage.setItem("a2_key_test_9","1")}catch(x){}
+      show();
+    } else {
+      document.getElementById("err").textContent="Wrong password.";
+    }
+  }
+  
+  var themeBtn = document.getElementById('themeBtn');
+  if(themeBtn) {
+    themeBtn.onclick = function() {
+      var currentTheme = document.documentElement.getAttribute('data-theme');
+      if(currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        themeBtn.textContent = '🌙';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeBtn.textContent = '☀️';
+      }
+    };
+  }
+  
+  var menuToggle = document.getElementById('menuToggle');
+  if(menuToggle) {
+    menuToggle.onclick = function() {
+      document.body.classList.toggle('menuopen');
+    };
+  }
+  
+  var loginBtn = document.getElementById('loginBtn');
+  var dlg = document.getElementById('dlg');
+  var cancel = document.getElementById('cancel');
+  if(loginBtn && dlg) {
+    loginBtn.onclick = function() { dlg.showModal(); }
+  }
+  if(cancel && dlg) {
+    cancel.onclick = function() { dlg.close(); }
+  }
+})();
+</script>
+</body>
+</html>
