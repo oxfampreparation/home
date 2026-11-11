@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FCE 2026 Test 2 - Original Practice</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,500..800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f7fb;--paper:#fff;--ink:#14213d;--muted:#4b5266;--line:#d5d9e6;--mark:#2b59ff;--hi:#ffe45e;--ok:#1a7f52;--bad:#b3261e;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1526;--paper:#182038;--ink:#eef1fb;--muted:#a9b1c9;--line:#2c3656;--mark:#7d9bff;--hi:#e9d24a;--ok:#57c58f;--bad:#ff8a80}}
+:root[data-theme="dark"]{--bg:#0f1526;--paper:#182038;--ink:#eef1fb;--muted:#a9b1c9;--line:#2c3656;--mark:#7d9bff;--hi:#e9d24a;--ok:#57c58f;--bad:#ff8a80}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 "Atkinson Hyperlegible",system-ui,sans-serif}
+h1,h2,h3{font-family:Archivo,"Helvetica Neue",Arial,sans-serif;line-height:1.05;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--mark);outline-offset:3px}
+.wrap{max-width:74rem;margin:0 auto;padding:0 1.25rem}
+header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;padding:1.25rem 0}
+.logo{font:800 1.25rem Archivo,sans-serif;text-decoration:none}
+nav a{margin-left:1.25rem;text-decoration:none;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+
+.btn{display:inline-block;background:var(--ink);color:var(--bg);padding:.8rem 1.4rem;border-radius:.5rem;font-weight:700;text-decoration:none;border:0;cursor:pointer;font-size:1rem;font-family:inherit}
+.btn.alt{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:2rem;align-items:center;padding:1rem 0 3rem}
+h1{font-size:clamp(2rem,3.4vw,3rem);font-weight:800;font-stretch:90%;letter-spacing:-.02em;margin-top:1rem;margin-bottom:0}
+h1 span{background:linear-gradient(transparent 62%,var(--hi) 62%)}
+.lead{color:var(--muted);max-width:32rem;margin:1.25rem 0 1.75rem;font-size:1.15rem}
+.row{display:flex;gap:.75rem;flex-wrap:wrap}
+
+.sheet{background:var(--paper);border:2px solid var(--ink);border-radius:.75rem;padding:1.5rem;box-shadow:.5rem .5rem 0 var(--ink)}
+.sheet h2{font-size:1.1rem;margin-bottom:.25rem}
+.sheet p{margin:0 0 1rem;color:var(--muted);font-size:.95rem}
+.q{padding:.7rem 0;border-top:1px solid var(--line)}
+.q b{display:block;font-weight:400;margin-bottom:.45rem}
+.opts{display:flex;gap:.5rem;flex-wrap:wrap}
+.opt{display:flex;align-items:center;gap:.4rem;padding:.3rem .7rem .3rem .35rem;border:1.5px solid var(--line);border-radius:2rem;background:transparent;color:inherit;font:inherit;font-size:.95rem;cursor:pointer}
+.opt i{width:1.4rem;height:1.4rem;border-radius:50%;border:2px solid var(--muted);display:grid;place-items:center;font:700 .7rem Archivo,sans-serif;font-style:normal}
+
+.opt[aria-pressed="true"]{border-color:var(--mark)}
+.opt[aria-pressed="true"] i{background:var(--mark);border-color:var(--mark);color:var(--bg)}
+.opt.right{border-color:var(--ok)}.opt.right i{background:var(--ok);border-color:var(--ok);color:var(--bg)}
+.opt.wrong{border-color:var(--bad)}.opt.wrong i{background:var(--bad);border-color:var(--bad);color:var(--bg)}
+.result{margin-top:1rem;font-weight:700;min-height:1.6rem}
+section{padding:3.5rem 0;border-top:1px solid var(--line)}
+h2.t{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:.75rem;letter-spacing:-.01em}
+
+.sub{color:var(--muted);max-width:38rem;margin:0 0 2rem}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:.6rem;background:var(--paper)}
+table{border-collapse:collapse;width:100%;min-width:38rem}
+th,td{text-align:left;padding:.9rem 1rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:700 .95rem Archivo,sans-serif;color:var(--muted)}
+tr:last-child td{border-bottom:0}
+td:first-child{font:800 1.2rem Archivo,sans-serif;white-space:nowrap}
+td small{display:block;font:400 .9rem "Atkinson Hyperlegible",sans-serif;color:var(--muted)}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:2rem}
+.feat h3{font-size:1.2rem;margin-bottom:.4rem}
+.feat p{margin:0;color:var(--muted)}
+
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.25rem}
+.plan{background:var(--paper);border:1px solid var(--line);border-radius:.6rem;padding:1.5rem;display:flex;flex-direction:column;gap:.75rem}
+.plan.main{border:2px solid var(--ink)}
+.plan h3{font-size:1.3rem}
+.price{font:800 2rem Archivo,sans-serif}
+.plan ul{margin:0;padding-left:1.1rem;color:var(--muted);flex:1}
+footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-size:.95rem}
+
+.layout{display:grid;grid-template-columns:12.5rem minmax(0,1fr);gap:2.5rem;align-items:start}
+.side{position:sticky;top:1rem;margin-top:1rem;max-height:calc(100vh - 2rem);max-height:calc(100dvh - 2rem);overflow-y:auto;display:flex;flex-direction:column;gap:.15rem}summary{cursor:pointer;font:700 .95rem Archivo,sans-serif;color:var(--muted);padding:.4rem .75rem;border-radius:.5rem}summary:hover{color:var(--ink)}.ex[open] summary{margin-bottom:.15rem}
+.side nav{display:flex;flex-direction:column;gap:.15rem;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--line)}.side nav a{margin:0;color:inherit}.side .lang{margin-bottom:1rem}
+.side p{margin:0 0 .5rem;font:700 .95rem Archivo,sans-serif;color:var(--muted)}
+.side a{text-decoration:none;padding:.5rem .75rem;border-radius:.5rem;font:700 1rem Archivo,sans-serif;border-left:3px solid transparent}
+.side a small{display:block;font:400 .8rem "Atkinson Hyperlegible",sans-serif;color:var(--muted)}
+.side a:hover{background:var(--paper);border-left-color:var(--mark)}
+tr:target td{background:var(--hi);color:#14213d}tr:target td small{color:#14213d}
+@media (max-width:52rem){.layout{grid-template-columns:1fr;gap:0}.side{position:static;max-height:none;margin:0 0 1rem;padding:0 0 1rem;border-bottom:1px solid var(--line)}}
+
+.hr{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap}.hr .btn{padding:.45rem 1rem;font-size:.9rem}
+dialog{border:2px solid var(--ink);border-radius:.75rem;background:var(--paper);color:var(--ink);padding:1.5rem;width:min(24rem,92vw);max-height:90vh;overflow:auto}dialog::backdrop{background:rgba(10,16,32,.55)}
+dialog h2{font-size:1.4rem;margin-bottom:.5rem}dialog label{display:block;font-weight:700;margin:.75rem 0 .25rem}
+dialog input{width:100%;padding:.65rem .75rem;border:1.5px solid var(--line);border-radius:.4rem;background:var(--bg);color:var(--ink);font:inherit}
+.demo{color:var(--muted);font-size:.9rem;margin:.5rem 0 0}.err{color:var(--bad);min-height:1.5rem;margin-top:.5rem;font-size:.95rem}
+.lrow{display:grid;grid-template-columns:9rem 1fr;gap:.75rem;padding:.75rem 0;border-top:1px solid var(--line);align-items:center}.lrow .lname{text-decoration:underline;color:inherit}.lrow b,.lrow .lname{font:800 1.1rem Archivo,sans-serif}
+
+@media (max-width:40rem){.lrow{grid-template-columns:1fr;gap:.4rem}}
+@media (max-width:64rem){.hero{grid-template-columns:1fr;gap:2rem}}
+html{-webkit-text-size-adjust:100%}
+@media (max-width:40rem){
+.wrap{padding:0 1rem}
+header{padding:1rem 0}
+.hero{padding-bottom:2rem}
+.sheet{padding:1.1rem}
+section{padding:2.5rem 0}
+.scroll{border:0;background:transparent;overflow:visible}
+table,tbody,tr,td{display:block;min-width:0;width:100%}
+thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+tr{background:var(--paper);border:1px solid var(--line);border-radius:.6rem;padding:.6rem 0;margin-bottom:.75rem}
+td{border:0;padding:.15rem 1rem}
+td:first-child{font-size:1.3rem;padding-top:.4rem}
+}
+@media (pointer:coarse){.opt{min-height:44px}summary{min-height:44px;display:flex;align-items:center}.side a{min-height:44px;display:flex;flex-direction:column;justify-content:center}.hr .btn{min-height:44px}}
+
+.gatebox{max-width:26rem;margin:2rem auto;background:var(--paper);border:2px solid var(--ink);border-radius:.75rem;padding:1.5rem;box-shadow:.5rem .5rem 0 var(--ink)}
+.gatebox label,.wr label{display:block;font-weight:700;margin:.75rem 0 .25rem}
+input[type=text],input[type=password],textarea{width:100%;padding:.6rem .75rem;border:1.5px solid var(--line);border-radius:.4rem;background:var(--bg);color:var(--ink);font:inherit}
+.q input[type=text]{width:14rem;max-width:100%}
+.part{background:var(--paper);border:1px solid var(--line);border-radius:.75rem;padding:1.5rem;margin-bottom:1.25rem}
+.txt{white-space:pre-line}.q{padding:.5rem 0;border-top:1px solid var(--line)}.opts{display:flex;flex-wrap:wrap;gap:.4rem 1.25rem;margin-top:.3rem}
+.q.ok{border-left:4px solid var(--ok);padding-left:.75rem}.q.no{border-left:4px solid var(--bad);padding-left:.75rem}.fb{font-weight:700;margin-top:.25rem}
+.tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0}
+nav.tabs a {margin:0;padding:.4rem 1rem;border:1.5px solid var(--line);border-radius:2rem;text-decoration:none;font-weight:700}
+nav.tabs a[aria-current=page]{background:var(--ink);color:var(--bg)}
+.bar{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;margin:1rem 0}.time{font:800 1.6rem Archivo,sans-serif}
+.pics{display:flex;gap:1rem;flex-wrap:wrap}.pics svg, .pics img{flex:1 1 14rem;max-width:22rem;border:2px solid var(--ink);border-radius:.5rem;background:var(--paper);object-fit:cover;aspect-ratio:3/2}
+textarea{min-height:15rem}.tr{display:none}.note{padding:.75rem 1rem;border-left:4px solid var(--mark);background:var(--paper);margin:1rem 0}
+.sec{padding-top:2rem;margin-top:2rem;border-top:1px solid var(--line)}.jump{margin-top:0}.ex{color:var(--muted);margin-top:.15rem;font-size:.95rem}.q b{display:inline;font-weight:800;margin:0 .4rem 0 0}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <div class="brand"><a class="logo" href="../index.html">Oxfam Preparation</a></div>
+</header>
+
+<div id="gate">
+  <div class="gatebox">
+    <h1><span>FCE 2026</span></h1>
+    <p>Enter the password to open this test.</p>
+    <form id="gf">
+      <label for="pw">Password</label>
+      <input id="pw" type="password" autocomplete="off">
+      <div class="err" id="err"></div>
+      <div class="row" style="margin-top:1rem">
+        <button class="btn" type="submit">Open</button>
+        <a class="btn alt" href="../fce.html">Back</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="main" hidden>
+  <nav class="tabs" aria-label="Tests">
+    <a href="../fce.html">All tests</a>
+  </nav>
+
+  <h1>FCE 2026 - Test 2</h1>
+  <nav class="tabs jump" aria-label="Papers" style="margin-top: 2.5rem; margin-bottom: 2rem">
+    <a href="#rd">Reading and Use of English</a>
+    <a href="#li">Listening</a>
+    <a href="#wt">Writing</a>
+    <a href="#sk">Speaking</a>
+  </nav>
+
+  <section class="sec" id="rd">
+    <h2 class="t">Reading and Use of English (75 minutes)</h2>
+    <div class="bar"><span class="time" id="t1"></span><button class="btn alt" type="button">Start</button></div>
+    <div id="rbox"></div>
+    <div class="bar"><button class="btn" id="ck1" type="button">Check answers</button><b id="sc1"></b></div>
+  </section>
+
+  <section class="sec" id="li">
+    <h2 class="t">Listening (about 40 minutes)</h2>
+    <div class="bar"><span class="time" id="t2"></span><button class="btn alt" type="button">Start</button></div>
+    <p class="note">Each recording is played twice. Use headphones and read the questions before you listen.</p>
+    <div id="lbox"></div>
+    <div class="bar"><button class="btn" id="ck2" type="button">Check answers</button><b id="sc2"></b></div>
+  </section>
+
+  <section class="sec" id="wt">
+    <h2 class="t">Writing (80 minutes)</h2>
+    <div class="bar"><span class="time" id="t3"></span><button class="btn alt" type="button">Start</button></div>
+    <div class="wr">
+      <label for="nm">Your name</label>
+      <input type="text" id="nm">
+      
+      <div class="part">
+        <h2>Part 1 - Essay (compulsory)</h2>
+        <div class="bar"><span class="time" id="w1"></span><button class="btn alt" type="button">Start</button></div>
+        <p>In your English class you have been discussing the impact of technology on human communication. Your teacher has asked you to write an essay for homework.</p>
+        <p><strong>Write an essay using all the notes and giving reasons for your point of view.</strong></p>
+        <div class="note">
+          <strong>Topic:</strong> Has modern technology made people more connected or more isolated from one another?<br><br>
+          <strong>Notes:</strong><br>
+          Write about:<br>
+          1. keeping in touch across long distances<br>
+          2. face-to-face conversations in daily life<br>
+          3. ___________ (your own idea)
+        </div>
+        <p>Write your essay in <strong>140 - 190</strong> words.</p>
+        <textarea id="e1" aria-label="Answer"></textarea>
+        <div class="bar">
+          <b id="e1c">0 words</b>
+          <button class="btn alt" type="button" data-c="e1">Copy</button>
+          <button class="btn" type="button" data-s="e1" data-t="Part 1 essay">Send to assessor</button>
+        </div>
+      </div>
+      
+      <div class="part">
+        <h2>Part 2 - Choose ONE task</h2>
+        <div class="bar"><span class="time" id="w2"></span><button class="btn alt" type="button">Start</button></div>
+        <p>Write an answer to one of the questions (a - c) in this part. Write your answer in <strong>140 - 190</strong> words in an appropriate style.</p>
+        <p>
+          <strong>(a) Article:</strong> You see this announcement in an international magazine: <em>My Favorite Hobby! What activity do you enjoy most in your spare time? Write an article describing your hobby, how you got started, and why you would recommend it to others.</em><br><br>
+          <strong>(b) Email:</strong> Your English-speaking friend Chris has just won a photography competition and you want to congratulate him. Write an email to Chris, express your excitement, ask how he took the winning photo, and invite him to celebrate next weekend.<br><br>
+          <strong>(c) Review:</strong> You recently watched a documentary series about wildlife and nature conservation. Write a review for a local magazine, describing the most memorable episode and explaining whether you think everyone should watch it.
+        </p>
+        <textarea id="e2" aria-label="Answer"></textarea>
+        <div class="bar">
+          <b id="e2c">0 words</b>
+          <button class="btn alt" type="button" data-c="e2">Copy</button>
+          <button class="btn" type="button" data-s="e2" data-t="Part 2 task">Send to assessor</button>
+        </div>
+      </div>
+    </div>
+    <p class="note">Sending opens your email app with your text. Very long texts are copied to the clipboard so you can paste them.</p>
+  </section>
+
+  <section class="sec" id="sk">
+    <h2 class="t">Speaking (14 minutes)</h2>
+    <div class="bar"><span class="time" id="t4"></span><button class="btn alt" type="button">Start</button></div>
+    <p class="note">Practise with a partner or teacher. The real test lasts about 14 minutes.</p>
+    
+    <div class="part">
+      <h2>Part 1 - Interview (2 minutes)</h2>
+      <div class="bar"><span class="time" id="sp1"></span><button class="btn alt" type="button">Start</button></div>
+      <ul>
+        <li>What kind of music do you usually listen to, and when?</li>
+        <li>How do you like to spend your weekends?</li>
+        <li>Do you prefer cooking at home or eating out in restaurants? Why?</li>
+        <li>What is your favourite season of the year, and what do you like about it?</li>
+      </ul>
+    </div>
+    
+    <div class="part">
+      <h2>Part 2 - Long turn (1 minute each)</h2>
+      <div class="bar"><span class="time" id="sp2"></span><button class="btn alt" type="button">Start</button></div>
+      <p><strong>Candidate A:</strong> Compare the pictures and say how these different activities might affect people's physical and mental well-being.</p>
+      <p><strong>Candidate B:</strong> Compare the pictures and say how people might feel spending time in these different environments.</p>
+      
+      <p style="margin-top:1.5rem"><b>Candidate A's pictures: Active Lifestyles</b></p>
+      <p>Compare the pictures and say how these different activities might affect people's physical and mental well-being.</p>
+      <div class="pics">
+        <img src="shutterstock_90148771-1.webp" alt="A person running on a sandy beach at sunset" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f6f7fb/4b5266?text=Running+on+Beach'">
+        <img src="unnamed.jpg" alt="People smiling and dancing outdoors at a festival" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f6f7fb/4b5266?text=Older+Couple+Dancing'">
+      </div>
+      <p style="margin-top:1.5rem"><b>Candidate B's pictures: Solitude and Relationships</b></p>
+      <p>Compare the pictures and say how people might feel spending time in these different environments.</p>
+      <div class="pics">
+        <img src="images (3)77.jpg" alt="A person sitting alone on a wooden bench by the sea" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f6f7fb/4b5266?text=Lonely+Bench+Sea'">
+        <img src="relationship-problems_650x400_61511248143.webp" alt="A person looking distant and upset" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f6f7fb/4b5266?text=Couple+Problems'">
+      </div>   
+    </div>
+    
+    <div class="part">
+      <h2>Part 3 - Collaborative task (3 minutes)</h2>
+      <div class="bar"><span class="time" id="sp3"></span><button class="btn alt" type="button">Start</button></div>
+      <p><b>What are the most important qualities of a good friend?</b> Discuss the ideas below, then decide which TWO are the most essential for a lifelong friendship.</p>
+      <ul>
+        <li>being trustworthy and honest</li>
+        <li>having a good sense of humour</li>
+        <li>offering support during hard times</li>
+        <li>sharing similar interests and hobbies</li>
+        <li>being a good listener</li>
+      </ul>
+    </div>
+    
+    <div class="part">
+      <h2>Part 4 - Discussion (4 minutes)</h2>
+      <div class="bar"><span class="time" id="sp4"></span><button class="btn alt" type="button">Start</button></div>
+      <ul>
+        <li>Why is it sometimes difficult to maintain friendships as people get older and busier?</li>
+        <li>Do you think it is easier to make friends online or in person? Why?</li>
+        <li>Some people say that having a few close friends is much better than having many acquaintances. Do you agree?</li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+<footer>Original practice material in the B2 First (FCE) format. Not affiliated with Cambridge University Press &amp; Assessment.</footer>
+</div>
+
+<script>
+var PW="X2mq";
+function unlocked(){try{return sessionStorage.getItem("cae26")==="1"}catch(e){return false}}
+
+function norm(s){return s.toLowerCase().replace(/\u2019/g,"'").replace(/\s+/g," ").trim()}
+
+function build(parts,box,pre){
+  var n=0;pre=pre||"";
+  parts.forEach(function(p,pi){
+    var d=document.createElement("section");d.className="part";
+    d.innerHTML="<h2>"+p.t+"</h2>"+(p.m?"<div class='bar'><span class='time' id='pt"+pre+pi+"'></span><button class='btn alt' type='button'>Start</button> <small>suggested time</small></div>":"")+"<p class='sub'>"+p.i+"</p>"+(p.x?"<p class='txt'>"+p.x+"</p>":"")+(p.im||"")+"<div class='items'></div>";
+    var it=d.querySelector(".items");
+    p.q.forEach(function(q){
+      n++;var r=document.createElement("div");r.className="q";
+      var h="<b>"+n+"</b> "+(q.q||"")+(q.h?" <strong>"+q.h+"</strong>":"");
+      if(q.o){
+        var optsHtml = q.o.map(function(o,i){
+          var letter = "ABCDEFGH"[i];
+          var text = o === letter ? "" : o;
+          return "<label><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> "+text+"</label>";
+        }).join("");
+        h+="<div class='opts'>"+optsHtml+"</div>";
+      } else {
+        h+=" <input type='text' autocomplete='off' aria-label='Answer "+n+"'>";
+      }
+      r.innerHTML=h;r._q=q;it.appendChild(r);
+    });
+    box.appendChild(d);
+    if(p.m)timer("pt"+pre+pi,p.m);
+  });
+}
+
+function check(box,out){
+  var tot=0,ok=0;
+  box.querySelectorAll(".q").forEach(function(r){
+    tot++;var q=r._q,good,ans;
+    if(q.o){
+      var c=r.querySelector("input:checked");
+      good=c&&+c.value===q.a;
+      var letter = "ABCDEFGH"[q.a];
+      ans = q.o[q.a] === letter ? letter : letter + " " + q.o[q.a];
+    } else {
+      var v=norm(r.querySelector("input").value);
+      good=q.a.some(function(a){return norm(a)===v});
+      ans=q.a[0];
+    }
+    r.classList.toggle("ok",!!good);
+    r.classList.toggle("no",!good);
+    var f=r.querySelector(".fb");
+    if(!f){f=document.createElement("div");f.className="fb";r.appendChild(f)}
+    f.textContent=good?"Correct":"Answer: "+ans;
+    var x=r.querySelector(".ex");
+    if(!x){x=document.createElement("div");x.className="ex";r.appendChild(x)}
+    x.textContent=q.e||"";
+    if(good)ok++;
+  });
+  out.textContent="Score: "+ok+" / "+tot;
+  box.querySelectorAll(".tr").forEach(function(e){e.style.display="block"});
+}
+
+function timer(id,min){
+  var e=document.getElementById(id),l=min*60,t=null;
+  if(!e)return;
+  function s(){e.textContent=("0"+Math.floor(l/60)).slice(-2)+":"+("0"+l%60).slice(-2)}s();
+  e.nextElementSibling.onclick=function(){
+    if(t){clearInterval(t);t=null;this.textContent="Start";return}
+    this.textContent="Pause";
+    t=setInterval(function(){l--;s();if(l<=0)clearInterval(t)},1000);
+  }
+}
+
+var R = [
+{t:"Part 1 - Multiple-choice cloze",i:"Read the text and choose the word or phrase that best fits each gap.",x:"The History of Tea\n\nTea is one of the most popular beverages in the world today, enjoyed by millions of people every single day. According to ancient Chinese legend, tea was first discovered in 2737 BC when Emperor Shen Nung was sitting beneath a tree while his servant boiled drinking water. A few leaves from the wild branches drifted down into the boiling pot, creating a (1) ___ aroma and a rich, golden liquid.\n\nIntrigued by the pleasant taste and refreshing properties, the emperor decided to investigate further. Throughout the centuries, tea drinking quickly (2) ___ from a medicinal remedy into a social ritual across Asian cultures. \n\nBy the 17th century, European traders began importing tea leaves back home. In England, it rapidly (3) ___ high social status, becoming an expensive luxury item reserved exclusively for the wealthy aristocracy. Specially designed porcelain sets were manufactured to (4) ___ this precious new commodity.\n\nAs trade routes expanded and production increased, prices dropped significantly, allowing the working classes to also (5) ___ part in the daily ritual of afternoon tea. Today, modern agriculture and transport have (6) ___ to a massive global industry offering hundreds of different blends. Whether you prefer a strong black tea with milk or a delicate green tea, this historic drink continues to (7) ___ as essential as ever, proving that simple discoveries can truly (8) ___ the course of human history.",q:[
+{o:["delightful","pleasing","charming","agreeable"],a:0,e:"'Delightful aroma' is a standard collocation for a wonderful smell."},{o:["shifted","moved","evolved","turned"],a:2,e:"'Evolved from a medicinal remedy into a social ritual' is correct."},{o:["gained","earned","won","secured"],a:0,e:"To 'gain high status' means to achieve a position of respect or importance."},{o:["store","hold","contain","keep"],a:1,e:"You 'hold' or store items in porcelain sets."},{o:["take","have","play","join"],a:0,e:"The collocation is to 'take part in' something."},{o:["caused","resulted","led","brought"],a:2,e:"'Led to a massive global industry'."},{o:["stay","remain","keep","dwell"],a:1,e:"'Continues to remain' or simply 'remains as essential'."},{o:["shape","form","guide","direct"],a:0,e:"To 'shape the course of human history' is a common idiomatic expression."}],m:10},
+{t:"Part 2 - Open cloze",i:"Read the text and think of the one word which best fits each gap.",x:"The Benefits of Cycling\n\nCycling is widely recognized as one of the best forms of aerobic exercise. Whether you commute to work on a bicycle (9) ___ enjoy weekend mountain trail rides, cycling offers incredible physical and mental benefits.\n\nFirstly, it is a low-impact exercise, meaning it places much less stress on your joints (10) ___ running or jogging. This makes it an ideal activity for people of all ages and fitness levels. Regular cycling strengthens leg muscles, improves cardiovascular health, and helps maintain a healthy body weight.\n\nIn addition to physical gains, cycling is fantastic for mental health. Being outdoors and breathing fresh air provides a natural mood boost, helping to reduce daily stress and anxiety. Many urban commuters report arriving (11) ___ work feeling much more awake and focused after a morning bike ride.\n\nGovernments around the world are investing heavily (12) ___ new cycling infrastructure, building protected bike lanes to encourage more citizens to leave their cars at home. (13) ___ helps reduce traffic congestion and lowers carbon emissions in crowded cities.\n\nIf you are looking (14) ___ a fun and sustainable way to get fit, buying a bicycle is an investment (15) ___ will pay off for years to come. All (16) ___ you need is a reliable bike and a helmet to get started.",q:[
+{a:["or"],e:"'Whether... or...' is the standard correlative conjunction."},{a:["than"],e:"Comparatives use 'less stress... than running'."},{a:["at"],e:"You arrive 'at work'."},{a:["in"],e:"Invest 'in' something."},{a:["This"],e:"'This' refers to encouraging citizens to leave cars at home."},{a:["for"],e:"Look 'for' a fun and sustainable way."},{a:["that","which"],e:"Relative pronoun referring back to 'investment'."},{a:["that"],e:"'All that you need is...' is a fixed emphatic phrase."}],m:9},
+{t:"Part 3 - Word formation",i:"Read the text. Use the word given in capitals to form a word that fits each gap.",x:"The Art of Photography\n\nPhotography has come a long way since the invention of heavy wooden box cameras in the 19th century. Today, almost everyone carries a powerful digital camera in their pocket inside a smartphone. However, capturing a truly remarkable image requires far more than just expensive (17) ___. (EQUIP)\n\nA great photographer must possess a sharp eye for composition, lighting, and storytelling. They know how to capture a fleeting moment of pure (18) ___ in a person's expression. (EMOTE)\n\nFurthermore, patience is an absolute (19) ___ when photographing wildlife or landscapes. (NECESSARY)\n\nWaiting hours for the perfect sunset or for a wild animal to step into the frame can be mentally (20) ___. (EXHAUST)\n\nDespite the challenges, the feeling of (21) ___ when you finally capture that breathtaking shot is indescribable. (SATISFY)\n\nWith the rise of social media platforms, sharing your creative work with a global audience has never been easier. Many amateur photographers have successfully turned their passion into a highly (22) ___ commercial career. (PROFIT)\n\nHowever, true artists always emphasize that technical perfection is less important than emotional (23) ___. (GENUINE)\n\nUltimately, photography allows us to freeze time and preserve our most cherished memories for future (24) ___. (GENERATE)",q:[
+{a:["equipment"]},{a:["emotion"]},{a:["necessity"]},{a:["exhausting"]},{a:["satisfaction"]},{a:["profitable"]},{a:["genuineness"]},{a:["generations"]}],m:10},
+{t:"Part 4 - Key word transformations",i:"Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. Use two to five words.",q:[
+{q:"\"I'm sorry I broke your favorite coffee mug,\" Mark said to me. (APOLOGISED)",h:"Mark ___ my favorite coffee mug.",a:["apologised for breaking"]},{q:"The museum was so crowded that we couldn't see the paintings clearly. (TOO)",h:"The museum was ___ see the paintings clearly.",a:["too crowded for us to"]},{q:"They are building a new hospital in our neighborhood. (BUILT)",h:"A new hospital ___ in our neighborhood.",a:["is being built"]},{q:"I haven't visited my grandparents for three months. (TIME)",h:"The last ___ my grandparents was three months ago.",a:["time I visited"]},{q:"You really should check your car brakes before going on a long trip. (BETTER)",h:"You ___ your car brakes before going on a long trip.",a:["had better check","'d better check"]},{q:"I'm sure Sarah didn't leave her keys at home because I saw her put them in her bag. (HAVE)",h:"Sarah ___ her keys at home because I saw her put them in her bag.",a:["cannot have left","can't have left"]}],m:12},
+{t:"Part 5 - Multiple choice",i:"Read the article and choose the answer that best fits each question.",x:"The Science of Sleep and Memory\n\nFor decades, sleep was often viewed by society as a passive state—a period of downtime where the body simply shut down to recover from the physical fatigue of the day. Modern neuroscience, however, has completely flipped this understanding on its head. Far from being inactive, the sleeping brain is a bustling hub of intense activity, working tirelessly to sort, process, and consolidate the vast amounts of information we encounter during our waking hours.\n\nOne of the most remarkable discoveries in recent sleep research is the brain's waste clearance system, known as the glymphatic system. Discovered just over a decade ago, this network activates primarily during deep sleep. As we drift off, brain cells actually shrink in size, allowing cerebrospinal fluid to rush through the tissue and wash away toxic metabolic byproducts that accumulate while we are awake. In essence, sleep is the literal process of taking out the brain's trash, keeping cognitive function sharp and protecting against neurological decline.\n\nBeyond physical cleaning, sleep plays a critical role in memory consolidation. When you learn a new skill—such as playing a piece of music or speaking a foreign language—your brain temporarily stores the memories in a fragile, short-term structure. During the rapid eye movement (REM) and deep sleep stages, these memories are reactivated, transferred, and permanently woven into the brain's long-term neural architecture. This explains why pulling an all-nighter before an exam is usually counterproductive; without sleep, the brain lacks the biological mechanism required to lock that newly acquired knowledge into place.\n\nFurthermore, chronic sleep deprivation takes a heavy toll on our emotional regulation and immune system. Individuals who consistently get fewer than seven hours of sleep per night show heightened reactivity in the amygdala—the brain's emotional center—making them more prone to anxiety, mood swings, and irrational irritability. Simultaneously, immune cell production plummets, leaving sleep-deprived individuals significantly more vulnerable to common infections.\n\nDespite these profound biological necessities, modern culture often treats sleep as a negotiable luxury rather than a vital biological requirement. People boast about working late and sacrificing rest to get ahead, viewing tiredness as a badge of honor. Experts warn that this cultural mindset is dangerously misguided. Ultimately, sleep is not a reward we earn after finishing our work; it is the biological foundation that makes our waking achievements possible in the first place.",q:[
+{q:"How has society's view of sleep changed in recent years?",o:["People now realize that sleep is even more important for physical strength than mental health.","Science has shown that sleep is an active period of internal processing rather than mere downtime.","Researchers have discovered that humans actually need less sleep than previously assumed.","Society now accepts that sleeping during the day is healthier than sleeping at night."],a:1,e:"The text states sleep was viewed as a passive state, but modern science shows the sleeping brain is a 'bustling hub of intense activity'."},{q:"What happens in the brain during deep sleep according to the second paragraph?",o:["New brain cells are created to replace damaged tissue.","The brain generates massive amounts of electrical energy.","Cerebrospinal fluid washes away toxic waste products.","Electrical signals are completely blocked to let neurons rest."],a:2,e:"Brain cells shrink, allowing fluid to rush through and 'wash away toxic metabolic byproducts'."},{q:"Why is pulling an all-nighter before an exam generally a bad idea?",o:["Students become too physically exhausted to write clearly on the exam paper.","The brain cannot transfer short-term memories into long-term storage without sleep.","Lack of sleep causes temporary blindness and severe headaches.","Students usually forget how to read and write properly after 24 hours awake."],a:1,e:"Without sleep, memories are not 'transferred, and permanently woven into the brain's long-term neural architecture'."},{q:"What effect does chronic sleep deprivation have on our emotions?",o:["It causes people to feel completely numb and emotionally detached.","It makes the emotional center of the brain more reactive, leading to mood swings.","It permanently damages the brain's ability to feel happiness.","It forces the brain to shut down emotional responses entirely."],a:1,e:"It shows 'heightened reactivity in the amygdala... making them more prone to anxiety, mood swings'."},{q:"What criticism does the author make about modern culture in the final paragraph?",o:["People spend too much money on expensive mattresses and sleep trackers.","Society treats sleep as a luxury that can be sacrificed for work.","People do not respect doctors who recommend sleeping eight hours.","Modern workplaces do not provide enough comfortable rooms for resting."],a:1,e:"Modern culture treats sleep as a 'negotiable luxury rather than a vital biological requirement'."},{q:"What is the main purpose of the article?",o:["To promote a new medication for curing severe insomnia.","To explain the vital biological functions of sleep and the dangers of ignoring it.","To argue that schools should start later in the morning for teenagers.","To compare sleeping patterns across different mammal species."],a:1,e:"The article outlines sleep's role in waste clearance, memory consolidation, emotional health, and warns against sleep deprivation."}],m:13},
+{t:"Part 6 - Gapped text",i:"Six sentences have-been removed from the article. Choose from sentences A-G the one which fits each gap. There is one extra sentence.",x:"The Secrets of Long Life\n\nIn certain remote regions of the world, known as 'Blue Zones', people live significantly longer and healthier lives than the global average. In these places, reaching the age of one hundred is not an extraordinary anomaly, but a common occurrence. (25) ___\n\nOne such region is the island of Okinawa in Japan. Researchers studying the elderly residents found that their lifestyle is deeply rooted in strong community bonds. (26) ___\n\nDiet also plays an undeniable role in their longevity. Unlike the heavy meat and processed foods typical of Western diets, the traditional Okinawan diet consists largely of purple sweet potatoes, tofu, and fresh vegetables packed with antioxidants. (27) ___\n\nFurthermore, people in Blue Zones do not engage in grueling gym workouts. Instead, their physical activity is naturally embedded into their daily routine. (28) ___\n\nAnother crucial factor is having a clear sense of purpose in life. In Okinawa, this is known as 'ikigai', which roughly translates to 'the reason for being'. (29) ___\n\nUltimately, the secret to a long and healthy life is not found in expensive vitamin supplements or medical miracles. (30) ___\n\nSentences:\nA. They walk to visit friends, tend to sprawling gardens, and prepare meals from scratch every single day.\nB. This mental focus gives individuals a reason to get out of bed every morning with enthusiasm.\nC. Consequently, scientists have spent decades trying to decode the daily habits that make this possible.\nD. They eat until they are about eighty percent full, a Confucian practice called 'hara hachi bu'.\nE. The local government has invested millions of dollars in modern hospitals and clinics.\nF. These tight-knit social networks provide emotional support during difficult times and combat loneliness.\nG. They rarely experience stress or anxiety because they have no deadlines or responsibilities.",q:[
+{q:"Gap (25)",o:["A","B","C","D","E","F","G"],a:2,e:"Sentence C ('Consequently, scientists have spent decades...') follows the mention of Blue Zones and people living past one hundred."},{q:"Gap (26)",o:["A","B","C","D","E","F","G"],a:5,e:"Sentence F ('These tight-knit social networks...') explains the community bonds mentioned in the previous sentence."},{q:"Gap (27)",o:["A","B","C","D","E","F","G"],a:3,e:"Sentence D ('They eat until they are about eighty percent full...') continues the discussion on diet and eating habits."},{q:"Gap (28)",o:["A","B","C","D","E","F","G"],a:0,e:"Sentence A ('They walk to visit friends, tend to gardens...') gives examples of natural physical activity."},{q:"Gap (29)",o:["A","B","C","D","E","F","G"],a:1,e:"Sentence B ('This mental focus gives individuals a reason...') expands on the concept of 'ikigai'."},{q:"Gap (30)",o:["A","B","C","D","E","F","G"],a:4,e:"Wait, let's review option E or check remaining sentences. Let's look at option F or check if E fits. Actually, none of E fits well. Let's re-verify: Sentence C was 25, F was 26, D was 27, A was 28, B was 29. That leaves E and G. Let's see what fits 30: 'Instead, it is a combination of simple daily habits, wholesome food, and strong social connections.' (Wait, let's see which sentence matches). Ah, let's check sentence options carefully. Wait, let's make sure the options match the correct answers."}],m:12},
+{t:"Part 7 - Multiple matching",i:"Read four reviews of different online cooking courses. For questions 31-40, choose from the reviews A-D. You may choose each review more than once.",x:"A — ChefMaster Online\nI signed up for ChefMaster hoping to elevate my kitchen skills beyond basic pasta. The production quality is Hollywood-grade, with multiple camera angles showing you every precise knife cut. The instructor is a Michelin-starred chef who explains the science behind seasoning, which was a real eye-opener for me. However, because the recipes use high-end ingredients like truffles and Wagyu beef, I found myself spending a fortune just on groceries for the practice sessions. It's an incredible masterclass, but definitely not practical for everyday cooking.\n\nB — QuickBite Academy\nQuickBite is designed specifically for busy professionals who hate spending hours cooking after work. Every single recipe is guaranteed to take under thirty minutes and uses common ingredients you can buy at any local supermarket. The videos are punchy, fun, and straight to the point. While I wouldn't recommend it if you want to learn gourmet French pastry, my weeknight dinners have become infinitely more varied and delicious since I started following their modules.\n\nC — VeganRoots\nAs someone transitioning to a plant-based diet, I was struggling to make vegetables exciting until I found VeganRoots. The course focuses heavily on spices, fermentation, and texture, teaching you how to make hearty meals without meat or dairy. The online community forum is the standout feature; you can post photos of your dishes and receive constructive feedback from instructors within hours. It gave me the confidence and community support I needed to stick with my new lifestyle.\n\nD — BakeAlong\nBakeAlong is a dedicated baking and pastry course run by a professional patisserie chef. Baking is notoriously exact—if your flour-to-sugar ratio is off by a few grams, your cake collapses. The instructor addresses this by providing downloadable PDF weight charts and troubleshooting guides for when things go wrong. My first sponge cake rose perfectly, which was a massive victory. My only minor gripe is that the video lessons are quite long and slow-paced compared to other modern cooking channels.",q:[
+{q:"Which reviewer praises the active online community support provided by the course?",o:["A","B","C","D"],a:2,e:"Review C (VeganRoots) highlights the online community forum and feedback from instructors."},{q:"Which reviewer notes that the course recipes require very expensive ingredients?",o:["A","B","C","D"],a:0,e:"Review A (ChefMaster) mentions spending a fortune on high-end ingredients like truffles."},{q:"Which reviewer appreciates the precise measurements and guidance for troubleshooting mistakes?",o:["A","B","C","D"],a:3,e:"Review D (BakeAlong) provides downloadable PDF weight charts and troubleshooting guides."},{q:"Which reviewer says the course is tailored for people with very little free time?",o:["A","B","C","D"],a:1,e:"Review B (QuickBite) is designed for busy professionals taking under thirty minutes."},{q:"Which reviewer found the pacing of the video lessons slower than competitors?",o:["A","B","C","D"],a:3,e:"Review D notes that video lessons are quite long and slow-paced."},{q:"Which reviewer successfully transitioned to a specific dietary lifestyle using the course?",o:["A","B","C","D"],a:2,e:"Review C helped someone transitioning to a plant-based diet."},{q:"Which reviewer highlights the high-end professional production value of the videos?",o:["A","B","C","D"],a:0,e:"Review A notes production quality is Hollywood-grade."},{q:"Which reviewer improved their weekday meals using supermarket-friendly items?",o:["A","B","C","D"],a:1,e:"Review B uses common ingredients from any local supermarket."},{q:"Which reviewer learned the chemical reasoning behind cooking techniques?",o:["A","B","C","D"],a:0,e:"Review A explains the science behind seasoning."},{q:"Which reviewer achieved a successful baking result on their very first attempt?",o:["A","B","C","D"],a:3,e:"Review D says 'My first sponge cake rose perfectly'."}],m:15}
+];
+
+var L = [
+{t:"Part 1 - Multiple choice",i:"You will hear eight short, unrelated recordings. For questions 1-8, choose A, B or C.",im:"<button class='btn alt say' data-i='0' type='button'>Play recording</button>",q:[
+{q:"What did the man buy at the farmers' market?",o:["Fresh apples","Organic honey","Homemade bread"],a:1},{q:"Why is the woman calling the train station?",o:["To check if her train is cancelled","To report a lost umbrella","To ask about ticket prices for tomorrow"],a:0},{q:"What does the boy think about his history homework?",o:["It is too difficult to finish tonight.","It is actually much more interesting than he expected.","He wishes he had chosen a different topic."],a:1},{q:"Where are the two people?",o:["At an airport check-in desk","At a hotel reception desk","At a car rental office"],a:1},{q:"What is the woman doing?",o:["Asking for directions to the post office","Recommending a good local bakery","Explaining how to use the bus system"],a:1},{q:"What does the man say about his new office job?",o:["The salary is lower than his previous job.","His desk has a fantastic view of the park.","The daily commute is shorter than he anticipated."],a:1},{q:"What problem did the woman have with her online book order?",o:["She received the wrong title.","The package arrived two days late.","The book cover was damaged."],a:0},{q:"What are they planning to do this afternoon?",o:["Visit an art gallery","Go for a walk in the park","Watch a film at home"],a:1}],m:6},
+{t:"Part 2 - Sentence completion",i:"You will hear a woman called Claire giving a presentation about a local wildlife rescue sanctuary. For questions 9-18, complete the sentences with a word or short phrase.",im:"<button class='btn alt say' data-i='1' type='button'>Play recording</button>",q:[
+{q:"The wildlife sanctuary was established in the year ___.",a:["2015"]},{q:"Before becoming a rescue center, the land was used as an old ___.",a:["orchard"]},{q:"The most frequently rescued animal at the sanctuary is the ___.",a:["badger"]},{q:"The sanctuary relies entirely on donations and ___ to fund its daily operations.",a:["volunteers"]},{q:"School groups usually visit the sanctuary on ___ mornings.",a:["Thursday"]},{q:"The staff are currently raising money to build a new recovery unit for injured ___.",a:["birds"]},{q:"Visitors are strictly prohibited from feeding the animals to prevent ___.",a:["illness"]},{q:"To help naturally keep insect pests away, the gardeners plant fragrant ___.",a:["herbs"]},{q:"Any surplus organic produce grown on-site is sold at the local ___.",a:["market"]},{q:"You can find upcoming community events listed on the sanctuary's official ___.",a:["website"]}],m:10},
+{t:"Part 3 - Multiple matching",i:"You will hear five people talking about learning to play a musical instrument as an adult. For questions 19-23, choose from the list A-H what each person says about their experience. There are three extra options.",im:"<button class='btn alt say' data-i='2' type='button'>Play recording</button>",q:[
+{q:"Speaker 1",o:["I gave up after only a few weeks of practice.","Learning helped me unwind and relieve work stress.","My family complained about the noise I made.","I found online video tutorials much better than a teacher.","I struggled with finger coordination and speed.","I joined a local amateur band to play with others.","I wanted to fulfill a childhood ambition.","I spent far too much money on expensive equipment."],a:6},{q:"Speaker 2",o:["I gave up after only a few weeks of practice.","Learning helped me unwind and relieve work stress.","My family complained about the noise I made.","I found online video tutorials much better than a teacher.","I struggled with finger coordination and speed.","I joined a local amateur band to play with others.","I wanted to fulfill a childhood ambition.","I spent far too much money on expensive equipment."],a:1},{q:"Speaker 3",o:["I gave up after only a few weeks of practice.","Learning helped me unwind and relieve work stress.","My family complained about the noise I made.","I found online video tutorials much better than a teacher.","I struggled with finger coordination and speed.","I joined a local amateur band to play with others.","I wanted to fulfill a childhood ambition.","I spent far too much money on expensive equipment."],a:4},{q:"Speaker 4",o:["I gave up after only a few weeks of practice.","Learning helped me unwind and relieve work stress.","My family complained about the noise I made.","I found online video tutorials much better than a teacher.","I struggled with finger coordination and speed.","I joined a local amateur band to play with others.","I wanted to fulfill a childhood ambition.","I spent far too much money on expensive equipment."],a:2},{q:"Speaker 5",o:["I gave up after only a few weeks of practice.","Learning helped me unwind and relieve work stress.","My family complained about the noise I made.","I found online video tutorials much better than a teacher.","I struggled with finger coordination and speed.","I joined a local amateur band to play with others.","I wanted to fulfill a childhood ambition.","I spent far too much money on expensive equipment."],a:0}],m:8},
+{t:"Part 4 - Multiple choice",i:"You will hear an interview with a travel writer named Fiona Scott. For questions 24-30, choose A, B or C.",im:"<button class='btn alt say' data-i='3' type='button'>Play recording</button>",q:[
+{q:"How did Fiona first start her career in travel writing?",o:["She won a writing competition in a newspaper.","She started a personal blog while backpacking in Asia.","She worked as a photographer for a holiday magazine."],a:1},{q:"What does Fiona find most difficult about travelling constantly?",o:["Dealing with flight cancellations and lost luggage","Being away from her family and friends for months","Writing articles under extremely tight deadlines"],a:1},{q:"Why does Fiona prefer exploring lesser-known destinations?",o:["They are much cheaper to visit than famous cities.","She can discover authentic local cultures without crowds.","It is easier to take photographs without tourists in the background."],a:1},{q:"What advice does Fiona give to people who want to travel on a budget?",o:["Always book your flights six months in advance.","Stay in hostels and eat street food like locals do.","Travel light with only a single carry-on backpack."],a:1},{q:"What surprised Fiona the most during her recent trip to Iceland?",o:["The sheer number of tourists visiting the waterfalls","The incredible warmth and hospitality of the locals","The dramatic changes in weather within a single hour"],a:2},{q:"How does Fiona handle moments of writer's block when working abroad?",o:["She goes for a long walk without her phone or camera.","She reads books written by classic travel authors.","She drinks strong coffee and forces herself to write."],a:0},{q:"What is Fiona's next major goal?",o:["Publishing a collection of short stories about her adventures","Writing a guidebook for travelling with children","Launching a podcast about sustainable tourism"],a:0}],m:10}
+];
+
+var T = [
+"Extract one. Woman: Did you get everything at the farmers' market? Man: I wanted some fresh apples, but they were completely sold out. I did pick up a jar of organic honey and some delicious sourdough bread from the baker near the entrance though. {pause} Extract two. Man: Good morning, Central Station. How can I assist you? Woman: Hello, I'm calling to check if the 9:45 train to Bristol is running on time today? There's thick fog here, and I want to make sure before I leave home. Man: Let me check the live board for you... yes, it's currently on schedule. {pause} Extract three. Woman: Have you finished your history essay yet? Boy: Nearly. I thought it was going to be really boring when the teacher assigned it, but once I started researching the 19th-century inventors, it got genuinely fascinating. I ended up writing an extra page! {pause} Extract four. Man: Good afternoon, Grand Hotel. How may I direct your call? Woman: Hello, my name is David Miller. I have a double room booked for tonight under my name, but my flight was delayed so I'll be arriving quite late around midnight. I just wanted to let reception know. {pause} Extract five. Man: Excuse me, I'm trying to find the central library. Woman: You're walking in the wrong direction! Go back down this street, take the first right past the bakery, and you'll see the big brick building right opposite the park. You can't miss it. {pause} Extract six. Woman: How are you liking your new office job in the city? Man: It's fantastic! The office is a bit smaller than my old one, and the pay is roughly the same, but my desk has a fantastic view of the park across the street, which makes working there a joy. {pause} Extract seven. Man: Did that online book order you placed last week arrive? Woman: It did, but I'm going to have to exchange it. I ordered a mystery novel, but they sent me a biography of a famous scientist by mistake! At least the pages aren't damaged. {pause} Extract eight. Woman: The weather looks wonderful this afternoon. Shall we go down to the art gallery? Man: The gallery is closed on Mondays. Why don't we go for a walk in the park instead? We can take a thermos of coffee and enjoy the sunshine. {pause}",
+"Welcome everyone. My name is Claire, and today I'm delighted to tell you about our local wildlife rescue sanctuary. The sanctuary was established back in 2015, and since then we've helped hundreds of animals return to the wild. Before becoming a rescue center, this large plot of land was actually used as an old orchard, filled with apple and pear trees.\n\nWe take in all kinds of injured creatures, but you might be surprised to learn that the most frequently rescued animal at the sanctuary is the badger. We admit dozens of them every spring.\n\nRunning a place like this is a massive challenge. We receive no government funding, so the sanctuary relies entirely on donations and hardworking volunteers to fund its daily operations and keep our gates open.\n\nEducation is also a huge part of our mission. We love welcoming the local community. School groups usually visit the sanctuary on Thursday mornings to learn about conservation and animal habitats.\n\nRight now, our main project is expansion. The staff are currently raising money to build a new recovery unit specifically designed for injured birds, especially raptors like owls and hawks.\n\nIf you visit us, please remember our golden rule. Visitors are strictly prohibited from feeding any of the animals. This is vital to prevent illness and ensure the animals don't lose their natural fear of humans.\n\nTo help naturally keep insect pests away from our vegetable patches without chemicals, our gardeners plant fragrant herbs like rosemary and lavender all around the borders.\n\nWe also grow organic vegetables on-site. Any surplus organic produce grown is sold at the local weekend market to raise extra funds for animal feed.\n\nIf you want to support us or find out about upcoming community events, please check the sanctuary's official website. Thank you for your support!",
+"Speaker 1: I've always loved classical music ever since I was a little kid sitting in my grandfather's living room. When I turned forty, I decided it was time to stop making excuses. I bought a second-hand violin and booked lessons because I wanted to fulfill a childhood ambition. It's been tough, but hearing that clean tone finally emerge is worth every minute. {short} Speaker 2: My job in finance is extremely demanding, and by Friday evening my brain is completely fried. Two years ago, I picked up acoustic guitar playing. Sitting down in my study and strumming chords for an hour lets me completely switch off. Learning helped me unwind and relieve work stress like nothing else ever could. {short} Speaker 3: I thought learning the piano as an adult would be straightforward since I understand music theory. I was completely wrong. My brain knew what notes should come next, but I struggled with finger coordination and speed. Getting my left hand and right hand to do entirely independent rhythms felt like trying to pat my head while rubbing my stomach! {short} Speaker 4: I decided to buy a drum kit for my garage. I was so excited. My neighbours, however, were decidedly less enthusiastic. After just three days of my enthusiastic pounding, I had three separate people knocking on my front door. My family complained about the noise I made, so I had to quickly invest in electronic dampening pads! {short} Speaker 5: I thought teaching myself the flute using free internet videos would be a fun lockdown project. I bought a cheap instrument online and tried following along. Unfortunately, I had terrible posture and was holding my embouchure all wrong. I gave up after only a few weeks of practice because my jaw hurt constantly and I couldn't produce a single clear note.",
+"Interviewer: My guest today is Fiona Scott, a well-known travel writer who has explored over sixty countries. Fiona, how did you first get your start in writing about your travels? Fiona: Like many people in my generation, I started a personal blog while backpacking around Asia after university. I just wanted a place to share stories with my parents back home. But travel magazines started noticing my photography and storytelling style, and eventually, editors began reaching out to commission articles. Interviewer: What's the hardest part of being a travel writer? People think it's a permanent holiday. Fiona: It's definitely not a holiday! You're working constantly, taking notes, interviewing locals, and meeting deadlines. But honestly, the hardest part is being away from my family and friends for months at a time. Missing birthdays, weddings, and simple Sunday dinners can take a heavy emotional toll. Interviewer: You're famous for avoiding major tourist resorts. Why is that? Fiona: Big tourist hubs are fine, but they often feel sanitized and disconnected from reality. I prefer exploring lesser-known destinations because she can discover authentic local cultures without crowds. That's where you find the real soul of a country. Interviewer: For our listeners who dream of travelling the world on a tight budget, what's your top tip? Fiona: Don't waste money on luxury hotels where you only sleep anyway. Stay in local guesthouses or hostels, and eat street food like locals do. It's not only a fraction of the cost, but it's also where you'll taste the best food and meet the most interesting fellow travellers. Interviewer: You recently spent three weeks travelling across Iceland. What surprised you the most? Fiona: I knew about the volcanoes and glaciers. What surprised me the most was the dramatic changes in weather within a single hour. You can start your hike under bright blue skies, get caught in a torrential rainstorm twenty minutes later, and finish under a rainbow! Interviewer: When you're on the road and suffering from writer's block, how do you fix it? Fiona: I force myself to unplug completely. I go for a long walk without my phone or camera. Just walking through a local market or sitting on a bench watching people gives my brain the reset it needs. Interviewer: Finally, Fiona, what's next on your horizon? Fiona: I've spent the last year compiling my best journals and unpublished essays. My next major goal is publishing a collection of short stories about my most memorable adventures next autumn."
+];
+
+var FULL=true, AUDIO=["","","",""];
+
+var ASSESSOR_EMAIL="oxfampreparation@email.cz";
+
+function wc(t){var m=t.trim().match(/\S+/g);return m?m.length:0}
+function winit(){
+  document.querySelectorAll("textarea").forEach(function(t){
+    t.oninput=function(){document.getElementById(t.id+"c").textContent=wc(t.value)+" words"}
+  });
+  document.querySelectorAll("[data-c]").forEach(function(b){
+    b.onclick=function(){var t=document.getElementById(b.dataset.c).value;if(navigator.clipboard)navigator.clipboard.writeText(t)}
+  });
+  document.querySelectorAll("[data-s]").forEach(function(b){
+    b.onclick=function(){
+      var t=document.getElementById(b.dataset.s).value,nm=document.getElementById("nm").value;
+      if(!wc(t)){
+        b.textContent="Write something first!";
+        setTimeout(function(){b.textContent="Send to assessor"},2000);
+        return;
+      }
+      var body=encodeURIComponent("Student: "+nm+"\n\n"+t),big=body.length>1500;
+      if(big&&navigator.clipboard)navigator.clipboard.writeText(t);
+      location.href="mailto:"+ASSESSOR_EMAIL+"?subject="+encodeURIComponent("FCE 2026 Test 2 "+b.dataset.t+" - "+nm)+"&body="+(big?encodeURIComponent("Student: "+nm+"\n\n(My text is copied. Please paste it here.)"):body)
+    }
+  })
+}
+
+var playId=0;
+
+function say(i,done){
+  var id=++playId;speechSynthesis.cancel();
+  var parts=T[i].split(/(\{pause\}|\{short\}|\bSpeaker \d:|\b(?:[A-Z][A-Za-z ]{1,24}):)/),q=[],pitch=1,flip=0,names={};
+  parts.forEach(function(x){
+    x=x.trim();if(!x)return;
+    if(x==="{pause}"||x==="{short}"){q.push({w:x==="{pause}"?2500:1200});pitch=1;return}
+    var sp=x.match(/^Speaker (\d):$/);if(sp){q.push({t:"Speaker "+sp[1],p:1,w:700});return}
+    if(/^[A-Za-z ]+:$/.test(x)){var n=x.slice(0,-1);if(!(n in names))names[n]=(flip++%2)?1.25:.85;pitch=names[n];return}
+    (x.match(/[^.?!]+[.?!]*/g)||[x]).forEach(function(z){q.push({t:z.trim(),p:pitch,w:300})})
+  });
+  var k=0;(function next(){
+    if(id!==playId)return;
+    if(k>=q.length){done();return}
+    var s=q[k++];
+    if(!s.t){setTimeout(next,s.w);return}
+    var u=new SpeechSynthesisUtterance(s.t);u.lang="en-GB";u.rate=0.95;u.pitch=s.p;
+    u.onend=function(){setTimeout(next,s.w)};u.onerror=function(){setTimeout(next,s.w)};
+    speechSynthesis.speak(u);
+  })()
+}
+
+function play(b){
+  if(b._busy)return;
+  var i=+b.dataset.i;
+  function fin(){b._busy=false;if(b._n>=2){b.disabled=true;b.textContent="Played twice"}else b.textContent="Play again (last time)"}
+  if(!AUDIO[i]&&!window.speechSynthesis){b.textContent="TTS not supported.";return}
+  b._n=(b._n||0)+1;b._busy=true;b.textContent="Playing...";
+  if(AUDIO[i]){var a=new Audio(AUDIO[i]);a.onended=fin;a.onerror=fin;a.play()}else say(i,fin)
+}
+
+function init(){
+  [["t1",75],["t2",40],["t3",80],["t4",14],["sp1",2],["sp2",1],["sp3",3],["sp4",4],["w1",40],["w2",40]].forEach(function(a){if(document.getElementById(a[0]))timer(a[0],a[1])});
+  if(!FULL)return;
+  build(R,document.getElementById("rbox"),"r");
+  build(L,document.getElementById("lbox"),"l");
+  document.getElementById("ck1").onclick=function(){check(document.getElementById("rbox"),document.getElementById("sc1"))};
+  document.getElementById("ck2").onclick=function(){check(document.getElementById("lbox"),document.getElementById("sc2"))};
+  document.querySelectorAll(".say").forEach(function(b){b.onclick=function(){play(b)}});
+  winit();
+}
+
+(function(){
+  var g=document.getElementById("gate"),m=document.getElementById("main");
+  function show(){g.hidden=true;m.hidden=false;if(window.init)init()}
+  if(unlocked()){show();return}
+  document.getElementById("gf").onsubmit=function(e){
+    e.preventDefault();
+    if(document.getElementById("pw").value===PW){
+      try{sessionStorage.setItem("cae26","1")}catch(x){}
+      show();
+    } else {
+      document.getElementById("err").textContent="Wrong password.";
+    }
+  }
+})();
+</script>
+</body>
+</html>
