@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FCE 2026 Test 4 - Original Practice</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,500..800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f7fb;--paper:#fff;--ink:#14213d;--muted:#4b5266;--line:#d5d9e6;--mark:#2b59ff;--hi:#ffe45e;--ok:#1a7f52;--bad:#b3261e;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1526;--paper:#182038;--ink:#eef1fb;--muted:#a9b1c9;--line:#2c3656;--mark:#7d9bff;--hi:#e9d24a;--ok:#57c58f;--bad:#ff8a80}}
+:root[data-theme="dark"]{--bg:#0f1526;--paper:#182038;--ink:#eef1fb;--muted:#a9b1c9;--line:#2c3656;--mark:#7d9bff;--hi:#e9d24a;--ok:#57c58f;--bad:#ff8a80}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 "Atkinson Hyperlegible",system-ui,sans-serif}
+h1,h2,h3{font-family:Archivo,"Helvetica Neue",Arial,sans-serif;line-height:1.05;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--mark);outline-offset:3px}
+.wrap{max-width:74rem;margin:0 auto;padding:0 1.25rem}
+header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;padding:1.25rem 0}
+.logo{font:800 1.25rem Archivo,sans-serif;text-decoration:none}
+nav a{margin-left:1.25rem;text-decoration:none;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+
+.btn{display:inline-block;background:var(--ink);color:var(--bg);padding:.8rem 1.4rem;border-radius:.5rem;font-weight:700;text-decoration:none;border:0;cursor:pointer;font-size:1rem;font-family:inherit}
+.btn.alt{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:2rem;align-items:center;padding:1rem 0 3rem}
+h1{font-size:clamp(2rem,3.4vw,3rem);font-weight:800;font-stretch:90%;letter-spacing:-.02em;margin-top:1rem;margin-bottom:0}
+h1 span{background:linear-gradient(transparent 62%,var(--hi) 62%)}
+.lead{color:var(--muted);max-width:32rem;margin:1.25rem 0 1.75rem;font-size:1.15rem}
+.row{display:flex;gap:.75rem;flex-wrap:wrap}
+
+.sheet{background:var(--paper);border:2px solid var(--ink);border-radius:.75rem;padding:1.5rem;box-shadow:.5rem .5rem 0 var(--ink)}
+.sheet h2{font-size:1.1rem;margin-bottom:.25rem}
+.sheet p{margin:0 0 1rem;color:var(--muted);font-size:.95rem}
+.q{padding:.7rem 0;border-top:1px solid var(--line)}
+.q b{display:block;font-weight:400;margin-bottom:.45rem}
+.opts{display:flex;gap:.5rem;flex-wrap:wrap}
+.opt{display:flex;align-items:center;gap:.4rem;padding:.3rem .7rem .3rem .35rem;border:1.5px solid var(--line);border-radius:2rem;background:transparent;color:inherit;font:inherit;font-size:.95rem;cursor:pointer}
+.opt i{width:1.4rem;height:1.4rem;border-radius:50%;border:2px solid var(--muted);display:grid;place-items:center;font:700 .7rem Archivo,sans-serif;font-style:normal}
+
+.opt[aria-pressed="true"]{border-color:var(--mark)}
+.opt[aria-pressed="true"] i{background:var(--mark);border-color:var(--mark);color:var(--bg)}
+.opt.right{border-color:var(--ok)}.opt.right i{background:var(--ok);border-color:var(--ok);color:var(--bg)}
+.opt.wrong{border-color:var(--bad)}.opt.wrong i{background:var(--bad);border-color:var(--bad);color:var(--bg)}
+.result{margin-top:1rem;font-weight:700;min-height:1.6rem}
+section{padding:3.5rem 0;border-top:1px solid var(--line)}
+h2.t{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:.75rem;letter-spacing:-.01em}
+
+.sub{color:var(--muted);max-width:38rem;margin:0 0 2rem}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:.6rem;background:var(--paper)}
+table{border-collapse:collapse;width:100%;min-width:38rem}
+th,td{text-align:left;padding:.9rem 1rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:700 .95rem Archivo,sans-serif;color:var(--muted)}
+tr:last-child td{border-bottom:0}
+td:first-child{font:800 1.2rem Archivo,sans-serif;white-space:nowrap}
+td small{display:block;font:400 .9rem "Atkinson Hyperlegible",sans-serif;color:var(--muted)}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:2rem}
+.feat h3{font-size:1.2rem;margin-bottom:.4rem}
+.feat p{margin:0;color:var(--muted)}
+
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.25rem}
+.plan{background:var(--paper);border:1px solid var(--line);border-radius:.6rem;padding:1.5rem;display:flex;flex-direction:column;gap:.75rem}
+.plan.main{border:2px solid var(--ink)}
+.plan h3{font-size:1.3rem}
+.price{font:800 2rem Archivo,sans-serif}
+.plan ul{margin:0;padding-left:1.1rem;color:var(--muted);flex:1}
+footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-size:.95rem}
+
+.layout{display:grid;grid-template-columns:12.5rem minmax(0,1fr);gap:2.5rem;align-items:start}
+.side{position:sticky;top:1rem;margin-top:1rem;max-height:calc(100vh - 2rem);max-height:calc(100dvh - 2rem);overflow-y:auto;display:flex;flex-direction:column;gap:.15rem}summary{cursor:pointer;font:700 .95rem Archivo,sans-serif;color:var(--muted);padding:.4rem .75rem;border-radius:.5rem}summary:hover{color:var(--ink)}.ex[open] summary{margin-bottom:.15rem}
+.side nav{display:flex;flex-direction:column;gap:.15rem;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--line)}.side nav a{margin:0;color:inherit}.side .lang{margin-bottom:1rem}
+.side p{margin:0 0 .5rem;font:700 .95rem Archivo,sans-serif;color:var(--muted)}
+.side a{text-decoration:none;padding:.5rem .75rem;border-radius:.5rem;font:700 1rem Archivo,sans-serif;border-left:3px solid transparent}
+.side a small{display:block;font:400 .8rem "Atkinson Hyperlegible",sans-serif;color:var(--muted)}
+.side a:hover{background:var(--paper);border-left-color:var(--mark)}
+tr:target td{background:var(--hi);color:#14213d}tr:target td small{color:#14213d}
+@media (max-width:52rem){.layout{grid-template-columns:1fr;gap:0}.side{position:static;max-height:none;margin:0 0 1rem;padding:0 0 1rem;border-bottom:1px solid var(--line)}}
+
+.hr{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap}.hr .btn{padding:.45rem 1rem;font-size:.9rem}
+dialog{border:2px solid var(--ink);border-radius:.75rem;background:var(--paper);color:var(--ink);padding:1.5rem;width:min(24rem,92vw);max-height:90vh;overflow:auto}dialog::backdrop{background:rgba(10,16,32,.55)}
+dialog h2{font-size:1.4rem;margin-bottom:.5rem}dialog label{display:block;font-weight:700;margin:.75rem 0 .25rem}
+dialog input{width:100%;padding:.65rem .75rem;border:1.5px solid var(--line);border-radius:.4rem;background:var(--bg);color:var(--ink);font:inherit}
+.demo{color:var(--muted);font-size:.9rem;margin:.5rem 0 0}.err{color:var(--bad);min-height:1.5rem;margin-top:.5rem;font-size:.95rem}
+.lrow{display:grid;grid-template-columns:9rem 1fr;gap:.75rem;padding:.75rem 0;border-top:1px solid var(--line);align-items:center}.lrow .lname{text-decoration:underline;color:inherit}.lrow b,.lrow .lname{font:800 1.1rem Archivo,sans-serif}
+
+@media (max-width:40rem){.lrow{grid-template-columns:1fr;gap:.4rem}}
+@media (max-width:64rem){.hero{grid-template-columns:1fr;gap:2rem}}
+html{-webkit-text-size-adjust:100%}
+@media (max-width:40rem){
+.wrap{padding:0 1rem}
+header{padding:1rem 0}
+.hero{padding-bottom:2rem}
+.sheet{padding:1.1rem}
+section{padding:2.5rem 0}
+.scroll{border:0;background:transparent;overflow:visible}
+table,tbody,tr,td{display:block;min-width:0;width:100%}
+thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+tr{background:var(--paper);border:1px solid var(--line);border-radius:.6rem;padding:.6rem 0;margin-bottom:.75rem}
+td{border:0;padding:.15rem 1rem}
+td:first-child{font-size:1.3rem;padding-top:.4rem}
+}
+@media (pointer:coarse){.opt{min-height:44px}summary{min-height:44px;display:flex;align-items:center}.side a{min-height:44px;display:flex;flex-direction:column;justify-content:center}.hr .btn{min-height:44px}}
+
+.gatebox{max-width:26rem;margin:2rem auto;background:var(--paper);border:2px solid var(--ink);border-radius:.75rem;padding:1.5rem;box-shadow:.5rem .5rem 0 var(--ink)}
+.gatebox label,.wr label{display:block;font-weight:700;margin:.75rem 0 .25rem}
+input[type=text],input[type=password],textarea{width:100%;padding:.6rem .75rem;border:1.5px solid var(--line);border-radius:.4rem;background:var(--bg);color:var(--ink);font:inherit}
+.q input[type=text]{width:14rem;max-width:100%}
+.part{background:var(--paper);border:1px solid var(--line);border-radius:.75rem;padding:1.5rem;margin-bottom:1.25rem}
+.txt{white-space:pre-line}.q{padding:.5rem 0;border-top:1px solid var(--line)}.opts{display:flex;flex-wrap:wrap;gap:.4rem 1.25rem;margin-top:.3rem}
+.q.ok{border-left:4px solid var(--ok);padding-left:.75rem}.q.no{border-left:4px solid var(--bad);padding-left:.75rem}.fb{font-weight:700;margin-top:.25rem}
+.tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0}
+nav.tabs a {margin:0;padding:.4rem 1rem;border:1.5px solid var(--line);border-radius:2rem;text-decoration:none;font-weight:700}
+nav.tabs a[aria-current=page]{background:var(--ink);color:var(--bg)}
+.bar{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;margin:1rem 0}.time{font:800 1.6rem Archivo,sans-serif}
+.pics{display:flex;gap:1rem;flex-wrap:wrap}.pics svg, .pics img{flex:1 1 14rem;max-width:22rem;border:2px solid var(--ink);border-radius:.5rem;background:var(--paper);object-fit:cover;aspect-ratio:3/2}
+textarea{min-height:15rem}.tr{display:none}.note{padding:.75rem 1rem;border-left:4px solid var(--mark);background:var(--paper);margin:1rem 0}
+.sec{padding-top:2rem;margin-top:2rem;border-top:1px solid var(--line)}.jump{margin-top:0}.ex{color:var(--muted);margin-top:.15rem;font-size:.95rem}.q b{display:inline;font-weight:800;margin:0 .4rem 0 0}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <div class="brand"><a class="logo" href="../index.html">Oxfam Preparation</a></div>
+</header>
+
+<div id="gate">
+  <div class="gatebox">
+    <h1><span>FCE 2026</span></h1>
+    <p>Enter the password to open this test.</p>
+    <form id="gf">
+      <label for="pw">Password</label>
+      <input id="pw" type="password" autocomplete="off">
+      <div class="err" id="err"></div>
+      <div class="row" style="margin-top:1rem">
+        <button class="btn" type="submit">Open</button>
+        <a class="btn alt" href="../fce.html">Back</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="main" hidden>
+  <nav class="tabs" aria-label="Tests">
+    <a href="../fce.html">All tests</a>
+  </nav>
+
+  <h1>FCE 2026 - Test 4</h1>
+  <nav class="tabs jump" aria-label="Papers" style="margin-top: 2.5rem; margin-bottom: 2rem">
+    <a href="#rd">Reading and Use of English</a>
+    <a href="#li">Listening</a>
+    <a href="#wt">Writing</a>
+    <a href="#sk">Speaking</a>
+  </nav>
+
+  <section class="sec" id="rd">
+    <h2 class="t">Reading and Use of English (75 minutes)</h2>
+    <div class="bar"><span class="time" id="t1"></span><button class="btn alt" type="button">Start</button></div>
+    <div id="rbox"></div>
+    <div class="bar"><button class="btn" id="ck1" type="button">Check answers</button><b id="sc1"></b></div>
+  </section>
+
+  <section class="sec" id="li">
+    <h2 class="t">Listening (about 40 minutes)</h2>
+    <div class="bar"><span class="time" id="t2"></span><button class="btn alt" type="button">Start</button></div>
+    <p class="note">Each recording is played twice. Use headphones and read the questions before you listen.</p>
+    <div id="lbox"></div>
+    <div class="bar"><button class="btn" id="ck2" type="button">Check answers</button><b id="sc2"></b></div>
+  </section>
+
+  <section class="sec" id="wt">
+    <h2 class="t">Writing (80 minutes)</h2>
+    <div class="bar"><span class="time" id="t3"></span><button class="btn alt" type="button">Start</button></div>
+    <div class="wr">
+      <label for="nm">Your name</label>
+      <input type="text" id="nm">
+      
+      <div class="part">
+        <h2>Part 1 - Essay (compulsory)</h2>
+        <div class="bar"><span class="time" id="w1"></span><button class="btn alt" type="button">Start</button></div>
+        <p>In your English class you have been discussing employment trends and workplace environments. Your teacher has asked you to write an essay for homework.</p>
+        <p><strong>Write an essay using all the notes and giving reasons for your point of view.</strong></p>
+        <div class="note">
+          <strong>Topic:</strong> Is remote work better than working in an office?<br><br>
+          <strong>Notes:</strong><br>
+          Write about:<br>
+          1. work-life balance and commuting<br>
+          2. collaboration and workplace relationships<br>
+          3. ___________ (your own idea)
+        </div>
+        <p>Write your essay in <strong>140 - 190</strong> words.</p>
+        <textarea id="e1" aria-label="Answer"></textarea>
+        <div class="bar">
+          <b id="e1c">0 words</b>
+          <button class="btn alt" type="button" data-c="e1">Copy</button>
+          <button class="btn" type="button" data-s="e1" data-t="Part 1 essay">Send to assessor</button>
+        </div>
+      </div>
+      
+      <div class="part">
+        <h2>Part 2 - Choose ONE task</h2>
+        <div class="bar"><span class="time" id="w2"></span><button class="btn alt" type="button">Start</button></div>
+        <p>Write an answer to one of the questions (a - c) in this part. Write your answer in <strong>140 - 190</strong> words in an appropriate style.</p>
+        <p>
+          <strong>(a) Article:</strong> You see this announcement on a travel website: <em>My Favorite Urban Sanctuary! Write an article about your favorite city park. Describe what makes it special, what activities people can do there, and why urban green spaces are vital for city dwellers.</em><br><br>
+          <strong>(b) Email:</strong> Your English-speaking friend Sam is planning to buy their first used car and has asked for your advice. Write an email to Sam suggesting what key things to inspect, how to manage the budget, and why taking a test drive is essential.<br><br>
+          <strong>(c) Review:</strong> You recently played a new video game or watched a new movie. Write a review for an entertainment website. Describe the main plot or gameplay, evaluate the visual graphics and audio design, and state whether you would recommend it to others.
+        </p>
+        <textarea id="e2" aria-label="Answer"></textarea>
+        <div class="bar">
+          <b id="e2c">0 words</b>
+          <button class="btn alt" type="button" data-c="e2">Copy</button>
+          <button class="btn" type="button" data-s="e2" data-t="Part 2 task">Send to assessor</button>
+        </div>
+      </div>
+    </div>
+    <p class="note">Sending opens your email app with your text. Very long texts are copied to the clipboard so you can paste them.</p>
+  </section>
+
+  <section class="sec" id="sk">
+    <h2 class="t">Speaking (14 minutes)</h2>
+    <div class="bar"><span class="time" id="t4"></span><button class="btn alt" type="button">Start</button></div>
+    <p class="note">Practise with a partner or teacher. The real test lasts about 14 minutes.</p>
+    
+    <div class="part">
+      <h2>Part 1 - Interview (2 minutes)</h2>
+      <div class="bar"><span class="time" id="sp1"></span><button class="btn alt" type="button">Start</button></div>
+      <ul>
+        <li>How do you usually spend your free time during weekends?</li>
+        <li>What role does digital technology play in your daily study or work routine?</li>
+        <li>What is your favourite mode of travel when going on vacation, and why?</li>
+        <li>Tell me about a skill or language you would love to learn in the future.</li>
+      </ul>
+    </div>
+    
+    <div class="part">
+      <h2>Part 2 - Long turn (1 minute each)</h2>
+      <div class="bar"><span class="time" id="sp2"></span><button class="btn alt" type="button">Start</button></div>
+      <p><strong>Candidate A:</strong> Compare the pictures and say how the students might be feeling while preparing for exams in these different ways.</p>
+      <p><strong>Candidate B:</strong> Compare the pictures and say what the advantages might be of choosing these different types of vehicles.</p>
+      
+      <p style="margin-top:1.5rem"><b>Candidate A's pictures: Studying and Preparing for Exams</b></p>
+      <p>Compare the pictures and say how the students might be feeling while preparing for exams in these different ways.</p>
+      <div class="pics">
+        <img src="1000_F_108511202_L3iEM4PcaZpDqbveCcQ4kSrBG0IuIaqT.jpg" alt="A student overwhelmed by a stack of books" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f6f7fb/4b5266?text=Traditional+Studying'">
+        <img src="imageslovestudying.jpg" alt="A student happily studying with headphones and a tablet" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f6f7fb/4b5266?text=Modern+Studying'">
+      </div>
+      <p style="margin-top:1.5rem"><b>Candidate B's pictures: Choosing a Vehicle</b></p>
+      <p>Compare the pictures and say what the advantages might be of choosing these different types of vehicles.</p>
+      <div class="pics">
+        <img src="ugly car.jpg" alt="A practical green family car parked on a city street" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f6f7fb/4b5266?text=Practical+Car'">
+        <img src="images (5).jpg" alt="A high-performance luxury sports car driving fast on a mountain road" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f6f7fb/4b5266?text=Sports+Car'">
+      </div>   
+    </div>
+    
+    <div class="part">
+      <h2>Part 3 - Collaborative task (3 minutes)</h2>
+      <div class="bar"><span class="time" id="sp3"></span><button class="btn alt" type="button">Start</button></div>
+      <p><b>What is the best way to encourage young people to read more books?</b> Discuss the ideas below with your partner, then decide which TWO measures would be the most effective.</p>
+      <ul>
+        <li>introducing graphic novels and comic books in school curricula</li>
+        <li>creating interactive community book clubs specifically for teenagers</li>
+        <li>reducing daily screen time limits on personal mobile devices</li>
+        <li>organizing regular author visits and creative writing workshops</li>
+        <li>making digital ebooks freely available through local public library apps</li>
+      </ul>
+    </div>
+    
+    <div class="part">
+      <h2>Part 4 - Discussion (4 minutes)</h2>
+      <div class="bar"><span class="time" id="sp4"></span><button class="btn alt" type="button">Start</button></div>
+      <ul>
+        <li>Do you think e-readers will eventually replace printed paper books completely?</li>
+        <li>Why do some people find it hard to concentrate on reading for long periods nowadays?</li>
+        <li>What role should public libraries play in modern local communities?</li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+<footer>Original practice material in the B2 First (FCE) format. Not affiliated with Cambridge University Press &amp; Assessment.</footer>
+</div>
+
+<script>
+var PW="X2mq";
+function unlocked(){try{return sessionStorage.getItem("cae26")==="1"}catch(e){return false}}
+
+function norm(s){return s.toLowerCase().replace(/\u2019/g,"'").replace(/\s+/g," ").trim()}
+
+function build(parts,box,pre){
+  var n=0;pre=pre||"";
+  parts.forEach(function(p,pi){
+    var d=document.createElement("section");d.className="part";
+    d.innerHTML="<h2>"+p.t+"</h2>"+(p.m?"<div class='bar'><span class='time' id='pt"+pre+pi+"'></span><button class='btn alt' type='button'>Start</button> <small>suggested time</small></div>":"")+"<p class='sub'>"+p.i+"</p>"+(p.x?"<p class='txt'>"+p.x+"</p>":"")+(p.im||"")+"<div class='items'></div>";
+    var it=d.querySelector(".items");
+    p.q.forEach(function(q){
+      n++;var r=document.createElement("div");r.className="q";
+      var h="<b>"+n+"</b> "+(q.q||"")+(q.h?" <strong>"+q.h+"</strong>":"");
+      if(q.o){
+        var optsHtml = q.o.map(function(o,i){
+          var letter = "ABCDEFGH"[i];
+          var text = o === letter ? "" : o;
+          return "<label><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> "+text+"</label>";
+        }).join("");
+        h+="<div class='opts'>"+optsHtml+"</div>";
+      } else {
+        h+=" <input type='text' autocomplete='off' aria-label='Answer "+n+"'>";
+      }
+      r.innerHTML=h;r._q=q;it.appendChild(r);
+    });
+    box.appendChild(d);
+    if(p.m)timer("pt"+pre+pi,p.m);
+  });
+}
+
+function check(box,out){
+  var tot=0,ok=0;
+  box.querySelectorAll(".q").forEach(function(r){
+    tot++;var q=r._q,good,ans;
+    if(q.o){
+      var c=r.querySelector("input:checked");
+      good=c&&+c.value===q.a;
+      var letter = "ABCDEFGH"[q.a];
+      ans = q.o[q.a] === letter ? letter : letter + " " + q.o[q.a];
+    } else {
+      var v=norm(r.querySelector("input").value);
+      good=q.a.some(function(a){return norm(a)===v});
+      ans=q.a[0];
+    }
+    r.classList.toggle("ok",!!good);
+    r.classList.toggle("no",!good);
+    var f=r.querySelector(".fb");
+    if(!f){f=document.createElement("div");f.className="fb";r.appendChild(f)}
+    f.textContent=good?"Correct":"Answer: "+ans;
+    var x=r.querySelector(".ex");
+    if(!x){x=document.createElement("div");x.className="ex";r.appendChild(x)}
+    x.textContent=q.e||"";
+    if(good)ok++;
+  });
+  out.textContent="Score: "+ok+" / "+tot;
+  box.querySelectorAll(".tr").forEach(function(e){e.style.display="block"});
+}
+
+function timer(id,min){
+  var e=document.getElementById(id),l=min*60,t=null;
+  if(!e)return;
+  function s(){e.textContent=("0"+Math.floor(l/60)).slice(-2)+":"+("0"+l%60).slice(-2)}s();
+  e.nextElementSibling.onclick=function(){
+    if(t){clearInterval(t);t=null;this.textContent="Start";return}
+    this.textContent="Pause";
+    t=setInterval(function(){l--;s();if(l<=0)clearInterval(t)},1000);
+  }
+}
+
+var R = [
+{t:"Part 1 - Multiple-choice cloze",i:"Read the text and choose the word or phrase that best fits each gap.",x:"The Origin of Coffee Culture\n\nThe story of coffee began in the ancient coffee forests of the Ethiopian plateau. According to legend, a goat herder named Kaldi first (1) ___ the potential of these beloved beans after noticing how energetic his goats became after eating berries from a certain tree. The local monastery created a drink from the berries and found that it kept them alert during long hours of evening prayer.\n\nWord of this invigorating beverage began to (2) ___ east, reaching the Arabian Peninsula. By the 16th century, coffee was being enjoyed not only in homes, but also in public coffee houses, which began to (3) ___ up across cities in the Near East. These coffee houses quickly became crucial centers for the (4) ___ of information, where people gathered to listen to music, play chess, and discuss current events.\n\nEuropean travelers to the region brought back stories of an unusual dark beverage. By the 17th century, coffee had (5) ___ its way to Europe and was becoming popular across the continent. Some people reacted to this new beverage with suspicion, calling it a bitter invention, but local rulers soon recognized its economic value.\n\nCoffee houses rapidly became hubs of social interaction and intellectual debate. In London, they were (6) ___ as \"penny universities,\" because for the price of a penny, one could buy a cup of coffee and engage in stimulating conversation. Today, coffee remains an (7) ___ part of daily life for billions of people worldwide, serving as both a morning ritual and a social (8) ___ for meeting friends.",q:[
+{o:["discovered","invented","formed","manufactured"],a:0,e:"'Discovered' is used for uncovering something that already exists naturally."},{o:["spread","stretch","broaden","climb"],a:0,e:"'Spread east' is the standard verb for news or influence traveling geographically."},{o:["spring","blow","lift","break"],a:0,e:"The phrasal verb 'spring up' means to suddenly appear or develop in large numbers."},{o:["exchange","swap","commerce","delivery"],a:0,e:"'Exchange of information' is a standard collocation."},{o:["made","paved","forced","won"],a:0,e:"'Made its way' is an idiomatic expression meaning traveled or progressed."},{o:["known","titled","labelled","described"],a:0,e:"'Known as' is the correct passive collocation."},{o:["integral","compulsory","bound","attached"],a:0,e:"'Integral part' means an essential or fundamental component."},{o:["reason","catalyst","signal","mark"],a:1,e:"'Catalyst' refers to something that precipitates or brings about an event or interaction."}],m:10},
+{t:"Part 2 - Open cloze",i:"Read the text and think of the one word which best fits each gap.",x:"The Secrets of Coral Reefs\n\nCoral reefs are often described (9) ___ the rainforests of the sea, housing an extraordinary variety of marine life despite occupying less (10) ___ one percent of the ocean floor. These vibrant underwater structures are built by millions of tiny animals called coral polyps, (11) ___ secrete hard calcium carbonate skeletons to protect their soft bodies.\n\nReefs thrive best in warm, shallow, and clear tropical waters where sunlight can easily penetrate. Sunlight is essential because coral polyps live in a symbiotic relationship with microscopic algae. The algae live inside the coral tissue and provide food through photosynthesis, (12) ___ return for a safe shelter and nutrients.\n\nHowever, coral reefs around the world are currently facing severe threats (13) ___ to climate change, rising ocean temperatures, and industrial pollution. When water temperatures become too warm, corals undergo a stress reaction known (14) ___ bleaching, expelling the colorful algae from their tissues. If the high temperature persists for (15) ___ long, the corals starve and die. Protecting these fragile marine ecosystems is essential, not only for biodiversity, (16) ___ also for protecting coastal communities from storm damage.",q:[
+{a:["as"],e:"Completes the passive comparative structure 'described as'."},{a:["than"],e:"Comparative structure: 'less than one percent'."},{a:["which"],e:"Non-defining relative pronoun referring back to 'coral polyps'."},{a:["in"],e:"Idiomatic phrase 'in return for'."},{a:["due","owing"],e:"Prepositional phrase 'due to' or 'owing to' meaning because of."},{a:["as"],e:"Collocation 'known as'."},{a:["too"],e:"Adverb 'too long' indicating excessive duration."},{a:["but"],e:"Correlative conjunction 'not only... but also'."}],m:9},
+{t:"Part 3 - Word formation",i:"Read the text. Use the word given in capitals to form a word that fits each gap.",x:"The History of Aviation\n\nThe human desire to fly dates back thousands of years, but it was not until the early 20th century that powered flight became a (17) ___ reality. (PRACTICE)\n\nFor centuries, inventors attempted to build flying machines inspired by the (18) ___ movement of birds' wings. (NATURE)\n\nHowever, it was the Wright brothers, Orville and Wilbur, who achieved the first (19) ___ controlled and powered heavier-than-air human flight in 1903. (SUCCESS)\n\nTheir pioneering spirit and (20) ___ determination led to rapid developments in aircraft design over the following decades. (EXCEPT)\n\nDuring the First and Second World Wars, aviation technology underwent (21) ___ acceleration as governments invested heavily in military aircraft performance. (DRAMA)\n\nFollowing the wars, commercial airlines grew rapidly, turning international travel into a comfortable and (22) ___ experience for millions of ordinary travelers. (AFFORD)\n\nToday, modern airplanes are equipped with highly (23) ___ navigation systems that ensure passenger safety across global routes. (SOPHISTICATE)\n\nEngineers are now focusing their efforts on creating environmentally friendly aircraft to reduce carbon emissions and ensure a (24) ___ future for air transport. (SUSTAIN)",q:[
+{a:["practical"]},{a:["natural"]},{a:["successfully"]},{a:["exceptional"]},{a:["dramatic"]},{a:["affordable"]},{a:["sophisticated"]},{a:["sustainable"]}],m:10},
+{t:"Part 4 - Key word transformations",i:"Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. Use two to five words.",q:[
+{q:"I'm sure that Mark didn't forget about the meeting on purpose. (HAVE)",h:"Mark ___ about the meeting on purpose.",a:["cannot have forgotten","can't have forgotten"]},{q:"They will announce the test results early tomorrow morning. (ANNOUNCED)",h:"The test results ___ early tomorrow morning.",a:["will be announced"]},{q:"\"You should eat less fast food,\" the doctor advised him. (RECOMMENDED)",h:"The doctor ___ fast food.",a:["recommended that he eat less","recommended eating less","recommended him to eat less"]},{q:"I regret not taking photos during our mountain trip. (WISH)",h:"I ___ photos during our mountain trip.",a:["wish I had taken","wish that I had taken"]},{q:"The storm was so severe that all flights were cancelled. (SUCH)",h:"It was ___ that all flights were cancelled.",a:["such a severe storm"]},{q:"She started working as a graphic designer five years ago. (BEEN)",h:"She ___ as a graphic designer for five years.",a:["has been working","'s been working"]}],m:12},
+{t:"Part 5 - Multiple choice",i:"Read the article and choose the answer that best fits each question.",x:"The Power of Sleep and Dreaming\n\nWhy do we sleep? For centuries, sleep was regarded as a passive state during which the body and brain simply shut down to rest. However, modern neuroscience has overturned this passive view, revealing that sleep is actually an extraordinarily active physiological process essential for human survival, cognitive performance, and emotional well-being.\n\nDuring a typical night, the human brain cycles through several distinct stages of sleep, broadly categorized into non-REM (Rapid Eye Movement) and REM sleep. Non-REM sleep begins with light drowsiness and progresses into deep, slow-wave sleep. It is during deep sleep that the body performs physical repair work: growth hormones are released, tissue is restored, and the immune system is strengthened. Without adequate deep sleep, physical recovery is severely compromised.\n\nIn contrast, REM sleep—the stage most associated with vivid dreaming—is a period of intense mental activity. Brain wave scans during REM sleep show activity patterns remarkably similar to those observed while awake. During this stage, the brain consolidates memories, transferring new information from temporary storage into long-term neural networks. Furthermore, dreaming during REM sleep appears to play a critical role in emotional processing. By replaying emotionally charged experiences in a safe, neurochemically calm environment, dreams help reduce the emotional intensity of negative events.\n\nNeuroscientists at Harvard University conducted an experiment demonstrating the profound link between sleep and problem-solving. Participants were given a complex puzzle that seemed almost impossible to solve by logical deduction alone. Those who were allowed an eight-hour sleep before attempting the puzzle again were twice as likely to discover a hidden shortcut as those who stayed awake. This finding provides empirical support for the age-old idiom \"sleep on it,\" showing that sleep allows the brain to restructure information and gain novel insights.\n\nDespite the proven benefits of sleep, modern society suffers from a chronic sleep deficit epidemic. Artificial lighting, late-night screen exposure, and demanding work schedules continuously disrupt our circadian rhythms. Chronic sleep deprivation is not merely a matter of feeling tired; it is linked to serious long-term health risks, including cardiovascular disease, weakened immunity, impaired judgment, and mood disorders.\n\nTo optimize health, sleep experts strongly advocate prioritizing sleep hygiene: maintaining a consistent sleep schedule, eliminating electronic devices from the bedroom, and ensuring a cool, dark environment. Rather than treating sleep as an optional luxury to be sacrificed for productivity, we must recognize it as the foundational pillar of physical and mental health.",q:[
+{q:"What is the writer's main point about sleep in the first paragraph?",o:["Sleep is a passive state of rest for the body.","Scientific understanding of sleep has changed dramatically.","Neuroscience has proven that sleep is unnecessary for survival.","Dreaming is more important than physical rest."],a:1,e:"The text states 'modern neuroscience has overturned this passive view, revealing that sleep is actually an extraordinarily active... process'."},{q:"What happens during deep non-REM sleep?",o:["The brain consolidates short-term memories into long-term ones.","Vivid dreams help diminish negative emotional intensity.","The body releases growth hormones and repairs tissue.","Brain activity patterns become identical to being awake."],a:2,e:"Deep non-REM sleep is when 'growth hormones are released, tissue is restored, and the immune system is strengthened'."},{q:"According to the third paragraph, how do dreams during REM sleep benefit us emotionally?",o:["By erasing unpleasant memories entirely from the brain.","By making us forget negative experiences.","By replaying emotional events in a calm environment to lessen their intensity.","By preventing emotional stress from occurring during waking hours."],a:2,e:"Dreams help 'by replaying emotionally charged experiences in a safe, neurochemically calm environment'."},{q:"What did the Harvard study reveal about solving complex puzzles?",o:["Staying awake helps people focus harder on puzzle shortcuts.","Logical deduction is the only way to solve difficult problems.","Sleeping allowed participants to discover hidden solutions more easily.","Participants forgot the rules of the puzzle after sleeping."],a:2,e:"Those allowed an eight-hour sleep were twice as likely to discover a hidden shortcut."},{q:"What is highlighted as a consequence of chronic sleep deprivation in paragraph five?",o:["Increased immunity to common viruses.","Minor temporary tiredness with no long-term health effects.","Serious risks like heart disease, poor judgment, and mood issues.","Improved ability to work under stressful conditions."],a:2,e:"Chronic sleep deprivation is linked to 'cardiovascular disease, weakened immunity, impaired judgment, and mood disorders'."},{q:"What is the writer's final advice in the last paragraph?",o:["Treat sleep as a luxury to be enjoyed on weekends.","Use electronic devices in bed to unwind before sleeping.","Prioritize consistent sleep habits as a fundamental health pillar.","Reduce sleep hours to maximize daily productivity."],a:2,e:"We must 'recognize it as the foundational pillar of physical and mental health' and maintain consistent sleep hygiene."}],m:13},
+{t:"Part 6 - Gapped text",i:"Six sentences have been removed from the article. Choose from sentences A-G the one which fits each gap. There is one extra sentence.",x:"Restoring the Ancient Rainforests of Costa Rica\n\nCosta Rica is world-renowned for its stunning biodiversity and progressive environmental conservation policies. However, during the mid-20th century, the country faced severe ecological destruction. Rapid agricultural expansion, cattle ranching, and commercial logging led to widespread deforestation. (37) ___\n\nRecognizing the impending ecological disaster, the Costa Rican government pioneered a revolutionary conservation initiative in 1997 called the Payments for Environmental Services (PES) program. (38) ___ Under this scheme, landowners receive direct financial compensation for protecting pristine forests or reforesting degraded pastureland.\n\nFunding for the PES program was generated through a nationwide tax on fossil fuels and water usage fees paid by hydroelectric companies. (39) ___ By assigning a clear economic value to standing trees, the program made conservation more financially attractive than clearing land for agriculture.\n\nThe results of this innovative policy have been extraordinary. Over the past three decades, Costa Rica has reversed its deforestation trend completely. (40) ___ Today, over half of the country's land area is covered by lush green forests once again.\n\nThe ecological restoration has brought back countless species of native wildlife that were once on the brink of extinction. (41) ___ Howler monkeys, jaguars, toucans, and rare poison dart frogs now thrive in interconnected biological corridors established under the program.\n\nFurthermore, rainforest restoration has created a booming eco-tourism industry, generating thousands of jobs for rural communities. (42) ___ Costa Rica stands as a global beacon of hope, proving that economic development and environmental preservation can go hand in hand.\n\nSentences:\nA. Tourists from all over the globe now visit Costa Rica to experience its thriving wildlife and national parks.\nB. This financial incentive encouraged thousands of local farmers to stop cutting down trees.\nC. By the 1980s, over half of Costa Rica's tropical rainforests had been completely cleared.\nD. This ensured a steady and sustainable revenue source to reward forest guardians.\nE. Consequently, many farmers decided to abandon agriculture entirely and move to capital cities.\nF. It became the first tropical country in the world to successfully halt and reverse deforestation.\nG. Biologists have recorded significant population recoveries among emblematic forest creatures.",q:[
+{q:"Gap (37)",o:["A","B","C","D","E","F","G"],a:2,e:"Sentence C ('By the 1980s, over half of Costa Rica's tropical rainforests had been completely cleared.') fits logically after explaining mid-20th century deforestation."},{q:"Gap (38)",o:["A","B","C","D","E","F","G"],a:1,e:"Sentence B ('This financial incentive encouraged thousands of local farmers...') elaborates on the PES program mentioned."},{q:"Gap (39)",o:["A","B","C","D","E","F","G"],a:3,e:"Sentence D ('This ensured a steady and sustainable revenue source...') links directly to the tax and water fee funding."},{q:"Gap (40)",o:["A","B","C","D","E","F","G"],a:5,e:"Sentence F ('It became the first tropical country in the world to successfully halt and reverse deforestation.') explains the extraordinary result."},{q:"Gap (41)",o:["A","B","C","D","E","F","G"],a:6,e:"Sentence G ('Biologists have recorded significant population recoveries...') connects to the return of native wildlife."},{q:"Gap (42)",o:["A","B","C","D","E","F","G"],a:0,e:"Sentence A ('Tourists from all over the globe now visit Costa Rica...') illustrates the booming eco-tourism industry."}],m:12},
+{t:"Part 7 - Multiple matching",i:"Read four accounts of entrepreneurs starting their own businesses. For questions 43-52, choose from the entrepreneurs A-D. You may choose each entrepreneur more than once.",x:"A — Sarah (Eco-Friendly Packaging)\nLaunching an eco-friendly packaging company was a massive gamble. I left a comfortable corporate marketing job to pursue an idea I felt passionate about. In the beginning, funding was non-existent, and I worked sixteen-hour days out of my garage, designing biodegradable containers made from agricultural waste. The hardest challenge was convincing reluctant manufacturers to switch from cheap plastic to our sustainable alternatives. However, after winning an innovation grant, major retail brands began placing orders. My main advice to aspiring entrepreneurs is to stay resilient when faced with rejection; every 'no' brings you closer to the right partner.\n\nB — David (Specialty Coffee Roastery)\nI opened my specialty coffee roastery because I wanted to create a community hub centered around ethically sourced coffee. Finding the right physical location was tricky, but we eventually secured a renovated historic warehouse. The early months were stressful because our cash flow was extremely tight, and equipment breakdowns cost a fortune. What saved us was focusing on exceptional customer service and building a loyal local customer base. Looking back, I wish I had spent more time learning accounting basics before launching, as managing overheads proved far more complex than roasting coffee.\n\nC — Elena (Mobile Language Learning App)\nAs a former language teacher, I noticed that traditional language software lacked interactive conversational practice. I teamed up with a software developer to build an app that uses speech recognition to help users practice speaking in real-time scenarios. Building the technology took two years of tedious testing and troubleshooting. We chose a subscription model, which provided steady recurring revenue once we gained traction. The key to our growth was listening closely to user feedback and constantly pushing out software updates. Running your own tech startup is an emotional roller coaster, but seeing students gain confidence makes it immensely rewarding.\n\nD — Marcus (Artisanal Bakery Chain)\nStarting an artisanal bakery was a dream I shared with my brother. We started with a single small storefront selling sourdough bread and pastries made from locally milled organic flour. Demand grew so rapidly that within three years we expanded to four locations across the region. Scaling up the business without sacrificing product quality was our biggest operational hurdle. We had to train new bakers rigorously to ensure consistent standards across all shops. Delegating responsibility was tough for me personally, but it was essential for long-term growth.",q:[
+{q:"Which entrepreneur mentions struggling to convince customers to adopt their product?",o:["A","B","C","D"],a:0,e:"Sarah states 'The hardest challenge was convincing reluctant manufacturers to switch'."},{q:"Which entrepreneur regrets not acquiring specific business management skills earlier?",o:["A","B","C","D"],a:1,e:"David notes 'I wish I had spent more time learning accounting basics before launching'."},{q:"Which entrepreneur highlights the challenge of maintaining quality while growing the business?",o:["A","B","C","D"],a:3,e:"Marcus mentions 'Scaling up the business without sacrificing product quality was our biggest operational hurdle'."},{q:"Which entrepreneur relied on user input to continuously refine their offering?",o:["A","B","C","D"],a:2,e:"Elena explains 'The key to our growth was listening closely to user feedback'."},{q:"Which entrepreneur started their business in a domestic workspace?",o:["A","B","C","D"],a:0,e:"Sarah says 'I worked sixteen-hour days out of my garage'."},{q:"Which entrepreneur mentions the difficulty of trusting others with key tasks?",o:["A","B","C","D"],a:3,e:"Marcus states 'Delegating responsibility was tough for me personally'."},{q:"Which entrepreneur benefited from securing a competitive financial award?",o:["A","B","C","D"],a:0,e:"Sarah notes 'after winning an innovation grant, major retail brands began placing orders'."},{q:"Which entrepreneur emphasizes the importance of delivering outstanding customer service?",o:["A","B","C","D"],a:1,e:"David highlights 'focusing on exceptional customer service and building a loyal local customer base'."},{q:"Which entrepreneur created a product to address a flaw in existing educational tools?",o:["A","B","C","D"],a:2,e:"Elena noticed 'traditional language software lacked interactive conversational practice'."},{q:"Which entrepreneur experienced unexpected financial strains due to machinery repairs?",o:["A","B","C","D"],a:1,e:"David mentions 'equipment breakdowns cost a fortune'."}],m:15}
+];
+
+var L = [
+{t:"Part 1 - Multiple choice",i:"You will hear eight short, unrelated recordings. For questions 1-8, choose A, B or C.",im:"<button class='btn alt say' data-i='0' type='button'>Play recording</button>",q:[
+{q:"Why is the man returning the bicycle helmet?",o:["It is the wrong size.","The fastening mechanism is faulty.","He dislikes the color."],a:1},{q:"What is the weather presenter warning listeners about?",o:["Hazardous driving conditions due to snow","Flooding in coastal areas","High winds disrupting train services"],a:0},{q:"What did the woman dislike about the fitness class?",o:["The intensity of the exercises","The instructor's attitude","The volume of the music"],a:2},{q:"Why is the man phoning the hotel?",o:["To request a late check-in","To cancel his reservation","To book an airport taxi"],a:0},{q:"What do the friends agree about the concert?",o:["The venue was uncomfortable.","The ticket prices were too high.","The show started too late."],a:1},{q:"What change is being announced?",o:["The time of the lecture","The room location","The subject topic"],a:1},{q:"What impressed the woman most about the novel?",o:["The detailed historical setting","The unexpected plot twist","The humorous dialogue"],a:1},{q:"What is the customer asking the store assistant?",o:["Where to find shoes","If an item is on sale","Where the fitting rooms are"],a:0}],m:6},
+{t:"Part 2 - Sentence completion",i:"You will hear a wildlife photographer named James Hall talking about his expedition in the Amazon rainforest. For questions 9-18, complete the sentences with a word or short phrase.",im:"<button class='btn alt say' data-i='1' type='button'>Play recording</button>",q:[
+{q:"James originally trained as a ___ before switching to photography.",a:["biologist","marine biologist"]},{q:"The expedition spent three weeks camping near the banks of the ___ River.",a:["Amazon"]},{q:"James states that the hardest environmental condition to endure was high ___.",a:["humidity"]},{q:"To protect his camera gear from rain, James kept it inside a waterproof ___ bag.",a:["canvas"]},{q:"The main target of James's photo shoot was the rare pink river ___.",a:["dolphin","dolphins"]},{q:"James was surprised to learn that local guide Maria could identify birds by their ___ alone.",a:["calls","call","songs"]},{q:"The team used a lightweight ___ to take aerial photographs of the forest canopy.",a:["drone"]},{q:"James warns that photographers must never offer ___ to wild animals to attract them.",a:["food"]},{q:"The most memorable shot James captured was a jaguar resting on a fallen ___.",a:["tree","log"]},{q:"An exhibition of James's Amazon photos will open next month at the National ___ Museum.",a:["History","Natural History"]}],m:10},
+{t:"Part 3 - Multiple matching",i:"You will hear five people talking about their favourite hobbies. For questions 19-23, choose from the list A-H what each person enjoys most about their hobby. There are three extra options.",im:"<button class='btn alt say' data-i='2' type='button'>Play recording</button>",q:[
+{q:"Speaker 1",o:["Cooking international dishes","Gardening and growing vegetables","Painting landscape scenery","Playing competitive board games","Restoring vintage furniture","Amateur astronomy and stargazing","Trail running in the mountains","Playing the acoustic guitar"],a:1},{q:"Speaker 2",o:["Cooking international dishes","Gardening and growing vegetables","Painting landscape scenery","Playing competitive board games","Restoring vintage furniture","Amateur astronomy and stargazing","Trail running in the mountains","Playing the acoustic guitar"],a:7},{q:"Speaker 3",o:["Cooking international dishes","Gardening and growing vegetables","Painting landscape scenery","Playing competitive board games","Restoring vintage furniture","Amateur astronomy and stargazing","Trail running in the mountains","Playing the acoustic guitar"],a:4},{q:"Speaker 4",o:["Cooking international dishes","Gardening and growing vegetables","Painting landscape scenery","Playing competitive board games","Restoring vintage furniture","Amateur astronomy and stargazing","Trail running in the mountains","Playing the acoustic guitar"],a:5},{q:"Speaker 5",o:["Cooking international dishes","Gardening and growing vegetables","Painting landscape scenery","Playing competitive board games","Restoring vintage furniture","Amateur astronomy and stargazing","Trail running in the mountains","Playing the acoustic guitar"],a:0}],m:8},
+{t:"Part 4 - Multiple choice",i:"You will hear a radio interview with an architect named Claire Vance, who designs eco-friendly homes. For questions 24-30, choose A, B or C.",im:"<button class='btn alt say' data-i='3' type='button'>Play recording</button>",q:[
+{q:"What first inspired Claire to focus on eco-friendly architecture?",o:["A childhood trip to a sustainable farm","A lecture she attended during university","Seeing excessive waste on traditional building sites"],a:2},{q:"According to Claire, what is the most important factor when designing a green home?",o:["Using solar panels on the roof","Maximizing natural light and insulation","Installing rainwater collection tanks"],a:1},{q:"How does Claire overcome clients' concerns about construction costs?",o:["By showing them long-term energy savings charts","By offering discounts on building materials","By guaranteeing government subsidies"],a:0},{q:"What does Claire say about recycled building materials?",o:["They are often inferior in quality.","They can look extremely stylish when crafted well.","They are difficult to acquire locally."],a:1},{q:"What challenge did Claire face when designing the 'Eco-Pod' project?",o:["Fitting necessary amenities into a small footprint","Getting planning permission from local authorities","Finding skilled builders"],a:0},{q:"How does Claire feel about the future of urban architecture?",o:["Pessimistic about city council policies","Optimistic that sustainable design will become standard","Concerned that green materials will become too expensive"],a:1},{q:"What advice does Claire offer to young architecture students?",o:["Specialize in eco-design as early as possible","Gain practical experience on real construction sites","Focus on mastering computer 3D modeling software"],a:1}],m:10}
+];
+
+var T = [
+"Extract one. Customer: Excuse me, I bought this bicycle helmet here yesterday, but when I tried to adjust it at home, the plastic strap buckle snapped right off. Assistant: I'm very sorry about that, sir. The fastening mechanism on that batch seems to have a defect. We can issue a full refund or replace it with a different model right now. {pause} Extract two. Presenter: Driving conditions across the northern regions will be extremely hazardous this evening. Heavy snowfall is expected to continue until midnight, creating icy patches on major highways. Drivers are strongly advised to delay non-essential travel or use snow chains if commuting is unavoidable. {pause} Extract three. Woman: I went to that new aerobics class yesterday evening. Man: How was it? Woman: The workout routine was great and the instructor was full of energy, but they had the speakers turned up so loud that my ears were ringing for hours afterwards! I could barely focus on the instructions. {pause} Extract four. Customer: Hello, this is Mark Roberts. I have a room reservation for tonight under my name. I'm phoning to let you know that my flight has been delayed by three hours, so I won't arrive until around eleven-thirty PM. Receptionist: Thank you for informing us, Mr. Roberts. I will make a note on your file so night security keeps your room ready. {pause} Extract five. Man: What an incredible gig! The lead singer's voice was unbelievable live. Woman: Absolutely, the energy in the stadium was amazing. My only complaint is that seventy pounds for a ticket feels a bit unreasonable for a two-hour show. Man: Yeah, I have to agree, ticket prices have gotten out of hand lately. {pause} Extract six. Announcer: Attention all business management students. Please note that tomorrow's two o'clock lecture on Financial Strategy has been relocated. Due to technical repairs in Lecture Hall A, the class will now take place in Room 3B on the third floor. The time remains unchanged. {pause} Extract seven. Woman: I just finished reading that new mystery thriller everyone has been talking about. Man: Did it live up to the hype? Woman: It was okay, but the ending completely blew me away! Just when you think you've figured out who committed the crime, there's an astonishing plot twist in the final chapter that changes everything. {pause} Extract eight. Customer: Excuse me, I'm looking for men's leather boots. Could you point me in the right direction? Sales Assistant: Of course! Our shoe department is located on the lower ground floor. Just take the escalator down behind the suit section and turn left. {pause}",
+"Hello everyone, I'm James Hall, and I'm thrilled to share some insights from my recent photography expedition into the Amazon rainforest. People often assume I studied photography at university, but I actually trained as a biologist first. That scientific background gave me a deep appreciation for wildlife before I ever picked up a camera professionally.\n\nOur expedition spent three full weeks camping in tents along the banks of the Amazon River. Living in the jungle is intense. While dealing with insects was annoying, the hardest environmental condition to endure was undoubtedly the high humidity, which made everything feel constantly damp.\n\nProtecting sensitive electronic equipment in that environment is a constant battle. Rainstorms happen in seconds, so I kept all my lenses inside a heavy-duty waterproof canvas bag whenever we were trekking through the trees.\n\nThe primary objective of our trip was to photograph the rare pink river dolphin. They are notoriously shy creatures, making them incredibly difficult to capture on film.\n\nWe were accompanied by an incredible local guide named Maria. I was amazed to learn that she could identify dozens of bird species by their calls alone, long before we could spot them through our binoculars.\n\nTo capture perspectives of the rainforest canopy that would otherwise be impossible from the ground, our team utilized a lightweight drone. The aerial footage of the endless green treetops was breathtaking.\n\nWhen working with wildlife, ethical standards are paramount. Photographers must never offer food to wild animals to lure them closer, as this disrupts their natural foraging habits.\n\nMy most memorable moment occurred on day fourteen when we spotted a jaguar resting peacefully on a fallen tree right beside the riverbank. It remained still just long enough for me to capture a series of stunning portraits.\n\nIf you'd like to see these photos in person, a dedicated exhibition of my Amazon work will open next month at the National History Museum. I hope to see you there!",
+"Speaker 1: I've always loved spending time outdoors, so taking up vegetable gardening was natural for me. There is nothing more satisfying than harvesting your own organic tomatoes and lettuce for dinner. It takes patience and daily care, but it connects me with nature and reduces my household grocery bills. {short} Speaker 2: Playing the acoustic guitar is my primary way to decompress after work. I bought an inexpensive guitar three years ago and taught myself using online video tutorials. Learning fingerpicking patterns keeps my mind focused on the music, completely washing away work stress. {short} Speaker 3: Restoring vintage furniture started as a small weekend project when I found a worn-out wooden chair at a flea market. Sanding down old wood, repairing joints, and applying fresh varnish to bring a historic piece back to life gives me a huge sense of creative accomplishment. {short} Speaker 4: Stargazing with my telescope opened up a whole new world for me. On clear nights, setting up my equipment in the backyard to observe distant planets, lunar craters, and nebulae makes everyday human worries feel wonderfully small and insignificant. {short} Speaker 5: My passion is cooking international dishes for friends and family. Every weekend I pick a different country's cuisine—like Thai, Mexican, or Indian—and spend hours sourcing authentic spices and preparing traditional recipes from scratch. Sharing a delicious meal brings people together like nothing else.",
+"Interviewer: Welcome to today's show. In the studio we have Claire Vance, a leading architect famous for designing eco-friendly residential homes. Claire, what first sparked your interest in green architecture?\nClaire: Thanks for having me. Early in my career, I worked on conventional construction sites. I was genuinely shocked by the sheer volume of material waste and energy inefficiency. Seeing skips full of discarded timber and insulation made me realize there had to be a far more sustainable way to build homes.\nInterviewer: When designing a green home, people immediately think of solar panels. Is that the main priority?\nClaire: Solar panels are great, but they are just the icing on the cake. The core of eco-friendly architecture lies in passive design—maximizing natural light and installing high-performance insulation. If a house is properly insulated and orientated toward the sun, heating and cooling demands plummet automatically.\nInterviewer: Many clients worry that building green will break their budget. How do you address that?\nClaire: It's true that upfront construction costs can be slightly higher. However, I show clients detailed long-term energy savings charts. When they see that lower utility bills will offset the initial investment within five to seven years, their hesitation disappears.\nInterviewer: You frequently incorporate recycled building materials into your projects. What are your thoughts on their aesthetic appeal?\nClaire: Some people assume recycled materials look cheap or industrial. In reality, reclaimed timber, recycled glass tiles, and rammed earth walls can look extremely stylish when crafted well, adding unique character and warmth that brand-new materials simply cannot match.\nInterviewer: Tell us about your recent 'Eco-Pod' project.\nClaire: The 'Eco-Pod' was a compact, zero-emission home designed for urban living. The biggest hurdle was spatial layout—fitting all necessary modern amenities into a small footprint without making the interior feel cramped. It required creative custom furniture solutions.\nInterviewer: Are you hopeful about the future of green housing?\nClaire: Absolutely. I'm very optimistic that sustainable design will become standard practice rather than a niche specialty within the next decade. Building regulations are tightening globally, and young homebuyers actively demand eco-conscious features.\nInterviewer: Finally, what advice would you give to aspiring architects?\nClaire: Don't spend all your time behind a computer screen relying on CAD software. Get out onto real construction sites, talk to builders, and gain practical experience with materials firsthand. Understanding how things are physically put together makes you a far better designer."
+];
+
+var FULL=true, AUDIO=["","","",""];
+
+var ASSESSOR_EMAIL="oxfampreparation@email.cz";
+
+function wc(t){var m=t.trim().match(/\S+/g);return m?m.length:0}
+function winit(){
+  document.querySelectorAll("textarea").forEach(function(t){
+    t.oninput=function(){document.getElementById(t.id+"c").textContent=wc(t.value)+" words"}
+  });
+  document.querySelectorAll("[data-c]").forEach(function(b){
+    b.onclick=function(){var t=document.getElementById(b.dataset.c).value;if(navigator.clipboard)navigator.clipboard.writeText(t)}
+  });
+  document.querySelectorAll("[data-s]").forEach(function(b){
+    b.onclick=function(){
+      var t=document.getElementById(b.dataset.s).value,nm=document.getElementById("nm").value;
+      if(!wc(t)){
+        b.textContent="Write something first!";
+        setTimeout(function(){b.textContent="Send to assessor"},2000);
+        return;
+      }
+      var body=encodeURIComponent("Student: "+nm+"\n\n"+t),big=body.length>1500;
+      if(big&&navigator.clipboard)navigator.clipboard.writeText(t);
+      location.href="mailto:"+ASSESSOR_EMAIL+"?subject="+encodeURIComponent("FCE 2026 Test 4 "+b.dataset.t+" - "+nm)+"&body="+(big?encodeURIComponent("Student: "+nm+"\n\n(My text is copied. Please paste it here.)"):body)
+    }
+  })
+}
+
+var playId=0;
+
+function say(i,done){
+  var id=++playId;speechSynthesis.cancel();
+  var parts=T[i].split(/(\{pause\}|\{short\}|\bSpeaker \d:|\b(?:[A-Z][A-Za-z ]{1,24}):)/),q=[],pitch=1,flip=0,names={};
+  parts.forEach(function(x){
+    x=x.trim();if(!x)return;
+    if(x==="{pause}"||x==="{short}"){q.push({w:x==="{pause}"?2500:1200});pitch=1;return}
+    var sp=x.match(/^Speaker (\d):$/);if(sp){q.push({t:"Speaker "+sp[1],p:1,w:700});return}
+    if(/^[A-Za-z ]+:$/.test(x)){var n=x.slice(0,-1);if(!(n in names))names[n]=(flip++%2)?1.25:.85;pitch=names[n];return}
+    (x.match(/[^.?!]+[.?!]*/g)||[x]).forEach(function(z){q.push({t:z.trim(),p:pitch,w:300})})
+  });
+  var k=0;(function next(){
+    if(id!==playId)return;
+    if(k>=q.length){done();return}
+    var s=q[k++];
+    if(!s.t){setTimeout(next,s.w);return}
+    var u=new SpeechSynthesisUtterance(s.t);u.lang="en-GB";u.rate=0.95;u.pitch=s.p;
+    u.onend=function(){setTimeout(next,s.w)};u.onerror=function(){setTimeout(next,s.w)};
+    speechSynthesis.speak(u);
+  })()
+}
+
+function play(b){
+  if(b._busy)return;
+  var i=+b.dataset.i;
+  function fin(){b._busy=false;if(b._n>=2){b.disabled=true;b.textContent="Played twice"}else b.textContent="Play again (last time)"}
+  if(!AUDIO[i]&&!window.speechSynthesis){b.textContent="TTS not supported.";return}
+  b._n=(b._n||0)+1;b._busy=true;b.textContent="Playing...";
+  if(AUDIO[i]){var a=new Audio(AUDIO[i]);a.onended=fin;a.onerror=fin;a.play()}else say(i,fin)
+}
+
+function init(){
+  [["t1",75],["t2",40],["t3",80],["t4",14],["sp1",2],["sp2",1],["sp3",3],["sp4",4],["w1",40],["w2",40]].forEach(function(a){if(document.getElementById(a[0]))timer(a[0],a[1])});
+  if(!FULL)return;
+  build(R,document.getElementById("rbox"),"r");
+  build(L,document.getElementById("lbox"),"l");
+  document.getElementById("ck1").onclick=function(){check(document.getElementById("rbox"),document.getElementById("sc1"))};
+  document.getElementById("ck2").onclick=function(){check(document.getElementById("lbox"),document.getElementById("sc2"))};
+  document.querySelectorAll(".say").forEach(function(b){b.onclick=function(){play(b)}});
+  winit();
+}
+
+(function(){
+  var g=document.getElementById("gate"),m=document.getElementById("main");
+  function show(){g.hidden=true;m.hidden=false;if(window.init)init()}
+  if(unlocked()){show();return}
+  document.getElementById("gf").onsubmit=function(e){
+    e.preventDefault();
+    if(document.getElementById("pw").value===PW){
+      try{sessionStorage.setItem("cae26","1")}catch(x){}
+      show();
+    } else {
+      document.getElementById("err").textContent="Wrong password.";
+    }
+  }
+})();
+</script>
+</body>
+</html>
