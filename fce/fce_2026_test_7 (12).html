@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FCE 2026 Test 7 - Original Practice</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,500..800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f7fb;--paper:#fff;--ink:#14213d;--muted:#4b5266;--line:#d5d9e6;--mark:#2b59ff;--hi:#ffe45e;--ok:#1a7f52;--bad:#b3261e;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1526;--paper:#182038;--ink:#eef1fb;--muted:#a9b1c9;--line:#2c3656;--mark:#7d9bff;--hi:#e9d24a;--ok:#57c58f;--bad:#ff8a80}}
+:root[data-theme="dark"]{--bg:#0f1526;--paper:#182038;--ink:#eef1fb;--muted:#a9b1c9;--line:#2c3656;--mark:#7d9bff;--hi:#e9d24a;--ok:#57c58f;--bad:#ff8a80}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 "Atkinson Hyperlegible",system-ui,sans-serif}
+h1,h2,h3{font-family:Archivo,"Helvetica Neue",Arial,sans-serif;line-height:1.05;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--mark);outline-offset:3px}
+.wrap{max-width:74rem;margin:0 auto;padding:0 1.25rem}
+header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;padding:1.25rem 0}
+.logo{font:800 1.25rem Archivo,sans-serif;text-decoration:none}
+nav a{margin-left:1.25rem;text-decoration:none;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+
+.btn{display:inline-block;background:var(--ink);color:var(--bg);padding:.8rem 1.4rem;border-radius:.5rem;font-weight:700;text-decoration:none;border:0;cursor:pointer;font-size:1rem;font-family:inherit}
+.btn.alt{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:2rem;align-items:center;padding:1rem 0 3rem}
+h1{font-size:clamp(2rem,3.4vw,3rem);font-weight:800;font-stretch:90%;letter-spacing:-.02em;margin-top:1rem;margin-bottom:0}
+h1 span{background:linear-gradient(transparent 62%,var(--hi) 62%)}
+.lead{color:var(--muted);max-width:32rem;margin:1.25rem 0 1.75rem;font-size:1.15rem}
+.row{display:flex;gap:.75rem;flex-wrap:wrap}
+
+.sheet{background:var(--paper);border:2px solid var(--ink);border-radius:.75rem;padding:1.5rem;box-shadow:.5rem .5rem 0 var(--ink)}
+.sheet h2{font-size:1.1rem;margin-bottom:.25rem}
+.sheet p{margin:0 0 1rem;color:var(--muted);font-size:.95rem}
+.q{padding:.7rem 0;border-top:1px solid var(--line)}
+.q b{display:block;font-weight:400;margin-bottom:.45rem}
+.opts{display:flex;gap:.5rem;flex-wrap:wrap}
+.opt{display:flex;align-items:center;gap:.4rem;padding:.3rem .7rem .3rem .35rem;border:1.5px solid var(--line);border-radius:2rem;background:transparent;color:inherit;font:inherit;font-size:.95rem;cursor:pointer}
+.opt i{width:1.4rem;height:1.4rem;border-radius:50%;border:2px solid var(--muted);display:grid;place-items:center;font:700 .7rem Archivo,sans-serif;font-style:normal}
+
+.opt[aria-pressed="true"]{border-color:var(--mark)}
+.opt[aria-pressed="true"] i{background:var(--mark);border-color:var(--mark);color:var(--bg)}
+.opt.right{border-color:var(--ok)}.opt.right i{background:var(--ok);border-color:var(--ok);color:var(--bg)}
+.opt.wrong{border-color:var(--bad)}.opt.wrong i{background:var(--bad);border-color:var(--bad);color:var(--bg)}
+.result{margin-top:1rem;font-weight:700;min-height:1.6rem}
+section{padding:3.5rem 0;border-top:1px solid var(--line)}
+h2.t{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:.75rem;letter-spacing:-.01em}
+
+.sub{color:var(--muted);max-width:38rem;margin:0 0 2rem}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:.6rem;background:var(--paper)}
+table{border-collapse:collapse;width:100%;min-width:38rem}
+th,td{text-align:left;padding:.9rem 1rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:700 .95rem Archivo,sans-serif;color:var(--muted)}
+tr:last-child td{border-bottom:0}
+td:first-child{font:800 1.2rem Archivo,sans-serif;white-space:nowrap}
+td small{display:block;font:400 .9rem "Atkinson Hyperlegible",sans-serif;color:var(--muted)}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:2rem}
+.feat h3{font-size:1.2rem;margin-bottom:.4rem}
+.feat p{margin:0;color:var(--muted)}
+
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.25rem}
+.plan{background:var(--paper);border:1px solid var(--line);border-radius:.6rem;padding:1.5rem;display:flex;flex-direction:column;gap:.75rem}
+.plan.main{border:2px solid var(--ink)}
+.plan h3{font-size:1.3rem}
+.price{font:800 2rem Archivo,sans-serif}
+.plan ul{margin:0;padding-left:1.1rem;color:var(--muted);flex:1}
+footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-size:.95rem}
+
+.layout{display:grid;grid-template-columns:12.5rem minmax(0,1fr);gap:2.5rem;align-items:start}
+.side{position:sticky;top:1rem;margin-top:1rem;max-height:calc(100vh - 2rem);max-height:calc(100dvh - 2rem);overflow-y:auto;display:flex;flex-direction:column;gap:.15rem}summary{cursor:pointer;font:700 .95rem Archivo,sans-serif;color:var(--muted);padding:.4rem .75rem;border-radius:.5rem}summary:hover{color:var(--ink)}.ex[open] summary{margin-bottom:.15rem}
+.side nav{display:flex;flex-direction:column;gap:.15rem;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--line)}.side nav a{margin:0;color:inherit}.side .lang{margin-bottom:1rem}
+.side p{margin:0 0 .5rem;font:700 .95rem Archivo,sans-serif;color:var(--muted)}
+.side a{text-decoration:none;padding:.5rem .75rem;border-radius:.5rem;font:700 1rem Archivo,sans-serif;border-left:3px solid transparent}
+.side a small{display:block;font:400 .8rem "Atkinson Hyperlegible",sans-serif;color:var(--muted)}
+.side a:hover{background:var(--paper);border-left-color:var(--mark)}
+tr:target td{background:var(--hi);color:#14213d}tr:target td small{color:#14213d}
+@media (max-width:52rem){.layout{grid-template-columns:1fr;gap:0}.side{position:static;max-height:none;margin:0 0 1rem;padding:0 0 1rem;border-bottom:1px solid var(--line)}}
+
+.hr{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap}.hr .btn{padding:.45rem 1rem;font-size:.9rem}
+dialog{border:2px solid var(--ink);border-radius:.75rem;background:var(--paper);color:var(--ink);padding:1.5rem;width:min(24rem,92vw);max-height:90vh;overflow:auto}dialog::backdrop{background:rgba(10,16,32,.55)}
+dialog h2{font-size:1.4rem;margin-bottom:.5rem}dialog label{display:block;font-weight:700;margin:.75rem 0 .25rem}
+dialog input{width:100%;padding:.65rem .75rem;border:1.5px solid var(--line);border-radius:.4rem;background:var(--bg);color:var(--ink);font:inherit}
+.demo{color:var(--muted);font-size:.9rem;margin:.5rem 0 0}.err{color:var(--bad);min-height:1.5rem;margin-top:.5rem;font-size:.95rem}
+.lrow{display:grid;grid-template-columns:9rem 1fr;gap:.75rem;padding:.75rem 0;border-top:1px solid var(--line);align-items:center}.lrow .lname{text-decoration:underline;color:inherit}.lrow b,.lrow .lname{font:800 1.1rem Archivo,sans-serif}
+
+@media (max-width:40rem){.lrow{grid-template-columns:1fr;gap:.4rem}}
+@media (max-width:64rem){.hero{grid-template-columns:1fr;gap:2rem}}
+html{-webkit-text-size-adjust:100%}
+@media (max-width:40rem){
+.wrap{padding:0 1rem}
+header{padding:1rem 0}
+.hero{padding-bottom:2rem}
+.sheet{padding:1.1rem}
+section{padding:2.5rem 0}
+.scroll{border:0;background:transparent;overflow:visible}
+table,tbody,tr,td{display:block;min-width:0;width:100%}
+thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+tr{background:var(--paper);border:1px solid var(--line);border-radius:.6rem;padding:.6rem 0;margin-bottom:.75rem}
+td{border:0;padding:.15rem 1rem}
+td:first-child{font-size:1.3rem;padding-top:.4rem}
+}
+@media (pointer:coarse){.opt{min-height:44px}summary{min-height:44px;display:flex;align-items:center}.side a{min-height:44px;display:flex;flex-direction:column;justify-content:center}.hr .btn{min-height:44px}}
+
+.gatebox{max-width:26rem;margin:2rem auto;background:var(--paper);border:2px solid var(--ink);border-radius:.75rem;padding:1.5rem;box-shadow:.5rem .5rem 0 var(--ink)}
+.gatebox label,.wr label{display:block;font-weight:700;margin:.75rem 0 .25rem}
+input[type=text],input[type=password],textarea{width:100%;padding:.6rem .75rem;border:1.5px solid var(--line);border-radius:.4rem;background:var(--bg);color:var(--ink);font:inherit}
+.q input[type=text]{width:14rem;max-width:100%}
+.part{background:var(--paper);border:1px solid var(--line);border-radius:.75rem;padding:1.5rem;margin-bottom:1.25rem}
+.txt{white-space:pre-line}.q{padding:.5rem 0;border-top:1px solid var(--line)}.opts{display:flex;flex-wrap:wrap;gap:.4rem 1.25rem;margin-top:.3rem}
+.q.ok{border-left:4px solid var(--ok);padding-left:.75rem}.q.no{border-left:4px solid var(--bad);padding-left:.75rem}.fb{font-weight:700;margin-top:.25rem}
+.tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0}
+nav.tabs a {margin:0;padding:.4rem 1rem;border:1.5px solid var(--line);border-radius:2rem;text-decoration:none;font-weight:700}
+nav.tabs a[aria-current=page]{background:var(--ink);color:var(--bg)}
+.bar{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;margin:1rem 0}.time{font:800 1.6rem Archivo,sans-serif}
+.pics{display:flex;gap:1rem;flex-wrap:wrap}.pics svg, .pics img{flex:1 1 14rem;max-width:22rem;border:2px solid var(--ink);border-radius:.5rem;background:var(--paper);object-fit:cover;aspect-ratio:3/2}
+textarea{min-height:15rem}.tr{display:none}.note{padding:.75rem 1rem;border-left:4px solid var(--mark);background:var(--paper);margin:1rem 0}
+.sec{padding-top:2rem;margin-top:2rem;border-top:1px solid var(--line)}.jump{margin-top:0}.ex{color:var(--muted);margin-top:.15rem;font-size:.95rem}.q b{display:inline;font-weight:800;margin:0 .4rem 0 0}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <div class="brand"><a class="logo" href="../index.html">Oxfam Preparation</a></div>
+</header>
+
+<div id="gate">
+  <div class="gatebox">
+    <h1><span>FCE 2026</span></h1>
+    <p>Enter the password to open this test.</p>
+    <form id="gf">
+      <label for="pw">Password</label>
+      <input id="pw" type="password" autocomplete="off">
+      <div class="err" id="err"></div>
+      <div class="row" style="margin-top:1rem">
+        <button class="btn" type="submit">Open</button>
+        <a class="btn alt" href="../fce.html">Back</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="main" hidden>
+  <nav class="tabs" aria-label="Tests">
+    <a href="../fce.html">All tests</a>
+  </nav>
+
+  <h1>FCE 2026 - Test 7</h1>
+  <nav class="tabs jump" aria-label="Papers" style="margin-top: 2.5rem; margin-bottom: 2rem">
+    <a href="#rd">Reading and Use of English</a>
+    <a href="#li">Listening</a>
+    <a href="#wt">Writing</a>
+    <a href="#sk">Speaking</a>
+  </nav>
+
+  <section class="sec" id="rd">
+    <h2 class="t">Reading and Use of English (75 minutes)</h2>
+    <div class="bar"><span class="time" id="t1"></span><button class="btn alt" type="button">Start</button></div>
+    <div id="rbox"></div>
+    <div class="bar"><button class="btn" id="ck1" type="button">Check answers</button><b id="sc1"></b></div>
+  </section>
+
+  <section class="sec" id="li">
+    <h2 class="t">Listening (about 40 minutes)</h2>
+    <div class="bar"><span class="time" id="t2"></span><button class="btn alt" type="button">Start</button></div>
+    <p class="note">Each recording is played twice. Use headphones and read the questions before you listen.</p>
+    <div id="lbox"></div>
+    <div class="bar"><button class="btn" id="ck2" type="button">Check answers</button><b id="sc2"></b></div>
+  </section>
+
+  <section class="sec" id="wt">
+    <h2 class="t">Writing (80 minutes)</h2>
+    <div class="bar"><span class="time" id="t3"></span><button class="btn alt" type="button">Start</button></div>
+    <div class="wr">
+      <label for="nm">Your name</label>
+      <input type="text" id="nm">
+      
+      <div class="part">
+        <h2>Part 1 - Essay (compulsory)</h2>
+        <div class="bar"><span class="time" id="w1"></span><button class="btn alt" type="button">Start</button></div>
+        <p>In your English class you have been discussing education and future careers. Your teacher has asked you to write an essay for homework.</p>
+        <p><strong>Write an essay using all the notes and giving reasons for your point of view.</strong></p>
+        <div class="note">
+          <strong>Topic:</strong> Is it a good idea for young people to take a 'gap year' to travel or work before starting university?<br><br>
+          <strong>Notes:</strong><br>
+          Write about:<br>
+          1. gaining life experience<br>
+          2. the cost involved<br>
+          3. ___________ (your own idea)
+        </div>
+        <p>Write your essay in <strong>140 - 190</strong> words.</p>
+        <textarea id="e1" aria-label="Answer"></textarea>
+        <div class="bar">
+          <b id="e1c">0 words</b>
+          <button class="btn alt" type="button" data-c="e1">Copy</button>
+          <button class="btn" type="button" data-s="e1" data-t="Part 1 essay">Send to assessor</button>
+        </div>
+      </div>
+      
+      <div class="part">
+        <h2>Part 2 - Choose ONE task</h2>
+        <div class="bar"><span class="time" id="w2"></span><button class="btn alt" type="button">Start</button></div>
+        <p>Write an answer to one of the questions (a - c) in this part. Write your answer in <strong>140 - 190</strong> words in an appropriate style.</p>
+        <p>
+          <strong>(a) Article:</strong> You see this announcement in an international magazine: <em>A Film That Changed My Mind! Have you ever watched a movie that completely changed your perspective on a topic? Write an article telling us about the film, what it was about, and how it affected you.</em><br><br>
+          <strong>(b) Email:</strong> Your English-speaking friend Jamie is moving to your country next month for work. Write an email offering advice on how to make friends, what customs to be aware of, and how to settle in quickly.<br><br>
+          <strong>(c) Report:</strong> The director of your college has asked for ideas to improve the student cafeteria. Write a report describing the current situation with the food and seating, and recommend two changes that would benefit the students.
+        </p>
+        <textarea id="e2" aria-label="Answer"></textarea>
+        <div class="bar">
+          <b id="e2c">0 words</b>
+          <button class="btn alt" type="button" data-c="e2">Copy</button>
+          <button class="btn" type="button" data-s="e2" data-t="Part 2 task">Send to assessor</button>
+        </div>
+      </div>
+    </div>
+    <p class="note">Sending opens your email app with your text. Very long texts are copied to the clipboard so you can paste them.</p>
+  </section>
+
+  <section class="sec" id="sk">
+    <h2 class="t">Speaking (14 minutes)</h2>
+    <div class="bar"><span class="time" id="t4"></span><button class="btn alt" type="button">Start</button></div>
+    <p class="note">Practise with a partner or teacher. The real test lasts about 14 minutes.</p>
+    
+    <div class="part">
+      <h2>Part 1 - Interview (2 minutes)</h2>
+      <div class="bar"><span class="time" id="sp1"></span><button class="btn alt" type="button">Start</button></div>
+      <ul>
+        <li>What is your favourite meal of the day, and why?</li>
+        <li>How do you usually get to work or school?</li>
+        <li>Do you enjoy reading books, or do you prefer watching television?</li>
+        <li>What is something new you would like to try in the future?</li>
+      </ul>
+    </div>
+    
+    <div class="part">
+      <h2>Part 2 - Long turn (1 minute each)</h2>
+      <div class="bar"><span class="time" id="sp2"></span><button class="btn alt" type="button">Start</button></div>
+      <p><strong>Candidate A:</strong> Compare the pictures and say how the people might be feeling in these different relationship situations.</p>
+      <p><strong>Candidate B:</strong> Compare the pictures and say why the people might have chosen to do these activities as a group.</p>
+      
+      <p style="margin-top:1.5rem"><b>Candidate A's pictures: Relationships and emotions</b></p>
+      <p>Compare the pictures and say how the people might be feeling in these different situations.</p>
+      <div class="pics">
+        <img src="shutterstock_90148771-1.webp" alt="A man holding his head looking stressed while a woman sits on the sofa looking away" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f6f7fb/4b5266?text=Stressed+Couple'">
+        <img src="unnamed.jpg" alt="A happy older couple smiling and dancing outdoors" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f6f7fb/4b5266?text=Happy+Older+Couple'">
+      </div>
+      <p style="margin-top:1.5rem"><b>Candidate B's pictures: Group activities</b></p>
+      <p>Compare the pictures and say why the people might have chosen to do these activities as a group.</p>
+      <div class="pics">
+        <img src="images (2).jpg" alt="A group of young friends laughing and celebrating next to a car on a road trip" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f6f7fb/4b5266?text=Friends+on+Roadtrip'">
+        <img src="bikegroup.avif" alt="A group of mountain bikers riding along a scenic dirt path in the mountains" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f6f7fb/4b5266?text=Mountain+Bikers'">
+      </div>   
+    </div>
+    
+    <div class="part">
+      <h2>Part 3 - Collaborative task (3 minutes)</h2>
+      <div class="bar"><span class="time" id="sp3"></span><button class="btn alt" type="button">Start</button></div>
+      <p><b>What makes a workplace an excellent place to work?</b> Discuss the ideas below, then decide which TWO are the most important for employee happiness.</p>
+      <ul>
+        <li>a high salary</li>
+        <li>friendly colleagues</li>
+        <li>flexible working hours</li>
+        <li>long holidays</li>
+        <li>a comfortable environment</li>
+      </ul>
+    </div>
+    
+    <div class="part">
+      <h2>Part 4 - Discussion (4 minutes)</h2>
+      <div class="bar"><span class="time" id="sp4"></span><button class="btn alt" type="button">Start</button></div>
+      <ul>
+        <li>Why is it sometimes difficult for people to maintain a good work-life balance?</li>
+        <li>Do you think it is better to work as part of a team or independently? Why?</li>
+        <li>Some people say that having a job you love is more important than earning a lot of money. Do you agree?</li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+<footer>Original practice material in the B2 First (FCE) format. Not affiliated with Cambridge University Press &amp; Assessment.</footer>
+</div>
+
+<script>
+var PW="X2mq";
+function unlocked(){try{return sessionStorage.getItem("cae26")==="1"}catch(e){return false}}
+
+function norm(s){return s.toLowerCase().replace(/\u2019/g,"'").replace(/\s+/g," ").trim()}
+
+function build(parts,box,pre){
+  var n=0;pre=pre||"";
+  parts.forEach(function(p,pi){
+    var d=document.createElement("section");d.className="part";
+    d.innerHTML="<h2>"+p.t+"</h2>"+(p.m?"<div class='bar'><span class='time' id='pt"+pre+pi+"'></span><button class='btn alt' type='button'>Start</button> <small>suggested time</small></div>":"")+"<p class='sub'>"+p.i+"</p>"+(p.x?"<p class='txt'>"+p.x+"</p>":"")+(p.im||"")+"<div class='items'></div>";
+    var it=d.querySelector(".items");
+    p.q.forEach(function(q){
+      n++;var r=document.createElement("div");r.className="q";
+      var h="<b>"+n+"</b> "+(q.q||"")+(q.h?" <strong>"+q.h+"</strong>":"");
+      if(q.o){
+        var optsHtml = q.o.map(function(o,i){
+          var letter = "ABCDEFGH"[i];
+          var text = o === letter ? "" : o;
+          return "<label><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> "+text+"</label>";
+        }).join("");
+        h+="<div class='opts'>"+optsHtml+"</div>";
+      } else {
+        h+=" <input type='text' autocomplete='off' aria-label='Answer "+n+"'>";
+      }
+      r.innerHTML=h;r._q=q;it.appendChild(r);
+    });
+    box.appendChild(d);
+    if(p.m)timer("pt"+pre+pi,p.m);
+  });
+}
+
+function check(box,out){
+  var tot=0,ok=0;
+  box.querySelectorAll(".q").forEach(function(r){
+    tot++;var q=r._q,good,ans;
+    if(q.o){
+      var c=r.querySelector("input:checked");
+      good=c&&+c.value===q.a;
+      var letter = "ABCDEFGH"[q.a];
+      ans = q.o[q.a] === letter ? letter : letter + " " + q.o[q.a];
+    } else {
+      var v=norm(r.querySelector("input").value);
+      good=q.a.some(function(a){return norm(a)===v});
+      ans=q.a[0];
+    }
+    r.classList.toggle("ok",!!good);
+    r.classList.toggle("no",!good);
+    var f=r.querySelector(".fb");
+    if(!f){f=document.createElement("div");f.className="fb";r.appendChild(f)}
+    f.textContent=good?"Correct":"Answer: "+ans;
+    var x=r.querySelector(".ex");
+    if(!x){x=document.createElement("div");x.className="ex";r.appendChild(x)}
+    x.textContent=q.e||"";
+    if(good)ok++;
+  });
+  out.textContent="Score: "+ok+" / "+tot;
+  box.querySelectorAll(".tr").forEach(function(e){e.style.display="block"});
+}
+
+function timer(id,min){
+  var e=document.getElementById(id),l=min*60,t=null;
+  if(!e)return;
+  function s(){e.textContent=("0"+Math.floor(l/60)).slice(-2)+":"+("0"+l%60).slice(-2)}s();
+  e.nextElementSibling.onclick=function(){
+    if(t){clearInterval(t);t=null;this.textContent="Start";return}
+    this.textContent="Pause";
+    t=setInterval(function(){l--;s();if(l<=0)clearInterval(t)},1000);
+  }
+}
+
+var R = [
+{t:"Part 1 - Multiple-choice cloze",i:"Read the text and choose the word or phrase that best fits each gap.",x:"The Rise of Coffee Culture\n\nLegend has it that coffee was first (1) ___ by a goat herder in Ethiopia who noticed his animals becoming energetic after eating a certain berry. Since then, the (2) ___ of drinking coffee has spread to almost every corner of the globe. \n\nBy the 17th century, coffee houses had (3) ___ up across Europe. They quickly became known as \"penny universities\" because, for the price of a penny, anyone could (4) ___ and listen to intellectuals discussing the latest news and scientific discoveries. These establishments played a major role in shaping modern society.\n\nToday, coffee is an essential (5) ___ of the morning routine for millions. The modern coffee shop has evolved into a comfortable space where people go not just for a drink, but to work, read, or socialise. Many people simply cannot (6) ___ starting their day without a hot cup of their favourite blend. With the constant introduction of new flavours and brewing methods, the global coffee industry continues to (7) ___ rapidly, ensuring that this historic beverage remains as (8) ___ as ever.",q:[
+{o:["invented","discovered","created","designed"],a:1,e:"You discover a plant/berry that already exists in nature."},{o:["practice","behaviour","method","action"],a:0,e:"The 'practice' of doing something means the regular custom or habit."},{o:["jumped","sprang","leapt","bounced"],a:1,e:"The phrasal verb 'spring up' means to suddenly appear or start to exist."},{o:["enter","arrive","access","join"],a:0,e:"You 'enter' a building or room."},{o:["piece","section","part","share"],a:2,e:"The collocation is 'an essential part of'."},{o:["expect","imagine","believe","consider"],a:1,e:"'Cannot imagine doing something' is the correct structural phrase."},{o:["expand","stretch","extend","swell"],a:0,e:"An industry 'expands' when it grows larger."},{o:["famous","known","popular","liked"],a:2,e:"'Popular' means liked by many people, fitting the context best."}],m:10},
+{t:"Part 2 - Open cloze",i:"Read the text and think of the one word which best fits each gap.",x:"Working From Home\n\nThe shift towards remote work (9) ___ fundamentally changed the way many businesses operate. Employees are no (10) ___ tied to their office desks from nine to five. (11) ___ allows them to have a much better balance between their professional and personal lives, saving hours previously spent commuting.\n\nWorking from home can, (12) ___, blur the lines between work and leisure time. When your office is also your living room, it can be hard to switch off at the end of the day. (13) ___ order to maintain productivity and mental well-being, (14) ___ is important to set strict boundaries and stick to a routine.\n\nSome people find they get (15) ___ done without the constant distractions of a busy office environment, while others miss the social interaction with colleagues. (16) ___ you love it or hate it, remote working is clearly here to stay for the foreseeable future.",q:[
+{a:["has"],e:"Present perfect tense is required ('has changed')."},{a:["longer"],e:"'No longer' means not anymore."},{a:["This","It"],e:"'This' or 'It' refers to the situation of not being tied to a desk."},{a:["however"],e:"'However' is used to introduce a contrast."},{a:["In"],e:"The phrase is 'in order to'."},{a:["it"],e:"'It is important to...' is a standard structural phrase."},{a:["more"],e:"'Get more done' means to be more productive."},{a:["Whether"],e:"'Whether you love it or hate it' introduces two contrasting possibilities."}],m:9},
+{t:"Part 3 - Word formation",i:"Read the text. Use the word given in capitals to form a word that fits each gap.",x:"The Benefits of Gardening\n\nSpending time in a garden is highly (17) ___ for both physical and mental health. (BENEFIT)\n\nMany people find that working with plants offers a wonderful escape from the (18) ___ of modern life. (PRESS)\n\nResearchers have discovered that just thirty minutes of gardening a day significantly reduces (19) ___ and improves a person's overall mood. (ANXIOUS)\n\nFurthermore, the physical (20) ___ involved in digging and planting is an excellent form of exercise. (ACTIVE)\n\nGrowing your own vegetables also provides a great sense of (21) ___, especially when you finally get to eat what you have grown. (ACHIEVE)\n\nIt is an incredibly (22) ___ hobby that connects us with nature. (REWARD)\n\nRecently, there has been a growing (23) ___ of community gardens in urban areas. (MOVE)\n\nThese shared spaces not only make cities greener but also foster strong (24) ___ among neighbours. (FRIEND)",q:[
+{a:["beneficial"]},{a:["pressures"]},{a:["anxiety"]},{a:["activity"]},{a:["achievement"]},{a:["rewarding"]},{a:["movement"]},{a:["friendships"]}],m:10},
+{t:"Part 4 - Key word transformations",i:"Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. Use two to five words.",q:[
+{q:"\"It's a pity I didn't bring my camera,\" said Mark. (WISH)",h:"Mark said he ___ his camera.",a:["wished he had brought","wished that he had brought"]},{q:"I have never seen such a boring film. (THE)",h:"This is ___ I have ever seen.",a:["the most boring film"]},{q:"You must do exactly what the manager tells you. (CARRY)",h:"You must ___ the manager's instructions exactly.",a:["carry out"]},{q:"\"I didn't break the window,\" said the boy. (DENIED)",h:"The boy ___ the window.",a:["denied breaking"]},{q:"The weather is so wet that it's not worth going for a walk. (POINT)",h:"The weather is so wet that there is ___ for a walk.",a:["no point in going"]},{q:"It wasn't necessary for them to buy tickets in advance. (HAVE)",h:"They ___ tickets in advance.",a:["did not have to buy","didn't have to buy"]}],m:12},
+{t:"Part 5 - Multiple choice",i:"Read the article and choose the answer that best fits each question.",x:"The Power of Colour in Marketing\n\nHave you ever wondered why so many fast-food restaurants use red and yellow in their logos? Or why banks often favour the colour blue? In the world of marketing, colour is not just a matter of aesthetics; it is a powerful psychological tool used to influence consumer behaviour. Studies suggest that up to 90% of snap judgements made about products can be based on colour alone, making it a crucial element in building a brand's identity.\n\nTake the fast-food industry as an example. Psychologists have found that the colour red stimulates excitement and actually increases our heart rate, which can lead to feelings of hunger. Yellow, on the other hand, is associated with happiness, friendliness, and warmth. Furthermore, yellow is the most visible colour in daylight, making those golden arches easy to spot from a moving car. When combined, these two colours convey a message of speed, efficiency, and a cheerful dining experience, which perfectly matches the fast-food business model.\n\nConversely, financial institutions tend to avoid red entirely, as it can subconsciously signal danger or financial debt. Instead, banks and insurance companies lean heavily on blue. Blue is overwhelmingly associated with trust, security, and reliability in almost every culture around the world. When people are trusting a company with their life savings, they need to feel a sense of calm and stability, which the colour blue naturally provides. It is no coincidence that many of the world's leading technology and social media companies also use blue to make users feel safe while sharing personal data.\n\nGreen is another highly specific colour in marketing. Unsurprisingly, it is universally linked to nature, health, and tranquillity. Over the last two decades, as consumers have become more environmentally conscious, there has been a massive surge in brands adopting green branding to signal that their products are organic or eco-friendly. Interestingly, researchers have noted a phenomenon known as 'greenwashing', where companies use green packaging for products that are not actually environmentally friendly, simply to manipulate shoppers who are trying to make ethical choices.\n\nHowever, colour psychology is not an exact science. The way we perceive a colour can be heavily influenced by personal experiences and cultural background. For instance, while white represents purity and weddings in many Western cultures, it is traditionally the colour of mourning in some Eastern cultures. Therefore, global brands must tread carefully when launching campaigns internationally. A marketing strategy that is highly successful in Europe might completely fail in Asia if the colour connotations are ignored.\n\nUltimately, while consumers like to believe they make rational purchasing decisions based on price and quality, the truth is much more complex. The colours we see on shelves whisper subtle messages to our brains, gently guiding our hands towards one product over another. Understanding this silent language is the key to successful modern marketing.",q:[
+{q:"What is the main point the writer makes in the first paragraph?",o:["Marketing relies more on colour than on product quality.","Consumers are largely unaware of how quickly they judge products.","Colour plays a major role in shaping a brand's image.","Most brands use the wrong colours in their logos."],a:2,e:"The text states colour is a 'powerful psychological tool' and a 'crucial element in building a brand's identity'."},{q:"According to the second paragraph, why is yellow used by fast-food chains?",o:["Because it is the cheapest colour to print on signs.","Because it makes people feel hungry very quickly.","Because it stands out clearly and represents happiness.","Because it reduces the heart rate of stressed drivers."],a:2,e:"Yellow is 'associated with happiness' and is 'the most visible colour in daylight'."},{q:"Why do banks generally prefer the colour blue?",o:["It is the most popular colour among wealthy customers.","It promotes feelings of safety and dependability.","It encourages people to spend more money online.","It represents the technology they use in their systems."],a:1,e:"Blue is 'associated with trust, security, and reliability' and provides 'calm and stability'."},{q:"What does the term 'greenwashing' refer to?",o:["Making products entirely out of recycled materials.","Using colour to deceive customers about a product's environmental impact.","Changing a brand's logo to green to support a charity.","Washing products in eco-friendly chemicals before selling them."],a:1,e:"The text defines it as using green packaging for products that are not eco-friendly 'simply to manipulate shoppers'."},{q:"What warning does the writer give to global brands in the fifth paragraph?",o:["They should always use white to appeal to international markets.","They need to consider that colours mean different things in different cultures.","They must translate their slogans perfectly to avoid offence.","They should use a completely different logo for every country."],a:1,e:"The writer notes that perception is influenced by cultural background, contrasting Western and Eastern views of the colour white."},{q:"In the final paragraph, what does the writer suggest about consumers?",o:["They are often unaware of how their buying choices are influenced.","They care more about colour than the price of a product.","They are becoming immune to traditional marketing tricks.","They usually make purely logical decisions when shopping."],a:0,e:"The text says consumers 'like to believe they make rational purchasing decisions', but the truth is colours 'whisper subtle messages' that guide their hands."}],m:13},
+{t:"Part 6 - Gapped text",i:"Six sentences have been removed from the article. Choose from sentences A-G the one which fits each gap. There is one extra sentence.",x:"Journey into the Deep\n\nFor most people, the idea of crawling through a narrow, dark tunnel deep underground is terrifying. But for speleologists, or cave explorers, there is nothing more thrilling. Caving offers the chance to step into a world that very few human beings have ever seen. (25) ___\n\nLast month, I joined a team of experienced cavers on an expedition in the Yorkshire Dales. Our goal was to map a newly discovered section of a sprawling limestone cave system. (26) ___\n\nBefore we even approached the entrance, the expedition leader insisted on a thorough safety briefing. We checked our headlamps, spare batteries, and thermal clothing. (27) ___\n\nThe descent began with a steep climb down a slippery rock face. As we moved further away from the surface, the sound of birds and wind was replaced by the steady dripping of water. (28) ___\n\nAfter two hours of navigating tight squeezes, the tunnel suddenly opened up into a massive cavern. The beams of our headlamps revealed thousands of delicate stalactites hanging from the ceiling like glass icicles. (29) ___\n\nWe spent the next four hours carefully measuring the chamber and taking geological samples. It was exhausting, dirty work, but sitting in the absolute darkness when we briefly turned off our lights was incredibly peaceful. (30) ___\n\nSentences:\nA. This environment is totally unforgiving, so being prepared is not optional; it is essential.\nB. It took us over an hour to hike across the muddy fields just to find the opening.\nC. We packed away our equipment and prepared for the long journey back to the surface.\nD. It is one of the last true frontiers for exploration left on planet Earth.\nE. The temperature also dropped significantly, making me glad I had worn extra layers.\nF. The silence was absolute, unlike anything you can experience above ground.\nG. It was a breathtaking sight that made all the physical effort completely worthwhile.",q:[
+{q:"Gap (25)",o:["A","B","C","D","E","F","G"],a:3,e:"Sentence D ('It is one of the last true frontiers...') logically follows the idea of stepping into an unseen world."},{q:"Gap (26)",o:["A","B","C","D","E","F","G"],a:1,e:"Sentence B describes the journey to find the opening, fitting perfectly before the safety briefing at the entrance."},{q:"Gap (27)",o:["A","B","C","D","E","F","G"],a:0,e:"Sentence A ('This environment is totally unforgiving...') explains why the safety briefing and equipment checks were insisted upon."},{q:"Gap (28)",o:["A","B","C","D","E","F","G"],a:4,e:"Sentence E mentions the temperature dropping, which continues the description of the changing environment as they descend."},{q:"Gap (29)",o:["A","B","C","D","E","F","G"],a:6,e:"Sentence G ('It was a breathtaking sight...') directly refers back to the revelation of the delicate stalactites."},{q:"Gap (30)",o:["A","B","C","D","E","F","G"],a:5,e:"Sentence F describes the absolute silence, which directly links to the mention of turning off their lights and it being peaceful."}],m:12},
+{t:"Part 7 - Multiple matching",i:"Read four reviews of different language learning apps. For questions 31-40, choose from the reviews A-D. You may choose each review more than once.",x:"A — FluentMe\nI downloaded FluentMe before a trip to Spain because it promises to get you speaking fast. It uses a very clever algorithm that repeats words you struggle with until you memorise them. It's incredibly efficient for building vocabulary. However, it doesn't really explain the grammar rules at all. You just kind of have to guess why a sentence is structured a certain way. Also, the free version restricts you to only 15 minutes of practice a day, which is frustrating when you want to study for longer. It's good for basics, but not for fluency.\n\nB — ChatterBox\nChatterBox is entirely based around speaking to real native speakers. You are paired with someone who wants to learn your language, and you spend half the time speaking in English and half in their language. It's a fantastic way to pick up natural slang and improve your accent. The downside is that you have to schedule sessions in advance, and sometimes people cancel at the last minute. If you are a complete beginner, it's terrifying, so I would only recommend it if you already have a foundational understanding of the language.\n\nC — Grammatika\nAs the name suggests, Grammatika focuses heavily on the structural rules of language. It features detailed video lessons followed by extensive written quizzes. If you are the type of person who needs to know exactly why a verb is conjugated a certain way, this is the app for you. It feels very much like a traditional school textbook brought to life on a screen. Because there is almost no audio practice, my reading and writing have improved massively, but I still panic when someone actually speaks to me in French!\n\nD — LingoQuest\nLingoQuest turns learning into a video game. You complete levels, earn virtual gold coins, and unlock new characters as you progress. It is incredibly addictive, and I find myself logging in every day just to keep my daily streak alive. The lessons are short, punchy, and mix listening, reading, and basic speaking exercises. While it is undeniably fun, I do wonder how much I am actually learning for the long term. I know lots of random vocabulary, but I would struggle to have a deep conversation about politics or art.",q:[
+{q:"Which reviewer states that the app is unsuitable for absolute beginners?",o:["A","B","C","D"],a:1,e:"Review B (ChatterBox) says 'If you are a complete beginner, it's terrifying'."},{q:"Which reviewer complains about a time limit on the unpaid version?",o:["A","B","C","D"],a:0,e:"Review A (FluentMe) states 'the free version restricts you to only 15 minutes of practice a day'."},{q:"Which reviewer questions the long-term educational value of the app?",o:["A","B","C","D"],a:3,e:"Review D (LingoQuest) says 'I do wonder how much I am actually learning for the long term'."},{q:"Which reviewer praises the app for improving their understanding of local idioms?",o:["A","B","C","D"],a:1,e:"Review B says it's a fantastic way to 'pick up natural slang'."},{q:"Which reviewer uses the app daily because of its game-like features?",o:["A","B","C","D"],a:3,e:"Review D says 'It is incredibly addictive... logging in every day just to keep my daily streak alive'."},{q:"Which reviewer feels the app does not help them with spoken communication?",o:["A","B","C","D"],a:2,e:"Review C (Grammatika) states 'Because there is almost no audio practice... I still panic when someone actually speaks to me'."},{q:"Which reviewer likes the way the app targets their weak areas?",o:["A","B","C","D"],a:0,e:"Review A mentions an algorithm that 'repeats words you struggle with'."},{q:"Which reviewer appreciates the thorough explanations of language mechanics?",o:["A","B","C","D"],a:2,e:"Review C likes it if you 'need to know exactly why a verb is conjugated a certain way'."},{q:"Which reviewer finds it annoying when other users let them down?",o:["A","B","C","D"],a:1,e:"Review B notes 'sometimes people cancel at the last minute'."},{q:"Which reviewer feels the app's lack of grammar instruction is a negative?",o:["A","B","C","D"],a:0,e:"Review A complains 'it doesn't really explain the grammar rules at all'."}],m:15}
+];
+
+var L = [
+{t:"Part 1 - Multiple choice",i:"You will hear eight short, unrelated recordings. For questions 1-8, choose A, B or C.",im:"<button class='btn alt say' data-i='0' type='button'>Play recording</button>",q:[
+{q:"What does the woman think of the new restaurant?",o:["The service was slow.","The food was too expensive.","The atmosphere was too noisy."],a:2},{q:"Why is the man calling the train station?",o:["To check if a train is running on time","To report a lost item on a train","To book a ticket for tomorrow"],a:1},{q:"What did the woman buy at the market?",o:["Some fresh fruit","A handmade bowl","A silver necklace"],a:1},{q:"How does the student feel about his upcoming exam?",o:["Confident because he has revised well","Anxious because he misunderstood the topic","Relieved that the date has been moved"],a:1},{q:"What does the woman suggest the man should do?",o:["Take his car to a different mechanic","Buy a new car instead of repairing the old one","Learn how to fix the engine himself"],a:0},{q:"What was the man disappointed with at the concert?",o:["The band played for a very short time.","The lead singer forgot the lyrics.","His seat was a long way from the stage."],a:0},{q:"What are the friends discussing?",o:["A TV show they both watched","A book they are reading for college","A play they are going to see"],a:0},{q:"What is the shop assistant explaining to the customer?",o:["The shop's return policy","How to use a new coffee machine","The difference between two laptops"],a:2}],m:6},
+{t:"Part 2 - Sentence completion",i:"You will hear a man called David giving a talk about a local transport museum. For questions 9-18, complete the sentences with a word or short phrase.",im:"<button class='btn alt say' data-i='1' type='button'>Play recording</button>",q:[
+{q:"The local transport museum first opened its doors in ___.",a:["1995"]},{q:"The museum's oldest exhibit is a collection of vintage ___.",a:["bicycles"]},{q:"The building used to be a former clothing ___.",a:["factory"]},{q:"Visitors are often surprised by the display of old driver ___.",a:["uniforms"]},{q:"The most popular attraction is a classic car painted bright ___.",a:["silver"]},{q:"There is a small ___ located near the main entrance.",a:["cafe"]},{q:"For a better experience, you can hire an audio ___ at the desk.",a:["guide"]},{q:"Local primary schools usually bring students on a ___.",a:["Tuesday"]},{q:"David recommends buying a souvenir ___ from the gift shop.",a:["poster"]},{q:"You can check the updated opening hours on the museum's ___.",a:["website"]}],m:10},
+{t:"Part 3 - Multiple matching",i:"You will hear five people talking about running a marathon. For questions 19-23, choose from the list A-H what each person says about their experience. There are three extra options.",im:"<button class='btn alt say' data-i='2' type='button'>Play recording</button>",q:[
+{q:"Speaker 1",o:["I raised a lot of money for a charity.","The crowd cheering kept me going when I was tired.","I was disappointed with my final finishing time.","Training with a friend made the preparation much easier.","I suffered an injury just before the race began.","The weather conditions made the run extremely difficult.","I didn't do enough training before the event.","I felt an incredible sense of achievement at the finish line."],a:7},{q:"Speaker 2",o:["I raised a lot of money for a charity.","The crowd cheering kept me going when I was tired.","I was disappointed with my final finishing time.","Training with a friend made the preparation much easier.","I suffered an injury just before the race began.","The weather conditions made the run extremely difficult.","I didn't do enough training before the event.","I felt an incredible sense of achievement at the finish line."],a:1},{q:"Speaker 3",o:["I raised a lot of money for a charity.","The crowd cheering kept me going when I was tired.","I was disappointed with my final finishing time.","Training with a friend made the preparation much easier.","I suffered an injury just before the race began.","The weather conditions made the run extremely difficult.","I didn't do enough training before the event.","I felt an incredible sense of achievement at the finish line."],a:6},{q:"Speaker 4",o:["I raised a lot of money for a charity.","The crowd cheering kept me going when I was tired.","I was disappointed with my final finishing time.","Training with a friend made the preparation much easier.","I suffered an injury just before the race began.","The weather conditions made the run extremely difficult.","I didn't do enough training before the event.","I felt an incredible sense of achievement at the finish line."],a:3},{q:"Speaker 5",o:["I raised a lot of money for a charity.","The crowd cheering kept me going when I was tired.","I was disappointed with my final finishing time.","Training with a friend made the preparation much easier.","I suffered an injury just before the race began.","The weather conditions made the run extremely difficult.","I didn't do enough training before the event.","I felt an incredible sense of achievement at the finish line."],a:5}],m:8},
+{t:"Part 4 - Multiple choice",i:"You will hear an interview with an architect called Anna Roberts, who designs eco-friendly houses. For questions 24-30, choose A, B or C.",im:"<button class='btn alt say' data-i='3' type='button'>Play recording</button>",q:[
+{q:"What inspired Anna to focus on eco-friendly architecture?",o:["A documentary she watched at university","A trip to a sustainable village in Sweden","Her parents' interest in environmental issues"],a:1},{q:"What does Anna say is the biggest misconception about eco-houses?",o:["They are always extremely expensive to build.","They look very strange and futuristic.","They are difficult to keep warm in winter."],a:0},{q:"According to Anna, what is the most important element of an eco-house?",o:["Solar panels on the roof","High-quality insulation","Rainwater collection systems"],a:1},{q:"How does Anna feel when clients disagree with her designs?",o:["She gets frustrated if they don't understand the science.","She accepts that it is part of the collaborative process.","She usually refuses to change her original plans."],a:1},{q:"What material does Anna increasingly use in her new projects?",o:["Recycled steel","Locally sourced timber","Specialised eco-concrete"],a:1},{q:"What was the main challenge in her recent city project?",o:["Getting planning permission from the council","Dealing with the lack of natural light","Finding space for a large garden"],a:0},{q:"What advice does Anna give to people wanting a greener home?",o:["Start by making small changes to your existing house.","Knock down your old house and start from scratch.","Move out of the city to a rural area."],a:0}],m:10}
+];
+
+var T = [
+"Extract one. Man: So, what did you think of that new Italian place? Woman: The pasta was fantastic, and actually, the bill was lower than I expected. But honestly, I couldn't hear a word you were saying! With the music and everyone shouting, I left with a headache. {pause} Extract two. Man: Hello, I travelled on the 10:15 train from London to Manchester this morning. I'm calling because I think I left my reading glasses on the table at my seat. Has anything been handed in to the lost property office today? {pause} Extract three. Man: Did you buy anything nice at the craft market? Woman: I was looking for a silver necklace, but they were too expensive. But I did find this beautiful wooden bowl. It's hand-carved, and I'm going to put fruit in it in the kitchen. {pause} Extract four. Woman: Are you ready for the physics exam on Friday? Man: I thought I was. I memorised all the formulas. But then I looked at a practice paper yesterday, and the questions are entirely different to what I studied. I'm completely panicking now. {pause} Extract five. Man: The garage says it will cost six hundred pounds to fix the engine. I don't know if it's worth it. Woman: That's ridiculous! You shouldn't pay that. Before you decide to scrap it, why don't you get a second opinion from that mechanic my brother uses? He's much fairer. {pause} Extract six. Woman: How was the rock concert last night? Man: The band was incredibly energetic, and we had great seats right near the front. The only annoying thing was that they only played for forty-five minutes and didn't even do an encore! I felt a bit cheated. {pause} Extract seven. Woman: I couldn't believe the ending! I really thought she was going to forgive him. Man: Same here. The writers really managed to surprise us this season. I just hope the next series keeps up this level of suspense. We'll have to wait a year to find out! {pause} Extract eight. Assistant: This one is slightly more expensive, but it has a faster processor and double the memory. If you're just browsing the internet, the cheaper one is fine. But if you want to edit videos, you definitely need the extra power this model provides. {pause}",
+"Welcome everyone. My name is David, and I am the head curator here at the Westmere Transport Museum. It is wonderful to see so many of you here today. The museum has a long history in the town; we actually first opened our doors back in 1995, and we've been growing our collection ever since.\n\nWhile you might expect to see cars and trains immediately, our oldest exhibit is actually located in the first hall. It is a fantastic collection of vintage bicycles, some dating back to the late 19th century.\n\nThe building we are standing in has its own interesting history. Before it became a museum, this large open space was actually a clothing factory, employing hundreds of local people.\n\nAs you walk around, you'll see various vehicles, but visitors are often surprised by the display of old driver uniforms near the tram exhibit. It really shows how much fashion has changed over the decades.\n\nWithout a doubt, our most popular attraction is in the main hall. It is a classic sports car from the 1950s. Most cars of that era were dark, but this one is painted bright silver, and it really catches the eye.\n\nIf you need a break during your visit, there is a small cafe located near the main entrance where you can get tea, coffee, and sandwiches.\n\nTo get the most out of the exhibits, I highly recommend hiring an audio guide at the front desk. It only costs two pounds and provides fantastic background stories for all the vehicles.\n\nIt is fairly quiet today, which is lovely. It gets very busy when local primary schools bring students, which they usually do on a Tuesday, so bear that in mind if you plan to return!\n\nBefore you leave, do visit the gift shop. We have books and models, but I always recommend buying a souvenir poster. We have some beautiful reproductions of vintage travel advertisements.\n\nFinally, we do change our displays occasionally, so please check the updated opening hours on the museum's website before your next visit. Enjoy exploring!",
+"Speaker 1: I had trained for months, and I felt physically ready. But nothing prepares you for the final mile. My legs felt like lead, and I wanted to stop. When I finally crossed the line and they put the medal around my neck, the exhaustion vanished. I felt an incredible sense of achievement at the finish line, knowing I had pushed through the pain. {short} Speaker 2: I knew it would be a challenge, but around mile eighteen, I really hit a wall. I was slowing down to a walk. What amazed me was the people lining the streets. Complete strangers were shouting my name and offering sweets. The crowd cheering kept me going when I was tired; I honestly couldn't have finished without them. {short} Speaker 3: I am a naturally optimistic person, and I thought my general fitness would carry me through. I only went for a few short runs in the month before the race. Big mistake. By the halfway point, my knees were in agony, and I had to walk the rest. I learned the hard way that I didn't do enough training before the event. {short} Speaker 4: Getting motivated to run on dark, cold winter mornings is incredibly difficult. That's why I asked my neighbour to sign up with me. Knowing someone was waiting for me outside meant I couldn't stay in bed. Training with a friend made the preparation much easier, and we paced each other perfectly on the actual day. {short} Speaker 5: I was aiming for a personal best, and my practice times were great. But on the morning of the marathon, there was a massive storm. The wind was blowing straight into our faces, and the rain was freezing. The weather conditions made the run extremely difficult, and I finished twenty minutes slower than I had hoped.",
+"Interviewer: Today we are talking to Anna Roberts, an architect who specialises in eco-friendly housing. Anna, what started your interest in green architecture? Anna: I always cared about the environment, thanks to my parents. But the real turning point was a university trip. We visited a sustainable village in Sweden where all the houses generated their own power and used minimal energy. Seeing it work in reality, rather than just reading about it or watching a documentary, completely inspired me to focus my career on it. Interviewer: What's the biggest misconception people have about your work? Anna: Many people assume that building a green home means having a strange, futuristic-looking building covered in glass and metal. But actually, an eco-house can look exactly like a traditional cottage if you want it to. The biggest misconception is that they are always extremely expensive to build. While the initial materials might cost a little more, the savings on energy bills make it cheaper in the long run. Interviewer: What is the secret to a good eco-house? Anna: People immediately think of expensive solar panels on the roof or complex rainwater collection systems. Those are great additions, but they are pointless if the house leaks heat. According to me, the most important element is high-quality insulation. If you keep the heat inside, you don't need much energy to warm the house in the first place. Interviewer: Do clients ever reject your ideas? Anna: Oh, constantly! A client might want huge glass windows on a north-facing wall, which is terrible for energy efficiency. I used to get defensive, but now I accept that it is part of the collaborative process. I have to explain the science gently and find a compromise that looks good but still performs well. Interviewer: Are there any specific materials you prefer? Anna: I used to use a lot of recycled steel, but recently I increasingly use locally sourced timber in my new projects. Wood is a fantastic insulator, it stores carbon, and if you buy it locally, you reduce the pollution caused by transporting heavy materials across the country. Interviewer: You recently designed an eco-house in the middle of London. Was that hard? Anna: The plot was tiny, so finding space for a large garden was impossible, and natural light was limited by tall buildings next door. However, the main challenge was actually getting planning permission from the council. They had very strict rules about how buildings in that historic area should look, so we had to fight hard to get our modern eco-design approved. Interviewer: What is your advice for someone who wants to live more sustainably? Anna: You don't need to knock down your old house and start from scratch, and you certainly don't need to move to a rural area. Start by making small changes to your existing house. Improve your roof insulation, seal drafts around windows, and switch to LED lighting. Those small steps make a massive difference to your carbon footprint."
+];
+
+var FULL=true, AUDIO=["","","",""];
+
+var ASSESSOR_EMAIL="oxfampreparation@email.cz";
+
+function wc(t){var m=t.trim().match(/\S+/g);return m?m.length:0}
+function winit(){
+  document.querySelectorAll("textarea").forEach(function(t){
+    t.oninput=function(){document.getElementById(t.id+"c").textContent=wc(t.value)+" words"}
+  });
+  document.querySelectorAll("[data-c]").forEach(function(b){
+    b.onclick=function(){var t=document.getElementById(b.dataset.c).value;if(navigator.clipboard)navigator.clipboard.writeText(t)}
+  });
+  document.querySelectorAll("[data-s]").forEach(function(b){
+    b.onclick=function(){
+      var t=document.getElementById(b.dataset.s).value,nm=document.getElementById("nm").value;
+      if(!wc(t)){
+        b.textContent="Write something first!";
+        setTimeout(function(){b.textContent="Send to assessor"},2000);
+        return;
+      }
+      var body=encodeURIComponent("Student: "+nm+"\n\n"+t),big=body.length>1500;
+      if(big&&navigator.clipboard)navigator.clipboard.writeText(t);
+      location.href="mailto:"+ASSESSOR_EMAIL+"?subject="+encodeURIComponent("FCE 2026 Test 7 "+b.dataset.t+" - "+nm)+"&body="+(big?encodeURIComponent("Student: "+nm+"\n\n(My text is copied. Please paste it here.)"):body)
+    }
+  })
+}
+
+var playId=0;
+
+function say(i,done){
+  var id=++playId;speechSynthesis.cancel();
+  var parts=T[i].split(/(\{pause\}|\{short\}|\bSpeaker \d:|\b(?:[A-Z][A-Za-z ]{1,24}):)/),q=[],pitch=1,flip=0,names={};
+  parts.forEach(function(x){
+    x=x.trim();if(!x)return;
+    if(x==="{pause}"||x==="{short}"){q.push({w:x==="{pause}"?2500:1200});pitch=1;return}
+    var sp=x.match(/^Speaker (\d):$/);if(sp){q.push({t:"Speaker "+sp[1],p:1,w:700});return}
+    if(/^[A-Za-z ]+:$/.test(x)){var n=x.slice(0,-1);if(!(n in names))names[n]=(flip++%2)?1.25:.85;pitch=names[n];return}
+    (x.match(/[^.?!]+[.?!]*/g)||[x]).forEach(function(z){q.push({t:z.trim(),p:pitch,w:300})})
+  });
+  var k=0;(function next(){
+    if(id!==playId)return;
+    if(k>=q.length){done();return}
+    var s=q[k++];
+    if(!s.t){setTimeout(next,s.w);return}
+    var u=new SpeechSynthesisUtterance(s.t);u.lang="en-GB";u.rate=0.95;u.pitch=s.p;
+    u.onend=function(){setTimeout(next,s.w)};u.onerror=function(){setTimeout(next,s.w)};
+    speechSynthesis.speak(u);
+  })()
+}
+
+function play(b){
+  if(b._busy)return;
+  var i=+b.dataset.i;
+  function fin(){b._busy=false;if(b._n>=2){b.disabled=true;b.textContent="Played twice"}else b.textContent="Play again (last time)"}
+  if(!AUDIO[i]&&!window.speechSynthesis){b.textContent="TTS not supported.";return}
+  b._n=(b._n||0)+1;b._busy=true;b.textContent="Playing...";
+  if(AUDIO[i]){var a=new Audio(AUDIO[i]);a.onended=fin;a.onerror=fin;a.play()}else say(i,fin)
+}
+
+function init(){
+  [["t1",75],["t2",40],["t3",80],["t4",14],["sp1",2],["sp2",1],["sp3",3],["sp4",4],["w1",40],["w2",40]].forEach(function(a){if(document.getElementById(a[0]))timer(a[0],a[1])});
+  if(!FULL)return;
+  build(R,document.getElementById("rbox"),"r");
+  build(L,document.getElementById("lbox"),"l");
+  document.getElementById("ck1").onclick=function(){check(document.getElementById("rbox"),document.getElementById("sc1"))};
+  document.getElementById("ck2").onclick=function(){check(document.getElementById("lbox"),document.getElementById("sc2"))};
+  document.querySelectorAll(".say").forEach(function(b){b.onclick=function(){play(b)}});
+  winit();
+}
+
+(function(){
+  var g=document.getElementById("gate"),m=document.getElementById("main");
+  function show(){g.hidden=true;m.hidden=false;if(window.init)init()}
+  if(unlocked()){show();return}
+  document.getElementById("gf").onsubmit=function(e){
+    e.preventDefault();
+    if(document.getElementById("pw").value===PW){
+      try{sessionStorage.setItem("cae26","1")}catch(x){}
+      show();
+    } else {
+      document.getElementById("err").textContent="Wrong password.";
+    }
+  }
+})();
+</script>
+</body>
+</html>
