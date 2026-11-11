@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FCE 2026 Test 4 - Original Practice</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,500..800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f7fb;--paper:#fff;--ink:#14213d;--muted:#4b5266;--line:#d5d9e6;--mark:#2b59ff;--hi:#ffe45e;--ok:#1a7f52;--bad:#b3261e;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1526;--paper:#182038;--ink:#eef1fb;--muted:#a9b1c9;--line:#2c3656;--mark:#7d9bff;--hi:#e9d24a;--ok:#57c58f;--bad:#ff8a80}}
+:root[data-theme="dark"]{--bg:#0f1526;--paper:#182038;--ink:#eef1fb;--muted:#a9b1c9;--line:#2c3656;--mark:#7d9bff;--hi:#e9d24a;--ok:#57c58f;--bad:#ff8a80}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 "Atkinson Hyperlegible",system-ui,sans-serif}
+h1,h2,h3{font-family:Archivo,"Helvetica Neue",Arial,sans-serif;line-height:1.05;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--mark);outline-offset:3px}
+.wrap{max-width:74rem;margin:0 auto;padding:0 1.25rem}
+header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;padding:1.25rem 0}
+.logo{font:800 1.25rem Archivo,sans-serif;text-decoration:none}
+nav a{margin-left:1.25rem;text-decoration:none;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+
+.btn{display:inline-block;background:var(--ink);color:var(--bg);padding:.8rem 1.4rem;border-radius:.5rem;font-weight:700;text-decoration:none;border:0;cursor:pointer;font-size:1rem;font-family:inherit}
+.btn.alt{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:2rem;align-items:center;padding:1rem 0 3rem}
+h1{font-size:clamp(2rem,3.4vw,3rem);font-weight:800;font-stretch:90%;letter-spacing:-.02em;margin-top:1rem;margin-bottom:0}
+h1 span{background:linear-gradient(transparent 62%,var(--hi) 62%)}
+.lead{color:var(--muted);max-width:32rem;margin:1.25rem 0 1.75rem;font-size:1.15rem}
+.row{display:flex;gap:.75rem;flex-wrap:wrap}
+
+.sheet{background:var(--paper);border:2px solid var(--ink);border-radius:.75rem;padding:1.5rem;box-shadow:.5rem .5rem 0 var(--ink)}
+.sheet h2{font-size:1.1rem;margin-bottom:.25rem}
+.sheet p{margin:0 0 1rem;color:var(--muted);font-size:.95rem}
+.q{padding:.7rem 0;border-top:1px solid var(--line)}
+.q b{display:block;font-weight:400;margin-bottom:.45rem}
+.opts{display:flex;gap:.5rem;flex-wrap:wrap}
+.opt{display:flex;align-items:center;gap:.4rem;padding:.3rem .7rem .3rem .35rem;border:1.5px solid var(--line);border-radius:2rem;background:transparent;color:inherit;font:inherit;font-size:.95rem;cursor:pointer}
+.opt i{width:1.4rem;height:1.4rem;border-radius:50%;border:2px solid var(--muted);display:grid;place-items:center;font:700 .7rem Archivo,sans-serif;font-style:normal}
+
+.opt[aria-pressed="true"]{border-color:var(--mark)}
+.opt[aria-pressed="true"] i{background:var(--mark);border-color:var(--mark);color:var(--bg)}
+.opt.right{border-color:var(--ok)}.opt.right i{background:var(--ok);border-color:var(--ok);color:var(--bg)}
+.opt.wrong{border-color:var(--bad)}.opt.wrong i{background:var(--bad);border-color:var(--bad);color:var(--bg)}
+.result{margin-top:1rem;font-weight:700;min-height:1.6rem}
+section{padding:3.5rem 0;border-top:1px solid var(--line)}
+h2.t{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:.75rem;letter-spacing:-.01em}
+
+.sub{color:var(--muted);max-width:38rem;margin:0 0 2rem}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:.6rem;background:var(--paper)}
+table{border-collapse:collapse;width:100%;min-width:38rem}
+th,td{text-align:left;padding:.9rem 1rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:700 .95rem Archivo,sans-serif;color:var(--muted)}
+tr:last-child td{border-bottom:0}
+td:first-child{font:800 1.2rem Archivo,sans-serif;white-space:nowrap}
+td small{display:block;font:400 .9rem "Atkinson Hyperlegible",sans-serif;color:var(--muted)}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:2rem}
+.feat h3{font-size:1.2rem;margin-bottom:.4rem}
+.feat p{margin:0;color:var(--muted)}
+
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.25rem}
+.plan{background:var(--paper);border:1px solid var(--line);border-radius:.6rem;padding:1.5rem;display:flex;flex-direction:column;gap:.75rem}
+.plan.main{border:2px solid var(--ink)}
+.plan h3{font-size:1.3rem}
+.price{font:800 2rem Archivo,sans-serif}
+.plan ul{margin:0;padding-left:1.1rem;color:var(--muted);flex:1}
+footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-size:.95rem}
+
+.layout{display:grid;grid-template-columns:12.5rem minmax(0,1fr);gap:2.5rem;align-items:start}
+.side{position:sticky;top:1rem;margin-top:1rem;max-height:calc(100vh - 2rem);max-height:calc(100dvh - 2rem);overflow-y:auto;display:flex;flex-direction:column;gap:.15rem}summary{cursor:pointer;font:700 .95rem Archivo,sans-serif;color:var(--muted);padding:.4rem .75rem;border-radius:.5rem}summary:hover{color:var(--ink)}.ex[open] summary{margin-bottom:.15rem}
+.side nav{display:flex;flex-direction:column;gap:.15rem;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--line)}.side nav a{margin:0;color:inherit}.side .lang{margin-bottom:1rem}
+.side p{margin:0 0 .5rem;font:700 .95rem Archivo,sans-serif;color:var(--muted)}
+.side a{text-decoration:none;padding:.5rem .75rem;border-radius:.5rem;font:700 1rem Archivo,sans-serif;border-left:3px solid transparent}
+.side a small{display:block;font:400 .8rem "Atkinson Hyperlegible",sans-serif;color:var(--muted)}
+.side a:hover{background:var(--paper);border-left-color:var(--mark)}
+tr:target td{background:var(--hi);color:#14213d}tr:target td small{color:#14213d}
+@media (max-width:52rem){.layout{grid-template-columns:1fr;gap:0}.side{position:static;max-height:none;margin:0 0 1rem;padding:0 0 1rem;border-bottom:1px solid var(--line)}}
+
+.hr{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap}.hr .btn{padding:.45rem 1rem;font-size:.9rem}
+dialog{border:2px solid var(--ink);border-radius:.75rem;background:var(--paper);color:var(--ink);padding:1.5rem;width:min(24rem,92vw);max-height:90vh;overflow:auto}dialog::backdrop{background:rgba(10,16,32,.55)}
+dialog h2{font-size:1.4rem;margin-bottom:.5rem}dialog label{display:block;font-weight:700;margin:.75rem 0 .25rem}
+dialog input{width:100%;padding:.65rem .75rem;border:1.5px solid var(--line);border-radius:.4rem;background:var(--bg);color:var(--ink);font:inherit}
+.demo{color:var(--muted);font-size:.9rem;margin:.5rem 0 0}.err{color:var(--bad);min-height:1.5rem;margin-top:.5rem;font-size:.95rem}
+.lrow{display:grid;grid-template-columns:9rem 1fr;gap:.75rem;padding:.75rem 0;border-top:1px solid var(--line);align-items:center}.lrow .lname{text-decoration:underline;color:inherit}.lrow b,.lrow .lname{font:800 1.1rem Archivo,sans-serif}
+
+@media (max-width:40rem){.lrow{grid-template-columns:1fr;gap:.4rem}}
+@media (max-width:64rem){.hero{grid-template-columns:1fr;gap:2rem}}
+html{-webkit-text-size-adjust:100%}
+@media (max-width:40rem){
+.wrap{padding:0 1rem}
+header{padding:1rem 0}
+.hero{padding-bottom:2rem}
+.sheet{padding:1.1rem}
+section{padding:2.5rem 0}
+.scroll{border:0;background:transparent;overflow:visible}
+table,tbody,tr,td{display:block;min-width:0;width:100%}
+thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+tr{background:var(--paper);border:1px solid var(--line);border-radius:.6rem;padding:.6rem 0;margin-bottom:.75rem}
+td{border:0;padding:.15rem 1rem}
+td:first-child{font-size:1.3rem;padding-top:.4rem}
+}
+@media (pointer:coarse){.opt{min-height:44px}summary{min-height:44px;display:flex;align-items:center}.side a{min-height:44px;display:flex;flex-direction:column;justify-content:center}.hr .btn{min-height:44px}}
+
+.gatebox{max-width:26rem;margin:2rem auto;background:var(--paper);border:2px solid var(--ink);border-radius:.75rem;padding:1.5rem;box-shadow:.5rem .5rem 0 var(--ink)}
+.gatebox label,.wr label{display:block;font-weight:700;margin:.75rem 0 .25rem}
+input[type=text],input[type=password],textarea{width:100%;padding:.6rem .75rem;border:1.5px solid var(--line);border-radius:.4rem;background:var(--bg);color:var(--ink);font:inherit}
+.q input[type=text]{width:14rem;max-width:100%}
+.part{background:var(--paper);border:1px solid var(--line);border-radius:.75rem;padding:1.5rem;margin-bottom:1.25rem}
+.txt{white-space:pre-line}.q{padding:.5rem 0;border-top:1px solid var(--line)}.opts{display:flex;flex-wrap:wrap;gap:.4rem 1.25rem;margin-top:.3rem}
+.q.ok{border-left:4px solid var(--ok);padding-left:.75rem}.q.no{border-left:4px solid var(--bad);padding-left:.75rem}.fb{font-weight:700;margin-top:.25rem}
+.tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0}
+nav.tabs a {margin:0;padding:.4rem 1rem;border:1.5px solid var(--line);border-radius:2rem;text-decoration:none;font-weight:700}
+nav.tabs a[aria-current=page]{background:var(--ink);color:var(--bg)}
+.bar{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;margin:1rem 0}.time{font:800 1.6rem Archivo,sans-serif}
+.pics{display:flex;gap:1rem;flex-wrap:wrap}.pics svg, .pics img{flex:1 1 14rem;max-width:22rem;border:2px solid var(--ink);border-radius:.5rem;background:var(--paper);object-fit:cover;aspect-ratio:3/2}
+textarea{min-height:15rem}.tr{display:none}.note{padding:.75rem 1rem;border-left:4px solid var(--mark);background:var(--paper);margin:1rem 0}
+.sec{padding-top:2rem;margin-top:2rem;border-top:1px solid var(--line)}.jump{margin-top:0}.ex{color:var(--muted);margin-top:.15rem;font-size:.95rem}.q b{display:inline;font-weight:800;margin:0 .4rem 0 0}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <div class="brand"><a class="logo" href="../index.html">Oxfam Preparation</a></div>
+</header>
+
+<div id="gate">
+  <div class="gatebox">
+    <h1><span>FCE 2026</span></h1>
+    <p>Enter the password to open this test.</p>
+    <form id="gf">
+      <label for="pw">Password</label>
+      <input id="pw" type="password" autocomplete="off">
+      <div class="err" id="err"></div>
+      <div class="row" style="margin-top:1rem">
+        <button class="btn" type="submit">Open</button>
+        <a class="btn alt" href="../fce.html">Back</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="main" hidden>
+  <nav class="tabs" aria-label="Tests">
+    <a href="../fce.html">All tests</a>
+  </nav>
+
+  <h1>FCE 2026 - Test 4</h1>
+  <nav class="tabs jump" aria-label="Papers" style="margin-top: 2.5rem; margin-bottom: 2rem">
+    <a href="#rd">Reading and Use of English</a>
+    <a href="#li">Listening</a>
+    <a href="#wt">Writing</a>
+    <a href="#sk">Speaking</a>
+  </nav>
+
+  <section class="sec" id="rd">
+    <h2 class="t">Reading and Use of English (75 minutes)</h2>
+    <div class="bar"><span class="time" id="t1"></span><button class="btn alt" type="button">Start</button></div>
+    <div id="rbox"></div>
+    <div class="bar"><button class="btn" id="ck1" type="button">Check answers</button><b id="sc1"></b></div>
+  </section>
+
+  <section class="sec" id="li">
+    <h2 class="t">Listening (about 40 minutes)</h2>
+    <div class="bar"><span class="time" id="t2"></span><button class="btn alt" type="button">Start</button></div>
+    <p class="note">Each recording is played twice. Use headphones and read the questions before you listen.</p>
+    <div id="lbox"></div>
+    <div class="bar"><button class="btn" id="ck2" type="button">Check answers</button><b id="sc2"></b></div>
+  </section>
+
+  <section class="sec" id="wt">
+    <h2 class="t">Writing (80 minutes)</h2>
+    <div class="bar"><span class="time" id="t3"></span><button class="btn alt" type="button">Start</button></div>
+    <div class="wr">
+      <label for="nm">Your name</label>
+      <input type="text" id="nm">
+      
+      <div class="part">
+        <h2>Part 1 - Essay (compulsory)</h2>
+        <div class="bar"><span class="time" id="w1"></span><button class="btn alt" type="button">Start</button></div>
+        <p>In your English class you have been discussing environmental policy and urban planning. Your teacher has asked you to write an essay for homework.</p>
+        <p><strong>Write an essay using all the notes and giving reasons for your point of view.</strong></p>
+        <div class="note">
+          <strong>Topic:</strong> Should local councils require all new city buildings to have green roofs covered with plants?<br><br>
+          <strong>Notes:</strong><br>
+          Write about:<br>
+          1. reducing urban heat and pollution<br>
+          2. construction costs and building maintenance<br>
+          3. ___________ (your own idea)
+        </div>
+        <p>Write your essay in <strong>140 - 190</strong> words.</p>
+        <textarea id="e1" aria-label="Answer"></textarea>
+        <div class="bar">
+          <b id="e1c">0 words</b>
+          <button class="btn alt" type="button" data-c="e1">Copy</button>
+          <button class="btn" type="button" data-s="e1" data-t="Part 1 essay">Send to assessor</button>
+        </div>
+      </div>
+      
+      <div class="part">
+        <h2>Part 2 - Choose ONE task</h2>
+        <div class="bar"><span class="time" id="w2"></span><button class="btn alt" type="button">Start</button></div>
+        <p>Write an answer to one of the questions (a - c) in this part. Write your answer in <strong>140 - 190</strong> words in an appropriate style.</p>
+        <p>
+          <strong>(a) Article:</strong> You see this announcement in a lifestyle magazine: <em>Local Celebrations! We are looking for articles about memorable cultural or seasonal festivals in your region. Write an article describing a festival you attended, explaining what took place, and why such events are important for community spirit.</em><br><br>
+          <strong>(b) Email:</strong> Your English-speaking friend Sam is planning a two-week holiday to your country and has written asking for travel advice. Write an email to Sam suggesting the best destinations to visit, the ideal time of year to travel, and practical advice regarding local customs.
+          <br><br>
+          <strong>(c) Review:</strong> You recently listened to a newly launched educational podcast series. Write a review of the series for a student website. Describe the main subject matter, explain what makes the host engaging, and state whether you would recommend it to other learners.
+        </p>
+        <textarea id="e2" aria-label="Answer"></textarea>
+        <div class="bar">
+          <b id="e2c">0 words</b>
+          <button class="btn alt" type="button" data-c="e2">Copy</button>
+          <button class="btn" type="button" data-s="e2" data-t="Part 2 task">Send to assessor</button>
+        </div>
+      </div>
+    </div>
+    <p class="note">Sending opens your email app with your text. Very long texts are copied to the clipboard so you can paste them.</p>
+  </section>
+
+  <section class="sec" id="sk">
+    <h2 class="t">Speaking (14 minutes)</h2>
+    <div class="bar"><span class="time" id="t4"></span><button class="btn alt" type="button">Start</button></div>
+    <p class="note">Practise with a partner or teacher. The real test lasts about 14 minutes.</p>
+    
+    <div class="part">
+      <h2>Part 1 - Interview (2 minutes)</h2>
+      <div class="bar"><span class="time" id="sp1"></span><button class="btn alt" type="button">Start</button></div>
+      <ul>
+        <li>What is your favourite daily routine, and why do you look forward to it?</li>
+        <li>How important is technology in your daily study or work life?</li>
+        <li>Tell me about a hobby or activity you enjoy doing when you want to unwind.</li>
+        <li>What is a foreign country or region you have never visited but would love to explore? Why?</li>
+      </ul>
+    </div>
+    
+    <div class="part">
+      <h2>Part 2 - Long turn (1 minute each)</h2>
+      <div class="bar"><span class="time" id="sp2"></span><button class="btn alt" type="button">Start</button></div>
+      <p><strong>Candidate A:</strong> Compare the pictures and say how the people might be feeling in these different work environments.</p>
+      <p><strong>Candidate B:</strong> Compare the pictures and say what the advantages might be of travelling in these different ways.</p>
+      
+      <p style="margin-top:1.5rem"><b>Candidate A's pictures: People at Work</b></p>
+      <p>Compare the pictures and say how the people might be feeling in these different work environments.</p>
+      <div class="pics">
+        <img src="chef-cooking-restaurant-kitchen.webp" alt="A professional chef cooking in a busy commercial kitchen" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f6f7fb/4b5266?text=Chef+in+Kitchen'">
+        <img src="a-team-celebrating-after-getting-their-work-done.png" alt="A team of office workers celebrating a completed project" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f6f7fb/4b5266?text=Team+Celebrating'">
+      </div>
+      <p style="margin-top:1.5rem"><b>Candidate B's pictures: Travelling</b></p>
+      <p>Compare the pictures and say what the advantages might be of travelling in these different ways.</p>
+      <div class="pics">
+        <img src="How-to-travel-cheap-1.png" alt="A budget traveler carrying a backpack on a journey" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f6f7fb/4b5266?text=Budget+Traveler'">
+        <img src="GTY_carry_on_kab_150724_16x9_992.jpg" alt="A passenger managing carry-on luggage at an airport terminal" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f6f7fb/4b5266?text=Airport+Traveler'">
+      </div>   
+    </div>
+    
+    <div class="part">
+      <h2>Part 3 - Collaborative task (3 minutes)</h2>
+      <div class="bar"><span class="time" id="sp3"></span><button class="btn alt" type="button">Start</button></div>
+      <p><b>What are the most effective ways to encourage people to protect the environment in their daily lives?</b> Discuss the ideas below, then decide which TWO measures would have the greatest impact.</p>
+      <ul>
+        <li>recycling household waste and avoiding single-use plastics</li>
+        <li>switching to renewable energy sources for home electricity</li>
+        <li>choosing public transportation or cycling instead of driving</li>
+        <li>buying locally produced organic food items</li>
+        <li>participating in local community clean-up projects</li>
+      </ul>
+    </div>
+    
+    <div class="part">
+      <h2>Part 4 - Discussion (4 minutes)</h2>
+      <div class="bar"><span class="time" id="sp4"></span><button class="btn alt" type="button">Start</button></div>
+      <ul>
+        <li>Do you think individual actions really make a difference in tackling global climate issues?</li>
+        <li>Should governments introduce stricter financial penalties for individuals or companies that waste energy?</li>
+        <li>How can schools best educate young children about environmental conservation?</li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+<footer>Original practice material in the B2 First (FCE) format. Not affiliated with Cambridge University Press &amp; Assessment.</footer>
+</div>
+
+<script>
+var PW="X2mq";
+function unlocked(){try{return sessionStorage.getItem("cae26")==="1"}catch(e){return false}}
+
+function norm(s){return s.toLowerCase().replace(/\u2019/g,"'").replace(/\s+/g," ").trim()}
+
+function build(parts,box,pre){
+  var n=0;pre=pre||"";
+  parts.forEach(function(p,pi){
+    var d=document.createElement("section");d.className="part";
+    d.innerHTML="<h2>"+p.t+"</h2>"+(p.m?"<div class='bar'><span class='time' id='pt"+pre+pi+"'></span><button class='btn alt' type='button'>Start</button> <small>suggested time</small></div>":"")+"<p class='sub'>"+p.i+"</p>"+(p.x?"<p class='txt'>"+p.x+"</p>":"")+(p.im||"")+"<div class='items'></div>";
+    var it=d.querySelector(".items");
+    p.q.forEach(function(q){
+      n++;var r=document.createElement("div");r.className="q";
+      var h="<b>"+n+"</b> "+(q.q||"")+(q.h?" <strong>"+q.h+"</strong>":"");
+      if(q.o){
+        var optsHtml = q.o.map(function(o,i){
+          var letter = "ABCDEFGH"[i];
+          var text = o === letter ? "" : o;
+          return "<label><input type='radio' name='"+pre+"q"+n+"' value='"+i+"'> <i>"+letter+"</i> "+text+"</label>";
+        }).join("");
+        h+="<div class='opts'>"+optsHtml+"</div>";
+      } else {
+        h+=" <input type='text' autocomplete='off' aria-label='Answer "+n+"'>";
+      }
+      r.innerHTML=h;r._q=q;it.appendChild(r);
+    });
+    box.appendChild(d);
+    if(p.m)timer("pt"+pre+pi,p.m);
+  });
+}
+
+function check(box,out){
+  var tot=0,ok=0;
+  box.querySelectorAll(".q").forEach(function(r){
+    tot++;var q=r._q,good,ans;
+    if(q.o){
+      var c=r.querySelector("input:checked");
+      good=c&&+c.value===q.a;
+      var letter = "ABCDEFGH"[q.a];
+      ans = q.o[q.a] === letter ? letter : letter + " " + q.o[q.a];
+    } else {
+      var v=norm(r.querySelector("input").value);
+      good=q.a.some(function(a){return norm(a)===v});
+      ans=q.a[0];
+    }
+    r.classList.toggle("ok",!!good);
+    r.classList.toggle("no",!good);
+    var f=r.querySelector(".fb");
+    if(!f){f=document.createElement("div");f.className="fb";r.appendChild(f)}
+    f.textContent=good?"Correct":"Answer: "+ans;
+    var x=r.querySelector(".ex");
+    if(!x){x=document.createElement("div");x.className="ex";r.appendChild(x)}
+    x.textContent=q.e||"";
+    if(good)ok++;
+  });
+  out.textContent="Score: "+ok+" / "+tot;
+  box.querySelectorAll(".tr").forEach(function(e){e.style.display="block"});
+}
+
+function timer(id,min){
+  var e=document.getElementById(id),l=min*60,t=null;
+  if(!e)return;
+  function s(){e.textContent=("0"+Math.floor(l/60)).slice(-2)+":"+("0"+l%60).slice(-2)}s();
+  e.nextElementSibling.onclick=function(){
+    if(t){clearInterval(t);t=null;this.textContent="Start";return}
+    this.textContent="Pause";
+    t=setInterval(function(){l--;s();if(l<=0)clearInterval(t)},1000);
+  }
+}
+
+var R = [
+{t:"Part 1 - Multiple-choice cloze",i:"Read the text and choose the word or phrase that best fits each gap.",x:"The Discovery of Deep-Sea Creatures\n\nFor centuries, scientists believed that the depths of the ocean were entirely barren deserts devoid of life. Due to extreme water pressure, freezing temperatures, and total absence of sunlight, it was assumed no organism could (1) ___ such harsh conditions. \n\nHowever, in 1977, oceanographers exploring the Pacific Ocean near the Galápagos Islands made a (2) ___ discovery. While diving in a specialized submarine, they located hydrothermal vents on the ocean floor spewing hot, mineral-rich water. To their utter amazement, these vents were surrounded by thriving ecosystems (3) ___ of giant tube worms, blind crabs, and glowing fish.\n\nUnlike surface life, which relies on photosynthesis, these deep-sea organisms have (4) ___ to synthesize energy from hydrogen sulfide using chemosynthesis. This landmark discovery (5) ___ traditional views about the fundamental requirements for life. \n\nFurther exploration has (6) ___ to light hundreds of previously unknown species. Scientists now believe that hydrothermal vents may have (7) ___ a crucial role in the origin of life on Earth. Today, deep-sea marine biology (8) ___ one of the most exciting frontiers of scientific research.",q:[
+{o:["survive","endure","persist","resist"],a:0,e:"'Survive' is the standard verb used for continuing to live in harsh conditions."},{o:["stunning","sensational","groundbreaking","dramatic"],a:2,e:"'Groundbreaking' means innovative or pioneering, perfect for a major scientific discovery."},{o:["consisting","composing","including","containing"],a:0,e:"'Consisting of' is the correct prepositional collocation."},{o:["evolved","adapted","developed","transformed"],a:1,e:"'Adapted' collocates with 'to synthesize' when talking about biological evolutionary adaptation."},{o:["challenged","questioned","disputed","opposed"],a:0,e:"'Challenged traditional views' is a standard academic collocation."},{o:["brought","taken","drawn","carried"],a:0,e:"'Brought to light' is an idiom meaning revealed or uncovered."},{o:["played","acted","performed","made"],a:0,e:"'Played a crucial role' is a fixed collocation."},{o:["remains","stays","keeps","holds"],a:0,e:"'Remains' means continues to be in a specified condition."}],m:10},
+{t:"Part 2 - Open cloze",i:"Read the text and think of the one word which best fits each gap.",x:"The Evolution of Language\n\nLanguage is undoubtedly (9) ___ of humanity's greatest achievements. Without it, the transmission of complex ideas and cultural traditions from one generation to (10) ___ would be virtually impossible. \n\nScholars have long debated how human speech first originated. Some linguists argue that early humans began by imitating natural sounds, (11) ___ as animal calls or rushing water. Others believe that language evolved gradually from physical gestures and facial expressions. \n\n(12) ___ of the exact origin, language quickly became essential for human survival. It enabled early hunting groups to coordinate their strategies (13) ___ far greater efficiency than had ever been possible before. \n\nAs communities spread across the globe, distinct dialects emerged, eventually developing (14) ___ thousands of unique languages. Today, globalization is causing many minority languages to disappear at (15) ___ alarming rate. Preserving linguistic diversity is therefore more urgent (16) ___ ever.",q:[
+{a:["one"],e:"Completes the standard phrase 'one of humanity's greatest achievements'."},{a:["another"],e:"Structure 'from one generation to another'."},{a:["such"],e:"'Such as' is used to introduce examples."},{a:["regardless","irrespective"],e:"'Regardless of' or 'Irrespective of' means despite."},{a:["with"],e:"'With far greater efficiency' - preposition 'with'."},{a:["into"],e:"'Develop into' means to transform or turn into something."},{a:["an"],e:"Indefinite article 'an' before 'alarming rate'."},{a:["than"],e:"Comparative conjunction 'more urgent than ever'."}],m:9},
+{t:"Part 3 - Word formation",i:"Read the text. Use the word given in capitals to form a word that fits each gap.",x:"Living in the Arctic\n\nThe Arctic tundra is one of the most hostile yet breathtaking environments on Earth. Surviving in this frozen wilderness requires immense physical endurance and (17) ___ adaptability. (EXCEPTION)\n\nFor thousands of years, indigenous populations like the Inuit have developed remarkable strategies to cope with extreme sub-zero temperatures. Their traditional clothing, crafted from animal skins, provides superior (18) ___ against piercing polar winds. (PROTECT)\n\n(19) ___ research has shown that traditional Arctic diets, rich in marine fats and fresh meat, supplied all necessary nutrients despite the total (20) ___ of fresh fruit and vegetables. (SCIENCE)\n(ABSENT)\n\nIn recent decades, modern technology has brought significant (21) ___ to life in northern communities, including insulated housing and snowmobiles. (CONVENIENT)\n\nHowever, climate change now poses an unprecedented (22) ___ to the region's delicate ecosystem and traditional lifestyle. (THREATEN)\n\nRapidly melting sea ice is causing severe coastline (23) ___ and altering animal migration patterns. (ERODE)\n\nProtecting these fragile polar regions will require global cooperation and a renewed (24) ___ on sustainable environmental policies. (RELY)",q:[
+{a:["exceptionally"]},{a:["protection"]},{a:["scientific"]},{a:["absence"]},{a:["conveniences"]},{a:["threat"]},{a:["erosion"]},{a:["reliance"]}],m:10},
+{t:"Part 4 - Key word transformations",i:"Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. Use two to five words.",q:[
+{q:"I am certain that Laura didn't break the glass by accident. (CANNOT)",h:"Laura ___ broken the glass by accident.",a:["cannot have","can't have"]},{q:"They are repairing the roof of the sports hall this week. (BEING)",h:"The roof of the sports hall ___ this week.",a:["is being repaired"]},{q:"\"You must not leave your luggage unattended,\" the officer told us. (WARNED)",h:"The officer ___ our luggage unattended.",a:["warned us not to leave"]},{q:"I regret not applying for that job last month. (WISH)",h:"I ___ for that job last month.",a:["wish I had applied","wish that I had applied"]},{q:"The concert was so good that we bought tickets for the next show. (SUCH)",h:"It was ___ that we bought tickets for the next show.",a:["such a good concert"]},{q:"She moved to London three years ago. (LIVING)",h:"She ___ in London for three years.",a:["has been living","'s been living"]}],m:12},
+{t:"Part 5 - Multiple choice",i:"Read the article and choose the answer that best fits each question.",x:"The Psychology of Creativity\n\nWhat makes some individuals exceptionally creative while others struggle to generate original ideas? For decades, psychologists assumed creativity was an innate talent—a rare gift bestowed upon a lucky few at birth. However, groundbreaking cognitive research has dismantled this notion, demonstrating that creativity is not a fixed genetic trait, but rather a dynamic set of mental skills that can be cultivated and refined over time.\n\nCentral to understanding creativity is the distinction between convergent and divergent thinking. Convergent thinking involves applying logic and established rules to find a single, correct solution to a problem, such as solving a mathematical equation. In contrast, divergent thinking is the ability to generate multiple, varied, and unconventional ideas in response to an open-ended prompt. While traditional education systems overwhelmingly emphasize convergent thinking through standardized testing, creative breakthroughs almost always stem from divergent thinking.\n\nInterestingly, neuroscientists have discovered that the creative process relies on the interaction between two seemingly opposing brain networks: the Default Mode Network (DMN) and the Executive Control Network (ECN). The DMN becomes active when we daydream, let our minds wander, or imagine hypothetical scenarios. The ECN, on the other hand, is engaged during focused attention, decision-making, and critical evaluation. In non-creative tasks, these two networks usually operate in opposition; when one turns on, the other turns off. However, highly creative individuals demonstrate a unique ability to co-activate both networks simultaneously, allowing wild ideas generated by the DMN to be structured and refined by the ECN.\n\nAnother critical component of creativity is the willingness to tolerate ambiguity and failure. Creative thinkers view mistakes not as embarrassing failures, but as essential data points in an ongoing experiment. Studies show that prolific creators—from Thomas Edison to Pablo Picasso—were not necessarily more talented than their peers; they simply produced a far larger volume of work, accepting that the majority of their attempts would be unsuccessful.\n\nFurthermore, environmental factors play a pivotal role. Environments that foster psychological safety, encourage curiosity, and expose individuals to diverse perspectives significantly boost creative output. Conversely, excessive stress, rigid routines, and fear of judgment swiftly suppress creative impulses. Ultimately, creativity is muscle memory for the mind. By embracing divergent thinking, welcoming failure, and cultivating curiosity, anyone can enhance their creative capacity.",q:[
+{q:"What point is made about creativity in the first paragraph?",o:["It is primarily determined by a person's genetic inheritance.","It was previously believed to be an unchangeable natural gift.","It develops automatically as people grow older.","It is harder to measure than general intelligence."],a:1,e:"The text states 'psychologists assumed creativity was an innate talent... research has dismantled this notion'."},{q:"How does the writer contrast convergent and divergent thinking?",o:["Convergent thinking produces multiple solutions, whereas divergent thinking produces one.","Divergent thinking is emphasized more in schools than convergent thinking.","Convergent thinking relies on established rules, while divergent thinking generates varied ideas.","Divergent thinking is only useful in artistic disciplines."],a:2,e:"The text notes convergent thinking applies logic to find a single solution, whereas divergent thinking generates multiple, unconventional ideas."},{q:"According to the third paragraph, what is special about the brains of highly creative people?",o:["They rely exclusively on the Default Mode Network.","They can activate two usually opposing brain networks at the same time.","They switch off the Executive Control Network during complex tasks.","They process information much faster than average brains."],a:1,e:"The text states they 'demonstrate a unique ability to co-activate both networks simultaneously'."},{q:"What did research reveal about prolific creators like Thomas Edison and Picasso?",o:["They made fewer mistakes than less successful creators.","They possessed superior technical skills from an early age.","They generated a high volume of work and accepted frequent failure.","They worked entirely in isolation to protect their ideas."],a:2,e:"The text states 'they simply produced a far larger volume of work, accepting that the majority of their attempts would be unsuccessful'."},{q:"What environmental condition is said to harm creative output?",o:["Exposure to diverse cultural perspectives.","A strong sense of psychological safety.","Fear of judgment and rigid daily routines.","Encouragement of personal curiosity."],a:2,e:"The text states 'excessive stress, rigid routines, and fear of judgment swiftly suppress creative impulses'."},{q:"What is the writer's overall conclusion?",o:["Only a small percentage of people can ever become truly creative.","Creativity is a skill that can be developed through specific practices.","Standardized testing is the best way to foster creativity.","Daydreaming is more important than focused effort for success."],a:1,e:"The article concludes that creativity can be cultivated and enhanced by anyone."}],m:13},
+{t:"Part 6 - Gapped text",i:"Six sentences have been removed from the article. Choose from sentences A-G the one which fits each gap. There is one extra sentence.",x:"The Lost City of the Jungle\n\nDeep within the dense tropical rainforests of Central America lies one of the most astonishing archaeological discoveries of the 21st century. For centuries, rumors persisted among local villagers of a legendary ancient city swallowed by the jungle. (25) ___\n\nPrevious archaeological expeditions attempting to locate the city on foot had failed due to treacherous terrain, venomous snakes, and impenetrable foliage. However, in 2012, a team of researchers utilized a revolutionary technology known as LiDAR (Light Detection and Ranging). (26) ___\n\nBy firing hundreds of thousands of laser pulses per second from an aircraft, LiDAR penetrates the dense jungle canopy to create a precise three-dimensional map of the ground below. When researchers analyzed the initial scan data, they were stunned. (27) ___\n\nBeneath the thick blanket of trees lay extensive earthworks, stone foundations, irrigation canals, and ceremonial pyramids. The scans revealed that this was not merely an isolated settlement, but a thriving urban metropolis that had flourished over a thousand years ago. (28) ___\n\nFollowing the aerial discovery, a ground expedition was launched to explore the site firsthand. Navigating through the wilderness, the team successfully reached the coordinates indicated on the LiDAR maps. (29) ___\n\nAmong the ruins, archaeologists uncovered beautifully carved stone sculptures, ceramic vessels, and ceremonial chairs preserved for centuries under the forest floor. (30) ___ This extraordinary finding has fundamentally reshaped our understanding of pre-Columbian civilizations in the region.\n\nSentences:\nA. The images clearly outlined human-made structures hidden entirely from view at ground level.\nB. However, early European explorers dismissed these stories as mere folklore and myth.\nC. This equipment allowed them to scan vast areas of forest floor from the air with remarkable speed.\nD. Consequently, the team decided to cancel all further research at the site.\nE. These artifacts provided precious insights into the daily life and spiritual beliefs of the city's inhabitants.\nF. It had supported a population of tens of thousands before being mysteriously abandoned.\nG. Upon arrival, they were awed to find ancient stone monuments emerging from the roots of giant trees.",q:[
+{q:"Gap (25)",o:["A","B","C","D","E","F","G"],a:1,e:"Sentence B ('However, early European explorers dismissed these stories...') directly contrasts with the persistent local rumors mentioned in the previous sentence."},{q:"Gap (26)",o:["A","B","C","D","E","F","G"],a:2,e:"Sentence C ('This equipment allowed them to scan...') explains the function of the LiDAR technology introduced in the previous sentence."},{q:"Gap (27)",o:["A","B","C","D","E","F","G"],a:0,e:"Sentence A ('The images clearly outlined human-made structures...') details what stunned the researchers when analyzing the scans."},{q:"Gap (28)",o:["A","B","C","D","E","F","G"],a:5,e:"Sentence F ('It had supported a population of tens of thousands...') elaborates on the thriving urban metropolis."},{q:"Gap (29)",o:["A","B","C","D","E","F","G"],a:6,e:"Sentence G ('Upon arrival, they were awed to find...') describes what the ground expedition found when reaching the coordinates."},{q:"Gap (30)",o:["A","B","C","D","E","F","G"],a:4,e:"Sentence E ('These artifacts provided precious insights...') directly refers to the carved stone sculptures and ceramic vessels mentioned."}],m:12},
+{t:"Part 7 - Multiple matching",i:"Read four accounts of people who transitioned to remote work. For questions 31-40, choose from the people A-D. You may choose each person more than once.",x:"A — Hannah (Graphic Designer)\nWhen my company transitioned to full remote work three years ago, I was thrilled. Eliminating my daily two-hour train commute immediately gave me back ten hours a week, which I now spend exercising and cooking fresh meals. However, setting boundaries between work and personal life proved surprisingly difficult at first. In the beginning, I found myself checking emails late into the evening because my laptop was always sitting on the dining table. I had to create a dedicated office corner and establish strict log-off times to protect my mental health. Now, I wouldn't trade this flexibility for anything.\n\nB — Liam (Software Support Engineer)\nI was initially skeptical about working from home because I enjoy the social banter of a busy office environment. The first few months were tough; I felt isolated and missed the spontaneous conversations over coffee. To combat loneliness, I joined a local co-working space twice a week, which turned out to be the perfect compromise. It gives me a professional routine and a chance to network with freelancers from other industries. On a financial level, saving money on daily transit passes and takeaway lunches has allowed me to save for a deposit on a home much faster than expected.\n\nC — Chloe (Content Strategist)\nRemote work has completely transformed my productivity. In an open-plan office, I was constantly interrupted by noise, phone calls, and unplanned meetings. Working from home allows me to enter a state of deep focus, meaning I complete tasks in half the time. The biggest challenge has been staying visible to management. When you aren't physically present in the office, you have to make an extra effort to communicate your achievements. I make sure to send weekly summary reports to my team lead so my contributions don't go unnoticed.\n\nD — Marcus (Project Manager)\nManaging a team remotely requires a completely different leadership style. In a traditional office, you can see whether your team is working just by looking around. Remotely, you have to build trust and evaluate staff based on actual output rather than hours spent at a desk. I spent the first year testing various digital collaboration tools to keep projects organized. While I miss face-to-face team brainstorming sessions, the ability to work from anywhere has allowed my family to move away from the expensive capital to a peaceful coastal town.",q:[
+{q:"Which person mentions taking active steps to prevent work from intruding on personal time?",o:["A","B","C","D"],a:0,e:"Hannah states 'I had to create a dedicated office corner and establish strict log-off times'."},{q:"Which person experienced feelings of isolation when starting remote work?",o:["A","B","C","D"],a:1,e:"Liam says 'The first few months were tough; I felt isolated and missed the spontaneous conversations'."},{q:"Which person points out a significant financial benefit of working from home?",o:["A","B","C","D"],a:1,e:"Liam notes 'saving money on daily transit passes... allowed me to save for a deposit on a home'."},{q:"Which person finds it easier to concentrate without workplace distractions?",o:["A","B","C","D"],a:2,e:"Chloe states 'In an open-plan office, I was constantly interrupted... Working from home allows me to enter a state of deep focus'."},{q:"Which person highlights the need to actively remind managers of their accomplishments?",o:["A","B","C","D"],a:2,e:"Chloe mentions 'you have to make an extra effort to communicate your achievements... send weekly summary reports'."},{q:"Which person changed their geographic location as a result of remote work?",o:["A","B","C","D"],a:3,e:"Marcus states 'allowed my family to move away from the expensive capital to a peaceful coastal town'."},{q:"Which person had to adapt their management approach for remote employees?",o:["A","B","C","D"],a:3,e:"Marcus explains 'Managing a team remotely requires a completely different leadership style'."},{q:"Which person uses a shared workspace to maintain social interaction?",o:["A","B","C","D"],a:1,e:"Liam notes 'I joined a local co-working space twice a week, which turned out to be the perfect compromise'."},{q:"Which person gained extra time for healthy lifestyle habits?",o:["A","B","C","D"],a:0,e:"Hannah says eliminating her commute gave her time 'which I now spend exercising and cooking fresh meals'."},{q:"Which person misses informal, face-to-face creative discussions with colleagues?",o:["A","B","C","D"],a:3,e:"Marcus states 'While I miss face-to-face team brainstorming sessions...'"}],m:15}
+];
+
+var L = [
+{t:"Part 1 - Multiple choice",i:"You will hear eight short, unrelated recordings. For questions 1-8, choose A, B or C.",im:"<button class='btn alt say' data-i='0' type='button'>Play recording</button>",q:[
+{q:"What is the museum guide announcing?",o:["A temporary closure of an exhibition gallery","A change in ticket prices for students","The arrival of a new sculpture display"],a:0},{q:"Why is the woman returning the coat?",o:["It is the wrong size.","The colour is different from the website.","The zipper is broken."],a:2},{q:"What did the man enjoy most about the film?",o:["The dramatic visual effects","The musical soundtrack","The performance of the lead actor"],a:1},{q:"Where are the two speakers?",o:["In a busy train station","At an outdoor street market","In an airport terminal"],a:1},{q:"What problem does the student mention?",o:["She lost her research notes.","She cannot access the library database.","She missed an assignment deadline."],a:1},{q:"Why is the man calling his colleague?",o:["To reschedule a business presentation","To ask for help with financial charts","To confirm a flight booking"],a:0},{q:"What did the woman think of the fitness class?",o:["It was far too intense for beginners.","The instructor was very encouraging.","The background music was disappointing."],a:0},{q:"What is the hotel receptionist explaining?",o:["Where to park the vehicle","Opening hours and access to the wellness centre","The menu options for room service"],a:1}],m:6},
+{t:"Part 2 - Sentence completion",i:"You will hear a park ranger called Tom Hayes talking about his daily work in a national park. For questions 9-18, complete the sentences with a word or short phrase.",im:"<button class='btn alt say' data-i='1' type='button'>Play recording</button>",q:[
+{q:"Tom notes that he originally studied ___ at university before becoming a ranger.",a:["forestry"]},{q:"The ranger team spends most of their mornings doing essential maintenance on public ___.",a:["trails","footpaths"]},{q:"Tom mentions that the most common injury suffered by hikers in the park is a twisted ___.",a:["ankle"]},{q:"To protect wildlife, visitors are strictly required to keep their dogs on a ___ at all times.",a:["leash","lead"]},{q:"Tom explains that the park's population of wild ___ has increased significantly recently.",a:["deer"]},{q:"During summer, the biggest environmental hazard in the park is fire caused by disposable ___.",a:["barbecues","grills"]},{q:"School groups visiting the park can participate in educational workshops at the outdoor ___.",a:["classroom"]},{q:"Tom advises visitors to pack a high-quality ___ to cope with sudden mountain weather changes.",a:["raincoat","waterproof jacket"]},{q:"The park team recently launched a campaign to reduce plastic ___ left behind by picnickers.",a:["litter","waste"]},{q:"Anyone interested in becoming a volunteer ranger can sign up on the park's official ___.",a:["website"]}],m:10},
+{t:"Part 3 - Multiple matching",i:"You will hear five people talking about why they started learning a new skill. For questions 19-23, choose from the list A-H what each person says was their main reason. There are three extra options.",im:"<button class='btn alt say' data-i='2' type='button'>Play recording</button>",q:[
+{q:"Speaker 1",o:["To improve career prospects","To recover from a physical injury","To meet new friends with similar interests","To fulfill a lifelong personal ambition","To keep up with technological advancements","To prepare for an upcoming international trip","To challenge themselves mentally in retirement","To manage daily stress and anxiety"],a:2},{q:"Speaker 2",o:["To improve career prospects","To recover from a physical injury","To meet new friends with similar interests","To fulfill a lifelong personal ambition","To keep up with technological advancements","To prepare for an upcoming international trip","To challenge themselves mentally in retirement","To manage daily stress and anxiety"],a:0},{q:"Speaker 3",o:["To improve career prospects","To recover from a physical injury","To meet new friends with similar interests","To fulfill a lifelong personal ambition","To keep up with technological advancements","To prepare for an upcoming international trip","To challenge themselves mentally in retirement","To manage daily stress and anxiety"],a:7},{q:"Speaker 4",o:["To improve career prospects","To recover from a physical injury","To meet new friends with similar interests","To fulfill a lifelong personal ambition","To keep up with technological advancements","To prepare for an upcoming international trip","To challenge themselves mentally in retirement","To manage daily stress and anxiety"],a:5},{q:"Speaker 5",o:["To improve career prospects","To recover from a physical injury","To meet new friends with similar interests","To fulfill a lifelong personal ambition","To keep up with technological advancements","To prepare for an upcoming international trip","To challenge themselves mentally in retirement","To manage daily stress and anxiety"],a:6}],m:8},
+{t:"Part 4 - Multiple choice",i:"You will hear a radio interview with a wildlife photographer named Laura Bennett. For questions 24-30, choose A, B or C.",im:"<button class='btn alt say' data-i='3' type='button'>Play recording</button>",q:[
+{q:"What first inspired Laura to pursue wildlife photography?",o:["A documentary she watched as a child","A camera gifted to her by her grandfather","A trip to a local nature reserve"],a:1},{q:"What does Laura consider the most challenging aspect of her work?",o:["Carrying heavy camera equipment uphill","Waiting for hours in extreme weather conditions","Selling her photos to international magazines"],a:1},{q:"How does Laura approach photographing dangerous predators?",o:["By keeping a safe distance using long telephoto lenses","By building hidden wooden shelters near water holes","By using automated remote cameras left overnight"],a:0},{q:"Why does Laura prefer working in remote, isolated locations?",o:["She dislikes working alongside other photographers.","It allows her to capture animals behaving completely naturally.","The light quality is much better away from cities."],a:1},{q:"What advice does Laura give to amateur wildlife photographers?",o:["Invest in the most expensive camera gear immediately.","Learn to understand animal behaviour before taking pictures.","Focus exclusively on photographing rare species."],a:1},{q:"How does Laura feel about digital editing software?",o:["It should only be used to enhance natural lighting, not alter reality.","It has made professional photography too easy for beginners.","It is essential for fixing blurred or out-of-focus images."],a:0},{q:"What project is Laura planning to undertake next year?",o:["Publishing an autobiography about her career","Teaching photography workshops at a university","Documenting endangered species in South American rainforests"],a:2}],m:10}
+];
+
+var T = [
+"Extract one. Museum Guide: Attention visitors in the central court. Please be aware that the Egyptian Antiquities gallery on the second floor is temporarily closed for maintenance due to a minor water leak. We expect to reopen the gallery at two o'clock this afternoon. In the meantime, we invite you to explore the newly opened Roman Sculpture exhibit in Hall B. We apologize for any inconvenience. {pause} Extract two. Customer: Hello, I bought this winter coat here yesterday, but when I got home and tried to put it on, the metal zipper completely jammed and broke off. Sales Assistant: Oh, I am so sorry about that! Let me check our stock. We can either exchange it for a new one immediately or issue a full refund to your card. {pause} Extract three. Woman: So, what did you think of the new sci-fi movie? Man: Well, the special effects were okay, though nothing we haven't seen before. But the musical soundtrack was absolutely phenomenal! It built up so much tension and emotion in every scene. The lead actor's performance was a bit flat, honestly. {pause} Extract four. Woman: Look at all these fantastic fruit stalls! Man: I know, the atmosphere at this market is incredible. Mind your bag, though, it's getting very crowded near the spice vendor over there. Let me grab some fresh figs before we head down towards the flower stalls. {pause} Extract five. Student: Excuse me, librarian? I've been trying to log into the academic journal database from my laptop for the past hour, but it keeps giving me an authentication error message. I really need to access these articles for my history essay due tomorrow. Librarian: Ah, yes, our server is undergoing emergency maintenance. It should be back online by three PM. {pause} Extract six. Colleague A: Hi Mark, do you have a quick minute? Colleague B: Sure, Sarah. What's up? Colleague A: Regarding our client presentation on Thursday morning—I was wondering if we could move it to Friday afternoon? Our design team needs an extra day to finalize the financial charts. {pause} Extract seven. Woman: I tried that new high-intensity interval training class at the gym yesterday. Man: How was it? Woman: Honestly, it was far too intense for beginners! The instructor didn't give any modifications for easy exercises, and my legs are still aching today. I think I'll stick to gentle swimming from now on. {pause} Extract eight. Receptionist: Welcome to the Grand Hotel. As our guest, you have complimentary access to our wellness center on the basement level. The heated pool and sauna are open daily from seven AM until ten PM. You can use your room key card to enter the glass doors next to the elevator. {pause}",
+"Hello everyone, I'm Tom Hayes, and welcome to the Visitors' Centre. I've been a park ranger here for eight years. People often ask how I got into this job. Interestingly, I actually studied forestry at university, assuming I'd work in timber management, but I realized I wanted a hands-on role working directly with the public.\n\nOur day starts early. The ranger team spends most of our mornings doing essential maintenance on public trails. With thousands of visitors every weekend, path erosion is a constant challenge.\n\nSafety is another major part of our job. We respond to accidents across the park. While people worry about snake bites, the most common injury suffered by hikers in the park is actually a twisted ankle from slipping on loose stones.\n\nWe also work hard to protect local wildlife. We love dogs, but visitors are strictly required to keep their dogs on a leash at all times to avoid disturbing ground-nesting birds during spring.\n\nConservation efforts have been very successful here. In fact, our population of wild deer has increased significantly over the last decade, which is fantastic to see.\n\nSummer brings distinct hazards. The biggest environmental hazard in the park during hot spells is fire caused by disposable barbecues left on dry grass. We urge everyone to bring sandwiches instead!\n\nEducation is key to long-term conservation. School groups visiting the park can participate in educational workshops held at our outdoor classroom, surrounded by native woodland.\n\nIf you're planning a walk today, please check the weather forecast. Mountain weather changes rapidly, so I always advise visitors to pack a high-quality raincoat even if it looks sunny when you park your car.\n\nWe also fight litter. We recently launched a campaign to reduce plastic waste left behind by picnickers. Please remember to take all your rubbish home.\n\nFinally, we are always looking for extra hands. Anyone interested in becoming a volunteer ranger can sign up on the park's official website. Thank you for listening!",
+"Speaker 1: When I moved to a new town last year, I didn't know anyone. I decided to join a community pottery workshop on Wednesday evenings. I wasn't particularly artistic, but I wanted to meet new friends with similar interests. It worked out brilliantly; our pottery group now meets for coffee every weekend! {short} Speaker 2: I worked in marketing for five years, but I noticed all the high-paying managerial positions required data analysis skills. To improve my career prospects, I enrolled in an online course to learn Python programming. It was tough studying after long work shifts, but it paid off when I landed a promotion last month. {short} Speaker 3: My job as an emergency room nurse is fast-paced and emotionally draining. I needed an outlet to manage daily stress and anxiety. A colleague suggested learning classical guitar. Focusing entirely on reading sheet music and mastering finger techniques forces my mind to completely disconnect from work pressures. {short} Speaker 4: I'm spending my gap year living and volunteering in Rome. Before heading overseas, I wanted to prepare for my upcoming international trip by learning Italian. I used language apps and listened to podcasts every day. Being able to chat with locals in markets has made my travel experience so much richer. {short} Speaker 5: After retiring from forty years of accounting, I was terrified my brain would slow down. I wanted to challenge myself mentally in retirement, so I took up competitive chess. Joining the local chess club and studying famous historical matches keeps my mind incredibly active and sharp.",
+"Interviewer: Today in the studio we have renowned wildlife photographer Laura Bennett. Laura, welcome. What first inspired you to pick up a camera and photograph animals?\nLaura: Thanks for having me. My passion actually started when I turned twelve. My grandfather gifted me an old mechanical camera for my birthday. I started capturing birds in our back garden, and I was instantly hooked by the challenge of capturing split-second natural moments.\nInterviewer: People imagine wildlife photography as glamorous travel, but what is the reality?\nLaura: It requires tremendous physical and mental stamina. People see a breathtaking picture of a snow leopard, but they don't realize I spent fourteen days waiting for hours in extreme weather conditions in sub-zero temperatures just to get that single frame.\nInterviewer: How do you handle photographing large, potentially dangerous predators like bears or lions?\nLaura: Safety always comes first—both for me and the animal. I keep a safe distance using long telephoto lenses. If an animal changes its behavior because of your presence, you are too close.\nInterviewer: You often spend months alone in remote wilderness areas. Why?\nLaura: Working in isolated locations means animals aren't accustomed to human presence. It allows me to capture animals behaving completely naturally, revealing authentic moments of parent-cub interactions or hunting strategies.\nInterviewer: What is your primary advice for amateur photographers starting out?\nLaura: Beginners often think buying expensive gear is the secret. It isn't. My advice is to learn to understand animal behaviour before taking pictures. If you can anticipate what an animal will do next, you'll get great shots even with a basic camera.\nInterviewer: What are your thoughts on digital editing software?\nLaura: I'm a purist. I believe software should only be used to enhance natural lighting or correct color balance, not alter reality. Removing background elements or adding artificial subjects ruins the integrity of wildlife documentary photography.\nInterviewer: What's next on your horizon?\nLaura: Next spring I'm embarking on a six-month expedition documenting endangered species in South American rainforests. It's an urgent project aimed at raising funds for habitat conservation."
+];
+
+var FULL=true, AUDIO=["","","",""];
+
+var ASSESSOR_EMAIL="oxfampreparation@email.cz";
+
+function wc(t){var m=t.trim().match(/\S+/g);return m?m.length:0}
+function winit(){
+  document.querySelectorAll("textarea").forEach(function(t){
+    t.oninput=function(){document.getElementById(t.id+"c").textContent=wc(t.value)+" words"}
+  });
+  document.querySelectorAll("[data-c]").forEach(function(b){
+    b.onclick=function(){var t=document.getElementById(b.dataset.c).value;if(navigator.clipboard)navigator.clipboard.writeText(t)}
+  });
+  document.querySelectorAll("[data-s]").forEach(function(b){
+    b.onclick=function(){
+      var t=document.getElementById(b.dataset.s).value,nm=document.getElementById("nm").value;
+      if(!wc(t)){
+        b.textContent="Write something first!";
+        setTimeout(function(){b.textContent="Send to assessor"},2000);
+        return;
+      }
+      var body=encodeURIComponent("Student: "+nm+"\n\n"+t),big=body.length>1500;
+      if(big&&navigator.clipboard)navigator.clipboard.writeText(t);
+      location.href="mailto:"+ASSESSOR_EMAIL+"?subject="+encodeURIComponent("FCE 2026 Test 4 "+b.dataset.t+" - "+nm)+"&body="+(big?encodeURIComponent("Student: "+nm+"\n\n(My text is copied. Please paste it here.)"):body)
+    }
+  })
+}
+
+var playId=0;
+
+function say(i,done){
+  var id=++playId;speechSynthesis.cancel();
+  var parts=T[i].split(/(\{pause\}|\{short\}|\bSpeaker \d:|\b(?:[A-Z][A-Za-z ]{1,24}):)/),q=[],pitch=1,flip=0,names={};
+  parts.forEach(function(x){
+    x=x.trim();if(!x)return;
+    if(x==="{pause}"||x==="{short}"){q.push({w:x==="{pause}"?2500:1200});pitch=1;return}
+    var sp=x.match(/^Speaker (\d):$/);if(sp){q.push({t:"Speaker "+sp[1],p:1,w:700});return}
+    if(/^[A-Za-z ]+:$/.test(x)){var n=x.slice(0,-1);if(!(n in names))names[n]=(flip++%2)?1.25:.85;pitch=names[n];return}
+    (x.match(/[^.?!]+[.?!]*/g)||[x]).forEach(function(z){q.push({t:z.trim(),p:pitch,w:300})})
+  });
+  var k=0;(function next(){
+    if(id!==playId)return;
+    if(k>=q.length){done();return}
+    var s=q[k++];
+    if(!s.t){setTimeout(next,s.w);return}
+    var u=new SpeechSynthesisUtterance(s.t);u.lang="en-GB";u.rate=0.95;u.pitch=s.p;
+    u.onend=function(){setTimeout(next,s.w)};u.onerror=function(){setTimeout(next,s.w)};
+    speechSynthesis.speak(u);
+  })()
+}
+
+function play(b){
+  if(b._busy)return;
+  var i=+b.dataset.i;
+  function fin(){b._busy=false;if(b._n>=2){b.disabled=true;b.textContent="Played twice"}else b.textContent="Play again (last time)"}
+  if(!AUDIO[i]&&!window.speechSynthesis){b.textContent="TTS not supported.";return}
+  b._n=(b._n||0)+1;b._busy=true;b.textContent="Playing...";
+  if(AUDIO[i]){var a=new Audio(AUDIO[i]);a.onended=fin;a.onerror=fin;a.play()}else say(i,fin)
+}
+
+function init(){
+  [["t1",75],["t2",40],["t3",80],["t4",14],["sp1",2],["sp2",1],["sp3",3],["sp4",4],["w1",40],["w2",40]].forEach(function(a){if(document.getElementById(a[0]))timer(a[0],a[1])});
+  if(!FULL)return;
+  build(R,document.getElementById("rbox"),"r");
+  build(L,document.getElementById("lbox"),"l");
+  document.getElementById("ck1").onclick=function(){check(document.getElementById("rbox"),document.getElementById("sc1"))};
+  document.getElementById("ck2").onclick=function(){check(document.getElementById("lbox"),document.getElementById("sc2"))};
+  document.querySelectorAll(".say").forEach(function(b){b.onclick=function(){play(b)}});
+  winit();
+}
+
+(function(){
+  var g=document.getElementById("gate"),m=document.getElementById("main");
+  function show(){g.hidden=true;m.hidden=false;if(window.init)init()}
+  if(unlocked()){show();return}
+  document.getElementById("gf").onsubmit=function(e){
+    e.preventDefault();
+    if(document.getElementById("pw").value===PW){
+      try{sessionStorage.setItem("cae26","1")}catch(x){}
+      show();
+    } else {
+      document.getElementById("err").textContent="Wrong password.";
+    }
+  }
+})();
+</script>
+</body>
+</html>
