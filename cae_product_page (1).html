@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Příprava na test Advanced C1 – Oxfam Preparation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,500..800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f7fb;--paper:#fff;--ink:#14213d;--muted:#4b5266;--line:#d5d9e6;--mark:#2b59ff;--hi:#ffe45e;--ok:#1a7f52;--bad:#b3261e;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1526;--paper:#182038;--ink:#eef1fb;--muted:#a9b1c9;--line:#2c3656;--mark:#7d9bff;--hi:#e9d24a;--ok:#57c58f;--bad:#ff8a80}}
+:root[data-theme="dark"]{--bg:#0f1526;--paper:#182038;--ink:#eef1fb;--muted:#a9b1c9;--line:#2c3656;--mark:#7d9bff;--hi:#e9d24a;--ok:#57c58f;--bad:#ff8a80}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 "Atkinson Hyperlegible",system-ui,sans-serif}
+h1,h2,h3{font-family:Archivo,"Helvetica Neue",Arial,sans-serif;line-height:1.05;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--mark);outline-offset:3px}
+.wrap{max-width:74rem;margin:0 auto;padding:0 1.25rem}
+header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;padding:1.25rem 0;border-bottom:1px solid var(--line);margin-bottom:2rem}
+.logo{font:800 1.25rem Archivo,sans-serif;text-decoration:none}
+nav a{margin-left:1.25rem;text-decoration:none;color:var(--muted);font-weight:700}
+nav a:hover{color:var(--ink)}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--ink);color:var(--bg);padding:.8rem 1.4rem;border-radius:.5rem;font-weight:700;text-decoration:none;border:0;cursor:pointer;font-size:1rem;font-family:inherit;transition:transform 0.1s, opacity 0.2s}
+.btn:active{transform:scale(0.97)}
+.btn:hover{opacity:0.9}
+.btn.alt{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.btn.accent{background:var(--mark);color:#fff;border-color:var(--mark);box-shadow: 0 4px 10px rgba(43, 89, 255, 0.3)}
+
+/* Layouts */
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;padding:1rem 0 3rem}
+.hero-content{display:flex;flex-direction:column;gap:1.25rem}
+h1{font-size:clamp(2rem,3.4vw,3rem);font-weight:800;font-stretch:90%;letter-spacing:-.02em}
+h1 span{background:linear-gradient(transparent 62%,var(--hi) 62%)}
+.price-tag{font:800 2.2rem Archivo,sans-serif;color:var(--ink);margin:0}
+.product-desc{font-size:1.05rem;line-height:1.6;margin:0;color:var(--muted)}
+.product-desc ul{padding-left:1.2rem;margin:.5rem 0;display:flex;flex-direction:column;gap:0.4rem}
+.row{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1rem}
+
+/* Product Image */
+.hero-image{display:flex;justify-content:center}
+.hero-image img{max-width:100%;height:auto;border-radius:1rem;border:2px solid var(--ink);box-shadow:.75rem .75rem 0 var(--ink);object-fit:cover}
+
+/* Sections */
+section{padding:3.5rem 0;border-top:1px solid var(--line)}
+h2.t{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:.75rem;letter-spacing:-.01em}
+.sub{color:var(--muted);max-width:38rem;margin:0 0 2rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.chip{padding:.6rem 1.2rem;border:1.5px solid var(--ink);border-radius:2rem;text-decoration:none;font-weight:700;background:var(--paper);color:var(--ink)}
+.chip:hover{background:var(--ink);color:var(--bg)}
+.sheet{background:var(--paper);border:2px solid var(--ink);border-radius:.75rem;padding:1.5rem;box-shadow:.5rem .5rem 0 var(--ink);margin-bottom:2rem}
+.pr{display:flex;justify-content:space-between;gap:1rem;padding:.6rem 0;border-top:1px solid var(--line)}
+
+/* Cart Dialog */
+dialog{border:2px solid var(--ink);border-radius:.75rem;background:var(--paper);color:var(--ink);padding:1.5rem;width:min(28rem,92vw);max-height:90vh;overflow:auto;box-shadow:.5rem .5rem 0 var(--ink)}
+dialog::backdrop{background:rgba(10,16,32,.55)}
+dialog h2{font-size:1.6rem;margin-bottom:1rem;border-bottom:2px solid var(--line);padding-bottom:0.5rem}
+.cart-item{display:flex;justify-content:space-between;align-items:center;padding:0.75rem 0;border-bottom:1px solid var(--line)}
+.cart-item-info{display:flex;flex-direction:column}
+.cart-item-title{font-weight:700}
+.cart-item-price{color:var(--muted);font-size:0.9rem}
+.cart-remove{background:var(--bad);color:#fff;border:none;border-radius:0.3rem;padding:0.3rem 0.6rem;cursor:pointer;font-weight:700;font-size:0.8rem}
+.cart-total{font-size:1.2rem;font-weight:800;text-align:right;margin:1rem 0}
+.empty-cart{color:var(--muted);text-align:center;padding:2rem 0;font-style:italic}
+
+/* Toast Notification */
+#toast{visibility:hidden;min-width:250px;background-color:var(--ok);color:white;text-align:center;border-radius:.5rem;padding:1rem;position:fixed;z-index:1000;left:50%;bottom:30px;transform:translateX(-50%);font-weight:700;box-shadow:0 4px 12px rgba(0,0,0,0.15);opacity:0;transition:opacity 0.3s, bottom 0.3s}
+#toast.show{visibility:visible;opacity:1;bottom:50px}
+
+footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-size:.95rem;text-align:center;margin-top:2rem}
+
+@media (max-width:64rem){
+  .hero{grid-template-columns:1fr;gap:2rem}
+  .hero-image img{max-width:400px;margin:0 auto}
+}
+@media (max-width:40rem){
+  .wrap{padding:0 1rem}
+  .row{flex-direction:column}
+  .btn{width:100%}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <a class="logo" href="#">Oxfam Preparation</a>
+    <nav>
+      <a href="#about">O zkoušce</a>
+      <a href="#tests-portal">Moje testy</a>
+      <button id="cartBtn" class="btn alt" style="margin-left:1rem; padding: 0.5rem 1rem;">
+        🛒 Košík (<span id="cartCount">0</span>)
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="hero-content">
+        <h1>Příprava na test <span>Advanced C1</span></h1>
+        <p class="price-tag">299 Kč</p>
+        <div class="product-desc">
+          <p>Komplexní a digitalizovaná příprava na zkoušku C1 Advanced (CAE). Otevřete si dveře na prestižní univerzity a k lepším pracovním nabídkám.</p>
+          <ul>
+            <li><strong>18 online zkušebních testů</strong> z let 2025 & 2026</li>
+            <li><strong>Vysvětlení</strong> správných odpovědí</li>
+            <li><strong>Časovače</strong> pro přesnou simulaci zkoušky</li>
+            <li><strong>Ohodnocení Writingu</strong> rodilým mluvčím</li>
+            <li>Česká zákaznická infolinka</li>
+          </ul>
+        </div>
+        <div class="row">
+          <button class="btn accent" onclick="addToCart('Příprava na test Advanced C1', 299)">Do košíku</button>
+          <a href="#tests-portal" class="btn alt">Odkaz na 18 zakoupených testů</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="3.jpg" alt="C1 Advanced Mock Tests 2025 & 2026">
+      </div>
+    </div>
+
+    <section id="about">
+      <h2 class="t">O zkoušce C1 Advanced (CAE)</h2>
+      <p class="sub">Zkouška C1 Advanced je celosvětově uznávaný certifikát, který potvrzuje vaši schopnost používat angličtinu na vysoké úrovni v akademickém i profesním prostředí.</p>
+      
+      <div class="sheet">
+        <h2>Části zkoušky a časová dotace</h2>
+        <div class="pr"><span>Reading and Use of English</span><span>90 minut</span></div>
+        <div class="pr"><span>Writing</span><span>90 minut</span></div>
+        <div class="pr"><span>Listening</span><span>40 minut</span></div>
+        <div class="pr"><span>Speaking</span><span>15 minut</span></div>
+      </div>
+    </section>
+
+    <section id="tests-portal">
+      <h2 class="t">Vaše zakoupené testy</h2>
+      <p class="sub">Zde naleznete svých 18 přípravných testů. Pro spuštění testu stačí kliknout na příslušnou sekci níže.</p>
+      <div class="chips">
+        <a class="chip" href="#">C1 Testy 2025 (1-9)</a>
+        <a class="chip" href="#">C1 Testy 2026 (10-18)</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2026 Oxfam Preparation. Nejsme spojeni s Cambridge University Press & Assessment. Názvy zkoušek patří jejich vlastníkům.</footer>
+</div>
+
+<!-- Cart Modal -->
+<dialog id="cartModal">
+  <h2>Váš košík</h2>
+  <div id="cartItems">
+    <!-- Items will be injected here via JS -->
+  </div>
+  <div id="cartTotalContainer" class="cart-total" style="display:none;">
+    Celkem: <span id="cartTotalAmount">0</span> Kč
+  </div>
+  <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
+    <button class="btn alt" onclick="document.getElementById('cartModal').close()" style="flex:1">Pokračovat v nákupu</button>
+    <button class="btn accent" id="checkoutBtn" style="flex:1" onclick="checkout()">Přejít k pokladně</button>
+  </div>
+</dialog>
+
+<!-- Toast Notification -->
+<div id="toast">Produkt byl přidán do košíku!</div>
+
+<script>
+// Cart Logic
+let cart = JSON.parse(localStorage.getItem('oxfam_cart')) || [];
+
+function updateCartUI() {
+  const cartCount = document.getElementById('cartCount');
+  const cartItems = document.getElementById('cartItems');
+  const cartTotalContainer = document.getElementById('cartTotalContainer');
+  const cartTotalAmount = document.getElementById('cartTotalAmount');
+  const checkoutBtn = document.getElementById('checkoutBtn');
+  
+  cartCount.textContent = cart.length;
+  cartItems.innerHTML = '';
+  
+  let total = 0;
+  
+  if (cart.length === 0) {
+    cartItems.innerHTML = '<div class="empty-cart">Váš košík je prázdný.</div>';
+    cartTotalContainer.style.display = 'none';
+    checkoutBtn.style.opacity = '0.5';
+    checkoutBtn.style.pointerEvents = 'none';
+  } else {
+    cartTotalContainer.style.display = 'block';
+    checkoutBtn.style.opacity = '1';
+    checkoutBtn.style.pointerEvents = 'auto';
+    
+    cart.forEach((item, index) => {
+      total += item.price;
+      const div = document.createElement('div');
+      div.className = 'cart-item';
+      div.innerHTML = `
+        <div class="cart-item-info">
+          <span class="cart-item-title">${item.name}</span>
+          <span class="cart-item-price">${item.price} Kč</span>
+        </div>
+        <button class="cart-remove" onclick="removeFromCart(${index})">Odebrat</button>
+      `;
+      cartItems.appendChild(div);
+    });
+    cartTotalAmount.textContent = total.toLocaleString('cs-CZ');
+  }
+}
+
+function addToCart(name, price) {
+  cart.push({ name, price });
+  localStorage.setItem('oxfam_cart', JSON.stringify(cart));
+  updateCartUI();
+  showToast('Produkt byl přidán do košíku!');
+}
+
+function removeFromCart(index) {
+  cart.splice(index, 1);
+  localStorage.setItem('oxfam_cart', JSON.stringify(cart));
+  updateCartUI();
+}
+
+function checkout() {
+  if(cart.length > 0) {
+    document.getElementById('cartModal').close();
+    showToast('Přesměrování na platební bránu...');
+  }
+}
+
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  toast.textContent = message;
+  toast.className = 'show';
+  setTimeout(() => {
+    toast.className = toast.className.replace('show', '');
+  }, 3000);
+}
+
+// Modal Event Listeners
+document.getElementById('cartBtn').addEventListener('click', () => {
+  document.getElementById('cartModal').showModal();
+});
+
+// Close modal when clicking outside of it
+const dialog = document.getElementById('cartModal');
+dialog.addEventListener('click', (e) => {
+  const dialogDimensions = dialog.getBoundingClientRect();
+  if (
+    e.clientX < dialogDimensions.left ||
+    e.clientX > dialogDimensions.right ||
+    e.clientY < dialogDimensions.top ||
+    e.clientY > dialogDimensions.bottom
+  ) {
+    dialog.close();
+  }
+});
+
+// Initialize UI on load
+updateCartUI();
+</script>
+</body>
+</html>
