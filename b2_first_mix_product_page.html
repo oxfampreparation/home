@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="cs" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Příprava na test B2 First MIX (FCE + FCE for Schools) – Oxfam Preparation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,500..800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f7fb;--paper:#fff;--ink:#14213d;--muted:#4b5266;--line:#d5d9e6;--mark:#2b59ff;--hi:#ffe45e;--ok:#1a7f52;--bad:#b3261e;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme="dark"]{--bg:#0f1526;--paper:#182038;--ink:#eef1fb;--muted:#a9b1c9;--line:#2c3656;--mark:#7d9bff;--hi:#e9d24a;--ok:#57c58f;--bad:#ff8a80}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 "Atkinson Hyperlegible",system-ui,sans-serif;transition:background-color .2s,color .2s}
+h1,h2,h3{font-family:Archivo,"Helvetica Neue",Arial,sans-serif;line-height:1.05;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--mark);outline-offset:3px}
+.wrap{max-width:74rem;margin:0 auto;padding:0 1.25rem}
+header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;padding:1.25rem 0;border-bottom:1px solid var(--line);margin-bottom:2rem}
+.logo{font:800 1.25rem Archivo,sans-serif;text-decoration:none}
+nav{display:flex;align-items:center;flex-wrap:wrap;gap:.75rem}
+nav a{margin-right:.5rem;text-decoration:none;color:var(--muted);font-weight:700}
+nav a:hover{color:var(--ink)}
+
+/* Theme Toggle Button */
+.theme-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 2.5rem; height: 2.5rem;
+  border: 1.5px solid var(--line); border-radius: 0.5rem;
+  background: var(--paper); color: var(--ink);
+  cursor: pointer; font-size: 1.15rem; padding: 0;
+  transition: border-color .2s, background-color .2s, transform .1s;
+}
+.theme-btn:hover { border-color: var(--ink); }
+.theme-btn:active { transform: scale(0.95); }
+
+/* Hamburger Menu & Sidebar */
+.brand { display: flex; align-items: center; gap: 1rem; }
+.mbtn {
+  display: inline-flex; flex-direction: column; justify-content: center; gap: 5px;
+  width: 2.75rem; height: 2.75rem; padding: 0 0.7rem;
+  border: 2px solid var(--ink); border-radius: 0.5rem;
+  background: transparent; cursor: pointer; flex: none;
+}
+.mbtn span { display: block; height: 2px; background: var(--ink); border-radius: 2px; }
+.mbtn:hover { background: var(--paper); }
+.side-menu {
+  position: fixed; top: 0; left: 0; bottom: 0; width: min(19rem, 86vw);
+  background: var(--paper); border-right: 2px solid var(--ink);
+  z-index: 50; overflow-y: auto; transform: translateX(-105%);
+  visibility: hidden; transition: transform .25s ease, visibility 0s .25s;
+  padding: 2rem 1rem;
+}
+body.menuopen .side-menu { transform: none; visibility: visible; transition: transform .25s ease; }
+.scrim {
+  display: block; position: fixed; top: 0; right: 0; bottom: 0; left: 0;
+  background: rgba(10,16,32,.5); z-index: 40; opacity: 0; pointer-events: none; transition: opacity .25s;
+}
+body.menuopen .scrim { opacity: 1; pointer-events: auto; }
+.side-nav { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem; }
+.side-nav h3 { color: var(--ink); margin-bottom: 0.5rem; padding-left: 1rem; font-size: 1.1rem; }
+.side-nav a {
+  text-decoration: none; padding: 0.75rem 1rem; border-radius: 0.5rem;
+  font-weight: 700; color: var(--muted); border-left: 3px solid transparent;
+}
+.side-nav a:hover {
+  background: var(--bg); color: var(--ink); border-left-color: var(--mark);
+}
+
+/* Variants Section */
+.variants-box { margin: 0.25rem 0; }
+.variants-label { font: 700 0.85rem Archivo, sans-serif; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.5rem; display: block; }
+.variants-grid { display: flex; gap: 0.65rem; flex-wrap: wrap; }
+.variant-card {
+  display: flex; align-items: center; gap: 0.65rem;
+  padding: 0.45rem 0.85rem 0.45rem 0.45rem;
+  border: 2px solid var(--line); border-radius: 0.6rem;
+  background: var(--paper); text-decoration: none;
+  transition: border-color .15s, transform .1s, box-shadow .15s;
+}
+.variant-card:hover { border-color: var(--ink); transform: translateY(-1px); }
+.variant-card.active {
+  border-color: var(--ink);
+  background: var(--bg);
+  box-shadow: 0.2rem 0.2rem 0 var(--ink);
+}
+.variant-card img {
+  width: 34px; height: 48px; object-fit: cover;
+  border-radius: 0.3rem; border: 1px solid var(--line); flex-shrink: 0;
+}
+.variant-info { display: flex; flex-direction: column; line-height: 1.2; }
+.variant-title { font: 800 0.9rem Archivo, sans-serif; color: var(--ink); }
+.variant-sub { font-size: 0.75rem; color: var(--muted); }
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--ink);color:var(--bg);padding:.8rem 1.4rem;border-radius:.5rem;font-weight:700;text-decoration:none;border:0;cursor:pointer;font-size:1rem;font-family:inherit;transition:transform 0.1s, opacity 0.2s}
+.btn:active{transform:scale(0.97)}
+.btn:hover{opacity:0.9}
+.btn.alt{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.btn.accent{background:var(--mark);color:#fff;border-color:var(--mark);box-shadow: 0 4px 10px rgba(43, 89, 255, 0.3)}
+
+/* Layouts */
+.hero{display:grid;grid-template-columns:1.15fr 0.85fr;gap:3rem;align-items:center;padding:1rem 0 3rem}
+.hero-content{display:flex;flex-direction:column;gap:1.1rem}
+h1{font-size:clamp(2rem,3.4vw,3rem);font-weight:800;font-stretch:90%;letter-spacing:-.02em}
+h1 span{background:linear-gradient(transparent 62%,var(--hi) 62%)}
+:root[data-theme="dark"] h1 span{color:#14213d;padding:0 .2rem;border-radius:.2rem}
+.price-tag{font:800 2.2rem Archivo,sans-serif;color:var(--ink);margin:0}
+.product-desc{font-size:1.05rem;line-height:1.6;margin:0;color:var(--muted)}
+.product-desc ul{padding-left:1.2rem;margin:.5rem 0;display:flex;flex-direction:column;gap:0.4rem}
+.row{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:0.5rem}
+
+/* Product Image - Portrait 1240x1748 aspect ratio */
+.hero-image{display:flex;justify-content:center}
+.hero-image img{max-width:230px;width:100%;aspect-ratio:1240/1748;border-radius:.75rem;border:2px solid var(--ink);box-shadow:.5rem .5rem 0 var(--ink);object-fit:cover}
+
+/* Sections */
+section{padding:3.5rem 0;border-top:1px solid var(--line)}
+h2.t{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:.75rem;letter-spacing:-.01em}
+.sub{color:var(--muted);max-width:46rem;margin:0 0 2rem}
+.chips{display:flex;flex-wrap:wrap;gap:.75rem}
+.chip{padding:.6rem 1.2rem;border:1.5px solid var(--ink);border-radius:2rem;text-decoration:none;font-weight:700;background:var(--paper);color:var(--ink)}
+.chip:hover{background:var(--ink);color:var(--bg)}
+.sheet{background:var(--paper);border:2px solid var(--ink);border-radius:.75rem;padding:1.5rem;box-shadow:.5rem .5rem 0 var(--ink);margin-bottom:2rem}
+.pr{display:flex;justify-content:space-between;gap:1rem;padding:.6rem 0;border-top:1px solid var(--line)}
+
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:1.5rem}
+.info-card{background:var(--paper);border:1.5px solid var(--line);border-radius:.75rem;padding:1.25rem}
+.info-card h3{font-size:1.15rem;margin-bottom:.5rem;color:var(--ink)}
+.info-card p{margin:0;color:var(--muted);font-size:0.98rem}
+
+/* Cart Dialog */
+dialog{border:2px solid var(--ink);border-radius:.75rem;background:var(--paper);color:var(--ink);padding:1.5rem;width:min(28rem,92vw);max-height:90vh;overflow:auto;box-shadow:.5rem .5rem 0 var(--ink)}
+dialog::backdrop{background:rgba(10,16,32,.55)}
+dialog h2{font-size:1.6rem;margin-bottom:1rem;border-bottom:2px solid var(--line);padding-bottom:0.5rem}
+.cart-item{display:flex;justify-content:space-between;align-items:center;padding:0.75rem 0;border-bottom:1px solid var(--line)}
+.cart-item-info{display:flex;flex-direction:column}
+.cart-item-title{font-weight:700}
+.cart-item-price{color:var(--muted);font-size:0.9rem}
+.cart-remove{background:var(--bad);color:#fff;border:none;border-radius:0.3rem;padding:0.3rem 0.6rem;cursor:pointer;font-weight:700;font-size:0.8rem}
+.cart-total{font-size:1.2rem;font-weight:800;text-align:right;margin:1rem 0}
+.empty-cart{color:var(--muted);text-align:center;padding:2rem 0;font-style:italic}
+
+/* Toast Notification */
+#toast{visibility:hidden;min-width:250px;background-color:var(--ok);color:white;text-align:center;border-radius:.5rem;padding:1rem;position:fixed;z-index:1000;left:50%;bottom:30px;transform:translateX(-50%);font-weight:700;box-shadow:0 4px 12px rgba(0,0,0,0.15);opacity:0;transition:opacity 0.3s, bottom 0.3s}
+#toast.show{visibility:visible;opacity:1;bottom:50px}
+
+footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-size:.95rem;text-align:center;margin-top:2rem}
+
+@media (max-width:64rem){
+  .hero{grid-template-columns:1fr;gap:2rem}
+}
+@media (max-width:40rem){
+  .wrap{padding:0 1rem}
+  .row{flex-direction:column}
+  .btn{width:100%}
+  .variants-grid{flex-direction:column}
+}
+</style>
+<script>
+  (function() {
+    var savedTheme = localStorage.getItem('oxfam_theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  })();
+</script>
+</head>
+<body>
+
+<div class="scrim" id="scrim"></div>
+<aside class="side-menu" id="sideMenu">
+  <div class="side-nav">
+    <a href="index.html" style="margin-bottom: 1rem;">🏠 Domů</a>
+    <h3>Naše testy</h3>
+    <a href="ket.html">KET (A2 Key)</a>
+    <a href="pet.html">PET (B1 Preliminary)</a>
+    <a href="fce.html">FCE (B2 First)</a>
+    <a href="fce-schools.html">FCE for Schools (B2)</a>
+    <a href="fce-mix.html" style="border-left-color: var(--mark); background: var(--bg); color: var(--ink);">FCE MIX (B2)</a>
+    <a href="cae.html">CAE (C1 Advanced)</a>
+    <a href="cpe.html">CPE (C2 Proficiency)</a>
+    <a href="ielts.html">IELTS</a>
+  </div>
+</aside>
+
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <button class="mbtn" id="menuBtn" type="button" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <a class="logo" href="index.html">Oxfam Preparation</a>
+    </div>
+    <nav>
+      <a href="#about">O zkoušce</a>
+      <a href="#diff">Rozdíly variant</a>
+      <a href="#tests-portal">Moje testy</a>
+      <button id="themeBtn" class="theme-btn" type="button" aria-label="Přepnout barevný režim" title="Přepnout světlý/tmavý režim">🌙</button>
+      <button id="cartBtn" class="btn alt" style="padding: 0.5rem 1rem;">
+        🛒 Košík (<span id="cartCount">0</span>)
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="hero-content">
+        <h1>Příprava na test <span>B2 First MIX</span></h1>
+        <p class="price-tag">299 Kč</p>
+
+        <div class="product-desc">
+          <p>Kombinovaný balíček <strong>B2 First MIX</strong> spojuje to nejlepší z obou světů – obsahuje <strong>10 testů standardní B2 First</strong> a <strong>9 testů B2 First for Schools</strong> (celkem 19 kompletních testů).</p>
+          <ul>
+            <li><strong>10 testů B2 First</strong> + <strong>9 testů B2 First for Schools</strong></li>
+            <li><strong>Nejpestřejší záběr témat</strong> pro dokonalou přípravu na úroveň B2</li>
+            <li><strong>Detailní vysvětlení</strong> odpovědí a časovače</li>
+            <li><strong>Hodnocení Writingu</strong> rodilým mluvčím</li>
+          </ul>
+        </div>
+
+        <div class="row">
+          <button class="btn accent" onclick="addToCart('Příprava na test B2 First MIX (10 + 9 testů)', 299)">Do košíku</button>
+          <a href="#tests-portal" class="btn alt">Odkaz na 19 zakoupených testů</a>
+        </div>
+
+        <div class="variants-box" style="margin-top: 0.75rem;">
+          <span class="variants-label">Další varianty zkoušky:</span>
+          <div class="variants-grid">
+            <a href="https://oxfampreparation.github.io/home/fce.html" class="variant-card">
+              <img src="3.jpg" alt="B2 First">
+              <div class="variant-info">
+                <span class="variant-title">B2 First</span>
+                <span class="variant-sub">Standardní verze (18 testů)</span>
+              </div>
+            </a>
+            <a href="https://oxfampreparation.github.io/home/fce-schools.html" class="variant-card">
+              <img src="5.jpg" alt="B2 First for Schools">
+              <div class="variant-info">
+                <span class="variant-title">B2 First for Schools</span>
+                <span class="variant-sub">Pro školáky (18 testů)</span>
+              </div>
+            </a>
+            <a href="https://oxfampreparation.github.io/home/fce-mix.html" class="variant-card active" aria-current="page">
+              <img src="4.jpg" alt="B2 First MIX">
+              <div class="variant-info">
+                <span class="variant-title">B2 First MIX</span>
+                <span class="variant-sub">10 First + 9 for Schools</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="4.jpg" alt="B2 First MIX Mock Tests 2025 & 2026">
+      </div>
+    </div>
+
+    <section id="about">
+      <h2 class="t">O zkoušce B2 First (FCE) a její struktura</h2>
+      <p class="sub">Obě verze obsažené v balíčku MIX mají identickou strukturu, délku i bodové hodnocení na úrovni CEFR B2. Procvičíte si tak všechny typy zadání, se kterými se u zkoušky můžete setkat.</p>
+      
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>Reading & Use of English (75 min)</h3>
+          <p>7 částí (52 otázek). Kombinace studentských i obecných článků zaručuje trénink široké škály frázových sloves, idiomů a gramatických transformací.</p>
+        </div>
+        <div class="info-card">
+          <h3>Writing (80 min)</h3>
+          <p>2 úkoly (140–190 slov každý). Povinná esej v první části a výběr ze zadání v části druhé (článek, dopis/email, recenze, zpráva a v testech for Schools také příběh).</p>
+        </div>
+        <div class="info-card">
+          <h3>Listening (cca 40 min)</h3>
+          <p>4 části (30 otázek). Procvičíte porozumění jak mládežnickým a školním rozhovorům, tak odbornějším rozhlasovým relacím a přednáškám.</p>
+        </div>
+        <div class="info-card">
+          <h3>Speaking (cca 14 min)</h3>
+          <p>Probíhá ve dvojicích. Zahrnuje úvodní interview, popis a porovnání dvojice fotografií a společnou konverzační aktivitu.</p>
+        </div>
+      </div>
+
+      <div class="sheet" style="margin-top: 2rem;">
+        <h2>Časová dotace přehledně (celkem cca 3,5 hodiny)</h2>
+        <div class="pr"><span>Reading and Use of English</span><span>75 minut</span></div>
+        <div class="pr"><span>Writing</span><span>80 minut</span></div>
+        <div class="pr"><span>Listening</span><span>40 minut</span></div>
+        <div class="pr"><span>Speaking</span><span>14 minut</span></div>
+      </div>
+    </section>
+
+    <section id="diff">
+      <h2 class="t">V čem se liší jednotlivé varianty B2?</h2>
+      <p class="sub">Všechny tři varianty připravují na stejnou jazykovou úroveň CEFR B2 a vedou ke stejně uznávanému certifikátu Cambridge. Liší se však zaměřením témat a složením testů:</p>
+      
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>1. B2 First</h3>
+          <p>Standardní verze pro vysokoškoláky a dospělé. Témata textů a poslechů se týkají kariéry, cestování, společenských otázek, vědy a obecného života dospělých.</p>
+        </div>
+        <div class="info-card">
+          <h3>2. B2 First for Schools</h3>
+          <p>Stejná obtížnost i struktura, ale témata jsou přizpůsobena zájmům a zkušenostem žáků základních a středních škol (škola, koníčky, přátelství, sport).</p>
+        </div>
+        <div class="info-card" style="border-color: var(--ink);">
+          <h3>3. B2 First MIX (aktuálně vybráno)</h3>
+          <p>Kombinovaný balíček obsahující <strong>10 testů standardní B2 First</strong> a <strong>9 testů B2 First for Schools</strong> (celkem 19 testů). Ideální volba, pokud chcete maximum testů a co nejširší slovní zásobu.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="tests-portal">
+      <h2 class="t">Vaše zakoupené testy (B2 First MIX)</h2>
+      <p class="sub">Zde naleznete svých 19 přípravných testů rozdělených podle typu zkoušky. Kliknutím na příslušnou sekci otevřete testovací prostředí.</p>
+      <div class="chips">
+        <a class="chip" href="#">10× B2 First (Standardní testy 1-10)</a>
+        <a class="chip" href="#">9× B2 First for Schools (Testy 11-19)</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2026 Oxfam Preparation. Nejsme spojeni s Cambridge University Press & Assessment. Názvy zkoušek patří jejich vlastníkům.</footer>
+</div>
+
+<!-- Cart Modal -->
+<dialog id="cartModal">
+  <h2>Váš košík</h2>
+  <div id="cartItems"></div>
+  <div id="cartTotalContainer" class="cart-total" style="display:none;">
+    Celkem: <span id="cartTotalAmount">0</span> Kč
+  </div>
+  <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
+    <button class="btn alt" onclick="document.getElementById('cartModal').close()" style="flex:1">Pokračovat v nákupu</button>
+    <button class="btn accent" id="checkoutBtn" style="flex:1" onclick="checkout()">Přejít k pokladně</button>
+  </div>
+</dialog>
+
+<!-- Toast Notification -->
+<div id="toast">Produkt byl přidán do košíku!</div>
+
+<script>
+const themeBtn = document.getElementById('themeBtn');
+function updateThemeIcon(theme) {
+  themeBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+}
+updateThemeIcon(document.documentElement.getAttribute('data-theme') || 'light');
+
+themeBtn.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme') || 'light';
+  const next = current === 'light' ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('oxfam_theme', next);
+  updateThemeIcon(next);
+});
+
+const menuBtn = document.getElementById('menuBtn');
+const scrim = document.getElementById('scrim');
+function toggleMenu() { document.body.classList.toggle('menuopen'); }
+menuBtn.addEventListener('click', toggleMenu);
+scrim.addEventListener('click', toggleMenu);
+
+let cart = JSON.parse(localStorage.getItem('oxfam_cart')) || [];
+
+function updateCartUI() {
+  const cartCount = document.getElementById('cartCount');
+  const cartItems = document.getElementById('cartItems');
+  const cartTotalContainer = document.getElementById('cartTotalContainer');
+  const cartTotalAmount = document.getElementById('cartTotalAmount');
+  const checkoutBtn = document.getElementById('checkoutBtn');
+  
+  cartCount.textContent = cart.length;
+  cartItems.innerHTML = '';
+  let total = 0;
+  
+  if (cart.length === 0) {
+    cartItems.innerHTML = '<div class="empty-cart">Váš košík je prázdný.</div>';
+    cartTotalContainer.style.display = 'none';
+    checkoutBtn.style.opacity = '0.5';
+    checkoutBtn.style.pointerEvents = 'none';
+  } else {
+    cartTotalContainer.style.display = 'block';
+    checkoutBtn.style.opacity = '1';
+    checkoutBtn.style.pointerEvents = 'auto';
+    cart.forEach((item, index) => {
+      total += item.price;
+      const div = document.createElement('div');
+      div.className = 'cart-item';
+      div.innerHTML = `
+        <div class="cart-item-info">
+          <span class="cart-item-title">${item.name}</span>
+          <span class="cart-item-price">${item.price} Kč</span>
+        </div>
+        <button class="cart-remove" onclick="removeFromCart(${index})">Odebrat</button>
+      `;
+      cartItems.appendChild(div);
+    });
+    cartTotalAmount.textContent = total.toLocaleString('cs-CZ');
+  }
+}
+
+function addToCart(name, price) {
+  cart.push({ name, price });
+  localStorage.setItem('oxfam_cart', JSON.stringify(cart));
+  updateCartUI();
+  showToast('Produkt byl přidán do košíku!');
+}
+
+function removeFromCart(index) {
+  cart.splice(index, 1);
+  localStorage.setItem('oxfam_cart', JSON.stringify(cart));
+  updateCartUI();
+}
+
+function checkout() {
+  if(cart.length > 0) {
+    document.getElementById('cartModal').close();
+    showToast('Přesměrování na platební bránu...');
+  }
+}
+
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  toast.textContent = message;
+  toast.className = 'show';
+  setTimeout(() => { toast.className = toast.className.replace('show', ''); }, 3000);
+}
+
+document.getElementById('cartBtn').addEventListener('click', () => {
+  document.getElementById('cartModal').showModal();
+});
+
+const dialog = document.getElementById('cartModal');
+dialog.addEventListener('click', (e) => {
+  const d = dialog.getBoundingClientRect();
+  if (e.clientX < d.left || e.clientX > d.right || e.clientY < d.top || e.clientY > d.bottom) {
+    dialog.close();
+  }
+});
+
+updateCartUI();
+</script>
+</body>
+</html>
