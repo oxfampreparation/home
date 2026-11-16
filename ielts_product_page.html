@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="cs" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Příprava na test IELTS Academic & General – Oxfam Preparation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,500..800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f7fb;--paper:#fff;--ink:#14213d;--muted:#4b5266;--line:#d5d9e6;--mark:#2b59ff;--hi:#ffe45e;--ok:#1a7f52;--bad:#b3261e;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme="dark"]{--bg:#0f1526;--paper:#182038;--ink:#eef1fb;--muted:#a9b1c9;--line:#2c3656;--mark:#7d9bff;--hi:#e9d24a;--ok:#57c58f;--bad:#ff8a80}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 "Atkinson Hyperlegible",system-ui,sans-serif;transition:background-color .2s,color .2s}
+h1,h2,h3{font-family:Archivo,"Helvetica Neue",Arial,sans-serif;line-height:1.05;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--mark);outline-offset:3px}
+.wrap{max-width:74rem;margin:0 auto;padding:0 1.25rem}
+header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;padding:1.25rem 0;border-bottom:1px solid var(--line);margin-bottom:2rem}
+.logo{font:800 1.25rem Archivo,sans-serif;text-decoration:none}
+nav{display:flex;align-items:center;flex-wrap:wrap;gap:.75rem}
+nav a{margin-right:.5rem;text-decoration:none;color:var(--muted);font-weight:700}
+nav a:hover{color:var(--ink)}
+
+/* Theme Toggle Button */
+.theme-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 2.5rem; height: 2.5rem;
+  border: 1.5px solid var(--line); border-radius: 0.5rem;
+  background: var(--paper); color: var(--ink);
+  cursor: pointer; font-size: 1.15rem; padding: 0;
+  transition: border-color .2s, background-color .2s, transform .1s;
+}
+.theme-btn:hover { border-color: var(--ink); }
+.theme-btn:active { transform: scale(0.95); }
+
+/* Hamburger Menu & Sidebar */
+.brand { display: flex; align-items: center; gap: 1rem; }
+.mbtn {
+  display: inline-flex; flex-direction: column; justify-content: center; gap: 5px;
+  width: 2.75rem; height: 2.75rem; padding: 0 0.7rem;
+  border: 2px solid var(--ink); border-radius: 0.5rem;
+  background: transparent; cursor: pointer; flex: none;
+}
+.mbtn span { display: block; height: 2px; background: var(--ink); border-radius: 2px; }
+.mbtn:hover { background: var(--paper); }
+.side-menu {
+  position: fixed; top: 0; left: 0; bottom: 0; width: min(19rem, 86vw);
+  background: var(--paper); border-right: 2px solid var(--ink);
+  z-index: 50; overflow-y: auto; transform: translateX(-105%);
+  visibility: hidden; transition: transform .25s ease, visibility 0s .25s;
+  padding: 2rem 1rem;
+}
+body.menuopen .side-menu { transform: none; visibility: visible; transition: transform .25s ease; }
+.scrim {
+  display: block; position: fixed; top: 0; right: 0; bottom: 0; left: 0;
+  background: rgba(10,16,32,.5); z-index: 40; opacity: 0; pointer-events: none; transition: opacity .25s;
+}
+body.menuopen .scrim { opacity: 1; pointer-events: auto; }
+.side-nav { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem; }
+.side-nav h3 { color: var(--ink); margin-bottom: 0.5rem; padding-left: 1rem; font-size: 1.1rem; }
+.side-nav a {
+  text-decoration: none; padding: 0.75rem 1rem; border-radius: 0.5rem;
+  font-weight: 700; color: var(--muted); border-left: 3px solid transparent;
+}
+.side-nav a:hover {
+  background: var(--bg); color: var(--ink); border-left-color: var(--mark);
+}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--ink);color:var(--bg);padding:.8rem 1.4rem;border-radius:.5rem;font-weight:700;text-decoration:none;border:0;cursor:pointer;font-size:1rem;font-family:inherit;transition:transform 0.1s, opacity 0.2s}
+.btn:active{transform:scale(0.97)}
+.btn:hover{opacity:0.9}
+.btn.alt{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.btn.accent{background:var(--mark);color:#fff;border-color:var(--mark);box-shadow: 0 4px 10px rgba(43, 89, 255, 0.3)}
+
+/* Layouts */
+.hero{display:grid;grid-template-columns:1.15fr 0.85fr;gap:3rem;align-items:center;padding:1rem 0 3rem}
+.hero-content{display:flex;flex-direction:column;gap:1.1rem}
+h1{font-size:clamp(2rem,3.4vw,3rem);font-weight:800;font-stretch:90%;letter-spacing:-.02em}
+h1 span{background:linear-gradient(transparent 62%,var(--hi) 62%)}
+:root[data-theme="dark"] h1 span{color:#14213d;padding:0 .2rem;border-radius:.2rem}
+.price-tag{font:800 2.2rem Archivo,sans-serif;color:var(--ink);margin:0}
+.product-desc{font-size:1.05rem;line-height:1.6;margin:0;color:var(--muted)}
+.product-desc ul{padding-left:1.2rem;margin:.5rem 0;display:flex;flex-direction:column;gap:0.4rem}
+.row{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:0.5rem}
+
+/* Product Image - Portrait 1240x1748 aspect ratio */
+.hero-image{display:flex;justify-content:center}
+.hero-image img{max-width:340px;width:100%;aspect-ratio:1240/1748;border-radius:.75rem;border:2px solid var(--ink);box-shadow:.5rem .5rem 0 var(--ink);object-fit:cover}
+
+/* Sections */
+section{padding:3.5rem 0;border-top:1px solid var(--line)}
+h2.t{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:.75rem;letter-spacing:-.01em}
+.sub{color:var(--muted);max-width:46rem;margin:0 0 2rem}
+.chips{display:flex;flex-wrap:wrap;gap:.75rem}
+.chip{padding:.6rem 1.2rem;border:1.5px solid var(--ink);border-radius:2rem;text-decoration:none;font-weight:700;background:var(--paper);color:var(--ink)}
+.chip:hover{background:var(--ink);color:var(--bg)}
+.sheet{background:var(--paper);border:2px solid var(--ink);border-radius:.75rem;padding:1.5rem;box-shadow:.5rem .5rem 0 var(--ink);margin-bottom:2rem}
+.pr{display:flex;justify-content:space-between;gap:1rem;padding:.6rem 0;border-top:1px solid var(--line)}
+
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:1.5rem}
+.info-card{background:var(--paper);border:1.5px solid var(--line);border-radius:.75rem;padding:1.25rem}
+.info-card h3{font-size:1.15rem;margin-bottom:.5rem;color:var(--ink)}
+.info-card p{margin:0;color:var(--muted);font-size:0.98rem}
+
+/* Toast Notification */
+#toast{visibility:hidden;min-width:250px;background-color:var(--ok);color:white;text-align:center;border-radius:.5rem;padding:1rem;position:fixed;z-index:1000;left:50%;bottom:30px;transform:translateX(-50%);font-weight:700;box-shadow:0 4px 12px rgba(0,0,0,0.15);opacity:0;transition:opacity 0.3s, bottom 0.3s}
+#toast.show{visibility:visible;opacity:1;bottom:50px}
+
+footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-size:.95rem;text-align:center;margin-top:2rem}
+
+@media (max-width:64rem){
+  .hero{grid-template-columns:1fr;gap:2rem}
+}
+@media (max-width:40rem){
+  .wrap{padding:0 1rem}
+  .row{flex-direction:column}
+  .btn{width:100%}
+}
+</style>
+<script>
+  (function() {
+    var savedTheme = localStorage.getItem('oxfam_theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  })();
+</script>
+</head>
+<body>
+
+<div class="scrim" id="scrim"></div>
+<aside class="side-menu" id="sideMenu">
+  <div class="side-nav">
+    <a href="index.html" style="margin-bottom: 1rem;">🏠 Domů</a>
+    <h3>Naše testy</h3>
+    <a href="movers.html">A1 Movers (YLE)</a>
+    <a href="flyers.html">A2 Flyers (YLE)</a>
+    <a href="ket.html">A2 Key (KET)</a>
+    <a href="ket-schools.html">A2 Key for Schools (KET)</a>
+    <a href="ket-mix.html">A2 Key MIX (KET)</a>
+    <a href="pet.html">B1 Preliminary (PET)</a>
+    <a href="pet-schools.html">B1 Preliminary for Schools (PET)</a>
+    <a href="pet-mix.html">B1 Preliminary MIX (PET)</a>
+    <a href="fce.html">B2 First (FCE)</a>
+    <a href="fce-schools.html">B2 First for Schools (FCE)</a>
+    <a href="fce-mix.html">B2 First MIX (FCE)</a>
+    <a href="cae.html">C1 Advanced (CAE)</a>
+    <a href="cpe.html">C2 Proficiency (CPE)</a>
+    <a href="ielts.html" style="border-left-color: var(--mark); background: var(--bg); color: var(--ink);">IELTS</a>
+  </div>
+</aside>
+
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <button class="mbtn" id="menuBtn" type="button" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <a class="logo" href="index.html">Oxfam Preparation</a>
+    </div>
+    <nav>
+      <a href="#about">O zkoušce</a>
+      <a href="#modules">Academic vs. General</a>
+      <a href="#tests-portal">Moje testy</a>
+      <button id="themeBtn" class="theme-btn" type="button" aria-label="Přepnout barevný režim" title="Přepnout světlý/tmavý režim">🌙</button>
+      <a href="https://oxfampreparation.github.io/home/cart.html" id="cartBtn" class="btn alt" style="padding: 0.5rem 1rem; margin-right: 0;">
+        🛒 Košík (<span id="cartCount">0</span>)
+      </a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="hero-content">
+        <h1>Příprava na test <span>IELTS (Band 1–9)</span></h1>
+        <p class="price-tag">299 Kč</p>
+
+        <div class="product-desc">
+          <p>Komplexní digitalizovaná příprava na celosvětově nejrozšířenější zkoušku angličtiny <strong>IELTS</strong> – ideální pro studium v zahraničí, víza i mezinárodní kariéru.</p>
+          <ul>
+            <li><strong>18 online zkušebních testů</strong> IELTS z let 2025 & 2026</li>
+            <li><strong>Detailní vysvětlení</strong> správných odpovědí a vzorové eseje</li>
+            <li><strong>Časovače</strong> pro simulaci reálného počítačového testu</li>
+            <li><strong>Hodnocení Writingu</strong> (Task 1 & Task 2) rodilým mluvčím</li>
+          </ul>
+        </div>
+
+        <div class="row">
+          <button class="btn accent" onclick="addToCart('Příprava na test IELTS (Band 1–9)', 299)">Do košíku</button>
+          <a href="https://oxfampreparation.github.io/home/cart.html" class="btn" id="goToCartBtn" style="display:none;">Přejít do košíku →</a>
+          <a href="#tests-portal" class="btn alt">Odkaz na 18 zakoupených testů</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="13.jpg" alt="IELTS Mock Tests 2025 & 2026">
+      </div>
+    </div>
+
+    <section id="about">
+      <h2 class="t">O zkoušce IELTS a její struktura</h2>
+      <p class="sub">Na rozdíl od zkoušek Cambridge English se IELTS neskládá systémem „uspěl / neuspěl“ – každý kandidát získá celkové skóre na stupnici <strong>Band 1 až 9</strong> (odpovídající úrovním A1 až C2), které přesně odráží jeho aktuální úroveň.</p>
+      
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>Listening (cca 30 min)</h3>
+          <p>4 části (40 otázek). Postupně se zvyšující obtížnost – od běžné každodenní konverzace až po odbornou akademickou přednášku. Nahrávka se přehrává pouze jednou.</p>
+        </div>
+        <div class="info-card">
+          <h3>Reading (60 min)</h3>
+          <p>3 dlouhé texty (40 otázek). Testuje rychlé vyhledávání informací, porozumění hlavním myšlenkám, argumentaci i rozpoznání názoru autora (True / False / Not Given).</p>
+        </div>
+        <div class="info-card">
+          <h3>Writing (60 min)</h3>
+          <p>2 úkoly: <strong>Task 1</strong> (min. 150 slov – popis grafu/diagramu u Academic, nebo formální/neformální dopis u General) a <strong>Task 2</strong> (min. 250 slov – argumentační esej).</p>
+        </div>
+        <div class="info-card">
+          <h3>Speaking (11–14 min)</h3>
+          <p>Individuální rozhovor (1 na 1) s examinátorem rozdělený do 3 částí: úvodní otázky o vás, samostatný 2minutový projev podle zadání na kartičce a navazující diskuse.</p>
+        </div>
+      </div>
+
+      <div class="sheet" style="margin-top: 2rem;">
+        <h2>Časová dotace přehledně (celkem cca 2 hodiny 45 minut)</h2>
+        <div class="pr"><span>Listening</span><span>30 minut</span></div>
+        <div class="pr"><span>Reading</span><span>60 minut</span></div>
+        <div class="pr"><span>Writing</span><span>60 minut (Task 1: 20 min, Task 2: 40 min)</span></div>
+        <div class="pr"><span>Speaking</span><span>11–14 minut</span></div>
+      </div>
+    </section>
+
+    <section id="modules">
+      <h2 class="t">IELTS Academic vs. IELTS General Training</h2>
+      <p class="sub">Části Listening a Speaking jsou pro obě verze zcela totožné. Liší se pouze zadání v sekcích Reading a Writing:</p>
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>IELTS Academic</h3>
+          <p>Určeno pro uchazeče o studium na zahraničních univerzitách (bakalářské, magisterské i doktorské programy) a pro registraci v odborných profesích (lékaři, sestry, inženýři).</p>
+        </div>
+        <div class="info-card">
+          <h3>IELTS General Training</h3>
+          <p>Určeno pro pracovní pobyty, stěhování či emigraci do anglicky mluvících zemí (Velká Británie, Kanada, Austrálie, Nový Zéland) nebo středoškolské studium.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="tests-portal">
+      <h2 class="t">Vaše zakoupené testy (IELTS)</h2>
+      <p class="sub">Zde naleznete svých 18 přípravných testů IELTS rozdělených podle let. Kliknutím na příslušnou sekci otevřete testovací prostředí.</p>
+      <div class="chips">
+        <a class="chip" href="#">IELTS Testy 2025-2026 (1-9)</a>
+        <a class="chip" href="#">IELTS Testy 2023-2024 (10-18)</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2026 Oxfam Preparation. IELTS is jointly owned by the British Council, IDP IELTS and Cambridge University Press & Assessment.</footer>
+</div>
+
+<!-- Toast Notification -->
+<div id="toast">Produkt byl přidán do košíku!</div>
+
+<script>
+const themeBtn = document.getElementById('themeBtn');
+function updateThemeIcon(theme) {
+  if (themeBtn) themeBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+}
+updateThemeIcon(document.documentElement.getAttribute('data-theme') || 'light');
+
+if (themeBtn) {
+  themeBtn.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
+    const next = current === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('oxfam_theme', next);
+    updateThemeIcon(next);
+  });
+}
+
+const menuBtn = document.getElementById('menuBtn');
+const scrim = document.getElementById('scrim');
+
+function toggleMenu() {
+  document.body.classList.toggle('menuopen');
+}
+
+if (menuBtn) menuBtn.addEventListener('click', toggleMenu);
+if (scrim) scrim.addEventListener('click', toggleMenu);
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && document.body.classList.contains('menuopen')) {
+    document.body.classList.remove('menuopen');
+  }
+});
+
+let cart = [];
+try {
+  cart = JSON.parse(localStorage.getItem('oxfam_cart')) || [];
+} catch (e) {
+  cart = [];
+}
+
+function updateCartUI() {
+  const cartCount = document.getElementById('cartCount');
+  if (cartCount) {
+    cartCount.textContent = cart.length;
+  }
+}
+
+function addToCart(name, price) {
+  cart.push({ name, price });
+  localStorage.setItem('oxfam_cart', JSON.stringify(cart));
+  updateCartUI();
+  const goBtn = document.getElementById('goToCartBtn');
+  if (goBtn) goBtn.style.display = 'inline-flex';
+  showToast('Produkt byl přidán do košíku!');
+}
+
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  if (!toast) return;
+  toast.textContent = message;
+  toast.className = 'show';
+  setTimeout(() => { toast.className = toast.className.replace('show', ''); }, 3000);
+}
+
+updateCartUI();
+</script>
+</body>
+</html>
