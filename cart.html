@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="cs" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Košík a pokladna – Oxfam Preparation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,500..800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f7fb;--paper:#fff;--ink:#14213d;--muted:#4b5266;--line:#d5d9e6;--mark:#2b59ff;--hi:#ffe45e;--ok:#1a7f52;--bad:#b3261e;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme="dark"]{--bg:#0f1526;--paper:#182038;--ink:#eef1fb;--muted:#a9b1c9;--line:#2c3656;--mark:#7d9bff;--hi:#e9d24a;--ok:#57c58f;--bad:#ff8a80}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 "Atkinson Hyperlegible",system-ui,sans-serif;transition:background-color .2s,color .2s}
+h1,h2,h3{font-family:Archivo,"Helvetica Neue",Arial,sans-serif;line-height:1.1;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--mark);outline-offset:3px}
+.wrap{max-width:74rem;margin:0 auto;padding:0 1.25rem}
+
+/* Header */
+header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;padding:1.25rem 0;border-bottom:1px solid var(--line);margin-bottom:2rem}
+.logo{font:800 1.25rem Archivo,sans-serif;text-decoration:none}
+nav{display:flex;align-items:center;flex-wrap:wrap;gap:.75rem}
+nav a{margin-right:.5rem;text-decoration:none;color:var(--muted);font-weight:700}
+nav a:hover{color:var(--ink)}
+
+/* Theme Toggle */
+.theme-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 2.5rem; height: 2.5rem;
+  border: 1.5px solid var(--line); border-radius: 0.5rem;
+  background: var(--paper); color: var(--ink);
+  cursor: pointer; font-size: 1.15rem; padding: 0;
+  transition: border-color .2s, background-color .2s, transform .1s;
+}
+.theme-btn:hover { border-color: var(--ink); }
+.theme-btn:active { transform: scale(0.95); }
+
+/* Hamburger Menu & Sidebar */
+.brand { display: flex; align-items: center; gap: 1rem; }
+.mbtn {
+  display: inline-flex; flex-direction: column; justify-content: center; gap: 5px;
+  width: 2.75rem; height: 2.75rem; padding: 0 0.7rem;
+  border: 2px solid var(--ink); border-radius: 0.5rem;
+  background: transparent; cursor: pointer; flex: none;
+}
+.mbtn span { display: block; height: 2px; background: var(--ink); border-radius: 2px; }
+.mbtn:hover { background: var(--paper); }
+.side-menu {
+  position: fixed; top: 0; left: 0; bottom: 0; width: min(19rem, 86vw);
+  background: var(--paper); border-right: 2px solid var(--ink);
+  z-index: 50; overflow-y: auto; transform: translateX(-105%);
+  visibility: hidden; transition: transform .25s ease, visibility 0s .25s;
+  padding: 2rem 1rem;
+}
+body.menuopen .side-menu { transform: none; visibility: visible; transition: transform .25s ease; }
+.scrim {
+  display: block; position: fixed; top: 0; right: 0; bottom: 0; left: 0;
+  background: rgba(10,16,32,.5); z-index: 40; opacity: 0; pointer-events: none; transition: opacity .25s;
+}
+body.menuopen .scrim { opacity: 1; pointer-events: auto; }
+.side-nav { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem; }
+.side-nav h3 { color: var(--ink); margin-bottom: 0.5rem; padding-left: 1rem; font-size: 1.1rem; }
+.side-nav a {
+  text-decoration: none; padding: 0.75rem 1rem; border-radius: 0.5rem;
+  font-weight: 700; color: var(--muted); border-left: 3px solid transparent;
+}
+.side-nav a:hover {
+  background: var(--bg); color: var(--ink); border-left-color: var(--mark);
+}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--ink);color:var(--bg);padding:.85rem 1.5rem;border-radius:.5rem;font-weight:700;text-decoration:none;border:0;cursor:pointer;font-size:1rem;font-family:inherit;transition:transform 0.1s, opacity 0.2s}
+.btn:active{transform:scale(0.98)}
+.btn:hover{opacity:0.92}
+.btn.alt{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.btn.accent{background:var(--mark);color:#fff;border-color:var(--mark);box-shadow: 0 4px 12px rgba(43, 89, 255, 0.28)}
+.btn.full{width:100%}
+
+/* Page Title */
+.page-head{margin-bottom:2rem}
+h1{font-size:clamp(2rem,3.5vw,2.8rem);font-weight:800;letter-spacing:-.02em}
+h1 span{background:linear-gradient(transparent 62%,var(--hi) 62%)}
+:root[data-theme="dark"] h1 span{color:#14213d;padding:0 .2rem;border-radius:.2rem}
+.sub{color:var(--muted);margin:.5rem 0 0}
+
+/* Checkout Layout */
+.checkout-grid{display:grid;grid-template-columns:1.25fr 0.85fr;gap:2.5rem;align-items:start;padding-bottom:3rem}
+.card{background:var(--paper);border:2px solid var(--ink);border-radius:.75rem;padding:1.75rem;box-shadow:.45rem .45rem 0 var(--ink)}
+.card h2{font-size:1.45rem;margin-bottom:1.25rem;padding-bottom:.75rem;border-bottom:1.5px solid var(--line)}
+
+/* Cart List */
+.cart-list{display:flex;flex-direction:column;gap:1rem}
+.cart-row{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem;border:1.5px solid var(--line);border-radius:.6rem;background:var(--bg)}
+.item-details{display:flex;flex-direction:column;gap:.2rem}
+.item-name{font:700 1.05rem Archivo,sans-serif;color:var(--ink)}
+.item-meta{font-size:.88rem;color:var(--muted)}
+.item-actions{display:flex;align-items:center;gap:1rem;flex-shrink:0}
+.qty-box{display:inline-flex;align-items:center;border:1.5px solid var(--line);border-radius:.45rem;background:var(--paper);overflow:hidden}
+.qty-btn{width:2rem;height:2rem;border:0;background:transparent;color:var(--ink);font-weight:800;font-size:1.1rem;cursor:pointer}
+.qty-btn:hover{background:var(--bg)}
+.qty-val{padding:0 .65rem;font-weight:700;font-size:.95rem}
+.item-price{font:800 1.1rem Archivo,sans-serif;min-width:4.5rem;text-align:right}
+.remove-btn{background:transparent;border:1.5px solid var(--bad);color:var(--bad);border-radius:.4rem;padding:.35rem .65rem;font-weight:700;font-size:.82rem;cursor:pointer;transition:background .15s,color .15s}
+.remove-btn:hover{background:var(--bad);color:#fff}
+
+/* Empty State */
+.empty-box{text-align:center;padding:2.5rem 1rem}
+.empty-box p{color:var(--muted);margin:0 0 1.25rem;font-size:1.1rem}
+.quick-add{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-top:1.25rem;padding-top:1.25rem;border-top:1px dashed var(--line)}
+.quick-chip{padding:.45rem .85rem;border:1.5px solid var(--line);border-radius:2rem;background:var(--bg);color:var(--ink);font-size:.85rem;font-weight:700;cursor:pointer}
+.quick-chip:hover{border-color:var(--ink)}
+
+/* Form & Summary */
+.form-group{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.1rem}
+.form-group label{font-weight:700;font-size:.95rem;color:var(--ink)}
+.form-group label span.req{color:var(--bad)}
+.input-field{
+  width:100%;padding:.75rem .9rem;
+  border:2px solid var(--line);border-radius:.5rem;
+  background:var(--bg);color:var(--ink);
+  font:inherit;font-size:1rem;
+  transition:border-color .15s;
+}
+.input-field:focus{outline:none;border-color:var(--mark)}
+.input-field.invalid{border-color:var(--bad)}
+.field-hint{font-size:.82rem;color:var(--muted)}
+.field-error{font-size:.85rem;color:var(--bad);font-weight:700;display:none}
+.field-error.visible{display:block}
+
+.checkbox-row{display:flex;align-items:flex-start;gap:.6rem;margin:1rem 0 1.25rem;font-size:.9rem;color:var(--muted)}
+.checkbox-row input{margin-top:.25rem;width:1.1rem;height:1.1rem;accent-color:var(--mark);cursor:pointer}
+
+/* Coupon Box */
+.coupon-box{margin:1rem 0;padding:.9rem;background:var(--bg);border:1.5px dashed var(--line);border-radius:.55rem}
+.coupon-row{display:flex;gap:.5rem;margin-top:.35rem}
+.coupon-row .input-field{padding:.6rem .75rem;font-size:.95rem;background:var(--paper);text-transform:uppercase}
+.coupon-btn{padding:.6rem 1rem;font-size:.9rem;white-space:nowrap}
+.coupon-status{font-size:.85rem;font-weight:700;margin-top:.45rem;display:none}
+.coupon-status.ok{display:flex;align-items:center;justify-content:space-between;color:var(--ok)}
+.coupon-status.err{display:block;color:var(--bad)}
+.coupon-clear{background:none;border:0;color:var(--muted);text-decoration:underline;cursor:pointer;font:inherit;font-size:.82rem;padding:0}
+.coupon-clear:hover{color:var(--ink)}
+
+.summary-lines{border-top:1.5px solid var(--line);padding-top:1rem;margin-top:.5rem;display:flex;flex-direction:column;gap:.5rem}
+.sum-line{display:flex;justify-content:space-between;color:var(--muted);font-size:.98rem}
+.sum-line.discount{color:var(--ok);font-weight:700}
+.sum-total{display:flex;justify-content:space-between;align-items:baseline;font:800 1.45rem Archivo,sans-serif;color:var(--ink);padding-top:.75rem;margin-top:.35rem;border-top:2px solid var(--ink)}
+
+/* Confirmation Box */
+.order-success{display:none;background:var(--paper);border:2px solid var(--ok);border-radius:.75rem;padding:2rem;box-shadow:.45rem .45rem 0 var(--ok);margin-bottom:2.5rem}
+.order-success.active{display:block}
+.success-badge{display:inline-block;background:var(--ok);color:#fff;font-weight:700;padding:.3rem .75rem;border-radius:2rem;font-size:.85rem;margin-bottom:.75rem}
+
+/* Toast */
+#toast{visibility:hidden;min-width:250px;background-color:var(--ink);color:var(--bg);text-align:center;border-radius:.5rem;padding:.9rem 1.25rem;position:fixed;z-index:1000;left:50%;bottom:30px;transform:translateX(-50%);font-weight:700;box-shadow:0 4px 12px rgba(0,0,0,0.2);opacity:0;transition:opacity 0.3s, bottom 0.3s}
+#toast.show{visibility:visible;opacity:1;bottom:50px}
+
+footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-size:.95rem;text-align:center;margin-top:2rem}
+
+@media (max-width:58rem){
+  .checkout-grid{grid-template-columns:1fr;gap:2rem}
+}
+@media (max-width:40rem){
+  .wrap{padding:0 1rem}
+  .cart-row{flex-direction:column;align-items:flex-start}
+  .item-actions{width:100%;justify-content:space-between;padding-top:.5rem;border-top:1px solid var(--line)}
+}
+</style>
+<script>
+  (function() {
+    var savedTheme = localStorage.getItem('oxfam_theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  })();
+</script>
+</head>
+<body>
+
+<div class="scrim" id="scrim"></div>
+<aside class="side-menu" id="sideMenu">
+  <div class="side-nav">
+    <a href="index.html" style="margin-bottom: 1rem;">🏠 Domů</a>
+    <h3>Naše testy</h3>
+    <a href="ket.html">KET (A2 Key)</a>
+    <a href="pet.html">PET (B1 Preliminary)</a>
+    <a href="fce.html">FCE (B2 First)</a>
+    <a href="fce-schools.html">FCE for Schools (B2)</a>
+    <a href="fce-mix.html">FCE MIX (B2)</a>
+    <a href="cae.html">CAE (C1 Advanced)</a>
+    <a href="cpe.html">CPE (C2 Proficiency)</a>
+    <a href="ielts.html">IELTS</a>
+  </div>
+</aside>
+
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <button class="mbtn" id="menuBtn" type="button" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <a class="logo" href="index.html">Oxfam Preparation</a>
+    </div>
+    <nav>
+      <a href="fce.html">← Zpět k výběru testů</a>
+      <button id="themeBtn" class="theme-btn" type="button" aria-label="Přepnout barevný režim" title="Přepnout světlý/tmavý režim">🌙</button>
+    </nav>
+  </header>
+
+  <main>
+    <div class="page-head">
+      <h1>Váš <span>košík a pokladna</span></h1>
+      <p class="sub">Zkontrolujte vybrané přípravné testy a zadejte e-mail, na který vám zašleme přístupové údaje.</p>
+    </div>
+
+    <!-- Stav po úspěšném odeslání objednávky -->
+    <div class="order-success" id="orderSuccessBox">
+      <span class="success-badge">✓ Objednávka vytvořena</span>
+      <h2 style="margin-bottom: .5rem;">Děkujeme za vaši objednávku!</h2>
+      <p style="margin: 0 0 1rem; color: var(--muted);">
+        Potvrzení objednávky a instrukce k aktivaci přístupů jsme odeslali na e-mail: <strong id="confirmedEmail" style="color: var(--ink);"></strong>.
+      </p>
+      <div id="orderedSummaryList" style="background: var(--bg); padding: 1rem; border-radius: .5rem; border: 1px solid var(--line); margin-bottom: 1.25rem; font-size: .95rem;"></div>
+      <a href="index.html" class="btn">Zpět na úvodní stránku</a>
+    </div>
+
+    <div class="checkout-grid" id="checkoutMainGrid">
+      <!-- Levý sloupec: Položky v košíku -->
+      <div class="card">
+        <h2>Vybrané produkty (<span id="totalQtyBadge">0</span>)</h2>
+        <div id="cartListContainer" class="cart-list"></div>
+      </div>
+
+      <!-- Pravý sloupec: E-mail a dokončení objednávky -->
+      <div class="card" id="checkoutFormCard">
+        <h2>Doručení a platba</h2>
+        <form id="checkoutForm" novalidate>
+          <div class="form-group">
+            <label for="customerEmail">E-mail pro zaslání testů <span class="req">*</span></label>
+            <input type="email" id="customerEmail" class="input-field" placeholder="napr. jan.novak@email.cz" required autocomplete="email">
+            <span class="field-hint">Na tuto adresu ihned po zaplacení odešleme přístupové údaje a odkaz k testům.</span>
+            <span class="field-error" id="emailError">Zadejte prosím platnou e-mailovou adresu.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="customerName">Jméno a příjmení (volitelné)</label>
+            <input type="text" id="customerName" class="input-field" placeholder="Jan Novák" autocomplete="name">
+          </div>
+
+          <div class="coupon-box">
+            <label for="couponInput" style="font-weight:700;font-size:.9rem;color:var(--ink);">Slevový kupón</label>
+            <div class="coupon-row">
+              <input type="text" id="couponInput" class="input-field" placeholder="" autocomplete="off">
+              <button type="button" id="applyCouponBtn" class="btn alt coupon-btn">Uplatnit</button>
+            </div>
+            <div id="couponStatus" class="coupon-status"></div>
+          </div>
+
+          <div class="summary-lines">
+            <div class="sum-line">
+              <span>Mezisoučet</span>
+              <span id="subtotalPrice">0 Kč</span>
+            </div>
+            <div class="sum-line discount" id="discountLine" style="display:none;">
+              <span id="discountLabel">Sleva</span>
+              <span id="discountAmount">-0 Kč</span>
+            </div>
+            <div class="sum-line">
+              <span>Doručení (online aktivace na e-mail)</span>
+              <strong>Zdarma</strong>
+            </div>
+            <div class="sum-total">
+              <span>Celkem k úhradě</span>
+              <span id="finalTotalPrice">0 Kč</span>
+            </div>
+          </div>
+
+          <label class="checkbox-row">
+            <input type="checkbox" id="termsCheck" required>
+            <span>Souhlasím s obchodními podmínkami a zasláním digitálního obsahu na uvedený e-mail.</span>
+          </label>
+          <span class="field-error" id="termsError" style="margin-top: -0.75rem; margin-bottom: 1rem;">Pro dokončení nákupu potvrďte souhlas s podmínkami.</span>
+
+          <button type="submit" class="btn accent full" id="buySubmitBtn">Zakoupit a zaplatit</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer>© 2026 Oxfam Preparation. Nejsme spojeni s Cambridge University Press & Assessment. Názvy zkoušek patří jejich vlastníkům.</footer>
+</div>
+
+<div id="toast">Košík byl aktualizován</div>
+
+<script>
+// Přepínač světlého a tmavého motivu
+const themeBtn = document.getElementById('themeBtn');
+function updateThemeIcon(theme) {
+  themeBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+}
+updateThemeIcon(document.documentElement.getAttribute('data-theme') || 'light');
+
+themeBtn.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme') || 'light';
+  const next = current === 'light' ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('oxfam_theme', next);
+  updateThemeIcon(next);
+});
+
+// Postranní menu
+const menuBtn = document.getElementById('menuBtn');
+const scrim = document.getElementById('scrim');
+function toggleMenu() { document.body.classList.toggle('menuopen'); }
+menuBtn.addEventListener('click', toggleMenu);
+scrim.addEventListener('click', toggleMenu);
+
+// Načtení košíku z localStorage (stejný klíč 'oxfam_cart' jako na produktových stránkách)
+function getCart() {
+  try {
+    return JSON.parse(localStorage.getItem('oxfam_cart')) || [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function saveCart(items) {
+  localStorage.setItem('oxfam_cart', JSON.stringify(items));
+}
+
+// Seskupení stejných položek pro přehledné zobrazení množství
+function getGroupedCart() {
+  const raw = getCart();
+  const map = new Map();
+  raw.forEach(item => {
+    const key = item.name + '|' + item.price;
+    if (!map.has(key)) {
+      map.set(key, { name: item.name, price: Number(item.price), qty: 0 });
+    }
+    map.get(key).qty += 1;
+  });
+  return Array.from(map.values());
+}
+
+function changeQuantity(name, price, delta) {
+  const raw = getCart();
+  if (delta > 0) {
+    raw.push({ name, price });
+  } else {
+    const idx = raw.findIndex(i => i.name === name && Number(i.price) === Number(price));
+    if (idx !== -1) raw.splice(idx, 1);
+  }
+  saveCart(raw);
+  renderCart();
+}
+
+function removeGroup(name, price) {
+  const raw = getCart().filter(i => !(i.name === name && Number(i.price) === Number(price)));
+  saveCart(raw);
+  renderCart();
+  showToast('Položka byla odebrána z košíku.');
+}
+
+function quickAddProduct(name, price) {
+  const raw = getCart();
+  raw.push({ name, price });
+  saveCart(raw);
+  renderCart();
+  showToast('Produkt byl přidán do košíku.');
+}
+
+// Konfigurace slevových kupónů (snadno upravitelné)
+const COUPONS = {
+  'ŠKOLAPODZIM10': { type: 'percent', value: 10, label: 'Sleva 10 % (ŠKOLAPODZIM10)' }
+};
+
+let activeCoupon = null;
+
+function calculateDiscount(subtotal) {
+  if (!activeCoupon || subtotal <= 0) return 0;
+  if (activeCoupon.type === 'percent') {
+    return Math.round(subtotal * (activeCoupon.value / 100));
+  }
+  return Math.min(subtotal, activeCoupon.value);
+}
+
+function applyCouponCode() {
+  const input = document.getElementById('couponInput');
+  const statusEl = document.getElementById('couponStatus');
+  const code = input.value.trim().toUpperCase();
+
+  if (!code) {
+    statusEl.className = 'coupon-status err';
+    statusEl.textContent = 'Zadejte prosím kód slevového kupónu.';
+    return;
+  }
+
+  const found = COUPONS[code];
+  if (!found) {
+    activeCoupon = null;
+    statusEl.className = 'coupon-status err';
+    statusEl.textContent = 'Neplatný nebo vypršelý slevový kód.';
+    renderCart();
+    return;
+  }
+
+  activeCoupon = { code, ...found };
+  statusEl.className = 'coupon-status ok';
+  statusEl.innerHTML = `<span>✓ Kupón <strong>${code}</strong> byl uplatněn</span><button type="button" class="coupon-clear" onclick="clearCoupon()">Odebrat</button>`;
+  renderCart();
+  showToast('Slevový kupón byl uplatněn!');
+}
+
+function clearCoupon() {
+  activeCoupon = null;
+  document.getElementById('couponInput').value = '';
+  const statusEl = document.getElementById('couponStatus');
+  statusEl.className = 'coupon-status';
+  statusEl.innerHTML = '';
+  renderCart();
+}
+
+document.getElementById('applyCouponBtn').addEventListener('click', applyCouponCode);
+document.getElementById('couponInput').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    applyCouponCode();
+  }
+});
+
+function renderCart() {
+  const grouped = getGroupedCart();
+  const container = document.getElementById('cartListContainer');
+  const totalQtyBadge = document.getElementById('totalQtyBadge');
+  const subtotalPriceEl = document.getElementById('subtotalPrice');
+  const discountLineEl = document.getElementById('discountLine');
+  const discountLabelEl = document.getElementById('discountLabel');
+  const discountAmountEl = document.getElementById('discountAmount');
+  const finalTotalPrice = document.getElementById('finalTotalPrice');
+  const buySubmitBtn = document.getElementById('buySubmitBtn');
+
+  const totalItemsCount = grouped.reduce((acc, item) => acc + item.qty, 0);
+  const subtotal = grouped.reduce((acc, item) => acc + (item.price * item.qty), 0);
+  const discount = calculateDiscount(subtotal);
+  const finalTotal = Math.max(0, subtotal - discount);
+
+  totalQtyBadge.textContent = totalItemsCount;
+  subtotalPriceEl.textContent = subtotal.toLocaleString('cs-CZ') + ' Kč';
+
+  if (discount > 0 && activeCoupon) {
+    discountLineEl.style.display = 'flex';
+    discountLabelEl.textContent = activeCoupon.label;
+    discountAmountEl.textContent = '−' + discount.toLocaleString('cs-CZ') + ' Kč';
+  } else {
+    discountLineEl.style.display = 'none';
+  }
+
+  finalTotalPrice.textContent = finalTotal.toLocaleString('cs-CZ') + ' Kč';
+
+  container.innerHTML = '';
+
+  if (grouped.length === 0) {
+    buySubmitBtn.disabled = true;
+    buySubmitBtn.style.opacity = '0.5';
+    buySubmitBtn.style.cursor = 'not-allowed';
+
+    container.innerHTML = `
+      <div class="empty-box">
+        <p>Váš košík je momentálně prázdný.</p>
+        <a href="fce.html" class="btn alt">Prohlédnout přípravné testy</a>
+        <div class="quick-add">
+          <span style="width:100%; font-size:.82rem; color:var(--muted); margin-bottom:.25rem;">Nebo si rychle přidejte test pro vyzkoušení pokladny:</span>
+          <button type="button" class="quick-chip" onclick="quickAddProduct('Příprava na test B2 First (FCE)', 299)">+ B2 First (299 Kč)</button>
+          <button type="button" class="quick-chip" onclick="quickAddProduct('Příprava na test Advanced C1', 299)">+ Advanced C1 (299 Kč)</button>
+          <button type="button" class="quick-chip" onclick="quickAddProduct('Příprava na test Proficiency C2', 299)">+ Proficiency C2 (299 Kč)</button>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  buySubmitBtn.disabled = false;
+  buySubmitBtn.style.opacity = '1';
+  buySubmitBtn.style.cursor = 'pointer';
+
+  grouped.forEach(item => {
+    const row = document.createElement('div');
+    row.className = 'cart-row';
+
+    const safeName = item.name.replace(/'/g, "\\'");
+
+    row.innerHTML = `
+      <div class="item-details">
+        <span class="item-name">${item.name}</span>
+        <span class="item-meta">Online licence • Doručení e-mailem ihned po platbě (${item.price} Kč / ks)</span>
+      </div>
+      <div class="item-actions">
+        <div class="qty-box" aria-label="Množství">
+          <button type="button" class="qty-btn" onclick="changeQuantity('${safeName}', ${item.price}, -1)" title="Snížit počet">−</button>
+          <span class="qty-val">${item.qty}</span>
+          <button type="button" class="qty-btn" onclick="changeQuantity('${safeName}', ${item.price}, 1)" title="Zvýšit počet">+</button>
+        </div>
+        <span class="item-price">${(item.price * item.qty).toLocaleString('cs-CZ')} Kč</span>
+        <button type="button" class="remove-btn" onclick="removeGroup('${safeName}', ${item.price})">Odebrat</button>
+      </div>
+    `;
+    container.appendChild(row);
+  });
+}
+
+// Validace a odeslání objednávky
+const checkoutForm = document.getElementById('checkoutForm');
+const emailInput = document.getElementById('customerEmail');
+const emailError = document.getElementById('emailError');
+const termsCheck = document.getElementById('termsCheck');
+const termsError = document.getElementById('termsError');
+
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+}
+
+emailInput.addEventListener('input', () => {
+  if (isValidEmail(emailInput.value)) {
+    emailInput.classList.remove('invalid');
+    emailError.classList.remove('visible');
+  }
+});
+
+termsCheck.addEventListener('change', () => {
+  if (termsCheck.checked) {
+    termsError.classList.remove('visible');
+  }
+});
+
+checkoutForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const grouped = getGroupedCart();
+  if (grouped.length === 0) return;
+
+  let valid = true;
+  const emailVal = emailInput.value.trim();
+
+  if (!isValidEmail(emailVal)) {
+    emailInput.classList.add('invalid');
+    emailError.classList.add('visible');
+    emailInput.focus();
+    valid = false;
+  } else {
+    emailInput.classList.remove('invalid');
+    emailError.classList.remove('visible');
+  }
+
+  if (!termsCheck.checked) {
+    termsError.classList.add('visible');
+    valid = false;
+  } else {
+    termsError.classList.remove('visible');
+  }
+
+  if (!valid) return;
+
+  // Sestavení shrnutí objednávky
+  const subtotalAmount = grouped.reduce((acc, i) => acc + i.price * i.qty, 0);
+  const discountAmount = calculateDiscount(subtotalAmount);
+  const totalAmount = Math.max(0, subtotalAmount - discountAmount);
+
+  let discountSummaryHtml = '';
+  if (discountAmount > 0 && activeCoupon) {
+    discountSummaryHtml = `<div style="color: var(--ok); font-weight: 700;">• Uplatněný kupón (${activeCoupon.code}): −${discountAmount.toLocaleString('cs-CZ')} Kč</div>`;
+  }
+
+  const summaryHtml = grouped.map(i => `<div>• <strong>${i.qty}×</strong> ${i.name} – ${(i.price * i.qty).toLocaleString('cs-CZ')} Kč</div>`).join('')
+    + discountSummaryHtml
+    + `<div style="margin-top:.6rem; padding-top:.6rem; border-top:1px solid var(--line); font-weight:800;">Celkem uhrazeno: ${totalAmount.toLocaleString('cs-CZ')} Kč</div>`;
+
+  document.getElementById('confirmedEmail').textContent = emailVal;
+  document.getElementById('orderedSummaryList').innerHTML = summaryHtml;
+
+  // Vyčištění košíku po nákupu a zobrazení potvrzení
+  saveCart([]);
+  activeCoupon = null;
+  document.getElementById('checkoutMainGrid').style.display = 'none';
+  document.getElementById('orderSuccessBox').classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.className = 'show';
+  setTimeout(() => { toast.className = toast.className.replace('show', ''); }, 2600);
+}
+
+renderCart();
+</script>
+</body>
+</html>
