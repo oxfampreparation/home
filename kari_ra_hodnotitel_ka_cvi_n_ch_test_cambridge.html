@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kariéra: Hodnotitel/ka cvičných testů Cambridge – Oxfam Preparation</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f7fb;--paper:#fff;--ink:#14213d;--muted:#4b5266;--line:#d5d9e6;--mark:#2b59ff;--hi:#ffe45e;--ok:#1a7f52}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 "Atkinson Hyperlegible",system-ui,sans-serif}
+.wrap{max-width:54rem;margin:0 auto;padding:2rem 1.25rem 5rem}
+header{display:flex;justify-content:space-between;align-items:center;padding-bottom:1.5rem;border-bottom:1px solid var(--line);margin-bottom:2rem}
+.logo{font:800 1.4rem Archivo,sans-serif;text-decoration:none;color:var(--ink)}
+.back{text-decoration:none;font-weight:700;color:var(--mark)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:.75rem;padding:2rem}
+.tag{display:inline-block;background:var(--hi);color:#14213d;font:700 .9rem Archivo,sans-serif;padding:.25rem .7rem;border-radius:.4rem;margin-bottom:.75rem}
+h1{font:800 clamp(1.7rem,4vw,2.4rem)/1.15 Archivo,sans-serif;margin:0 0 1rem}
+h2{font:700 1.3rem Archivo,sans-serif;margin:1.75rem 0 .6rem}
+ul{padding-left:1.25rem;margin:0 0 1.25rem}
+li{margin-bottom:.45rem}
+form{margin-top:2rem;padding-top:1.5rem;border-top:2px solid var(--ink);display:grid;gap:.85rem}
+label{font-weight:700;display:block;margin-bottom:.25rem}
+input,textarea,select{width:100%;padding:.65rem .75rem;border:1.5px solid var(--line);border-radius:.45rem;font:inherit;background:var(--bg);color:var(--ink)}
+.btn{background:var(--ink);color:var(--bg);padding:.85rem 1.5rem;border:0;border-radius:.5rem;font:700 1rem Archivo,sans-serif;cursor:pointer;width:fit-content}
+.ok-msg{color:var(--ok);font-weight:700;margin-top:.5rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="logo" href="index.html">Oxfam Preparation</a>
+    <a class="back" href="index.html#career">← Zpět na kariéru</a>
+  </header>
+  <div class="card">
+    <span class="tag">Odměna: 420 – 550 Kč / hod. · Plně remote / DPP / IČO</span>
+    <h1>Hodnotitel/ka cvičných testů Cambridge</h1>
+    <p>Hledáme pečlivé specialisty na anglický jazyk, kteří budou studentům poskytovat detailní a srozumitelnou zpětnou vazbu u cvičných písemných prací (Writing) a simulovaných ústních zkoušek (Speaking).</p>
+
+    <h2>Náplň práce</h2>
+    <ul>
+      <li>Opravování a bodové hodnocení esejí, dopisů, recenzí a zpráv (úrovně B1 Preliminary až C2 Proficiency).</li>
+      <li>Vedení 15minutových online simulací ústní zkoušky Speaking nanečisto.</li>
+      <li>Psaní konkrétních doporučení, jak zlepšit slovní zásobu, kohezi a gramatickou přesnost.</li>
+    </ul>
+
+    <h2>Požadavky</h2>
+    <ul>
+      <li>Jazyková úroveň C2 (certifikát C2 Proficiency nebo odpovídající praxe).</li>
+      <li>Výborná znalost oficiálních hodnoticích kritérií Cambridge English Assessment.</li>
+      <li>Pečlivost, cit pro detail a dodržování dohodnutých termínů (zpětná vazba do 48 hodin).</li>
+    </ul>
+
+    <h2>Co nabízíme</h2>
+    <ul>
+      <li>Odměnu 420 – 550 Kč / hod. (úkolově dle počtu opravených testů a vedených simulací).</li>
+      <li>100% práci z domova s naprostou časovou flexibilitou – ideální i při rodičovské dovolené nebo doktorském studiu.</li>
+      <li>Úvodní zaškolení našimi seniorními zkoušejícími a pravidelné kalibrační workshopy.</li>
+      <li>Příspěvek na další jazykové certifikace a přístup ke všem našim studijním materiálům.</li>
+    </ul>
+
+    <form id="applyForm2">
+      <h2>Odpovědět na pozici hodnotitele</h2>
+      <div>
+        <label for="name2">Jméno a příjmení</label>
+        <input id="name2" required placeholder="Např. Mgr. Eva Svobodová">
+      </div>
+      <div>
+        <label for="email2">E-mail</label>
+        <input id="email2" type="email" required placeholder="eva.svobodova@email.cz">
+      </div>
+      <div>
+        <label for="note2">Vaše zkušenosti s hodnocením testů Cambridge / IELTS</label>
+        <textarea id="note2" rows="4" required placeholder="Uveďte prosím dosaženou úroveň angličtiny, certifikáty a přibližnou týdenní kapacitu..."></textarea>
+      </div>
+      <button class="btn" type="submit">Odeslat odpověď</button>
+      <div class="ok-msg" id="okMsg2" aria-live="polite"></div>
+    </form>
+  </div>
+</div>
+<script>
+document.getElementById("applyForm2").onsubmit = function(e) {
+  e.preventDefault();
+  document.getElementById("okMsg2").textContent = "Děkujeme za vaši odpověď! Ozveme se vám s krátkou zkušební ukázkou k ohodnocení.";
+  this.reset();
+};
+</script>
+</body>
+</html>
