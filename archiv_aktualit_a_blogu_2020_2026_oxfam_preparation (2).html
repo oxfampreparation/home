@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Archiv aktualit a blogu (2020–2026) – Oxfam Preparation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,500..800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f7fb;
+  --paper:#fff;
+  --ink:#14213d;
+  --muted:#4b5266;
+  --line:#d5d9e6;
+  --mark:#2b59ff;
+  --hi:#ffe45e;
+  --ok:#1a7f52;
+  --bad:#b3261e;
+}
+:root[data-theme="dark"]{
+  --bg:#0f1526;
+  --paper:#182038;
+  --ink:#eef1fb;
+  --muted:#a9b1c9;
+  --line:#2c3656;
+  --mark:#7d9bff;
+  --hi:#e9d24a;
+  --ok:#57c58f;
+  --bad:#ff8a80;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.55 "Atkinson Hyperlegible",system-ui,sans-serif;padding-bottom:5rem}
+h1,h2,h3{font-family:Archivo,"Helvetica Neue",Arial,sans-serif;line-height:1.2;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--mark);outline-offset:3px}
+
+/* Užší a kompaktnější kontejner */
+.wrap{max-width:48rem;margin:0 auto;padding:0 1.25rem}
+
+/* Hlavička */
+header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;padding:1.1rem 0;border-bottom:1px solid var(--line);margin-bottom:1.75rem;position:sticky;top:0;background:var(--bg);z-index:100}
+.logo{font:800 1.35rem Archivo,sans-serif;text-decoration:none;color:var(--ink)}
+.hr{display:flex;align-items:center;gap:.65rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--ink);color:var(--bg);padding:.45rem .9rem;border-radius:.45rem;font:700 .88rem Archivo,sans-serif;text-decoration:none;border:0;cursor:pointer}
+.btn.alt{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.btn:hover{opacity:.9}
+
+/* Úvodní banner */
+.hero-archive{margin-bottom:1.5rem}
+.hero-archive h1{font-size:clamp(1.75rem,3.6vw,2.4rem);font-weight:800;margin-bottom:.5rem}
+.hero-archive h1 span{background:linear-gradient(transparent 62%,var(--hi) 62%)}
+.hero-archive p{color:var(--muted);margin:0;font-size:.98rem}
+
+/* Kompaktní filtry */
+.filter-bar{background:var(--paper);border:1px solid var(--line);border-radius:.65rem;padding:.95rem 1.1rem;margin-bottom:1.5rem;display:grid;gap:.75rem}
+.filter-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.75rem}
+.filter-chips{display:flex;flex-wrap:wrap;gap:.35rem}
+.f-chip{padding:.3rem .7rem;border:1.5px solid var(--line);border-radius:2rem;background:transparent;color:var(--ink);font:700 .82rem Archivo,sans-serif;cursor:pointer;transition:all .15s}
+.f-chip:hover{border-color:var(--mark)}
+.f-chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.search-input{padding:.45rem .75rem;border:1.5px solid var(--line);border-radius:.45rem;font:inherit;font-size:.92rem;background:var(--bg);color:var(--ink);min-width:14rem;flex:1;max-width:20rem}
+
+/* Užší kompaktní boxíky článků s miniaturou vedle nadpisu */
+.archive-list{display:grid;gap:.85rem}
+.post-card{background:var(--paper);border:1px solid var(--line);border-radius:.65rem;padding:1rem 1.2rem;transition:border-color .15s,transform .12s}
+.post-card:hover{border-color:var(--ink)}
+.post-card:target{border-color:var(--mark);box-shadow:0 0 0 3px rgba(43,89,255,.15)}
+.post-card[hidden]{display:none}
+
+.post-row{display:flex;align-items:flex-start;gap:.95rem}
+.post-thumb{width:64px;height:64px;min-width:64px;border-radius:.45rem;border:1px solid var(--line);object-fit:cover;background:var(--bg);display:grid;place-items:center;font:800 .78rem Archivo,sans-serif;color:var(--mark);text-align:center;line-height:1.1}
+.post-main{flex:1;min-width:0}
+
+.post-top{display:flex;justify-content:space-between;align-items:center;gap:.5rem;margin-bottom:.25rem}
+.post-meta{color:var(--mark);font:700 .8rem Archivo,sans-serif}
+.post-badge{background:var(--bg);border:1px solid var(--line);padding:.1rem .45rem;border-radius:.3rem;font:700 .72rem Archivo,sans-serif;color:var(--muted)}
+
+.post-card h2{font-size:1.12rem;margin-bottom:.3rem}
+.post-card h2 a{text-decoration:none}
+.post-card h2 a:hover{color:var(--mark);text-decoration:underline}
+.post-excerpt{color:var(--muted);margin:0;font-size:.92rem;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.post-card.expanded .post-excerpt{-webkit-line-clamp:unset}
+
+.post-full{display:none;border-top:1px solid var(--line);padding-top:.85rem;margin-top:.85rem;font-size:.95rem}
+.post-card.expanded .post-full{display:block}
+.post-full p{margin:0 0 .75rem}
+.post-full ul,.post-full ol{margin:0 0 .85rem;padding-left:1.25rem}
+.post-full li{margin-bottom:.35rem}
+.post-full h3{font-size:1.02rem;margin:1rem 0 .4rem;color:var(--ink)}
+.tip-box{background:var(--bg);border-left:3px solid var(--mark);padding:.65rem .9rem;border-radius:0 .4rem .4rem 0;margin:.75rem 0;font-size:.92rem}
+
+.post-actions{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;margin-top:.65rem}
+.post-actions .btn{padding:.32rem .75rem;font-size:.82rem}
+
+.empty-state{display:none;text-align:center;padding:2.5rem 1rem;background:var(--paper);border:1px dashed var(--line);border-radius:.65rem;color:var(--muted)}
+.empty-state.visible{display:block}
+
+/* Spodní lišta podpory */
+.support-strip{position:fixed;bottom:0;left:0;right:0;background:var(--ink);color:var(--bg);padding:.75rem 1.25rem;z-index:999;box-shadow:0 -4px 12px rgba(0,0,0,0.15)}
+.support-strip-inner{max-width:48rem;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.75rem;font-weight:700;font-size:.9rem}
+.support-strip a{color:var(--hi);text-decoration:none}
+.support-strip a:hover{text-decoration:underline}
+.support-info{display:flex;gap:1rem;flex-wrap:wrap}
+
+footer{border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1.5rem;color:var(--muted);font-size:.88rem}
+
+@media(max-width:36rem){
+  .post-card{padding:.85rem 1rem}
+  .post-thumb{width:52px;height:52px;min-width:52px}
+  .search-input{max-width:100%;width:100%}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="logo" href="index.html">Oxfam Preparation</a>
+    <div class="hr">
+      <button class="btn alt" style="padding:.35rem .55rem;font-size:1rem" id="themeBtn" aria-label="Přepnout motiv">🌙</button>
+      <a class="btn alt" href="index.html#news">← Zpět na hlavní stránku</a>
+    </div>
+  </header>
+
+  <div class="hero-archive">
+    <h1>Archiv aktualit a <span>studijního blogu</span></h1>
+    <p>Přehled všech článků, tipů ke zkouškám Cambridge English a novinek centra Oxfam Preparation (2020–2026).</p>
+  </div>
+
+  <!-- Filtry podle roku a vyhledávání -->
+  <div class="filter-bar" aria-label="Filtrování článků">
+    <div class="filter-row">
+      <div class="filter-chips" id="yearFilters" role="group" aria-label="Filtr podle roku">
+        <button type="button" class="f-chip" data-year="all" aria-pressed="true">Vše (60)</button>
+        <button type="button" class="f-chip" data-year="2026" aria-pressed="false">2026 (10)</button>
+        <button type="button" class="f-chip" data-year="2025" aria-pressed="false">2025 (10)</button>
+        <button type="button" class="f-chip" data-year="2024" aria-pressed="false">2024 (8)</button>
+        <button type="button" class="f-chip" data-year="2023" aria-pressed="false">2023 (8)</button>
+        <button type="button" class="f-chip" data-year="2022" aria-pressed="false">2022 (8)</button>
+        <button type="button" class="f-chip" data-year="2021" aria-pressed="false">2021 (8)</button>
+        <button type="button" class="f-chip" data-year="2020" aria-pressed="false">2020 (8)</button>
+      </div>
+      <input type="search" id="searchInput" class="search-input" placeholder="Hledat (např. B2, esej, poslech)..." aria-label="Hledat v článcích">
+    </div>
+  </div>
+
+  <div class="empty-state" id="emptyState">
+    <strong>Nebyly nalezeny žádné články odpovídající zadanému filtru.</strong>
+    <p style="margin:.4rem 0 0;font-size:.9rem">Zkuste upravit hledaný výraz nebo přepnout na všechny roky.</p>
+  </div>
+
+  <div class="archive-list" id="archiveList">
+
+    <!-- ==================== ROK 2026 (10 článků) ==================== -->
+    <article class="post-card" data-year="2026" id="gaudeamus-2026">
+      <div class="post-row">
+        <img class="post-thumb" src="veletrh.jpg" alt="Gaudeamus" onerror="this.outerHTML='<div class=\'post-thumb\'>EVENT<br>2026</div>'">
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">18. listopadu 2026 · Veletrh</span>
+            <span class="post-badge">2026</span>
+          </div>
+          <h2><a href="clanek-gaudeamus-2026.html">Účast na vzdělávacím veletrhu Gaudeamus</a></h2>
+          <p class="post-excerpt">Představili jsme naše přípravné kurzy a sadu testů 2026 studentům středních škol i pedagogům.</p>
+          <div class="post-actions">
+            <a class="btn" href="clanek-gaudeamus-2026.html">Přečíst celý článek</a>
+            <a class="btn alt" href="index.html#pricing">Balíčky testů 2026</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2026" id="nove-prostory-chodov-2026">
+      <div class="post-row">
+        <img class="post-thumb" src="prostory.jpg" alt="Nové prostory na Chodově" onerror="this.outerHTML='<div class=\'post-thumb\'>CHODOV<br>2026</div>'">
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">20. října 2026 · Pobočka</span>
+            <span class="post-badge">2026</span>
+          </div>
+          <h2><a href="clanek-nove-prostory-chodov-2026.html">Otevíráme nové rozšířené prostory a zkušební sály na Chodově</a></h2>
+          <p class="post-excerpt">Rozšířili jsme naše centrum v Office Centru Park Chodov o nové klimatizované učebny a zkušební místnosti pro počítačové testy.</p>
+          <div class="post-actions">
+            <a class="btn" href="clanek-nove-prostory-chodov-2026.html">Přečíst celý článek</a>
+            <a class="btn alt" href="index.html#about">Kde nás najdete</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2026" id="poslech-c1-2026">
+      <div class="post-row">
+        <div class="post-thumb">C1<br>LIST</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">3. října 2026 · Blog · C1 Advanced</span>
+            <span class="post-badge">2026</span>
+          </div>
+          <h2><a href="clanek-poslech-c1-2026.html">5 nejčastějších pastí v poslechové části C1 Advanced</a></h2>
+          <p class="post-excerpt">Jak odhalit obrat názoru mluvčího v polovině věty a nenaletět na doslovná slova ze zadání.</p>
+          <div class="post-actions">
+            <a class="btn" href="clanek-poslech-c1-2026.html">Přečíst celý článek</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2026" id="testy-2026-online">
+      <div class="post-row">
+        <div class="post-thumb">2026<br>TESTY</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">18. září 2026 · Novinka</span>
+            <span class="post-badge">2026</span>
+          </div>
+          <h2><a href="clanek-testy-2026-online.html">Kompletní sada 30 testů pro rok 2026 je online</a></h2>
+          <p class="post-excerpt">Doplnili jsme sady pro B1 Preliminary, B2 First, C1 Advanced a C2 Proficiency s okamžitým hodnocením.</p>
+          <div class="post-actions">
+            <a class="btn" href="clanek-testy-2026-online.html">Přečíst celý článek</a>
+            <a class="btn alt" href="index.html#pricing">Vybrat balíček</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2026" id="uoe-part4-2026">
+      <div class="post-row">
+        <div class="post-thumb">B2/C1<br>UOE</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">28. srpna 2026 · Blog · Use of English</span>
+            <span class="post-badge">2026</span>
+          </div>
+          <h2><a href="jak_zvl_dnout_key_word_transformations_part_4_bez_ztr_ty_bod.html">Jak zvládnout Key Word Transformations (Part 4) bez ztráty bodů</a></h2>
+          <p class="post-excerpt">Proč je klíčové hlídat limit 2–5 slov, neměnit zadané slovo a rozdělit si transformaci na dva kroky.</p>
+          <div class="post-actions">
+            <a class="btn" href="jak_zvl_dnout_key_word_transformations_part_4_bez_ztr_ty_bod.html">Přečíst celý článek</a>
+            <a class="btn alt" href="ukazkovapriprava.html">Procvičit v testu</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2026" id="esej-c2-2026">
+      <div class="post-row">
+        <div class="post-thumb">C2<br>WRIT</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">24. července 2026 · Blog · C2 Proficiency</span>
+            <span class="post-badge">2026</span>
+          </div>
+          <h2><a href="jak_napsat_p_esv_d_ivou_esej_v_c2_proficiency_za_45_minut.html">Jak napsat přesvědčivou esej v C2 Proficiency za 45 minut</a></h2>
+          <p class="post-excerpt">Návod, jak propojit dva výchozí texty vlastními slovy a získat plný počet bodů za kohezi.</p>
+          <div class="post-actions">
+            <a class="btn" href="jak_napsat_p_esv_d_ivou_esej_v_c2_proficiency_za_45_minut.html">Přečíst celý článek</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2026" id="speaking-part2-2026">
+      <div class="post-row">
+        <div class="post-thumb">SPEAK<br>PART 2</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">9. května 2026 · Blog · Speaking</span>
+            <span class="post-badge">2026</span>
+          </div>
+          <h2><a href="stn_zkou_ka_nane_isto_jak_p_ekonat_tr_mu_u_speaking_part_2.html">Ústní zkouška nanečisto: Jak překonat trému u Speaking Part 2</a></h2>
+          <p class="post-excerpt">Užitečné obraty pro porovnávání fotografií a spekulaci v B2 First a C1 Advanced na celou minutu.</p>
+          <div class="post-actions">
+            <a class="btn" href="stn_zkou_ka_nane_isto_jak_p_ekonat_tr_mu_u_speaking_part_2.html">Přečíst celý článek</a>
+            <a class="btn alt" href="ukazkovapriprava.html">Speaking Guide</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2026" id="word-formation-2026">
+      <div class="post-row">
+        <div class="post-thumb">B2<br>WORD</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">22. března 2026 · Blog · Gramatika</span>
+            <span class="post-badge">2026</span>
+          </div>
+          <h2><a href="nej_ast_j_p_edpony_a_p_pony_u_slovotvorby_part_3.html">Nejčastější předpony a přípony u slovotvorby (Part 3)</a></h2>
+          <p class="post-excerpt">Přehled záporných předpon (un-, in-, dis-, il-, ir-) a pravopisných chytáků v B2 First a C1 Advanced.</p>
+          <div class="post-actions">
+            <a class="btn" href="nej_ast_j_p_edpony_a_p_pony_u_slovotvorby_part_3.html">Přečíst celý článek</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2026" id="b2-vs-ielts-2026">
+      <div class="post-row">
+        <div class="post-thumb">B2 vs<br>IELTS</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">14. února 2026 · Blog · Srovnání zkoušek</span>
+            <span class="post-badge">2026</span>
+          </div>
+          <h2><a href="b2_first_vs_ielts_academic_kter_certifik_t_zvolit_na_v.html">B2 First vs. IELTS Academic: Který certifikát zvolit na VŠ?</a></h2>
+          <p class="post-excerpt">Srovnání platnosti certifikátů, struktury testů a požadavků českých i zahraničních univerzit.</p>
+          <div class="post-actions">
+            <a class="btn" href="b2_first_vs_ielts_academic_kter_certifik_t_zvolit_na_v.html">Přečíst celý článek</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2026" id="c1-reading-part6-2026">
+      <div class="post-row">
+        <div class="post-thumb">C1<br>PART 6</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">12. ledna 2026 · Blog · C1 Advanced</span>
+            <span class="post-badge">2026</span>
+          </div>
+          <h2><a href="cross_text_multiple_matching_part_6_v_c1_advanced.html">Cross-text multiple matching (Part 6) v C1 Advanced krok za krokem</a></h2>
+          <p class="post-excerpt">Metoda, jak rychle porovnat názory čtyř akademiků na stejné téma bez zmatku v poznámkách.</p>
+          <div class="post-actions">
+            <a class="btn" href="cross_text_multiple_matching_part_6_v_c1_advanced.html">Přečíst celý článek</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ==================== ROK 2025 (10 článků) ==================== -->
+    <article class="post-card" data-year="2025" id="schola-pragensis-2025">
+      <div class="post-row">
+        <img class="post-thumb" src="pragensis.jpg" alt="Schola Pragensis 2025" onerror="this.outerHTML='<div class=\'post-thumb\'>SCHOLA<br>2025</div>'">
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">29. listopadu 2025 · Veletrh</span>
+            <span class="post-badge">2025</span>
+          </div>
+          <h2><a href="clanek-schola-pragensis-2025.html">Účast na veletrhu pražského středního školství Schola Pragensis</a></h2>
+          <p class="post-excerpt">V Kongresovém centru Praha jsme žákům základních škol, rodičům i pedagogům představili přípravu na A2 Key a B1 Preliminary.</p>
+          <div class="post-actions">
+            <a class="btn" href="clanek-schola-pragensis-2025.html">Přečíst celý článek</a>
+            <a class="btn alt" href="index.html#schools">Pro školy</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2025" id="zimni-plan-2025">
+      <div class="post-row">
+        <div class="post-thumb">PLÁN<br>8 TÝDNŮ</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">28. listopadu 2025 · Blog · Strategie</span>
+            <span class="post-badge">2025</span>
+          </div>
+          <h2><a href="zimn_studijn_pl_n_jak_si_rozvrhnout_p_pravu_8_t_dn_p_ed_zkou_kou.html">Zimní studijní plán: Jak si rozvrhnout přípravu 8 týdnů před zkouškou</a></h2>
+          <p class="post-excerpt">Týdenní harmonogram procvičování všech čtyř dovedností bez zbytečného stresu na poslední chvíli.</p>
+          <div class="post-actions">
+            <a class="btn" href="zimn_studijn_pl_n_jak_si_rozvrhnout_p_pravu_8_t_dn_p_ed_zkou_kou.html">Přečíst celý článek</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2025" id="frazova-slovesa-2025">
+      <div class="post-row">
+        <div class="post-thumb">B2<br>PHRASAL</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">11. října 2025 · Blog · B2 First</span>
+            <span class="post-badge">2025</span>
+          </div>
+          <h2><a href="fr_zov_slovesa_a_kolokace_v_b2_first.html">Frázová slovesa a kolokace, které se v B2 First objevují nejčastěji</a></h2>
+          <p class="post-excerpt">Přehled klíčových vazeb pro Use of English Part 1 a Part 4 včetně příkladových vět.</p>
+          <div class="post-actions">
+            <a class="btn" href="fr_zov_slovesa_a_kolokace_v_b2_first.html">Přečíst celý článek</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2025" id="for-schools-2025">
+      <div class="post-row">
+        <div class="post-thumb">FOR<br>SCHOOLS</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">22. srpna 2025 · Blog · Pro studenty</span>
+            <span class="post-badge">2025</span>
+          </div>
+          <h2><a href="pro_jsou_verze_for_schools_ide_ln_pro_st_edo_kol_ky.html">Proč jsou verze „for Schools“ ideální pro středoškoláky</a></h2>
+          <p class="post-excerpt">Stejný mezinárodní certifikát s neomezenou platností, ale témata blízká studentům ZŠ a SŠ.</p>
+          <div class="post-actions">
+            <a class="btn" href="pro_jsou_verze_for_schools_ide_ln_pro_st_edo_kol_ky.html">Přečíst celý článek</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2025" id="ielts-writing-task1-2025">
+      <div class="post-row">
+        <div class="post-thumb">IELTS<br>GRAFY</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">19. července 2025 · Blog · IELTS</span>
+            <span class="post-badge">2025</span>
+          </div>
+          <h2><a href="jak_popsat_grafy_a_tabulky_v_ielts_academic_writing_task_1.html">Jak popsat grafy a tabulky v IELTS Academic Writing Task 1</a></h2>
+          <p class="post-excerpt">Klíčová slovní zásoba pro popis trendů, nárůstů a srovnání dat v rozsahu 150 slov.</p>
+          <div class="post-actions">
+            <a class="btn" href="jak_popsat_grafy_a_tabulky_v_ielts_academic_writing_task_1.html">Přečíst celý článek</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2025" id="akademicke-texty-2025">
+      <div class="post-row">
+        <div class="post-thumb">C1<br>READ</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">16. června 2025 · Blog · C1 Advanced</span>
+            <span class="post-badge">2025</span>
+          </div>
+          <h2><a href="jak_st_dlouh_akademick_texty_v_c1_advanced.html">Jak číst dlouhé akademické texty v C1 Advanced a neztrácet čas</a></h2>
+          <p class="post-excerpt">Techniky skimming a scanning v praxi: jak se nezaseknout u neznámých slovíček v Readingu.</p>
+          <div class="post-actions">
+            <a class="btn" href="jak_st_dlouh_akademick_texty_v_c1_advanced.html">Přečíst celý článek</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2025" id="writing-b1-2025">
+      <div class="post-row">
+        <div class="post-thumb">B1<br>EMAIL</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">3. května 2025 · Blog · B1 Preliminary</span>
+            <span class="post-badge">2025</span>
+          </div>
+          <h2><a href="form_ln_vs_neform_ln_dopis_a_recenze_v_b1_preliminary.html">Formální vs. neformální dopis a recenze v B1 Preliminary</a></h2>
+          <p class="post-excerpt">Jak správně odlišit registr jazyka, oslovení a zakončení textu, abyste neztráceli body za styl.</p>
+          <div class="post-actions">
+            <a class="btn" href="form_ln_vs_neform_ln_dopis_a_recenze_v_b1_preliminary.html">Přečíst celý článek</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2025" id="berlin-2025">
+      <div class="post-row">
+        <div class="post-thumb">CENA<br>BERLÍN</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">15. března 2025 · Ocenění</span>
+            <span class="post-badge">2025</span>
+          </div>
+          <h2><a href="ocen_n_za_nejlep_p_pravn_materi_ly_v_berl_n.html">Ocenění za nejlepší přípravné materiály na veletrhu v Berlíně</a></h2>
+          <p class="post-excerpt">Získali jsme hlavní cenu za inovace ve vzdělávání a přístupnost digitálních materiálů.</p>
+          <div class="post-actions">
+            <a class="btn" href="ocen_n_za_nejlep_p_pravn_materi_ly_v_berl_n.html">Přečíst celý článek</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2025" id="open-cloze-2025">
+      <div class="post-row">
+        <div class="post-thumb">UOE<br>PART 2</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">14. února 2025 · Blog · Gramatika</span>
+            <span class="post-badge">2025</span>
+          </div>
+          <h2><a href="open_cloze_part_2_10_gramatick_ch_slov.html">Open Cloze (Part 2): 10 gramatických slov, která zachrání vaše skóre</a></h2>
+          <p class="post-excerpt">Členy, předložky, vztažná zájmena a spojky, které tvoří až 80 % všech mezer v Part 2.</p>
+          <div class="post-actions">
+            <a class="btn" href="open_cloze_part_2_10_gramatick_ch_slov.html">Přečíst celý článek</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2025" id="a2-key-pruvodce-2025">
+      <div class="post-row">
+        <div class="post-thumb">A2<br>KEY</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">19. ledna 2025 · Blog · A2 Key</span>
+            <span class="post-badge">2025</span>
+          </div>
+          <h2><a href="jak_p_ipravit_d_ti_na_a2_key_bez_stresu.html">První mezinárodní zkouška: Jak připravit děti na A2 Key bez stresu</a></h2>
+          <p class="post-excerpt">Praktické tipy pro rodiče i mladší studenty, jak proměnit přípravu na A2 Key v zábavný návyk.</p>
+          <div class="post-actions">
+            <a class="btn" href="jak_p_ipravit_d_ti_na_a2_key_bez_stresu.html">Přečíst celý článek</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ==================== ROK 2024 (8 článků) ==================== -->
+    <article class="post-card" data-year="2024" id="gapped-text-2024">
+      <div class="post-row">
+        <div class="post-thumb">B2/C1<br>PART 7</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">19. listopadu 2024 · Blog · Reading</span>
+            <span class="post-badge">2024</span>
+          </div>
+          <h2><a href="gapped_text_vkl_d_n_odstavc.html">Gapped Text (vkládání odstavců): Jak najít logické návaznosti</a></h2>
+          <p class="post-excerpt">Sledujte zájmena, časové odkazy a kontrastní spojky na začátku a konci každého odstavce.</p>
+          <div class="post-actions">
+            <a class="btn" href="gapped_text_vkl_d_n_odstavc.html">Přečíst celý článek</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2024" id="speaking-part3-2024">
+      <div class="post-row">
+        <div class="post-thumb">SPEAK<br>PART 3</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">12. října 2024 · Blog · Speaking</span>
+            <span class="post-badge">2024</span>
+          </div>
+          <h2><a href="jak_zapojit_partnera_do_diskuze_u_speaking_part_3.html">Jak zapojit partnera do diskuze u Speaking Part 3 a působit přirozeně</a></h2>
+          <p class="post-excerpt">Fráze pro zdvořilé nesouhlasné reakce, přebírání slova a společné shrnutí na konci úlohy.</p>
+          <div class="post-actions">
+            <a class="btn" href="jak_zapojit_partnera_do_diskuze_u_speaking_part_3.html">Přečíst celý článek</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2024" id="eu-granty-2024">
+      <div class="post-row">
+        <div class="post-thumb">EU<br>GRANT</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">14. září 2024 · Spolupráce</span>
+            <span class="post-badge">2024</span>
+          </div>
+          <h2><a href="roz_en_spolupr_ce_se_st_edn_mi_kolami_v_r_mci_grant_eu.html">Rozšíření spolupráce se středními školami v rámci grantů EU</a></h2>
+          <p class="post-excerpt">Zapojili jsme dalších 15 středních škol do programu dotovaného testování nanečisto.</p>
+          <div class="post-actions">
+            <a class="btn" href="roz_en_spolupr_ce_se_st_edn_mi_kolami_v_r_mci_grant_eu.html">Přečíst celý článek</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2024" id="letni-intenzivni-2024">
+      <div class="post-row">
+        <div class="post-thumb">LÉTO<br>KURZ</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">18. července 2024 · Kurzy</span>
+            <span class="post-badge">2024</span>
+          </div>
+          <h2><a href="ohl_dnut_za_letn_mi_intenzivn_mi_kurzy_b2_first_a_c1_advanced.html">Ohlédnutí za letními intenzivními kurzy B2 First a C1 Advanced</a></h2>
+          <p class="post-excerpt">Dvoutýdenní prázdninové soustředění absolvovalo 48 studentů s 96% úspěšností u ostrých zkoušek.</p>
+          <div class="post-actions">
+            <a class="btn" href="ohl_dnut_za_letn_mi_intenzivn_mi_kurzy_b2_first_a_c1_advanced.html">Přečíst celý článek</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2024" id="podcasty-anglictina-2024">
+      <div class="post-row">
+        <div class="post-thumb">AUDIO<br>TIPY</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">25. května 2024 · Blog · Listening</span>
+            <span class="post-badge">2024</span>
+          </div>
+          <h2><a href="8_nejlep_ch_britsk_ch_podcast_pro_p_pravu_na_c1_advanced_a_c2.html">8 nejlepších britských podcastů pro přípravu na C1 Advanced a C2</a></h2>
+          <p class="post-excerpt">Doporučené pořady BBC Radio 4 a akademické diskuze, které zlepší váš poslech přirozenou cestou.</p>
+          <div class="post-actions">
+            <a class="btn" href="8_nejlep_ch_britsk_ch_podcast_pro_p_pravu_na_c1_advanced_a_c2.html">Přečíst celý článek</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2024" id="maturita-certifikat-2024">
+      <div class="post-row">
+        <div class="post-thumb">MATU<br>RITA</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">4. dubna 2024 · Blog · Pro studenty</span>
+            <span class="post-badge">2024</span>
+          </div>
+          <h2><a href="jak_nahradit_profilovou_maturitu_z_angli_tiny_certifik_tem_cambridge.html">Jak nahradit profilovou maturitu z angličtiny certifikátem Cambridge</a></h2>
+          <p class="post-excerpt">Přehled termínů, do kdy musíte odevzdat certifikát B1/B2 řediteli školy a jak požádat o uznání.</p>
+          <div class="post-actions">
+            <a class="btn" href="jak_nahradit_profilovou_maturitu_z_angli_tiny_certifik_tem_cambridge.html">Přečíst celý článek</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2024" id="interaktivni-testy-2024">
+      <div class="post-row">
+        <div class="post-thumb">WEB<br>APP</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">10. ledna 2024 · Novinka</span>
+            <span class="post-badge">2024</span>
+          </div>
+          <h2><a href="spou_t_me_nov_interaktivn_testy_s_okam_itou_zp_tnou_vazbou.html">Spouštíme nové interaktivní testy s okamžitou zpětnou vazbou</a></h2>
+          <p class="post-excerpt">Přidali jsme přes 10 nových testů s automatickým vyhodnocením a historií výsledků.</p>
+          <div class="post-actions">
+            <a class="btn" href="spou_t_me_nov_interaktivn_testy_s_okam_itou_zp_tnou_vazbou.html">Přečíst celý článek</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2024" id="cambridge-scale-2024">
+      <div class="post-row">
+        <div class="post-thumb">BODY<br>SCALE</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">2. ledna 2024 · Blog · Hodnocení</span>
+            <span class="post-badge">2024</span>
+          </div>
+          <h2><a href="jak_funguje_cambridge_english_scale_a_kdy_z_sk_te_grade_a.html">Jak funguje Cambridge English Scale a kdy získáte Grade A</a></h2>
+          <p class="post-excerpt">Vysvětlení bodového systému od 120 do 230 bodů a jak se počítá celková známka ze čtyř částí.</p>
+          <div class="post-actions">
+            <a class="btn" href="jak_funguje_cambridge_english_scale_a_kdy_z_sk_te_grade_a.html">Přečíst celý článek</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ==================== ROK 2023 (8 článků) ==================== -->
+    <article class="post-card" data-year="2023" id="linking-words-2023">
+      <div class="post-row">
+        <div class="post-thumb">WRIT<br>LINK</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">21. listopadu 2023 · Blog · Writing</span>
+            <span class="post-badge">2023</span>
+          </div>
+          <h2>Spojovací výrazy (Linking Words), které posunou vaši esej na úroveň C1</h2>
+          <p class="post-excerpt">Nahraďte opakující se „but“ a „also“ elegantními obraty jako Nevertheless, Furthermore či Consequently.</p>
+          <div class="post-full">
+            <p>Pro vyjádření kontrastu použijte <em>Nevertheless, On the contrary, Notwithstanding</em>; pro přidání argumentu <em>Furthermore, Moreover, In addition</em>; a pro vyjádření důsledku <em>Consequently, Therefore, As a result</em>. Pamatujte na správnou interpunkci – za spojovacími výrazy na začátku věty vždy píšeme čárku.</p>
+          </div>
+          <div class="post-actions">
+            <button type="button" class="btn toggle-post">Přečíst celý článek</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2023" id="konverzacni-kluby-2023">
+      <div class="post-row">
+        <div class="post-thumb">KLUB<br>UK</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">9. října 2023 · Kurzy</span>
+            <span class="post-badge">2023</span>
+          </div>
+          <h2>Páteční konverzační kluby s rodilými mluvčími na Chodově</h2>
+          <p class="post-excerpt">Otevřeli jsme pravidelná odpolední setkání zaměřená na mluvený projev bez strachu z chyb.</p>
+          <div class="post-full">
+            <p>Každý pátek odpoledne pořádáme v našem centru na Chodově neformální diskuzní setkání pod vedením Astrid Bohengun-Smith MSc. a Jamese Whitakera, B.A., kde studenti trénují rychlé reakce na témata ze Speaking Part 4.</p>
+          </div>
+          <div class="post-actions">
+            <button type="button" class="btn toggle-post">Přečíst celý článek</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2023" id="podminkove-vety-2023">
+      <div class="post-row">
+        <div class="post-thumb">GRAM<br>IF</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">17. srpna 2023 · Blog · Gramatika</span>
+            <span class="post-badge">2023</span>
+          </div>
+          <h2>Smíšené podmínkové věty (Mixed Conditionals) v B2 First a C1 Advanced</h2>
+          <p class="post-excerpt">Kdy propojit minulou podmínku s přítomným následkem a jak tyto věty poznat v Use of English.</p>
+          <div class="post-full">
+            <p>Smíšené kondicionály propojují dvě různá časová období: <em>„If I had accepted that job offer last year (minulost), I would live in London now (přítomnost).“</em> Tento jev se pravidelně testuje v Key Word Transformations.</p>
+          </div>
+          <div class="post-actions">
+            <button type="button" class="btn toggle-post">Přečíst celý článek</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2023" id="paper-vs-computer-2023">
+      <div class="post-row">
+        <div class="post-thumb">PC vs<br>PAPÍR</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">30. června 2023 · Blog · Tipy ke zkoušce</span>
+            <span class="post-badge">2023</span>
+          </div>
+          <h2>Paper-based vs. Computer-based zkouška: Která varianta vám sedne lépe?</h2>
+          <p class="post-excerpt">Výhody sluchátek u poslechu, automatického počítadla slov u psaní a rychlejšího doručení výsledků.</p>
+          <div class="post-full">
+            <p>Obsah, obtížnost i hodnota certifikátu jsou u obou verzí totožné. Počítačová verze (<em>Cambridge English Qualifications Digital</em>) však nabízí vlastní sluchátka s regulací hlasitosti, automatické počítadlo slov u psaní a výsledky již do 5–10 pracovních dnů.</p>
+          </div>
+          <div class="post-actions">
+            <button type="button" class="btn toggle-post">Přečíst celý článek</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2023" id="inverze-c1-2023">
+      <div class="post-row">
+        <div class="post-thumb">C1<br>GRAM</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">14. května 2023 · Blog · C1 Advanced</span>
+            <span class="post-badge">2023</span>
+          </div>
+          <h2>Inverze po záporných příslovcích (Never have I..., Not only...)</h2>
+          <p class="post-excerpt">Pokročilá gramatická struktura, která zaručeně zaujme hodnotitele v eseji i v Part 4.</p>
+          <div class="post-full">
+            <p>Pokud pro důraz postavíte na začátek věty záporné příslovce (<em>Never, Rarely, Seldom, Not only, Under no circumstances</em>), následuje tázací slovosled: <em>„Not only did she pass the exam, but she also achieved the highest score.“</em></p>
+          </div>
+          <div class="post-actions">
+            <button type="button" class="btn toggle-post">Přečíst celý článek</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2023" id="trpny-rod-2023">
+      <div class="post-row">
+        <div class="post-thumb">B2<br>PASSIVE</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">27. března 2023 · Blog · Gramatika</span>
+            <span class="post-badge">2023</span>
+          </div>
+          <h2>Trpný rod s modálními slovesy a vazbou „It is said that...“</h2>
+          <p class="post-excerpt">Jak správně převádět neosobní vazby v transformacích vět u zkoušek B2 First a C1 Advanced.</p>
+          <div class="post-full">
+            <p>Větu <em>„People believe that the castle is haunted“</em> lze přepsat dvěma způsoby: <em>„It is believed that the castle is haunted“</em> nebo <em>„The castle is believed to be haunted“</em>.</p>
+          </div>
+          <div class="post-actions">
+            <button type="button" class="btn toggle-post">Přečíst celý článek</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2023" id="ielts-speaking-2023">
+      <div class="post-row">
+        <div class="post-thumb">IELTS<br>SPEAK</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">11. února 2023 · Blog · IELTS</span>
+            <span class="post-badge">2023</span>
+          </div>
+          <h2>IELTS Speaking Part 2: Jak využít 1 minutu na přípravu poznámek</h2>
+          <p class="post-excerpt">Jak si rychle načrtnout osnovu na kartičku, abyste dokázali plynule mluvit celé dvě minuty.</p>
+          <div class="post-full">
+            <p>Během 60 sekund přípravy nepište celé věty – napište si jen 4 až 5 klíčových slov ke každému bodu na kartičce (Cue Card) a přidejte dvě pokročilá přídavná jména, která chcete v dvouminutovém monologu použít.</p>
+          </div>
+          <div class="post-actions">
+            <button type="button" class="btn toggle-post">Přečíst celý článek</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2023" id="nova-knihovna-2023">
+      <div class="post-row">
+        <div class="post-thumb">KNIHY<br>2023</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">8. ledna 2023 · Pobočka</span>
+            <span class="post-badge">2023</span>
+          </div>
+          <h2>Rozšíření studijní knihovny cvičebnic a zjednodušené četby</h2>
+          <p class="post-excerpt">Studenti našich kurzů si nyní mohou zdarma půjčovat přes 250 titulů pro úrovně A2 až C2.</p>
+          <div class="post-full">
+            <p>Na naši pobočku v Office Centru Park Chodov dorazila nová zásilka více než 250 cvičebnic, gramatických příruček a zjednodušené četby (<em>Graded Readers</em>) pro úrovně A2 až C2. Všichni studenti našich kurzů mají výpůjčky zdarma.</p>
+          </div>
+          <div class="post-actions">
+            <button type="button" class="btn toggle-post">Přečíst celý článek</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ==================== ROK 2022 (8 článků) ==================== -->
+    <article class="post-card" data-year="2022" id="false-friends-2022">
+      <div class="post-row">
+        <div class="post-thumb">SLOVA<br>CHYBY</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">18. listopadu 2022 · Blog · Slovní zásoba</span>
+            <span class="post-badge">2022</span>
+          </div>
+          <h2>15 zrádných „False Friends“ mezi češtinou a angličtinou</h2>
+          <p class="post-excerpt">Proč „eventually“ neznamená eventuálně a „sympathetic“ není sympatický – přehled nejčastějších záměn.</p>
+          <div class="post-full">
+            <ul>
+              <li><strong>eventually</strong> = nakonec, časem (nikoli eventuálně – <em>possibly</em>)</li>
+              <li><strong>sympathetic</strong> = soucitný, chápavý (nikoli sympatický – <em>likeable / nice</em>)</li>
+              <li><strong>actual</strong> = skutečný (nikoli aktuální – <em>current</em>)</li>
+              <li><strong>chef</strong> = šéfkuchař (nikoli šéf ve firmě – <em>boss / manager</em>)</li>
+            </ul>
+          </div>
+          <div class="post-actions">
+            <button type="button" class="btn toggle-post">Přečíst celý článek</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2022" id="recenze-b2-2022">
+      <div class="post-row">
+        <div class="post-thumb">B2<br>REVIEW</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">14. října 2022 · Blog · Writing</span>
+            <span class="post-badge">2022</span>
+          </div>
+          <h2>Jak napsat čtivou recenzi (Review) v B2 First Writing Part 2</h2>
+          <p class="post-excerpt">Jak zaujmout čtenáře hned v prvním odstavci, vyvážit klady a zápory a zakončit jasným doporučením.</p>
+          <div class="post-full">
+            <p>Recenze knihy, filmu nebo aplikace by měla mít chytlavý titulek, živější styl než formální esej, pestrá hodnoticí přídavná jména (<em>gripping, thought-provoking, overpriced</em>) a jasné doporučení v závěru.</p>
+          </div>
+          <div class="post-actions">
+            <button type="button" class="btn toggle-post">Přečíst celý článek</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2022" id="psany-projev-2022">
+      <div class="post-row">
+        <div class="post-thumb">ESSAY<br>TIPY</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">5. září 2022 · Blog</span>
+            <span class="post-badge">2022</span>
+          </div>
+          <h2>Jak efektivně zlepšit svůj psaný projev u zkoušek Cambridge</h2>
+          <p class="post-excerpt">Tipy, jak se vyhnout nejčastějším chybám v eseji u zkoušek B2 First a C1 Advanced.</p>
+          <div class="post-full">
+            <p>Každý odstavec eseje by měl začínat tzv. <em>topic sentence</em> – větou, která čtenáři hned sdělí hlavní myšlenku odstavce, a následně ji rozvést konkrétním příkladem.</p>
+          </div>
+          <div class="post-actions">
+            <button type="button" class="btn toggle-post">Přečíst celý článek</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2022" id="predlozkove-vazby-2022">
+      <div class="post-row">
+        <div class="post-thumb">PREP<br>B1/B2</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">20. července 2022 · Blog · Gramatika</span>
+            <span class="post-badge">2022</span>
+          </div>
+          <h2>Závislé předložky po přídavných jménech (keen on, afraid of, proud of)</h2>
+          <p class="post-excerpt">Přehled 30 nejčastějších spojení přídavných jmen a předložek pro B1 Preliminary a B2 First.</p>
+          <div class="post-full">
+            <p>Pamatujte si, že pokud po předložce následuje sloveso, musí být vždy ve tvaru s koncovkou <strong>-ing</strong>: <em>interested in learning, capable of solving, responsible for organising, keen on travelling</em>.</p>
+          </div>
+          <div class="post-actions">
+            <button type="button" class="btn toggle-post">Přečíst celý článek</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2022" id="cetba-anglictina-2022">
+      <div class="post-row">
+        <div class="post-thumb">READ<br>KNIHY</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">2. června 2022 · Blog · Reading</span>
+            <span class="post-badge">2022</span>
+          </div>
+          <h2>Jak začít číst knihy v originále na úrovni B1 a B2 bez slovníku v ruce</h2>
+          <p class="post-excerpt">Doporučené současné romány a povídky, které přirozeně rozšíří vaši pasivní i aktivní slovní zásobu.</p>
+          <div class="post-full">
+            <p>Vyberte si knihu, u které rozumíte zhruba 90 % textu na stránce, a neznámá slova vyhledávejte jen tehdy, když se v knize opakují. Tím udržíte plynulost čtení a přirozeně si osvojíte anglický slovosled.</p>
+          </div>
+          <div class="post-actions">
+            <button type="button" class="btn toggle-post">Přečíst celý článek</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2022" id="pobocka-chodov-2022">
+      <div class="post-row">
+        <div class="post-thumb">PRAHA<br>CHODOV</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">12. března 2022 · Pobočka</span>
+            <span class="post-badge">2022</span>
+          </div>
+          <h2>Otevření moderních učeben v Office Centru Park Chodov</h2>
+          <p class="post-excerpt">Přivítali jsme první studenty v bezbariérových prostorách na adrese V Parku 2316/8 v Praze 4.</p>
+          <div class="post-full">
+            <p>Přestěhovali jsme naše pražské zázemí do moderních bezbariérových prostor v budově Office Centrum Park Chodov (V Parku 2316/8, Praha 4), pouhé 3 minuty chůze od stanice metra C – Chodov.</p>
+          </div>
+          <div class="post-actions">
+            <button type="button" class="btn toggle-post">Přečíst celý článek</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2022" id="gerundium-infinitiv-2022">
+      <div class="post-row">
+        <div class="post-thumb">GRAM<br>-ING</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">9. února 2022 · Blog · Gramatika</span>
+            <span class="post-badge">2022</span>
+          </div>
+          <h2>Gerundium vs. infinitiv: Slovesa, která mění význam (stop, remember, try)</h2>
+          <p class="post-excerpt">Rozdíl mezi „stop smoking“ a „stop to smoke“ vysvětlený na jasných příkladech ze zkoušek.</p>
+          <div class="post-full">
+            <p>Například <em>„remember locking the door“</em> znamená pamatovat si, že jste už zamkli (vzpomínka), zatímco <em>„remember to lock the door“</em> znamená nezapomenout zamknout (úkol do budoucna).</p>
+          </div>
+          <div class="post-actions">
+            <button type="button" class="btn toggle-post">Přečíst celý článek</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2022" id="time-management-2022">
+      <div class="post-row">
+        <div class="post-thumb">ČAS<br>TEST</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">15. ledna 2022 · Blog · Strategie</span>
+            <span class="post-badge">2022</span>
+          </div>
+          <h2>Time management u zkoušky: Kolik minut věnovat každé části Readingu?</h2>
+          <p class="post-excerpt">Přesný časový rozvrh pro 75 minut v B2 First a 90 minut v C1 Advanced včetně přepisu odpovědí.</p>
+          <div class="post-full">
+            <p>U papírové verze B2 First máte 75 minut na 7 částí. Doporučujeme strávit maximálně 25 minut na Use of English (Parts 1–4), 40 minut na delší texty Readingu (Parts 5–7) a posledních 10 minut si nechat na pečlivý přepis odpovědí do záznamového archu.</p>
+          </div>
+          <div class="post-actions">
+            <button type="button" class="btn toggle-post">Přečíst celý článek</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ==================== ROK 2021 (8 článků) ==================== -->
+    <article class="post-card" data-year="2021" id="neprime-otazky-2021">
+      <div class="post-row">
+        <div class="post-thumb">GRAM<br>B1/B2</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">24. listopadu 2021 · Blog · Gramatika</span>
+            <span class="post-badge">2021</span>
+          </div>
+          <h2>Nepřímé otázky (Indirect Questions) a slovosled v oznamovací větě</h2>
+          <p class="post-excerpt">Jak správně použít vazby „Could you tell me where...“ bez zbytečného pomocného slovesa do/did.</p>
+          <div class="post-full">
+            <p>Když otázku uvodíte zdvořilou frází jako <em>„Could you tell me...“</em> nebo <em>„Do you know...“</em>, zbytek věty má oznamovací slovosled: <em>„Could you tell me what time the train leaves?“</em> (nikoli <em>does the train leave</em>).</p>
+          </div>
+          <div class="post-actions">
+            <button type="button" class="btn toggle-post">Přečíst celý článek</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2021" id="vyslovnost-th-2021">
+      <div class="post-row">
+        <div class="post-thumb">SPEAK<br>FONET</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">15. října 2021 · Blog · Speaking</span>
+            <span class="post-badge">2021</span>
+          </div>
+          <h2>Výslovnost a slovní přízvuk: Jak znít přirozeně u ústní zkoušky</h2>
+          <p class="post-excerpt">Na co se zaměřují hodnotitelé v kritériu Pronunciation – nejde o britský přízvuk, ale o srozumitelnost.</p>
+          <div class="post-full">
+            <p>Hodnotitelé u zkoušek Cambridge nevyžadují dokonalý britský přízvuk. Kritérium <em>Pronunciation</em> sleduje srozumitelnost, správné kladení slovního přízvuku (např. u slov <em>pho-TO-gra-phy</em> vs. <em>PHO-to-graph</em>) a přirozenou intonaci.</p>
+          </div>
+          <div class="post-actions">
+            <button type="button" class="btn toggle-post">Přečíst celý článek</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2021" id="prave-casovace-2021">
+      <div class="post-row">
+        <div class="post-thumb">WEB<br>2021</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">6. září 2021 · Novinka</span>
+            <span class="post-badge">2021</span>
+          </div>
+          <h2>Nová funkce na webu: Zkušební časovač a okamžité opravování</h2>
+          <p class="post-excerpt">Spustili jsme první verzi interaktivních cvičných testů pro B1 Preliminary a B2 First.</p>
+          <div class="post-full">
+            <p>V září 2021 jsme spustili první verzi našeho online testovacího rozhraní s vestavěným odpočtem času a okamžitým vyhodnocením správných odpovědí pro studenty B1 a B2.</p>
+          </div>
+          <div class="post-actions">
+            <button type="button" class="btn toggle-post">Přečíst celý článek</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2021" id="cleny-anglictina-2021">
+      <div class="post-row">
+        <div class="post-thumb">A / AN<br>THE</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">19. července 2021 · Blog · Gramatika</span>
+            <span class="post-badge">2021</span>
+          </div>
+          <h2>Členy a, an, the a nulový člen: Přehled pravidel pro české studenty</h2>
+          <p class="post-excerpt">Kdy se člen nepoužívá u obecných pojmů, názvů zemí a školních předmětů.</p>
+          <div class="post-full">
+            <p>Počitatelné podstatné jméno v jednotném čísle (<em>book, exam</em>) nikdy nestojí samo bez členu nebo zájmena. Naopak u obecných pojmů v množném čísle nebo u nepočitatelných jmen (<em>Life is short, Students need sleep</em>) používáme nulový člen.</p>
+          </div>
+          <div class="post-actions">
+            <button type="button" class="btn toggle-post">Přečíst celý článek</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2021" id="den-pred-zkouskou-2021">
+      <div class="post-row">
+        <div class="post-thumb">TIPY<br>ZKOUŠKA</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">28. května 2021 · Blog · Příprava</span>
+            <span class="post-badge">2021</span>
+          </div>
+          <h2>Co si vzít s sebou v den zkoušky a jak se vyhnout zbytečné nervozitě</h2>
+          <p class="post-excerpt">Kontrolní seznam dokladů, průběh registrace v centru a tipy pro klidný spánek před testem.</p>
+          <div class="post-full">
+            <p>Nezapomeňte si platný občanský průkaz nebo cestovní pas (musí se shodovat s dokladem uvedeným při registraci) a vytištěný dokument <em>Confirmation of Entry</em>. Dorazte alespoň 30 minut před začátkem první části.</p>
+          </div>
+          <div class="post-actions">
+            <button type="button" class="btn toggle-post">Přečíst celý článek</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2021" id="online-vyuka-2021">
+      <div class="post-row">
+        <div class="post-thumb">ONLINE<br>KURZY</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">14. dubna 2021 · Kurzy</span>
+            <span class="post-badge">2021</span>
+          </div>
+          <h2>Jak probíhají naše interaktivní online přípravné kurzy v malých skupinách</h2>
+          <p class="post-excerpt">Maximálně 6 studentů ve skupině, práce ve virtuálních dvojicích a sdílené tabule v reálném čase.</p>
+          <div class="post-full">
+            <p>Online výuka v Oxfam Preparation probíhá v maximálním počtu 6 studentů ve skupině. Využíváme virtuální konverzační místnosti ve dvojicích, sdílené pracovní listy a živý nácvik ústních zkoušek.</p>
+          </div>
+          <div class="post-actions">
+            <button type="button" class="btn toggle-post">Přečíst celý článek</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2021" id="predpritomny-cas-2021">
+      <div class="post-row">
+        <div class="post-thumb">GRAM<br>TENSES</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">22. února 2021 · Blog · Gramatika</span>
+            <span class="post-badge">2021</span>
+          </div>
+          <h2>Předpřítomný vs. minulý prostý čas: Kdy použít „for“ a kdy „since“</h2>
+          <p class="post-excerpt">Nejčastější gramatický jev testovaný v B1 Preliminary i B2 First Use of English.</p>
+          <div class="post-full">
+            <p>Předložka <strong>for</strong> uvádí délku trvání (<em>for three years</em>), zatímco <strong>since</strong> označuje konkrétní bod v minulosti, kdy děj začal (<em>since 2019</em>). Po spojce <em>since</em> následuje minulý čas prostý.</p>
+          </div>
+          <div class="post-actions">
+            <button type="button" class="btn toggle-post">Přečíst celý článek</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2021" id="prvni-grant-eu-2021">
+      <div class="post-row">
+        <div class="post-thumb">EU<br>2021</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">11. ledna 2021 · Spolupráce</span>
+            <span class="post-badge">2021</span>
+          </div>
+          <h2>Získání prvního evropského grantu na tvorbu dostupných studijních materiálů</h2>
+          <p class="post-excerpt">Odstartovali jsme projekt podpory rovného přístupu ke kvalitní přípravě na mezinárodní zkoušky.</p>
+          <div class="post-full">
+            <p>V lednu 2021 jsme získali první evropský vzdělávací grant zaměřený na tvorbu digitálních přípravných materiálů pro studenty středních škol na základě principu rovného přístupu ke vzdělání.</p>
+          </div>
+          <div class="post-actions">
+            <button type="button" class="btn toggle-post">Přečíst celý článek</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ==================== ROK 2020 (8 článků) ==================== -->
+    <article class="post-card" data-year="2020" id="vanocni-slovicka-2020">
+      <div class="post-row">
+        <div class="post-thumb">IDIOMS<br>2020</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">15. prosince 2020 · Blog · Slovní zásoba</span>
+            <span class="post-badge">2020</span>
+          </div>
+          <h2>12 anglických idiomů o učení, práci a úspěchu, které oživí váš projev</h2>
+          <p class="post-excerpt">Výrazy jako „pass with flying colours“ nebo „learn the ropes“ v přirozených větách.</p>
+          <div class="post-full">
+            <p>Idiom <em>„pass with flying colours“</em> (složit zkoušku na výbornou), <em>„hit the books“</em> (pustit se do učení) nebo <em>„learn the ropes“</em> (zaučit se v nové práci) dodají vaší mluvené i psané angličtině přirozený švih.</p>
+          </div>
+          <div class="post-actions">
+            <button type="button" class="btn toggle-post">Přečíst celý článek</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2020" id="b1-story-writing-2020">
+      <div class="post-row">
+        <div class="post-thumb">B1<br>STORY</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">10. listopadu 2020 · Blog · B1 Preliminary</span>
+            <span class="post-badge">2020</span>
+          </div>
+          <h2>Jak napsat poutavý příběh (Story) v B1 Preliminary Writing Part 2</h2>
+          <p class="post-excerpt">Střídání minulých časů (Past Simple a Past Continuous) a přímá řeč pro vyšší bodové hodnocení.</p>
+          <div class="post-full">
+            <p>U úlohy Story dostanete úvodní větu, na kterou musíte přímo navázat. Střídejte minulý čas prostý (pro dějovou linii) s minulým průběhovým (pro popis atmosféry) a nezapomeňte na jasnou pointu v závěru.</p>
+          </div>
+          <div class="post-actions">
+            <button type="button" class="btn toggle-post">Přečíst celý článek</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2020" id="modaly-dedukce-2020">
+      <div class="post-row">
+        <div class="post-thumb">MUST<br>CAN'T</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">21. října 2020 · Blog · Gramatika</span>
+            <span class="post-badge">2020</span>
+          </div>
+          <h2>Modální slovesa jistoty a pravděpodobnosti (must, might, can't be)</h2>
+          <p class="post-excerpt">Jak vyjadřovat domněnky v přítomnosti i v minulosti (must have done) u zkoušky B2 First.</p>
+          <div class="post-full">
+            <p>Pro vyjádření téměř stoprocentní jistoty používáme <strong>must</strong>, pro vyloučení možnosti <strong>can’t</strong> (nikoli <em>mustn’t</em>!) a pro nejistou domněnku <strong>might / may / could</strong>.</p>
+          </div>
+          <div class="post-actions">
+            <button type="button" class="btn toggle-post">Přečíst celý článek</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2020" id="prvni-mock-testy-2020">
+      <div class="post-row">
+        <div class="post-thumb">MOCK<br>2020</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">5. října 2020 · Novinka</span>
+            <span class="post-badge">2020</span>
+          </div>
+          <h2>První zkušební testy nanečisto pro podzimní termíny zkoušek</h2>
+          <p class="post-excerpt">Uspořádali jsme první hromadné testování nanečisto pro zájemce o certifikáty B1 a B2.</p>
+          <div class="post-full">
+            <p>V říjnu 2020 jsme uspořádali historicky první sérii prezenčních mock testů pro zájemce o zkoušky B1 Preliminary a B2 First včetně individuálního rozboru ústní části.</p>
+          </div>
+          <div class="post-actions">
+            <button type="button" class="btn toggle-post">Přečíst celý článek</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2020" id="slovicko-dne-metoda-2020">
+      <div class="post-row">
+        <div class="post-thumb">PAMĚŤ<br>TIPY</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">22. září 2020 · Blog · Metodika</span>
+            <span class="post-badge">2020</span>
+          </div>
+          <h2>Metoda Spaced Repetition: Jak si zapamatovat nová slovíčka natrvalo</h2>
+          <p class="post-excerpt">Proč je 15 minut denního opakování účinnější než dvouhodinové učení jednou týdně.</p>
+          <div class="post-full">
+            <p>Lidská paměť zapomíná nové informace nejrychleji během prvních 24 hodin. Krátké 15minutové opakování kartiček v rostoucích intervalech (po 1, 3, 7 a 21 dnech) přenese slovní zásobu do dlouhodobé paměti.</p>
+          </div>
+          <div class="post-actions">
+            <button type="button" class="btn toggle-post">Přečíst celý článek</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2020" id="cefr-urovne-prehled-2020">
+      <div class="post-row">
+        <div class="post-thumb">CEFR<br>A2–C2</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">14. září 2020 · Blog · Průvodce</span>
+            <span class="post-badge">2020</span>
+          </div>
+          <h2>Co znamenají úrovně A2, B1, B2, C1 a C2 podle Společného evropského rámce</h2>
+          <p class="post-excerpt">Srozumitelný přehled toho, co by měl student ovládat na každé jazykové úrovni.</p>
+          <div class="post-full">
+            <p>Zatímco úroveň <strong>B1 Preliminary</strong> stačí pro běžnou komunikaci na cestách a maturitu, <strong>B2 First</strong> je mezinárodním standardem pro studium na vysoké škole a práci v mezinárodním prostředí. <strong>C1 Advanced</strong> a <strong>C2 Proficiency</strong> pak dokládají pokročilou akademickou a profesní znalost jazyka.</p>
+          </div>
+          <div class="post-actions">
+            <button type="button" class="btn toggle-post">Přečíst celý článek</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2020" id="zahajeni-kurzu-2020">
+      <div class="post-row">
+        <div class="post-thumb">KURZY<br>2020</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">7. září 2020 · Kurzy</span>
+            <span class="post-badge">2020</span>
+          </div>
+          <h2>Zahájení prvních přípravných kurzů na zkoušky B2 First a C1 Advanced</h2>
+          <p class="post-excerpt">Otevřeli jsme první čtyři studijní skupiny pod vedením českých lektorů i rodilých mluvčích.</p>
+          <div class="post-full">
+            <p>První týden v září 2020 jsme přivítali první čtyři studijní skupiny zaměřené na zkoušky B2 First a C1 Advanced s důrazem na individuální přístup v malých skupinách do 6 studentů.</p>
+          </div>
+          <div class="post-actions">
+            <button type="button" class="btn toggle-post">Přečíst celý článek</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post-card" data-year="2020" id="vznik-oxfam-2020">
+      <div class="post-row">
+        <div class="post-thumb">START<br>2020</div>
+        <div class="post-main">
+          <div class="post-top">
+            <span class="post-meta">1. září 2020 · Historie</span>
+            <span class="post-badge">2020</span>
+          </div>
+          <h2>Založení jazykového centra Oxfam Preparation – Oxford Family</h2>
+          <p class="post-excerpt">Začali jsme s jasnou vizí: nabídnout studentům i školám dostupnou přípravu ke zkouškám Cambridge.</p>
+          <div class="post-full">
+            <p>1. září 2020 jsme otevřeli jazykové a přípravné centrum Oxfam Preparation – Oxford Family s jasným posláním: propojit moderní výuku s realistickými cvičnými testy a zpřístupnit kvalitní jazykové vzdělávání studentům i školám po celé České republice.</p>
+            <p>Díky propojení s evropskými vzdělávacími granty od samého začátku stavíme na principu rovnosti a dostupnosti kvalitních studijních materiálů pro každého.</p>
+          </div>
+          <div class="post-actions">
+            <button type="button" class="btn toggle-post">Přečíst celý článek</button>
+            <a class="btn alt" href="index.html#about">Více o nás</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <footer>© 2020-2026 Oxfam - Oxford family. Všechna práva vyhrazena. Není spojeno s Cambridge University Press &amp; Assessment. Názvy zkoušek patří jejich vlastníkům.</footer>
+</div>
+
+<div class="support-strip">
+  <div class="support-strip-inner">
+    <div>Zákaznická podpora každý den od 9:00 do 16:30</div>
+    <div class="support-info">
+      <a href="mailto:oxfampreparation@email.cz">oxfampreparation@email.cz</a>
+      <a href="tel:+420723200988">+420 723 200 988</a>
+    </div>
+  </div>
+</div>
+
+<script>
+// Synchronizace tmavého režimu s hlavní stránkou
+var themeBtn = document.getElementById("themeBtn");
+function updateThemeIcon() {
+  var th = document.documentElement.getAttribute("data-theme") || "light";
+  themeBtn.textContent = th === "dark" ? "☀️" : "🌙";
+}
+var savedTheme = "light";
+try { savedTheme = localStorage.getItem("theme") || "light"; } catch(e) {}
+document.documentElement.setAttribute("data-theme", savedTheme);
+updateThemeIcon();
+
+themeBtn.onclick = function() {
+  var th = document.documentElement.getAttribute("data-theme") || "light";
+  var newTh = th === "dark" ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", newTh);
+  try { localStorage.setItem("theme", newTh); } catch(e) {}
+  updateThemeIcon();
+};
+
+// Rozbalování náhledů jednotlivých článků přímo v archivu
+document.querySelectorAll(".toggle-post").forEach(function(btn) {
+  var defaultText = btn.textContent;
+  btn.onclick = function() {
+    var card = btn.closest(".post-card");
+    var isExpanded = card.classList.toggle("expanded");
+    btn.textContent = isExpanded ? "Skrýt náhled" : defaultText;
+  };
+});
+
+// Automatické rozbalení článku, pokud je v URL kotva (#id)
+if (location.hash) {
+  var targetCard = document.querySelector(location.hash);
+  if (targetCard && targetCard.classList.contains("post-card")) {
+    targetCard.classList.add("expanded");
+    var tBtn = targetCard.querySelector(".toggle-post");
+    if (tBtn) tBtn.textContent = "Skrýt náhled";
+  }
+}
+
+// Filtrování podle roku a vyhledávání
+var selectedYear = "all";
+var yearChips = document.querySelectorAll("#yearFilters .f-chip");
+var searchInput = document.getElementById("searchInput");
+var cards = document.querySelectorAll(".post-card");
+var emptyState = document.getElementById("emptyState");
+
+function filterArchive() {
+  var query = searchInput.value.trim().toLowerCase();
+  var visibleCount = 0;
+
+  cards.forEach(function(card) {
+    var cardYear = card.getAttribute("data-year");
+    var text = card.textContent.toLowerCase();
+    var matchYear = (selectedYear === "all" || cardYear === selectedYear);
+    var matchQuery = (!query || text.indexOf(query) > -1);
+
+    if (matchYear && matchQuery) {
+      card.hidden = false;
+      visibleCount++;
+    } else {
+      card.hidden = true;
+    }
+  });
+
+  if (visibleCount === 0) emptyState.classList.add("visible");
+  else emptyState.classList.remove("visible");
+}
+
+yearChips.forEach(function(chip) {
+  chip.onclick = function() {
+    selectedYear = chip.getAttribute("data-year");
+    yearChips.forEach(function(c) { c.setAttribute("aria-pressed", c === chip ? "true" : "false"); });
+    filterArchive();
+  };
+});
+
+searchInput.addEventListener("input", filterArchive);
+</script>
+</body>
+</html>
